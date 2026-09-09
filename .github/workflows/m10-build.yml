@@ -1,4 +1,4 @@
-name: Build and verify M1.0 campus
+name: Build and verify M1.0 R2 campus
 on:
   workflow_dispatch:
   push:
@@ -7,6 +7,7 @@ on:
       - 'data/m10/layout-input.json'
       - 'tools/m10/**'
       - 'tests/m10/**'
+      - '.github/m10-r2.patch'
       - '.github/workflows/m10-build.yml'
 permissions:
   contents: write
@@ -16,7 +17,7 @@ concurrency:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -25,58 +26,68 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Resolve the working coordinate baseline
-        run: python tools/m10/generate-layout.py
-      - name: Install pinned runtime and lock dependencies
-        working-directory: apps/campus
+      - name: Apply reviewed R2 migration and source diff once
         run: |
-          if [ -f package-lock.json ]; then npm ci; else npm install; fi
-      - name: Layout regressions and production build
+          python tools/m10/repair-r2.py
+          if git apply --unidiff-zero --check .github/m10-r2.patch; then
+            git apply --unidiff-zero .github/m10-r2.patch
+          else
+            git apply --unidiff-zero --reverse --check .github/m10-r2.patch
+          fi
+          python tools/m10/generate-layout.py
+          python tools/check_restoration_v07.py
+      - name: Install locked runtime and build with regression tests
         run: |
+          mkdir -p qa/m10-r2
           cd apps/campus
-          npm test
+          npm ci
+          npm test | tee ../../qa/m10-r2/unit-tests.txt
           npm run build
           npm run standalone
           cd ../..
           node tools/m10/export-footprints.mjs
-      - name: Install browser test runner
+          cp qa/m10/layout-report.json qa/m10-r2/layout-report.json
+      - name: Install actual browser and Chinese system fonts
         run: |
           python -m pip install playwright
           python -m playwright install --with-deps chromium
           sudo apt-get install -y fonts-noto-cjk
-      - name: Exercise actual browser and capture scenes
-        run: python tools/m10/capture.py
-      - name: Create source and offline viewer package
+      - name: Verify actual WebGL meshes, routes, controls and screenshots
+        run: python tools/m10/capture-r2.py
+      - name: Package reviewed standalone and readable workspace
+        if: always()
         run: |
           python - <<'PY'
-          import pathlib,zipfile,json,hashlib
-          root=pathlib.Path('.')
-          out=root/'artifacts/m10'
-          include=['apps/campus','data','docs/m10','tests/m10','tools/m10','qa/m10']
-          with zipfile.ZipFile(out/'Yali_M1_0_Workspace.zip','w',zipfile.ZIP_DEFLATED) as z:
-              for folder in include:
-                  for p in sorted((root/folder).rglob('*')):
-                      if not p.is_file() or 'node_modules' in p.parts or '__pycache__' in p.parts: continue
-                      if p.suffix.lower() in ['.ttf','.otf','.woff','.woff2']: continue
-                      z.write(p,p.as_posix())
-              for p in [out/'Yali_M1_0_Viewer.html',out/'THIRD_PARTY_NOTICES.txt']:
-                  z.write(p,p.name)
-          files={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for folder in include for p in (root/folder).rglob('*') if p.is_file() and 'node_modules' not in p.parts and '__pycache__' not in p.parts}
-          (out/'checksums.json').write_text(json.dumps(files,indent=2))
+          from pathlib import Path
+          import zipfile,json,hashlib,shutil
+          root=Path('.');out=root/'artifacts/m10';out.mkdir(parents=True,exist_ok=True)
+          viewer=out/'Yali_M1_0_Viewer.html'
+          if viewer.exists():shutil.copy2(viewer,out/'Yali_M1_0_R2_Viewer.html')
+          folders=['apps/campus','data','docs/m10','tests/m10','tools/m10','qa/m10-r2']
+          extras=['README.md','docs/development-plan.md','tools/check_restoration_v07.py','.github/m10-r2.patch','.github/workflows/m10-build.yml']
+          files=[p for name in folders for p in (root/name).rglob('*') if p.is_file()]+[root/n for n in extras]
+          files=[p for p in files if p.exists() and not any(t in p.parts for t in ['node_modules','__pycache__','.git']) and p.suffix.lower() not in ['.ttf','.otf','.woff','.woff2','.pyc'] and not p.name.startswith('.env')]
+          with zipfile.ZipFile(out/'Yali_M1_0_R2_Workspace.zip','w',zipfile.ZIP_DEFLATED) as z:
+              for p in sorted(set(files)):z.write(p,p.as_posix())
+              for name in ['Yali_M1_0_R2_Viewer.html','THIRD_PARTY_NOTICES.txt']:
+                  p=out/name
+                  if p.exists():z.write(p,name)
+          (out/'r2-checksums.json').write_text(json.dumps({str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in files},ensure_ascii=False,indent=2))
           PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: Yali-M1.0-review
+          name: Yali-M1.0-R2-review
           path: |
             artifacts/m10/
-            qa/m10/
+            qa/m10-r2/
           retention-days: 30
-      - name: Commit generated data and verified screenshots
+          if-no-files-found: error
+      - name: Commit tested source fixes, resolved data and runtime evidence
         if: success()
         run: |
           git config user.name 'return-old-school validation bot'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add apps/campus/package-lock.json data/m10/campus-layout.json data/m10/footprints.json data/m10/footprints.csv qa/m10
-          git diff --cached --quiet || git commit -m 'build: record verified M1.0 footprints, browser screenshots and dependency lock'
+          git add apps/campus/src/main.ts apps/campus/src/layout-core.mjs apps/campus/src/style.css apps/campus/index.html tests/m10/layout.test.mjs tools/m10/export-footprints.mjs tools/check_restoration_v07.py data/m10 data/restoration/facility-register.csv data/restoration/assumption-register-r2.json data/spatial-constraints.json README.md docs/development-plan.md qa/m10-r2 qa/m10/layout-report.json
+          git diff --cached --quiet || git commit -m 'fix: record tested M1.0 R2 source, spatial corrections and actual browser evidence'
           git push origin HEAD:main

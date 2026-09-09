@@ -1,0 +1,136 @@
+diff --git a/apps/campus/index.html b/apps/campus/index.html
+index b4b2674..e7f2a81 100644
+--- a/apps/campus/index.html
++++ b/apps/campus/index.html
+@@ -3 +3 @@
+-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#edf0e8"><title>复原雅礼 · M1.0 空间骨架</title></head>
++<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#edf0e8"><title>复原雅礼 · M1.0 R2 空间骨架</title></head>
+@@ -7 +7 @@
+-  <header class="masthead"><div class="seal">雅</div><div><div class="eyebrow">RETURN OLD SCHOOL <span>/ M1.0</span></div><h1>复原雅礼<span>空间骨架</span></h1><p>东塘校区 · 2006—2010 记忆基底</p></div></header>
++  <header class="masthead"><div class="seal">雅</div><div><div class="eyebrow">RETURN OLD SCHOOL <span>/ M1.0 R2</span></div><h1>复原雅礼<span>空间骨架</span></h1><p>东塘校区 · 2006—2010 记忆基底</p></div></header>
+@@ -14 +14 @@
+-    <div class="toggles"><label><input type="checkbox" id="labels-check" checked> 关键设施标签</label><label><input type="checkbox" id="grid-check"> 10 m 工作网格</label><label><input type="checkbox" id="routes-check"> 路线连通检查</label><label><input type="checkbox" id="footprints-check"> 仅看占地轮廓</label></div>
++    <div class="toggles"><label><input type="checkbox" id="roofs-check" checked> 顶棚 / 接驳屋盖</label><label><input type="checkbox" id="labels-check" checked> 关键设施标签</label><label><input type="checkbox" id="grid-check"> 10 m 工作网格</label><label><input type="checkbox" id="routes-check"> 路线连通检查</label><label><input type="checkbox" id="footprints-check"> 仅看占地轮廓</label></div>
+@@ -18 +18 @@
+-  <nav class="views" aria-label="校核机位"><button data-view="overview" class="active">全校</button><button data-view="top">总平面</button><button data-view="sports">运动区</button><button data-view="teaching">主楼 / 连廊</button><button data-view="gym">体育馆</button><button data-view="gate">校门原点</button></nav>
++  <nav class="views" aria-label="校核机位"><button data-view="overview" class="active">全校</button><button data-view="top">总平面</button><button data-view="sports">运动区</button><button data-view="teaching">主楼 / 连廊</button><button data-view="gym">体育馆</button><button data-view="gate">校门原点</button><button data-view="courts-to-gym">球场看馆</button><button data-view="canopy">棚下</button><button data-view="rear-field">后缘跑道</button><button data-view="library-route">图书馆通路</button><button data-view="underpass">两楼间穿行</button><button data-view="side-path">侧门小路</button></nav>
+diff --git a/apps/campus/src/layout-core.mjs b/apps/campus/src/layout-core.mjs
+index 596d04c..fb3bd9d 100644
+--- a/apps/campus/src/layout-core.mjs
++++ b/apps/campus/src/layout-core.mjs
+@@ -0,0 +1 @@
++import { revisionChecks, edgeWidth, segmentHitsRect } from './revision-core.mjs';
+@@ -45 +46 @@ export function checkLayout(layout) {
+-  check('END_ROW',get('24').position[2]===get('04').position[2]&&get('26').position[2]===get('04').position[2]&&m.maxZ<t.minZ,'24,26,04 at same end of 28/05/06 bands');
++  check('END_ROW',[m,p,wc].every(v=>v.maxZ<t.minZ),'24,26,04 remain at same END, not an invented exact common centreline');
+@@ -52 +53 @@ export function checkLayout(layout) {
+-  check('SANDPIT_NEAR_FLAG',Math.hypot(get('23').position[0]-b('14').maxX,get('23').position[2]-get('14').position[2])<15,'H proximity check only, not measured sandpit coordinates');
++  // The precise rear-right correction supersedes the old forecourt-distance heuristic.
+@@ -61,4 +62,3 @@ export function checkLayout(layout) {
+-    for(let i=0;i<=100;i++){
+-      const x=A[0]+(B[0]-A[0])*i/100,z=A[2]+(B[2]-A[2])*i/100,r=layout.navigation.clearance;
+-      for(const f of solids.filter(v=>v.kind!=='gate'))if(overlap({minX:x-r,maxX:x+r,minZ:z-r,maxZ:z+r},bounds(f))){routeHits.push(`${s}->${e}:${f.id}`); break;}
+-    }
++    if(!A||!B){routeHits.push('missing node:'+s+'/'+e);continue;}
++    const radius=Math.max(layout.navigation.clearance,edgeWidth(layout,s,e)/2);
++    for(const f of solids.filter(v=>!['gate','side-gate'].includes(v.kind)))if(segmentHitsRect(A,B,bounds(f),radius))routeHits.push(`${s}->${e}:${f.id}`);
+@@ -66,2 +66,2 @@ export function checkLayout(layout) {
+-  check('EXTERIOR_ROUTES_CLEAR',routeHits.length===0,[...new Set(routeHits)].join(',')||'Centreline sampled at 101 positions/edge with 0.6m clearance against current proxies; not physics validation');
+-  const seen=new Set(['gate']);let changed=true;
++  check('EXTERIOR_ROUTES_CLEAR',routeHits.length===0,[...new Set(routeHits)].join(',')||'Exact segment against inflated building rectangles; full pavement widths, not just sampled centreline');
++    const seen=new Set(['gate']);let changed=true;
+@@ -69,0 +70 @@ export function checkLayout(layout) {
++  results.push(...revisionChecks(layout,{bounds,overlap}));
+diff --git a/apps/campus/src/main.ts b/apps/campus/src/main.ts
+index 4c78e32..a703975 100644
+--- a/apps/campus/src/main.ts
++++ b/apps/campus/src/main.ts
+@@ -5,0 +6,2 @@ import './style.css';
++import { edgeWidth } from './revision-core.mjs';
++import { revisedFacility, buildRevisionParts } from './revision-scene';
+@@ -65 +67 @@ const roots=new Map<string,THREE.Group>(), pickables:THREE.Object3D[]=[], labels
+-const keyLabels=new Set(['01','03','06','08','11','13','15','17','18','24']);
++const keyLabels=new Set(['01','02','03','06','08','11','13','15','17','18','23','24','25','26']);
+@@ -94 +96 @@ for(const [a,b] of layout.navigation.edges){
+- ribbon([pa,pb],a==='gate'||a.startsWith('junction')&&b.startsWith('junction')?7:3.6);
++ ribbon([pa,pb],edgeWidth(layout,a,b));
+@@ -111 +113,3 @@ for(const f of layout.facilities){
+- if(solidKinds.has(f.kind)){
++ if(revisedFacility(f,g,{box,mesh,line,rect,mats,layout})) {
++  // R2 builds real openings / larger envelopes without replacing unrelated facilities.
++ } else if(solidKinds.has(f.kind)){
+@@ -167,6 +171 @@ for(const f of layout.facilities){
+-for(const bridge of layout.connections){
+- const g=new THREE.Group();g.name=bridge.id;g.userData.facility='25';volumes.add(g);
+- box(g,bridge.xEnd-bridge.xStart,.18,bridge.width,(bridge.xStart+bridge.xEnd)/2,bridge.y,bridge.z,6);
+- if(bridge.level>1)for(const zz of [-1,1])line([[bridge.xStart,bridge.y+1,bridge.z+zz*bridge.width/2],[bridge.xEnd,bridge.y+1,bridge.z+zz*bridge.width/2]],g,'#748e86');
+- g.traverse(o=>{if(o instanceof THREE.Mesh){o.userData.facility='25';pickables.push(o);}});
+-}
++const {structures,roofs}=buildRevisionParts(layout,{volumes,surfaces,box,line,rect,roots,pickables});
+@@ -208,0 +208 @@ el<HTMLInputElement>('labels-check').onchange=e=>labelsOn=(e.target as HTMLInput
++el<HTMLInputElement>('roofs-check').onchange=e=>roofs.visible=(e.target as HTMLInputElement).checked;
+@@ -213 +213 @@ function download(name:string,data:Blob|string){const u=typeof data==='string'?d
+-el('download-layout').onclick=()=>download('campus-layout-M1.0.0.json',new Blob([JSON.stringify(layout,null,2)],{type:'application/json'}));
++el('download-layout').onclick=()=>download(`campus-layout-${layout.version}.json`,new Blob([JSON.stringify(layout,null,2)],{type:'application/json'}));
+@@ -220 +220 @@ el('fly-btn').onclick=()=>{
+-const tourPath=['gate','junction-gym','gym-entry','junction-gym','junction-sports','sports-front','junction-sports','junction-office','forecourt','main-front','east-front','east-mid','canteen-entry','east-mid','east-front','east-bottom','garden-entry','west-bottom','west-main','forecourt'];
++const tourPath=layout.navigation.tourPath;
+@@ -222 +222 @@ let tourEdge=0,tourT=0;
+-el('tour-btn').onclick=()=>{if(tour){setView('overview');return;}stopModes();tour=true;active=camera;controls.enabled=topControls.enabled=false;camera.up.set(0,1,0);tourEdge=tourT=0;el('tour-btn').classList.add('active');el('help').textContent='沿连通图进行低空路线巡览 · 点击停止或 Esc · 不是物理角色';};
++el('tour-btn').onclick=()=>{if(tour){setView('overview');return;}stopModes();tour=true;active=camera;controls.enabled=topControls.enabled=false;camera.up.set(0,1,0);tourEdge=tourT=0;el('tour-btn').classList.add('active');el('help').textContent='沿连通图进行地面路线巡览 · 点击停止或 Esc · 不是物理角色';};
+@@ -250 +250 @@ function render(time:number){
+-  camera.position.set(THREE.MathUtils.lerp(a[0],b[0],tourT),5.5,THREE.MathUtils.lerp(a[2],b[2],tourT));camera.lookAt(b[0],3,b[2]);
++  camera.position.set(THREE.MathUtils.lerp(a[0],b[0],tourT),layout.navigation.reviewHeight,THREE.MathUtils.lerp(a[2],b[2],tourT));camera.lookAt(b[0],layout.navigation.reviewHeight,b[2]);
+@@ -260 +260,17 @@ const params=new URLSearchParams(location.search);if(params.has('view'))setView(
+-Object.assign(window,{__YALI_M10__:{version:layout.version,layout,report,setView,selectFacility,getState:()=>({view,fly,tour,selected,camera:active.position.toArray(),renderer:renderer.info.render,canvas:[renderer.domElement.width,renderer.domElement.height],labelsOn,planOnly,webgl:renderer.getContext().getParameter(renderer.getContext().VERSION)}),ready:true}});
++function probeSegment(a:number[],b:number[]){
++ scene.updateMatrixWorld(true);
++ const origin=new THREE.Vector3(...a as Vec3),end=new THREE.Vector3(...b as Vec3),distance=origin.distanceTo(end);
++ const ray=new THREE.Raycaster(origin,end.sub(origin).normalize(),.001,Math.max(.001,distance-.001));
++ const meshes:THREE.Object3D[]=[];scene.traverse(o=>{if(o instanceof THREE.Mesh&&o.geometry)meshes.push(o);});
++ return ray.intersectObjects(meshes,false).map(h=>({name:h.object.name,facility:h.object.userData.facility||null,distance:h.distance}));
++}
++function geometrySnapshot(){
++ scene.updateMatrixWorld(true);
++ const snapshot:any={};
++ for(const object of [structures,...structures.children,roofs,...roofs.children,...structures.children.filter(v=>v!==roofs)]){
++  const bb=new THREE.Box3().setFromObject(object);snapshot[object.name]={min:bb.min.toArray(),max:bb.max.toArray(),visible:object.visible};
++ }
++ return snapshot;
++}
++Object.assign(window,{__YALI_M10__:{version:layout.version,layout,report,setView,selectFacility,probeSegment,geometrySnapshot,
++ getState:()=>({view,fly,tour,selected,camera:active.position.toArray(),renderer:renderer.info.render,canvas:[renderer.domElement.width,renderer.domElement.height],labelsOn,planOnly,roofsVisible:roofs.visible,webgl:renderer.getContext().getParameter(renderer.getContext().VERSION)}),ready:true}});
+diff --git a/apps/campus/src/style.css b/apps/campus/src/style.css
+index f58ff72..f9e15fd 100644
+--- a/apps/campus/src/style.css
++++ b/apps/campus/src/style.css
+@@ -4,0 +5,3 @@
++
++/* R2: extra inspection cameras remain scrollable on every viewport. */
++.views{max-width:calc(100% - 48px);overflow-x:auto}.views button{flex-shrink:0}.mode-chip{pointer-events:none}.legend{display:none}
+diff --git a/tests/m10/layout.test.mjs b/tests/m10/layout.test.mjs
+index 808b59f..3c89f3a 100644
+--- a/tests/m10/layout.test.mjs
++++ b/tests/m10/layout.test.mjs
+@@ -15,0 +16,10 @@ test('regression: office moved onto route fails',()=>{const l=structuredClone(la
++test('regression R2: canopy disabled fails',()=>{const l=structuredClone(layout);l.sports.canopy.enabled=false;assert.equal(checkLayout(l).results.find(r=>r.id==='R2_CANOPY_FULL_LENGTH').passed,false);});
++test('regression R2: off-centre bridges fail',()=>{const l=structuredClone(layout);l.connections.forEach(v=>v.z=218.05);assert.equal(checkLayout(l).results.find(r=>r.id==='R2_MIDPOINT_LINK').passed,false);});
++test('regression R2: old sandpit location fails',()=>{const l=structuredClone(layout);l.facilities.find(f=>f.id==='23').position=[128,0,198];assert.equal(checkLayout(l).results.find(r=>r.id==='R2_PIT_ON_REAR_RIGHT').passed,false);});
++test('regression R2: missing side path edge fails',()=>{const l=structuredClone(layout);l.navigation.edges=l.navigation.edges.filter(v=>!v.includes('side-mid'));assert.equal(checkLayout(l).results.find(r=>r.id==='R2_REQUIRED_CHAIN_1').passed,false);});
++test('regression R2: rear door isolated fails',()=>{const l=structuredClone(layout);l.navigation.edges=l.navigation.edges.filter(v=>!v.includes('main-rear'));assert.equal(checkLayout(l).results.find(r=>r.id==='R2_REQUIRED_CHAIN_3').passed,false);});
++test('regression R2: library wrong-side detour fails',()=>{const l=structuredClone(layout);l.navigation.edges.push(['garden-entry','library-entry']);assert.equal(checkLayout(l).results.find(r=>r.id==='R2_OLD_LIBRARY_DETOUR_REMOVED').passed,false);});
++test('regression R2: gym-link gap fails',()=>{const l=structuredClone(layout);l.buildingLinks[0].path[0][0]-=1;assert.equal(checkLayout(l).results.find(r=>r.id==='R2_GYM_MUSIC_LINK').passed,false);});
++test('regression R2: large former toilet fails',()=>{const l=structuredClone(layout);l.facilities.find(f=>f.id==='26').size=[6,3.3,4.5];assert.equal(checkLayout(l).results.find(r=>r.id==='R2_POOL_TOILET_SMALLER').passed,false);});
++test('regression R2: bridge below headroom fails',()=>{const l=structuredClone(layout);l.connections[1].y=1.9;assert.equal(checkLayout(l).results.find(r=>r.id==='R2_ROUTES_CLEAR_STRUCTURES').passed,false);});
++test('regression R2: tour skips a graph edge fails',()=>{const l=structuredClone(layout);l.navigation.tourPath=['gate','library-entry'];assert.equal(checkLayout(l).results.find(r=>r.id==='R2_TOUR_USES_GRAPH').passed,false);});
+diff --git a/tools/m10/export-footprints.mjs b/tools/m10/export-footprints.mjs
+index e48a6bc..5a0f42b 100644
+--- a/tools/m10/export-footprints.mjs
++++ b/tools/m10/export-footprints.mjs
+@@ -5 +5 @@ const l=load('data/m10/campus-layout.json');mkdirSync(new URL('qa/m10/',root),{r
+-const out={units:'working metres',crs:null,surveyVerified:false,origin:l.origin,axes:l.axes,features:l.facilities.map(f=>({id:f.id,name:f.name,footprintXZ:footprint(f),positionThree:f.position,positionBlender:f.position?toBlender(f.position):null,dimensions:f.size,evidence:f.evidence,measuredPosition:null}))};
++const out={version:l.version,units:'working metres',crs:null,surveyVerified:false,origin:l.origin,axes:l.axes,features:l.facilities.map(f=>({id:f.id,name:f.name,footprintXZ:footprint(f),positionThree:f.position,positionBlender:f.position?toBlender(f.position):null,dimensions:f.size,evidence:f.evidence,measuredPosition:null}))};
+@@ -10,0 +11,3 @@ writeFileSync(new URL('qa/m10/layout-report.json',root),JSON.stringify(checkLayo
++
++const secondary={version:l.version,units:'working metres',surveyVerified:false,rearTrack:l.sports.rearTrack,canopy:l.sports.canopy,buildingLinks:l.buildingLinks,connections:l.connections,entrances:l.entrances,navigation:l.navigation};
++writeFileSync(new URL('data/m10/site-features.json',root),JSON.stringify(secondary,null,2)+'\n');
