@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1300" viewBox="0 0 350 325">
+<rect width="350" height="325" fill="#edf0e8"/>
+<text x="12" y="12" font-size="7" fill="#294f47">复原雅礼 / M1.0.2-R3 工作总平面</text>
+<text x="12" y="20" font-size="3.6">局部增量 · 工作米制坐标（H） · 非测绘比例认证 · 图面左=-X</text>
+<g transform="translate(119 28) scale(.68)">
+<path d="M0 0 L0 22" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M0 22 L-45 21.8" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M0 22 L0 86" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M0 86 L-37.5 86" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M-37.5 86 L-20 84.5" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M0 86 L0 158" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M0 158 L-45 159.5" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M0 158 L0 208" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M0 208 L69 211.5" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M69 211.5 L129 208" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M129 208 L144 199" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M129 208 L139 181" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M139 181 L142 152" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M129 208 L129 239" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M129 239 L129 246.8" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M23 22 L125 32" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M125 32 L129 40" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M129 40 L129 120" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M129 120 L129 184" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M129 184 L129 208" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M0 208 L6.5 211.5" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M6.5 211.5 L6.5 216" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M6.5 216 L6.5 224" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M6.5 224 L6.5 238" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M6.5 238 L30 239" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M30 239 L69 239" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M69 239 L75 243.6" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M69 239 L69 232.8" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M0 208 L-44 211.5" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M17 1 L17 16" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M17 16 L23 22" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M129 239 L156 239" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M156 239 L156 276" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M156 276 L110 276" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M-37.5 86 L-68 84" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<path d="M-68 84 L-68 80.2" stroke="#bcc7b6" stroke-width="3" fill="none"/>
+<rect x="-13.0" y="-2.0" width="26" height="4" fill="#d8daca" stroke="#52796e" stroke-width=".4"><title>主校门</title></rect>
+<text x="0" y="1" text-anchor="middle" font-size="4.3" fill="#233f38">01</text>
+<rect x="15.0" y="0.4" width="4" height="1.2" fill="#d8daca" stroke="#52796e" stroke-width=".4"><title>侧门／独立侧路入口</title></rect>
+<text x="17" y="2" text-anchor="middle" font-size="4.3" fill="#233f38">02</text>
+<rect x="-66.0" y="24.0" width="42" height="42" fill="#d8daca" stroke="#52796e" stroke-width=".4"><title>旧体育馆</title></rect>
+<text x="-45" y="46" text-anchor="middle" font-size="4.3" fill="#233f38">03</text>
+<rect x="-50.5" y="69.75" width="25" height="12.5" fill="#adbda1" stroke="#52796e" stroke-width=".4"><title>游泳池</title></rect>
+<text x="-38" y="77" text-anchor="middle" font-size="4.3" fill="#233f38">04</text>
+<rect x="-72.0" y="88.0" width="7" height="64" fill="#adbda1" stroke="#52796e" stroke-width=".4"><title>风雨跑道／有顶棚直跑道</title></rect>
+<text x="-68.5" y="121" text-anchor="middle" font-size="4.3" fill="#233f38">05</text>
+<rect x="-65.0" y="88.0" width="55" height="64" fill="#adbda1" stroke="#52796e" stroke-width=".4"><title>六片篮球场</title></rect>
+<text x="-37.5" y="121" text-anchor="middle" font-size="4.3" fill="#233f38">06</text>
+<rect x="-66.0" y="161.5" width="42" height="17" fill="#d8daca" stroke="#52796e" stroke-width=".4"><title>办公楼／医务室线索</title></rect>
+<text x="-45" y="171" text-anchor="middle" font-size="4.3" fill="#233f38">07</text>
+<rect x="27.0" y="44.0" width="92" height="140" fill="#c8ad90" stroke="#52796e" stroke-width=".4"><title>田径场／足球坪</title></rect>
+<text x="73" y="115" text-anchor="middle" font-size="4.3" fill="#233f38">08</text>
+<rect x="-3.5" y="0.0" width="7" height="206" fill="#adbda1" stroke="#52796e" stroke-width=".4"><title>林荫道／主路</title></rect>
+<text x="0" y="104" text-anchor="middle" font-size="4.3" fill="#233f38">09</text>
+<rect x="16.0" y="120.0" width="6" height="24" fill="#d8daca" stroke="#52796e" stroke-width=".4"><title>主席台</title></rect>
+<text x="19" y="133" text-anchor="middle" font-size="4.3" fill="#233f38">10</text>
+<rect x="145.0" y="141.0" width="44" height="22" fill="#d8daca" stroke="#52796e" stroke-width=".4"><title>食堂</title></rect>
+<text x="167" y="153" text-anchor="middle" font-size="4.3" fill="#233f38">11</text>
+<rect x="146.0" y="191.0" width="40" height="16" fill="#d8daca" stroke="#52796e" stroke-width=".4"><title>科学馆</title></rect>
+<text x="166" y="200" text-anchor="middle" font-size="4.3" fill="#233f38">13</text>
+<rect x="25.0" y="192.0" width="94" height="12" fill="#adbda1" stroke="#52796e" stroke-width=".4"><title>前坪／国旗区</title></rect>
+<text x="72" y="199" text-anchor="middle" font-size="4.3" fill="#233f38">14</text>
+<rect x="20.0" y="217.0" width="98" height="14" fill="#d8daca" stroke="#52796e" stroke-width=".4"><title>旧主教学楼／教室</title></rect>
+<text x="69" y="225" text-anchor="middle" font-size="4.3" fill="#233f38">15</text>
+<rect x="-59.0" y="195.5" width="30" height="13" fill="#d8daca" stroke="#52796e" stroke-width=".4"><title>校史馆／旧用途线索</title></rect>
+<text x="-44" y="203" text-anchor="middle" font-size="4.3" fill="#233f38">16</text>
+<rect x="107.0" y="249.0" width="44" height="18" fill="#d8daca" stroke="#52796e" stroke-width=".4"><title>长雅楼</title></rect>
+<text x="129" y="259" text-anchor="middle" font-size="4.3" fill="#233f38">17</text>
+<rect x="47.5" y="245.5" width="55" height="15" fill="#d8daca" stroke="#52796e" stroke-width=".4"><title>旧图书馆</title></rect>
+<text x="75" y="254" text-anchor="middle" font-size="4.3" fill="#233f38">18</text>
+<rect x="35.0" y="272.0" width="82" height="10" fill="#adbda1" stroke="#52796e" stroke-width=".4"><title>后花园／旋转楼梯</title></rect>
+<text x="76" y="278" text-anchor="middle" font-size="4.3" fill="#233f38">19</text>
+<rect x="136.0" y="30.0" width="60" height="104" fill="#d8daca" stroke="#52796e" stroke-width=".4"><title>居住／家属区建筑群</title></rect>
+<text x="166" y="83" text-anchor="middle" font-size="4.3" fill="#233f38">20</text>
+<rect x="145.0" y="215.5" width="42" height="19" fill="#d8daca" stroke="#52796e" stroke-width=".4"><title>信息楼（工作名）</title></rect>
+<text x="166" y="226" text-anchor="middle" font-size="4.3" fill="#233f38">21</text>
+<rect x="105.25" y="182.0" width="5.5" height="3" fill="#adbda1" stroke="#52796e" stroke-width=".4"><title>沙坑／操场后缘右端</title></rect>
+<text x="108" y="184.5" text-anchor="middle" font-size="4.3" fill="#233f38">23</text>
+<rect x="-70.0" y="66.0" width="16" height="12" fill="#d8daca" stroke="#52796e" stroke-width=".4"><title>音乐楼／四层贴体独立体块</title></rect>
+<text x="-62" y="73" text-anchor="middle" font-size="4.3" fill="#233f38">24</text>
+<rect x="-13.0" y="216.8" width="6" height="14.4" fill="#d8daca" stroke="#52796e" stroke-width=".4"><title>主楼左侧相连独栋厕所</title></rect>
+<text x="-10" y="225" text-anchor="middle" font-size="4.3" fill="#233f38">25</text>
+<rect x="-63.1" y="78.5" width="4.2" height="3" fill="#d8daca" stroke="#52796e" stroke-width=".4"><title>池畔旧厕所／小体量</title></rect>
+<text x="-61" y="81" text-anchor="middle" font-size="4.3" fill="#233f38">26</text>
+<rect x="-18.1" y="0.15000000000000002" width="2.2" height="1.7" fill="#ad885e" stroke="#52796e" stroke-width=".4"><title>校门图面左侧校名石</title></rect>
+<text x="-17" y="2" text-anchor="middle" font-size="4.3" fill="#233f38">27</text>
+<rect x="-83.0" y="106.0" width="6" height="24" fill="#d8daca" stroke="#52796e" stroke-width=".4"><title>体育辅助用房组（工作名）</title></rect>
+<text x="-80" y="119" text-anchor="middle" font-size="4.3" fill="#233f38">28</text>
+<rect x="-62.0" y="91.0" width="15" height="28" fill="none" stroke="#f8f5e6" stroke-width=".5"/>
+<rect x="-45.0" y="91.0" width="15" height="28" fill="none" stroke="#f8f5e6" stroke-width=".5"/>
+<rect x="-28.0" y="91.0" width="15" height="28" fill="none" stroke="#f8f5e6" stroke-width=".5"/>
+<rect x="-62.0" y="121.0" width="15" height="28" fill="none" stroke="#f8f5e6" stroke-width=".5"/>
+<rect x="-45.0" y="121.0" width="15" height="28" fill="none" stroke="#f8f5e6" stroke-width=".5"/>
+<rect x="-28.0" y="121.0" width="15" height="28" fill="none" stroke="#f8f5e6" stroke-width=".5"/>
+<path d="M-66 66 H-54" stroke="#ad7440" stroke-width="1"/>
+</g>
+<text x="12" y="251.0" font-size="3.1" fill="#355c52">01 主校门</text>
+<text x="12" y="255.5" font-size="3.1" fill="#355c52">02 侧门／独立侧路入口</text>
+<text x="12" y="260.0" font-size="3.1" fill="#355c52">03 旧体育馆</text>
+<text x="12" y="264.5" font-size="3.1" fill="#355c52">04 游泳池</text>
+<text x="12" y="269.0" font-size="3.1" fill="#355c52">05 风雨跑道／有顶棚直跑道</text>
+<text x="12" y="273.5" font-size="3.1" fill="#355c52">06 六片篮球场</text>
+<text x="12" y="278.0" font-size="3.1" fill="#355c52">07 办公楼／医务室线索</text>
+<text x="12" y="282.5" font-size="3.1" fill="#355c52">08 田径场／足球坪</text>
+<text x="12" y="287.0" font-size="3.1" fill="#355c52">09 林荫道／主路</text>
+<text x="12" y="291.5" font-size="3.1" fill="#355c52">10 主席台</text>
+<text x="12" y="296.0" font-size="3.1" fill="#355c52">11 食堂</text>
+<text x="12" y="300.5" font-size="3.1" fill="#355c52">12 食堂下层小卖部</text>
+<text x="12" y="305.0" font-size="3.1" fill="#355c52">13 科学馆</text>
+<text x="12" y="309.5" font-size="3.1" fill="#355c52">14 前坪／国旗区</text>
+<text x="179" y="251.0" font-size="3.1" fill="#355c52">15 旧主教学楼／教室</text>
+<text x="179" y="255.5" font-size="3.1" fill="#355c52">16 校史馆／旧用途线索</text>
+<text x="179" y="260.0" font-size="3.1" fill="#355c52">17 长雅楼</text>
+<text x="179" y="264.5" font-size="3.1" fill="#355c52">18 旧图书馆</text>
+<text x="179" y="269.0" font-size="3.1" fill="#355c52">19 后花园／旋转楼梯</text>
+<text x="179" y="273.5" font-size="3.1" fill="#355c52">20 居住／家属区建筑群</text>
+<text x="179" y="278.0" font-size="3.1" fill="#355c52">21 信息楼（工作名）</text>
+<text x="179" y="282.5" font-size="3.1" fill="#355c52">22 小店线索</text>
+<text x="179" y="287.0" font-size="3.1" fill="#355c52">23 沙坑／操场后缘右端</text>
+<text x="179" y="291.5" font-size="3.1" fill="#355c52">24 音乐楼／四层贴体独立体块</text>
+<text x="179" y="296.0" font-size="3.1" fill="#355c52">25 主楼左侧相连独栋厕所</text>
+<text x="179" y="300.5" font-size="3.1" fill="#355c52">26 池畔旧厕所／小体量</text>
+<text x="179" y="305.0" font-size="3.1" fill="#355c52">27 校门图面左侧校名石</text>
+<text x="179" y="309.5" font-size="3.1" fill="#355c52">28 体育辅助用房组（工作名）</text>
+</svg>

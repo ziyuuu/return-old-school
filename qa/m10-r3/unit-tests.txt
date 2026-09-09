@@ -1,0 +1,518 @@
+
+> return-old-school-campus@0.1.0 test
+> node --test ../../tests/m10/*.test.mjs
+
+TAP version 13
+# Subtest: IDs
+ok 1 - IDs
+  ---
+  duration_ms: 1.832736
+  type: 'test'
+  ...
+# Subtest: NOT_SURVEYED
+ok 2 - NOT_SURVEYED
+  ---
+  duration_ms: 0.226105
+  type: 'test'
+  ...
+# Subtest: UNLOCATED
+ok 3 - UNLOCATED
+  ---
+  duration_ms: 0.14201
+  type: 'test'
+  ...
+# Subtest: SIX_COURTS
+ok 4 - SIX_COURTS
+  ---
+  duration_ms: 0.110504
+  type: 'test'
+  ...
+# Subtest: DIRECT_EDGE
+ok 5 - DIRECT_EDGE
+  ---
+  duration_ms: 0.112477
+  type: 'test'
+  ...
+# Subtest: PARALLEL
+ok 6 - PARALLEL
+  ---
+  duration_ms: 0.123453
+  type: 'test'
+  ...
+# Subtest: TRACK_BETWEEN
+ok 7 - TRACK_BETWEEN
+  ---
+  duration_ms: 0.097794
+  type: 'test'
+  ...
+# Subtest: AUX_1F
+ok 8 - AUX_1F
+  ---
+  duration_ms: 0.120488
+  type: 'test'
+  ...
+# Subtest: MUSIC_4F
+ok 9 - MUSIC_4F
+  ---
+  duration_ms: 0.44518
+  type: 'test'
+  ...
+# Subtest: MUSIC_BEHIND
+ok 10 - MUSIC_BEHIND
+  ---
+  duration_ms: 0.47917
+  type: 'test'
+  ...
+# Subtest: END_ROW
+ok 11 - END_ROW
+  ---
+  duration_ms: 0.182831
+  type: 'test'
+  ...
+# Subtest: POOL_TOILET_LEFT
+ok 12 - POOL_TOILET_LEFT
+  ---
+  duration_ms: 0.092848
+  type: 'test'
+  ...
+# Subtest: MAIN_TOILET_LEFT
+ok 13 - MAIN_TOILET_LEFT
+  ---
+  duration_ms: 0.066038
+  type: 'test'
+  ...
+# Subtest: EACH_LEVEL
+ok 14 - EACH_LEVEL
+  ---
+  duration_ms: 0.066679
+  type: 'test'
+  ...
+# Subtest: BRIDGE_ENDPOINTS
+ok 15 - BRIDGE_ENDPOINTS
+  ---
+  duration_ms: 0.063104
+  type: 'test'
+  ...
+# Subtest: DOOR_FACES_MAIN
+ok 16 - DOOR_FACES_MAIN
+  ---
+  duration_ms: 0.058657
+  type: 'test'
+  ...
+# Subtest: ROSTRUM_LEFT
+ok 17 - ROSTRUM_LEFT
+  ---
+  duration_ms: 0.057896
+  type: 'test'
+  ...
+# Subtest: NO_MAIN_VOLUME_OVERLAPS
+ok 18 - NO_MAIN_VOLUME_OVERLAPS
+  ---
+  duration_ms: 0.057345
+  type: 'test'
+  ...
+# Subtest: CANTEEN_SUBSPACE
+ok 19 - CANTEEN_SUBSPACE
+  ---
+  duration_ms: 0.068731
+  type: 'test'
+  ...
+# Subtest: EXTERIOR_ROUTES_CLEAR
+ok 20 - EXTERIOR_ROUTES_CLEAR
+  ---
+  duration_ms: 0.063955
+  type: 'test'
+  ...
+# Subtest: ROUTE_GRAPH_CONNECTED
+ok 21 - ROUTE_GRAPH_CONNECTED
+  ---
+  duration_ms: 0.069923
+  type: 'test'
+  ...
+# Subtest: R2_CANOPY_FULL_LENGTH
+ok 22 - R2_CANOPY_FULL_LENGTH
+  ---
+  duration_ms: 0.072407
+  type: 'test'
+  ...
+# Subtest: R2_POSTS_OUTSIDE_COURTS
+ok 23 - R2_POSTS_OUTSIDE_COURTS
+  ---
+  duration_ms: 0.072858
+  type: 'test'
+  ...
+# Subtest: R2_MIDPOINT_LINK
+ok 24 - R2_MIDPOINT_LINK
+  ---
+  duration_ms: 0.070544
+  type: 'test'
+  ...
+# Subtest: R2_MIDPOINT_PORTALS
+ok 25 - R2_MIDPOINT_PORTALS
+  ---
+  duration_ms: 0.067029
+  type: 'test'
+  ...
+# Subtest: R2_REAR_RUBBER_TRACK
+ok 26 - R2_REAR_RUBBER_TRACK
+  ---
+  duration_ms: 0.060259
+  type: 'test'
+  ...
+# Subtest: R2_PIT_ON_REAR_RIGHT
+ok 27 - R2_PIT_ON_REAR_RIGHT
+  ---
+  duration_ms: 0.06072
+  type: 'test'
+  ...
+# Subtest: R2_REQUIRED_CHAIN_1
+ok 28 - R2_REQUIRED_CHAIN_1
+  ---
+  duration_ms: 0.059769
+  type: 'test'
+  ...
+# Subtest: R2_REQUIRED_CHAIN_2
+ok 29 - R2_REQUIRED_CHAIN_2
+  ---
+  duration_ms: 0.058056
+  type: 'test'
+  ...
+# Subtest: R2_REQUIRED_CHAIN_3
+ok 30 - R2_REQUIRED_CHAIN_3
+  ---
+  duration_ms: 0.091586
+  type: 'test'
+  ...
+# Subtest: R2_SIDE_GATE_BINDING
+ok 31 - R2_SIDE_GATE_BINDING
+  ---
+  duration_ms: 0.075352
+  type: 'test'
+  ...
+# Subtest: R2_OLD_LIBRARY_DETOUR_REMOVED
+ok 32 - R2_OLD_LIBRARY_DETOUR_REMOVED
+  ---
+  duration_ms: 0.064255
+  type: 'test'
+  ...
+# Subtest: R2_GAP_ROUTE_BETWEEN_BUILDINGS
+ok 33 - R2_GAP_ROUTE_BETWEEN_BUILDINGS
+  ---
+  duration_ms: 0.058126
+  type: 'test'
+  ...
+# Subtest: R2_ROUTES_CLEAR_STRUCTURES
+ok 34 - R2_ROUTES_CLEAR_STRUCTURES
+  ---
+  duration_ms: 0.060149
+  type: 'test'
+  ...
+# Subtest: R2_GYM_ENLARGED
+ok 35 - R2_GYM_ENLARGED
+  ---
+  duration_ms: 0.060299
+  type: 'test'
+  ...
+# Subtest: R2_POOL_TOILET_SMALLER
+ok 36 - R2_POOL_TOILET_SMALLER
+  ---
+  duration_ms: 0.079658
+  type: 'test'
+  ...
+# Subtest: R2_TOUR_USES_GRAPH
+ok 37 - R2_TOUR_USES_GRAPH
+  ---
+  duration_ms: 0.059908
+  type: 'test'
+  ...
+# Subtest: R3_STONE_LEFT
+ok 38 - R3_STONE_LEFT
+  ---
+  duration_ms: 0.058196
+  type: 'test'
+  ...
+# Subtest: R3_SIDE_GATE_AT_ENTRANCE
+ok 39 - R3_SIDE_GATE_AT_ENTRANCE
+  ---
+  duration_ms: 0.056314
+  type: 'test'
+  ...
+# Subtest: R3_NO_ENTRY_SHORTCUT
+ok 40 - R3_NO_ENTRY_SHORTCUT
+  ---
+  duration_ms: 0.056604
+  type: 'test'
+  ...
+# Subtest: R3_SIDE_PAVING_SEPARATE
+ok 41 - R3_SIDE_PAVING_SEPARATE
+  ---
+  duration_ms: 0.149301
+  type: 'test'
+  ...
+# Subtest: R3_LONGYA_SHIFTED_LEFT
+ok 42 - R3_LONGYA_SHIFTED_LEFT
+  ---
+  duration_ms: 0.075231
+  type: 'test'
+  ...
+# Subtest: R3_LONGYA_DOOR_ALIGNMENT
+ok 43 - R3_LONGYA_DOOR_ALIGNMENT
+  ---
+  duration_ms: 0.065107
+  type: 'test'
+  ...
+# Subtest: R3_FAMILY_AREA_ENLARGED
+ok 44 - R3_FAMILY_AREA_ENLARGED
+  ---
+  duration_ms: 0.072297
+  type: 'test'
+  ...
+# Subtest: R3_FAMILY_CANTEEN_GAP
+ok 45 - R3_FAMILY_CANTEEN_GAP
+  ---
+  duration_ms: 0.132005
+  type: 'test'
+  ...
+# Subtest: R3_CONTEXT_COMPONENTS_CONTAINED
+ok 46 - R3_CONTEXT_COMPONENTS_CONTAINED
+  ---
+  duration_ms: 0.069943
+  type: 'test'
+  ...
+# Subtest: R3_CONTEXT_REAL_MASS_REACHES_CANTEEN
+ok 47 - R3_CONTEXT_REAL_MASS_REACHES_CANTEEN
+  ---
+  duration_ms: 0.06058
+  type: 'test'
+  ...
+# Subtest: R3_CONTEXT_BLOCKS_DISJOINT
+ok 48 - R3_CONTEXT_BLOCKS_DISJOINT
+  ---
+  duration_ms: 0.059128
+  type: 'test'
+  ...
+# Subtest: R3_GYM_MUSIC_ABUT
+ok 49 - R3_GYM_MUSIC_ABUT
+  ---
+  duration_ms: 0.063845
+  type: 'test'
+  ...
+# Subtest: R3_SHARED_CONTACT_DATA
+ok 50 - R3_SHARED_CONTACT_DATA
+  ---
+  duration_ms: 0.070565
+  type: 'test'
+  ...
+# Subtest: R3_NO_EXTERNAL_GYM_LINK
+ok 51 - R3_NO_EXTERNAL_GYM_LINK
+  ---
+  duration_ms: 0.083584
+  type: 'test'
+  ...
+# Subtest: R3_SHARED_PORTALS
+ok 52 - R3_SHARED_PORTALS
+  ---
+  duration_ms: 0.072978
+  type: 'test'
+  ...
+# Subtest: R3_THRESHOLDS_CURRENT
+ok 53 - R3_THRESHOLDS_CURRENT
+  ---
+  duration_ms: 0.06091
+  type: 'test'
+  ...
+# Subtest: coordinate conversion roundtrips
+ok 54 - coordinate conversion roundtrips
+  ---
+  duration_ms: 1.027282
+  type: 'test'
+  ...
+# Subtest: null footprint stays unknown
+ok 55 - null footprint stays unknown
+  ---
+  duration_ms: 0.140829
+  type: 'test'
+  ...
+# Subtest: world footprint dimensions match H values
+ok 56 - world footprint dimensions match H values
+  ---
+  duration_ms: 0.144784
+  type: 'test'
+  ...
+# Subtest: six distinct court rectangles in perimeter
+ok 57 - six distinct court rectangles in perimeter
+  ---
+  duration_ms: 0.393513
+  type: 'test'
+  ...
+# Subtest: regression: one metre gap fails
+ok 58 - regression: one metre gap fails
+  ---
+  duration_ms: 10.461551
+  type: 'test'
+  ...
+# Subtest: regression: missing floor bridge fails
+ok 59 - regression: missing floor bridge fails
+  ---
+  duration_ms: 8.109686
+  type: 'test'
+  ...
+# Subtest: regression: music gets one storey fails
+ok 60 - regression: music gets one storey fails
+  ---
+  duration_ms: 6.856019
+  type: 'test'
+  ...
+# Subtest: regression: office moved onto route fails
+ok 61 - regression: office moved onto route fails
+  ---
+  duration_ms: 6.713678
+  type: 'test'
+  ...
+# Subtest: regression R2: canopy disabled fails
+ok 62 - regression R2: canopy disabled fails
+  ---
+  duration_ms: 3.739531
+  type: 'test'
+  ...
+# Subtest: regression R2: off-centre bridges fail
+ok 63 - regression R2: off-centre bridges fail
+  ---
+  duration_ms: 4.976043
+  type: 'test'
+  ...
+# Subtest: regression R2: old sandpit location fails
+ok 64 - regression R2: old sandpit location fails
+  ---
+  duration_ms: 6.652907
+  type: 'test'
+  ...
+# Subtest: regression R2: missing side path edge fails
+ok 65 - regression R2: missing side path edge fails
+  ---
+  duration_ms: 4.266192
+  type: 'test'
+  ...
+# Subtest: regression R2: rear door isolated fails
+ok 66 - regression R2: rear door isolated fails
+  ---
+  duration_ms: 4.196508
+  type: 'test'
+  ...
+# Subtest: regression R2: library wrong-side detour fails
+ok 67 - regression R2: library wrong-side detour fails
+  ---
+  duration_ms: 4.062109
+  type: 'test'
+  ...
+# Subtest: regression R2: large former toilet fails
+ok 68 - regression R2: large former toilet fails
+  ---
+  duration_ms: 4.611914
+  type: 'test'
+  ...
+# Subtest: regression R2: bridge below headroom fails
+ok 69 - regression R2: bridge below headroom fails
+  ---
+  duration_ms: 2.319497
+  type: 'test'
+  ...
+# Subtest: regression R2: tour skips a graph edge fails
+ok 70 - regression R2: tour skips a graph edge fails
+  ---
+  duration_ms: 2.478022
+  type: 'test'
+  ...
+# Subtest: R3 regression: stone on old side
+ok 71 - R3 regression: stone on old side
+  ---
+  duration_ms: 14.17657
+  type: 'test'
+  ...
+# Subtest: R3 regression: side gate at field rear
+ok 72 - R3 regression: side gate at field rear
+  ---
+  duration_ms: 7.001714
+  type: 'test'
+  ...
+# Subtest: R3 regression: shortcut reinserted
+ok 73 - R3 regression: shortcut reinserted
+  ---
+  duration_ms: 6.45172
+  type: 'test'
+  ...
+# Subtest: R3 regression: geometric path crossing main
+ok 74 - R3 regression: geometric path crossing main
+  ---
+  duration_ms: 6.169321
+  type: 'test'
+  ...
+# Subtest: R3 regression: longya shift reverted
+ok 75 - R3 regression: longya shift reverted
+  ---
+  duration_ms: 10.680571
+  type: 'test'
+  ...
+# Subtest: R3 regression: road misses front door
+ok 76 - R3 regression: road misses front door
+  ---
+  duration_ms: 3.266771
+  type: 'test'
+  ...
+# Subtest: R3 regression: small residential envelope
+ok 77 - R3 regression: small residential envelope
+  ---
+  duration_ms: 6.90392
+  type: 'test'
+  ...
+# Subtest: R3 regression: old large residential gap
+ok 78 - R3 regression: old large residential gap
+  ---
+  duration_ms: 5.234896
+  type: 'test'
+  ...
+# Subtest: R3 regression: shrunken actual residential mass
+ok 79 - R3 regression: shrunken actual residential mass
+  ---
+  duration_ms: 4.945077
+  type: 'test'
+  ...
+# Subtest: R3 regression: one metre music gap
+ok 80 - R3 regression: one metre music gap
+  ---
+  duration_ms: 4.942243
+  type: 'test'
+  ...
+# Subtest: R3 regression: music intersects gym
+ok 81 - R3 regression: music intersects gym
+  ---
+  duration_ms: 3.172401
+  type: 'test'
+  ...
+# Subtest: R3 regression: external link restored
+ok 82 - R3 regression: external link restored
+  ---
+  duration_ms: 2.919746
+  type: 'test'
+  ...
+# Subtest: R3 regression: shared doorway drifts
+ok 83 - R3 regression: shared doorway drifts
+  ---
+  duration_ms: 3.349883
+  type: 'test'
+  ...
+# Subtest: R3 preserves 23 unrelated facility transforms and datum
+ok 84 - R3 preserves 23 unrelated facility transforms and datum
+  ---
+  duration_ms: 1.793718
+  type: 'test'
+  ...
+1..84
+# tests 84
+# suites 0
+# pass 84
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 214.463615

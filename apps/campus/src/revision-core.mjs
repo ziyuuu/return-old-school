@@ -77,8 +77,7 @@ export function revisionChecks(layout,{bounds,overlap}){
  for(const [a,b] of n.edges)for(const p of blockers){const r={minX:p.center[0]-p.size[0]/2,maxX:p.center[0]+p.size[0]/2,minZ:p.center[2]-p.size[2]/2,maxZ:p.center[2]+p.size[2]/2};if(segmentHitsRect(n.nodes[a],n.nodes[b],r,n.clearance))hits.push(`${a}/${b}:${p.id}`);}
  put('R2_ROUTES_CLEAR_STRUCTURES',!hits.length,hits.join(',')||'Roof / bridge underside / columns clear2.2m-high ground route envelopes');
  put('R2_GYM_ENLARGED',get('03').size[0]*get('03').size[2]>30*36,'42x42 working envelope; not a new measurement');
- const link=layout.buildingLinks?.find(v=>v.id==='03-24-LINK');
- put('R2_GYM_MUSIC_LINK',link&&link.from==='03'&&link.to==='24'&&Math.abs(link.path[0][0]-b('03').minX)<1e-6&&link.path[0][2]>b('03').minZ&&link.path[0][2]<b('03').maxZ&&Math.abs(link.path.at(-1)[0]-b('24').maxX)<1e-6&&link.path.at(-1)[2]>b('24').minZ&&link.path.at(-1)[2]<b('24').maxZ,'Separate03/24 volumes connected by explicit open portico');
+ // R3 replaces the R2 portico test with actual common-wall contact tests.
  put('R2_POOL_TOILET_SMALLER',get('26').size[0]*get('26').size[2]<6*4.5&&b('26').maxX<b('04').minX&&b('26').minZ>b('03').maxZ&&b('26').maxZ<t.minZ,'26 small historical working volume, left of pool and toward courts');
  put('R2_TOUR_USES_GRAPH',n.tourPath?.every((name,i)=>n.nodes[name]&&(!i||knownEdges.has(`${n.tourPath[i-1]}|${name}`))),'Tour traverses actual corrected edges rather than cutting between them');
  return out;

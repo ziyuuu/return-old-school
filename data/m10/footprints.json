@@ -1,5 +1,5 @@
 {
-  "version": "M1.0.1-R2",
+  "version": "M1.0.2-R3",
   "units": "working metres",
   "crs": null,
   "surveyVerified": false,
@@ -67,33 +67,33 @@
     },
     {
       "id": "02",
-      "name": "侧门／入口侧小路",
+      "name": "侧门／独立侧路入口",
       "footprintXZ": [
         [
-          127,
-          183.4
+          15,
+          0.4
         ],
         [
-          131,
-          183.4
+          19,
+          0.4
         ],
         [
-          131,
-          184.6
+          19,
+          1.6
         ],
         [
-          127,
-          184.6
+          15,
+          1.6
         ]
       ],
       "positionThree": [
-        129,
+        17,
         0,
-        184
+        1
       ],
       "positionBlender": [
-        129,
-        -184,
+        17,
+        -1,
         0
       ],
       "dimensions": [
@@ -106,8 +106,8 @@
         "dimensions": "H",
         "floorCount": "H",
         "sourceIds": [],
-        "reference": "U-R2-03批注",
-        "unknowns": "门尺寸和精确边界H，不沿用旧入口旁未核点"
+        "reference": "U-R2-03批注；U-R3校友确认",
+        "unknowns": "主门图面右侧原石位附近，侧路入口不接主路；工作坐标H"
       },
       "measuredPosition": null
     },
@@ -770,29 +770,29 @@
       "name": "长雅楼",
       "footprintXZ": [
         [
-          143,
+          107,
           249
         ],
         [
-          187,
+          151,
           249
         ],
         [
-          187,
+          151,
           267
         ],
         [
-          143,
+          107,
           267
         ]
       ],
       "positionThree": [
-        165,
+        129,
         0,
         258
       ],
       "positionBlender": [
-        165,
+        129,
         -258,
         0
       ],
@@ -806,8 +806,8 @@
         "dimensions": "H",
         "floorCount": "H",
         "sourceIds": [],
-        "reference": "S03-047/048",
-        "unknowns": "后期新楼环境不能倒推旧布局"
+        "reference": "S03-047/048；U-R3校友确认",
+        "unknowns": "R3向图面左移且道路正对入口；门向及尺寸H"
       },
       "measuredPosition": null
     },
@@ -905,47 +905,47 @@
     },
     {
       "id": "20",
-      "name": "居住／家属区轮廓",
+      "name": "居住／家属区建筑群",
       "footprintXZ": [
         [
-          139,
-          38
+          136,
+          30
         ],
         [
-          193,
-          38
+          196,
+          30
         ],
         [
-          193,
-          96
+          196,
+          134
         ],
         [
-          139,
-          96
+          136,
+          134
         ]
       ],
       "positionThree": [
         166,
         0,
-        67
+        82
       ],
       "positionBlender": [
         166,
-        -67,
+        -82,
         0
       ],
       "dimensions": [
-        54,
-        16,
-        58
+        60,
+        23,
+        104
       ],
       "evidence": {
         "position": "H",
         "dimensions": "H",
         "floorCount": "H",
         "sourceIds": [],
-        "reference": "S03-013/020",
-        "unknowns": "不采私人住宅内部"
+        "reference": "S03-013/020；U-R3校友确认",
+        "unknowns": "R3群体扩大靠近食堂；楼数/高度H，只有外部轮廓"
       },
       "measuredPosition": null
     },
@@ -1062,33 +1062,33 @@
     },
     {
       "id": "24",
-      "name": "音乐楼／四层独立体块",
+      "name": "音乐楼／四层贴体独立体块",
       "footprintXZ": [
         [
-          -89,
-          70
+          -70,
+          66
         ],
         [
-          -73,
-          70
+          -54,
+          66
         ],
         [
-          -73,
-          82
+          -54,
+          78
         ],
         [
-          -89,
-          82
+          -70,
+          78
         ]
       ],
       "positionThree": [
-        -81,
+        -62,
         0,
-        76
+        72
       ],
       "positionBlender": [
-        -81,
-        -76,
+        -62,
+        -72,
         0
       ],
       "dimensions": [
@@ -1104,8 +1104,8 @@
           "H03",
           "H06"
         ],
-        "reference": "U-R2-04；校友草图",
-        "unknowns": "独立体块并非完全不连通；接驳形式层数H"
+        "reference": "U-R2-04；校友草图；U-R3校友确认",
+        "unknowns": "R3本体紧贴体育馆，不是外加楼梯连廊；具体贴合边及门洞H"
       },
       "measuredPosition": null
     },
@@ -1209,32 +1209,32 @@
     },
     {
       "id": "27",
-      "name": "校门右侧校名石",
+      "name": "校门图面左侧校名石",
       "footprintXZ": [
         [
-          15.9,
+          -18.1,
           0.15000000000000002
         ],
         [
-          18.1,
+          -15.9,
           0.15000000000000002
         ],
         [
-          18.1,
+          -15.9,
           1.85
         ],
         [
-          15.9,
+          -18.1,
           1.85
         ]
       ],
       "positionThree": [
-        17,
+        -17,
         0,
         1
       ],
       "positionBlender": [
-        17,
+        -17,
         -1,
         0
       ],
@@ -1248,8 +1248,8 @@
         "dimensions": "H",
         "floorCount": "H",
         "sourceIds": [],
-        "reference": "S03-015；用户照片",
-        "unknowns": "不规则自然石与刻字；背面H"
+        "reference": "S03-015；用户照片；U-R3校友确认",
+        "unknowns": "左右按总图-X；照片观察者左右不当成总图坐标"
       },
       "measuredPosition": null
     },

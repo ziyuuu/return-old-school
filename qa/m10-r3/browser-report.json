@@ -1,0 +1,273 @@
+{
+  "source_commit": "04efda487698de940ad30b8c2fe88b7cb6a6594f",
+  "version": "M1.0.2-R3",
+  "mode": "HTTP production + standalone file",
+  "hardware_fps_certified": false,
+  "checks": [
+    {
+      "name": "R3 boot and layout checks",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "actual mesh route clearance",
+      "passed": true,
+      "detail": {
+        "tested": 324,
+        "fail": []
+      }
+    },
+    {
+      "name": "actual midpoint / rear / shared wall / front-door openings",
+      "passed": true,
+      "detail": {
+        "count": 9,
+        "fail": []
+      }
+    },
+    {
+      "name": "real canopy roof present",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "actual stone on map left",
+      "passed": true,
+      "detail": {
+        "min": [
+          -17.935715866088866,
+          0.18668651580810547,
+          0.27694683074951176
+        ],
+        "max": [
+          -16.064284133911134,
+          2.3133134841918945,
+          1.7230531692504882
+        ],
+        "visible": true
+      }
+    },
+    {
+      "name": "actual side gate on entrance right",
+      "passed": true,
+      "detail": {
+        "min": [
+          14.849999994039536,
+          0,
+          0.7999999970197678
+        ],
+        "max": [
+          19.150000005960464,
+          3.200000001490116,
+          1.2000000029802322
+        ],
+        "visible": true
+      }
+    },
+    {
+      "name": "actual direct music gym contact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "external connection meshes absent",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "actual family masses close to canteen",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "actual longya left shifted",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "removed shortcut has no paving",
+      "passed": true,
+      "detail": [
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "name": "camera overview",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera top",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera sports",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera teaching",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera courts-to-gym",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera canopy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera rear-field",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera library-route",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera underpass",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera side-path",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera entrances",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera longya",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera family-canteen",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera gym-contact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "roof toggle hides geometry",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "roof toggle preserves transforms",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "footprint mode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "unknown remains unlocated",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "export is current R3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "orbit works",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ground tour eye height",
+      "passed": true,
+      "detail": {
+        "view": "teaching",
+        "fly": false,
+        "tour": true,
+        "selected": "22",
+        "camera": [
+          0,
+          1.7,
+          1.3980000000000004
+        ],
+        "renderer": {
+          "frame": 407,
+          "calls": 246,
+          "triangles": 2488,
+          "points": 0,
+          "lines": 991
+        },
+        "canvas": [
+          1440,
+          1000
+        ],
+        "labelsOn": true,
+        "planOnly": false,
+        "roofsVisible": true,
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+      }
+    },
+    {
+      "name": "tour exits",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "free inspection works",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile canvas resize",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no JS or shader errors",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "standalone file boots",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "errors": [],
+  "screenshots": [
+    "overview.png",
+    "top.png",
+    "sports.png",
+    "teaching.png",
+    "courts-to-gym.png",
+    "canopy.png",
+    "rear-field.png",
+    "library-route.png",
+    "underpass.png",
+    "side-path.png",
+    "entrances.png",
+    "longya.png",
+    "family-canteen.png",
+    "gym-contact.png",
+    "mobile.png"
+  ],
+  "browser": "151.0.7922.34",
+  "standalone_sha256": "af792d7acb4e8d2e04f9be675211327f45c9e0a21eed69c7c5f9dc04302cb7f6",
+  "success": true
+}

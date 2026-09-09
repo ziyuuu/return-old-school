@@ -629,7 +629,7 @@
       ]
     ],
     "clearance": 0.6,
-    "defaultWidth": 3.0,
+    "defaultWidth": 3,
     "reviewHeight": 1.7,
     "headClearance": 2.2,
     "edgeWidths": {
@@ -1164,7 +1164,7 @@
         0,
         249
       ],
-      "width": 3.0,
+      "width": 3,
       "evidence": "H门前短接，不穿越实心内部"
     },
     {

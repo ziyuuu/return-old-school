@@ -1,0 +1,94 @@
+{
+  "version": "M1.0.2-R3",
+  "surveyVerified": false,
+  "items": [
+    {
+      "id": "R3-H01",
+      "objectIds": [
+        "02",
+        "27"
+      ],
+      "value": {
+        "stone": [
+          -17,
+          0,
+          1
+        ],
+        "sideGate": [
+          17,
+          0,
+          1
+        ]
+      },
+      "basis": "A左右及原石位是侧门；H具体中心"
+    },
+    {
+      "id": "R3-H02",
+      "objectIds": [
+        "17"
+      ],
+      "value": {
+        "position": [
+          129,
+          0,
+          258
+        ],
+        "frontDoor": [
+          129,
+          0,
+          249
+        ]
+      },
+      "basis": "A左移/路对正门；H位移36m与北面门"
+    },
+    {
+      "id": "R3-H03",
+      "objectIds": [
+        "20"
+      ],
+      "value": {
+        "position": [
+          166,
+          0,
+          82
+        ],
+        "envelope": [
+          60,
+          23,
+          104
+        ],
+        "canteenGap": 7,
+        "subBlocks": 6
+      },
+      "basis": "A更大近食堂；H六块及距离，不是实际住户楼栋数"
+    },
+    {
+      "id": "R3-H04",
+      "objectIds": [
+        "03",
+        "24"
+      ],
+      "value": {
+        "id": "03-24-CONTACT",
+        "from": "03",
+        "to": "24",
+        "kind": "shared-wall",
+        "axis": "z",
+        "coordinate": 66,
+        "span": [
+          -66,
+          -54
+        ],
+        "portalCenter": [
+          -60,
+          0,
+          66
+        ],
+        "portalWidth": 2.4,
+        "portalHeight": 3.1,
+        "evidence": "A本体紧贴；H后侧贴合面/首层门洞；不推断所有楼层互通"
+      },
+      "basis": "A本体贴合；H共享面12m与首层门，不暗示逐层互通"
+    }
+  ]
+}

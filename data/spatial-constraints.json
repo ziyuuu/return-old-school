@@ -1,6 +1,6 @@
 {
-  "version": "M1.0.1-R2",
-  "updated": "2026-09-09",
+  "version": "M1.0.2-R3",
+  "updated": "2026-09-10",
   "coordinate_convention": "image-left/right refer to the retained masterplan; sketch reading orientation is local, not a geographic bearing",
   "evidence_levels": {
     "alumni_confirmed": "explicit user testimony or sketch relation",
@@ -48,14 +48,15 @@
     {
       "id": "SP-MUSIC-04",
       "status": "alumni_confirmed",
-      "statement": "24 is a distinct four-storey volume behind03 beside05, connected to03. Independent volume does not mean physically disconnected; not merged with28.",
+      "statement": "24 is a four-storey distinct volume directly abutting03. No freestanding stair/portico link. Not merged with28.",
       "storeys": 4,
       "detached": false,
       "floor_height_m": null,
       "independent_volume": true,
       "connected_to": [
         "03"
-      ]
+      ],
+      "contact_type": "direct-abutment"
     },
     {
       "id": "SP-POOL-TOILET-05",
@@ -74,8 +75,8 @@
     },
     {
       "id": "SP-GATE-STONE-08",
-      "status": "photo_verified",
-      "statement": "Natural school-name stone to the right of the gate in the reference street-facing photograph."
+      "status": "alumni_confirmed",
+      "statement": "27 is on map-left (-X) of01;02 is at the former map-right stone location. Street-photo observer-right is not a plan direction."
     },
     {
       "id": "SP-REAR-RUNWAY-R2",
@@ -85,7 +86,8 @@
     {
       "id": "SP-SIDE-PATH-R2",
       "status": "alumni_confirmed",
-      "statement": "Entrance side branch runs along image-right side of08 to02; exact gate registrationH."
+      "statement": "Superseded by R3:02 at entrance-right; independent path follows white line along08 right, with NO entry-area link to09 main road. Deep-campus connections are allowed.",
+      "superseded_by": "R3 #8"
     },
     {
       "id": "SP-LIBRARY-PATH-R2",
@@ -96,6 +98,16 @@
       "id": "SP-GYM-MASS-R2",
       "status": "alumni_confirmed",
       "statement": "03 must be larger than old30x36 hypothesis and connect24;42x42 is selectedH, not measured."
+    },
+    {
+      "id": "SP-LONGYA-R3",
+      "status": "alumni_confirmed",
+      "statement": "17 more map-left, road directly faces front entrance. Exact coordinates and doorway dimensionsH."
+    },
+    {
+      "id": "SP-CONTEXT-CANTEEN-R3",
+      "status": "alumni_confirmed",
+      "statement": "20 external building group is larger/denser and nearer11, without collision. Sub-block count and dimensionsH."
     }
   ],
   "metric_survey_completed": false,

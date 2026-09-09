@@ -54,18 +54,18 @@ export function revisedFacility(f:any,g:THREE.Group,api:any):boolean {
   // A dark, recessed window band is geometric and obtains colour from the shared LUT.
   box(g,w*.65,2.8,.12,0,4.6,front-.27,5);
   for(let i=-4;i<=4;i++)box(g,.15,2.8,.18,i*w*.071,4.6,front-.3,6);
-  const musicDoor=layout.buildingLinks[0].path[0][2]-f.position[2],doorW=2.4;
+  // R3 removes the west-wall portico opening;24 meets the rear wall directly.
   for(const sign of [-1,1]){
    const x=sign*(w/2-wall/2);
-   if(sign<0){
-    box(g,wall,3.1,musicDoor-doorW/2-front,x,0,(front+musicDoor-doorW/2)/2,0);
-    box(g,wall,3.1,back-musicDoor-doorW/2,x,0,(back+musicDoor+doorW/2)/2,0);
-    box(g,wall,eave-3.1,back-front,x,3.1,(back+front)/2,0);
-   }else box(g,wall,eave,back-front,x,0,(back+front)/2,0);
+   box(g,wall,eave,back-front,x,0,(back+front)/2,0);
    box(g,.08,2.5,(back-front)*.72,x-sign*.02,4.6,(back+front)/2,5);
    for(let i=1;i<9;i++)box(g,.2,2.5,.18,x+sign*.2,4.6,front+(back-front)*i/9,6);
   }
-  box(g,w,eave,.5,0,0,back-.25,0);
+  const contact=layout.buildingContacts[0],cx=contact.portalCenter[0]-f.position[0],pw=contact.portalWidth,ph=contact.portalHeight;
+  const leftEnd=cx-pw/2,rightStart=cx+pw/2;
+  box(g,leftEnd+w/2,ph,.5,(-w/2+leftEnd)/2,0,back-.25,0);
+  box(g,w/2-rightStart,ph,.5,(w/2+rightStart)/2,0,back-.25,0);
+  box(g,w,eave-ph,.5,0,ph,back-.25,0);
   const cap=new THREE.Shape();cap.moveTo(-w/2,eave);cap.lineTo(-w*.29,h);cap.lineTo(w*.29,h);cap.lineTo(w/2,eave);cap.closePath();
   for(const z of [front,back-.5])mesh(new THREE.ExtrudeGeometry(cap,{depth:.5,bevelEnabled:false}),mats[0],g,[0,0,z]);
   // Three folded roof slabs with thickness; not a single frontal triangle hiding a box.
@@ -111,6 +111,6 @@ export function buildRevisionParts(layout:any,api:any){
  roots.get('23').position.y=.08;
  rect(surfaces,px-pw/2,pz-pd/2,px+pw/2,pz+pd/2,.23,'#d4bc80');
  // Short thresholds reach the door recesses without drawing routes through closed building mass.
- for(const [cx,a,b,width] of [[69,231,232.8,2.8],[75,243.6,245.5,2.8]])box(surfaces,width,.045,b-a,cx,.02,(a+b)/2,2);
+ // R3 threshold geometry is emitted from layout.thresholds by buildR3Thresholds.
  return {structures,roofs};
 }

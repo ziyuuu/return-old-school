@@ -9,7 +9,7 @@ server=None
 if not embedded:
  server=subprocess.Popen(['python','-m','http.server','8875','--directory',str(ROOT/'apps/campus/dist')],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL);time.sleep(.5)
 def check(name,condition,detail=None):
- report['checks'].append({'name':name,'passed':bool(condition),'detail':detail})
+ report['checks'].append({'name':name,'passed':bool(condition),'detail':detail});print(name, bool(condition), flush=True)
  if not condition:raise AssertionError(name+': '+str(detail))
 try:
  with sync_playwright() as p:
@@ -62,9 +62,9 @@ try:
   page.locator('#close-inspector').click();page.locator('[data-view="teaching"]').click()
   before=page.evaluate('window.__YALI_M10__.getState().camera');page.mouse.move(700,400);page.mouse.down();page.mouse.move(820,440,steps=8);page.mouse.up();page.wait_for_timeout(200)
   check('orbit works',before!=page.evaluate('window.__YALI_M10__.getState().camera'))
-  page.locator('#tour-btn').click();page.wait_for_timeout(150);check('ground tour eye height',abs(page.evaluate('window.__YALI_M10__.getState().camera[1]')-1.7)<.01)
+  page.locator('#tour-btn').click();page.wait_for_function('window.__YALI_M10__.getState().tour && Math.abs(window.__YALI_M10__.getState().camera[1]-1.7)<.01',timeout=15000);check('ground tour eye height',abs(page.evaluate('window.__YALI_M10__.getState().camera[1]')-1.7)<.01,page.evaluate('window.__YALI_M10__.getState()'))
   page.keyboard.press('Escape');check('tour exits',not page.evaluate('window.__YALI_M10__.getState().tour'))
-  page.locator('#fly-btn').click();before=page.evaluate('window.__YALI_M10__.getState().camera');page.keyboard.down('KeyW');page.wait_for_timeout(200);page.keyboard.up('KeyW')
+  page.locator('#fly-btn').click();before=page.evaluate('window.__YALI_M10__.getState().camera');page.keyboard.down('KeyW');page.wait_for_function('p=>JSON.stringify(window.__YALI_M10__.getState().camera)!==JSON.stringify(p)',arg=before,timeout=15000);page.keyboard.up('KeyW')
   check('free inspection works',before!=page.evaluate('window.__YALI_M10__.getState().camera'));page.keyboard.press('Escape')
   page.set_viewport_size({'width':390,'height':844});page.locator('[data-view="top"]').click();page.wait_for_timeout(200)
   check('mobile canvas resize',page.evaluate('window.__YALI_M10__.getState().canvas[0]')==390)

@@ -1,4 +1,5 @@
 import { revisionChecks, edgeWidth, segmentHitsRect } from './revision-core.mjs';
+import { r3Checks } from './revision-r3-core.mjs';
 /** Render-independent geometry helpers. Coordinates are design hypotheses, never site measurements. */
 export const EPSILON = 1e-6;
 export function footprint(f) {
@@ -41,8 +42,8 @@ export function checkLayout(layout) {
   check('PARALLEL',get('05').yaw===get('06').yaw,'05 and 06 use identical orientation');
   check('TRACK_BETWEEN',a.maxX<t.minX&&t.maxX<=c.minX+EPSILON,'28 | 05 | 06 image-left to image-right');
   check('AUX_1F',get('28').floors===1&&get('28').evidence.floorCount==='A','Alumnus: low single-storey auxiliary group');
-  check('MUSIC_4F',get('24').floors===4&&get('24').evidence.floorCount==='A'&&!overlap(m,a),'Alumnus: detached four-storey music building');
-  check('MUSIC_BEHIND',m.minZ>gym.maxZ,'Behind +Z under explicitly H gym orientation');
+  check('MUSIC_4F',get('24').floors===4&&get('24').evidence.floorCount==='A'&&!overlap(m,a),'Alumnus: distinct four-storey music volume, directly abutting03');
+  check('MUSIC_BEHIND',m.minZ>=gym.maxZ-EPSILON,'Behind +Z under explicitly H gym orientation');
   check('END_ROW',[m,p,wc].every(v=>v.maxZ<t.minZ),'24,26,04 remain at same END, not an invented exact common centreline');
   check('POOL_TOILET_LEFT',wc.maxX<p.minX,'26 image-left of pool04; no copied25 internal plan');
   check('MAIN_TOILET_LEFT',twc.maxX<main.minX,'25 image-left of15');
@@ -67,6 +68,6 @@ export function checkLayout(layout) {
     const seen=new Set(['gate']);let changed=true;
   while(changed){changed=false;for(const [s,e] of layout.navigation.edges)if(seen.has(s)!==seen.has(e)){seen.add(s);seen.add(e);changed=true;}}
   check('ROUTE_GRAPH_CONNECTED',seen.size===Object.keys(layout.navigation.nodes).length,'All review route nodes reachable from gate');
-  results.push(...revisionChecks(layout,{bounds,overlap}));
+  results.push(...revisionChecks(layout,{bounds,overlap}),...r3Checks(layout,{bounds,overlap}));
   return {passed:results.every(r=>r.passed),results,counts:{registered:layout.facilities.length,located:layout.facilities.filter(v=>v.position).length,courts:6,bridges:layout.connections.length},limits:['These tests check internal consistency, not historic or measured accuracy.']};
 }

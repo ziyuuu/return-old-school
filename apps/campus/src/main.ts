@@ -4,6 +4,7 @@ import source from '../../../data/m10/campus-layout.json';
 import { bounds, footprint, courtRects, checkLayout } from './layout-core.mjs';
 import './style.css';
 import { edgeWidth } from './revision-core.mjs';
+import { r3Facility, buildR3Thresholds } from './revision-r3-scene';
 import { revisedFacility, buildRevisionParts } from './revision-scene';
 
 // M1.0 hypotheses, not site measurements. No gameplay or night layer.
@@ -64,7 +65,7 @@ const mats=ramps.map((_,row)=>{
 const volumes=new THREE.Group(), surfaces=new THREE.Group(), outlines=new THREE.Group(), routeOverlay=new THREE.Group();
 scene.add(surfaces,volumes,outlines,routeOverlay);routeOverlay.visible=false;
 const roots=new Map<string,THREE.Group>(), pickables:THREE.Object3D[]=[], labels=new Map<string,{node:HTMLDivElement,point:THREE.Vector3}>();
-const keyLabels=new Set(['01','02','03','06','08','11','13','15','17','18','23','24','25','26']);
+const keyLabels=new Set(['01','02','03','06','08','11','13','15','17','18','20','23','24','25','26','27']);
 const solidKinds=new Set(['building','music','auxiliary','context','toilet-pool','canteen']);
 function mesh(geo:THREE.BufferGeometry,mat:THREE.Material,parent:THREE.Object3D,pos:Vec3=[0,0,0]){
  const m=new THREE.Mesh(geo,mat);m.position.set(...pos);m.castShadow=true;m.receiveShadow=true;parent.add(m);return m;
@@ -99,8 +100,9 @@ for(const [a,b] of layout.navigation.edges){
 const grid=new THREE.GridHelper(360,36,'#6a8f85','#a7b9a9');grid.position.set(51,-.005,139);grid.visible=false;scene.add(grid);
 const axes=new THREE.AxesHelper(16);axes.position.y=.2;scene.add(axes);
 rect(outlines,-2,-2,2,2,.18,'#b38146');
+const shortLabels:Record<string,string>={'02':'侧门','20':'家属区','24':'音乐楼 · 4F','25':'主楼厕所','26':'池畔厕所','27':'校名石'};
 function addLabel(f:Facility){if(!f.position)return;
- const node=document.createElement('div');node.className='facility-label';node.innerHTML=`<b>${f.id}</b>${f.name.replace(/（.*?）/g,'').replace('旧主教学楼／教室','旧主教学楼')}`;
+ const node=document.createElement('div');node.className='facility-label';node.innerHTML=`<b>${f.id}</b>${shortLabels[f.id] ?? f.name.replace(/（.*?）/g,'').replace('旧主教学楼／教室','旧主教学楼')}`;
  node.onclick=()=>selectFacility(f.id,true);viewport.append(node);
  labels.set(f.id,{node,point:new THREE.Vector3(f.position[0],(f.size?.[1]??0)+1.8,f.position[2])});
 }
@@ -110,7 +112,7 @@ for(const f of layout.facilities){
  const [x,y,z]=f.position,[w,h,d]=f.size,g=new THREE.Group();g.name=`F${f.id}`;g.userData.facility=f.id;g.position.set(x,y,z);roots.set(f.id,g);
  (['field','courts','straight-track','pool','forecourt','sandpit','garden','route','marker','subspace'].includes(f.kind)?surfaces:volumes).add(g);
  addFootprint(f);addLabel(f);
- if(revisedFacility(f,g,{box,mesh,line,rect,mats,layout})) {
+ if(r3Facility(f,g,{box,mesh,line,rect,mats,layout}) || revisedFacility(f,g,{box,mesh,line,rect,mats,layout})) {
   // R2 builds real openings / larger envelopes without replacing unrelated facilities.
  } else if(solidKinds.has(f.kind)){
   if(f.kind==='context'){
@@ -219,7 +221,7 @@ el('fly-btn').onclick=()=>{
 };
 const tourPath=layout.navigation.tourPath;
 let tourEdge=0,tourT=0;
-el('tour-btn').onclick=()=>{if(tour){setView('overview');return;}stopModes();tour=true;active=camera;controls.enabled=topControls.enabled=false;camera.up.set(0,1,0);tourEdge=tourT=0;el('tour-btn').classList.add('active');el('help').textContent='沿连通图进行地面路线巡览 · 点击停止或 Esc · 不是物理角色';};
+el('tour-btn').onclick=()=>{if(tour){setView('overview');return;}stopModes();tour=true;active=camera;controls.enabled=topControls.enabled=false;camera.up.set(0,1,0);tourEdge=tourT=0;const start=layout.navigation.nodes[tourPath[0] as keyof typeof layout.navigation.nodes],next=layout.navigation.nodes[tourPath[1] as keyof typeof layout.navigation.nodes];camera.position.set(start[0],layout.navigation.reviewHeight,start[2]);camera.lookAt(next[0],layout.navigation.reviewHeight,next[2]);el('tour-btn').classList.add('active');el('help').textContent='沿连通图进行地面路线巡览 · 点击停止或 Esc · 不是物理角色';};
 renderer.domElement.addEventListener('pointerdown',e=>{pointerDown=true;pointerLast=clickStart=[e.clientX,e.clientY];});
 window.addEventListener('pointerup',e=>{
  if(pointerDown&&!fly&&!tour&&Math.hypot(e.clientX-clickStart[0],e.clientY-clickStart[1])<5){
@@ -252,10 +254,11 @@ function render(time:number){
  renderer.render(scene,active);
  for(const [id,label] of labels){
   projected.copy(label.point).project(active);const visible=labelsOn&&(keyLabels.has(id)||selected===id||view==='sports'&&['04','05','24','26','28'].includes(id)||view==='teaching'&&id==='25')&&projected.z<1&&projected.z>-1;
-  label.node.style.display=visible?'block':'none';label.node.style.left=`${(projected.x*.5+.5)*innerWidth}px`;label.node.style.top=`${(-projected.y*.5+.5)*innerHeight}px`;label.node.classList.toggle('selected',selected===id);
+  label.node.style.display=visible?'block':'none';const ox=view==='top'?(id==='27'?-35:id==='02'?35:0):0,oy=view==='top'?(id==='01'?-18:['02','27'].includes(id)?8:0):0;label.node.style.left=`${(projected.x*.5+.5)*innerWidth+ox}px`;label.node.style.top=`${(-projected.y*.5+.5)*innerHeight+oy}px`;label.node.classList.toggle('selected',selected===id);
  }
 }
 setView('overview');renderer.setAnimationLoop(render);
+buildR3Thresholds(layout,{surfaces,box});
 const params=new URLSearchParams(location.search);if(params.has('view'))setView(params.get('view')!);if(params.get('clean')==='1')document.body.classList.add('clean');
 function probeSegment(a:number[],b:number[]){
  scene.updateMatrixWorld(true);
@@ -267,10 +270,11 @@ function probeSegment(a:number[],b:number[]){
 function geometrySnapshot(){
  scene.updateMatrixWorld(true);
  const snapshot:any={};
- for(const object of [structures,...structures.children,roofs,...roofs.children,...structures.children.filter(v=>v!==roofs)]){
+ for(const object of [...roots.values(),...roots.get('20')!.children,structures,...structures.children,roofs,...roofs.children,...structures.children.filter(v=>v!==roofs)]){
   const bb=new THREE.Box3().setFromObject(object);snapshot[object.name]={min:bb.min.toArray(),max:bb.max.toArray(),visible:object.visible};
  }
  return snapshot;
 }
 Object.assign(window,{__YALI_M10__:{version:layout.version,layout,report,setView,selectFacility,probeSegment,geometrySnapshot,
+ probeSurface:(x:number,z:number)=>{scene.updateMatrixWorld(true);const ray=new THREE.Raycaster(new THREE.Vector3(x,3,z),new THREE.Vector3(0,-1,0),0,3.1);return ray.intersectObjects(surfaces.children,true).filter(h=>h.point.y>0).map(h=>({name:h.object.name,y:h.point.y}));},
  getState:()=>({view,fly,tour,selected,camera:active.position.toArray(),renderer:renderer.info.render,canvas:[renderer.domElement.width,renderer.domElement.height],labelsOn,planOnly,roofsVisible:roofs.visible,webgl:renderer.getContext().getParameter(renderer.getContext().VERSION)}),ready:true}});
