@@ -1,0 +1,124 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "id": "IDs",
+      "passed": true,
+      "detail": "28 stable semantic facility IDs, not 28 separate buildings"
+    },
+    {
+      "id": "NOT_SURVEYED",
+      "passed": true,
+      "detail": "Working metre coordinates; no whole-campus glyph rescaling"
+    },
+    {
+      "id": "UNLOCATED",
+      "passed": true,
+      "detail": "22 stays unlocated, not placed at origin or guessed silently"
+    },
+    {
+      "id": "SIX_COURTS",
+      "passed": true,
+      "detail": "3 columns x 2 rows"
+    },
+    {
+      "id": "DIRECT_EDGE",
+      "passed": true,
+      "detail": "05 east boundary = 06 west boundary; shared full working extent"
+    },
+    {
+      "id": "PARALLEL",
+      "passed": true,
+      "detail": "05 and 06 use identical orientation"
+    },
+    {
+      "id": "TRACK_BETWEEN",
+      "passed": true,
+      "detail": "28 | 05 | 06 image-left to image-right"
+    },
+    {
+      "id": "AUX_1F",
+      "passed": true,
+      "detail": "Alumnus: low single-storey auxiliary group"
+    },
+    {
+      "id": "MUSIC_4F",
+      "passed": true,
+      "detail": "Alumnus: detached four-storey music building"
+    },
+    {
+      "id": "MUSIC_BEHIND",
+      "passed": true,
+      "detail": "Behind +Z under explicitly H gym orientation"
+    },
+    {
+      "id": "END_ROW",
+      "passed": true,
+      "detail": "24,26,04 at same end of 28/05/06 bands"
+    },
+    {
+      "id": "POOL_TOILET_LEFT",
+      "passed": true,
+      "detail": "26 image-left of pool04; no copied25 internal plan"
+    },
+    {
+      "id": "MAIN_TOILET_LEFT",
+      "passed": true,
+      "detail": "25 image-left of15"
+    },
+    {
+      "id": "EACH_LEVEL",
+      "passed": true,
+      "detail": "One bridge for each working15 level"
+    },
+    {
+      "id": "BRIDGE_ENDPOINTS",
+      "passed": true,
+      "detail": "Bridge endpoints meet both footprints"
+    },
+    {
+      "id": "DOOR_FACES_MAIN",
+      "passed": true,
+      "detail": "25 entrance faces +X toward15"
+    },
+    {
+      "id": "ROSTRUM_LEFT",
+      "passed": true,
+      "detail": "10 image-left of08"
+    },
+    {
+      "id": "SANDPIT_NEAR_FLAG",
+      "passed": true,
+      "detail": "H proximity check only, not measured sandpit coordinates"
+    },
+    {
+      "id": "NO_MAIN_VOLUME_OVERLAPS",
+      "passed": true,
+      "detail": "Independent building proxies do not overlap; subspace12 is intentionally contained"
+    },
+    {
+      "id": "CANTEEN_SUBSPACE",
+      "passed": true,
+      "detail": "12 is inside lower part of11, not another freestanding building"
+    },
+    {
+      "id": "EXTERIOR_ROUTES_CLEAR",
+      "passed": true,
+      "detail": "Centreline sampled at 101 positions/edge with 0.6m clearance against current proxies; not physics validation"
+    },
+    {
+      "id": "ROUTE_GRAPH_CONNECTED",
+      "passed": true,
+      "detail": "All review route nodes reachable from gate"
+    }
+  ],
+  "counts": {
+    "registered": 28,
+    "located": 27,
+    "courts": 6,
+    "bridges": 4
+  },
+  "limits": [
+    "These tests check internal consistency, not historic or measured accuracy."
+  ]
+}

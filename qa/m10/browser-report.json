@@ -1,0 +1,152 @@
+{
+  "test_type": "actual Chromium WebGL2 interaction capture",
+  "navigation": "HTTP production build and standalone file",
+  "gpu_performance_certified": false,
+  "checks": [
+    {
+      "name": "webgl boot",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "runtime layout checks",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "view overview",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "view top",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "view sports",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "view teaching",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "view gym",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "view gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "music evidence",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "toilet evidence",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "unknown has no invented transform",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "footprint mode",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON export",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "mouse orbit changes view",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "free inspection moves",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "escape exits inspection",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "route preview starts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "canvas screenshot export",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "responsive resize",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no JS or shader errors",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "standalone file boot",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "errors": [],
+  "screenshots": [
+    "overview.png",
+    "top.png",
+    "sports.png",
+    "teaching.png",
+    "gym.png",
+    "gate.png",
+    "toilet-evidence.png",
+    "footprints.png",
+    "mobile.png",
+    "standalone.png"
+  ],
+  "browser": "151.0.7922.34",
+  "renderer": {
+    "view": "gate",
+    "fly": false,
+    "tour": false,
+    "selected": "",
+    "camera": [
+      40,
+      35,
+      -54.99999999999999
+    ],
+    "renderer": {
+      "frame": 184,
+      "calls": 116,
+      "triangles": 1032,
+      "points": 0,
+      "lines": 967
+    },
+    "canvas": [
+      1440,
+      1000
+    ],
+    "labelsOn": true,
+    "planOnly": false,
+    "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+  },
+  "success": true
+}

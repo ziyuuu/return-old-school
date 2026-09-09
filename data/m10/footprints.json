@@ -1,0 +1,1305 @@
+{
+  "units": "working metres",
+  "crs": null,
+  "surveyVerified": false,
+  "origin": {
+    "object": "01",
+    "description": "主校门通道中心地面",
+    "position": [
+      0,
+      0,
+      0
+    ]
+  },
+  "axes": {
+    "x": "+X = 原总图图面右",
+    "y": "+Y = 向上",
+    "z": "+Z = 从校门向校内 / 原总图向下",
+    "geographicRegistration": "未做大地坐标配准；原图北向说明只是来源，不构成GNSS坐标"
+  },
+  "features": [
+    {
+      "id": "01",
+      "name": "主校门",
+      "footprintXZ": [
+        [
+          -13,
+          -2
+        ],
+        [
+          13,
+          -2
+        ],
+        [
+          13,
+          2
+        ],
+        [
+          -13,
+          2
+        ]
+      ],
+      "positionThree": [
+        0,
+        0,
+        0
+      ],
+      "positionBlender": [
+        0,
+        0,
+        0
+      ],
+      "dimensions": [
+        26,
+        7,
+        4
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "S03-013/015",
+        "unknowns": "门内反向与历史牌匾；缺失尺寸允许H推定"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "02",
+      "name": "侧门／家属区通路",
+      "footprintXZ": [
+        [
+          26,
+          -1
+        ],
+        [
+          32,
+          -1
+        ],
+        [
+          32,
+          3
+        ],
+        [
+          26,
+          3
+        ]
+      ],
+      "positionThree": [
+        29,
+        0,
+        1
+      ],
+      "positionBlender": [
+        29,
+        -1,
+        0
+      ],
+      "dimensions": [
+        6,
+        0,
+        4
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "S03-014",
+        "unknowns": "通路去向与门卫区关系待核"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "03",
+      "name": "旧体育馆",
+      "footprintXZ": [
+        [
+          -57,
+          28
+        ],
+        [
+          -27,
+          28
+        ],
+        [
+          -27,
+          64
+        ],
+        [
+          -57,
+          64
+        ]
+      ],
+      "positionThree": [
+        -42,
+        0,
+        46
+      ],
+      "positionBlender": [
+        -42,
+        -46,
+        0
+      ],
+      "dimensions": [
+        30,
+        15,
+        36
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [
+          "H10"
+        ],
+        "reference": "S03-017/018/019/020；S05-005；R01",
+        "unknowns": "本轮未发现新独立背照；背面与包络按H10保守推定"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "04",
+      "name": "游泳池",
+      "footprintXZ": [
+        [
+          -50.5,
+          69.75
+        ],
+        [
+          -25.5,
+          69.75
+        ],
+        [
+          -25.5,
+          82.25
+        ],
+        [
+          -50.5,
+          82.25
+        ]
+      ],
+      "positionThree": [
+        -38,
+        0,
+        76
+      ],
+      "positionBlender": [
+        -38,
+        -76,
+        0
+      ],
+      "dimensions": [
+        25,
+        0.25,
+        12.5
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [
+          "H11"
+        ],
+        "reference": "S05-005；U12",
+        "unknowns": "池规格H11；位置不随方案任意移动"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "05",
+      "name": "相邻直跑道／风雨跑道",
+      "footprintXZ": [
+        [
+          -72,
+          88
+        ],
+        [
+          -65,
+          88
+        ],
+        [
+          -65,
+          152
+        ],
+        [
+          -72,
+          152
+        ]
+      ],
+      "positionThree": [
+        -68.5,
+        0,
+        120
+      ],
+      "positionBlender": [
+        -68.5,
+        -120,
+        0
+      ],
+      "dimensions": [
+        7,
+        0.1,
+        64
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "S03-022；R01；U12",
+        "unknowns": "项目绑定05；与08环道分开；长宽与遮棚分段H"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "06",
+      "name": "六片篮球场",
+      "footprintXZ": [
+        [
+          -65,
+          88
+        ],
+        [
+          -10,
+          88
+        ],
+        [
+          -10,
+          152
+        ],
+        [
+          -65,
+          152
+        ]
+      ],
+      "positionThree": [
+        -37.5,
+        0,
+        120
+      ],
+      "positionBlender": [
+        -37.5,
+        -120,
+        0
+      ],
+      "dimensions": [
+        55,
+        0.1,
+        64
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [
+          "H09"
+        ],
+        "reference": "S03-022/023；U12",
+        "unknowns": "3×2且与05紧贴平行；05夹在06与28之间；尺寸H09"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "07",
+      "name": "办公楼／医务室线索",
+      "footprintXZ": [
+        [
+          -66,
+          161.5
+        ],
+        [
+          -24,
+          161.5
+        ],
+        [
+          -24,
+          178.5
+        ],
+        [
+          -66,
+          178.5
+        ]
+      ],
+      "positionThree": [
+        -45,
+        0,
+        170
+      ],
+      "positionBlender": [
+        -45,
+        -170,
+        0
+      ],
+      "dimensions": [
+        42,
+        11.4,
+        17
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "S03-024",
+        "unknowns": "楼名与医务室入口仍待核；不编造房号"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "08",
+      "name": "田径场／足球坪",
+      "footprintXZ": [
+        [
+          27,
+          44
+        ],
+        [
+          119,
+          44
+        ],
+        [
+          119,
+          184
+        ],
+        [
+          27,
+          184
+        ]
+      ],
+      "positionThree": [
+        73,
+        0,
+        114
+      ],
+      "positionBlender": [
+        73,
+        -114,
+        0
+      ],
+      "dimensions": [
+        92,
+        0.12,
+        140
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "C01/C02；S03-025/026/027",
+        "unknowns": "规格与周长不能从示意符号量取"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "09",
+      "name": "林荫道／主路",
+      "footprintXZ": [
+        [
+          -3.5,
+          0
+        ],
+        [
+          3.5,
+          0
+        ],
+        [
+          3.5,
+          206
+        ],
+        [
+          -3.5,
+          206
+        ]
+      ],
+      "positionThree": [
+        0,
+        0,
+        103
+      ],
+      "positionBlender": [
+        0,
+        -103,
+        0
+      ],
+      "dimensions": [
+        7,
+        0.05,
+        206
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "C01；S03-043/045",
+        "unknowns": "可见树列保留；树种与缺失冠幅分开标记"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "10",
+      "name": "主席台",
+      "footprintXZ": [
+        [
+          16,
+          120
+        ],
+        [
+          22,
+          120
+        ],
+        [
+          22,
+          144
+        ],
+        [
+          16,
+          144
+        ]
+      ],
+      "positionThree": [
+        19,
+        0,
+        132
+      ],
+      "positionBlender": [
+        19,
+        -132,
+        0
+      ],
+      "dimensions": [
+        6,
+        1.2,
+        24
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "S01；S03-027",
+        "unknowns": "图面左侧；历史上盖与尺度H"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "11",
+      "name": "食堂",
+      "footprintXZ": [
+        [
+          145,
+          141
+        ],
+        [
+          189,
+          141
+        ],
+        [
+          189,
+          163
+        ],
+        [
+          145,
+          163
+        ]
+      ],
+      "positionThree": [
+        167,
+        0,
+        152
+      ],
+      "positionBlender": [
+        167,
+        -152,
+        0
+      ],
+      "dimensions": [
+        44,
+        10.8,
+        22
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "S03-031/032",
+        "unknowns": "外观各面与柱网缺尺寸；采用可替换H"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "12",
+      "name": "食堂下层小卖部",
+      "footprintXZ": [
+        [
+          151,
+          144
+        ],
+        [
+          165,
+          144
+        ],
+        [
+          165,
+          154
+        ],
+        [
+          151,
+          154
+        ]
+      ],
+      "positionThree": [
+        158,
+        0,
+        149
+      ],
+      "positionBlender": [
+        158,
+        -149,
+        0
+      ],
+      "dimensions": [
+        14,
+        3.4,
+        10
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "S03文字",
+        "unknowns": "不拿食堂大厅充当小卖部室内"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "13",
+      "name": "科学馆",
+      "footprintXZ": [
+        [
+          146,
+          191
+        ],
+        [
+          186,
+          191
+        ],
+        [
+          186,
+          207
+        ],
+        [
+          146,
+          207
+        ]
+      ],
+      "positionThree": [
+        166,
+        0,
+        199
+      ],
+      "positionBlender": [
+        166,
+        -199,
+        0
+      ],
+      "dimensions": [
+        40,
+        15.2,
+        16
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "S03-033/035",
+        "unknowns": "其他立面与实验室分间允许H但不冒称实测"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "14",
+      "name": "前坪／国旗区",
+      "footprintXZ": [
+        [
+          25,
+          192
+        ],
+        [
+          119,
+          192
+        ],
+        [
+          119,
+          204
+        ],
+        [
+          25,
+          204
+        ]
+      ],
+      "positionThree": [
+        72,
+        0,
+        198
+      ],
+      "positionBlender": [
+        72,
+        -198,
+        0
+      ],
+      "dimensions": [
+        94,
+        0.12,
+        12
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "C01；S01",
+        "unknowns": "旗台台阶与种植池关系优先"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "15",
+      "name": "旧主教学楼／教室",
+      "footprintXZ": [
+        [
+          20,
+          217
+        ],
+        [
+          118,
+          217
+        ],
+        [
+          118,
+          231
+        ],
+        [
+          20,
+          231
+        ]
+      ],
+      "positionThree": [
+        69,
+        0,
+        224
+      ],
+      "positionBlender": [
+        69,
+        -224,
+        0
+      ],
+      "dimensions": [
+        98,
+        15.2,
+        14
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [
+          "H01",
+          "H02",
+          "H03"
+        ],
+        "reference": "C02；S03-038/040/041/043；U12",
+        "unknowns": "左厕逐层相连已确认；旧楼平面不借用新楼"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "16",
+      "name": "校史馆／旧用途线索",
+      "footprintXZ": [
+        [
+          -59,
+          195.5
+        ],
+        [
+          -29,
+          195.5
+        ],
+        [
+          -29,
+          208.5
+        ],
+        [
+          -59,
+          208.5
+        ]
+      ],
+      "positionThree": [
+        -44,
+        0,
+        202
+      ],
+      "positionBlender": [
+        -44,
+        -202,
+        0
+      ],
+      "dimensions": [
+        30,
+        7.6,
+        13
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "S03-051",
+        "unknowns": "历史用途未定；不是24音乐楼"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "17",
+      "name": "长雅楼",
+      "footprintXZ": [
+        [
+          143,
+          249
+        ],
+        [
+          187,
+          249
+        ],
+        [
+          187,
+          267
+        ],
+        [
+          143,
+          267
+        ]
+      ],
+      "positionThree": [
+        165,
+        0,
+        258
+      ],
+      "positionBlender": [
+        165,
+        -258,
+        0
+      ],
+      "dimensions": [
+        44,
+        19,
+        18
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "S03-047/048",
+        "unknowns": "后期新楼环境不能倒推旧布局"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "18",
+      "name": "旧图书馆",
+      "footprintXZ": [
+        [
+          47.5,
+          245.5
+        ],
+        [
+          102.5,
+          245.5
+        ],
+        [
+          102.5,
+          260.5
+        ],
+        [
+          47.5,
+          260.5
+        ]
+      ],
+      "positionThree": [
+        75,
+        0,
+        253
+      ],
+      "positionBlender": [
+        75,
+        -253,
+        0
+      ],
+      "dimensions": [
+        55,
+        11.4,
+        15
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "S03-049",
+        "unknowns": "缺失背侧H；入口照片不是完整楼层图"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "19",
+      "name": "后花园／旋转楼梯",
+      "footprintXZ": [
+        [
+          35,
+          272
+        ],
+        [
+          117,
+          272
+        ],
+        [
+          117,
+          282
+        ],
+        [
+          35,
+          282
+        ]
+      ],
+      "positionThree": [
+        76,
+        0,
+        277
+      ],
+      "positionBlender": [
+        76,
+        -277,
+        0
+      ],
+      "dimensions": [
+        82,
+        0.12,
+        10
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "S03-050",
+        "unknowns": "楼梯起终点和尺寸H；保留照片曲线特征"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "20",
+      "name": "居住／家属区轮廓",
+      "footprintXZ": [
+        [
+          139,
+          38
+        ],
+        [
+          193,
+          38
+        ],
+        [
+          193,
+          96
+        ],
+        [
+          139,
+          96
+        ]
+      ],
+      "positionThree": [
+        166,
+        0,
+        67
+      ],
+      "positionBlender": [
+        166,
+        -67,
+        0
+      ],
+      "dimensions": [
+        54,
+        16,
+        58
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "S03-013/020",
+        "unknowns": "不采私人住宅内部"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "21",
+      "name": "信息楼（工作名）",
+      "footprintXZ": [
+        [
+          145,
+          215.5
+        ],
+        [
+          187,
+          215.5
+        ],
+        [
+          187,
+          234.5
+        ],
+        [
+          145,
+          234.5
+        ]
+      ],
+      "positionThree": [
+        166,
+        0,
+        225
+      ],
+      "positionBlender": [
+        166,
+        -225,
+        0
+      ],
+      "dimensions": [
+        42,
+        15.2,
+        19
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "原图占位",
+        "unknowns": "正式名称与身份不靠推定填充"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "22",
+      "name": "小店线索",
+      "footprintXZ": null,
+      "positionThree": null,
+      "positionBlender": null,
+      "dimensions": null,
+      "evidence": {
+        "position": "U",
+        "dimensions": "U",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "旧文／原图未落位",
+        "unknowns": "不为补齐编号自造商户身份"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "23",
+      "name": "沙坑",
+      "footprintXZ": [
+        [
+          125.25,
+          196.5
+        ],
+        [
+          130.75,
+          196.5
+        ],
+        [
+          130.75,
+          199.5
+        ],
+        [
+          125.25,
+          199.5
+        ]
+      ],
+      "positionThree": [
+        128,
+        0,
+        198
+      ],
+      "positionBlender": [
+        128,
+        -198,
+        0
+      ],
+      "dimensions": [
+        5.5,
+        0.1,
+        3
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [
+          "H08"
+        ],
+        "reference": "S01；R02",
+        "unknowns": "国旗附近A；H08为5.5×3m工作值"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "24",
+      "name": "音乐楼",
+      "footprintXZ": [
+        [
+          -89,
+          70
+        ],
+        [
+          -73,
+          70
+        ],
+        [
+          -73,
+          82
+        ],
+        [
+          -89,
+          82
+        ]
+      ],
+      "positionThree": [
+        -81,
+        0,
+        76
+      ],
+      "positionBlender": [
+        -81,
+        -76,
+        0
+      ],
+      "dimensions": [
+        16,
+        15.2,
+        12
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "A",
+        "sourceIds": [
+          "H03",
+          "H06"
+        ],
+        "reference": "U12文字＋草图",
+        "unknowns": "四层独栋已确认；馆后且跑道旁；外包H06与层高H03"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "25",
+      "name": "主楼左侧相连独栋厕所",
+      "footprintXZ": [
+        [
+          -13,
+          210.85000000000002
+        ],
+        [
+          -7,
+          210.85000000000002
+        ],
+        [
+          -7,
+          225.25
+        ],
+        [
+          -13,
+          225.25
+        ]
+      ],
+      "positionThree": [
+        -10,
+        0,
+        218.05
+      ],
+      "positionBlender": [
+        -10,
+        -218.05,
+        0
+      ],
+      "dimensions": [
+        6,
+        15.2,
+        14.4
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "derived-from-15",
+        "sourceIds": [
+          "H02",
+          "H03",
+          "H07"
+        ],
+        "reference": "U12文字＋两张草图",
+        "unknowns": "每层相连且门朝主楼已确认；T形通道判读；尺寸H07"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "26",
+      "name": "泳池左侧厕所",
+      "footprintXZ": [
+        [
+          -68,
+          73.75
+        ],
+        [
+          -62,
+          73.75
+        ],
+        [
+          -62,
+          78.25
+        ],
+        [
+          -68,
+          78.25
+        ]
+      ],
+      "positionThree": [
+        -65,
+        0,
+        76
+      ],
+      "positionBlender": [
+        -65,
+        -76,
+        0
+      ],
+      "dimensions": [
+        6,
+        3.3,
+        4.5
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [
+          "H12"
+        ],
+        "reference": "U12草图",
+        "unknowns": "位置确认；门向分间H12；不套用25T形"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "27",
+      "name": "校门右侧校名石",
+      "footprintXZ": [
+        [
+          15.9,
+          0.15000000000000002
+        ],
+        [
+          18.1,
+          0.15000000000000002
+        ],
+        [
+          18.1,
+          1.85
+        ],
+        [
+          15.9,
+          1.85
+        ]
+      ],
+      "positionThree": [
+        17,
+        0,
+        1
+      ],
+      "positionBlender": [
+        17,
+        -1,
+        0
+      ],
+      "dimensions": [
+        2.2,
+        2.5,
+        1.7
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "S03-015；用户照片",
+        "unknowns": "不规则自然石与刻字；背面H"
+      },
+      "measuredPosition": null
+    },
+    {
+      "id": "28",
+      "name": "体育辅助用房组（工作名）",
+      "footprintXZ": [
+        [
+          -83,
+          106
+        ],
+        [
+          -77,
+          106
+        ],
+        [
+          -77,
+          130
+        ],
+        [
+          -83,
+          130
+        ]
+      ],
+      "positionThree": [
+        -80,
+        0,
+        118
+      ],
+      "positionBlender": [
+        -80,
+        -118,
+        0
+      ],
+      "dimensions": [
+        6,
+        3.3,
+        24
+      ],
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "A",
+        "sourceIds": [
+          "H04",
+          "H05"
+        ],
+        "reference": "U12文字草图；R01后期资料",
+        "unknowns": "低矮单层已确认；健身／体育办公室／器材；分间H05不固定三栋"
+      },
+      "measuredPosition": null
+    }
+  ]
+}
