@@ -1,0 +1,21 @@
+{
+  "version": "0.6",
+  "source": "reference/masterplan-v03-source.png (delivered in handbook research pack)",
+  "source_sha256": "a29b9dca5cfd5cce4b38ddeef752989c2f8b38280c8ab04592293cff97b98f08",
+  "source_size": [1548,1095],
+  "measurement_type": "native pixel glyph audit, NOT campus survey; visible line-centre reads",
+  "rectangle_border_centrelines_px": [[208,513,231,556],[245,513,268,556],[283,513,306,556],[208,562,231,606],[245,562,268,606],[283,562,306,606]],
+  "read_tolerance_px": 1,
+  "pixel_court_width": 23,
+  "pixel_court_length_first_row": 43,
+  "pixel_court_length_second_row": 44,
+  "pixel_aspect_first_row": 1.8695652173913044,
+  "conditional_reference_m": [15,28],
+  "reference_status": "FIBA 2024 standard used ONLY as a hypothetical cross-check; historic on-site dimensions NOT established; glyph line-centres are approximate, not physical inner boundaries",
+  "conditional_scale_x_m_per_px": 0.6521739130434783,
+  "conditional_scale_y_first_row_m_per_px": 0.6511627906976745,
+  "conditional_scale_mismatch_first_row_pct": 0.15515903801395864,
+  "global_scale_established": false,
+  "gcp_count_with_measured_coordinates": 0,
+  "conclusion": "Court symbols have approximately plausible proportions within pixel reading uncertainty. They cannot establish campus scale or validate distances between other schematic footprints. The original map does not satisfy the direct adjacency requirement."
+}
