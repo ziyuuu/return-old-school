@@ -1,48 +1,1169 @@
 {
-"version":"M1.0.0","baselineVersion":"v0.7","units":"m","stage":"coordinate-and-footprint-review","m0Status":"closed-with-authorized-assumptions-not-surveyed","m1Status":"active",
-"origin":{"object":"01","description":"主校门通道中心地面","position":[0,0,0]},
-"axes":{"x":"+X = 原总图图面右","y":"+Y = 向上","z":"+Z = 从校门向校内 / 原总图向下","geographicRegistration":"未做大地坐标配准；原图北向说明只是来源，不构成GNSS坐标"},
-"metricPolicy":{"worldUnitMeters":1,"surveyVerified":false,"globalPixelScaleUsed":false,"description":"各楼尺寸单独采用M0 H参数或M1显式工作包络；轴距独立选取以满足原图顺序与校友拓扑，不对全图套m/px。所有世界坐标均H，不代表测量。"},
-"source":{"commit":"3e3f337b304a3821b4d91b1f1a7bb33880c808d5","masterplan":"v0.7 原底图增量修订","originalSha256":"a29b9dca5cfd5cce4b38ddeef752989c2f8b38280c8ab04592293cff97b98f08","diagramCoordinateNote":"sourceDiagram.rect is an uncalibrated 1447x1024 layout rectangle, not converted to metric coordinates."},
-"ground":{"bounds":[-102,-18,204,291],"elevationMode":"H-flat-datum","description":"全校高差暂未标定，本阶段临时平基准；不能视为校园真实无高差"},
-"sports":{"courtsId":"06","trackId":"05","auxId":"28","musicId":"24","poolId":"04","toiletId":"26","rows":2,"columns":3,"courtWidth":15,"courtLength":28,"gap":2,"margin":3,"lineDesign":"只画外矩形和中线，未复原2006年三分线","evidence":"3x2/共边/平行/夹在中间A；米制尺寸H09与M1工作值"},
-"connections":[
-{"id":"15-25-L01","from":"15","to":"25","level":1,"y":0,"width":2.1,"xStart":-7,"xEnd":20,"z":218.05,"kind":"floor-bridge","evidence":"A每层相连/朝向；H长度宽度与楼面标高"},
-{"id":"15-25-L02","from":"15","to":"25","level":2,"y":3.8,"width":2.1,"xStart":-7,"xEnd":20,"z":218.05,"kind":"floor-bridge","evidence":"A每层相连/朝向；H长度宽度与楼面标高"},
-{"id":"15-25-L03","from":"15","to":"25","level":3,"y":7.6,"width":2.1,"xStart":-7,"xEnd":20,"z":218.05,"kind":"floor-bridge","evidence":"A每层相连/朝向；H长度宽度与楼面标高"},
-{"id":"15-25-L04","from":"15","to":"25","level":4,"y":11.4,"width":2.1,"xStart":-7,"xEnd":20,"z":218.05,"kind":"floor-bridge","evidence":"A每层相连/朝向；H长度宽度与楼面标高"}],
-"entrances":[{"facilityId":"15","facing":[0,0,-1],"position":[69,0,217],"status":"H"},{"facilityId":"25","facing":[1,0,0],"position":[-7,0,218.05],"status":"A方向/H坐标"},{"facilityId":"03","facing":[0,0,-1],"position":[-42,0,28],"status":"H朝向与工作包络注册"}],
-"navigation":{"kind":"M1.0 exterior review routes; NOT historical path survey","nodes":{"gate":[0,0,0],"junction-gym":[0,0,22],"gym-entry":[-42,0,27],"junction-sports":[0,0,86],"sports-front":[-37.5,0,86],"music-entry":[-69.5,0,83.5],"junction-office":[0,0,158],"office-entry":[-45,0,159.5],"forecourt":[0,0,208],"main-front":[69,0,211.5],"east-front":[139,0,208],"canteen-entry":[142,0,152],"science-entry":[144,0,199],"east-mid":[139,0,181],"east-bottom":[139,0,269],"longya-entry":[165,0,269],"garden-entry":[110,0,269],"library-entry":[75,0,263],"west-bottom":[-25,0,269],"west-main":[-25,0,211.5],"museum-entry":[-44,0,211.5],"pool-entry":[-20,0,84.5]},"edges":[["gate","junction-gym"],["junction-gym","gym-entry"],["junction-gym","junction-sports"],["junction-sports","sports-front"],["sports-front","music-entry"],["sports-front","pool-entry"],["junction-sports","junction-office"],["junction-office","office-entry"],["junction-office","forecourt"],["forecourt","main-front"],["main-front","east-front"],["east-front","science-entry"],["east-front","east-mid"],["east-mid","canteen-entry"],["east-front","east-bottom"],["east-bottom","longya-entry"],["east-bottom","garden-entry"],["garden-entry","library-entry"],["garden-entry","west-bottom"],["west-bottom","west-main"],["west-main","museum-entry"],["west-main","forecourt"]],"clearance":0.6},
-"cameraPresets":{"overview":{"label":"全校鸟瞰","position":[300,320,440],"target":[50,0,133]},"top":{"label":"正投影总图","position":[51,470,133.001],"target":[51,0,133]},"sports":{"label":"运动区","position":[-150,145,207],"target":[-50,0,105]},"teaching":{"label":"主楼与逐层连廊","position":[-102,81,294],"target":[38,7,223]},"gate":{"label":"原点 / 校门","position":[40,35,-55],"target":[0,3,8]},"gym":{"label":"体育馆体量","position":[-111,58,-4],"target":[-42,6,46]}},
-"implementationLimits":["仅体量/连接/足迹，不是精模","22未定位不造楼","20为周边区域体量不是实测住宅","未知高差暂平","不含可进入的完整教室、楼梯和设备","不含现代改造覆盖层/夜景/玩法","校核相机可穿体；路线巡览不是物理角色控制器"],
-"facilityColumns":["id","kind","position","size","floors","floorEvidence","parent","sourceRect","assumptionIds","note"],
-"facilityRows":[
-["01","gate",[0,0,0],[26,7,4],null,"H",null,[319,237,398,266],[],"校门通道中心为局部原点。26×4×7是工作包络，不是量测。右高墩为可见特征。"],
-["02","marker",[29,0,1],[6,0,4],null,"H",null,[399,241,468,267],[],"保留原图侧通路线索；路线去向未核，不建立私人住宅内部。"],
-["03","gym",[-42,0,46],[30,15,36],null,"H",null,[166,306,306,392],["H10"],"30×36×15来自H10。仅折面体量，不含精细结构与内场。背面H。"],
-["04","pool",[-38,0,76],[25,0.25,12.5],null,"H",null,[176,408,305,435],["H11"],"H11 A方案25×12.5，长轴沿X；不能排除50m方案。非实测。"],
-["05","straight-track",[-68.5,0,120],[7,0.1,64],null,"H",null,[143,440,171,583],[],"05是项目绑定。宽7、长64均H；东侧与06共边x=-65，07等楼不插入共边。"],
-["06","courts",[-37.5,0,120],[55,0.1,64],null,"H",null,[171,440,313,583],["H09"],"单片15×28工作值；3列2排，净场之间2m、外围3m均H；长轴沿Z。"],
-["07","building",[-45,0,170],[42,11.4,17],3,"H",null,[183,602,306,649],[],"办公/医务名称待核；三层与包络为H。"],
-["08","field",[73,0,114],[92,0.12,140],null,"H",null,[401,318,647,655],[],"92×140为独立H场地包络，不声称400m标准跑道。"],
-["09","route",[0,0,103],[7,0.05,206],null,"H",null,[340,264,375,721],[],"主路暂定7m，原点到前庭轴线；所有高差在本阶段暂平。"],
-["10","rostrum",[19,0,132],[6,1.2,24],null,"H",null,[378,500,399,579],[],"08图面左侧A；6×24、高1.2均H，顶棚暂不建。"],
-["11","canteen",[167,0,152],[44,10.8,22],3,"H",null,[680,516,812,573],[],"44×22、3层为H；12作为其下层子区域登记，不自造另一栋。"],
-["12","subspace",[158,0,149],[14,3.4,10],1,"H","11",null,[],"食堂下层小卖部功能标记。位置和包络为H，不是实测店面；在11内部，不计额外建筑。"],
-["13","building",[166,0,199],[40,15.2,16],4,"H",null,[694,637,812,678],[],"科学馆外包和四层H；细部按参考照片后续替换。"],
-["14","forecourt",[72,0,198],[94,0.12,12],null,"H",null,[398,666,641,688],[],"前坪/国旗区。高度暂平，国旗定位为示意点。"],
-["15","teaching",[69,0,224],[98,15.2,14],4,"H",null,[390,702,654,754],["H01","H02","H03"],"四层先按旧图/照片判读作为H工作方案，主楼高度未测；四层桥同步生成，不把4层冒充厕所独立史实。"],
-["16","building",[-44,0,202],[30,7.6,13],2,"H",null,[185,678,305,719],[],"校史馆为来源标签，目标年代用途待核；2层及包络H。"],
-["17","building",[165,0,258],[44,19,18],5,"H",null,[676,784,812,830],[],"长雅楼位置沿用原关系；5层/包络H，后期新楼不能补到历史层。"],
-["18","building",[75,0,253],[55,11.4,15],3,"H",null,[449,779,602,819],[],"旧图书馆入口有P；整个包络、层数及隐藏面H。"],
-["19","garden",[76,0,277],[82,0.12,10],null,"H",null,[426,835,626,862],[],"花园范围为H；旋转楼梯仅锚点，本阶段无虚构楼梯或随机树木。"],
-["20","context",[166,0,67],[54,16,58],null,"H",null,[680,311,824,452],[],"周边居住区只用一处语义占位和灰色轮廓；不是住宅建筑数量或真实高度。"],
-["21","building",[166,0,225],[42,15.2,19],4,"H",null,[694,696,812,754],[],"信息楼为工作名，身份未确认；包络H，界面明确U。"],
-["22","unlocated",null,null,null,"H",null,null,[],"小店线索尚无可靠定位。不为凑齐28个模型随意放置，列入待定位清单。"],
-["23","sandpit",[128,0,198],[5.5,0.1,3],null,"H",null,[651,666,681,684],["H08"],"旗台附近A；本次置于14右端作为H，相距约6m；不设未经证实的助跑道。"],
-["24","music",[-81,0,76],[16,15.2,12],4,"A",null,[113,400,143,435],["H03","H06"],"四层独栋A，层高3.8H；位于馆后（本阶段工作朝向+Z）、跑道旁。"],
-["25","toilet",[-10,0,218.05],[6,15.2,14.4],4,"derived-from-15",null,[300,722,339,754],["H02","H03","H07"],"主楼左侧且每层连接、门朝+X的主楼A；14.4×6由H07旋转布置，T只表达连接。层数随15。"],
-["26","toilet-pool",[-65,0,76],[6,3.3,4.5],1,"H",null,[147,408,171,435],["H12"],"位于泳池图面左侧A；一层、门向、外包H，不套25的T型。"],
-["27","stone",[17,0,1],[2.2,2.5,1.7],null,"H",null,null,[],"门外面向校门的右侧自然石P；外形和尺寸此阶段只用示意多面体。"],
-["28","auxiliary",[-80,0,118],[6,3.3,24],1,"A",null,[113,461,138,583],["H04","H05"],"低矮单层A；长24进深6H。只登记3种功能，不划3间房。"]]
+  "version": "M1.0.0",
+  "baselineVersion": "v0.7",
+  "units": "m",
+  "stage": "coordinate-and-footprint-review",
+  "m0Status": "closed-with-authorized-assumptions-not-surveyed",
+  "m1Status": "active",
+  "origin": {
+    "object": "01",
+    "description": "主校门通道中心地面",
+    "position": [
+      0,
+      0,
+      0
+    ]
+  },
+  "axes": {
+    "x": "+X = 原总图图面右",
+    "y": "+Y = 向上",
+    "z": "+Z = 从校门向校内 / 原总图向下",
+    "geographicRegistration": "未做大地坐标配准；原图北向说明只是来源，不构成GNSS坐标"
+  },
+  "metricPolicy": {
+    "worldUnitMeters": 1,
+    "surveyVerified": false,
+    "globalPixelScaleUsed": false,
+    "description": "各楼尺寸单独采用M0 H参数或M1显式工作包络；轴距独立选取以满足原图顺序与校友拓扑，不对全图套m/px。所有世界坐标均H，不代表测量。"
+  },
+  "source": {
+    "commit": "3e3f337b304a3821b4d91b1f1a7bb33880c808d5",
+    "masterplan": "v0.7 原底图增量修订",
+    "originalSha256": "a29b9dca5cfd5cce4b38ddeef752989c2f8b38280c8ab04592293cff97b98f08",
+    "diagramCoordinateNote": "sourceDiagram.rect is an uncalibrated 1447x1024 layout rectangle, not converted to metric coordinates."
+  },
+  "ground": {
+    "bounds": [
+      -102,
+      -18,
+      204,
+      291
+    ],
+    "elevationMode": "H-flat-datum",
+    "description": "全校高差暂未标定，本阶段临时平基准；不能视为校园真实无高差"
+  },
+  "sports": {
+    "courtsId": "06",
+    "trackId": "05",
+    "auxId": "28",
+    "musicId": "24",
+    "poolId": "04",
+    "toiletId": "26",
+    "rows": 2,
+    "columns": 3,
+    "courtWidth": 15,
+    "courtLength": 28,
+    "gap": 2,
+    "margin": 3,
+    "lineDesign": "只画外矩形和中线，未复原2006年三分线",
+    "evidence": "3x2/共边/平行/夹在中间A；米制尺寸H09与M1工作值"
+  },
+  "connections": [
+    {
+      "id": "15-25-L01",
+      "from": "15",
+      "to": "25",
+      "level": 1,
+      "y": 0,
+      "width": 2.1,
+      "xStart": -7,
+      "xEnd": 20,
+      "z": 218.05,
+      "kind": "floor-bridge",
+      "evidence": "A每层相连/朝向；H长度宽度与楼面标高"
+    },
+    {
+      "id": "15-25-L02",
+      "from": "15",
+      "to": "25",
+      "level": 2,
+      "y": 3.8,
+      "width": 2.1,
+      "xStart": -7,
+      "xEnd": 20,
+      "z": 218.05,
+      "kind": "floor-bridge",
+      "evidence": "A每层相连/朝向；H长度宽度与楼面标高"
+    },
+    {
+      "id": "15-25-L03",
+      "from": "15",
+      "to": "25",
+      "level": 3,
+      "y": 7.6,
+      "width": 2.1,
+      "xStart": -7,
+      "xEnd": 20,
+      "z": 218.05,
+      "kind": "floor-bridge",
+      "evidence": "A每层相连/朝向；H长度宽度与楼面标高"
+    },
+    {
+      "id": "15-25-L04",
+      "from": "15",
+      "to": "25",
+      "level": 4,
+      "y": 11.4,
+      "width": 2.1,
+      "xStart": -7,
+      "xEnd": 20,
+      "z": 218.05,
+      "kind": "floor-bridge",
+      "evidence": "A每层相连/朝向；H长度宽度与楼面标高"
+    }
+  ],
+  "entrances": [
+    {
+      "facilityId": "15",
+      "facing": [
+        0,
+        0,
+        -1
+      ],
+      "position": [
+        69,
+        0,
+        217
+      ],
+      "status": "H"
+    },
+    {
+      "facilityId": "25",
+      "facing": [
+        1,
+        0,
+        0
+      ],
+      "position": [
+        -7,
+        0,
+        218.05
+      ],
+      "status": "A方向/H坐标"
+    },
+    {
+      "facilityId": "03",
+      "facing": [
+        0,
+        0,
+        -1
+      ],
+      "position": [
+        -42,
+        0,
+        28
+      ],
+      "status": "H朝向与工作包络注册"
+    }
+  ],
+  "navigation": {
+    "kind": "M1.0 exterior review routes; NOT historical path survey",
+    "nodes": {
+      "gate": [
+        0,
+        0,
+        0
+      ],
+      "junction-gym": [
+        0,
+        0,
+        22
+      ],
+      "gym-entry": [
+        -42,
+        0,
+        27
+      ],
+      "junction-sports": [
+        0,
+        0,
+        86
+      ],
+      "sports-front": [
+        -37.5,
+        0,
+        86
+      ],
+      "music-entry": [
+        -69.5,
+        0,
+        83.5
+      ],
+      "junction-office": [
+        0,
+        0,
+        158
+      ],
+      "office-entry": [
+        -45,
+        0,
+        159.5
+      ],
+      "forecourt": [
+        0,
+        0,
+        208
+      ],
+      "main-front": [
+        69,
+        0,
+        211.5
+      ],
+      "east-front": [
+        139,
+        0,
+        208
+      ],
+      "canteen-entry": [
+        142,
+        0,
+        152
+      ],
+      "science-entry": [
+        144,
+        0,
+        199
+      ],
+      "east-mid": [
+        139,
+        0,
+        181
+      ],
+      "east-bottom": [
+        139,
+        0,
+        269
+      ],
+      "longya-entry": [
+        165,
+        0,
+        269
+      ],
+      "garden-entry": [
+        110,
+        0,
+        269
+      ],
+      "library-entry": [
+        75,
+        0,
+        263
+      ],
+      "west-bottom": [
+        -25,
+        0,
+        269
+      ],
+      "west-main": [
+        -25,
+        0,
+        211.5
+      ],
+      "museum-entry": [
+        -44,
+        0,
+        211.5
+      ],
+      "pool-entry": [
+        -20,
+        0,
+        84.5
+      ]
+    },
+    "edges": [
+      [
+        "gate",
+        "junction-gym"
+      ],
+      [
+        "junction-gym",
+        "gym-entry"
+      ],
+      [
+        "junction-gym",
+        "junction-sports"
+      ],
+      [
+        "junction-sports",
+        "sports-front"
+      ],
+      [
+        "sports-front",
+        "music-entry"
+      ],
+      [
+        "sports-front",
+        "pool-entry"
+      ],
+      [
+        "junction-sports",
+        "junction-office"
+      ],
+      [
+        "junction-office",
+        "office-entry"
+      ],
+      [
+        "junction-office",
+        "forecourt"
+      ],
+      [
+        "forecourt",
+        "main-front"
+      ],
+      [
+        "main-front",
+        "east-front"
+      ],
+      [
+        "east-front",
+        "science-entry"
+      ],
+      [
+        "east-front",
+        "east-mid"
+      ],
+      [
+        "east-mid",
+        "canteen-entry"
+      ],
+      [
+        "east-front",
+        "east-bottom"
+      ],
+      [
+        "east-bottom",
+        "longya-entry"
+      ],
+      [
+        "east-bottom",
+        "garden-entry"
+      ],
+      [
+        "garden-entry",
+        "library-entry"
+      ],
+      [
+        "garden-entry",
+        "west-bottom"
+      ],
+      [
+        "west-bottom",
+        "west-main"
+      ],
+      [
+        "west-main",
+        "museum-entry"
+      ],
+      [
+        "west-main",
+        "forecourt"
+      ]
+    ],
+    "clearance": 0.6
+  },
+  "cameraPresets": {
+    "overview": {
+      "label": "全校鸟瞰",
+      "position": [
+        340,
+        385,
+        485
+      ],
+      "target": [
+        50,
+        0,
+        133
+      ]
+    },
+    "top": {
+      "label": "正投影总图",
+      "position": [
+        51,
+        470,
+        133.001
+      ],
+      "target": [
+        51,
+        0,
+        133
+      ]
+    },
+    "sports": {
+      "label": "运动区",
+      "position": [
+        -150,
+        145,
+        207
+      ],
+      "target": [
+        -50,
+        0,
+        105
+      ]
+    },
+    "teaching": {
+      "label": "主楼与逐层连廊",
+      "position": [
+        -102,
+        81,
+        294
+      ],
+      "target": [
+        38,
+        7,
+        223
+      ]
+    },
+    "gate": {
+      "label": "原点 / 校门",
+      "position": [
+        40,
+        35,
+        -55
+      ],
+      "target": [
+        0,
+        3,
+        8
+      ]
+    },
+    "gym": {
+      "label": "体育馆体量",
+      "position": [
+        -111,
+        58,
+        -4
+      ],
+      "target": [
+        -42,
+        6,
+        46
+      ]
+    }
+  },
+  "implementationLimits": [
+    "仅体量/连接/足迹，不是精模",
+    "22未定位不造楼",
+    "20为周边区域体量不是实测住宅",
+    "未知高差暂平",
+    "不含可进入的完整教室、楼梯和设备",
+    "不含现代改造覆盖层/夜景/玩法",
+    "校核相机可穿体；路线巡览不是物理角色控制器"
+  ],
+  "facilityColumns": [
+    "id",
+    "kind",
+    "position",
+    "size",
+    "floors",
+    "floorEvidence",
+    "parent",
+    "sourceRect",
+    "assumptionIds",
+    "note"
+  ],
+  "facilityRows": [
+    [
+      "01",
+      "gate",
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        26,
+        7,
+        4
+      ],
+      null,
+      "H",
+      null,
+      [
+        319,
+        237,
+        398,
+        266
+      ],
+      [],
+      "校门通道中心为局部原点。26×4×7是工作包络，不是量测。右高墩为可见特征。"
+    ],
+    [
+      "02",
+      "marker",
+      [
+        29,
+        0,
+        1
+      ],
+      [
+        6,
+        0,
+        4
+      ],
+      null,
+      "H",
+      null,
+      [
+        399,
+        241,
+        468,
+        267
+      ],
+      [],
+      "保留原图侧通路线索；路线去向未核，不建立私人住宅内部。"
+    ],
+    [
+      "03",
+      "gym",
+      [
+        -42,
+        0,
+        46
+      ],
+      [
+        30,
+        15,
+        36
+      ],
+      null,
+      "H",
+      null,
+      [
+        166,
+        306,
+        306,
+        392
+      ],
+      [
+        "H10"
+      ],
+      "30×36×15来自H10。仅折面体量，不含精细结构与内场。背面H。"
+    ],
+    [
+      "04",
+      "pool",
+      [
+        -38,
+        0,
+        76
+      ],
+      [
+        25,
+        0.25,
+        12.5
+      ],
+      null,
+      "H",
+      null,
+      [
+        176,
+        408,
+        305,
+        435
+      ],
+      [
+        "H11"
+      ],
+      "H11 A方案25×12.5，长轴沿X；不能排除50m方案。非实测。"
+    ],
+    [
+      "05",
+      "straight-track",
+      [
+        -68.5,
+        0,
+        120
+      ],
+      [
+        7,
+        0.1,
+        64
+      ],
+      null,
+      "H",
+      null,
+      [
+        143,
+        440,
+        171,
+        583
+      ],
+      [],
+      "05是项目绑定。宽7、长64均H；东侧与06共边x=-65，07等楼不插入共边。"
+    ],
+    [
+      "06",
+      "courts",
+      [
+        -37.5,
+        0,
+        120
+      ],
+      [
+        55,
+        0.1,
+        64
+      ],
+      null,
+      "H",
+      null,
+      [
+        171,
+        440,
+        313,
+        583
+      ],
+      [
+        "H09"
+      ],
+      "单片15×28工作值；3列2排，净场之间2m、外围3m均H；长轴沿Z。"
+    ],
+    [
+      "07",
+      "building",
+      [
+        -45,
+        0,
+        170
+      ],
+      [
+        42,
+        11.4,
+        17
+      ],
+      3,
+      "H",
+      null,
+      [
+        183,
+        602,
+        306,
+        649
+      ],
+      [],
+      "办公/医务名称待核；三层与包络为H。"
+    ],
+    [
+      "08",
+      "field",
+      [
+        73,
+        0,
+        114
+      ],
+      [
+        92,
+        0.12,
+        140
+      ],
+      null,
+      "H",
+      null,
+      [
+        401,
+        318,
+        647,
+        655
+      ],
+      [],
+      "92×140为独立H场地包络，不声称400m标准跑道。"
+    ],
+    [
+      "09",
+      "route",
+      [
+        0,
+        0,
+        103
+      ],
+      [
+        7,
+        0.05,
+        206
+      ],
+      null,
+      "H",
+      null,
+      [
+        340,
+        264,
+        375,
+        721
+      ],
+      [],
+      "主路暂定7m，原点到前庭轴线；所有高差在本阶段暂平。"
+    ],
+    [
+      "10",
+      "rostrum",
+      [
+        19,
+        0,
+        132
+      ],
+      [
+        6,
+        1.2,
+        24
+      ],
+      null,
+      "H",
+      null,
+      [
+        378,
+        500,
+        399,
+        579
+      ],
+      [],
+      "08图面左侧A；6×24、高1.2均H，顶棚暂不建。"
+    ],
+    [
+      "11",
+      "canteen",
+      [
+        167,
+        0,
+        152
+      ],
+      [
+        44,
+        10.8,
+        22
+      ],
+      3,
+      "H",
+      null,
+      [
+        680,
+        516,
+        812,
+        573
+      ],
+      [],
+      "44×22、3层为H；12作为其下层子区域登记，不自造另一栋。"
+    ],
+    [
+      "12",
+      "subspace",
+      [
+        158,
+        0,
+        149
+      ],
+      [
+        14,
+        3.4,
+        10
+      ],
+      1,
+      "H",
+      "11",
+      null,
+      [],
+      "食堂下层小卖部功能标记。位置和包络为H，不是实测店面；在11内部，不计额外建筑。"
+    ],
+    [
+      "13",
+      "building",
+      [
+        166,
+        0,
+        199
+      ],
+      [
+        40,
+        15.2,
+        16
+      ],
+      4,
+      "H",
+      null,
+      [
+        694,
+        637,
+        812,
+        678
+      ],
+      [],
+      "科学馆外包和四层H；细部按参考照片后续替换。"
+    ],
+    [
+      "14",
+      "forecourt",
+      [
+        72,
+        0,
+        198
+      ],
+      [
+        94,
+        0.12,
+        12
+      ],
+      null,
+      "H",
+      null,
+      [
+        398,
+        666,
+        641,
+        688
+      ],
+      [],
+      "前坪/国旗区。高度暂平，国旗定位为示意点。"
+    ],
+    [
+      "15",
+      "teaching",
+      [
+        69,
+        0,
+        224
+      ],
+      [
+        98,
+        15.2,
+        14
+      ],
+      4,
+      "H",
+      null,
+      [
+        390,
+        702,
+        654,
+        754
+      ],
+      [
+        "H01",
+        "H02",
+        "H03"
+      ],
+      "四层先按旧图/照片判读作为H工作方案，主楼高度未测；四层桥同步生成，不把4层冒充厕所独立史实。"
+    ],
+    [
+      "16",
+      "building",
+      [
+        -44,
+        0,
+        202
+      ],
+      [
+        30,
+        7.6,
+        13
+      ],
+      2,
+      "H",
+      null,
+      [
+        185,
+        678,
+        305,
+        719
+      ],
+      [],
+      "校史馆为来源标签，目标年代用途待核；2层及包络H。"
+    ],
+    [
+      "17",
+      "building",
+      [
+        165,
+        0,
+        258
+      ],
+      [
+        44,
+        19,
+        18
+      ],
+      5,
+      "H",
+      null,
+      [
+        676,
+        784,
+        812,
+        830
+      ],
+      [],
+      "长雅楼位置沿用原关系；5层/包络H，后期新楼不能补到历史层。"
+    ],
+    [
+      "18",
+      "building",
+      [
+        75,
+        0,
+        253
+      ],
+      [
+        55,
+        11.4,
+        15
+      ],
+      3,
+      "H",
+      null,
+      [
+        449,
+        779,
+        602,
+        819
+      ],
+      [],
+      "旧图书馆入口有P；整个包络、层数及隐藏面H。"
+    ],
+    [
+      "19",
+      "garden",
+      [
+        76,
+        0,
+        277
+      ],
+      [
+        82,
+        0.12,
+        10
+      ],
+      null,
+      "H",
+      null,
+      [
+        426,
+        835,
+        626,
+        862
+      ],
+      [],
+      "花园范围为H；旋转楼梯仅锚点，本阶段无虚构楼梯或随机树木。"
+    ],
+    [
+      "20",
+      "context",
+      [
+        166,
+        0,
+        67
+      ],
+      [
+        54,
+        16,
+        58
+      ],
+      null,
+      "H",
+      null,
+      [
+        680,
+        311,
+        824,
+        452
+      ],
+      [],
+      "周边居住区只用一处语义占位和灰色轮廓；不是住宅建筑数量或真实高度。"
+    ],
+    [
+      "21",
+      "building",
+      [
+        166,
+        0,
+        225
+      ],
+      [
+        42,
+        15.2,
+        19
+      ],
+      4,
+      "H",
+      null,
+      [
+        694,
+        696,
+        812,
+        754
+      ],
+      [],
+      "信息楼为工作名，身份未确认；包络H，界面明确U。"
+    ],
+    [
+      "22",
+      "unlocated",
+      null,
+      null,
+      null,
+      "H",
+      null,
+      null,
+      [],
+      "小店线索尚无可靠定位。不为凑齐28个模型随意放置，列入待定位清单。"
+    ],
+    [
+      "23",
+      "sandpit",
+      [
+        128,
+        0,
+        198
+      ],
+      [
+        5.5,
+        0.1,
+        3
+      ],
+      null,
+      "H",
+      null,
+      [
+        651,
+        666,
+        681,
+        684
+      ],
+      [
+        "H08"
+      ],
+      "旗台附近A；本次置于14右端作为H，相距约6m；不设未经证实的助跑道。"
+    ],
+    [
+      "24",
+      "music",
+      [
+        -81,
+        0,
+        76
+      ],
+      [
+        16,
+        15.2,
+        12
+      ],
+      4,
+      "A",
+      null,
+      [
+        113,
+        400,
+        143,
+        435
+      ],
+      [
+        "H03",
+        "H06"
+      ],
+      "四层独栋A，层高3.8H；位于馆后（本阶段工作朝向+Z）、跑道旁。"
+    ],
+    [
+      "25",
+      "toilet",
+      [
+        -10,
+        0,
+        218.05
+      ],
+      [
+        6,
+        15.2,
+        14.4
+      ],
+      4,
+      "derived-from-15",
+      null,
+      [
+        300,
+        722,
+        339,
+        754
+      ],
+      [
+        "H02",
+        "H03",
+        "H07"
+      ],
+      "主楼左侧且每层连接、门朝+X的主楼A；14.4×6由H07旋转布置，T只表达连接。层数随15。"
+    ],
+    [
+      "26",
+      "toilet-pool",
+      [
+        -65,
+        0,
+        76
+      ],
+      [
+        6,
+        3.3,
+        4.5
+      ],
+      1,
+      "H",
+      null,
+      [
+        147,
+        408,
+        171,
+        435
+      ],
+      [
+        "H12"
+      ],
+      "位于泳池图面左侧A；一层、门向、外包H，不套25的T型。"
+    ],
+    [
+      "27",
+      "stone",
+      [
+        17,
+        0,
+        1
+      ],
+      [
+        2.2,
+        2.5,
+        1.7
+      ],
+      null,
+      "H",
+      null,
+      null,
+      [],
+      "门外面向校门的右侧自然石P；外形和尺寸此阶段只用示意多面体。"
+    ],
+    [
+      "28",
+      "auxiliary",
+      [
+        -80,
+        0,
+        118
+      ],
+      [
+        6,
+        3.3,
+        24
+      ],
+      1,
+      "A",
+      null,
+      [
+        113,
+        461,
+        138,
+        583
+      ],
+      [
+        "H04",
+        "H05"
+      ],
+      "低矮单层A；长24进深6H。只登记3种功能，不划3间房。"
+    ]
+  ]
 }

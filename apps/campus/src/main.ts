@@ -21,8 +21,8 @@ renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();e
 renderer.domElement.addEventListener('webglcontextrestored',()=>location.reload());
 
 const scene=new THREE.Scene();scene.background=new THREE.Color('#edf0e8');
-const camera=new THREE.PerspectiveCamera(43,innerWidth/innerHeight,.1,2000);
-const topCamera=new THREE.OrthographicCamera(-200,200,200,-200,.1,2000);
+const camera=new THREE.PerspectiveCamera(43,innerWidth/innerHeight,1,1100);
+const topCamera=new THREE.OrthographicCamera(-200,200,200,-200,1,1100);
 topCamera.up.set(0,0,-1);
 let active:THREE.PerspectiveCamera|THREE.OrthographicCamera=camera;
 const controls=new OrbitControls(camera,renderer.domElement);
@@ -117,7 +117,7 @@ for(const f of layout.facilities){
     for(const px of [-w/2+1,0,w/2-1])for(const pz of [-d/2+1,d/2-1])box(g,.7,3.3,.7,px,0,pz,6);
   }else box(g,w,h,d,0,0,0,f.kind==='auxiliary'?6:0);
   if(f.floors&&f.floors>1&&f.kind!=='context')for(let j=1;j<f.floors;j++)rect(g,-w/2,-d/2,w/2,d/2,h*j/f.floors,'#809890');
-  if(f.kind!=='context')box(g,w+.12,.24,d+.12,0,h-.24,0,6);
+  if(f.kind!=='context')box(g,w+.12,.24,d+.12,0,h+.02,0,6);
  } else if(f.kind==='teaching'){
    // A real open front corridor lets every floor bridge meet open space.
    box(g,w,h,d-2.1,0,0,1.05,0);
@@ -140,10 +140,10 @@ for(const f of layout.facilities){
  } else if(f.kind==='field'){
    const s=new THREE.Shape(),r=w/2,halfStraight=d/2-r;
    s.moveTo(-r,-halfStraight);s.absarc(0,-halfStraight,r,Math.PI,Math.PI*2,false);s.lineTo(r,halfStraight);s.absarc(0,halfStraight,r,0,Math.PI,false);s.closePath();
-   const outer=mesh(new THREE.ShapeGeometry(s,40),mats[3],g,[0,.06,0]);outer.rotation.x=-Math.PI/2;outer.castShadow=false;
-   const inner=mesh(new THREE.ShapeGeometry(s,40),mats[1],g,[0,.08,0]);inner.rotation.x=-Math.PI/2;inner.scale.set(.86,.88,1);inner.castShadow=false;
-   for(const scale of [.94,.98]){const pts=s.getPoints(100).map(v=>[v.x*scale,.09,-v.y*(.98-(1-scale)*.4)]);line([...pts,pts[0]],g,'#e1dfca');}
-   rect(g,-w*.31,-d*.32,w*.31,d*.32,.12,'#e8e8d2');line([[-w*.31,.12,0],[w*.31,.12,0]],g,'#e8e8d2');
+   const outer=mesh(new THREE.ShapeGeometry(s,40),mats[3],g,[0,.08,0]);outer.rotation.x=-Math.PI/2;outer.castShadow=false;
+   const inner=mesh(new THREE.ShapeGeometry(s,40),mats[1],g,[0,.16,0]);inner.rotation.x=-Math.PI/2;inner.scale.set(.86,.88,1);inner.castShadow=false;
+   for(const scale of [.94,.98]){const pts=s.getPoints(100).map(v=>[v.x*scale,.12,-v.y*(.98-(1-scale)*.4)]);line([...pts,pts[0]],g,'#e1dfca');}
+   rect(g,-w*.31,-d*.32,w*.31,d*.32,.22,'#e8e8d2');line([[-w*.31,.22,0],[w*.31,.22,0]],g,'#e8e8d2');
  } else if(f.kind==='courts'){
    box(g,w,.08,d,0,0,0,1);
    for(const c of courtRects(layout)){
@@ -208,7 +208,7 @@ for(const btn of document.querySelectorAll<HTMLButtonElement>('[data-view]'))btn
 el<HTMLInputElement>('labels-check').onchange=e=>labelsOn=(e.target as HTMLInputElement).checked;
 el<HTMLInputElement>('grid-check').onchange=e=>grid.visible=(e.target as HTMLInputElement).checked;
 el<HTMLInputElement>('routes-check').onchange=e=>routeOverlay.visible=(e.target as HTMLInputElement).checked;
-el<HTMLInputElement>('footprints-check').onchange=e=>{planOnly=(e.target as HTMLInputElement).checked;volumes.visible=!planOnly;if(planOnly)setView('top');};
+el<HTMLInputElement>('footprints-check').onchange=e=>{planOnly=(e.target as HTMLInputElement).checked;volumes.visible=!planOnly;roots.get('12')!.visible=!planOnly;if(planOnly)setView('top');};
 function download(name:string,data:Blob|string){const u=typeof data==='string'?data:URL.createObjectURL(data),a=document.createElement('a');a.href=u;a.download=name;a.click();if(typeof data!=='string')setTimeout(()=>URL.revokeObjectURL(u),1000);}
 el('download-layout').onclick=()=>download('campus-layout-M1.0.0.json',new Blob([JSON.stringify(layout,null,2)],{type:'application/json'}));
 el('capture-btn').onclick=()=>{renderer.render(scene,active);download(`yali-M1.0-${view}.png`,renderer.domElement.toDataURL('image/png'));toast('已输出当前WebGL画布；尺寸仍为工作推定。');};
@@ -232,7 +232,7 @@ window.addEventListener('keydown',e=>{if((e.target as HTMLElement)?.matches('inp
 window.addEventListener('keyup',e=>keys.delete(e.code));window.addEventListener('blur',()=>{keys.clear();pointerDown=false;});
 function resize(){
  renderer.setSize(innerWidth,innerHeight);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();
- const half=innerWidth<700?235:190;const aspect=innerWidth/innerHeight;
+ const aspect=innerWidth/innerHeight;const half=Math.max(190,175/aspect);
  topCamera.left=-half*aspect;topCamera.right=half*aspect;topCamera.top=half;topCamera.bottom=-half;topCamera.updateProjectionMatrix();
 }window.addEventListener('resize',resize);resize();
 const projected=new THREE.Vector3();

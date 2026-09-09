@@ -5,12 +5,12 @@
   "type": "module",
   "description": "M1.0 evidence-bounded coordinate and footprint review",
   "scripts": {
-    "dev": "vite --host 0.0.0.0",
+    "dev": "vite --host 127.0.0.1",
     "build": "tsc --noEmit && vite build",
-    "preview": "vite preview --host 0.0.0.0",
+    "preview": "vite preview --host 127.0.0.1",
     "test": "node --test ../../tests/m10/*.test.mjs",
     "standalone": "node ../../tools/m10/build-standalone.mjs"
   },
   "dependencies": { "three": "0.180.0" },
-  "devDependencies": { "@types/three": "0.180.0", "typescript": "5.7.3", "vite": "6.1.0" }
+  "devDependencies": { "@types/three": "0.180.0", "typescript": "5.7.3", "vite": "6.4.3" }
 }
