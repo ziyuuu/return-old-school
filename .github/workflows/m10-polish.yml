@@ -1,0 +1,96 @@
+name: Verify M1.0 preview refinements
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/m10-polish.yml'
+permissions:
+  contents: write
+jobs:
+  refine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Apply transparent source diff, or verify already applied
+        run: |
+          if git apply --check .github/m10-review-polish.patch; then
+            git apply .github/m10-review-polish.patch
+          else
+            git apply --reverse --check .github/m10-review-polish.patch
+          fi
+          python - <<'PY'
+          import json,pathlib
+          p=pathlib.Path('data/m10/layout-input.json')
+          d=json.loads(p.read_text());d['cameraPresets']['overview']['position']=[340,385,485]
+          p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
+          p=pathlib.Path('apps/campus/src/style.css')
+          text=p.read_text();extra='\n/* Keep projected labels below all actionable overlays. */\n#inspector{z-index:10}.top-tools,.views,footer{z-index:11}\n'
+          if extra not in text:p.write_text(text+extra)
+          PY
+          python tools/m10/generate-layout.py
+      - name: Install patched dependency and audit
+        run: |
+          cd apps/campus
+          npm install
+          mkdir -p ../../qa/m10
+          npm audit --json > ../../qa/m10/dependency-audit.json || true
+          python - <<'PY'
+          import json
+          d=json.load(open('../../qa/m10/dependency-audit.json'))
+          assert 'metadata' in d, d
+          assert d['metadata']['vulnerabilities']['high']==0 and d['metadata']['vulnerabilities']['critical']==0, d['metadata']
+          print(d['metadata']['vulnerabilities'])
+          PY
+          npm test
+          npm run build
+          npm run standalone
+          cd ../..
+          node tools/m10/export-footprints.mjs
+      - name: Install browser
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium
+          sudo apt-get install -y fonts-noto-cjk
+      - name: Repeat actual browser interaction tests
+        run: python tools/m10/capture.py
+      - name: Package readable source and verified review
+        run: |
+          python - <<'PY'
+          import pathlib,zipfile,json,hashlib
+          root=pathlib.Path('.')
+          out=root/'artifacts/m10'
+          include=['apps/campus','data','docs/m10','tests/m10','tools/m10','qa/m10']
+          with zipfile.ZipFile(out/'Yali_M1_0_Workspace.zip','w',zipfile.ZIP_DEFLATED) as z:
+              for folder in include:
+                  for p in sorted((root/folder).rglob('*')):
+                      if not p.is_file() or 'node_modules' in p.parts or '__pycache__' in p.parts:continue
+                      if p.suffix.lower() in ['.ttf','.otf','.woff','.woff2']:continue
+                      z.write(p,p.as_posix())
+              for p in [out/'Yali_M1_0_Viewer.html',out/'THIRD_PARTY_NOTICES.txt']:
+                  z.write(p,p.name)
+          files={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for folder in include for p in (root/folder).rglob('*') if p.is_file() and 'node_modules' not in p.parts and '__pycache__' not in p.parts}
+          (out/'checksums.json').write_text(json.dumps(files,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Yali-M1.0-reviewed
+          path: |
+            artifacts/m10/
+            qa/m10/
+          retention-days: 30
+      - name: Commit tested source fixes and evidence
+        if: success()
+        run: |
+          git config user.name 'return-old-school validation bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add apps/campus/src/main.ts apps/campus/src/style.css apps/campus/package.json apps/campus/package-lock.json data/m10 docs/m10/implementation-decision.md qa/m10
+          git diff --cached --quiet || git commit -m 'fix: remove coplanar flicker, fit portrait plan and update audited dev dependency'
+          git push origin HEAD:main

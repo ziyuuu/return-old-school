@@ -1,0 +1,71 @@
+--- a/apps/campus/src/main.ts
++++ b/apps/campus/src/main.ts
+@@ -22,6 +22,6 @@
+ 
+ const scene=new THREE.Scene();scene.background=new THREE.Color('#edf0e8');
+-const camera=new THREE.PerspectiveCamera(43,innerWidth/innerHeight,.1,2000);
+-const topCamera=new THREE.OrthographicCamera(-200,200,200,-200,.1,2000);
++const camera=new THREE.PerspectiveCamera(43,innerWidth/innerHeight,1,1100);
++const topCamera=new THREE.OrthographicCamera(-200,200,200,-200,1,1100);
+ topCamera.up.set(0,0,-1);
+ let active:THREE.PerspectiveCamera|THREE.OrthographicCamera=camera;
+@@ -118,5 +118,5 @@
+   }else box(g,w,h,d,0,0,0,f.kind==='auxiliary'?6:0);
+   if(f.floors&&f.floors>1&&f.kind!=='context')for(let j=1;j<f.floors;j++)rect(g,-w/2,-d/2,w/2,d/2,h*j/f.floors,'#809890');
+-  if(f.kind!=='context')box(g,w+.12,.24,d+.12,0,h-.24,0,6);
++  if(f.kind!=='context')box(g,w+.12,.24,d+.12,0,h+.02,0,6);
+  } else if(f.kind==='teaching'){
+    // A real open front corridor lets every floor bridge meet open space.
+@@ -141,8 +141,8 @@
+    const s=new THREE.Shape(),r=w/2,halfStraight=d/2-r;
+    s.moveTo(-r,-halfStraight);s.absarc(0,-halfStraight,r,Math.PI,Math.PI*2,false);s.lineTo(r,halfStraight);s.absarc(0,halfStraight,r,0,Math.PI,false);s.closePath();
+-   const outer=mesh(new THREE.ShapeGeometry(s,40),mats[3],g,[0,.06,0]);outer.rotation.x=-Math.PI/2;outer.castShadow=false;
+-   const inner=mesh(new THREE.ShapeGeometry(s,40),mats[1],g,[0,.08,0]);inner.rotation.x=-Math.PI/2;inner.scale.set(.86,.88,1);inner.castShadow=false;
+-   for(const scale of [.94,.98]){const pts=s.getPoints(100).map(v=>[v.x*scale,.09,-v.y*(.98-(1-scale)*.4)]);line([...pts,pts[0]],g,'#e1dfca');}
+-   rect(g,-w*.31,-d*.32,w*.31,d*.32,.12,'#e8e8d2');line([[-w*.31,.12,0],[w*.31,.12,0]],g,'#e8e8d2');
++   const outer=mesh(new THREE.ShapeGeometry(s,40),mats[3],g,[0,.08,0]);outer.rotation.x=-Math.PI/2;outer.castShadow=false;
++   const inner=mesh(new THREE.ShapeGeometry(s,40),mats[1],g,[0,.16,0]);inner.rotation.x=-Math.PI/2;inner.scale.set(.86,.88,1);inner.castShadow=false;
++   for(const scale of [.94,.98]){const pts=s.getPoints(100).map(v=>[v.x*scale,.12,-v.y*(.98-(1-scale)*.4)]);line([...pts,pts[0]],g,'#e1dfca');}
++   rect(g,-w*.31,-d*.32,w*.31,d*.32,.22,'#e8e8d2');line([[-w*.31,.22,0],[w*.31,.22,0]],g,'#e8e8d2');
+  } else if(f.kind==='courts'){
+    box(g,w,.08,d,0,0,0,1);
+@@ -209,5 +209,5 @@
+ el<HTMLInputElement>('grid-check').onchange=e=>grid.visible=(e.target as HTMLInputElement).checked;
+ el<HTMLInputElement>('routes-check').onchange=e=>routeOverlay.visible=(e.target as HTMLInputElement).checked;
+-el<HTMLInputElement>('footprints-check').onchange=e=>{planOnly=(e.target as HTMLInputElement).checked;volumes.visible=!planOnly;if(planOnly)setView('top');};
++el<HTMLInputElement>('footprints-check').onchange=e=>{planOnly=(e.target as HTMLInputElement).checked;volumes.visible=!planOnly;roots.get('12')!.visible=!planOnly;if(planOnly)setView('top');};
+ function download(name:string,data:Blob|string){const u=typeof data==='string'?data:URL.createObjectURL(data),a=document.createElement('a');a.href=u;a.download=name;a.click();if(typeof data!=='string')setTimeout(()=>URL.revokeObjectURL(u),1000);}
+ el('download-layout').onclick=()=>download('campus-layout-M1.0.0.json',new Blob([JSON.stringify(layout,null,2)],{type:'application/json'}));
+@@ -233,5 +233,5 @@
+ function resize(){
+  renderer.setSize(innerWidth,innerHeight);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();
+- const half=innerWidth<700?235:190;const aspect=innerWidth/innerHeight;
++ const aspect=innerWidth/innerHeight;const half=Math.max(190,175/aspect);
+  topCamera.left=-half*aspect;topCamera.right=half*aspect;topCamera.top=half;topCamera.bottom=-half;topCamera.updateProjectionMatrix();
+ }window.addEventListener('resize',resize);resize();
+--- a/apps/campus/package.json
++++ b/apps/campus/package.json
+@@ -6,11 +6,11 @@
+   "description": "M1.0 evidence-bounded coordinate and footprint review",
+   "scripts": {
+-    "dev": "vite --host 0.0.0.0",
++    "dev": "vite --host 127.0.0.1",
+     "build": "tsc --noEmit && vite build",
+-    "preview": "vite preview --host 0.0.0.0",
++    "preview": "vite preview --host 127.0.0.1",
+     "test": "node --test ../../tests/m10/*.test.mjs",
+     "standalone": "node ../../tools/m10/build-standalone.mjs"
+   },
+   "dependencies": { "three": "0.180.0" },
+-  "devDependencies": { "@types/three": "0.180.0", "typescript": "5.7.3", "vite": "6.1.0" }
++  "devDependencies": { "@types/three": "0.180.0", "typescript": "5.7.3", "vite": "6.4.3" }
+ }
+--- a/docs/m10/implementation-decision.md
++++ b/docs/m10/implementation-decision.md
+@@ -1,5 +1,5 @@
+ # 技术决策 M1.0 / ADR-001
+ 
+-采用 Three.js 0.180.0 + TypeScript 5.7.3 + Vite 6.1.0。锁定版本用于可复现构建，不声称是最新版本。运行时不请求CDN、照片或字体。
++采用 Three.js 0.180.0 + TypeScript 5.7.3 + Vite 6.4.3。锁定版本用于可复现构建，不声称是最新版本。运行时不请求CDN、照片或字体。
+ 
+ 选择理由：仓库目前没有可直接迁移的完整场景工程；历史v0.2原生WebGL查看器仍留在旧交付包，不覆盖、不宣称无损迁移。新工程位于apps/campus，使用已有设施ID、M0假设与连接规则。原有资料及剧情保持不变。
