@@ -1,0 +1,21 @@
+{
+ "version":"0.7",
+ "authorization":"用户授权优先找雅礼资料，找不到可参考公开同类学校与时代标准并显式推定",
+ "global_metric_scale_established":false,
+ "range_semantics":"方案敏感性区间，不是统计置信区间或合规界限",
+ "items":[
+  {"id":"H01","facility":"15","parameter":"教室净平面","working_value":[7.6,9.0],"unit":"m","source":"R03类比后选值","risk":"medium","survey_verified":false},
+  {"id":"H02","facility":"15/25","parameter":"连廊净宽","working_value":2.1,"unit":"m","sensitivity_range":[1.8,2.7],"source":"R03参考","risk":"high","survey_verified":false},
+  {"id":"H03","facility":"15/24/25","parameter":"教学层高","working_value":3.8,"unit":"m","sensitivity_range":[3.3,4.2],"source":"R03参考；厕所各层对齐主楼","risk":"high","survey_verified":false},
+  {"id":"H04","facility":"28","parameter":"辅助房层高","working_value":3.3,"unit":"m","sensitivity_range":[2.8,3.8],"source":"项目推定；1层是用户事实","risk":"high","survey_verified":false},
+  {"id":"H05","facility":"28","parameter":"辅助用房外包长深","working_value":[24,6],"unit":"m","sensitivity_range":[18,36,4.5,8],"source":"项目推定；不固定三间或三栋","risk":"high","survey_verified":false},
+  {"id":"H06","facility":"24","parameter":"音乐楼外包长深","working_value":[16,12],"unit":"m","sensitivity_range":[12,22,9,16],"source":"项目推定；4层独栋是用户事实","risk":"high","survey_verified":false},
+  {"id":"H07","facility":"25","parameter":"厕所两翼外包宽深","working_value":[14.4,6],"unit":"m","sensitivity_range":[10,18,4.5,8],"source":"草图关系约束下项目推定","risk":"high","survey_verified":false},
+  {"id":"H08","facility":"23","parameter":"沙坑长宽","working_value":[5.5,3],"unit":"m","sensitivity_range":[5,6,2.75,4],"source":"R02时代范围内选值","risk":"medium","survey_verified":false},
+  {"id":"H09","facility":"06","parameter":"单片比赛矩形","working_value":[28,15],"unit":"m","source":"T12现代规则只作几何参照；不反推旧线位或全校比例","risk":"high","survey_verified":false},
+  {"id":"H10","facility":"03","parameter":"旧馆宽深高试算包络","working_value":[30,36,15],"unit":"m","sensitivity_range":[26,34,30,42,12,17],"source":"项目高不确定性推定；可见外形优先","risk":"very_high","survey_verified":false},
+  {"id":"H11","facility":"04","parameter":"泳池A方案长宽","working_value":[25,12.5],"unit":"m","alternative_length_m":50,"source":"项目推定；没有证明实际池规格","risk":"very_high","survey_verified":false},
+  {"id":"H12","facility":"26","parameter":"池厕外包长深","working_value":[6,4.5],"unit":"m","sensitivity_range":[4.5,9,3,6],"source":"项目推定；位置A但不套25布局","risk":"very_high","survey_verified":false}
+ ],
+ "sources":{"R01":"https://www.cmie.cn/news2/1882.html","R02":"https://jkw.mof.gov.cn/zhengcefabu/200807/t20080725_58867.htm","R03":"https://edu.sh.gov.cn/mbjy_fgwx_qt/20160726/0015-37D29A47-7B6A-46AF-AF9C-E421E79D132E.html","R04":"https://xxgk.jcgov.gov.cn/szfgzbm/jcsjyj/fdzdgknr_31128/jyggxxgk_jyj/xxgk_ggxxgk/202212/t20221215_1718590.shtml","T12":"https://about.fiba.basketball/en/our-sport/official-basketball-rules"}
+}

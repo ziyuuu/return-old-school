@@ -1,65 +1,20 @@
 {
-  "version": "0.5",
+  "version": "0.7",
   "updated": "2026-09-09",
-  "coordinate_convention": "left/right refers to the existing masterplan image unless a geographic direction is explicitly verified",
-  "evidence_levels": {
-    "alumni_confirmed": "confirmed by the project owner / alumnus and treated as a hard spatial constraint until contradicted by stronger same-period evidence",
-    "photo_verified": "verified by dated or otherwise attributable imagery",
-    "pending": "requires further period-photo, drawing, measurement, or alumnus verification"
-  },
+  "coordinate_convention": "image-left/right refer to the retained masterplan; sketch reading orientation is local, not a geographic bearing",
+  "evidence_levels": {"alumni_confirmed":"explicit user testimony or sketch relation","photo_verified":"visible in an attributed photograph","reference_analogy":"public comparison, not Yali as-built","inferred_working_value":"authorized reversible hypothesis, not measurement","pending":"unknown identity, dimensions or permission"},
   "constraints": [
-    {
-      "id": "SP-TOILET-MAIN-01",
-      "status": "alumni_confirmed",
-      "statement": "The detached toilet block is on the image-left side of the main teaching building and is directly connected to it."
-    },
-    {
-      "id": "SP-BASKETBALL-01",
-      "status": "alumni_confirmed",
-      "statement": "The basketball area contains six courts in a 3 by 2 arrangement."
-    },
-    {
-      "id": "SP-BASKETBALL-TRACK-02",
-      "status": "alumni_confirmed",
-      "statement": "The six-court basketball block and the adjacent running track are parallel and directly abut one another. No road, green buffer, or unrelated building may be inserted between their boundaries."
-    },
-    {
-      "id": "SP-SPORT-AUX-03",
-      "status": "alumni_confirmed",
-      "statement": "A strip / cluster of sports auxiliary rooms lies on the image-left side of the running track beside the basketball area. Its remembered functions include fitness / exercise equipment, the PE teachers' office, and storage for sports equipment. Exact room subdivisions, doors, windows, and dimensions remain pending."
-    },
-    {
-      "id": "SP-MUSIC-04",
-      "status": "alumni_confirmed",
-      "statement": "The music classroom is beside the running track and behind the gymnasium. It is a separate building / room group from the sports auxiliary rooms and must not be merged with them in the masterplan or 3D model."
-    },
-    {
-      "id": "SP-POOL-TOILET-05",
-      "status": "alumni_confirmed",
-      "statement": "The basketball / pool-area toilet is on the image-left side of the swimming pool."
-    },
-    {
-      "id": "SP-ROSTRUM-06",
-      "status": "alumni_confirmed",
-      "statement": "The athletics-field rostrum is on the image-left side of the field."
-    },
-    {
-      "id": "SP-SANDBOX-07",
-      "status": "alumni_confirmed",
-      "statement": "A sandpit exists near the flag area."
-    },
-    {
-      "id": "SP-GATE-STONE-08",
-      "status": "photo_verified",
-      "statement": "A school-name stone stands to the right side of the gate in the reference view."
-    }
+    {"id":"SP-TOILET-MAIN-01","status":"alumni_confirmed","statement":"Detached toilet 25 is image-left of main block 15; it connects at every corresponding floor; entrances face the teaching block.","connects_every_floor":true,"doors_face":"15","source":"U12 explicit text and sketches 5492/5493","floor_count":null},
+    {"id":"SP-BASKETBALL-01","status":"alumni_confirmed","statement":"Six basketball courts in a 3 by 2 arrangement.","grid":[3,2]},
+    {"id":"SP-BASKETBALL-TRACK-02","status":"alumni_confirmed","statement":"The court block and adjacent straight track are parallel and directly adjacent; no road or green buffer is inserted. The track lies between the sports auxiliary rooms and courts.","project_track_id":"05","distinct_from_athletics_ring":"08","id_binding_status":"editorial binding, not historic official name"},
+    {"id":"SP-SPORT-AUX-03","status":"alumni_confirmed","statement":"Sports auxiliary rooms are low single-storey buildings on image-left of the track; functions include exercise, PE office and equipment storage. Three functions do not establish three buildings or rooms.","storeys":1,"room_count":null},
+    {"id":"SP-MUSIC-04","status":"alumni_confirmed","statement":"Music building 24 is a detached four-storey building beside the track and behind the gymnasium; it is not merged with single-storey auxiliary rooms.","storeys":4,"detached":true,"floor_height_m":null},
+    {"id":"SP-POOL-TOILET-05","status":"alumni_confirmed","statement":"Pool toilet 26 is image-left of pool 04; the sketch places music, WC and pool at the same end of the three strips. Do not copy main-toilet interior layout into 26."},
+    {"id":"SP-ROSTRUM-06","status":"alumni_confirmed","statement":"Rostrum on image-left side of athletics field."},
+    {"id":"SP-SANDBOX-07","status":"alumni_confirmed","statement":"Sandpit near the flag area."},
+    {"id":"SP-GATE-STONE-08","status":"photo_verified","statement":"Natural school-name stone to the right of the gate in the reference street-facing photograph."}
   ],
-  "sports_zone_acceptance": [
-    "Basketball courts remain 3x2.",
-    "Court block and adjacent running track share a direct boundary and remain parallel.",
-    "Sports auxiliary rooms are present on the image-left side of that running track.",
-    "Fitness / exercise, PE office, and sports-equipment-storage functions are represented as separate identifiable program areas once room-level evidence is available.",
-    "Music classroom remains beside the track and behind the gymnasium but is not merged with the sports auxiliary rooms.",
-    "Any exact dimension or room subdivision without evidence is marked pending rather than invented."
-  ]
+  "metric_survey_completed": false,
+  "sketch_registration": "Gym not drawn in sketch. Local group registration to the old plan remains an explicit hypothesis.",
+  "inference_policy": "Public analogues and H working parameters are authorized; never overwrite A/P evidence or measured fields."
 }

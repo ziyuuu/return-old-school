@@ -1,23 +1,17 @@
 {
-  "version": "0.6-R",
-  "base_sha256": "a29b9dca5cfd5cce4b38ddeef752989c2f8b38280c8ab04592293cff97b98f08",
-  "kind": "conditional local topological correction; NOT metric calibration",
-  "track_binding": {
-    "provisional_id": "05",
-    "status": "working_assumption",
-    "alternative_id": "08",
-    "basis": "old map music linkage and later training building sheltered straight-track description; period ground plan missing"
-  },
-  "operations": [
-    {"id":"06","type":"translate_raster_patch","from_px":[183,451,306,575],"to_top_left_px":[156,451],"preserve_grid":"3x2"},
-    {"id":"05","type":"extend_schematic_strip","extent_px":[126,448,155,574],"metric_status":"unknown"},
-    {"id":"28","type":"add_function_symbol","extent_px":[112,482,124,574],"not_building_footprint":true}
-  ],
-  "protected_other_geometry": "all other campus footprints retained",
-  "view_reference": "operations are in normalized 1447x1024 layout coordinates, NOT native or geospatial coordinates",
-  "native_image_size": [1548,1095],
-  "layout_to_native_scale": [1.0697995853489979,1.0693359375],
-  "raster_patch_native_from": [196,482,327,615],
-  "raster_patch_native_to": [167,482],
-  "approval": "pending track-ID confirmation; not an approved measured masterplan"
+ "version":"0.7",
+ "base_sha256":"a29b9dca5cfd5cce4b38ddeef752989c2f8b38280c8ab04592293cff97b98f08",
+ "kind":"原图增量拓扑校正，非测绘总图",
+ "native_size":[1548,1095],
+ "layout_size":[1447,1024],
+ "rectangles_layout":{"music_24":[113,400,143,435],"aux_28":[113,461,138,583],"track_05":[143,440,171,583],"courts_06":[171,440,313,583],"pool_04":[176,408,305,435],"pool_toilet_26":[147,408,171,435]},
+ "court_grid":[3,2],
+ "shared_edge_layout_x":171,
+ "track_binding":{"project_id":"05","separate_from":"08","status":"editorial_binding_from_alumni_local_topology","historical_official_id":null},
+ "registration_status":"H：局部组团暂对齐原泳池端；体育馆未入草图，绝对配准和馆后朝向不冒称实测",
+ "confirmed":{"aux_storeys":1,"music_storeys":4,"music_detached":true,"main_toilet_connects_every_floor":true,"main_toilet_doors_face":"15"},
+ "changed_native_masks":[[129,284,328,320],[129,319,172,511],[119,421,337,642],[119,472,154,634],[317,806,418,827],[52,86,808,150],[1028,180,1468,928]],
+ "changed_pixels_outside_masks":0,
+ "measured_scale":false,
+ "note":"矩形是排版符号，不是米制足迹。完整原图及覆盖层在研究包，不以不存在的仓库PDF路径冒充发布。"
 }

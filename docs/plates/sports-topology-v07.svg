@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="670" viewBox="0 0 1200 670">
+<title>v0.7 校友草图运动区关系复写；不是全校新总图或测绘图</title>
+<rect width="1200" height="670" fill="#fbfbf7"/>
+<g font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" fill="#19373e">
+<text x="40" y="52" font-size="28">运动区关系 · 草图阅读方向 · 非比例图</text>
+<text x="40" y="87" font-size="17" fill="#ad5c32">辅助用房1层 / 音乐楼4层独栋为校友确认；图框不代表实测尺寸。</text>
+<g fill="#edf3f1" stroke="#2a6c72" stroke-width="2">
+<rect x="70" y="130" width="730" height="100"/><rect x="70" y="265" width="730" height="80"/>
+<rect x="70" y="345" width="730" height="215" fill="#cadab3"/>
+<rect x="890" y="130" width="245" height="100"/><rect x="890" y="265" width="245" height="80"/>
+<rect x="890" y="390" width="245" height="170" fill="#d0e5e8"/>
+</g>
+<text x="100" y="170" font-size="25">28 体育辅助用房 · 低矮单层</text>
+<text x="100" y="207" font-size="19">健身 / 锻炼 · 体育教师办公室 · 运动器材（不预设分间）</text>
+<text x="100" y="315" font-size="25">05 相邻直跑道</text>
+<text x="100" y="380" font-size="23">06 篮球场 · 3×2六片</text>
+<g fill="none" stroke="#fff" stroke-width="2"><rect x="110" y="400" width="195" height="64"/><rect x="340" y="400" width="195" height="64"/><rect x="570" y="400" width="195" height="64"/><rect x="110" y="479" width="195" height="64"/><rect x="340" y="479" width="195" height="64"/><rect x="570" y="479" width="195" height="64"/></g>
+<text x="921" y="172" font-size="25">24 音乐楼</text><text x="921" y="210" font-size="22">四层独栋</text>
+<text x="940" y="314" font-size="25">26 WC</text><text x="930" y="482" font-size="28">04 泳池</text>
+<path d="M800 345H860" stroke="#ad5c32" stroke-width="4"/><text x="805" y="373" font-size="18" fill="#ad5c32">紧贴</text>
+<text x="70" y="610" font-size="18">体育馆不在草图中；馆后关系来自口述，绝对落图方向与距离另外记录为H。</text>
+</g></svg>

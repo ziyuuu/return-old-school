@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="780" viewBox="0 0 1100 780">
+<title>25主楼厕所典型层关系；每层相连、门朝教学楼；非测绘平面</title>
+<rect width="1100" height="780" fill="#fbfbf7"/>
+<g font-family="Noto Sans CJK SC,Microsoft YaHei,sans-serif" fill="#19373e">
+<text x="40" y="53" font-size="27">25 主楼厕所 · 典型层关系</text>
+<text x="40" y="92" font-size="18" fill="#ad5c32">每层连接、门朝教学楼已确认；T形是通道分叉，不代表外墙精确轮廓。</text>
+<g fill="#edf3f1" stroke="#2a6c72" stroke-width="2"><rect x="100" y="150" width="295" height="200"/><rect x="645" y="150" width="300" height="200"/><rect x="395" y="150" width="250" height="450" fill="#f1eee2"/><rect x="100" y="635" width="845" height="80"/></g>
+<text x="213" y="255" font-size="30">男区</text><text x="757" y="255" font-size="30">女区</text>
+<text x="445" y="450" font-size="26">连接通道</text><text x="404" y="685" font-size="28">15 主教学楼</text>
+<path d="M520 630V575M505 590L520 575L535 590" stroke="#ad5c32" stroke-width="4" fill="none"/>
+<text x="667" y="558" font-size="20" fill="#ad5c32">入口朝教学楼</text>
+<text x="100" y="754" font-size="17">按草图阅读方向示意；旋转后与主楼左侧对接。不可直接套给26池畔厕所。</text>
+</g></svg>
