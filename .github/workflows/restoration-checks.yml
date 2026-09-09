@@ -1,0 +1,21 @@
+name: Check restoration evidence consistency
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'data/**'
+      - 'tools/check_restoration_v07.py'
+      - '.github/workflows/restoration-checks.yml'
+permissions:
+  contents: read
+jobs:
+  consistency:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check declared relations and inference separation
+        run: python tools/check_restoration_v07.py
