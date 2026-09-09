@@ -1,0 +1,23 @@
+{
+  "version": "0.6-R",
+  "base_sha256": "a29b9dca5cfd5cce4b38ddeef752989c2f8b38280c8ab04592293cff97b98f08",
+  "kind": "conditional local topological correction; NOT metric calibration",
+  "track_binding": {
+    "provisional_id": "05",
+    "status": "working_assumption",
+    "alternative_id": "08",
+    "basis": "old map music linkage and later training building sheltered straight-track description; period ground plan missing"
+  },
+  "operations": [
+    {"id":"06","type":"translate_raster_patch","from_px":[183,451,306,575],"to_top_left_px":[156,451],"preserve_grid":"3x2"},
+    {"id":"05","type":"extend_schematic_strip","extent_px":[126,448,155,574],"metric_status":"unknown"},
+    {"id":"28","type":"add_function_symbol","extent_px":[112,482,124,574],"not_building_footprint":true}
+  ],
+  "protected_other_geometry": "all other campus footprints retained",
+  "view_reference": "operations are in normalized 1447x1024 layout coordinates, NOT native or geospatial coordinates",
+  "native_image_size": [1548,1095],
+  "layout_to_native_scale": [1.0697995853489979,1.0693359375],
+  "raster_patch_native_from": [196,482,327,615],
+  "raster_patch_native_to": [167,482],
+  "approval": "pending track-ID confirmation; not an approved measured masterplan"
+}
