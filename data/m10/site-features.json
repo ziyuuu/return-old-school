@@ -1,0 +1,634 @@
+{
+  "version": "M1.0.1-R2",
+  "units": "working metres",
+  "surveyVerified": false,
+  "rearTrack": {
+    "id": "08-REAR",
+    "parentId": "08",
+    "kind": "rubber-straight",
+    "position": [
+      73,
+      0,
+      183.5
+    ],
+    "size": [
+      92,
+      0.1,
+      7
+    ],
+    "lanes": 4,
+    "evidence": "A操场后侧橡胶跑道/23位置；H精确尺寸"
+  },
+  "canopy": {
+    "enabled": true,
+    "clearHeight": 4.1,
+    "roofThickness": 0.24,
+    "postWidth": 0.22,
+    "bayLength": 8,
+    "evidence": "A有棚；H棚型高度柱距；不推为上方整栋训练楼"
+  },
+  "buildingLinks": [
+    {
+      "id": "03-24-LINK",
+      "from": "03",
+      "to": "24",
+      "path": [
+        [
+          -66,
+          0,
+          62
+        ],
+        [
+          -69.5,
+          0,
+          62
+        ],
+        [
+          -69.5,
+          0,
+          76
+        ],
+        [
+          -73,
+          0,
+          76
+        ]
+      ],
+      "width": 2.4,
+      "clearHeight": 3.4,
+      "roofThickness": 0.22,
+      "evidence": "A有连接；H单层开敞有棚接驳，非确认层数与构造"
+    }
+  ],
+  "connections": [
+    {
+      "id": "15-25-L01",
+      "from": "15",
+      "to": "25",
+      "level": 1,
+      "y": 0,
+      "width": 2.1,
+      "xStart": -7,
+      "xEnd": 20,
+      "z": 224,
+      "kind": "floor-bridge",
+      "evidence": "A每层相连/门向/中部；H尺寸与首层平接、上层桥下通行构造",
+      "alignment": "facing-wall-midpoint"
+    },
+    {
+      "id": "15-25-L02",
+      "from": "15",
+      "to": "25",
+      "level": 2,
+      "y": 3.8,
+      "width": 2.1,
+      "xStart": -7,
+      "xEnd": 20,
+      "z": 224,
+      "kind": "floor-bridge",
+      "evidence": "A每层相连/门向/中部；H尺寸与首层平接、上层桥下通行构造",
+      "alignment": "facing-wall-midpoint"
+    },
+    {
+      "id": "15-25-L03",
+      "from": "15",
+      "to": "25",
+      "level": 3,
+      "y": 7.6,
+      "width": 2.1,
+      "xStart": -7,
+      "xEnd": 20,
+      "z": 224,
+      "kind": "floor-bridge",
+      "evidence": "A每层相连/门向/中部；H尺寸与首层平接、上层桥下通行构造",
+      "alignment": "facing-wall-midpoint"
+    },
+    {
+      "id": "15-25-L04",
+      "from": "15",
+      "to": "25",
+      "level": 4,
+      "y": 11.4,
+      "width": 2.1,
+      "xStart": -7,
+      "xEnd": 20,
+      "z": 224,
+      "kind": "floor-bridge",
+      "evidence": "A每层相连/门向/中部；H尺寸与首层平接、上层桥下通行构造",
+      "alignment": "facing-wall-midpoint"
+    }
+  ],
+  "entrances": [
+    {
+      "id": "15-front",
+      "facilityId": "15",
+      "facing": [
+        0,
+        0,
+        -1
+      ],
+      "position": [
+        69,
+        0,
+        217
+      ],
+      "status": "H"
+    },
+    {
+      "id": "15-link",
+      "facilityId": "15",
+      "facing": [
+        -1,
+        0,
+        0
+      ],
+      "position": [
+        20,
+        0,
+        224
+      ],
+      "status": "A中部接入/H坐标"
+    },
+    {
+      "id": "15-rear",
+      "facilityId": "15",
+      "facing": [
+        0,
+        0,
+        1
+      ],
+      "position": [
+        69,
+        0,
+        231
+      ],
+      "status": "A后门通18/H洞口"
+    },
+    {
+      "id": "25-link",
+      "facilityId": "25",
+      "facing": [
+        1,
+        0,
+        0
+      ],
+      "position": [
+        -7,
+        0,
+        224
+      ],
+      "status": "A朝15与中部/H坐标"
+    },
+    {
+      "id": "03-front",
+      "facilityId": "03",
+      "facing": [
+        0,
+        0,
+        -1
+      ],
+      "position": [
+        -45,
+        0,
+        24
+      ],
+      "status": "H"
+    },
+    {
+      "id": "03-music",
+      "facilityId": "03",
+      "facing": [
+        -1,
+        0,
+        0
+      ],
+      "position": [
+        -66,
+        0,
+        62
+      ],
+      "status": "A连接/H位置"
+    },
+    {
+      "id": "24-gym",
+      "facilityId": "24",
+      "facing": [
+        1,
+        0,
+        0
+      ],
+      "position": [
+        -73,
+        0,
+        76
+      ],
+      "status": "A连接/H位置"
+    },
+    {
+      "id": "18-front",
+      "facilityId": "18",
+      "facing": [
+        0,
+        0,
+        -1
+      ],
+      "position": [
+        75,
+        0,
+        245.5
+      ],
+      "status": "A与主楼后门联通/H门位"
+    }
+  ],
+  "navigation": {
+    "kind": "User-corrected physical paving + explicit H endpoints; not survey",
+    "nodes": {
+      "gate": [
+        0,
+        0,
+        0
+      ],
+      "junction-gym": [
+        0,
+        0,
+        22
+      ],
+      "gym-entry": [
+        -45,
+        0,
+        21.8
+      ],
+      "junction-sports": [
+        0,
+        0,
+        86
+      ],
+      "sports-front": [
+        -37.5,
+        0,
+        86
+      ],
+      "music-entry": [
+        -69.5,
+        0,
+        83.5
+      ],
+      "junction-office": [
+        0,
+        0,
+        158
+      ],
+      "office-entry": [
+        -45,
+        0,
+        159.5
+      ],
+      "forecourt": [
+        0,
+        0,
+        208
+      ],
+      "main-front": [
+        69,
+        0,
+        211.5
+      ],
+      "east-front": [
+        139,
+        0,
+        208
+      ],
+      "canteen-entry": [
+        142,
+        0,
+        152
+      ],
+      "science-entry": [
+        144,
+        0,
+        199
+      ],
+      "east-mid": [
+        139,
+        0,
+        181
+      ],
+      "east-bottom": [
+        139,
+        0,
+        269
+      ],
+      "longya-entry": [
+        165,
+        0,
+        269
+      ],
+      "garden-entry": [
+        110,
+        0,
+        269
+      ],
+      "museum-entry": [
+        -44,
+        0,
+        211.5
+      ],
+      "pool-entry": [
+        -20,
+        0,
+        84.5
+      ],
+      "side-branch": [
+        23,
+        0,
+        22
+      ],
+      "side-front-turn": [
+        125,
+        0,
+        32
+      ],
+      "side-upper": [
+        129,
+        0,
+        40
+      ],
+      "side-mid": [
+        129,
+        0,
+        120
+      ],
+      "side-gate": [
+        129,
+        0,
+        184
+      ],
+      "gap-entry": [
+        6.5,
+        0,
+        211.5
+      ],
+      "gap-north": [
+        6.5,
+        0,
+        216
+      ],
+      "gap-cross": [
+        6.5,
+        0,
+        224
+      ],
+      "gap-south": [
+        6.5,
+        0,
+        238
+      ],
+      "rear-west": [
+        30,
+        0,
+        239
+      ],
+      "rear-junction": [
+        69,
+        0,
+        239
+      ],
+      "main-rear": [
+        69,
+        0,
+        232.8
+      ],
+      "library-entry": [
+        75,
+        0,
+        243.6
+      ]
+    },
+    "edges": [
+      [
+        "gate",
+        "junction-gym"
+      ],
+      [
+        "junction-gym",
+        "gym-entry"
+      ],
+      [
+        "junction-gym",
+        "junction-sports"
+      ],
+      [
+        "junction-sports",
+        "sports-front"
+      ],
+      [
+        "sports-front",
+        "music-entry"
+      ],
+      [
+        "sports-front",
+        "pool-entry"
+      ],
+      [
+        "junction-sports",
+        "junction-office"
+      ],
+      [
+        "junction-office",
+        "office-entry"
+      ],
+      [
+        "junction-office",
+        "forecourt"
+      ],
+      [
+        "forecourt",
+        "main-front"
+      ],
+      [
+        "main-front",
+        "east-front"
+      ],
+      [
+        "east-front",
+        "science-entry"
+      ],
+      [
+        "east-front",
+        "east-mid"
+      ],
+      [
+        "east-mid",
+        "canteen-entry"
+      ],
+      [
+        "east-front",
+        "east-bottom"
+      ],
+      [
+        "east-bottom",
+        "longya-entry"
+      ],
+      [
+        "east-bottom",
+        "garden-entry"
+      ],
+      [
+        "junction-gym",
+        "side-branch"
+      ],
+      [
+        "side-branch",
+        "side-front-turn"
+      ],
+      [
+        "side-front-turn",
+        "side-upper"
+      ],
+      [
+        "side-upper",
+        "side-mid"
+      ],
+      [
+        "side-mid",
+        "side-gate"
+      ],
+      [
+        "side-gate",
+        "east-front"
+      ],
+      [
+        "forecourt",
+        "gap-entry"
+      ],
+      [
+        "gap-entry",
+        "gap-north"
+      ],
+      [
+        "gap-north",
+        "gap-cross"
+      ],
+      [
+        "gap-cross",
+        "gap-south"
+      ],
+      [
+        "gap-south",
+        "rear-west"
+      ],
+      [
+        "rear-west",
+        "rear-junction"
+      ],
+      [
+        "rear-junction",
+        "library-entry"
+      ],
+      [
+        "rear-junction",
+        "main-rear"
+      ],
+      [
+        "forecourt",
+        "museum-entry"
+      ]
+    ],
+    "clearance": 0.6,
+    "defaultWidth": 3,
+    "reviewHeight": 1.7,
+    "headClearance": 2.2,
+    "edgeWidths": {
+      "junction-gym|side-branch": 2.4,
+      "side-branch|side-front-turn": 2.4,
+      "side-front-turn|side-upper": 2.4,
+      "side-upper|side-mid": 2.4,
+      "side-mid|side-gate": 2.4,
+      "side-gate|east-front": 2.4,
+      "rear-junction|library-entry": 2.4,
+      "rear-junction|main-rear": 2.4,
+      "forecourt|museum-entry": 2.4
+    },
+    "removedNodes": [
+      "west-bottom",
+      "west-main"
+    ],
+    "removedEdges": [
+      [
+        "garden-entry",
+        "library-entry"
+      ],
+      [
+        "garden-entry",
+        "west-bottom"
+      ],
+      [
+        "west-bottom",
+        "west-main"
+      ],
+      [
+        "west-main",
+        "museum-entry"
+      ],
+      [
+        "west-main",
+        "forecourt"
+      ]
+    ],
+    "requiredChains": [
+      [
+        "junction-gym",
+        "side-branch",
+        "side-front-turn",
+        "side-upper",
+        "side-mid",
+        "side-gate"
+      ],
+      [
+        "forecourt",
+        "gap-entry",
+        "gap-north",
+        "gap-cross",
+        "gap-south",
+        "rear-west",
+        "rear-junction",
+        "library-entry"
+      ],
+      [
+        "main-rear",
+        "rear-junction",
+        "library-entry"
+      ]
+    ],
+    "tourPath": [
+      "gate",
+      "junction-gym",
+      "gym-entry",
+      "junction-gym",
+      "side-branch",
+      "side-front-turn",
+      "side-upper",
+      "side-mid",
+      "side-gate",
+      "east-front",
+      "main-front",
+      "forecourt",
+      "gap-entry",
+      "gap-north",
+      "gap-cross",
+      "gap-south",
+      "rear-west",
+      "rear-junction",
+      "main-rear",
+      "rear-junction",
+      "library-entry",
+      "rear-junction",
+      "rear-west",
+      "gap-south",
+      "gap-cross",
+      "gap-north",
+      "gap-entry",
+      "forecourt"
+    ]
+  }
+}

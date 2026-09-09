@@ -1,3 +1,4 @@
+import { revisionChecks, edgeWidth, segmentHitsRect } from './revision-core.mjs';
 /** Render-independent geometry helpers. Coordinates are design hypotheses, never site measurements. */
 export const EPSILON = 1e-6;
 export function footprint(f) {
@@ -42,14 +43,14 @@ export function checkLayout(layout) {
   check('AUX_1F',get('28').floors===1&&get('28').evidence.floorCount==='A','Alumnus: low single-storey auxiliary group');
   check('MUSIC_4F',get('24').floors===4&&get('24').evidence.floorCount==='A'&&!overlap(m,a),'Alumnus: detached four-storey music building');
   check('MUSIC_BEHIND',m.minZ>gym.maxZ,'Behind +Z under explicitly H gym orientation');
-  check('END_ROW',get('24').position[2]===get('04').position[2]&&get('26').position[2]===get('04').position[2]&&m.maxZ<t.minZ,'24,26,04 at same end of 28/05/06 bands');
+  check('END_ROW',[m,p,wc].every(v=>v.maxZ<t.minZ),'24,26,04 remain at same END, not an invented exact common centreline');
   check('POOL_TOILET_LEFT',wc.maxX<p.minX,'26 image-left of pool04; no copied25 internal plan');
   check('MAIN_TOILET_LEFT',twc.maxX<main.minX,'25 image-left of15');
   check('EACH_LEVEL',layout.connections.length===get('15').floors&&layout.connections.every((v,i)=>v.level===i+1&&Math.abs(v.y-i*3.8)<EPSILON&&v.from==='15'&&v.to==='25'),'One bridge for each working15 level');
   check('BRIDGE_ENDPOINTS',layout.connections.every(v=>Math.abs(v.xStart-twc.maxX)<EPSILON&&Math.abs(v.xEnd-main.minX)<EPSILON),'Bridge endpoints meet both footprints');
   check('DOOR_FACES_MAIN',layout.entrances.find(v=>v.facilityId==='25').facing[0]===1,'25 entrance faces +X toward15');
   check('ROSTRUM_LEFT',b('10').maxX<b('08').minX,'10 image-left of08');
-  check('SANDPIT_NEAR_FLAG',Math.hypot(get('23').position[0]-b('14').maxX,get('23').position[2]-get('14').position[2])<15,'H proximity check only, not measured sandpit coordinates');
+  // The precise rear-right correction supersedes the old forecourt-distance heuristic.
   const solids=layout.facilities.filter(f=>f.position&&f.size[1]>1&&!f.parent&&f.kind!=='stone');
   const collisions=[];
   for(let i=0;i<solids.length;i++)for(let j=i+1;j<solids.length;j++)if(overlap(bounds(solids[i]),bounds(solids[j])))collisions.push(`${solids[i].id}/${solids[j].id}`);
@@ -58,14 +59,14 @@ export function checkLayout(layout) {
   const routeHits=[];
   for(const [s,e] of layout.navigation.edges){
     const A=layout.navigation.nodes[s],B=layout.navigation.nodes[e];
-    for(let i=0;i<=100;i++){
-      const x=A[0]+(B[0]-A[0])*i/100,z=A[2]+(B[2]-A[2])*i/100,r=layout.navigation.clearance;
-      for(const f of solids.filter(v=>v.kind!=='gate'))if(overlap({minX:x-r,maxX:x+r,minZ:z-r,maxZ:z+r},bounds(f))){routeHits.push(`${s}->${e}:${f.id}`); break;}
-    }
+    if(!A||!B){routeHits.push('missing node:'+s+'/'+e);continue;}
+    const radius=Math.max(layout.navigation.clearance,edgeWidth(layout,s,e)/2);
+    for(const f of solids.filter(v=>!['gate','side-gate'].includes(v.kind)))if(segmentHitsRect(A,B,bounds(f),radius))routeHits.push(`${s}->${e}:${f.id}`);
   }
-  check('EXTERIOR_ROUTES_CLEAR',routeHits.length===0,[...new Set(routeHits)].join(',')||'Centreline sampled at 101 positions/edge with 0.6m clearance against current proxies; not physics validation');
-  const seen=new Set(['gate']);let changed=true;
+  check('EXTERIOR_ROUTES_CLEAR',routeHits.length===0,[...new Set(routeHits)].join(',')||'Exact segment against inflated building rectangles; full pavement widths, not just sampled centreline');
+    const seen=new Set(['gate']);let changed=true;
   while(changed){changed=false;for(const [s,e] of layout.navigation.edges)if(seen.has(s)!==seen.has(e)){seen.add(s);seen.add(e);changed=true;}}
   check('ROUTE_GRAPH_CONNECTED',seen.size===Object.keys(layout.navigation.nodes).length,'All review route nodes reachable from gate');
+  results.push(...revisionChecks(layout,{bounds,overlap}));
   return {passed:results.every(r=>r.passed),results,counts:{registered:layout.facilities.length,located:layout.facilities.filter(v=>v.position).length,courts:6,bridges:layout.connections.length},limits:['These tests check internal consistency, not historic or measured accuracy.']};
 }

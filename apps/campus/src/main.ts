@@ -3,6 +3,8 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import source from '../../../data/m10/campus-layout.json';
 import { bounds, footprint, courtRects, checkLayout } from './layout-core.mjs';
 import './style.css';
+import { edgeWidth } from './revision-core.mjs';
+import { revisedFacility, buildRevisionParts } from './revision-scene';
 
 // M1.0 hypotheses, not site measurements. No gameplay or night layer.
 type Vec3 = [number, number, number];
@@ -62,7 +64,7 @@ const mats=ramps.map((_,row)=>{
 const volumes=new THREE.Group(), surfaces=new THREE.Group(), outlines=new THREE.Group(), routeOverlay=new THREE.Group();
 scene.add(surfaces,volumes,outlines,routeOverlay);routeOverlay.visible=false;
 const roots=new Map<string,THREE.Group>(), pickables:THREE.Object3D[]=[], labels=new Map<string,{node:HTMLDivElement,point:THREE.Vector3}>();
-const keyLabels=new Set(['01','03','06','08','11','13','15','17','18','24']);
+const keyLabels=new Set(['01','02','03','06','08','11','13','15','17','18','23','24','25','26']);
 const solidKinds=new Set(['building','music','auxiliary','context','toilet-pool','canteen']);
 function mesh(geo:THREE.BufferGeometry,mat:THREE.Material,parent:THREE.Object3D,pos:Vec3=[0,0,0]){
  const m=new THREE.Mesh(geo,mat);m.position.set(...pos);m.castShadow=true;m.receiveShadow=true;parent.add(m);return m;
@@ -91,7 +93,7 @@ line([[minX,0,-12],[maxX,0,-12]],outlines,'#f3efe0',true);
 rect(outlines,minX,0,maxX,maxZ,.12,'#748e80');
 for(const [a,b] of layout.navigation.edges){
  const pa=layout.navigation.nodes[a as keyof typeof layout.navigation.nodes] as Vec3,pb=layout.navigation.nodes[b as keyof typeof layout.navigation.nodes] as Vec3;
- ribbon([pa,pb],a==='gate'||a.startsWith('junction')&&b.startsWith('junction')?7:3.6);
+ ribbon([pa,pb],edgeWidth(layout,a,b));
  line([[pa[0],.3,pa[2]],[pb[0],.3,pb[2]]],routeOverlay,'#b2793f',true);
 }
 const grid=new THREE.GridHelper(360,36,'#6a8f85','#a7b9a9');grid.position.set(51,-.005,139);grid.visible=false;scene.add(grid);
@@ -108,7 +110,9 @@ for(const f of layout.facilities){
  const [x,y,z]=f.position,[w,h,d]=f.size,g=new THREE.Group();g.name=`F${f.id}`;g.userData.facility=f.id;g.position.set(x,y,z);roots.set(f.id,g);
  (['field','courts','straight-track','pool','forecourt','sandpit','garden','route','marker','subspace'].includes(f.kind)?surfaces:volumes).add(g);
  addFootprint(f);addLabel(f);
- if(solidKinds.has(f.kind)){
+ if(revisedFacility(f,g,{box,mesh,line,rect,mats,layout})) {
+  // R2 builds real openings / larger envelopes without replacing unrelated facilities.
+ } else if(solidKinds.has(f.kind)){
   if(f.kind==='context'){
     box(g,w,.1,d,0,0,0,5);
     for(const [px,pz,pw,pd,ph] of [[-13,-13,18,20,16],[13,-11,15,25,22],[-10,16,28,16,13],[17,18,11,15,18]])box(g,pw,ph,pd,px,0,pz,5);
@@ -164,12 +168,7 @@ for(const f of layout.facilities){
  else if(f.kind==='rostrum')box(g,w,h,d,0,0,0,0);
  g.traverse(o=>{if(o instanceof THREE.Mesh){o.userData.facility=f.id;pickables.push(o);}});
 }
-for(const bridge of layout.connections){
- const g=new THREE.Group();g.name=bridge.id;g.userData.facility='25';volumes.add(g);
- box(g,bridge.xEnd-bridge.xStart,.18,bridge.width,(bridge.xStart+bridge.xEnd)/2,bridge.y,bridge.z,6);
- if(bridge.level>1)for(const zz of [-1,1])line([[bridge.xStart,bridge.y+1,bridge.z+zz*bridge.width/2],[bridge.xEnd,bridge.y+1,bridge.z+zz*bridge.width/2]],g,'#748e86');
- g.traverse(o=>{if(o instanceof THREE.Mesh){o.userData.facility='25';pickables.push(o);}});
-}
+const {structures,roofs}=buildRevisionParts(layout,{volumes,surfaces,box,line,rect,roots,pickables});
 const selection=new THREE.Box3Helper(new THREE.Box3(),0xbc8a45);selection.visible=false;scene.add(selection);
 let selected='',view='overview',fly=false,tour=false,labelsOn=true,planOnly=false;
 let theta=0,phi=0,pointerDown=false,pointerLast=[0,0],clickStart=[0,0],last=0;
@@ -206,20 +205,21 @@ function setView(name:string){
 }
 for(const btn of document.querySelectorAll<HTMLButtonElement>('[data-view]'))btn.onclick=()=>setView(btn.dataset.view!);
 el<HTMLInputElement>('labels-check').onchange=e=>labelsOn=(e.target as HTMLInputElement).checked;
+el<HTMLInputElement>('roofs-check').onchange=e=>roofs.visible=(e.target as HTMLInputElement).checked;
 el<HTMLInputElement>('grid-check').onchange=e=>grid.visible=(e.target as HTMLInputElement).checked;
 el<HTMLInputElement>('routes-check').onchange=e=>routeOverlay.visible=(e.target as HTMLInputElement).checked;
 el<HTMLInputElement>('footprints-check').onchange=e=>{planOnly=(e.target as HTMLInputElement).checked;volumes.visible=!planOnly;roots.get('12')!.visible=!planOnly;if(planOnly)setView('top');};
 function download(name:string,data:Blob|string){const u=typeof data==='string'?data:URL.createObjectURL(data),a=document.createElement('a');a.href=u;a.download=name;a.click();if(typeof data!=='string')setTimeout(()=>URL.revokeObjectURL(u),1000);}
-el('download-layout').onclick=()=>download('campus-layout-M1.0.0.json',new Blob([JSON.stringify(layout,null,2)],{type:'application/json'}));
+el('download-layout').onclick=()=>download(`campus-layout-${layout.version}.json`,new Blob([JSON.stringify(layout,null,2)],{type:'application/json'}));
 el('capture-btn').onclick=()=>{renderer.render(scene,active);download(`yali-M1.0-${view}.png`,renderer.domElement.toDataURL('image/png'));toast('已输出当前WebGL画布；尺寸仍为工作推定。');};
 el('fly-btn').onclick=()=>{
  if(fly){setView(view);return;}stopModes();fly=true;active=camera;controls.enabled=topControls.enabled=false;camera.up.set(0,1,0);
  const direction=camera.getWorldDirection(new THREE.Vector3());phi=Math.asin(direction.y);theta=Math.atan2(-direction.x,-direction.z);
  el('fly-btn').classList.add('active');el('help').textContent='WASD 平移 · Q/R 升降 · 拖动观察 · Shift 加速 · Esc 退出（无碰撞）';toast('自由校核相机：允许穿过体量检查，不是人物控制器。');
 };
-const tourPath=['gate','junction-gym','gym-entry','junction-gym','junction-sports','sports-front','junction-sports','junction-office','forecourt','main-front','east-front','east-mid','canteen-entry','east-mid','east-front','east-bottom','garden-entry','west-bottom','west-main','forecourt'];
+const tourPath=layout.navigation.tourPath;
 let tourEdge=0,tourT=0;
-el('tour-btn').onclick=()=>{if(tour){setView('overview');return;}stopModes();tour=true;active=camera;controls.enabled=topControls.enabled=false;camera.up.set(0,1,0);tourEdge=tourT=0;el('tour-btn').classList.add('active');el('help').textContent='沿连通图进行低空路线巡览 · 点击停止或 Esc · 不是物理角色';};
+el('tour-btn').onclick=()=>{if(tour){setView('overview');return;}stopModes();tour=true;active=camera;controls.enabled=topControls.enabled=false;camera.up.set(0,1,0);tourEdge=tourT=0;el('tour-btn').classList.add('active');el('help').textContent='沿连通图进行地面路线巡览 · 点击停止或 Esc · 不是物理角色';};
 renderer.domElement.addEventListener('pointerdown',e=>{pointerDown=true;pointerLast=clickStart=[e.clientX,e.clientY];});
 window.addEventListener('pointerup',e=>{
  if(pointerDown&&!fly&&!tour&&Math.hypot(e.clientX-clickStart[0],e.clientY-clickStart[1])<5){
@@ -247,7 +247,7 @@ function render(time:number){
   const a=layout.navigation.nodes[tourPath[tourEdge] as keyof typeof layout.navigation.nodes],b=layout.navigation.nodes[tourPath[(tourEdge+1)%tourPath.length] as keyof typeof layout.navigation.nodes];
   const len=Math.hypot(b[0]-a[0],b[2]-a[2]);tourT+=dt*12/Math.max(len,1);
   if(tourT>=1){tourT=0;tourEdge++;if(tourEdge>=tourPath.length-1){setView('overview');return;}}
-  camera.position.set(THREE.MathUtils.lerp(a[0],b[0],tourT),5.5,THREE.MathUtils.lerp(a[2],b[2],tourT));camera.lookAt(b[0],3,b[2]);
+  camera.position.set(THREE.MathUtils.lerp(a[0],b[0],tourT),layout.navigation.reviewHeight,THREE.MathUtils.lerp(a[2],b[2],tourT));camera.lookAt(b[0],layout.navigation.reviewHeight,b[2]);
  }else {if(controls.enabled)controls.update();if(topControls.enabled)topControls.update();}
  renderer.render(scene,active);
  for(const [id,label] of labels){
@@ -257,4 +257,20 @@ function render(time:number){
 }
 setView('overview');renderer.setAnimationLoop(render);
 const params=new URLSearchParams(location.search);if(params.has('view'))setView(params.get('view')!);if(params.get('clean')==='1')document.body.classList.add('clean');
-Object.assign(window,{__YALI_M10__:{version:layout.version,layout,report,setView,selectFacility,getState:()=>({view,fly,tour,selected,camera:active.position.toArray(),renderer:renderer.info.render,canvas:[renderer.domElement.width,renderer.domElement.height],labelsOn,planOnly,webgl:renderer.getContext().getParameter(renderer.getContext().VERSION)}),ready:true}});
+function probeSegment(a:number[],b:number[]){
+ scene.updateMatrixWorld(true);
+ const origin=new THREE.Vector3(...a as Vec3),end=new THREE.Vector3(...b as Vec3),distance=origin.distanceTo(end);
+ const ray=new THREE.Raycaster(origin,end.sub(origin).normalize(),.001,Math.max(.001,distance-.001));
+ const meshes:THREE.Object3D[]=[];scene.traverse(o=>{if(o instanceof THREE.Mesh&&o.geometry)meshes.push(o);});
+ return ray.intersectObjects(meshes,false).map(h=>({name:h.object.name,facility:h.object.userData.facility||null,distance:h.distance}));
+}
+function geometrySnapshot(){
+ scene.updateMatrixWorld(true);
+ const snapshot:any={};
+ for(const object of [structures,...structures.children,roofs,...roofs.children,...structures.children.filter(v=>v!==roofs)]){
+  const bb=new THREE.Box3().setFromObject(object);snapshot[object.name]={min:bb.min.toArray(),max:bb.max.toArray(),visible:object.visible};
+ }
+ return snapshot;
+}
+Object.assign(window,{__YALI_M10__:{version:layout.version,layout,report,setView,selectFacility,probeSegment,geometrySnapshot,
+ getState:()=>({view,fly,tour,selected,camera:active.position.toArray(),renderer:renderer.info.render,canvas:[renderer.domElement.width,renderer.domElement.height],labelsOn,planOnly,roofsVisible:roofs.visible,webgl:renderer.getContext().getParameter(renderer.getContext().VERSION)}),ready:true}});

@@ -1,0 +1,76 @@
+{
+  "version": "M1.0.1-R2",
+  "survey_verified": false,
+  "supersedes_in_M1": {
+    "H10": "H-R2-GYM",
+    "H12": "H-R2-WC"
+  },
+  "items": [
+    {
+      "id": "H-R2-GYM",
+      "facility": "03",
+      "old_footprint": [
+        30,
+        36
+      ],
+      "working_footprint": [
+        42,
+        42
+      ],
+      "height": 15,
+      "basis": "Alumnus larger-volume correction; selected package, not photogrammetry"
+    },
+    {
+      "id": "H-R2-LINK",
+      "facilities": [
+        "03",
+        "24"
+      ],
+      "working_model": "single-storey open roofed dogleg",
+      "basis": "A connected; form/width2.4/roof3.4 areH"
+    },
+    {
+      "id": "H-R2-WC",
+      "facility": "26",
+      "working_footprint": [
+        4.2,
+        3
+      ],
+      "height": 3,
+      "basis": "A smaller historical toilet at circled location; pixel-to-plan registrationH"
+    },
+    {
+      "id": "H-R2-ROOF",
+      "facility": "05",
+      "clear_height": 4.1,
+      "bay_length": 8,
+      "basis": "A covered track; structural schemeH"
+    },
+    {
+      "id": "H-R2-REAR",
+      "facilities": [
+        "08",
+        "23"
+      ],
+      "runway": [
+        92,
+        7
+      ],
+      "pit_center": [
+        108,
+        183.5
+      ],
+      "basis": "A rear-right location; coordinates/dimensionsH"
+    },
+    {
+      "id": "H-R2-PATHS",
+      "facilities": [
+        "02",
+        "15",
+        "18",
+        "25"
+      ],
+      "basis": "A route topology; widths, bending coordinates, threshold and underpass structureH"
+    }
+  ]
+}

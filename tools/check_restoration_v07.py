@@ -11,7 +11,8 @@ def main():
     c = {row['id']: row for row in constraints['constraints']}
     assert c['SP-SPORT-AUX-03']['storeys'] == 1
     assert c['SP-MUSIC-04']['storeys'] == 4
-    assert c['SP-MUSIC-04']['detached'] is True
+    assert c['SP-MUSIC-04']['independent_volume'] is True
+    assert c['SP-MUSIC-04']['connected_to'] == ['03']
     assert c['SP-TOILET-MAIN-01']['connects_every_floor'] is True
     assert c['SP-TOILET-MAIN-01']['doors_face'] == '15'
     assert c['SP-BASKETBALL-01']['grid'] == [3, 2]

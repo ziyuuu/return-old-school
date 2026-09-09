@@ -558,7 +558,7 @@
       ]
     ],
     "clearance": 0.6,
-    "defaultWidth": 3.0,
+    "defaultWidth": 3,
     "reviewHeight": 1.7,
     "headClearance": 2.2,
     "edgeWidths": {

@@ -1,4 +1,5 @@
 {
+  "version": "M1.0.1-R2",
   "units": "working metres",
   "crs": null,
   "surveyVerified": false,
@@ -66,47 +67,47 @@
     },
     {
       "id": "02",
-      "name": "侧门／家属区通路",
+      "name": "侧门／入口侧小路",
       "footprintXZ": [
         [
-          26,
-          -1
+          127,
+          183.4
         ],
         [
-          32,
-          -1
+          131,
+          183.4
         ],
         [
-          32,
-          3
+          131,
+          184.6
         ],
         [
-          26,
-          3
+          127,
+          184.6
         ]
       ],
       "positionThree": [
-        29,
+        129,
         0,
-        1
+        184
       ],
       "positionBlender": [
-        29,
-        -1,
+        129,
+        -184,
         0
       ],
       "dimensions": [
-        6,
-        0,
-        4
+        4,
+        3,
+        1.2
       ],
       "evidence": {
         "position": "H",
         "dimensions": "H",
         "floorCount": "H",
         "sourceIds": [],
-        "reference": "S03-014",
-        "unknowns": "通路去向与门卫区关系待核"
+        "reference": "U-R2-03批注",
+        "unknowns": "门尺寸和精确边界H，不沿用旧入口旁未核点"
       },
       "measuredPosition": null
     },
@@ -115,36 +116,36 @@
       "name": "旧体育馆",
       "footprintXZ": [
         [
-          -57,
-          28
+          -66,
+          24
         ],
         [
-          -27,
-          28
+          -24,
+          24
         ],
         [
-          -27,
-          64
+          -24,
+          66
         ],
         [
-          -57,
-          64
+          -66,
+          66
         ]
       ],
       "positionThree": [
-        -42,
+        -45,
         0,
-        46
+        45
       ],
       "positionBlender": [
-        -42,
-        -46,
+        -45,
+        -45,
         0
       ],
       "dimensions": [
-        30,
+        42,
         15,
-        36
+        42
       ],
       "evidence": {
         "position": "H",
@@ -153,8 +154,8 @@
         "sourceIds": [
           "H10"
         ],
-        "reference": "S03-017/018/019/020；S05-005；R01",
-        "unknowns": "本轮未发现新独立背照；背面与包络按H10保守推定"
+        "reference": "U-R2-04；S03-017/020",
+        "unknowns": "A更大且接音乐楼；42×42包络H，隐藏面仍H"
       },
       "measuredPosition": null
     },
@@ -208,7 +209,7 @@
     },
     {
       "id": "05",
-      "name": "相邻直跑道／风雨跑道",
+      "name": "风雨跑道／有顶棚直跑道",
       "footprintXZ": [
         [
           -72,
@@ -247,8 +248,8 @@
         "dimensions": "H",
         "floorCount": "H",
         "sourceIds": [],
-        "reference": "S03-022；R01；U12",
-        "unknowns": "项目绑定05；与08环道分开；长宽与遮棚分段H"
+        "reference": "U-R2-02；S03-022",
+        "unknowns": "棚构造、高度、柱距H；不能仍写露天"
       },
       "measuredPosition": null
     },
@@ -1013,33 +1014,33 @@
     },
     {
       "id": "23",
-      "name": "沙坑",
+      "name": "沙坑／操场后缘右端",
       "footprintXZ": [
         [
-          125.25,
-          196.5
+          105.25,
+          182
         ],
         [
-          130.75,
-          196.5
+          110.75,
+          182
         ],
         [
-          130.75,
-          199.5
+          110.75,
+          185
         ],
         [
-          125.25,
-          199.5
+          105.25,
+          185
         ]
       ],
       "positionThree": [
-        128,
+        108,
         0,
-        198
+        183.5
       ],
       "positionBlender": [
-        128,
-        -198,
+        108,
+        -183.5,
         0
       ],
       "dimensions": [
@@ -1054,14 +1055,14 @@
         "sourceIds": [
           "H08"
         ],
-        "reference": "S01；R02",
-        "unknowns": "国旗附近A；H08为5.5×3m工作值"
+        "reference": "U-R2-03批注",
+        "unknowns": "准确长宽H；原前坪右侧坐标已废弃"
       },
       "measuredPosition": null
     },
     {
       "id": "24",
-      "name": "音乐楼",
+      "name": "音乐楼／四层独立体块",
       "footprintXZ": [
         [
           -89,
@@ -1103,8 +1104,8 @@
           "H03",
           "H06"
         ],
-        "reference": "U12文字＋草图",
-        "unknowns": "四层独栋已确认；馆后且跑道旁；外包H06与层高H03"
+        "reference": "U-R2-04；校友草图",
+        "unknowns": "独立体块并非完全不连通；接驳形式层数H"
       },
       "measuredPosition": null
     },
@@ -1114,29 +1115,29 @@
       "footprintXZ": [
         [
           -13,
-          210.85000000000002
+          216.8
         ],
         [
           -7,
-          210.85000000000002
+          216.8
         ],
         [
           -7,
-          225.25
+          231.2
         ],
         [
           -13,
-          225.25
+          231.2
         ]
       ],
       "positionThree": [
         -10,
         0,
-        218.05
+        224
       ],
       "positionBlender": [
         -10,
-        -218.05,
+        -224,
         0
       ],
       "dimensions": [
@@ -1153,46 +1154,46 @@
           "H03",
           "H07"
         ],
-        "reference": "U12文字＋两张草图",
-        "unknowns": "每层相连且门朝主楼已确认；T形通道判读；尺寸H07"
+        "reference": "U-R2-01；校友草图",
+        "unknowns": "主楼侧墙中线/各层连桥确认；尺寸与构造H"
       },
       "measuredPosition": null
     },
     {
       "id": "26",
-      "name": "泳池左侧厕所",
+      "name": "池畔旧厕所／小体量",
       "footprintXZ": [
         [
-          -68,
-          73.75
+          -63.1,
+          78.5
         ],
         [
-          -62,
-          73.75
+          -58.9,
+          78.5
         ],
         [
-          -62,
-          78.25
+          -58.9,
+          81.5
         ],
         [
-          -68,
-          78.25
+          -63.1,
+          81.5
         ]
       ],
       "positionThree": [
-        -65,
+        -61,
         0,
-        76
+        80
       ],
       "positionBlender": [
-        -65,
-        -76,
+        -61,
+        -80,
         0
       ],
       "dimensions": [
-        6,
-        3.3,
-        4.5
+        4.2,
+        3,
+        3
       ],
       "evidence": {
         "position": "H",
@@ -1201,8 +1202,8 @@
         "sourceIds": [
           "H12"
         ],
-        "reference": "U12草图",
-        "unknowns": "位置确认；门向分间H12；不套用25T形"
+        "reference": "U-R2-04圈注",
+        "unknowns": "4.2×3工作占地H；不是圈内整栋玻璃建筑"
       },
       "measuredPosition": null
     },

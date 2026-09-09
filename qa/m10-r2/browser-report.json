@@ -1,0 +1,160 @@
+{
+  "version": "M1.0.1-R2",
+  "mode": "HTTP production + standalone file",
+  "hardware_fps_certified": false,
+  "checks": [
+    {
+      "name": "R2 boot and layout checks",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "actual mesh route clearance",
+      "passed": true,
+      "detail": {
+        "tested": 288,
+        "fail": []
+      }
+    },
+    {
+      "name": "actual midpoint / rear-door / gym-link openings",
+      "passed": true,
+      "detail": {
+        "count": 8,
+        "fail": []
+      }
+    },
+    {
+      "name": "real canopy roof present",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera overview",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera top",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera sports",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera teaching",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera courts-to-gym",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera canopy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera rear-field",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera library-route",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera underpass",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera side-path",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "roof toggle hides geometry",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "roof toggle preserves transforms",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "footprint mode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "unknown remains unlocated",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "export is current R2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "orbit works",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ground tour eye height",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "tour exits",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "free inspection works",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile canvas resize",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no JS or shader errors",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "standalone file boots",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "errors": [],
+  "screenshots": [
+    "overview.png",
+    "top.png",
+    "sports.png",
+    "teaching.png",
+    "courts-to-gym.png",
+    "canopy.png",
+    "rear-field.png",
+    "library-route.png",
+    "underpass.png",
+    "side-path.png",
+    "mobile.png"
+  ],
+  "browser": "151.0.7922.34",
+  "standalone_sha256": "1cd8cd52a1ef43c0902400bb465a59d49869a4784ef7c6c0693e55f3ac127d5f",
+  "success": true
+}

@@ -2,3 +2,6 @@
 
 /* Keep projected labels below all actionable overlays. */
 #inspector{z-index:10}.top-tools,.views,footer{z-index:11}
+
+/* R2: extra inspection cameras remain scrollable on every viewport. */
+.views{max-width:calc(100% - 48px);overflow-x:auto}.views button{flex-shrink:0}.mode-chip{pointer-events:none}.legend{display:none}

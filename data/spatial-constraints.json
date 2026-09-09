@@ -1,18 +1,102 @@
 {
-  "version": "0.7",
+  "version": "M1.0.1-R2",
   "updated": "2026-09-09",
   "coordinate_convention": "image-left/right refer to the retained masterplan; sketch reading orientation is local, not a geographic bearing",
-  "evidence_levels": {"alumni_confirmed":"explicit user testimony or sketch relation","photo_verified":"visible in an attributed photograph","reference_analogy":"public comparison, not Yali as-built","inferred_working_value":"authorized reversible hypothesis, not measurement","pending":"unknown identity, dimensions or permission"},
+  "evidence_levels": {
+    "alumni_confirmed": "explicit user testimony or sketch relation",
+    "photo_verified": "visible in an attributed photograph",
+    "reference_analogy": "public comparison, not Yali as-built",
+    "inferred_working_value": "authorized reversible hypothesis, not measurement",
+    "pending": "unknown identity, dimensions or permission"
+  },
   "constraints": [
-    {"id":"SP-TOILET-MAIN-01","status":"alumni_confirmed","statement":"Detached toilet 25 is image-left of main block 15; it connects at every corresponding floor; entrances face the teaching block.","connects_every_floor":true,"doors_face":"15","source":"U12 explicit text and sketches 5492/5493","floor_count":null},
-    {"id":"SP-BASKETBALL-01","status":"alumni_confirmed","statement":"Six basketball courts in a 3 by 2 arrangement.","grid":[3,2]},
-    {"id":"SP-BASKETBALL-TRACK-02","status":"alumni_confirmed","statement":"The court block and adjacent straight track are parallel and directly adjacent; no road or green buffer is inserted. The track lies between the sports auxiliary rooms and courts.","project_track_id":"05","distinct_from_athletics_ring":"08","id_binding_status":"editorial binding, not historic official name"},
-    {"id":"SP-SPORT-AUX-03","status":"alumni_confirmed","statement":"Sports auxiliary rooms are low single-storey buildings on image-left of the track; functions include exercise, PE office and equipment storage. Three functions do not establish three buildings or rooms.","storeys":1,"room_count":null},
-    {"id":"SP-MUSIC-04","status":"alumni_confirmed","statement":"Music building 24 is a detached four-storey building beside the track and behind the gymnasium; it is not merged with single-storey auxiliary rooms.","storeys":4,"detached":true,"floor_height_m":null},
-    {"id":"SP-POOL-TOILET-05","status":"alumni_confirmed","statement":"Pool toilet 26 is image-left of pool 04; the sketch places music, WC and pool at the same end of the three strips. Do not copy main-toilet interior layout into 26."},
-    {"id":"SP-ROSTRUM-06","status":"alumni_confirmed","statement":"Rostrum on image-left side of athletics field."},
-    {"id":"SP-SANDBOX-07","status":"alumni_confirmed","statement":"Sandpit near the flag area."},
-    {"id":"SP-GATE-STONE-08","status":"photo_verified","statement":"Natural school-name stone to the right of the gate in the reference street-facing photograph."}
+    {
+      "id": "SP-TOILET-MAIN-01",
+      "status": "alumni_confirmed",
+      "statement": "25 is image-left of15; every floor connects at facing-wall midpoints, doors face15. A ground path passes between the two blocks to library18.",
+      "connects_every_floor": true,
+      "doors_face": "15",
+      "source": "U-R2-01 / U-R2-03 and earlier sketches",
+      "floor_count": null,
+      "connection_alignment": "facing-wall-midpoint"
+    },
+    {
+      "id": "SP-BASKETBALL-01",
+      "status": "alumni_confirmed",
+      "statement": "Six basketball courts in a 3 by 2 arrangement.",
+      "grid": [
+        3,
+        2
+      ]
+    },
+    {
+      "id": "SP-BASKETBALL-TRACK-02",
+      "status": "alumni_confirmed",
+      "statement": "05 is a roofed straight track, parallel to and directly abutting06; between28 and06.",
+      "project_track_id": "05",
+      "distinct_from_athletics_ring": "08",
+      "id_binding_status": "editorial binding, not historic official name",
+      "covered": true
+    },
+    {
+      "id": "SP-SPORT-AUX-03",
+      "status": "alumni_confirmed",
+      "statement": "Sports auxiliary rooms are low single-storey buildings on image-left of the track; functions include exercise, PE office and equipment storage. Three functions do not establish three buildings or rooms.",
+      "storeys": 1,
+      "room_count": null
+    },
+    {
+      "id": "SP-MUSIC-04",
+      "status": "alumni_confirmed",
+      "statement": "24 is a distinct four-storey volume behind03 beside05, connected to03. Independent volume does not mean physically disconnected; not merged with28.",
+      "storeys": 4,
+      "detached": false,
+      "floor_height_m": null,
+      "independent_volume": true,
+      "connected_to": [
+        "03"
+      ]
+    },
+    {
+      "id": "SP-POOL-TOILET-05",
+      "status": "alumni_confirmed",
+      "statement": "26 small old toilet left of04 at the court-facing end of03/24, revised from U-R2-04 location testimony. Do not copy the circled later glass building or25 interior."
+    },
+    {
+      "id": "SP-ROSTRUM-06",
+      "status": "alumni_confirmed",
+      "statement": "Rostrum on image-left side of athletics field."
+    },
+    {
+      "id": "SP-SANDBOX-07",
+      "status": "alumni_confirmed",
+      "statement": "23 at the image-right end of the rear rubber straight08-REAR, on the field end toward15. U-R2-03 supersedes the former exact forecourt-right position."
+    },
+    {
+      "id": "SP-GATE-STONE-08",
+      "status": "photo_verified",
+      "statement": "Natural school-name stone to the right of the gate in the reference street-facing photograph."
+    },
+    {
+      "id": "SP-REAR-RUNWAY-R2",
+      "status": "alumni_confirmed",
+      "statement": "Rubber straight at08 rear edge toward15; exact dimensionsH."
+    },
+    {
+      "id": "SP-SIDE-PATH-R2",
+      "status": "alumni_confirmed",
+      "statement": "Entrance side branch runs along image-right side of08 to02; exact gate registrationH."
+    },
+    {
+      "id": "SP-LIBRARY-PATH-R2",
+      "status": "alumni_confirmed",
+      "statement": "Path between15/25 leads to18;15 rear door also joins18. Supersedes old south detour."
+    },
+    {
+      "id": "SP-GYM-MASS-R2",
+      "status": "alumni_confirmed",
+      "statement": "03 must be larger than old30x36 hypothesis and connect24;42x42 is selectedH, not measured."
+    }
   ],
   "metric_survey_completed": false,
   "sketch_registration": "Gym not drawn in sketch. Local group registration to the old plan remains an explicit hypothesis.",
