@@ -1,0 +1,61 @@
+name: Validate and publish project materials
+on:
+  push:
+    paths:
+      - 'tools/workspace-seed.json'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Restore versioned source snapshot
+        run: |
+          python - <<'PY'
+          import base64, hashlib, json, pathlib, zlib
+          envelope = json.loads(pathlib.Path('tools/workspace-seed.json').read_text())
+          raw = zlib.decompress(base64.b64decode(envelope['payload']))
+          assert hashlib.sha256(raw).hexdigest() == envelope['sha256']
+          files = json.loads(raw)
+          for name, text in files.items():
+              p = pathlib.Path(name)
+              assert not p.is_absolute() and '..' not in p.parts and '.git' not in p.parts
+              p.parent.mkdir(parents=True, exist_ok=True)
+              p.write_text(text, encoding='utf-8')
+          print('Restored', len(files), 'UTF-8 source files')
+          PY
+      - name: Install document and browser tools
+        run: |
+          python -m pip install playwright markdown weasyprint pymupdf
+          python -m playwright install --with-deps chromium
+          sudo apt-get update -qq
+          sudo apt-get install -y fonts-noto-cjk
+      - name: Test narrative and spatial constraints
+        run: node --test tests/*.test.cjs
+      - name: Render actual WebGL scenes and validate browser flow
+        run: python tools/capture.py
+      - name: Build review PDF from source documents
+        run: python tools/build_review.py
+      - name: Upload review evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: yali-v0.3-review
+          path: |
+            artifacts/
+            qa/
+      - name: Publish readable sources and rendered materials
+        run: |
+          git config user.name 'return-old-school materials bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md CHANGELOG.md docs data viewer src tests tools qa artifacts
+          git diff --cached --quiet || git commit -m 'docs: publish v0.3 spatial revision, dream narrative and tested WebGL materials'
+          git push origin HEAD:main
