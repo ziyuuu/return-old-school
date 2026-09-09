@@ -1,0 +1,15 @@
+import { readFileSync } from 'node:fs';
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { checkLayout, footprint, bounds, courtRects, toBlender, fromBlender } from '../../apps/campus/src/layout-core.mjs';
+const layout=JSON.parse(readFileSync(new URL('../../data/m10/campus-layout.json',import.meta.url),'utf8'));
+const report=checkLayout(layout);
+for(const row of report.results)test(row.id,()=>assert.equal(row.passed,true,row.detail));
+test('coordinate conversion roundtrips',()=>assert.deepEqual(fromBlender(toBlender([17,3.8,-11])),[17,3.8,-11]));
+test('null footprint stays unknown',()=>assert.equal(footprint(layout.facilities.find(f=>f.id==='22')),null));
+test('world footprint dimensions match H values',()=>{const f=layout.facilities.find(v=>v.id==='24'),b=bounds(f);assert.equal(b.maxX-b.minX,16);assert.equal(b.maxZ-b.minZ,12);});
+test('six distinct court rectangles in perimeter',()=>{const b=bounds(layout.facilities.find(f=>f.id==='06'));for(const c of courtRects(layout)){assert.ok(c.minX>b.minX&&c.maxX<b.maxX&&c.minZ>b.minZ&&c.maxZ<b.maxZ);}});
+test('regression: one metre gap fails',()=>{const l=structuredClone(layout);l.facilities.find(f=>f.id==='06').position[0]+=1;assert.equal(checkLayout(l).passed,false);});
+test('regression: missing floor bridge fails',()=>{const l=structuredClone(layout);l.connections.pop();assert.equal(checkLayout(l).passed,false);});
+test('regression: music gets one storey fails',()=>{const l=structuredClone(layout);l.facilities.find(f=>f.id==='24').floors=1;assert.equal(checkLayout(l).passed,false);});
+test('regression: office moved onto route fails',()=>{const l=structuredClone(layout);l.facilities.find(f=>f.id==='07').position[0]=0;assert.equal(checkLayout(l).results.find(r=>r.id==='EXTERIOR_ROUTES_CLEAR').passed,false);});

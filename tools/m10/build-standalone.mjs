@@ -1,0 +1,14 @@
+import { build } from '../../apps/campus/node_modules/esbuild/lib/main.js';
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+const root=fileURLToPath(new URL('../../',import.meta.url));
+const out=path.join(root,'artifacts/m10');mkdirSync(out,{recursive:true});
+const result=await build({entryPoints:[path.join(root,'apps/campus/src/main.ts')],bundle:true,format:'iife',target:'es2022',minify:true,write:false,outfile:'bundle.js',legalComments:'inline'});
+const js=result.outputFiles.find(f=>f.path.endsWith('.js')).text.replace(/<\/script/gi,'<\\/script');
+const css=result.outputFiles.find(f=>f.path.endsWith('.css')).text;
+let html=readFileSync(path.join(root,'apps/campus/index.html'),'utf8');
+html=html.replace('</head>',()=>`<style>${css}</style></head>`).replace('<script type="module" src="/src/main.ts"></script>',()=>`<script>${js}</script>`);
+writeFileSync(path.join(out,'Yali_M1_0_Viewer.html'),html);
+writeFileSync(path.join(out,'THIRD_PARTY_NOTICES.txt'),'Three.js r180 bundled under MIT license.\n\n'+readFileSync(path.join(root,'apps/campus/node_modules/three/LICENSE'),'utf8'));
+console.log('Standalone HTML:',Buffer.byteLength(html),'bytes. No runtime CDN/photographs/fonts.');

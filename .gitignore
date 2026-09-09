@@ -1,0 +1,6 @@
+node_modules/
+apps/campus/dist/
+artifacts/m10/
+__pycache__/
+.env
+.env.*
