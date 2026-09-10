@@ -25,10 +25,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Assert frozen R4 and integrate independent vertical layer
+      - name: Assert frozen R4 and integrate source-reviewed vertical layer
         run: |
           python tools/m11a/apply-stage.py
           python tools/m11a/refine-review.py
+          python tools/m11a/apply-source-findings.py
       - name: Locked runtime and frozen/new regressions
         run: |
           set -o pipefail
@@ -45,7 +46,7 @@ jobs:
           python -m pip install playwright==1.62.0
           python -m playwright install chromium
           sudo apt-get -o Acquire::Retries=3 install -y fonts-noto-cjk
-      - name: Verify real ground, roads, steps and all toilet floors
+      - name: Verify real ground, entrance slope, roads, steps and all toilet floors
         run: python tools/m11a/capture.py
       - name: Package verified terrain and study documents
         run: python tools/m11a/package.py
@@ -63,6 +64,6 @@ jobs:
         run: |
           git config user.name 'return-old-school validation bot'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add apps/campus/src/main.ts apps/campus/src/style.css apps/campus/src/terrain-scene.ts apps/campus/index.html tools/m11a/apply-stage.py data/m11a docs/m11a qa/m11a
-          git diff --cached --quiet || git commit -m 'build: retain reviewed M1.1-A terrain and actual near-field WebGL evidence'
+          git add apps/campus/src apps/campus/index.html tools/m11a tests/m11a data/m11a docs/m11a qa/m11a
+          git diff --cached --quiet || git commit -m 'build: retain source-reviewed M1.1-A entrance slope and actual WebGL terrain evidence'
           git push origin HEAD:main
