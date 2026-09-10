@@ -1,14 +1,6 @@
 name: Build and verify M1.1-A Patch02
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - 'apps/campus/**'
-      - 'data/m11a/patch02/**'
-      - 'tools/m11a/patch02/**'
-      - 'tests/m11a/patch02/**'
-      - '.github/patch02/**'
-      - '.github/workflows/m11a-build.yml'
 permissions:
   contents: write
 concurrency:
@@ -26,6 +18,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Refuse archival replay over Batch01
+        run: test ! -f apps/campus/src/batch01-core.mjs
       - name: Materialize auditable source once and verify frozen baseline
         run: python tools/m11a/patch02/materialize.py
       - name: Build pinned runtime and run old/new regressions
