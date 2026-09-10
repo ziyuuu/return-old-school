@@ -1,0 +1,245 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "id": "R2_AXIS_ALL_FOUR",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_ONLY_AUTHORIZED_FACILITIES",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_ONLY_AUTHORIZED_ROAD_NODES",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_EDGES_WIDTHS_UNCHANGED",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_NO_NEW_NODE_OR_SHORTCUT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_FIVE_LEVELS",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_CENTRAL_CORRIDORS",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_ROOM_ROWS_L1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_ROOM_ROWS_L2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_ROOM_ROWS_L3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_ROOM_ROWS_L4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_ROOM_ROWS_L5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_LIBRARY_ENTRY_ON_AXIS",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_TERRACE_HAS_FLOOR",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_TERRACE_OPEN_SKY",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_CORRIDOR_COVERED_ABOVE_L4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_NO_L5_REAR_SLAB",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_FUNCTIONAL_PROJECTION",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_BLANK_STAIR_BANDS",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_SIDE_PORCH",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_PAIRED_DATUM",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_FIVE_BRIDGES_AND_FULL_TOILET_SLABS",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_BRIDGE_ENDS",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2-L1-A_SUPPORT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2-L1-A_CLEAR",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2-L1-B_SUPPORT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2-L1-B_CLEAR",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2-L2-A_SUPPORT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2-L2-A_CLEAR",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2-L2-B_SUPPORT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2-L2-B_CLEAR",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2-L3-A_SUPPORT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2-L3-A_CLEAR",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2-L3-B_SUPPORT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2-L3-B_CLEAR",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2-L4-A_SUPPORT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2-L4-A_CLEAR",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2-L4-B_SUPPORT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2-L4-B_CLEAR",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2-L5-A_SUPPORT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2-L5-A_CLEAR",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2-L5-B_SUPPORT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2-L5-B_CLEAR",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_CLEAR_front",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_CLEAR_rear",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_CLEAR_underpass",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_CLEAR_side",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_IDS_UNIQUE",
+      "passed": true,
+      "detail": null
+    }
+  ]
+}

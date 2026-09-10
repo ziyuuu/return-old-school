@@ -1,0 +1,582 @@
+[
+  {
+    "path": "facilities.15.position",
+    "before": [
+      69,
+      0,
+      224
+    ],
+    "after": [
+      73,
+      0,
+      224
+    ],
+    "issue": 28
+  },
+  {
+    "path": "entrances.15-front",
+    "before": [
+      69,
+      0,
+      217
+    ],
+    "after": [
+      73,
+      0,
+      217
+    ],
+    "issue": 28
+  },
+  {
+    "path": "entrances.15-link",
+    "before": [
+      20,
+      0,
+      224
+    ],
+    "after": [
+      24,
+      0,
+      224
+    ],
+    "issue": 28
+  },
+  {
+    "path": "entrances.15-rear",
+    "before": [
+      69,
+      0,
+      231
+    ],
+    "after": [
+      73,
+      0,
+      231
+    ],
+    "issue": 28
+  },
+  {
+    "path": "entrances.15-east",
+    "before": [
+      118,
+      0,
+      224
+    ],
+    "after": [
+      122,
+      0,
+      224
+    ],
+    "issue": 28
+  },
+  {
+    "path": "thresholds.15-rear-threshold",
+    "before": {
+      "id": "15-rear-threshold",
+      "start": [
+        69,
+        0,
+        232.8
+      ],
+      "end": [
+        69,
+        0,
+        231
+      ],
+      "width": 2.8,
+      "evidence": "H门前短接，不穿越实心内部"
+    },
+    "after": {
+      "id": "15-rear-threshold",
+      "start": [
+        73,
+        0,
+        232.8
+      ],
+      "end": [
+        73,
+        0,
+        231
+      ],
+      "width": 2.8,
+      "evidence": "H门前短接，不穿越实心内部"
+    },
+    "issue": 28
+  },
+  {
+    "path": "thresholds.15-front-threshold",
+    "before": {
+      "id": "15-front-threshold",
+      "start": [
+        69,
+        0,
+        215.2
+      ],
+      "end": [
+        69,
+        0,
+        217
+      ],
+      "width": 2.4,
+      "evidence": "A黑线短路/H门前尺寸"
+    },
+    "after": {
+      "id": "15-front-threshold",
+      "start": [
+        73,
+        0,
+        215.2
+      ],
+      "end": [
+        73,
+        0,
+        217
+      ],
+      "width": 2.4,
+      "evidence": "A黑线短路/H门前尺寸"
+    },
+    "issue": 28
+  },
+  {
+    "path": "thresholds.15-east-threshold",
+    "before": {
+      "id": "15-east-threshold",
+      "start": [
+        119.8,
+        0,
+        224
+      ],
+      "end": [
+        118,
+        0,
+        224
+      ],
+      "width": 2.4,
+      "evidence": "A黑线短路/H门前尺寸"
+    },
+    "after": {
+      "id": "15-east-threshold",
+      "start": [
+        123.8,
+        0,
+        224
+      ],
+      "end": [
+        122,
+        0,
+        224
+      ],
+      "width": 2.4,
+      "evidence": "A黑线短路/H门前尺寸"
+    },
+    "issue": 28
+  },
+  {
+    "path": "facilities.18.position",
+    "before": [
+      75,
+      0,
+      253
+    ],
+    "after": [
+      73,
+      0,
+      253
+    ],
+    "issue": 28
+  },
+  {
+    "path": "entrances.18-front",
+    "before": [
+      75,
+      0,
+      245.5
+    ],
+    "after": [
+      73,
+      0,
+      245.5
+    ],
+    "issue": 28
+  },
+  {
+    "path": "thresholds.18-front-threshold",
+    "before": {
+      "id": "18-front-threshold",
+      "start": [
+        75,
+        0,
+        243.6
+      ],
+      "end": [
+        75,
+        0,
+        245.5
+      ],
+      "width": 2.8,
+      "evidence": "H门前短接，不穿越实心内部"
+    },
+    "after": {
+      "id": "18-front-threshold",
+      "start": [
+        73,
+        0,
+        243.6
+      ],
+      "end": [
+        73,
+        0,
+        245.5
+      ],
+      "width": 2.8,
+      "evidence": "H门前短接，不穿越实心内部"
+    },
+    "issue": 28
+  },
+  {
+    "path": "terrain.stairs.ST-LIBRARY",
+    "before": {
+      "id": "ST-LIBRARY",
+      "facilityId": "18",
+      "start": [
+        75,
+        243.6
+      ],
+      "end": [
+        75,
+        245.5
+      ],
+      "width": 2.8,
+      "steps": 3,
+      "rise": 0.45,
+      "evidence": [
+        "S03-049"
+      ],
+      "basis": "P低台阶；H级数/尺寸"
+    },
+    "after": {
+      "id": "ST-LIBRARY",
+      "facilityId": "18",
+      "start": [
+        73,
+        243.6
+      ],
+      "end": [
+        73,
+        245.5
+      ],
+      "width": 2.8,
+      "steps": 3,
+      "rise": 0.45,
+      "evidence": [
+        "S03-049"
+      ],
+      "basis": "P低台阶；H级数/尺寸"
+    },
+    "issue": 28
+  },
+  {
+    "path": "navigation.nodes.main-front",
+    "before": [
+      69,
+      0,
+      211.5
+    ],
+    "after": [
+      73,
+      0,
+      211.5
+    ],
+    "issue": 28
+  },
+  {
+    "path": "navigation.nodes.forecourt-15",
+    "before": [
+      69,
+      0,
+      204
+    ],
+    "after": [
+      73,
+      0,
+      204
+    ],
+    "issue": 28
+  },
+  {
+    "path": "navigation.nodes.teaching-entry",
+    "before": [
+      69,
+      0,
+      215.2
+    ],
+    "after": [
+      73,
+      0,
+      215.2
+    ],
+    "issue": 28
+  },
+  {
+    "path": "navigation.nodes.main-rear",
+    "before": [
+      69,
+      0,
+      232.8
+    ],
+    "after": [
+      73,
+      0,
+      232.8
+    ],
+    "issue": 28
+  },
+  {
+    "path": "navigation.nodes.rear-junction",
+    "before": [
+      69,
+      0,
+      239
+    ],
+    "after": [
+      73,
+      0,
+      239
+    ],
+    "issue": 28
+  },
+  {
+    "path": "navigation.nodes.main-east",
+    "before": [
+      119.8,
+      0,
+      224
+    ],
+    "after": [
+      123.8,
+      0,
+      224
+    ],
+    "issue": 28
+  },
+  {
+    "path": "navigation.nodes.library-entry",
+    "before": [
+      75,
+      0,
+      243.6
+    ],
+    "after": [
+      73,
+      0,
+      243.6
+    ],
+    "issue": 28
+  },
+  {
+    "path": "facilities.15.floors",
+    "before": 4,
+    "after": 5,
+    "issue": 28
+  },
+  {
+    "path": "facilities.25.floors",
+    "before": 4,
+    "after": 5,
+    "issue": 28
+  },
+  {
+    "path": "connections",
+    "before": [
+      {
+        "id": "15-25-L01",
+        "from": "15",
+        "to": "25",
+        "level": 1,
+        "y": 0,
+        "width": 2.1,
+        "xStart": -7,
+        "xEnd": 20,
+        "z": 224,
+        "kind": "floor-bridge",
+        "evidence": "A逐层连接/中部接前廊；H尺寸与首层平接、上层净空",
+        "alignment": "facing-wall-midpoint"
+      },
+      {
+        "id": "15-25-L02",
+        "from": "15",
+        "to": "25",
+        "level": 2,
+        "y": 3.8,
+        "width": 2.1,
+        "xStart": -7,
+        "xEnd": 20,
+        "z": 224,
+        "kind": "floor-bridge",
+        "evidence": "A逐层连接/中部接前廊；H尺寸与首层平接、上层净空",
+        "alignment": "facing-wall-midpoint"
+      },
+      {
+        "id": "15-25-L03",
+        "from": "15",
+        "to": "25",
+        "level": 3,
+        "y": 7.6,
+        "width": 2.1,
+        "xStart": -7,
+        "xEnd": 20,
+        "z": 224,
+        "kind": "floor-bridge",
+        "evidence": "A逐层连接/中部接前廊；H尺寸与首层平接、上层净空",
+        "alignment": "facing-wall-midpoint"
+      },
+      {
+        "id": "15-25-L04",
+        "from": "15",
+        "to": "25",
+        "level": 4,
+        "y": 11.4,
+        "width": 2.1,
+        "xStart": -7,
+        "xEnd": 20,
+        "z": 224,
+        "kind": "floor-bridge",
+        "evidence": "A逐层连接/中部接前廊；H尺寸与首层平接、上层净空",
+        "alignment": "facing-wall-midpoint"
+      }
+    ],
+    "after": [
+      {
+        "id": "15-25-L01",
+        "from": "15",
+        "to": "25",
+        "level": 1,
+        "y": 0,
+        "width": 2.1,
+        "xStart": -7,
+        "xEnd": 24,
+        "z": 224,
+        "kind": "floor-bridge",
+        "evidence": "A every-floor relation; H R2 endpoint/level extension, issue28",
+        "alignment": "facing-wall-midpoint"
+      },
+      {
+        "id": "15-25-L02",
+        "from": "15",
+        "to": "25",
+        "level": 2,
+        "y": 3.8,
+        "width": 2.1,
+        "xStart": -7,
+        "xEnd": 24,
+        "z": 224,
+        "kind": "floor-bridge",
+        "evidence": "A every-floor relation; H R2 endpoint/level extension, issue28",
+        "alignment": "facing-wall-midpoint"
+      },
+      {
+        "id": "15-25-L03",
+        "from": "15",
+        "to": "25",
+        "level": 3,
+        "y": 7.6,
+        "width": 2.1,
+        "xStart": -7,
+        "xEnd": 24,
+        "z": 224,
+        "kind": "floor-bridge",
+        "evidence": "A every-floor relation; H R2 endpoint/level extension, issue28",
+        "alignment": "facing-wall-midpoint"
+      },
+      {
+        "id": "15-25-L04",
+        "from": "15",
+        "to": "25",
+        "level": 4,
+        "y": 11.399999999999999,
+        "width": 2.1,
+        "xStart": -7,
+        "xEnd": 24,
+        "z": 224,
+        "kind": "floor-bridge",
+        "evidence": "A every-floor relation; H R2 endpoint/level extension, issue28",
+        "alignment": "facing-wall-midpoint"
+      },
+      {
+        "id": "15-25-L05",
+        "from": "15",
+        "to": "25",
+        "level": 5,
+        "y": 15.2,
+        "width": 2.1,
+        "xStart": -7,
+        "xEnd": 24,
+        "z": 224,
+        "kind": "floor-bridge",
+        "evidence": "A every-floor relation; H R2 endpoint/level extension, issue28",
+        "alignment": "facing-wall-midpoint"
+      }
+    ],
+    "issue": 28
+  },
+  {
+    "path": "entrances.15-front.projection",
+    "before": [
+      73,
+      0,
+      217
+    ],
+    "after": [
+      73,
+      0,
+      215.2
+    ],
+    "issue": 28
+  },
+  {
+    "path": "thresholds.15-front-threshold.projection",
+    "before": {
+      "id": "15-front-threshold",
+      "start": [
+        73,
+        0,
+        215.2
+      ],
+      "end": [
+        73,
+        0,
+        217
+      ],
+      "width": 2.4,
+      "evidence": "A黑线短路/H门前尺寸"
+    },
+    "after": {
+      "id": "15-front-threshold",
+      "start": [
+        73,
+        0,
+        215.2
+      ],
+      "end": [
+        73,
+        0,
+        215.29999999999998
+      ],
+      "width": 2.4,
+      "evidence": "A黑线短路/H门前尺寸"
+    },
+    "issue": 28
+  },
+  {
+    "path": "site.flag.center",
+    "before": [
+      64,
+      192.5
+    ],
+    "after": [
+      73,
+      192.5
+    ],
+    "issue": 28
+  }
+]

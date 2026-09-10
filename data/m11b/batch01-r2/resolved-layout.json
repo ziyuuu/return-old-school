@@ -1,0 +1,3424 @@
+{
+  "version": "M1.1-A.Patch02",
+  "baselineVersion": "M1.0.3-R4",
+  "units": "m",
+  "stage": "coordinate-and-footprint-review",
+  "m0Status": "closed-with-authorized-assumptions-not-surveyed",
+  "m1Status": "active",
+  "origin": {
+    "object": "01",
+    "description": "主校门通道中心地面",
+    "position": [
+      0,
+      0,
+      0
+    ]
+  },
+  "axes": {
+    "x": "+X = 原总图图面右",
+    "y": "+Y = 向上",
+    "z": "+Z = 从校门向校内 / 原总图向下",
+    "geographicRegistration": "未做大地坐标配准；原图北向说明只是来源，不构成GNSS坐标"
+  },
+  "metricPolicy": {
+    "worldUnitMeters": 1,
+    "surveyVerified": false,
+    "globalPixelScaleUsed": false,
+    "description": "各楼尺寸单独采用M0 H参数或M1显式工作包络；轴距独立选取以满足原图顺序与校友拓扑，不对全图套m/px。所有世界坐标均H，不代表测量。"
+  },
+  "source": {
+    "commit": "3e3f337b304a3821b4d91b1f1a7bb33880c808d5",
+    "masterplan": "v0.7 原底图增量修订",
+    "originalSha256": "a29b9dca5cfd5cce4b38ddeef752989c2f8b38280c8ab04592293cff97b98f08",
+    "diagramCoordinateNote": "sourceDiagram.rect is an uncalibrated 1447x1024 layout rectangle, not converted to metric coordinates."
+  },
+  "ground": {
+    "bounds": [
+      -102,
+      -18,
+      204,
+      291
+    ],
+    "elevationMode": "H-flat-datum",
+    "description": "全校高差暂未标定，本阶段临时平基准；不能视为校园真实无高差"
+  },
+  "sports": {
+    "courtsId": "06",
+    "trackId": "05",
+    "auxId": "28",
+    "musicId": "24",
+    "poolId": "04",
+    "toiletId": "26",
+    "rows": 2,
+    "columns": 3,
+    "courtWidth": 15,
+    "courtLength": 28,
+    "gap": 2,
+    "margin": 3,
+    "lineDesign": "只画外矩形和中线，未复原2006年三分线",
+    "evidence": "3x2/共边/平行/夹在中间A；米制尺寸H09与M1工作值",
+    "canopy": {
+      "enabled": true,
+      "clearHeight": 4.1,
+      "roofThickness": 0.24,
+      "postWidth": 0.22,
+      "bayLength": 8,
+      "evidence": "A有棚；H棚型高度柱距；不推为上方整栋训练楼"
+    },
+    "rearTrack": {
+      "id": "08-REAR",
+      "parentId": "08",
+      "kind": "rubber-straight",
+      "position": [
+        73,
+        0,
+        183.5
+      ],
+      "size": [
+        92,
+        0.1,
+        7
+      ],
+      "lanes": 4,
+      "evidence": "A操场后侧橡胶跑道/23位置；H精确尺寸"
+    }
+  },
+  "connections": [
+    {
+      "id": "15-25-L01",
+      "from": "15",
+      "to": "25",
+      "level": 1,
+      "y": 0,
+      "width": 2.1,
+      "xStart": -7,
+      "xEnd": 24,
+      "z": 224,
+      "kind": "floor-bridge",
+      "evidence": "A every-floor relation; H R2 endpoint/level extension, issue28",
+      "alignment": "facing-wall-midpoint"
+    },
+    {
+      "id": "15-25-L02",
+      "from": "15",
+      "to": "25",
+      "level": 2,
+      "y": 3.8,
+      "width": 2.1,
+      "xStart": -7,
+      "xEnd": 24,
+      "z": 224,
+      "kind": "floor-bridge",
+      "evidence": "A every-floor relation; H R2 endpoint/level extension, issue28",
+      "alignment": "facing-wall-midpoint"
+    },
+    {
+      "id": "15-25-L03",
+      "from": "15",
+      "to": "25",
+      "level": 3,
+      "y": 7.6,
+      "width": 2.1,
+      "xStart": -7,
+      "xEnd": 24,
+      "z": 224,
+      "kind": "floor-bridge",
+      "evidence": "A every-floor relation; H R2 endpoint/level extension, issue28",
+      "alignment": "facing-wall-midpoint"
+    },
+    {
+      "id": "15-25-L04",
+      "from": "15",
+      "to": "25",
+      "level": 4,
+      "y": 11.399999999999999,
+      "width": 2.1,
+      "xStart": -7,
+      "xEnd": 24,
+      "z": 224,
+      "kind": "floor-bridge",
+      "evidence": "A every-floor relation; H R2 endpoint/level extension, issue28",
+      "alignment": "facing-wall-midpoint"
+    },
+    {
+      "id": "15-25-L05",
+      "from": "15",
+      "to": "25",
+      "level": 5,
+      "y": 15.2,
+      "width": 2.1,
+      "xStart": -7,
+      "xEnd": 24,
+      "z": 224,
+      "kind": "floor-bridge",
+      "evidence": "A every-floor relation; H R2 endpoint/level extension, issue28",
+      "alignment": "facing-wall-midpoint"
+    }
+  ],
+  "entrances": [
+    {
+      "id": "15-front",
+      "facilityId": "15",
+      "facing": [
+        0,
+        0,
+        -1
+      ],
+      "position": [
+        73,
+        0,
+        215.2
+      ],
+      "status": "H"
+    },
+    {
+      "id": "15-link",
+      "facilityId": "15",
+      "facing": [
+        -1,
+        0,
+        0
+      ],
+      "position": [
+        24,
+        0,
+        224
+      ],
+      "status": "A中部接入/H坐标"
+    },
+    {
+      "id": "15-rear",
+      "facilityId": "15",
+      "facing": [
+        0,
+        0,
+        1
+      ],
+      "position": [
+        73,
+        0,
+        231
+      ],
+      "status": "A后门通18/H洞口"
+    },
+    {
+      "id": "25-link",
+      "facilityId": "25",
+      "facing": [
+        1,
+        0,
+        0
+      ],
+      "position": [
+        -7,
+        0,
+        224
+      ],
+      "status": "A桥接前廊中部/H坐标；不是男女厕门",
+      "kind": "gallery-arrival"
+    },
+    {
+      "id": "03-front",
+      "facilityId": "03",
+      "facing": [
+        1,
+        0,
+        0
+      ],
+      "position": [
+        -24,
+        0,
+        45
+      ],
+      "status": "A朝主路/P前坪/H门位及尺寸",
+      "width": 6.8
+    },
+    {
+      "id": "03-music",
+      "facilityId": "03",
+      "facing": [
+        0,
+        0,
+        1
+      ],
+      "position": [
+        -60,
+        0,
+        66
+      ],
+      "status": "A贴体/H共享面首层开口"
+    },
+    {
+      "id": "24-gym",
+      "facilityId": "24",
+      "facing": [
+        0,
+        0,
+        -1
+      ],
+      "position": [
+        -60,
+        0,
+        66
+      ],
+      "status": "A贴体/H共享面首层开口"
+    },
+    {
+      "id": "18-front",
+      "facilityId": "18",
+      "facing": [
+        0,
+        0,
+        -1
+      ],
+      "position": [
+        73,
+        0,
+        245.5
+      ],
+      "status": "A与主楼后门联通/H门位"
+    },
+    {
+      "id": "24-front",
+      "facilityId": "24",
+      "position": [
+        -68,
+        0,
+        78
+      ],
+      "facing": [
+        0,
+        0,
+        1
+      ],
+      "status": "H球场侧入口，避开26"
+    },
+    {
+      "id": "17-front",
+      "facilityId": "17",
+      "position": [
+        129,
+        0,
+        249
+      ],
+      "facing": [
+        0,
+        0,
+        -1
+      ],
+      "status": "A道路直达正门/H正门面与尺寸"
+    },
+    {
+      "id": "16-east",
+      "facilityId": "16",
+      "position": [
+        -29,
+        0,
+        202
+      ],
+      "facing": [
+        1,
+        0,
+        0
+      ],
+      "width": 2.4,
+      "height": 2.7,
+      "status": "A黑线接路/H洞口与未确认楼用途"
+    },
+    {
+      "id": "15-east",
+      "facilityId": "15",
+      "position": [
+        122,
+        0,
+        224
+      ],
+      "facing": [
+        1,
+        0,
+        0
+      ],
+      "width": 2.4,
+      "height": 2.7,
+      "status": "A黑线接路/H洞口与未确认楼用途"
+    },
+    {
+      "id": "21-west",
+      "facilityId": "21",
+      "position": [
+        145,
+        0,
+        224
+      ],
+      "facing": [
+        -1,
+        0,
+        0
+      ],
+      "width": 2.4,
+      "height": 2.7,
+      "status": "A黑线接路/H洞口与未确认楼用途"
+    },
+    {
+      "id": "25-A-L01",
+      "facilityId": "25",
+      "level": 1,
+      "kind": "toilet-door",
+      "position": [
+        -9.2,
+        0,
+        218.9
+      ],
+      "facing": [
+        1,
+        0,
+        0
+      ],
+      "width": 1.4,
+      "height": 2.4,
+      "status": "A两端门朝教学楼/H精确坐标；A/B不是男女方位鉴定"
+    },
+    {
+      "id": "25-B-L01",
+      "facilityId": "25",
+      "level": 1,
+      "kind": "toilet-door",
+      "position": [
+        -9.2,
+        0,
+        229.1
+      ],
+      "facing": [
+        1,
+        0,
+        0
+      ],
+      "width": 1.4,
+      "height": 2.4,
+      "status": "A两端门朝教学楼/H精确坐标；A/B不是男女方位鉴定"
+    },
+    {
+      "id": "25-A-L02",
+      "facilityId": "25",
+      "level": 2,
+      "kind": "toilet-door",
+      "position": [
+        -9.2,
+        3.8,
+        218.9
+      ],
+      "facing": [
+        1,
+        0,
+        0
+      ],
+      "width": 1.4,
+      "height": 2.4,
+      "status": "A两端门朝教学楼/H精确坐标；A/B不是男女方位鉴定"
+    },
+    {
+      "id": "25-B-L02",
+      "facilityId": "25",
+      "level": 2,
+      "kind": "toilet-door",
+      "position": [
+        -9.2,
+        3.8,
+        229.1
+      ],
+      "facing": [
+        1,
+        0,
+        0
+      ],
+      "width": 1.4,
+      "height": 2.4,
+      "status": "A两端门朝教学楼/H精确坐标；A/B不是男女方位鉴定"
+    },
+    {
+      "id": "25-A-L03",
+      "facilityId": "25",
+      "level": 3,
+      "kind": "toilet-door",
+      "position": [
+        -9.2,
+        7.6,
+        218.9
+      ],
+      "facing": [
+        1,
+        0,
+        0
+      ],
+      "width": 1.4,
+      "height": 2.4,
+      "status": "A两端门朝教学楼/H精确坐标；A/B不是男女方位鉴定"
+    },
+    {
+      "id": "25-B-L03",
+      "facilityId": "25",
+      "level": 3,
+      "kind": "toilet-door",
+      "position": [
+        -9.2,
+        7.6,
+        229.1
+      ],
+      "facing": [
+        1,
+        0,
+        0
+      ],
+      "width": 1.4,
+      "height": 2.4,
+      "status": "A两端门朝教学楼/H精确坐标；A/B不是男女方位鉴定"
+    },
+    {
+      "id": "25-A-L04",
+      "facilityId": "25",
+      "level": 4,
+      "kind": "toilet-door",
+      "position": [
+        -9.2,
+        11.399999999999999,
+        218.9
+      ],
+      "facing": [
+        1,
+        0,
+        0
+      ],
+      "width": 1.4,
+      "height": 2.4,
+      "status": "A两端门朝教学楼/H精确坐标；A/B不是男女方位鉴定"
+    },
+    {
+      "id": "25-B-L04",
+      "facilityId": "25",
+      "level": 4,
+      "kind": "toilet-door",
+      "position": [
+        -9.2,
+        11.399999999999999,
+        229.1
+      ],
+      "facing": [
+        1,
+        0,
+        0
+      ],
+      "width": 1.4,
+      "height": 2.4,
+      "status": "A两端门朝教学楼/H精确坐标；A/B不是男女方位鉴定"
+    },
+    {
+      "id": "25-A-L05",
+      "facilityId": "25",
+      "level": 5,
+      "kind": "toilet-door",
+      "position": [
+        -9.2,
+        15.2,
+        218.9
+      ],
+      "facing": [
+        1,
+        0,
+        0
+      ],
+      "width": 1.4,
+      "height": 2.4,
+      "status": "A两端门朝教学楼/H精确坐标；A/B不是男女方位鉴定"
+    },
+    {
+      "id": "25-B-L05",
+      "facilityId": "25",
+      "level": 5,
+      "kind": "toilet-door",
+      "position": [
+        -9.2,
+        15.2,
+        229.1
+      ],
+      "facing": [
+        1,
+        0,
+        0
+      ],
+      "width": 1.4,
+      "height": 2.4,
+      "status": "A两端门朝教学楼/H精确坐标；A/B不是男女方位鉴定"
+    }
+  ],
+  "navigation": {
+    "kind": "User-corrected physical paving + explicit H endpoints; not survey",
+    "nodes": {
+      "gate": [
+        0,
+        0,
+        0
+      ],
+      "junction-gym": [
+        0,
+        0,
+        22
+      ],
+      "gym-entry": [
+        -20.5,
+        0,
+        45
+      ],
+      "junction-sports": [
+        0,
+        0,
+        86
+      ],
+      "sports-front": [
+        -37.5,
+        0,
+        86
+      ],
+      "music-entry": [
+        -68,
+        0,
+        80.2
+      ],
+      "junction-office": [
+        0,
+        0,
+        158
+      ],
+      "office-entry": [
+        -45,
+        0,
+        159.5
+      ],
+      "forecourt": [
+        0,
+        0,
+        208
+      ],
+      "main-front": [
+        73,
+        0,
+        211.5
+      ],
+      "east-front": [
+        129,
+        0,
+        208
+      ],
+      "canteen-entry": [
+        142,
+        0,
+        152
+      ],
+      "science-entry": [
+        144,
+        0,
+        199
+      ],
+      "east-mid": [
+        139,
+        0,
+        181
+      ],
+      "east-bottom": [
+        129,
+        0,
+        239
+      ],
+      "longya-entry": [
+        129,
+        0,
+        246.8
+      ],
+      "museum-entry": [
+        -27.2,
+        0,
+        202
+      ],
+      "pool-entry": [
+        -20,
+        0,
+        84.5
+      ],
+      "side-branch": [
+        23,
+        0,
+        22
+      ],
+      "side-front-turn": [
+        125,
+        0,
+        32
+      ],
+      "side-upper": [
+        129,
+        0,
+        40
+      ],
+      "side-mid": [
+        129,
+        0,
+        120
+      ],
+      "side-gate": [
+        17,
+        0,
+        1
+      ],
+      "gap-entry": [
+        6.5,
+        0,
+        211.5
+      ],
+      "gap-north": [
+        6.5,
+        0,
+        216
+      ],
+      "gap-cross": [
+        6.5,
+        0,
+        224
+      ],
+      "gap-south": [
+        6.5,
+        0,
+        238
+      ],
+      "rear-west": [
+        30,
+        0,
+        239
+      ],
+      "rear-junction": [
+        73,
+        0,
+        239
+      ],
+      "main-rear": [
+        73,
+        0,
+        232.8
+      ],
+      "library-entry": [
+        73,
+        0,
+        243.6
+      ],
+      "side-entry": [
+        17,
+        0,
+        16
+      ],
+      "side-lower": [
+        129,
+        0,
+        184
+      ],
+      "music-approach": [
+        -68,
+        0,
+        84
+      ],
+      "junction-museum": [
+        0,
+        0,
+        202
+      ],
+      "forecourt-15": [
+        73,
+        0,
+        204
+      ],
+      "teaching-entry": [
+        73,
+        0,
+        215.2
+      ],
+      "east-cross": [
+        129,
+        0,
+        224
+      ],
+      "main-east": [
+        123.8,
+        0,
+        224
+      ],
+      "info-west": [
+        143.2,
+        0,
+        224
+      ],
+      "gym-loop-north": [
+        -45,
+        0,
+        21.8
+      ],
+      "gym-loop-west-north": [
+        -76,
+        0,
+        21.8
+      ],
+      "gym-loop-west-south": [
+        -76,
+        0,
+        84
+      ],
+      "gym-main-junction": [
+        0,
+        0,
+        45
+      ],
+      "gym-forecourt": [
+        -11,
+        0,
+        45
+      ]
+    },
+    "edges": [
+      [
+        "gate",
+        "junction-gym"
+      ],
+      [
+        "junction-sports",
+        "sports-front"
+      ],
+      [
+        "sports-front",
+        "pool-entry"
+      ],
+      [
+        "junction-sports",
+        "junction-office"
+      ],
+      [
+        "junction-office",
+        "office-entry"
+      ],
+      [
+        "forecourt",
+        "main-front"
+      ],
+      [
+        "main-front",
+        "east-front"
+      ],
+      [
+        "east-front",
+        "science-entry"
+      ],
+      [
+        "east-front",
+        "east-mid"
+      ],
+      [
+        "east-mid",
+        "canteen-entry"
+      ],
+      [
+        "east-bottom",
+        "longya-entry"
+      ],
+      [
+        "side-branch",
+        "side-front-turn"
+      ],
+      [
+        "side-front-turn",
+        "side-upper"
+      ],
+      [
+        "side-upper",
+        "side-mid"
+      ],
+      [
+        "side-mid",
+        "side-lower"
+      ],
+      [
+        "side-lower",
+        "east-front"
+      ],
+      [
+        "forecourt",
+        "gap-entry"
+      ],
+      [
+        "gap-entry",
+        "gap-north"
+      ],
+      [
+        "gap-north",
+        "gap-cross"
+      ],
+      [
+        "gap-cross",
+        "gap-south"
+      ],
+      [
+        "gap-south",
+        "rear-west"
+      ],
+      [
+        "rear-west",
+        "rear-junction"
+      ],
+      [
+        "rear-junction",
+        "library-entry"
+      ],
+      [
+        "rear-junction",
+        "main-rear"
+      ],
+      [
+        "side-gate",
+        "side-entry"
+      ],
+      [
+        "side-entry",
+        "side-branch"
+      ],
+      [
+        "sports-front",
+        "music-approach"
+      ],
+      [
+        "music-approach",
+        "music-entry"
+      ],
+      [
+        "junction-office",
+        "junction-museum"
+      ],
+      [
+        "junction-museum",
+        "forecourt"
+      ],
+      [
+        "junction-museum",
+        "museum-entry"
+      ],
+      [
+        "forecourt-15",
+        "main-front"
+      ],
+      [
+        "main-front",
+        "teaching-entry"
+      ],
+      [
+        "east-front",
+        "east-cross"
+      ],
+      [
+        "east-cross",
+        "east-bottom"
+      ],
+      [
+        "main-east",
+        "east-cross"
+      ],
+      [
+        "east-cross",
+        "info-west"
+      ],
+      [
+        "junction-gym",
+        "gym-loop-north"
+      ],
+      [
+        "gym-loop-north",
+        "gym-loop-west-north"
+      ],
+      [
+        "gym-loop-west-north",
+        "gym-loop-west-south"
+      ],
+      [
+        "gym-loop-west-south",
+        "music-approach"
+      ],
+      [
+        "junction-gym",
+        "gym-main-junction"
+      ],
+      [
+        "gym-main-junction",
+        "junction-sports"
+      ],
+      [
+        "gym-main-junction",
+        "gym-forecourt"
+      ],
+      [
+        "gym-forecourt",
+        "gym-entry"
+      ]
+    ],
+    "clearance": 0.6,
+    "defaultWidth": 3,
+    "reviewHeight": 1.7,
+    "headClearance": 2.2,
+    "edgeWidths": {
+      "side-branch|side-front-turn": 2.4,
+      "side-front-turn|side-upper": 2.4,
+      "side-upper|side-mid": 2.4,
+      "side-mid|side-lower": 2.4,
+      "side-lower|east-front": 2.4,
+      "rear-junction|library-entry": 2.4,
+      "rear-junction|main-rear": 2.4,
+      "side-gate|side-entry": 2.4,
+      "side-entry|side-branch": 2.4,
+      "music-approach|music-entry": 2.4,
+      "east-bottom|longya-entry": 2.4,
+      "junction-office|junction-museum": 7,
+      "junction-museum|forecourt": 7,
+      "gate|junction-gym": 7,
+      "junction-sports|junction-office": 7,
+      "junction-museum|museum-entry": 3,
+      "forecourt-15|main-front": 3,
+      "main-front|teaching-entry": 3,
+      "east-front|east-cross": 3,
+      "east-cross|east-bottom": 3,
+      "main-east|east-cross": 3,
+      "east-cross|info-west": 3,
+      "junction-gym|gym-loop-north": 3,
+      "gym-loop-north|gym-loop-west-north": 3,
+      "gym-loop-west-north|gym-loop-west-south": 3,
+      "gym-loop-west-south|music-approach": 3,
+      "junction-gym|gym-main-junction": 7,
+      "gym-main-junction|junction-sports": 7,
+      "gym-main-junction|gym-forecourt": 4,
+      "gym-forecourt|gym-entry": 4
+    },
+    "removedNodes": [
+      "west-bottom",
+      "west-main",
+      "garden-east",
+      "garden-entry",
+      "garden-turn"
+    ],
+    "removedEdges": [
+      [
+        "garden-entry",
+        "library-entry"
+      ],
+      [
+        "garden-entry",
+        "west-bottom"
+      ],
+      [
+        "west-bottom",
+        "west-main"
+      ],
+      [
+        "west-main",
+        "museum-entry"
+      ],
+      [
+        "west-main",
+        "forecourt"
+      ],
+      [
+        "junction-gym",
+        "side-branch"
+      ],
+      [
+        "east-bottom",
+        "garden-entry"
+      ],
+      [
+        "east-bottom",
+        "garden-turn"
+      ],
+      [
+        "garden-turn",
+        "garden-east"
+      ],
+      [
+        "garden-east",
+        "garden-entry"
+      ],
+      [
+        "junction-gym",
+        "gym-entry"
+      ]
+    ],
+    "requiredChains": [
+      [
+        "side-gate",
+        "side-entry",
+        "side-branch",
+        "side-front-turn",
+        "side-upper",
+        "side-mid",
+        "side-lower",
+        "east-front",
+        "east-cross",
+        "east-bottom",
+        "longya-entry"
+      ],
+      [
+        "forecourt",
+        "gap-entry",
+        "gap-north",
+        "gap-cross",
+        "gap-south",
+        "rear-west",
+        "rear-junction",
+        "library-entry"
+      ],
+      [
+        "main-rear",
+        "rear-junction",
+        "library-entry"
+      ],
+      [
+        "junction-museum",
+        "museum-entry"
+      ],
+      [
+        "forecourt-15",
+        "main-front",
+        "teaching-entry"
+      ],
+      [
+        "main-east",
+        "east-cross",
+        "info-west"
+      ],
+      [
+        "junction-gym",
+        "gym-loop-north",
+        "gym-loop-west-north",
+        "gym-loop-west-south",
+        "music-approach",
+        "sports-front",
+        "junction-sports",
+        "gym-main-junction",
+        "junction-gym"
+      ],
+      [
+        "gym-main-junction",
+        "gym-forecourt",
+        "gym-entry"
+      ]
+    ],
+    "tourPath": [
+      "gate",
+      "junction-gym",
+      "gym-loop-north",
+      "junction-gym",
+      "gym-main-junction",
+      "junction-sports",
+      "junction-office",
+      "junction-museum",
+      "museum-entry",
+      "junction-museum",
+      "forecourt",
+      "main-front",
+      "teaching-entry",
+      "main-front",
+      "forecourt-15",
+      "main-front",
+      "east-front",
+      "side-lower",
+      "side-mid",
+      "side-upper",
+      "side-front-turn",
+      "side-branch",
+      "side-entry",
+      "side-gate",
+      "side-entry",
+      "side-branch",
+      "side-front-turn",
+      "side-upper",
+      "side-mid",
+      "side-lower",
+      "east-front",
+      "east-cross",
+      "main-east",
+      "east-cross",
+      "info-west",
+      "east-cross",
+      "east-bottom",
+      "longya-entry",
+      "east-bottom",
+      "east-cross",
+      "east-front",
+      "main-front",
+      "forecourt",
+      "gap-entry",
+      "gap-north",
+      "gap-cross",
+      "gap-south",
+      "rear-west",
+      "rear-junction",
+      "main-rear",
+      "rear-junction",
+      "library-entry",
+      "rear-junction",
+      "rear-west",
+      "gap-south",
+      "gap-cross",
+      "gap-north",
+      "gap-entry",
+      "forecourt"
+    ],
+    "forbiddenEdges": [
+      [
+        "junction-gym",
+        "side-branch"
+      ],
+      [
+        "gate",
+        "side-gate"
+      ],
+      [
+        "gate",
+        "side-entry"
+      ],
+      [
+        "east-bottom",
+        "garden-turn"
+      ],
+      [
+        "garden-turn",
+        "garden-east"
+      ],
+      [
+        "garden-east",
+        "garden-entry"
+      ]
+    ],
+    "entranceIsolation": {
+      "regionMaxZ": 40,
+      "mainNodes": [
+        "gate",
+        "junction-gym"
+      ],
+      "sideChain": [
+        "side-gate",
+        "side-entry",
+        "side-branch",
+        "side-front-turn",
+        "side-upper"
+      ],
+      "note": "只禁止入口处主侧路直接接边；允许校内深处经既有道路间接到达。"
+    },
+    "unresolvedAccess": [
+      {
+        "facilityId": "19",
+        "reason": "R4删除误画的17东南绕行；保留花园不凭空补新入口"
+      }
+    ],
+    "mainRoadChain": [
+      "gate",
+      "junction-gym",
+      "gym-main-junction",
+      "junction-sports",
+      "junction-office",
+      "junction-museum",
+      "forecourt"
+    ],
+    "mainRoadWidth": 7
+  },
+  "cameraPresets": {
+    "overview": {
+      "label": "全校鸟瞰",
+      "position": [
+        340,
+        385,
+        485
+      ],
+      "target": [
+        50,
+        0,
+        133
+      ]
+    },
+    "top": {
+      "label": "正投影总图",
+      "position": [
+        51,
+        470,
+        133.001
+      ],
+      "target": [
+        51,
+        0,
+        133
+      ]
+    },
+    "sports": {
+      "label": "运动区",
+      "position": [
+        -150,
+        145,
+        207
+      ],
+      "target": [
+        -50,
+        0,
+        105
+      ]
+    },
+    "teaching": {
+      "label": "主楼 / 中部逐层连接",
+      "position": [
+        -44,
+        55,
+        264
+      ],
+      "target": [
+        15,
+        6,
+        224
+      ]
+    },
+    "gate": {
+      "label": "原点 / 校门",
+      "position": [
+        40,
+        35,
+        -55
+      ],
+      "target": [
+        0,
+        3,
+        8
+      ]
+    },
+    "gym": {
+      "label": "体育馆体量",
+      "position": [
+        -123,
+        56,
+        8
+      ],
+      "target": [
+        -52,
+        6,
+        54
+      ]
+    },
+    "courts-to-gym": {
+      "label": "球场看馆 / 贴体音乐楼",
+      "position": [
+        -30,
+        7,
+        132
+      ],
+      "target": [
+        -57,
+        7,
+        59
+      ]
+    },
+    "canopy": {
+      "label": "风雨跑道棚下",
+      "position": [
+        -68.5,
+        2,
+        149
+      ],
+      "target": [
+        -68.5,
+        2.6,
+        88
+      ]
+    },
+    "rear-field": {
+      "label": "操场后缘与沙坑",
+      "position": [
+        140,
+        63,
+        248
+      ],
+      "target": [
+        81,
+        0,
+        177
+      ]
+    },
+    "library-route": {
+      "label": "主楼后门至图书馆",
+      "position": [
+        15,
+        47,
+        276
+      ],
+      "target": [
+        48,
+        2,
+        232
+      ]
+    },
+    "underpass": {
+      "label": "两楼间首层穿行",
+      "position": [
+        6.5,
+        1.7,
+        233
+      ],
+      "target": [
+        6.5,
+        1.7,
+        209
+      ]
+    },
+    "side-path": {
+      "label": "独立侧门路至长雅楼",
+      "position": [
+        82,
+        190,
+        290
+      ],
+      "target": [
+        93,
+        0,
+        119
+      ]
+    },
+    "entrances": {
+      "label": "石头 / 主门 / 独立侧门路",
+      "position": [
+        36,
+        52,
+        -41
+      ],
+      "target": [
+        5,
+        0,
+        14
+      ]
+    },
+    "longya": {
+      "label": "长雅楼正门直达",
+      "position": [
+        129,
+        14,
+        205
+      ],
+      "target": [
+        129,
+        7,
+        257
+      ]
+    },
+    "family-canteen": {
+      "label": "家属区 / 食堂间距",
+      "position": [
+        246,
+        123,
+        187
+      ],
+      "target": [
+        166,
+        0,
+        100
+      ]
+    },
+    "gym-contact": {
+      "label": "音乐楼与体育馆贴体",
+      "position": [
+        -113,
+        53,
+        106
+      ],
+      "target": [
+        -54,
+        6,
+        61
+      ]
+    },
+    "rostrum": {
+      "label": "主席台上移",
+      "position": [
+        5,
+        48,
+        155
+      ],
+      "target": [
+        19,
+        1,
+        110
+      ]
+    },
+    "black-routes": {
+      "label": "黑线支路",
+      "position": [
+        142,
+        108,
+        310
+      ],
+      "target": [
+        59,
+        0,
+        211
+      ]
+    },
+    "toilet-front": {
+      "label": "厕所前廊",
+      "position": [
+        13,
+        19,
+        240
+      ],
+      "target": [
+        -10,
+        7,
+        224
+      ]
+    },
+    "toilet-floor": {
+      "label": "厕所逐层",
+      "position": [
+        7,
+        20,
+        245
+      ],
+      "target": [
+        -10,
+        6,
+        224
+      ]
+    }
+  },
+  "implementationLimits": [
+    "仅体量/连接/足迹，不是精模",
+    "22未定位不造楼",
+    "20为周边区域体量不是实测住宅",
+    "未知高差暂平",
+    "不含可进入的完整教室、楼梯和设备",
+    "不含现代改造覆盖层/夜景/玩法",
+    "校核相机可穿体；路线巡览不是物理角色控制器",
+    "25完整楼板与前廊按当前4层H主楼实现；A/B端性别未定；不是施工结构设计"
+  ],
+  "revision": "R4 owner annotation: issues12-17; only10 and20 transforms changed; continuous25 rebuilt within original footprint.",
+  "buildingLinks": [],
+  "buildingContacts": [
+    {
+      "id": "03-24-CONTACT",
+      "from": "03",
+      "to": "24",
+      "kind": "shared-wall",
+      "axis": "z",
+      "coordinate": 66,
+      "span": [
+        -66,
+        -54
+      ],
+      "portalCenter": [
+        -60,
+        0,
+        66
+      ],
+      "portalWidth": 2.4,
+      "portalHeight": 3.1,
+      "evidence": "A本体紧贴；H后侧贴合面/首层门洞；不推断所有楼层互通"
+    }
+  ],
+  "contextBlocks": [
+    {
+      "id": "20-B1",
+      "owner": "20",
+      "localPosition": [
+        -17,
+        0,
+        -37
+      ],
+      "size": [
+        20,
+        18,
+        26
+      ],
+      "evidence": "H外部轮廓，不是实测住宅楼栋"
+    },
+    {
+      "id": "20-B2",
+      "owner": "20",
+      "localPosition": [
+        15,
+        0,
+        -35
+      ],
+      "size": [
+        24,
+        23,
+        30
+      ],
+      "evidence": "H外部轮廓，不是实测住宅楼栋"
+    },
+    {
+      "id": "20-B3",
+      "owner": "20",
+      "localPosition": [
+        -17,
+        0,
+        -2
+      ],
+      "size": [
+        22,
+        19,
+        30
+      ],
+      "evidence": "H外部轮廓，不是实测住宅楼栋"
+    },
+    {
+      "id": "20-B4",
+      "owner": "20",
+      "localPosition": [
+        16,
+        0,
+        0
+      ],
+      "size": [
+        22,
+        22,
+        32
+      ],
+      "evidence": "H外部轮廓，不是实测住宅楼栋"
+    },
+    {
+      "id": "20-B5",
+      "owner": "20",
+      "localPosition": [
+        -16,
+        0,
+        37
+      ],
+      "size": [
+        24,
+        17,
+        30
+      ],
+      "evidence": "H外部轮廓，不是实测住宅楼栋"
+    },
+    {
+      "id": "20-B6",
+      "owner": "20",
+      "localPosition": [
+        16,
+        0,
+        38
+      ],
+      "size": [
+        24,
+        21,
+        28
+      ],
+      "evidence": "H外部轮廓，不是实测住宅楼栋"
+    }
+  ],
+  "thresholds": [
+    {
+      "id": "15-rear-threshold",
+      "start": [
+        73,
+        0,
+        232.8
+      ],
+      "end": [
+        73,
+        0,
+        231
+      ],
+      "width": 2.8,
+      "evidence": "H门前短接，不穿越实心内部"
+    },
+    {
+      "id": "18-front-threshold",
+      "start": [
+        73,
+        0,
+        243.6
+      ],
+      "end": [
+        73,
+        0,
+        245.5
+      ],
+      "width": 2.8,
+      "evidence": "H门前短接，不穿越实心内部"
+    },
+    {
+      "id": "17-front-threshold",
+      "start": [
+        129,
+        0,
+        246.8
+      ],
+      "end": [
+        129,
+        0,
+        249
+      ],
+      "width": 3,
+      "evidence": "H门前短接，不穿越实心内部"
+    },
+    {
+      "id": "24-front-threshold",
+      "start": [
+        -68,
+        0,
+        80.2
+      ],
+      "end": [
+        -68,
+        0,
+        78
+      ],
+      "width": 2.4,
+      "evidence": "H门前短接，不穿越实心内部"
+    },
+    {
+      "id": "16-east-threshold",
+      "start": [
+        -27.2,
+        0,
+        202
+      ],
+      "end": [
+        -29,
+        0,
+        202
+      ],
+      "width": 2.4,
+      "evidence": "A黑线短路/H门前尺寸"
+    },
+    {
+      "id": "15-front-threshold",
+      "start": [
+        73,
+        0,
+        215.2
+      ],
+      "end": [
+        73,
+        0,
+        215.29999999999998
+      ],
+      "width": 2.4,
+      "evidence": "A黑线短路/H门前尺寸"
+    },
+    {
+      "id": "15-east-threshold",
+      "start": [
+        123.8,
+        0,
+        224
+      ],
+      "end": [
+        122,
+        0,
+        224
+      ],
+      "width": 2.4,
+      "evidence": "A黑线短路/H门前尺寸"
+    },
+    {
+      "id": "21-west-threshold",
+      "start": [
+        143.2,
+        0,
+        224
+      ],
+      "end": [
+        145,
+        0,
+        224
+      ],
+      "width": 2.4,
+      "evidence": "A黑线短路/H门前尺寸"
+    }
+  ],
+  "toilet25": {
+    "version": "R4-continuous-with-front-gallery",
+    "facilityId": "25",
+    "galleryWidth": 2.2,
+    "slabThickness": 0.18,
+    "slabTopOffset": 0.04,
+    "wallThickness": 0.24,
+    "doorWidth": 1.4,
+    "doorHeight": 2.4,
+    "doorEndInset": 2.1,
+    "railHeight": 1.05,
+    "railPostSpacing": 0.8,
+    "bridgeOpeningWidth": 2.4,
+    "continuousBody": true,
+    "floors": [
+      {
+        "level": 1,
+        "elevation": 0,
+        "hasFullSlab": true,
+        "doorOffsetsZ": [
+          -5.1,
+          5.1
+        ]
+      },
+      {
+        "level": 2,
+        "elevation": 3.8,
+        "hasFullSlab": true,
+        "doorOffsetsZ": [
+          -5.1,
+          5.1
+        ]
+      },
+      {
+        "level": 3,
+        "elevation": 7.6,
+        "hasFullSlab": true,
+        "doorOffsetsZ": [
+          -5.1,
+          5.1
+        ]
+      },
+      {
+        "level": 4,
+        "elevation": 11.399999999999999,
+        "hasFullSlab": true,
+        "doorOffsetsZ": [
+          -5.1,
+          5.1
+        ]
+      },
+      {
+        "level": 5,
+        "elevation": 15.2,
+        "hasFullSlab": true,
+        "doorOffsetsZ": [
+          -5.1,
+          5.1
+        ]
+      }
+    ],
+    "evidence": "A整栋连续/每层楼板/两端门朝15/桥侧护栏缺口；H尺寸、男女端分配、材质与分隔墙；未确认卫生器具数量",
+    "genderEndAssignment": "unknown: door A and B mark two ends, not a historical male/female orientation"
+  },
+  "facilities": [
+    {
+      "id": "01",
+      "kind": "gate",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        26,
+        7,
+        4
+      ],
+      "floors": null,
+      "parent": null,
+      "note": "校门通道中心为局部原点。26×4×7是工作包络，不是量测。右高墩为可见特征。",
+      "name": "主校门",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": [
+          319,
+          237,
+          398,
+          266
+        ]
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "S03-013/015",
+        "unknowns": "门内反向与历史牌匾；缺失尺寸允许H推定"
+      }
+    },
+    {
+      "id": "02",
+      "kind": "side-gate",
+      "position": [
+        17,
+        0,
+        1
+      ],
+      "size": [
+        4,
+        3,
+        1.2
+      ],
+      "floors": null,
+      "parent": null,
+      "note": "R3：原石位附近是侧门，独立侧路不在入口处接主门主路；端点数值H。",
+      "name": "侧门／独立侧路入口",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": [
+          399,
+          241,
+          468,
+          267
+        ]
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "U-R2-03批注；U-R3校友确认",
+        "unknowns": "主门图面右侧原石位附近，侧路入口不接主路；工作坐标H"
+      }
+    },
+    {
+      "id": "03",
+      "kind": "gym",
+      "position": [
+        -45,
+        0,
+        45
+      ],
+      "size": [
+        42,
+        19.2,
+        42
+      ],
+      "floors": null,
+      "parent": null,
+      "note": "R3/R4：42×42m H体育馆包络；四层音乐楼与后侧本体共边，无外加楼梯或连廊。折面屋盖及隐藏面属工作体量。 Patch02: 正门+X朝主路；前坪、绕馆路、左梯观赛层。馆高及剖面参数H，未实测。",
+      "name": "旧体育馆",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": [
+          166,
+          306,
+          306,
+          392
+        ]
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [
+          "H10"
+        ],
+        "reference": "U-R2-04；S03-017/020；USER-P02-91565a27/dfbc1933",
+        "unknowns": "A更大且接音乐楼；42×42包络H，隐藏面仍H"
+      }
+    },
+    {
+      "id": "04",
+      "kind": "pool",
+      "position": [
+        -38,
+        0,
+        76
+      ],
+      "size": [
+        25,
+        0.25,
+        12.5
+      ],
+      "floors": null,
+      "parent": null,
+      "note": "H11 A方案25×12.5，长轴沿X；不能排除50m方案。非实测。",
+      "name": "游泳池",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": [
+          176,
+          408,
+          305,
+          435
+        ]
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [
+          "H11"
+        ],
+        "reference": "S05-005；U12",
+        "unknowns": "池规格H11；位置不随方案任意移动"
+      }
+    },
+    {
+      "id": "05",
+      "kind": "straight-track",
+      "position": [
+        -68.5,
+        0,
+        120
+      ],
+      "size": [
+        7,
+        0.1,
+        64
+      ],
+      "floors": null,
+      "parent": null,
+      "note": "05风雨直跑道，7×64米仍为H。A：有顶棚、与06共边、在28与06之间。棚底4.1米、柱距8米为H；顶棚可隐藏，不改地面位置。",
+      "name": "风雨跑道／有顶棚直跑道",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": [
+          143,
+          440,
+          171,
+          583
+        ]
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "U-R2-02；S03-022",
+        "unknowns": "棚构造、高度、柱距H；不能仍写露天"
+      }
+    },
+    {
+      "id": "06",
+      "kind": "courts",
+      "position": [
+        -37.5,
+        0,
+        120
+      ],
+      "size": [
+        55,
+        0.1,
+        64
+      ],
+      "floors": null,
+      "parent": null,
+      "note": "单片15×28工作值；3列2排，净场之间2m、外围3m均H；长轴沿Z。",
+      "name": "六片篮球场",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": [
+          171,
+          440,
+          313,
+          583
+        ]
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [
+          "H09"
+        ],
+        "reference": "S03-022/023；U12",
+        "unknowns": "3×2且与05紧贴平行；05夹在06与28之间；尺寸H09"
+      }
+    },
+    {
+      "id": "07",
+      "kind": "building",
+      "position": [
+        -45,
+        0,
+        170
+      ],
+      "size": [
+        42,
+        11.4,
+        17
+      ],
+      "floors": 3,
+      "parent": null,
+      "note": "办公/医务名称待核；三层与包络为H。",
+      "name": "办公楼／医务室线索",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": [
+          183,
+          602,
+          306,
+          649
+        ]
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "S03-024",
+        "unknowns": "楼名与医务室入口仍待核；不编造房号"
+      }
+    },
+    {
+      "id": "08",
+      "kind": "field",
+      "position": [
+        73,
+        0,
+        114
+      ],
+      "size": [
+        92,
+        0.12,
+        140
+      ],
+      "floors": null,
+      "parent": null,
+      "note": "92×140为独立H场地包络，不声称400m标准跑道。",
+      "name": "田径场／足球坪",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": [
+          401,
+          318,
+          647,
+          655
+        ]
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "C01/C02；S03-025/026/027",
+        "unknowns": "规格与周长不能从示意符号量取"
+      }
+    },
+    {
+      "id": "09",
+      "kind": "route",
+      "position": [
+        0,
+        0,
+        103
+      ],
+      "size": [
+        7,
+        0.05,
+        206
+      ],
+      "floors": null,
+      "parent": null,
+      "note": "主路暂定7m，原点到前庭轴线；所有高差在本阶段暂平。",
+      "name": "林荫道／主路",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": [
+          340,
+          264,
+          375,
+          721
+        ]
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "C01；S03-043/045",
+        "unknowns": "可见树列保留；树种与缺失冠幅分开标记"
+      }
+    },
+    {
+      "id": "10",
+      "kind": "rostrum",
+      "position": [
+        19,
+        0,
+        110
+      ],
+      "size": [
+        6,
+        1.2,
+        24
+      ],
+      "floors": null,
+      "parent": null,
+      "note": "R4：按校友箭头向总图上方移动，Z132→110；仍在操场左侧。位置及6×24m工作尺寸H。",
+      "name": "主席台",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": [
+          378,
+          500,
+          399,
+          579
+        ]
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "S01；S03-027",
+        "unknowns": "图面左侧；历史上盖与尺度H"
+      }
+    },
+    {
+      "id": "11",
+      "kind": "canteen",
+      "position": [
+        167,
+        0,
+        152
+      ],
+      "size": [
+        44,
+        10.8,
+        22
+      ],
+      "floors": 3,
+      "parent": null,
+      "note": "44×22、3层为H；12作为其下层子区域登记，不自造另一栋。",
+      "name": "食堂",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": [
+          680,
+          516,
+          812,
+          573
+        ]
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "S03-031/032",
+        "unknowns": "外观各面与柱网缺尺寸；采用可替换H"
+      }
+    },
+    {
+      "id": "12",
+      "kind": "subspace",
+      "position": [
+        158,
+        0,
+        149
+      ],
+      "size": [
+        14,
+        3.4,
+        10
+      ],
+      "floors": 1,
+      "parent": "11",
+      "note": "食堂下层小卖部功能标记。位置和包络为H，不是实测店面；在11内部，不计额外建筑。",
+      "name": "食堂下层小卖部",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": null
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "S03文字",
+        "unknowns": "不拿食堂大厅充当小卖部室内"
+      }
+    },
+    {
+      "id": "13",
+      "kind": "building",
+      "position": [
+        166,
+        0,
+        199
+      ],
+      "size": [
+        40,
+        15.2,
+        16
+      ],
+      "floors": 4,
+      "parent": null,
+      "note": "科学馆外包和四层H；细部按参考照片后续替换。",
+      "name": "科学馆",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": [
+          694,
+          637,
+          812,
+          678
+        ]
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "S03-033/035",
+        "unknowns": "其他立面与实验室分间允许H但不冒称实测"
+      }
+    },
+    {
+      "id": "14",
+      "kind": "forecourt",
+      "position": [
+        72,
+        0,
+        198
+      ],
+      "size": [
+        94,
+        0.12,
+        12
+      ],
+      "floors": null,
+      "parent": null,
+      "note": "前坪/国旗区。高度暂平，国旗定位为示意点。",
+      "name": "前坪／国旗区",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": [
+          398,
+          666,
+          641,
+          688
+        ]
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "C01；S01",
+        "unknowns": "旗台台阶与种植池关系优先"
+      }
+    },
+    {
+      "id": "15",
+      "kind": "teaching",
+      "position": [
+        73,
+        0,
+        224
+      ],
+      "size": [
+        98,
+        19,
+        14
+      ],
+      "floors": 5,
+      "parent": null,
+      "note": "四层先按旧图/照片判读作为H工作方案，主楼高度未测；四层桥同步生成，不把4层冒充厕所独立史实。",
+      "name": "旧主教学楼／教室",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": [
+          390,
+          702,
+          654,
+          754
+        ]
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [
+          "H01",
+          "H02",
+          "H03"
+        ],
+        "reference": "C02；S03-038/040/041/043；U12",
+        "unknowns": "左厕逐层相连已确认；旧楼平面不借用新楼"
+      }
+    },
+    {
+      "id": "16",
+      "kind": "building",
+      "position": [
+        -44,
+        0,
+        202
+      ],
+      "size": [
+        30,
+        7.6,
+        13
+      ],
+      "floors": 2,
+      "parent": null,
+      "note": "校史馆为来源标签，目标年代用途待核；2层及包络H。",
+      "name": "校史馆／旧用途线索",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": [
+          185,
+          678,
+          305,
+          719
+        ]
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "S03-051",
+        "unknowns": "历史用途未定；不是24音乐楼"
+      }
+    },
+    {
+      "id": "17",
+      "kind": "building",
+      "position": [
+        129,
+        0,
+        258
+      ],
+      "size": [
+        44,
+        19,
+        18
+      ],
+      "floors": 5,
+      "parent": null,
+      "note": "R3：向图面左移，纵向道路直达北侧正门；门向/位移H，校友确认道路对门。",
+      "name": "长雅楼",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": [
+          676,
+          784,
+          812,
+          830
+        ]
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "S03-047/048；U-R3校友确认",
+        "unknowns": "R3向图面左移且道路正对入口；门向及尺寸H"
+      }
+    },
+    {
+      "id": "18",
+      "kind": "building",
+      "position": [
+        73,
+        0,
+        253
+      ],
+      "size": [
+        55,
+        11.4,
+        15
+      ],
+      "floors": 3,
+      "parent": null,
+      "note": "旧图书馆入口有P；整个包络、层数及隐藏面H。",
+      "name": "旧图书馆",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": [
+          449,
+          779,
+          602,
+          819
+        ]
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "S03-049",
+        "unknowns": "缺失背侧H；入口照片不是完整楼层图"
+      }
+    },
+    {
+      "id": "19",
+      "kind": "garden",
+      "position": [
+        76,
+        0,
+        277
+      ],
+      "size": [
+        82,
+        0.12,
+        10
+      ],
+      "floors": null,
+      "parent": null,
+      "note": "花园范围为H；旋转楼梯仅锚点，本阶段无虚构楼梯或随机树木。",
+      "name": "后花园／旋转楼梯",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": [
+          426,
+          835,
+          626,
+          862
+        ]
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "S03-050",
+        "unknowns": "楼梯起终点和尺寸H；保留照片曲线特征"
+      }
+    },
+    {
+      "id": "20",
+      "kind": "context",
+      "position": [
+        172,
+        0,
+        74
+      ],
+      "size": [
+        60,
+        23,
+        104
+      ],
+      "floors": null,
+      "parent": null,
+      "note": "R4：整个家属区沿+X6/-Z8平移，保留R3扩大后的60×104m和六个H子体量。与食堂工作间距变为15m，不恢复旧45m空白。子楼数和位置均非实测。",
+      "name": "居住／家属区建筑群",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": [
+          680,
+          311,
+          824,
+          452
+        ]
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "S03-013/020；U-R3校友确认",
+        "unknowns": "R4整体右上移动已确认；精确位移、楼栋数、尺寸和年代仍H。"
+      }
+    },
+    {
+      "id": "21",
+      "kind": "building",
+      "position": [
+        166,
+        0,
+        225
+      ],
+      "size": [
+        42,
+        15.2,
+        19
+      ],
+      "floors": 4,
+      "parent": null,
+      "note": "信息楼为工作名，身份未确认；包络H，界面明确U。",
+      "name": "信息楼（工作名）",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": [
+          694,
+          696,
+          812,
+          754
+        ]
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "原图占位",
+        "unknowns": "正式名称与身份不靠推定填充"
+      }
+    },
+    {
+      "id": "22",
+      "kind": "unlocated",
+      "position": null,
+      "size": null,
+      "floors": null,
+      "parent": null,
+      "note": "小店线索尚无可靠定位。不为凑齐28个模型随意放置，列入待定位清单。",
+      "name": "小店线索",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": null
+      },
+      "evidence": {
+        "position": "U",
+        "dimensions": "U",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "旧文／原图未落位",
+        "unknowns": "不为补齐编号自造商户身份"
+      }
+    },
+    {
+      "id": "23",
+      "kind": "sandpit",
+      "position": [
+        108,
+        0,
+        183.5
+      ],
+      "size": [
+        5.5,
+        0.1,
+        3
+      ],
+      "floors": null,
+      "parent": null,
+      "note": "R2按IMG_5497批注移到08靠教学楼的后缘橡胶直段右端。旧128/198位置废弃；5.5×3米与精确落点均H，唯一23实例。",
+      "name": "沙坑／操场后缘右端",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": [
+          651,
+          666,
+          681,
+          684
+        ]
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [
+          "H08"
+        ],
+        "reference": "U-R2-03批注",
+        "unknowns": "准确长宽H；原前坪右侧坐标已废弃"
+      }
+    },
+    {
+      "id": "24",
+      "kind": "music",
+      "position": [
+        -62,
+        0,
+        72
+      ],
+      "size": [
+        16,
+        15.2,
+        12
+      ],
+      "floors": 4,
+      "parent": null,
+      "note": "R3：四层独立体块与03本体贴合，不再以外加有棚连廊连接。共享墙边和门位H。",
+      "name": "音乐楼／四层贴体独立体块",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": [
+          113,
+          400,
+          143,
+          435
+        ]
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "A",
+        "sourceIds": [
+          "H03",
+          "H06"
+        ],
+        "reference": "U-R2-04；校友草图；U-R3校友确认",
+        "unknowns": "R3本体紧贴体育馆，不是外加楼梯连廊；具体贴合边及门洞H"
+      }
+    },
+    {
+      "id": "25",
+      "kind": "toilet",
+      "position": [
+        -10,
+        0,
+        224
+      ],
+      "size": [
+        6,
+        19,
+        14.4
+      ],
+      "floors": 5,
+      "parent": null,
+      "note": "R4：男女厕同一连续楼体；桥接每层前廊中部，两端入口均朝15；桥侧护栏缺口通前廊；每层整幅楼板覆盖室内与前廊，非只在首层铺地。男女哪一端、楼层数随15及全部尺寸H。",
+      "name": "主楼左侧相连独栋厕所",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": [
+          300,
+          722,
+          339,
+          754
+        ]
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "derived-from-15",
+        "sourceIds": [
+          "H02",
+          "H03",
+          "H07"
+        ],
+        "reference": "U-R2-01；校友草图",
+        "unknowns": "R4已确认连续楼体、逐层完整楼板、两端门和桥侧开口护栏；未知尺寸、男女两端对应、器具与隐藏面。"
+      }
+    },
+    {
+      "id": "26",
+      "kind": "toilet-pool",
+      "position": [
+        -61,
+        0,
+        80
+      ],
+      "size": [
+        4.2,
+        3,
+        3
+      ],
+      "floors": 1,
+      "parent": null,
+      "note": "R2圈注为旧厕位置，不是照片中玻璃体块的历史外观。26置于馆/音乐楼组团面向球场的一端，仍在泳池左侧；4.2×3米小型占地由原6×4.5缩小。精确落点、3米高、门向H。",
+      "name": "池畔旧厕所／小体量",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": [
+          147,
+          408,
+          171,
+          435
+        ]
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [
+          "H12"
+        ],
+        "reference": "U-R2-04圈注",
+        "unknowns": "4.2×3工作占地H；不是圈内整栋玻璃建筑"
+      }
+    },
+    {
+      "id": "27",
+      "kind": "stone",
+      "position": [
+        -17,
+        0,
+        1
+      ],
+      "size": [
+        2.2,
+        2.5,
+        1.7
+      ],
+      "floors": null,
+      "parent": null,
+      "note": "R3：总图主门左侧校名石；外拍左右不直接当成总图左右。位置数值H。",
+      "name": "校门图面左侧校名石",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": null
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "H",
+        "sourceIds": [],
+        "reference": "S03-015；用户照片；U-R3校友确认",
+        "unknowns": "左右按总图-X；照片观察者左右不当成总图坐标"
+      }
+    },
+    {
+      "id": "28",
+      "kind": "auxiliary",
+      "position": [
+        -80,
+        0,
+        118
+      ],
+      "size": [
+        6,
+        3.3,
+        24
+      ],
+      "floors": 1,
+      "parent": null,
+      "note": "低矮单层A；长24进深6H。只登记3种功能，不划3间房。",
+      "name": "体育辅助用房组（工作名）",
+      "yaw": 0,
+      "surveyVerified": false,
+      "sourceDiagram": {
+        "rect": [
+          113,
+          461,
+          138,
+          583
+        ]
+      },
+      "evidence": {
+        "position": "H",
+        "dimensions": "H",
+        "floorCount": "A",
+        "sourceIds": [
+          "H04",
+          "H05"
+        ],
+        "reference": "U12文字草图；R01后期资料",
+        "unknowns": "低矮单层已确认；健身／体育办公室／器材；分间H05不固定三栋"
+      }
+    }
+  ],
+  "patch02": {
+    "issues": [
+      18,
+      19,
+      20,
+      21
+    ],
+    "exception": "gym front + connected local loop only; baseline branch immutable",
+    "loop": [
+      "junction-gym",
+      "gym-loop-north",
+      "gym-loop-west-north",
+      "gym-loop-west-south",
+      "music-approach",
+      "sports-front",
+      "junction-sports",
+      "gym-main-junction",
+      "junction-gym"
+    ],
+    "measured": null
+  },
+  "b01r2": {
+    "issue": 28,
+    "source": "21e907cb5399078f9068aed51477dd650022dc44",
+    "changes": [
+      {
+        "path": "facilities.15.position",
+        "before": [
+          69,
+          0,
+          224
+        ],
+        "after": [
+          73,
+          0,
+          224
+        ],
+        "issue": 28
+      },
+      {
+        "path": "entrances.15-front",
+        "before": [
+          69,
+          0,
+          217
+        ],
+        "after": [
+          73,
+          0,
+          217
+        ],
+        "issue": 28
+      },
+      {
+        "path": "entrances.15-link",
+        "before": [
+          20,
+          0,
+          224
+        ],
+        "after": [
+          24,
+          0,
+          224
+        ],
+        "issue": 28
+      },
+      {
+        "path": "entrances.15-rear",
+        "before": [
+          69,
+          0,
+          231
+        ],
+        "after": [
+          73,
+          0,
+          231
+        ],
+        "issue": 28
+      },
+      {
+        "path": "entrances.15-east",
+        "before": [
+          118,
+          0,
+          224
+        ],
+        "after": [
+          122,
+          0,
+          224
+        ],
+        "issue": 28
+      },
+      {
+        "path": "thresholds.15-rear-threshold",
+        "before": {
+          "id": "15-rear-threshold",
+          "start": [
+            69,
+            0,
+            232.8
+          ],
+          "end": [
+            69,
+            0,
+            231
+          ],
+          "width": 2.8,
+          "evidence": "H门前短接，不穿越实心内部"
+        },
+        "after": {
+          "id": "15-rear-threshold",
+          "start": [
+            73,
+            0,
+            232.8
+          ],
+          "end": [
+            73,
+            0,
+            231
+          ],
+          "width": 2.8,
+          "evidence": "H门前短接，不穿越实心内部"
+        },
+        "issue": 28
+      },
+      {
+        "path": "thresholds.15-front-threshold",
+        "before": {
+          "id": "15-front-threshold",
+          "start": [
+            69,
+            0,
+            215.2
+          ],
+          "end": [
+            69,
+            0,
+            217
+          ],
+          "width": 2.4,
+          "evidence": "A黑线短路/H门前尺寸"
+        },
+        "after": {
+          "id": "15-front-threshold",
+          "start": [
+            73,
+            0,
+            215.2
+          ],
+          "end": [
+            73,
+            0,
+            217
+          ],
+          "width": 2.4,
+          "evidence": "A黑线短路/H门前尺寸"
+        },
+        "issue": 28
+      },
+      {
+        "path": "thresholds.15-east-threshold",
+        "before": {
+          "id": "15-east-threshold",
+          "start": [
+            119.8,
+            0,
+            224
+          ],
+          "end": [
+            118,
+            0,
+            224
+          ],
+          "width": 2.4,
+          "evidence": "A黑线短路/H门前尺寸"
+        },
+        "after": {
+          "id": "15-east-threshold",
+          "start": [
+            123.8,
+            0,
+            224
+          ],
+          "end": [
+            122,
+            0,
+            224
+          ],
+          "width": 2.4,
+          "evidence": "A黑线短路/H门前尺寸"
+        },
+        "issue": 28
+      },
+      {
+        "path": "facilities.18.position",
+        "before": [
+          75,
+          0,
+          253
+        ],
+        "after": [
+          73,
+          0,
+          253
+        ],
+        "issue": 28
+      },
+      {
+        "path": "entrances.18-front",
+        "before": [
+          75,
+          0,
+          245.5
+        ],
+        "after": [
+          73,
+          0,
+          245.5
+        ],
+        "issue": 28
+      },
+      {
+        "path": "thresholds.18-front-threshold",
+        "before": {
+          "id": "18-front-threshold",
+          "start": [
+            75,
+            0,
+            243.6
+          ],
+          "end": [
+            75,
+            0,
+            245.5
+          ],
+          "width": 2.8,
+          "evidence": "H门前短接，不穿越实心内部"
+        },
+        "after": {
+          "id": "18-front-threshold",
+          "start": [
+            73,
+            0,
+            243.6
+          ],
+          "end": [
+            73,
+            0,
+            245.5
+          ],
+          "width": 2.8,
+          "evidence": "H门前短接，不穿越实心内部"
+        },
+        "issue": 28
+      },
+      {
+        "path": "terrain.stairs.ST-LIBRARY",
+        "before": {
+          "id": "ST-LIBRARY",
+          "facilityId": "18",
+          "start": [
+            75,
+            243.6
+          ],
+          "end": [
+            75,
+            245.5
+          ],
+          "width": 2.8,
+          "steps": 3,
+          "rise": 0.45,
+          "evidence": [
+            "S03-049"
+          ],
+          "basis": "P低台阶；H级数/尺寸"
+        },
+        "after": {
+          "id": "ST-LIBRARY",
+          "facilityId": "18",
+          "start": [
+            73,
+            243.6
+          ],
+          "end": [
+            73,
+            245.5
+          ],
+          "width": 2.8,
+          "steps": 3,
+          "rise": 0.45,
+          "evidence": [
+            "S03-049"
+          ],
+          "basis": "P低台阶；H级数/尺寸"
+        },
+        "issue": 28
+      },
+      {
+        "path": "navigation.nodes.main-front",
+        "before": [
+          69,
+          0,
+          211.5
+        ],
+        "after": [
+          73,
+          0,
+          211.5
+        ],
+        "issue": 28
+      },
+      {
+        "path": "navigation.nodes.forecourt-15",
+        "before": [
+          69,
+          0,
+          204
+        ],
+        "after": [
+          73,
+          0,
+          204
+        ],
+        "issue": 28
+      },
+      {
+        "path": "navigation.nodes.teaching-entry",
+        "before": [
+          69,
+          0,
+          215.2
+        ],
+        "after": [
+          73,
+          0,
+          215.2
+        ],
+        "issue": 28
+      },
+      {
+        "path": "navigation.nodes.main-rear",
+        "before": [
+          69,
+          0,
+          232.8
+        ],
+        "after": [
+          73,
+          0,
+          232.8
+        ],
+        "issue": 28
+      },
+      {
+        "path": "navigation.nodes.rear-junction",
+        "before": [
+          69,
+          0,
+          239
+        ],
+        "after": [
+          73,
+          0,
+          239
+        ],
+        "issue": 28
+      },
+      {
+        "path": "navigation.nodes.main-east",
+        "before": [
+          119.8,
+          0,
+          224
+        ],
+        "after": [
+          123.8,
+          0,
+          224
+        ],
+        "issue": 28
+      },
+      {
+        "path": "navigation.nodes.library-entry",
+        "before": [
+          75,
+          0,
+          243.6
+        ],
+        "after": [
+          73,
+          0,
+          243.6
+        ],
+        "issue": 28
+      },
+      {
+        "path": "facilities.15.floors",
+        "before": 4,
+        "after": 5,
+        "issue": 28
+      },
+      {
+        "path": "facilities.25.floors",
+        "before": 4,
+        "after": 5,
+        "issue": 28
+      },
+      {
+        "path": "connections",
+        "before": [
+          {
+            "id": "15-25-L01",
+            "from": "15",
+            "to": "25",
+            "level": 1,
+            "y": 0,
+            "width": 2.1,
+            "xStart": -7,
+            "xEnd": 20,
+            "z": 224,
+            "kind": "floor-bridge",
+            "evidence": "A逐层连接/中部接前廊；H尺寸与首层平接、上层净空",
+            "alignment": "facing-wall-midpoint"
+          },
+          {
+            "id": "15-25-L02",
+            "from": "15",
+            "to": "25",
+            "level": 2,
+            "y": 3.8,
+            "width": 2.1,
+            "xStart": -7,
+            "xEnd": 20,
+            "z": 224,
+            "kind": "floor-bridge",
+            "evidence": "A逐层连接/中部接前廊；H尺寸与首层平接、上层净空",
+            "alignment": "facing-wall-midpoint"
+          },
+          {
+            "id": "15-25-L03",
+            "from": "15",
+            "to": "25",
+            "level": 3,
+            "y": 7.6,
+            "width": 2.1,
+            "xStart": -7,
+            "xEnd": 20,
+            "z": 224,
+            "kind": "floor-bridge",
+            "evidence": "A逐层连接/中部接前廊；H尺寸与首层平接、上层净空",
+            "alignment": "facing-wall-midpoint"
+          },
+          {
+            "id": "15-25-L04",
+            "from": "15",
+            "to": "25",
+            "level": 4,
+            "y": 11.4,
+            "width": 2.1,
+            "xStart": -7,
+            "xEnd": 20,
+            "z": 224,
+            "kind": "floor-bridge",
+            "evidence": "A逐层连接/中部接前廊；H尺寸与首层平接、上层净空",
+            "alignment": "facing-wall-midpoint"
+          }
+        ],
+        "after": [
+          {
+            "id": "15-25-L01",
+            "from": "15",
+            "to": "25",
+            "level": 1,
+            "y": 0,
+            "width": 2.1,
+            "xStart": -7,
+            "xEnd": 24,
+            "z": 224,
+            "kind": "floor-bridge",
+            "evidence": "A every-floor relation; H R2 endpoint/level extension, issue28",
+            "alignment": "facing-wall-midpoint"
+          },
+          {
+            "id": "15-25-L02",
+            "from": "15",
+            "to": "25",
+            "level": 2,
+            "y": 3.8,
+            "width": 2.1,
+            "xStart": -7,
+            "xEnd": 24,
+            "z": 224,
+            "kind": "floor-bridge",
+            "evidence": "A every-floor relation; H R2 endpoint/level extension, issue28",
+            "alignment": "facing-wall-midpoint"
+          },
+          {
+            "id": "15-25-L03",
+            "from": "15",
+            "to": "25",
+            "level": 3,
+            "y": 7.6,
+            "width": 2.1,
+            "xStart": -7,
+            "xEnd": 24,
+            "z": 224,
+            "kind": "floor-bridge",
+            "evidence": "A every-floor relation; H R2 endpoint/level extension, issue28",
+            "alignment": "facing-wall-midpoint"
+          },
+          {
+            "id": "15-25-L04",
+            "from": "15",
+            "to": "25",
+            "level": 4,
+            "y": 11.399999999999999,
+            "width": 2.1,
+            "xStart": -7,
+            "xEnd": 24,
+            "z": 224,
+            "kind": "floor-bridge",
+            "evidence": "A every-floor relation; H R2 endpoint/level extension, issue28",
+            "alignment": "facing-wall-midpoint"
+          },
+          {
+            "id": "15-25-L05",
+            "from": "15",
+            "to": "25",
+            "level": 5,
+            "y": 15.2,
+            "width": 2.1,
+            "xStart": -7,
+            "xEnd": 24,
+            "z": 224,
+            "kind": "floor-bridge",
+            "evidence": "A every-floor relation; H R2 endpoint/level extension, issue28",
+            "alignment": "facing-wall-midpoint"
+          }
+        ],
+        "issue": 28
+      },
+      {
+        "path": "entrances.15-front.projection",
+        "before": [
+          73,
+          0,
+          217
+        ],
+        "after": [
+          73,
+          0,
+          215.2
+        ],
+        "issue": 28
+      },
+      {
+        "path": "thresholds.15-front-threshold.projection",
+        "before": {
+          "id": "15-front-threshold",
+          "start": [
+            73,
+            0,
+            215.2
+          ],
+          "end": [
+            73,
+            0,
+            217
+          ],
+          "width": 2.4,
+          "evidence": "A黑线短路/H门前尺寸"
+        },
+        "after": {
+          "id": "15-front-threshold",
+          "start": [
+            73,
+            0,
+            215.2
+          ],
+          "end": [
+            73,
+            0,
+            215.29999999999998
+          ],
+          "width": 2.4,
+          "evidence": "A黑线短路/H门前尺寸"
+        },
+        "issue": 28
+      },
+      {
+        "path": "site.flag.center",
+        "before": [
+          64,
+          192.5
+        ],
+        "after": [
+          73,
+          192.5
+        ],
+        "issue": 28
+      }
+    ]
+  }
+}
