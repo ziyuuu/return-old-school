@@ -1,0 +1,26 @@
+name: Export current workspace for Patch03
+on:
+  workflow_dispatch:
+  push:
+    paths: ['.github/workflows/patch03-workspace.yml']
+permissions:
+  contents: read
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Archive exact main and baseline identity
+        run: |
+          mkdir -p export
+          git archive HEAD -o export/current-main.zip
+          git rev-parse HEAD > export/main-sha.txt
+          git rev-parse origin/baseline/m1.0-r4 > export/baseline-sha.txt
+          git ls-tree -r HEAD > export/main-tree.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Patch03-current-main
+          path: export/
+          retention-days: 7
