@@ -57,4 +57,7 @@ p=R/'apps/campus/src/style.css';s=p.read_text()
 if '.terrain-tools{' not in s:p.write_text(s+'\n.terrain-tools{position:fixed;right:28px;top:88px;z-index:8;display:flex;align-items:center;gap:10px;font-size:12px;color:#42594c}.terrain-tools button{font:inherit;padding:9px 14px;border:1px solid #97a993;border-radius:8px;background:#f9f8ec;color:#224940;cursor:pointer}.terrain-note{font-size:12px;line-height:1.7;padding:10px;margin:10px 0;background:#edf0e8;border-left:3px solid #8e9f85;color:#395347}.clean .terrain-tools{display:none}@media(max-width:700px){.terrain-tools{top:93px;right:15px;gap:4px}.terrain-tools span{display:none}.terrain-tools button{padding:7px 10px}}\n')
 # Retain Ramp shader callback on the double-sided terrain edge material.
 p=R/'apps/campus/src/terrain-scene.ts';s=p.read_text().replace('m.material=mats[6].clone();','m.material=mats[6].clone();m.material.onBeforeCompile=mats[6].onBeforeCompile;m.material.customProgramCacheKey=mats[6].customProgramCacheKey;');p.write_text(s)
+callback='m.material.onBeforeCompile=mats[6].onBeforeCompile;m.material.customProgramCacheKey=mats[6].customProgramCacheKey;'
+while callback+callback in s:s=s.replace(callback+callback,callback)
+p.write_text(s)
 print('M1.1-A integration ready; all4 frozen-file hashes unchanged.')

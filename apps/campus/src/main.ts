@@ -17,9 +17,9 @@ const layout=source, report=checkLayout(layout);
 let terrainSystem:any=null;
 const groundEye=(x:number,z:number)=>layout.navigation.reviewHeight+(terrainSystem?.enabled?terrainSystem.surfaceHeight(x,z):0);
 const cameraPresets:any={...layout.cameraPresets,
- 'terrain-gym':{label:'体育馆入口 · 4级H台阶',position:[-49,3.5,16],target:[-45,1,26]},
- 'terrain-library':{label:'图书馆入口 · 3级H台阶',position:[69,3.8,236],target:[75,1.1,246]},
- 'terrain-longya':{label:'长雅入口 · 6级H台阶',position:[122,3.8,240],target:[129,1.8,250]},
+ 'terrain-gym':{label:'体育馆入口 · 4级H台阶',position:[-53,4.2,10],target:[-45,1.3,25]},
+ 'terrain-library':{label:'图书馆入口 · 3级H台阶',position:[68,3.8,232],target:[75,1.1,246]},
+ 'terrain-longya':{label:'长雅入口 · 6级H台阶',position:[120,4.3,236],target:[129,1.8,250]},
  'terrain-field':{label:'后缘跑道与前庭 · H地坪过渡',position:[120,5,192],target:[94,.2,183]},
  'terrain-main':{label:'主路 · 温和纵坡工作方案',position:[-8,3.2,167],target:[0,.8,204]},
  'terrain-gap':{label:'主楼/厕所 · 平接与桥下净空',position:[6.5,2.19,217],target:[6.5,2.19,238]}
@@ -48,6 +48,15 @@ topControls.enableRotate=false;topControls.enableDamping=true;topControls.enable
 const sun=new THREE.DirectionalLight(0xffffff,3);sun.position.set(-100,260,-80);sun.target.position.set(45,0,135);sun.castShadow=true;
 sun.shadow.mapSize.set(2048,2048);Object.assign(sun.shadow.camera,{left:-250,right:250,top:250,bottom:-250,near:1,far:900});sun.shadow.normalBias=.18;sun.shadow.bias=-.00015;
 scene.add(sun,sun.target);
+const sunDirection=new THREE.Vector3(-145,260,-215).normalize();
+function setReviewShadow(target:number[],detail=false){
+ if(detail){sun.target.position.set(target[0],target[1],target[2]);sun.position.copy(sun.target.position).addScaledVector(sunDirection,365);}
+ else{sun.position.set(-100,260,-80);sun.target.position.set(45,0,135);}
+ const extent=detail?38:250;
+ Object.assign(sun.shadow.camera,{left:-extent,right:extent,top:extent,bottom:-extent,near:1,far:900});
+ sun.shadow.normalBias=detail?.025:.18;sun.shadow.bias=detail?-.000035:-.00015;
+ sun.shadow.camera.updateProjectionMatrix();sun.target.updateMatrixWorld();sun.updateMatrixWorld();sun.shadow.needsUpdate=true;
+}
 
 // Architectural colours use a Canvas Ramp LUT. Debug lines/HTML are a separate annotation layer.
 const ramps=[
@@ -213,7 +222,7 @@ function setToiletLevel(level:number,focus=false){
  if(focus&&level){stopModes();active=camera;controls.enabled=true;topControls.enabled=false;const y=(level-1)*3.8+(terrainSystem?.enabled?terrainSystem.model.anchors['25'].floor:0);camera.position.set(7,y+10,238);controls.target.set(-10,y+1,224);controls.update();}
 }
 function setView(name:string){
- const p=cameraPresets[name];if(!p)return;stopModes();view=name;setToiletLevel(name==='toilet-floor'?2:0);
+ const p=cameraPresets[name];if(!p)return;setReviewShadow(p.target,name.startsWith('terrain-'));stopModes();view=name;setToiletLevel(name==='toilet-floor'?2:0);
  document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',(b as HTMLElement).dataset.view===name));
  active=name==='top'?topCamera:camera;controls.enabled=name!=='top';topControls.enabled=name==='top';
  active.position.set(...p.position as Vec3);active.up.set(...(name==='top'?[0,0,-1]:[0,1,0]) as Vec3);
@@ -231,14 +240,14 @@ el<HTMLInputElement>('footprints-check').onchange=e=>{planOnly=(e.target as HTML
 function download(name:string,data:Blob|string){const u=typeof data==='string'?data:URL.createObjectURL(data),a=document.createElement('a');a.href=u;a.download=name;a.click();if(typeof data!=='string')setTimeout(()=>URL.revokeObjectURL(u),1000);}
 el('download-layout').onclick=()=>download(`campus-layout-${layout.version}.json`,new Blob([JSON.stringify(layout,null,2)],{type:'application/json'}));
 el('capture-btn').onclick=()=>{renderer.render(scene,active);download(`yali-M11A-${view}.png`,renderer.domElement.toDataURL('image/png'));toast('已输出当前WebGL画布；尺寸仍为工作推定。');};
-el('fly-btn').onclick=()=>{
+el('fly-btn').onclick=()=>{setReviewShadow([45,0,135],false);
  if(fly){setView(view);return;}stopModes();fly=true;active=camera;controls.enabled=topControls.enabled=false;camera.up.set(0,1,0);
  const direction=camera.getWorldDirection(new THREE.Vector3());phi=Math.asin(direction.y);theta=Math.atan2(-direction.x,-direction.z);
  el('fly-btn').classList.add('active');el('help').textContent='WASD 平移 · Q/R 升降 · 拖动观察 · Shift 加速 · Esc 退出（无碰撞）';toast('自由校核相机：允许穿过体量检查，不是人物控制器。');
 };
 const tourPath=layout.navigation.tourPath;
 let tourEdge=0,tourT=0;
-el('tour-btn').onclick=()=>{if(tour){setView('overview');return;}stopModes();tour=true;active=camera;controls.enabled=topControls.enabled=false;camera.up.set(0,1,0);tourEdge=tourT=0;const start=layout.navigation.nodes[tourPath[0] as keyof typeof layout.navigation.nodes],next=layout.navigation.nodes[tourPath[1] as keyof typeof layout.navigation.nodes];camera.position.set(start[0],groundEye(start[0],start[2]),start[2]);camera.lookAt(next[0],groundEye(next[0],next[2]),next[2]);el('tour-btn').classList.add('active');el('help').textContent='沿连通图进行地面路线巡览 · 点击停止或 Esc · 不是物理角色';};
+el('tour-btn').onclick=()=>{setReviewShadow([45,0,135],false);if(tour){setView('overview');return;}stopModes();tour=true;active=camera;controls.enabled=topControls.enabled=false;camera.up.set(0,1,0);tourEdge=tourT=0;const start=layout.navigation.nodes[tourPath[0] as keyof typeof layout.navigation.nodes],next=layout.navigation.nodes[tourPath[1] as keyof typeof layout.navigation.nodes];camera.position.set(start[0],groundEye(start[0],start[2]),start[2]);camera.lookAt(next[0],groundEye(next[0],next[2]),next[2]);el('tour-btn').classList.add('active');el('help').textContent='沿连通图进行地面路线巡览 · 点击停止或 Esc · 不是物理角色';};
 renderer.domElement.addEventListener('pointerdown',e=>{pointerDown=true;pointerLast=clickStart=[e.clientX,e.clientY];});
 window.addEventListener('pointerup',e=>{
  if(pointerDown&&!fly&&!tour&&Math.hypot(e.clientX-clickStart[0],e.clientY-clickStart[1])<5){

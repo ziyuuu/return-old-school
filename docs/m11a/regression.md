@@ -2,7 +2,7 @@
 
 状态：IMPLEMENTED / REVIEW_PENDING。工程已验证，校友尚未认可H高差。
 
-本次CI输入：`2c3a9879bb84d8fc814e45d4f0dffcbfcd6b3ff9`。
+本次CI输入：`62e4361775a841b8efaeb8d6a61258b86f0ea96a`。
 
 - [x] 245项单元/回归（包含原R4的118项）。
 - [x] 70项地坪数据检查。
