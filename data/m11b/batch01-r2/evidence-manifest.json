@@ -1,0 +1,15 @@
+{
+  "version":"B01R2",
+  "records":[
+    {"id":"R2-A-SECTION","kind":"A","source":"current conversation: explicit five-floor side-section and IMG_5504.png","facts":["L1-3 classroom/corridor/classroom","L4 classroom/corridor/terrace","L5 classroom/corridor"],"numbers":"H"},
+    {"id":"R2-A-CENTRAL","kind":"A","source":"current conversation","facts":["central protrusion includes broadcasting and other functional spaces","not a central staircase","blank stairwell bands at both facade ends"],"unknown":["specific room use per floor","exact stair position/width"]},
+    {"id":"R2-A-AXIS","kind":"A","source":"current conversation: 田径场、升旗台、主教学楼、图书馆中线对齐","facts":["four nodes collinear","national flag at middle pole"],"workingDecision":"leave field fixed; align other nodes to existing field X73"},
+    {"id":"R2-P-REAR","kind":"P","source":"user364.jpeg / originalS03-038","visible":["fourth-floor terrace","floor above corridor","continuous raised planters"],"unknown":["separate bridge function","hidden facade dimensions"]},
+    {"id":"R2-P-FRONT","kind":"P","source":"user363.jpeg / originalS03-040","visible":["light facade","central relief","small roof cupola","projected side portico"],"unknown":["side-portico end direction","exact main-floor internal circulation"]},
+    {"id":"USER-363.jpeg","source":"user-provided image in this conversation","sha256":"37730c304cc0a302bebfe1c75d7a89c459835ecf9334d616fceb851d3af447fe","redistributed":false},
+    {"id":"USER-364.jpeg","source":"user-provided image in this conversation","sha256":"a17316bba0656c54d9b3431cf2f61132c2f2aead8fa572beb3b3d211be8a05c4","redistributed":false},
+    {"id":"USER-IMG_5504.png","source":"user-provided image in this conversation","sha256":"31dfb30ad0a4fe974280bee27e0a687e57256e7584ef937c2c3028bd2ac894c6","redistributed":false}
+  ],
+  "sameSeries":["https://www.sohu.com/a/162618801_391114","https://k.sina.com.cn/article_6430641585_17f4bcdb1001003x9v.html"],
+  "note":"Earlier research retained; this revision is driven by explicit user corrections, not a claim of newly acquired independent photos."
+}
