@@ -1,0 +1,33 @@
+{
+  "method": "15 complete interrupted seed entries plus SHA256-verified supplement",
+  "files": [
+    ".github/workflows/m11a-build.yml",
+    "README.md",
+    "apps/campus/index.html",
+    "apps/campus/src/batch01-core.mjs",
+    "apps/campus/src/batch01-scene.ts",
+    "apps/campus/src/main.ts",
+    "apps/campus/src/patch03-core.mjs",
+    "apps/campus/src/patch03-scene.ts",
+    "apps/campus/src/patch04-core.mjs",
+    "apps/campus/src/patch04-scene.ts",
+    "apps/campus/src/style.css",
+    "apps/campus/src/terrain-scene.ts",
+    "data/m11a/patch03/evidence-manifest.json",
+    "data/m11a/patch03/input.json",
+    "data/m11a/patch03/research-review.csv",
+    "data/m11a/patch04/evidence-manifest.json",
+    "data/m11a/patch04/input.json",
+    "data/m11b/batch01/evidence-manifest.json",
+    "data/m11b/batch01/input.json",
+    "docs/development-plan.md",
+    "docs/m11a/patch04/implementation-plan.md",
+    "docs/m11b/batch01/evidence-decisions.md",
+    "docs/m11b/batch01/plan.md",
+    "tests/m11b/batch01.test.mjs",
+    "tools/m11b/capture.py",
+    "tools/m11b/export.mjs",
+    "tools/m11b/package.py"
+  ],
+  "frozen_m10_modified": false
+}

@@ -19,7 +19,7 @@
     "date": "2026-09-10",
     "engineeringValidation": "separate gate; previous delivery was not browser-verified"
   },
-  "numericEvidence": "H: every length, level, step count, fence height and exact position is unmeasured",
+  "numericEvidence": "H: historical reconstruction working dimensions",
   "courts": {
     "id": "06",
     "evidenceRelation": [
@@ -207,5 +207,6 @@
     "exaggeration": 1,
     "comparison": "Patch04 / Patch03 / Patch02 working vertical and local site-feature schemes. Never a complete historical rollback."
   },
-  "engineeringValidation": "See qa/m11a-p04/browser-report.json; only passed=true and complete=true constitute verification"
+  "engineeringValidation": "See qa/m11a-p04/browser-report.json; only passed=true and complete=true constitute verification",
+  "confirmation": "目前可以看作这阶段完成了。"
 }

@@ -2,24 +2,75 @@
   "version": "M1.1-B.Batch01",
   "status": "IMPLEMENTED / REVIEW_PENDING",
   "issue": 27,
-  "targetYears": [2006, 2010],
-  "acceptedBase": "M1.1-A.Patch04",
-  "numericEvidence": "H",
+  "targetYears": [
+    2006,
+    2010
+  ],
+  "baseMain": "9a97204676ceb98cf1caabdc29f7efc6cb3307ec",
+  "frozenBranch": "baseline/m1.0-r4",
+  "frozenCommit": "43afdd725c884ba17534372195b026bc977fddd5",
+  "stage": "building-shells; no full interior or gameplay",
+  "evidencePolicy": "A/P guide relationships and silhouette; H fills missing dimensions without blocking reconstruction",
   "main": {
-    "id": "15", "floorCount": 4, "storyHeight": 3.8,
-    "corridorWidth": 2.1, "westReturnWidth": 3,
-    "wallThickness": 0.24, "slabThickness": 0.18,
-    "bayCount": 14, "centralWidth": 8.4,
-    "windowWidth": 1.45, "windowSill": 0.95, "windowHeight": 1.95,
-    "frameWidth": 0.07, "recess": 0.18,
-    "frontDoorWidth": 2.8, "rearDoorWidth": 2.8, "sideDoorWidth": 2.4,
-    "doorHeight": 2.7, "balustradeHeight": 0.94,
-    "terrace": {"level": 4, "rearWallZ": 1.8, "guardHeight": 1.05, "doorXs": [-32, 0, 32]},
-    "cupola": {"enabled": true, "center": [0,-0.8], "radius": 2.25, "drumHeight": 0.72, "capHeight": 1.7},
-    "material": "old-light-render; not modern orange-red main block"
+    "id": "15",
+    "floorCount": 4,
+    "storyHeight": 3.8,
+    "wallThickness": 0.24,
+    "slabThickness": 0.18,
+    "corridorWidth": 2.6,
+    "westReturnWidth": 3,
+    "centralWidth": 6,
+    "bayCount": 16,
+    "windowSill": 0.95,
+    "windowWidth": 1.45,
+    "windowHeight": 1.9,
+    "frameWidth": 0.065,
+    "frontDoorWidth": 2.8,
+    "rearDoorWidth": 2.8,
+    "doorHeight": 2.7,
+    "material": "old-light-render; not modern orange-red main block",
+    "terrace": {
+      "level": 4,
+      "rearWallZ": 2.8,
+      "guardHeight": 1.05,
+      "doorXs": [
+        0,
+        24,
+        -24
+      ],
+      "evidence": "P/R S03-038 and old-main-block paragraph; rear setback dimensions H"
+    },
+    "cupola": {
+      "enabled": true,
+      "center": [
+        0,
+        -1.5
+      ],
+      "radius": 1.8,
+      "drumHeight": 0.8,
+      "capHeight": 1.2,
+      "evidence": "P S03-040 roof silhouette; precise placement/shape H"
+    }
   },
-  "toilet": {"id": "25", "reuseContinuousR4Body": true, "highVentSill": 1.9, "highVentHeight": 0.72, "highVentWidth": 1.6, "parapetHeight": 0.32},
-  "bridge": {"railingHeight": 1.05, "postSpacing": 1.5, "keepGroundCrossingOpen": true},
-  "inScope": ["15 exterior shell", "25 continuous shell", "per-floor bridge/gallery/door paths", "fourth-floor rear terrace"],
-  "excluded": ["modern red main block", "full classroom interiors", "interior stair controller", "gameplay", "private residence interiors"]
+  "toilet": {
+    "id": "25",
+    "highVentSill": 2.4,
+    "highVentWidth": 1.45,
+    "highVentHeight": 0.6,
+    "parapetHeight": 0.3,
+    "genderEnds": "unknown; ends A/B only",
+    "continuousBody": true,
+    "floorAndDoors": "reuse approved R4 full slabs, galleries, two end doors and bridge gap"
+  },
+  "bridge": {
+    "keepGroundCrossingOpen": true,
+    "railingHeight": 1.05,
+    "postSpacing": 1.5,
+    "dimensions": "unchanged R4; details H"
+  },
+  "history": {
+    "modernOrangeBlockExcluded": true,
+    "imagesAsMaterials": false,
+    "hiddenFaces": "conservative H; not final historical interior"
+  }
 }

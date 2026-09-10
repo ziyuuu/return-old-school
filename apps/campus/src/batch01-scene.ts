@@ -23,8 +23,6 @@ function renderParts(parent:THREE.Group,parts:any[],mats:THREE.Material[],owner:
 }
 export function batch01Facility(f:any,g:THREE.Group,api:any,model:any){if(!['15','25'].includes(f.id))return false;renderParts(g,model.parts.filter((p:any)=>p.owner===f.id),api.mats,f.id);g.userData.batch='B01';return true;}
 export function installBatch01Bridge(api:any,model:any){
- // Physical B01 rails replace the earlier schematic line rails, including in cutaway views.
- api.structures.traverse((o:any)=>{if(o instanceof THREE.Line)o.visible=false;});
  const group=new THREE.Group();group.name='B01-bridge-detail';group.position.y=model.toiletFloor;api.volumes.add(group);
  renderParts(group,model.parts.filter((p:any)=>p.owner==='bridge'&&p.role!=='bridge-floor'),api.mats,'25');
  return{group,setSection:(level:number)=>{
