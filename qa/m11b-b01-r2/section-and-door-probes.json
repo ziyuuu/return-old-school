@@ -1,0 +1,71 @@
+{
+  "front": [],
+  "rear": [],
+  "side": [],
+  "underpass": [],
+  "library": [],
+  "terraceSky": [],
+  "corridorCover": [
+    {
+      "name": "R2-15-L5-floor",
+      "facility": "15",
+      "distance": 2.6199999964237186
+    },
+    {
+      "name": "R2-15-L5-floor",
+      "facility": "15",
+      "distance": 2.800000003576276
+    }
+  ],
+  "terraceFloor": [
+    {
+      "name": "R2-15-L4-floor",
+      "y": 14.890000003576276,
+      "role": "slab"
+    },
+    {
+      "name": "R2-15-L4-floor",
+      "y": 14.709999996423718,
+      "role": "slab"
+    }
+  ],
+  "upperFloor": [
+    {
+      "name": "R2-15-L5-floor",
+      "y": 18.690000003576277,
+      "role": "slab"
+    },
+    {
+      "name": "R2-15-L5-floor",
+      "y": 18.50999999642372,
+      "role": "slab"
+    }
+  ],
+  "porchFloor": [
+    {
+      "name": "M11A-15-east-threshold",
+      "y": 3.490000009536743,
+      "role": null
+    },
+    {
+      "name": "R2-porch-landing",
+      "y": 3.490000003576279,
+      "role": "porch-landing"
+    },
+    {
+      "name": "P03-ground-upper-76",
+      "y": 3.450000047683716,
+      "role": null
+    },
+    {
+      "name": "P03-ground-upper-76",
+      "y": 3.450000047683716,
+      "role": null
+    },
+    {
+      "name": "R2-porch-landing",
+      "y": 3.3099999964237217,
+      "role": "porch-landing"
+    }
+  ]
+}

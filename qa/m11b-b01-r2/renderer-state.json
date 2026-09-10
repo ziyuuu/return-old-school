@@ -1,0 +1,14 @@
+{
+  "view": "r2-overview",
+  "verticalScheme": "patch04",
+  "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+  "glError": 0,
+  "contextLost": false,
+  "calls": 668,
+  "triangles": 302152,
+  "camera": [
+    -153.60000000000002,
+    119.2,
+    15.799999999999983
+  ]
+}

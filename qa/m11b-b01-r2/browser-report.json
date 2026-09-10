@@ -1,0 +1,290 @@
+{
+  "version": "M1.1-B.Batch01.R2",
+  "complete": true,
+  "passed": true,
+  "checks": [
+    {
+      "name": "WebGL2 startup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "R2 effective model checks",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "P3 accepted vertical checks",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "four physical axis nodes share X73",
+      "passed": true,
+      "detail": {
+        "08": 73,
+        "flag": 73.0,
+        "15": 73,
+        "18": 73
+      }
+    },
+    {
+      "name": "three actual flagpoles",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "central national flag is distinct from neutral side flags",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main and toilet floor datum retained",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "sports and gym datums retained",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "five floors / ten supported clear toilet routes",
+      "passed": true,
+      "detail": {
+        "routes": 10,
+        "probes": 1240,
+        "bad": []
+      }
+    },
+    {
+      "name": "actual clear front",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "actual clear rear",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "actual clear side",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "actual clear underpass",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "actual clear library",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "actual clear terraceSky",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "fifth floor covers fourth corridor",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "actual floor terraceFloor",
+      "passed": true,
+      "detail": [
+        {
+          "name": "R2-15-L4-floor",
+          "y": 14.890000003576276,
+          "role": "slab"
+        },
+        {
+          "name": "R2-15-L4-floor",
+          "y": 14.709999996423718,
+          "role": "slab"
+        }
+      ]
+    },
+    {
+      "name": "actual floor upperFloor",
+      "passed": true,
+      "detail": [
+        {
+          "name": "R2-15-L5-floor",
+          "y": 18.690000003576277,
+          "role": "slab"
+        },
+        {
+          "name": "R2-15-L5-floor",
+          "y": 18.50999999642372,
+          "role": "slab"
+        }
+      ]
+    },
+    {
+      "name": "actual floor porchFloor",
+      "passed": true,
+      "detail": [
+        {
+          "name": "M11A-15-east-threshold",
+          "y": 3.490000009536743,
+          "role": null
+        },
+        {
+          "name": "R2-porch-landing",
+          "y": 3.490000003576279,
+          "role": "porch-landing"
+        },
+        {
+          "name": "P03-ground-upper-76",
+          "y": 3.450000047683716,
+          "role": null
+        },
+        {
+          "name": "P03-ground-upper-76",
+          "y": 3.450000047683716,
+          "role": null
+        },
+        {
+          "name": "R2-porch-landing",
+          "y": 3.3099999964237217,
+          "role": "porch-landing"
+        }
+      ]
+    },
+    {
+      "name": "all road widths supported including moved door spurs",
+      "passed": true,
+      "detail": {
+        "probes": 1008,
+        "bad": []
+      }
+    },
+    {
+      "name": "P3 42m entrance still rises3m",
+      "passed": true,
+      "detail": [
+        0.03999999910593033,
+        3.0399999618530273
+      ]
+    },
+    {
+      "name": "site stairs and shifted library stairs supported",
+      "passed": true,
+      "detail": {
+        "count": 43,
+        "bad": []
+      }
+    },
+    {
+      "name": "gym gallery stair retained",
+      "passed": true,
+      "detail": {
+        "points": 32,
+        "bad": []
+      }
+    },
+    {
+      "name": "captured all17 requested views",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "upper levels hidden in floor2 view",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "section clipping active",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "section restores full model",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "inspector opens",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "fifth level selectable",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "real terrace camera button",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile canvas matches viewport",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no mobile horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "offline standalone opens on P4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "final WebGL healthy",
+      "passed": true,
+      "detail": {
+        "view": "r2-overview",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 668,
+        "triangles": 302152,
+        "camera": [
+          -153.60000000000002,
+          119.2,
+          15.799999999999983
+        ]
+      }
+    },
+    {
+      "name": "no JavaScript or shader errors",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "screenshots": [
+    "r2-front.png",
+    "r2-overview.png",
+    "r2-entry.png",
+    "r2-rear.png",
+    "r2-terrace.png",
+    "r2-fifth.png",
+    "r2-section.png",
+    "r2-floor2.png",
+    "r2-side.png",
+    "r2-bridge5.png",
+    "r2-library.png",
+    "r2-axis.png",
+    "b01-underpass.png",
+    "p04-courts.png",
+    "p04-shop.png",
+    "p03-gate-out.png",
+    "p03-edge.png",
+    "desktop-ui.png",
+    "mobile.png"
+  ],
+  "errors": [],
+  "source_sha": "cc439350885627472252c791fcac1f44212aafc7",
+  "viewer_sha256": "975148ba8e621c15d5ba12ef1f2fb8da972d2acb60f8bf14c2246d68215647ed",
+  "environment": "Playwright Chromium / SwiftShader WebGL2;1440x1000 and390x844 viewport",
+  "alumniReview": "REVIEW_PENDING"
+}
