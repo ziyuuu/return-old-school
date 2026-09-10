@@ -46,12 +46,16 @@ with sync_playwright() as p:
   page.evaluate("window.__YALI_B01__.setView('b01-oblique')");check('CUTAWAY-RESTORED',page.evaluate("window.__YALI_M10__.getState().toiletLevel===0"))
   check('NO-WEBGL-ERROR',page.evaluate('window.__YALI_B01__.getState().glError===0'))
   (QA/'geometry-snapshot.json').write_text(json.dumps(page.evaluate('window.__YALI_B01__.snapshot()'),ensure_ascii=False,indent=2))
+  # Separate GPU contexts: the software CI renderer must not keep two full campuses live.
+  page.close();browser.close()
+  browser=p.chromium.launch(headless=True,args=['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader','--disable-dev-shm-usage'])
   mobile=browser.new_page(viewport={'width':390,'height':844},device_scale_factor=1,is_mobile=True,has_touch=True)
-  mobile.on('pageerror',lambda e:errors.append(str(e)));mobile.goto(FILE.as_uri(),wait_until='load',timeout=60000);mobile.wait_for_function('window.__YALI_B01__?.ready',timeout=60000);mobile.wait_for_timeout(1600)
+  page=mobile
+  mobile.on('pageerror',lambda e:errors.append(str(e)));mobile.goto(FILE.as_uri(),wait_until='load',timeout=120000);mobile.wait_for_function('window.__YALI_B01__?.ready',timeout=60000);mobile.wait_for_timeout(1600)
   mobile.screenshot(path=str(QA/'mobile.png'));shots.append(dict(view='mobile',file='mobile.png',viewport=[390,844],source='Chromium mobile viewport'))
   check('MOBILE-WEBGL',mobile.evaluate('!window.__YALI_B01__.getState().contextLost'))
   check('MOBILE-NO-OVERFLOW',mobile.evaluate('document.documentElement.scrollWidth<=innerWidth'))
-  mobile.get_by_role('button',name='主楼正面',exact=True).click();mobile.wait_for_timeout(500);check('MOBILE-CAMERA-CONTROL',mobile.evaluate("window.__YALI_B01__.getState().view==='b01-front'"));mobile.close()
+  mobile.get_by_role('button',name='主楼正面',exact=True).click();mobile.wait_for_timeout(500);check('MOBILE-CAMERA-CONTROL',mobile.evaluate("window.__YALI_B01__.getState().view==='b01-front'"));
   check('NO-PAGE-ERRORS',not errors,errors)
  except Exception as e:
   errors.append(str(e));check('BROWSER-EXECUTION',False,str(e));page.screenshot(path=str(QA/'browser-error.png'))
