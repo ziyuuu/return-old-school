@@ -87,6 +87,12 @@ export function buildB01R3Model(layout,terrain,r2,p){
   const x=f.position[0]+cx,z=f.position[2],Y=terrain.anchors['15'].floor;
   access.push({id:side,door:[x,Y+fy,z+e.doorWallZ],normal:copy(e.frontNormal),clearRoute:[[x,Y+fy,z+stepEnd+.1],[x,Y+fy,z+e.doorWallZ+.4],[f.position[0]+(i?46:-46),Y+fy,z-2.4],[f.position[0]+(i?46:-46),Y+fy,z]],apron:[[x,z+e.apron.startZ],[x,z+stepStart]],stepProbes:Array.from({length:e.steps},(_,n)=>[x,Y+lower+e.totalRise*(n+1)/e.steps,z+stepStart+e.stepRun*(n+.5)/e.steps]),stepStart,stepEnd});
  }
+ // R3_GROUND_FOUNDATIONS: local apron lowering exposes the slab edge. Fill its
+ // exact notched footprint downward; do not span the entrance recess or any bridge.
+ for(const q of [...parts].filter(q=>q.owner==='15'&&q.level===1&&q.role==='slab')){
+  const bottom=q.center[1]-q.size[1]/2,base=-.60;
+  parts.push({...q,id:'R3-foundation-'+q.id,role:'foundation',center:[q.center[0],(bottom+base)/2,q.center[2]],size:[q.size[0],bottom-base,q.size[2]]});
+ }
  const origins={15:[f.position[0],terrain.anchors['15'].floor,f.position[2]],25:[...layout.facilities.find(f=>f.id==='25').position],bridge:[0,terrain.anchors['25'].floor,0]};origins[25][1]=terrain.anchors['25'].floor;
  const worldParts=parts.map(q=>({...q,center:q.center.map((v,i)=>v+origins[q.owner][i])}));
  const result={...old,version:p.version,r3:p,parts,worldParts,access,retiredPorch:true};result.exportData=()=>({version:p.version,input:p,r2Input:r2,parts,worldParts,spaces:result.spaces,routes:result.routes,axis:result.axis,access,mainFloor:result.mainFloor,toiletFloor:result.toiletFloor,status:p.status});return result;
@@ -111,4 +117,4 @@ export function b01R3Checks(before,layout,m,p){const rows=[],put=(id,ok,detail=n
  put('R3_TERRACE_SKY',!m.worldParts.some(q=>hitPart(world(18,12,4),world(18,30,4),q)));put('R3_TERRACE_FLOOR',hasR3Floor(m,...world(18,11.44,4)));
  put('R3_L5_CORRIDOR_COVERS_L4',m.worldParts.some(q=>q.role==='slab'&&hitPart(world(18,12,0),world(18,17,0),q)));
  for(const r of m.routes){let support=true,clear=true;for(let i=1;i<r.points.length;i++){const u=r.points[i-1],v=r.points[i],n=Math.ceil(Math.hypot(v[0]-u[0],v[2]-u[2]));for(let j=0;j<=n;j++)if(!hasR3Floor(m,u[0]+(v[0]-u[0])*j/n,u[1],u[2]+(v[2]-u[2])*j/n))support=false;for(const h of [.4,1.8])if(m.worldParts.some(q=>hitPart([u[0],u[1]+h,u[2]],[v[0],v[1]+h,v[2]],q)))clear=false;}put('R3_'+r.id+'_SUPPORT',support);put('R3_'+r.id+'_CLEAR',clear);}
- put('R3_UNDERPASS_CLEAR',!m.worldParts.some(q=>hitPart([6.5,5.2,216],[6.5,5.2,239],q)));put('R3_PARTS_VALID_UNIQUE',new Set(ps.map(q=>q.id)).size===ps.length&&ps.every(q=>q.size.every(v=>v>0&&Number.isFinite(v))));return{passed:rows.every(r=>r.passed),results:rows};}
+ put('R3_UNDERPASS_CLEAR',!m.worldParts.some(q=>hitPart([6.5,5.2,216],[6.5,5.2,239],q)));put('R3_FOUNDATION_CONTINUOUS',ps.filter(q=>q.owner==='15'&&q.level===1&&q.role==='slab').every(q=>{const b=ps.find(v=>v.id==='R3-foundation-'+q.id);return b&&b.role==='foundation'&&near(b.center[1]-b.size[1]/2,-.60)&&near(b.center[1]+b.size[1]/2,q.center[1]-q.size[1]/2)&&near(b.center[0],q.center[0])&&near(b.center[2],q.center[2])&&near(b.size[0],q.size[0])&&near(b.size[2],q.size[2]);}));put('R3_PARTS_VALID_UNIQUE',new Set(ps.map(q=>q.id)).size===ps.length&&ps.every(q=>q.size.every(v=>v>0&&Number.isFinite(v))));return{passed:rows.every(r=>r.passed),results:rows};}

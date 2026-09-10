@@ -38,3 +38,5 @@ fault('axis drifts',m=>m.axis[1].x-=1);
 fault('unrelated library moved',(_,l)=>l.facilities.find(f=>f.id==='18').position[0]+=1);
 fault('road graph changed',(_,l)=>l.navigation.edges.pop());
 fault('old east door wall reopened',m=>m.parts=m.parts.filter(q=>q.id!=='R3-retired-east-door-closure'));
+
+fault('missing entrance foundation',m=>m.parts=m.parts.filter(q=>q.id!=='R3-foundation-R3-main-floor-1'));

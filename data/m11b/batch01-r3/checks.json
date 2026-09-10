@@ -317,6 +317,11 @@
       "detail": null
     },
     {
+      "id": "R3_FOUNDATION_CONTINUOUS",
+      "passed": true,
+      "detail": null
+    },
+    {
       "id": "R3_PARTS_VALID_UNIQUE",
       "passed": true,
       "detail": null
