@@ -1,0 +1,936 @@
+{
+  "version": "M1.1-A.1",
+  "checks": [
+    {
+      "name": "terrain initialized",
+      "passed": true,
+      "detail": {
+        "enabled": true,
+        "version": "M1.1-A.1",
+        "report": {
+          "passed": true,
+          "results": [
+            {
+              "id": "BASELINE_XZ_TOPOLOGY",
+              "passed": true,
+              "detail": "All28 IDs,27 XZ locations, footprints, widths and edges unchanged"
+            },
+            {
+              "id": "RELATIVE_NOT_SURVEYED",
+              "passed": true,
+              "detail": "No altitude/control net claim"
+            },
+            {
+              "id": "GATE_DATUM",
+              "passed": true,
+              "detail": "Relative0m at main gate"
+            },
+            {
+              "id": "MUSIC_GYM_LEVEL",
+              "passed": true,
+              "detail": "Direct contact without vertical disconnection"
+            },
+            {
+              "id": "MAIN_TOILET_LEVEL",
+              "passed": true,
+              "detail": "Every bridge and floor translated by the same offset"
+            },
+            {
+              "id": "SUBSPACE_LEVEL",
+              "passed": true,
+              "detail": "Canteen subspace follows its owner"
+            },
+            {
+              "id": "SPORT_FLAT_04",
+              "passed": true,
+              "detail": "Flat sports pads, not rolling terrain"
+            },
+            {
+              "id": "SPORT_FLAT_05",
+              "passed": true,
+              "detail": "Flat sports pads, not rolling terrain"
+            },
+            {
+              "id": "SPORT_FLAT_06",
+              "passed": true,
+              "detail": "Flat sports pads, not rolling terrain"
+            },
+            {
+              "id": "SPORT_FLAT_08",
+              "passed": true,
+              "detail": "Flat sports pads, not rolling terrain"
+            },
+            {
+              "id": "SPORT_FLAT_23",
+              "passed": true,
+              "detail": "Flat sports pads, not rolling terrain"
+            },
+            {
+              "id": "SPORT_FLAT_28",
+              "passed": true,
+              "detail": "Flat sports pads, not rolling terrain"
+            },
+            {
+              "id": "ROAD_GRADE_gate_junction-gym",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "ROAD_GRADE_junction-gym_gym-entry",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "ROAD_GRADE_junction-gym_junction-sports",
+              "passed": true,
+              "detail": 0.0018750000000000155
+            },
+            {
+              "id": "ROAD_GRADE_junction-sports_sports-front",
+              "passed": true,
+              "detail": 0.0020983886718750067
+            },
+            {
+              "id": "ROAD_GRADE_sports-front_pool-entry",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "ROAD_GRADE_junction-sports_junction-office",
+              "passed": true,
+              "detail": 0.001875000000000071
+            },
+            {
+              "id": "ROAD_GRADE_junction-office_office-entry",
+              "passed": true,
+              "detail": 0.025914043755865514
+            },
+            {
+              "id": "ROAD_GRADE_forecourt_main-front",
+              "passed": true,
+              "detail": 0.0004749262191612747
+            },
+            {
+              "id": "ROAD_GRADE_main-front_east-front",
+              "passed": true,
+              "detail": 0.007541957922588608
+            },
+            {
+              "id": "ROAD_GRADE_east-front_science-entry",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "ROAD_GRADE_east-front_east-mid",
+              "passed": true,
+              "detail": 0.03923928021260329
+            },
+            {
+              "id": "ROAD_GRADE_east-mid_canteen-entry",
+              "passed": true,
+              "detail": 0.005822606588089513
+            },
+            {
+              "id": "ROAD_GRADE_east-bottom_longya-entry",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "ROAD_GRADE_side-branch_side-front-turn",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "ROAD_GRADE_side-front-turn_side-upper",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "ROAD_GRADE_side-upper_side-mid",
+              "passed": true,
+              "detail": 0.0018750000000000155
+            },
+            {
+              "id": "ROAD_GRADE_side-mid_side-lower",
+              "passed": true,
+              "detail": 0.023578960905349722
+            },
+            {
+              "id": "ROAD_GRADE_side-lower_east-front",
+              "passed": true,
+              "detail": 0.0419945987654321
+            },
+            {
+              "id": "ROAD_GRADE_forecourt_gap-entry",
+              "passed": true,
+              "detail": 0.004439247545287914
+            },
+            {
+              "id": "ROAD_GRADE_gap-entry_gap-north",
+              "passed": true,
+              "detail": 0.006066666666666665
+            },
+            {
+              "id": "ROAD_GRADE_gap-north_gap-cross",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "ROAD_GRADE_gap-cross_gap-south",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "ROAD_GRADE_gap-south_rear-west",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "ROAD_GRADE_rear-west_rear-junction",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "ROAD_GRADE_rear-junction_library-entry",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "ROAD_GRADE_rear-junction_main-rear",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "ROAD_GRADE_side-gate_side-entry",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "ROAD_GRADE_side-entry_side-branch",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "ROAD_GRADE_sports-front_music-approach",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "ROAD_GRADE_music-approach_music-entry",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "ROAD_GRADE_junction-office_junction-museum",
+              "passed": true,
+              "detail": 0.005555555555555647
+            },
+            {
+              "id": "ROAD_GRADE_junction-museum_forecourt",
+              "passed": true,
+              "detail": 0.005555555555555758
+            },
+            {
+              "id": "ROAD_GRADE_junction-museum_museum-entry",
+              "passed": true,
+              "detail": 0.00014297120701977297
+            },
+            {
+              "id": "ROAD_GRADE_forecourt-15_main-front",
+              "passed": true,
+              "detail": 0.0452633744855967
+            },
+            {
+              "id": "ROAD_GRADE_main-front_teaching-entry",
+              "passed": true,
+              "detail": 0.006134870312500206
+            },
+            {
+              "id": "ROAD_GRADE_east-front_east-cross",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "ROAD_GRADE_east-cross_east-bottom",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "ROAD_GRADE_main-east_east-cross",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "ROAD_GRADE_east-cross_info-west",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "STEP_START_ST-GYM",
+              "passed": true,
+              "detail": "Bottom matches existing approach grade"
+            },
+            {
+              "id": "STEP_RISE_ST-GYM",
+              "passed": true,
+              "detail": "Rise matches independent building entry parameter"
+            },
+            {
+              "id": "STEP_MATCH_ST-GYM",
+              "passed": true,
+              "detail": "Top matches building floor"
+            },
+            {
+              "id": "STEP_GEOMETRY_ST-GYM",
+              "passed": true,
+              "detail": "Working step geometry, not statutory compliance"
+            },
+            {
+              "id": "STEP_START_ST-MUSIC",
+              "passed": true,
+              "detail": "Bottom matches existing approach grade"
+            },
+            {
+              "id": "STEP_RISE_ST-MUSIC",
+              "passed": true,
+              "detail": "Rise matches independent building entry parameter"
+            },
+            {
+              "id": "STEP_MATCH_ST-MUSIC",
+              "passed": true,
+              "detail": "Top matches building floor"
+            },
+            {
+              "id": "STEP_GEOMETRY_ST-MUSIC",
+              "passed": true,
+              "detail": "Working step geometry, not statutory compliance"
+            },
+            {
+              "id": "STEP_START_ST-LONGYA",
+              "passed": true,
+              "detail": "Bottom matches existing approach grade"
+            },
+            {
+              "id": "STEP_RISE_ST-LONGYA",
+              "passed": true,
+              "detail": "Rise matches independent building entry parameter"
+            },
+            {
+              "id": "STEP_MATCH_ST-LONGYA",
+              "passed": true,
+              "detail": "Top matches building floor"
+            },
+            {
+              "id": "STEP_GEOMETRY_ST-LONGYA",
+              "passed": true,
+              "detail": "Working step geometry, not statutory compliance"
+            },
+            {
+              "id": "STEP_START_ST-LIBRARY",
+              "passed": true,
+              "detail": "Bottom matches existing approach grade"
+            },
+            {
+              "id": "STEP_RISE_ST-LIBRARY",
+              "passed": true,
+              "detail": "Rise matches independent building entry parameter"
+            },
+            {
+              "id": "STEP_MATCH_ST-LIBRARY",
+              "passed": true,
+              "detail": "Top matches building floor"
+            },
+            {
+              "id": "STEP_GEOMETRY_ST-LIBRARY",
+              "passed": true,
+              "detail": "Working step geometry, not statutory compliance"
+            },
+            {
+              "id": "NO_NEW_ROUTE_TO_GARDEN",
+              "passed": true,
+              "detail": "Unknown access stays unresolved, not fabricated"
+            },
+            {
+              "id": "NO_MISSING_FACILITY_FILL",
+              "passed": true,
+              "detail": "Unlocated22 retained"
+            },
+            {
+              "id": "EXAGGERATION_1",
+              "passed": true,
+              "detail": "No hidden vertical exaggeration"
+            }
+          ]
+        },
+        "anchors": {
+          "10": {
+            "site": 0.05625,
+            "floor": 0.056,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "11": {
+            "site": 0.2,
+            "floor": 0.2,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "12": {
+            "site": 0.2,
+            "floor": 0.2,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "R4食堂下层子空间随11整体垂直适配"
+            ]
+          },
+          "13": {
+            "site": 0.45,
+            "floor": 0.45,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "14": {
+            "site": 0.3,
+            "floor": 0.3,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "15": {
+            "site": 0.45,
+            "floor": 0.45,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "16": {
+            "site": 0.38333333333333336,
+            "floor": 0.383,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "17": {
+            "site": 0.45,
+            "floor": 1.35,
+            "rise": 0.9,
+            "measured": null,
+            "evidence": [
+              "S03-047",
+              "H6级×0.15m"
+            ]
+          },
+          "18": {
+            "site": 0.45,
+            "floor": 0.9,
+            "rise": 0.45,
+            "measured": null,
+            "evidence": [
+              "S03-049",
+              "H3级×0.15m"
+            ]
+          },
+          "19": {
+            "site": 0.45,
+            "floor": 0.45,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "20": {
+            "site": 0.2,
+            "floor": 0.2,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "21": {
+            "site": 0.45,
+            "floor": 0.45,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "22": null,
+          "23": {
+            "site": 0,
+            "floor": 0,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "24": {
+            "site": 0,
+            "floor": 0.6,
+            "rise": 0.6,
+            "measured": null,
+            "evidence": [
+              "USER-R3-CONTACT",
+              "H随03同基础标高，外门4级未证实"
+            ]
+          },
+          "25": {
+            "site": 0.45,
+            "floor": 0.45,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "26": {
+            "site": 0,
+            "floor": 0,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "27": {
+            "site": 0,
+            "floor": 0,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "28": {
+            "site": 0,
+            "floor": 0,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "01": {
+            "site": 0,
+            "floor": 0,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "02": {
+            "site": 0,
+            "floor": 0,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "03": {
+            "site": 0,
+            "floor": 0.6,
+            "rise": 0.6,
+            "measured": null,
+            "evidence": [
+              "S03-020",
+              "H4级×0.15m"
+            ]
+          },
+          "04": {
+            "site": 0,
+            "floor": 0,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "05": {
+            "site": 0,
+            "floor": 0,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "06": {
+            "site": 0,
+            "floor": 0,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "07": {
+            "site": 0.20555555555555555,
+            "floor": 0.206,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "08": {
+            "site": 0,
+            "floor": 0,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "09": {
+            "site": 0.043125,
+            "floor": 0.043125,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          }
+        },
+        "groundBounds": [
+          -102,
+          -18,
+          204,
+          291
+        ],
+        "frozenTopologyUnmodified": true,
+        "exaggeration": 1,
+        "addedMeshes": 120
+      }
+    },
+    {
+      "name": "frozen R4 runtime rules",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all39 draped road centerlines supported",
+      "passed": true,
+      "detail": {
+        "n": 1143,
+        "max": 0.0020000135898590177,
+        "fail": []
+      }
+    },
+    {
+      "name": "full road widths supported",
+      "passed": true,
+      "detail": {
+        "n": 78,
+        "bad": []
+      }
+    },
+    {
+      "name": "actual route clearance after grade change",
+      "passed": true,
+      "detail": {
+        "n": 1698,
+        "fail": []
+      }
+    },
+    {
+      "name": "17 physical entry steps and4 top portals",
+      "passed": true,
+      "detail": {
+        "rows": [
+          {
+            "id": "ST-GYM",
+            "step": 1,
+            "expected": 0.19,
+            "actual": 0.19000000298022868
+          },
+          {
+            "id": "ST-GYM",
+            "step": 2,
+            "expected": 0.33999999999999997,
+            "actual": 0.3400000059604645
+          },
+          {
+            "id": "ST-GYM",
+            "step": 3,
+            "expected": 0.48999999999999994,
+            "actual": 0.4899999940395355
+          },
+          {
+            "id": "ST-GYM",
+            "step": 4,
+            "expected": 0.64,
+            "actual": 0.6400000119209325
+          },
+          {
+            "id": "ST-MUSIC",
+            "step": 1,
+            "expected": 0.19,
+            "actual": 0.19000000298022868
+          },
+          {
+            "id": "ST-MUSIC",
+            "step": 2,
+            "expected": 0.33999999999999997,
+            "actual": 0.3400000059604645
+          },
+          {
+            "id": "ST-MUSIC",
+            "step": 3,
+            "expected": 0.48999999999999994,
+            "actual": 0.4899999940395319
+          },
+          {
+            "id": "ST-MUSIC",
+            "step": 4,
+            "expected": 0.64,
+            "actual": 0.6400000119209289
+          },
+          {
+            "id": "ST-LONGYA",
+            "step": 1,
+            "expected": 0.64,
+            "actual": 0.6400000029802323
+          },
+          {
+            "id": "ST-LONGYA",
+            "step": 2,
+            "expected": 0.79,
+            "actual": 0.7900000059604645
+          },
+          {
+            "id": "ST-LONGYA",
+            "step": 3,
+            "expected": 0.9400000000000001,
+            "actual": 0.9399999940395356
+          },
+          {
+            "id": "ST-LONGYA",
+            "step": 4,
+            "expected": 1.09,
+            "actual": 1.090000011920929
+          },
+          {
+            "id": "ST-LONGYA",
+            "step": 5,
+            "expected": 1.24,
+            "actual": 1.24
+          },
+          {
+            "id": "ST-LONGYA",
+            "step": 6,
+            "expected": 1.3900000000000001,
+            "actual": 1.389999988079071
+          },
+          {
+            "id": "ST-LIBRARY",
+            "step": 1,
+            "expected": 0.64,
+            "actual": 0.6400000029802322
+          },
+          {
+            "id": "ST-LIBRARY",
+            "step": 2,
+            "expected": 0.79,
+            "actual": 0.790000005960468
+          },
+          {
+            "id": "ST-LIBRARY",
+            "step": 3,
+            "expected": 0.94,
+            "actual": 0.9399999940395355
+          }
+        ],
+        "bad": []
+      }
+    },
+    {
+      "name": "4 toilet slabs / 8 end-door routes retained",
+      "passed": true,
+      "detail": {
+        "rows": [
+          {
+            "level": 1,
+            "z": 218.9,
+            "supported": true
+          },
+          {
+            "level": 1,
+            "z": 229.1,
+            "supported": true
+          },
+          {
+            "level": 2,
+            "z": 218.9,
+            "supported": true
+          },
+          {
+            "level": 2,
+            "z": 229.1,
+            "supported": true
+          },
+          {
+            "level": 3,
+            "z": 218.9,
+            "supported": true
+          },
+          {
+            "level": 3,
+            "z": 229.1,
+            "supported": true
+          },
+          {
+            "level": 4,
+            "z": 218.9,
+            "supported": true
+          },
+          {
+            "level": 4,
+            "z": 229.1,
+            "supported": true
+          }
+        ],
+        "bad": []
+      }
+    },
+    {
+      "name": "camera overview",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera top",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera terrain-main",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera terrain-gym",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera terrain-library",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera terrain-longya",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera terrain-field",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera terrain-gap",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera sports",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera family-canteen",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "comparison restores all root Y",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "8 toggles no accumulated displacement",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "actual shared gym/music floor",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "actual shared main/toilet floor",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "terrain export action",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "tour relative eye height",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "tour exits",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile viewport resized",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "standalone file startup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no page/shader errors",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "complete": true,
+  "errors": [],
+  "screenshots": [
+    "overview.png",
+    "top.png",
+    "terrain-main.png",
+    "terrain-gym.png",
+    "terrain-library.png",
+    "terrain-longya.png",
+    "terrain-field.png",
+    "terrain-gap.png",
+    "sports.png",
+    "family-canteen.png",
+    "r4-comparison.png",
+    "mobile.png"
+  ],
+  "source_input": "2c3a9879bb84d8fc814e45d4f0dffcbfcd6b3ff9",
+  "environment": "Chromium software WebGL, not device performance certification"
+}

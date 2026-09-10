@@ -5,3 +5,5 @@
 
 /* R2: extra inspection cameras remain scrollable on every viewport. */
 .views{max-width:calc(100% - 48px);overflow-x:auto}.views button{flex-shrink:0}.mode-chip{pointer-events:none}.legend{display:none}
+
+.terrain-tools{position:fixed;right:28px;top:88px;z-index:8;display:flex;align-items:center;gap:10px;font-size:12px;color:#42594c}.terrain-tools button{font:inherit;padding:9px 14px;border:1px solid #97a993;border-radius:8px;background:#f9f8ec;color:#224940;cursor:pointer}.terrain-note{font-size:12px;line-height:1.7;padding:10px;margin:10px 0;background:#edf0e8;border-left:3px solid #8e9f85;color:#395347}.clean .terrain-tools{display:none}@media(max-width:700px){.terrain-tools{top:93px;right:15px;gap:4px}.terrain-tools span{display:none}.terrain-tools button{padding:7px 10px}}

@@ -37,7 +37,7 @@ export function installTerrain(api:any, spec:any){
  for(let side=0;side<4;side++){
   const a=corners[side],b=corners[(side+1)%4],n=Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])),pos:number[]=[],idx:number[]=[];
   for(let i=0;i<=n;i++){const x=a[0]+(b[0]-a[0])*i/n,z=a[1]+(b[1]-a[1])*i/n;pos.push(x,model.groundHeight(x,z),z,x,-1.5,z);if(i<n){const k=i*2;idx.push(k,k+1,k+2,k+1,k+3,k+2);}}
-  const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));g.setIndex(idx);g.computeVertexNormals();const m=new THREE.Mesh(g,mats[6]);m.material=mats[6].clone();(m.material as THREE.Material).side=THREE.DoubleSide;m.name='M11A-site-thickness-'+side;surfaceGroup.add(m);
+  const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));g.setIndex(idx);g.computeVertexNormals();const m=new THREE.Mesh(g,mats[6]);m.material=mats[6].clone();m.material.onBeforeCompile=mats[6].onBeforeCompile;m.material.customProgramCacheKey=mats[6].customProgramCacheKey;(m.material as THREE.Material).side=THREE.DoubleSide;m.name='M11A-site-thickness-'+side;surfaceGroup.add(m);
  }
  for(const p of model.profiles){const a=layout.navigation.nodes[p.from],b=layout.navigation.nodes[p.to];const m=strip(`M11A-road-${p.from}--${p.to}`,a,b,p.width,spec.roadSurfaceOffset);m.userData.route=[p.from,p.to];}
  for(const[id,p]of Object.entries(layout.navigation.nodes) as [string,number[]][]){const m=patchGrid('M11A-joint-'+id,[p[0]-.35,p[2]-.35,p[0]+.35,p[2]+.35],.35,spec.roadSurfaceOffset+.002,2);m.userData.node=id;}

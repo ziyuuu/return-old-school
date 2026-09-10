@@ -3,6 +3,8 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import source from '../../../data/m10/campus-layout.json';
 import { bounds, footprint, courtRects, checkLayout } from './layout-core.mjs';
 import './style.css';
+import terrainSpec from '../../../data/m11a/terrain-input.json';
+import {installTerrain} from './terrain-scene';
 import { edgeWidth } from './revision-core.mjs';
 import { r4Facility, setToiletSection } from './revision-r4-scene';
 import { r3Facility, buildR3Thresholds } from './revision-r3-scene';
@@ -12,6 +14,16 @@ import { revisedFacility, buildRevisionParts } from './revision-scene';
 type Vec3 = [number, number, number];
 type Facility = typeof source.facilities[number];
 const layout=source, report=checkLayout(layout);
+let terrainSystem:any=null;
+const groundEye=(x:number,z:number)=>layout.navigation.reviewHeight+(terrainSystem?.enabled?terrainSystem.surfaceHeight(x,z):0);
+const cameraPresets:any={...layout.cameraPresets,
+ 'terrain-gym':{label:'体育馆入口 · 4级H台阶',position:[-49,3.5,16],target:[-45,1,26]},
+ 'terrain-library':{label:'图书馆入口 · 3级H台阶',position:[69,3.8,236],target:[75,1.1,246]},
+ 'terrain-longya':{label:'长雅入口 · 6级H台阶',position:[122,3.8,240],target:[129,1.8,250]},
+ 'terrain-field':{label:'后缘跑道与前庭 · H地坪过渡',position:[120,5,192],target:[94,.2,183]},
+ 'terrain-main':{label:'主路 · 温和纵坡工作方案',position:[-8,3.2,167],target:[0,.8,204]},
+ 'terrain-gap':{label:'主楼/厕所 · 平接与桥下净空',position:[6.5,2.19,217],target:[6.5,2.19,238]}
+};
 const el=<T extends HTMLElement>(id:string)=>document.getElementById(id) as T;
 const viewport=el<HTMLDivElement>('viewport');
 let renderer: THREE.WebGLRenderer;
@@ -185,7 +197,7 @@ function selectFacility(id:string,focus=false){
  selected=id;select.value=id;setInspector(true);
  const b=f.position&&f.size?bounds(f):null;selection.visible=Boolean(b);
  if(b)selection.box.set(new THREE.Vector3(b.minX,.1,b.minZ),new THREE.Vector3(b.maxX,(f.size?.[1]??0)+.6,b.maxZ));
- el('details').innerHTML=`<h3>${f.id} / ${f.name}</h3><span class="tag">${f.position?'H · 米制位置推定':'U · 未定位，不生成占地'}</span><dl><dt>工作中心</dt><dd>${f.position?f.position.map(n=>n.toFixed(2)).join(' / ')+' m':'无坐标'}</dd><dt>占地 × 高</dt><dd>${f.size?`${f.size[0]} × ${f.size[2]} / ${f.size[1]} m`:'尚未指定'}</dd><dt>楼层</dt><dd>${f.floors??'—'} ${f.floors?`[${f.evidence.floorCount}]`:''}</dd><dt>来源</dt><dd>${f.evidence.reference}</dd></dl><p>${f.note}</p><p><strong>后续核对：</strong>${f.evidence.unknowns}</p>`;
+ el('details').innerHTML=`${terrainSystem&&f.position?`<div class="terrain-note">地坪适配：H ${(terrainSystem.model.anchors[f.id]?.floor??0).toFixed(2)} m；主门相对零点，非海拔。${terrainSystem.enabled?'当前已开启':'当前R4对照'}</div>`:''}<h3>${f.id} / ${f.name}</h3><span class="tag">${f.position?'H · 米制位置推定':'U · 未定位，不生成占地'}</span><dl><dt>工作中心</dt><dd>${f.position?f.position.map(n=>n.toFixed(2)).join(' / ')+' m':'无坐标'}</dd><dt>占地 × 高</dt><dd>${f.size?`${f.size[0]} × ${f.size[2]} / ${f.size[1]} m`:'尚未指定'}</dd><dt>楼层</dt><dd>${f.floors??'—'} ${f.floors?`[${f.evidence.floorCount}]`:''}</dd><dt>来源</dt><dd>${f.evidence.reference}</dd></dl><p>${f.note}</p><p><strong>后续核对：</strong>${f.evidence.unknowns}</p>`;
  if(focus&&f.position&&f.size){stopModes();active=camera;controls.enabled=true;topControls.enabled=false;
   const radius=Math.max(f.size[0],f.size[2],20);controls.target.set(...f.position as Vec3).y=Math.min(f.size[1]/2,9);
   camera.position.copy(controls.target).add(new THREE.Vector3(radius*.85,radius*.85,radius*1.15));controls.update();
@@ -198,16 +210,16 @@ function stopModes(){fly=false;tour=false;keys.clear();el('fly-btn').classList.r
 let toiletLevel=0;
 function setToiletLevel(level:number,focus=false){
  toiletLevel=level;setToiletSection(roots,level);el<HTMLSelectElement>('toilet-level').value=String(level);
- if(focus&&level){stopModes();active=camera;controls.enabled=true;topControls.enabled=false;const y=(level-1)*3.8;camera.position.set(7,y+10,238);controls.target.set(-10,y+1,224);controls.update();}
+ if(focus&&level){stopModes();active=camera;controls.enabled=true;topControls.enabled=false;const y=(level-1)*3.8+(terrainSystem?.enabled?terrainSystem.model.anchors['25'].floor:0);camera.position.set(7,y+10,238);controls.target.set(-10,y+1,224);controls.update();}
 }
 function setView(name:string){
- const p=layout.cameraPresets[name as keyof typeof layout.cameraPresets];if(!p)return;stopModes();view=name;setToiletLevel(name==='toilet-floor'?2:0);
+ const p=cameraPresets[name];if(!p)return;stopModes();view=name;setToiletLevel(name==='toilet-floor'?2:0);
  document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',(b as HTMLElement).dataset.view===name));
  active=name==='top'?topCamera:camera;controls.enabled=name!=='top';topControls.enabled=name==='top';
  active.position.set(...p.position as Vec3);active.up.set(...(name==='top'?[0,0,-1]:[0,1,0]) as Vec3);
  (name==='top'?topControls:controls).target.set(...p.target as Vec3);active.lookAt(...p.target as Vec3);
  if(name==='top'){topCamera.zoom=1;topCamera.updateProjectionMatrix();}controls.update();topControls.update();
- el('view-name').innerHTML=`${p.label}<span>体量校核 / 非精模 · 坐标全部为工作推定</span>`;
+ el('view-name').innerHTML=`${p.label}<span>M1.1-A 地坪校核 · 标高H推定 / 非测绘</span>`;
 }
 for(const btn of document.querySelectorAll<HTMLButtonElement>('[data-view]'))btn.onclick=()=>setView(btn.dataset.view!);
 el<HTMLSelectElement>('toilet-level').onchange=e=>setToiletLevel(Number((e.target as HTMLSelectElement).value),true);
@@ -218,7 +230,7 @@ el<HTMLInputElement>('routes-check').onchange=e=>routeOverlay.visible=(e.target 
 el<HTMLInputElement>('footprints-check').onchange=e=>{planOnly=(e.target as HTMLInputElement).checked;volumes.visible=!planOnly;roots.get('12')!.visible=!planOnly;if(planOnly)setView('top');};
 function download(name:string,data:Blob|string){const u=typeof data==='string'?data:URL.createObjectURL(data),a=document.createElement('a');a.href=u;a.download=name;a.click();if(typeof data!=='string')setTimeout(()=>URL.revokeObjectURL(u),1000);}
 el('download-layout').onclick=()=>download(`campus-layout-${layout.version}.json`,new Blob([JSON.stringify(layout,null,2)],{type:'application/json'}));
-el('capture-btn').onclick=()=>{renderer.render(scene,active);download(`yali-M1.0-${view}.png`,renderer.domElement.toDataURL('image/png'));toast('已输出当前WebGL画布；尺寸仍为工作推定。');};
+el('capture-btn').onclick=()=>{renderer.render(scene,active);download(`yali-M11A-${view}.png`,renderer.domElement.toDataURL('image/png'));toast('已输出当前WebGL画布；尺寸仍为工作推定。');};
 el('fly-btn').onclick=()=>{
  if(fly){setView(view);return;}stopModes();fly=true;active=camera;controls.enabled=topControls.enabled=false;camera.up.set(0,1,0);
  const direction=camera.getWorldDirection(new THREE.Vector3());phi=Math.asin(direction.y);theta=Math.atan2(-direction.x,-direction.z);
@@ -226,7 +238,7 @@ el('fly-btn').onclick=()=>{
 };
 const tourPath=layout.navigation.tourPath;
 let tourEdge=0,tourT=0;
-el('tour-btn').onclick=()=>{if(tour){setView('overview');return;}stopModes();tour=true;active=camera;controls.enabled=topControls.enabled=false;camera.up.set(0,1,0);tourEdge=tourT=0;const start=layout.navigation.nodes[tourPath[0] as keyof typeof layout.navigation.nodes],next=layout.navigation.nodes[tourPath[1] as keyof typeof layout.navigation.nodes];camera.position.set(start[0],layout.navigation.reviewHeight,start[2]);camera.lookAt(next[0],layout.navigation.reviewHeight,next[2]);el('tour-btn').classList.add('active');el('help').textContent='沿连通图进行地面路线巡览 · 点击停止或 Esc · 不是物理角色';};
+el('tour-btn').onclick=()=>{if(tour){setView('overview');return;}stopModes();tour=true;active=camera;controls.enabled=topControls.enabled=false;camera.up.set(0,1,0);tourEdge=tourT=0;const start=layout.navigation.nodes[tourPath[0] as keyof typeof layout.navigation.nodes],next=layout.navigation.nodes[tourPath[1] as keyof typeof layout.navigation.nodes];camera.position.set(start[0],groundEye(start[0],start[2]),start[2]);camera.lookAt(next[0],groundEye(next[0],next[2]),next[2]);el('tour-btn').classList.add('active');el('help').textContent='沿连通图进行地面路线巡览 · 点击停止或 Esc · 不是物理角色';};
 renderer.domElement.addEventListener('pointerdown',e=>{pointerDown=true;pointerLast=clickStart=[e.clientX,e.clientY];});
 window.addEventListener('pointerup',e=>{
  if(pointerDown&&!fly&&!tour&&Math.hypot(e.clientX-clickStart[0],e.clientY-clickStart[1])<5){
@@ -254,7 +266,7 @@ function render(time:number){
   const a=layout.navigation.nodes[tourPath[tourEdge] as keyof typeof layout.navigation.nodes],b=layout.navigation.nodes[tourPath[(tourEdge+1)%tourPath.length] as keyof typeof layout.navigation.nodes];
   const len=Math.hypot(b[0]-a[0],b[2]-a[2]);tourT+=dt*12/Math.max(len,1);
   if(tourT>=1){tourT=0;tourEdge++;if(tourEdge>=tourPath.length-1){setView('overview');return;}}
-  camera.position.set(THREE.MathUtils.lerp(a[0],b[0],tourT),layout.navigation.reviewHeight,THREE.MathUtils.lerp(a[2],b[2],tourT));camera.lookAt(b[0],layout.navigation.reviewHeight,b[2]);
+  const tx=THREE.MathUtils.lerp(a[0],b[0],tourT),tz=THREE.MathUtils.lerp(a[2],b[2],tourT);camera.position.set(tx,groundEye(tx,tz),tz);const lt=Math.min(1,tourT+3/Math.max(len,1)),lx=THREE.MathUtils.lerp(a[0],b[0],lt),lz=THREE.MathUtils.lerp(a[2],b[2],lt);camera.lookAt(lx,groundEye(lx,lz),lz);
  }else {if(controls.enabled)controls.update();if(topControls.enabled)topControls.update();}
  renderer.render(scene,active);
  for(const [id,label] of labels){
@@ -264,7 +276,19 @@ function render(time:number){
 }
 setView('overview');renderer.setAnimationLoop(render);
 buildR3Thresholds(layout,{surfaces,box});
-const params=new URLSearchParams(location.search);if(params.has('view'))setView(params.get('view')!);if(params.get('clean')==='1')document.body.classList.add('clean');
+terrainSystem=installTerrain({scene,surfaces,volumes,outlines,routeOverlay,roots,labels,layout,box,mats,structures},terrainSpec);
+function setTerrain(on:boolean){terrainSystem.setEnabled(on);el<HTMLInputElement>('terrain-check').checked=on;el('terrain-state').textContent=on?'地坪方案 H · 1×':'R4 平基准对照';if(selected)selectFacility(selected,false);}
+el<HTMLInputElement>('terrain-check').onchange=e=>setTerrain((e.target as HTMLInputElement).checked);
+el('terrain-compare').onclick=()=>setTerrain(!terrainSystem.enabled);
+el('terrain-export').onclick=()=>download('yali-m11a-terrain-working.json',new Blob([JSON.stringify(terrainSystem.model.exportData(),null,2)],{type:'application/json'}));
+el('terrain-summary').textContent=`地坪检查 ${terrainSystem.report.results.filter((x:any)=>x.passed).length}/${terrainSystem.report.results.length}`;
+el('terrain-checks').innerHTML=terrainSystem.report.results.map((r:any)=>`<div>${r.passed?'✓':'✕'} ${r.id}</div>`).join('');
+Object.assign(window,{__YALI_M11A__:{ready:true,version:terrainSpec.version,state:()=>terrainSystem.state(),setEnabled:setTerrain,
+ inspect:terrainSystem.inspect,groundEye,probeGround:terrainSystem.probeGround,probeActual:terrainSystem.probeActual,
+ exportData:()=>terrainSystem.model.exportData(),setView,model:terrainSystem.model,
+ getRoots:()=>Object.fromEntries([...roots].map(([id,g])=>[id,g.position.toArray()]))}});
+setTerrain(true);
+const params=new URLSearchParams(location.search);if(params.get('terrain')==='0')setTerrain(false);if(params.has('view'))setView(params.get('view')!);if(params.get('clean')==='1')document.body.classList.add('clean');
 function probeSegment(a:number[],b:number[]){
  scene.updateMatrixWorld(true);
  const origin=new THREE.Vector3(...a as Vec3),end=new THREE.Vector3(...b as Vec3),distance=origin.distanceTo(end);
