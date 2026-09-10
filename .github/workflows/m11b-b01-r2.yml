@@ -1,14 +1,6 @@
 name: Build and verify B01 R2
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/m11b-b01-r2.yml'
-      - 'apps/campus/**'
-      - 'data/m11b/batch01-r2/**'
-      - 'tests/m11b/r2/**'
-      - 'tools/m11b/r2/**'
 permissions:
   contents: write
 concurrency:
