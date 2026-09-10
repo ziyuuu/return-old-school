@@ -17,6 +17,7 @@ const layout=source, report=checkLayout(layout);
 let terrainSystem:any=null;
 const groundEye=(x:number,z:number)=>layout.navigation.reviewHeight+(terrainSystem?.enabled?terrainSystem.surfaceHeight(x,z):0);
 const cameraPresets:any={...layout.cameraPresets,
+ 'terrain-entrance':{label:'主门内上坡 · 文字依据 / H数值',position:[-7,2.5,4],target:[0,.3,25]},
  'terrain-gym':{label:'体育馆入口 · 4级H台阶',position:[-53,4.2,10],target:[-45,1.3,25]},
  'terrain-library':{label:'图书馆入口 · 3级H台阶',position:[68,3.8,232],target:[75,1.1,246]},
  'terrain-longya':{label:'长雅入口 · 6级H台阶',position:[120,4.3,236],target:[129,1.8,250]},

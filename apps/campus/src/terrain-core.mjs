@@ -33,6 +33,7 @@ export function terrainChecks(l,spec,reference=l){
  put('BASELINE_XZ_TOPOLOGY',JSON.stringify(horizontalSnapshot(l))===JSON.stringify(horizontalSnapshot(reference)),'All28 IDs,27 XZ locations, footprints, widths and edges unchanged');
  put('RELATIVE_NOT_SURVEYED',spec.datum.absoluteElevation===null&&spec.surveyVerified===false,'No altitude/control net claim');
  put('GATE_DATUM',Math.abs(t.groundHeight(0,0))<1e-8,'Relative0m at main gate');
+ put('ENTRY_ASCENDS',t.groundHeight(0,24)>t.groundHeight(0,4)+.1,'R source text confirms uphill; H rise and length');
  put('MUSIC_GYM_LEVEL',t.anchors['03'].floor===t.anchors['24'].floor,'Direct contact without vertical disconnection');
  put('MAIN_TOILET_LEVEL',t.anchors['15'].floor===t.anchors['25'].floor,'Every bridge and floor translated by the same offset');
  put('SUBSPACE_LEVEL',t.anchors['12'].floor===t.anchors['11'].floor,'Canteen subspace follows its owner');

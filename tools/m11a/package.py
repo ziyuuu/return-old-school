@@ -30,7 +30,7 @@ checklist=f'''# M1.1-A 回归清单 / 实际执行结果
 '''
 (O/'Yali_M1_1_A_Regression_Checklist.md').write_text(checklist);(R/'docs/m11a/regression.md').write_text(checklist)
 css='body{margin:0;background:#f3f3eb;color:#25463c;font:16px/1.8 system-ui,sans-serif}main{max-width:1200px;margin:auto;padding:30px}h1{font-size:34px}section{background:white;padding:22px;margin:25px 0;border:1px solid #d9e0d6;border-radius:10px}img{width:100%;height:auto}code,pre{white-space:pre-wrap;overflow-wrap:anywhere}a{color:#256759}'
-titles={'overview':'全校园地坪工作方案','top':'总平面：水平布局未改','terrain-main':'连续主路纵坡','terrain-gym':'体育馆入口台阶（4级H）','terrain-library':'旧图书馆入口（3级H）','terrain-longya':'长雅楼入口（6级H）','terrain-field':'后缘跑道与前庭过渡','terrain-gap':'主楼厕所桥下地面','sports':'球场与棚跑道维持平地','family-canteen':'食堂/家属区中性地坪','r4-comparison':'同机位R4平基准对照','mobile':'手机尺寸画布（非真机性能测试）'}
+titles={'terrain-entrance':'主门向内上坡：方向有文字依据，坡度为H','overview':'全校园地坪工作方案','top':'总平面：水平布局未改','terrain-main':'连续主路纵坡','terrain-gym':'体育馆入口台阶（4级H）','terrain-library':'旧图书馆入口（3级H）','terrain-longya':'长雅楼入口（6级H）','terrain-field':'后缘跑道与前庭过渡','terrain-gap':'主楼厕所桥下地面','sports':'球场与棚跑道维持平地','family-canteen':'食堂/家属区中性地坪','r4-comparison':'同机位R4平基准对照','mobile':'手机尺寸画布（非真机性能测试）'}
 parts=[f'<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>雅礼 M1.1-A 地坪研究与实机审阅</title><style>{css}</style><main><h1>复原雅礼 · M1.1-A</h1><p>地形、道路、地坪与高差｜实际Three.js浏览器截图</p><p><strong>{n}项单元/回归 · {len(b["checks"])}项浏览器检查通过</strong></p><p>所有精确标高为H工作推定，主门相对0m不是海拔。此页是截图报告；可操作三维模型请打开 <a href="Yali_M1_1_A_Viewer.html">Viewer HTML</a>。不改变冻结R4的水平坐标和通路。</p><p><a href="https://github.com/ziyuuu/return-old-school/blob/main/docs/m11a/research-plan.md">调研计划</a> · <a href="https://github.com/ziyuuu/return-old-school/blob/main/docs/m11a/research-findings.md">研究结果</a> · <a href="https://github.com/ziyuuu/return-old-school/blob/main/docs/m11a/implementation-plan.md">落地计划</a></p>']
 for filename in b['screenshots']:
  p=Q/filename;assert p.is_file();parts.append('<section><h2>'+html.escape(titles.get(p.stem,p.stem))+'</h2><img alt="'+html.escape(p.stem)+'" src="data:image/png;base64,'+base64.b64encode(p.read_bytes()).decode()+'"></section>')
@@ -42,7 +42,7 @@ with zipfile.ZipFile(O/'Yali_M1_1_A_Workspace.zip','w',zipfile.ZIP_DEFLATED) as 
  for item in folders:
   folder=R/item
   for p in ([folder] if folder.is_file() else sorted(folder.rglob('*'))):
-   if p.is_file() and not(exclude&set(p.parts)) and p.suffix.lower() not in badext and not p.name.startswith('.env'):z.write(p,p.relative_to(R))
+   if p.is_file() and not(exclude&set(p.parts)) and p.suffix.lower() not in badext and not p.name.startswith('.env') and p.name!='delivery.md':z.write(p,p.relative_to(R))
  for p in [O/'Yali_M1_1_A_Viewer.html',O/'THIRD_PARTY_NOTICES.txt',O/'Yali_M1_1_A_Regression_Checklist.md']:z.write(p,p.name)
 checksums={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in O.iterdir() if p.is_file() and p.name!='checksums.json'}
 (O/'checksums.json').write_text(json.dumps(checksums,indent=2));print('Packaged',n,'tests',len(b['checks']),'browser checks')

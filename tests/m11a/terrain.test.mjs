@@ -16,3 +16,5 @@ for(const st of model.stairs)test('solid steps / support '+st.id,()=>{const part
 test('no mutation by builders',()=>{const before=JSON.stringify(l);buildTerrainModel(l,s).exportData();assert.equal(JSON.stringify(l),before);});
 test('bridge/toilet floor datum matches after lift',()=>{for(const c of l.connections){const t=l.toilet25.floors.find(x=>x.level===c.level);assert.ok(Math.abs(c.y+model.anchors['15'].floor-t.elevation-model.anchors['25'].floor)<1e-8);}});
 test('sports pads no slope at corners',()=>{for(const id of ['05','06','08']){const f=l.facilities.find(x=>x.id===id),[x,,z]=f.position,[w,,d]=f.size;for(const dx of [-w/2,0,w/2])for(const dz of [-d/2,0,d/2])assert.ok(Math.abs(model.groundHeight(x+dx,z+dz))<1e-7);}});
+
+bad('flat entrance contradicts source',(a,b)=>b.gradeKnots=[[0,0],[80,0],[160,.15],[214,.45],[291,.45]],'ENTRY_ASCENDS');

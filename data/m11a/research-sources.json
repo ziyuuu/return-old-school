@@ -1,1 +1,70 @@
-{"date":"2026-09-10","image_records_reviewed":20,"independent_image_count_claimed":false,"review_method":"读取已有研究副本及目视检查；本轮非新增摄影","sources":[{"id":"CMIE2023","url":"https://www.cmie.cn/news2/1882.html","published":"2023-12-25","finding":"项目基地现状内部约1–1.5m高差、周边挡土墙；旧训练楼首层架空直跑道","limit":"不是2006–2010全校园测绘；方向未配准；新方案下沉庭院排除","new_independent_source":false},{"id":"Commons_X_Zhou","url":"https://commons.wikimedia.org/wiki/File:Yali_High_School_sports_field_2006.jpg","other_url":"https://commons.wikimedia.org/wiki/File:Yali_High_School_sports_ground_football_practice.jpg","finding":"2006上传及EXIF日期线索；局部旗台台阶和运动场","limit":"作者相同；无米制控制点"},{"id":"Sina2018","url":"https://k.sina.com.cn/article_6430641585_17f4bcdb1001003x9v.html","finding":"馆前、长雅、旧图书馆入口台阶；校园道路关系","limit":"拍摄年份混合；刊载时间不是拍摄时间"},{"id":"HistoricEngland","url":"https://historicengland.org.uk/images-books/publications/geospatial-survey-specifications-cultural-heritage/","finding":"测绘控制与建筑解释分开","limit":"方法参考，不宣称合规认证"},{"id":"ThreeBufferGeometry","url":"https://threejs.org/docs/pages/BufferGeometry.html","finding":"地坪网格顶点、法线、包围体"},{"id":"ThreeRaycaster","url":"https://threejs.org/docs/pages/Raycaster.html","finding":"对实际Mesh射线检测"}],"unsuccessful":[{"scope":"学校原站与公开历史标高资料","result":"未取得可核验的2006–2010完整标高图/实测控制网"}],"metric_control_count":0,"measured_values":null,"third_party_images_published_to_runtime":false}
+{
+  "date": "2026-09-10",
+  "image_records_reviewed": 20,
+  "independent_image_count_claimed": false,
+  "review_method": "读取已有研究副本及目视检查；本轮非新增摄影",
+  "sources": [
+    {
+      "id": "CMIE2023",
+      "url": "https://www.cmie.cn/news2/1882.html",
+      "published": "2023-12-25",
+      "finding": "项目基地现状内部约1–1.5m高差、周边挡土墙；旧训练楼首层架空直跑道",
+      "limit": "不是2006–2010全校园测绘；方向未配准；新方案下沉庭院排除",
+      "new_independent_source": false
+    },
+    {
+      "id": "Commons_X_Zhou",
+      "url": "https://commons.wikimedia.org/wiki/File:Yali_High_School_sports_field_2006.jpg",
+      "other_url": "https://commons.wikimedia.org/wiki/File:Yali_High_School_sports_ground_football_practice.jpg",
+      "finding": "2006上传及EXIF日期线索；局部旗台台阶和运动场",
+      "limit": "作者相同；无米制控制点"
+    },
+    {
+      "id": "Sina2018",
+      "url": "https://k.sina.com.cn/article_6430641585_17f4bcdb1001003x9v.html",
+      "finding": "馆前、长雅、旧图书馆入口台阶；校园道路关系",
+      "limit": "拍摄年份混合；刊载时间不是拍摄时间"
+    },
+    {
+      "id": "HistoricEngland",
+      "url": "https://historicengland.org.uk/images-books/publications/geospatial-survey-specifications-cultural-heritage/",
+      "finding": "测绘控制与建筑解释分开",
+      "limit": "方法参考，不宣称合规认证"
+    },
+    {
+      "id": "ThreeBufferGeometry",
+      "url": "https://threejs.org/docs/pages/BufferGeometry.html",
+      "finding": "地坪网格顶点、法线、包围体"
+    },
+    {
+      "id": "ThreeRaycaster",
+      "url": "https://threejs.org/docs/pages/Raycaster.html",
+      "finding": "对实际Mesh射线检测"
+    }
+  ],
+  "unsuccessful": [
+    {
+      "scope": "学校原站与公开历史标高资料",
+      "result": "未取得可核验的2006–2010完整标高图/实测控制网"
+    }
+  ],
+  "metric_control_count": 0,
+  "measured_values": null,
+  "third_party_images_published_to_runtime": false,
+  "text_cross_checks": [
+    {
+      "id": "TXT-ENTRY-SLOPE",
+      "url": "https://k.sina.com.cn/article_6430641585_17f4bcdb1001003x9v.html",
+      "section": "校门",
+      "finding": "原帖明确校门通往校内是上坡",
+      "implementation": "H20m水平段抬升0.20m；定性方向来自正文，数值不是测绘"
+    },
+    {
+      "id": "TXT-SHOP-SLOPE",
+      "url": "https://k.sina.com.cn/article_6430641585_17f4bcdb1001003x9v.html",
+      "section": "长雅楼",
+      "finding": "记述零食店在侧巷坡下",
+      "implementation": "仅登记未闭合线索；22仍未定位，不据此恢复用户删除的绿色道路"
+    }
+  ]
+}

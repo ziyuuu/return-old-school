@@ -17,6 +17,11 @@
       "detail": "Relative0m at main gate"
     },
     {
+      "id": "ENTRY_ASCENDS",
+      "passed": true,
+      "detail": "R source text confirms uphill; H rise and length"
+    },
+    {
       "id": "MUSIC_GYM_LEVEL",
       "passed": true,
       "detail": "Direct contact without vertical disconnection"
@@ -64,22 +69,22 @@
     {
       "id": "ROAD_GRADE_gate_junction-gym",
       "passed": true,
-      "detail": 0
+      "detail": 0.010740740740740745
     },
     {
       "id": "ROAD_GRADE_junction-gym_gym-entry",
       "passed": true,
-      "detail": 0
+      "detail": 0.03360618677603986
     },
     {
       "id": "ROAD_GRADE_junction-gym_junction-sports",
       "passed": true,
-      "detail": 0.0018750000000000155
+      "detail": 0.010000000000000009
     },
     {
       "id": "ROAD_GRADE_junction-sports_sports-front",
       "passed": true,
-      "detail": 0.0020983886718750067
+      "detail": 0.03870361328124999
     },
     {
       "id": "ROAD_GRADE_sports-front_pool-entry",
@@ -89,22 +94,22 @@
     {
       "id": "ROAD_GRADE_junction-sports_junction-office",
       "passed": true,
-      "detail": 0.001875000000000071
+      "detail": 0.0012500000000000844
     },
     {
       "id": "ROAD_GRADE_junction-office_office-entry",
       "passed": true,
-      "detail": 0.025914043755865514
+      "detail": 0.052677956918287236
     },
     {
       "id": "ROAD_GRADE_forecourt_main-front",
       "passed": true,
-      "detail": 0.0004749262191612747
+      "detail": 0.00023746310958052568
     },
     {
       "id": "ROAD_GRADE_main-front_east-front",
       "passed": true,
-      "detail": 0.007541957922588608
+      "detail": 0.00448713666542189
     },
     {
       "id": "ROAD_GRADE_east-front_science-entry",
@@ -114,12 +119,12 @@
     {
       "id": "ROAD_GRADE_east-front_east-mid",
       "passed": true,
-      "detail": 0.03923928021260329
+      "detail": 0.019619640106301756
     },
     {
       "id": "ROAD_GRADE_east-mid_canteen-entry",
       "passed": true,
-      "detail": 0.005822606588089513
+      "detail": 0.023799938883281996
     },
     {
       "id": "ROAD_GRADE_east-bottom_longya-entry",
@@ -129,7 +134,7 @@
     {
       "id": "ROAD_GRADE_side-branch_side-front-turn",
       "passed": true,
-      "detail": 0
+      "detail": 0.0009757142403137145
     },
     {
       "id": "ROAD_GRADE_side-front-turn_side-upper",
@@ -139,27 +144,27 @@
     {
       "id": "ROAD_GRADE_side-upper_side-mid",
       "passed": true,
-      "detail": 0.0018750000000000155
+      "detail": 0.0012500000000000844
     },
     {
       "id": "ROAD_GRADE_side-mid_side-lower",
       "passed": true,
-      "detail": 0.023578960905349722
+      "detail": 0.011789480452674916
     },
     {
       "id": "ROAD_GRADE_side-lower_east-front",
       "passed": true,
-      "detail": 0.0419945987654321
+      "detail": 0.020997299382715995
     },
     {
       "id": "ROAD_GRADE_forecourt_gap-entry",
       "passed": true,
-      "detail": 0.004439247545287914
+      "detail": 0.0022196237726440134
     },
     {
       "id": "ROAD_GRADE_gap-entry_gap-north",
       "passed": true,
-      "detail": 0.006066666666666665
+      "detail": 0.0030333333333334433
     },
     {
       "id": "ROAD_GRADE_gap-north_gap-cross",
@@ -194,12 +199,12 @@
     {
       "id": "ROAD_GRADE_side-gate_side-entry",
       "passed": true,
-      "detail": 0
+      "detail": 0.010032592592592593
     },
     {
       "id": "ROAD_GRADE_side-entry_side-branch",
       "passed": true,
-      "detail": 0
+      "detail": 0.007071067811865556
     },
     {
       "id": "ROAD_GRADE_sports-front_music-approach",
@@ -214,27 +219,27 @@
     {
       "id": "ROAD_GRADE_junction-office_junction-museum",
       "passed": true,
-      "detail": 0.005555555555555647
+      "detail": 0.002777777777777879
     },
     {
       "id": "ROAD_GRADE_junction-museum_forecourt",
       "passed": true,
-      "detail": 0.005555555555555758
+      "detail": 0.002777777777777879
     },
     {
       "id": "ROAD_GRADE_junction-museum_museum-entry",
       "passed": true,
-      "detail": 0.00014297120701977297
+      "detail": 0.00014297120701966073
     },
     {
       "id": "ROAD_GRADE_forecourt-15_main-front",
       "passed": true,
-      "detail": 0.0452633744855967
+      "detail": 0.05296502057613173
     },
     {
       "id": "ROAD_GRADE_main-front_teaching-entry",
       "passed": true,
-      "detail": 0.006134870312500206
+      "detail": 0.0030674351562501633
     },
     {
       "id": "ROAD_GRADE_east-front_east-cross",
