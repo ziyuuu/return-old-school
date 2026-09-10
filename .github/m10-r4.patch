@@ -1,0 +1,216 @@
+diff --git a/apps/campus/index.html b/apps/campus/index.html
+index 480725c..938fc32 100644
+--- a/apps/campus/index.html
++++ b/apps/campus/index.html
+@@ -1,21 +1,21 @@
+ <!doctype html>
+ <html lang="zh-CN">
+-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#edf0e8"><title>复原雅礼 · M1.0 R3 空间骨架</title></head>
++<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#edf0e8"><title>复原雅礼 · M1.0 R4 空间骨架</title></head>
+ <body>
+ <div id="app">
+   <div id="viewport" aria-label="雅礼校园空间校核视窗"></div>
+-  <header class="masthead"><div class="seal">雅</div><div><div class="eyebrow">RETURN OLD SCHOOL <span>/ M1.0 R3</span></div><h1>复原雅礼<span>空间骨架</span></h1><p>东塘校区 · 2006—2010 记忆基底</p></div></header>
++  <header class="masthead"><div class="seal">雅</div><div><div class="eyebrow">RETURN OLD SCHOOL <span>/ M1.0 R4</span></div><h1>复原雅礼<span>空间骨架</span></h1><p>东塘校区 · 2006—2010 记忆基底</p></div></header>
+   <div class="top-tools"><button id="inspect-btn" aria-expanded="false" aria-controls="inspector">设施与证据 <span>↗</span></button><button id="capture-btn" title="保存当前真实WebGL画面">保存视图</button></div>
+   <div class="mode-chip" id="view-name">全校鸟瞰 <span>体量校核 / 非精模</span></div>
+   <aside id="inspector" hidden>
+     <div class="panel-heading"><h2>校核工作台</h2><button id="close-inspector" aria-label="关闭校核面板">×</button></div>
+-    <label for="facility">设施索引 <small>28 项 / 不是 28 栋建筑</small></label><select id="facility"></select>
++    <label for="toilet-level">厕所逐层剖看（隐藏上方楼层）</label><select id="toilet-level"><option value="0">完整楼体</option><option value="1">第1层</option><option value="2">第2层</option><option value="3">第3层</option><option value="4">第4层</option></select><label for="facility">设施索引 <small>28 项 / 不是 28 栋建筑</small></label><select id="facility"></select>
+     <div id="details"></div>
+     <div class="toggles"><label><input type="checkbox" id="roofs-check" checked> 风雨跑道顶棚</label><label><input type="checkbox" id="labels-check" checked> 关键设施标签</label><label><input type="checkbox" id="grid-check"> 10 m 工作网格</label><label><input type="checkbox" id="routes-check"> 路线连通检查</label><label><input type="checkbox" id="footprints-check"> 仅看占地轮廓</label></div>
+     <button id="download-layout" class="wide">导出当前基线 JSON</button><details><summary id="check-summary">空间约束检查</summary><div id="checks"></div></details>
+     <p class="fine">A 校友确认 · P 实拍 · R 类比 · H 推定 · U 未知。位置与尺寸分别记录。所有米制坐标均为 H 工作方案，并非测量结果。</p>
+   </aside>
+-  <nav class="views" aria-label="校核机位"><button data-view="overview" class="active">全校</button><button data-view="top">总平面</button><button data-view="sports">运动区</button><button data-view="teaching">主楼 / 连廊</button><button data-view="gym">体育馆</button><button data-view="gate">校门原点</button><button data-view="courts-to-gym">球场看馆</button><button data-view="canopy">棚下</button><button data-view="rear-field">后缘跑道</button><button data-view="library-route">图书馆通路</button><button data-view="underpass">两楼间穿行</button><button data-view="side-path">侧门小路</button><button data-view="entrances">校门/侧门</button><button data-view="longya">长雅正门</button><button data-view="family-canteen">家属区/食堂</button><button data-view="gym-contact">两楼贴体</button></nav>
++  <nav class="views" aria-label="校核机位"><button data-view="toilet-floor">厕所逐层</button><button data-view="toilet-front">厕所前廊</button><button data-view="black-routes">黑线支路</button><button data-view="rostrum">主席台</button><button data-view="overview" class="active">全校</button><button data-view="top">总平面</button><button data-view="sports">运动区</button><button data-view="teaching">主楼 / 连廊</button><button data-view="gym">体育馆</button><button data-view="gate">校门原点</button><button data-view="courts-to-gym">球场看馆</button><button data-view="canopy">棚下</button><button data-view="rear-field">后缘跑道</button><button data-view="library-route">图书馆通路</button><button data-view="underpass">两楼间穿行</button><button data-view="side-path">侧门小路</button><button data-view="entrances">校门/侧门</button><button data-view="longya">长雅正门</button><button data-view="family-canteen">家属区/食堂</button><button data-view="gym-contact">两楼贴体</button></nav>
+   <div class="legend"><i></i><span>关系已确认 · 米制位置推定</span><b>H</b><span>未实测</span></div>
+   <div id="toast" role="status"></div>
+   <footer><div><strong>27</strong> 定位对象 <em>/</em> <strong>1</strong> 待定位 <em>·</em> <span>1 unit = 1 m 工作单位</span></div><p id="help">拖动环绕 · 右键平移 · 滚轮缩放 · 点击体块查证</p><button id="tour-btn">路线巡览</button><button id="fly-btn">自由校核</button></footer>
+diff --git a/apps/campus/src/layout-core.mjs b/apps/campus/src/layout-core.mjs
+index 6674401..d9ebbe5 100644
+--- a/apps/campus/src/layout-core.mjs
++++ b/apps/campus/src/layout-core.mjs
+@@ -1,4 +1,5 @@
+ import { revisionChecks, edgeWidth, segmentHitsRect } from './revision-core.mjs';
++import { r4Checks } from './revision-r4-core.mjs';
+ import { r3Checks } from './revision-r3-core.mjs';
+ /** Render-independent geometry helpers. Coordinates are design hypotheses, never site measurements. */
+ export const EPSILON = 1e-6;
+@@ -68,6 +69,6 @@ export function checkLayout(layout) {
+     const seen=new Set(['gate']);let changed=true;
+   while(changed){changed=false;for(const [s,e] of layout.navigation.edges)if(seen.has(s)!==seen.has(e)){seen.add(s);seen.add(e);changed=true;}}
+   check('ROUTE_GRAPH_CONNECTED',seen.size===Object.keys(layout.navigation.nodes).length,'All review route nodes reachable from gate');
+-  results.push(...revisionChecks(layout,{bounds,overlap}),...r3Checks(layout,{bounds,overlap}));
++  results.push(...revisionChecks(layout,{bounds,overlap}),...r3Checks(layout,{bounds,overlap}),...r4Checks(layout,{bounds,overlap}));
+   return {passed:results.every(r=>r.passed),results,counts:{registered:layout.facilities.length,located:layout.facilities.filter(v=>v.position).length,courts:6,bridges:layout.connections.length},limits:['These tests check internal consistency, not historic or measured accuracy.']};
+ }
+diff --git a/apps/campus/src/main.ts b/apps/campus/src/main.ts
+index 5b47fcd..ce640d0 100644
+--- a/apps/campus/src/main.ts
++++ b/apps/campus/src/main.ts
+@@ -4,6 +4,7 @@ import source from '../../../data/m10/campus-layout.json';
+ import { bounds, footprint, courtRects, checkLayout } from './layout-core.mjs';
+ import './style.css';
+ import { edgeWidth } from './revision-core.mjs';
++import { r4Facility, setToiletSection } from './revision-r4-scene';
+ import { r3Facility, buildR3Thresholds } from './revision-r3-scene';
+ import { revisedFacility, buildRevisionParts } from './revision-scene';
+ 
+@@ -65,7 +66,7 @@ const mats=ramps.map((_,row)=>{
+ const volumes=new THREE.Group(), surfaces=new THREE.Group(), outlines=new THREE.Group(), routeOverlay=new THREE.Group();
+ scene.add(surfaces,volumes,outlines,routeOverlay);routeOverlay.visible=false;
+ const roots=new Map<string,THREE.Group>(), pickables:THREE.Object3D[]=[], labels=new Map<string,{node:HTMLDivElement,point:THREE.Vector3}>();
+-const keyLabels=new Set(['01','02','03','06','08','11','13','15','17','18','20','23','24','25','26','27']);
++const keyLabels=new Set(['01','02','03','06','08','10','11','13','15','17','18','20','23','24','25','26','27']);
+ const solidKinds=new Set(['building','music','auxiliary','context','toilet-pool','canteen']);
+ function mesh(geo:THREE.BufferGeometry,mat:THREE.Material,parent:THREE.Object3D,pos:Vec3=[0,0,0]){
+  const m=new THREE.Mesh(geo,mat);m.position.set(...pos);m.castShadow=true;m.receiveShadow=true;parent.add(m);return m;
+@@ -94,13 +95,15 @@ line([[minX,0,-12],[maxX,0,-12]],outlines,'#f3efe0',true);
+ rect(outlines,minX,0,maxX,maxZ,.12,'#748e80');
+ for(const [a,b] of layout.navigation.edges){
+  const pa=layout.navigation.nodes[a as keyof typeof layout.navigation.nodes] as Vec3,pb=layout.navigation.nodes[b as keyof typeof layout.navigation.nodes] as Vec3;
++ const before=surfaces.children.length;
+  ribbon([pa,pb],edgeWidth(layout,a,b));
++ for(const o of surfaces.children.slice(before)){o.name=`road-${a}--${b}`;o.userData.route=[a,b];o.userData.width=edgeWidth(layout,a,b);}
+  line([[pa[0],.3,pa[2]],[pb[0],.3,pb[2]]],routeOverlay,'#b2793f',true);
+ }
+ const grid=new THREE.GridHelper(360,36,'#6a8f85','#a7b9a9');grid.position.set(51,-.005,139);grid.visible=false;scene.add(grid);
+ const axes=new THREE.AxesHelper(16);axes.position.y=.2;scene.add(axes);
+ rect(outlines,-2,-2,2,2,.18,'#b38146');
+-const shortLabels:Record<string,string>={'02':'侧门','20':'家属区','24':'音乐楼 · 4F','25':'主楼厕所','26':'池畔厕所','27':'校名石'};
++const shortLabels:Record<string,string>={'10':'主席台','23':'沙坑','02':'侧门','20':'家属区','24':'音乐楼 · 4F','25':'主楼厕所','26':'池畔厕所','27':'校名石'};
+ function addLabel(f:Facility){if(!f.position)return;
+  const node=document.createElement('div');node.className='facility-label';node.innerHTML=`<b>${f.id}</b>${shortLabels[f.id] ?? f.name.replace(/（.*?）/g,'').replace('旧主教学楼／教室','旧主教学楼')}`;
+  node.onclick=()=>selectFacility(f.id,true);viewport.append(node);
+@@ -112,7 +115,7 @@ for(const f of layout.facilities){
+  const [x,y,z]=f.position,[w,h,d]=f.size,g=new THREE.Group();g.name=`F${f.id}`;g.userData.facility=f.id;g.position.set(x,y,z);roots.set(f.id,g);
+  (['field','courts','straight-track','pool','forecourt','sandpit','garden','route','marker','subspace'].includes(f.kind)?surfaces:volumes).add(g);
+  addFootprint(f);addLabel(f);
+- if(r3Facility(f,g,{box,mesh,line,rect,mats,layout}) || revisedFacility(f,g,{box,mesh,line,rect,mats,layout})) {
++ if(r4Facility(f,g,{box,mesh,line,rect,mats,layout}) || r3Facility(f,g,{box,mesh,line,rect,mats,layout}) || revisedFacility(f,g,{box,mesh,line,rect,mats,layout})) {
+   // R2 builds real openings / larger envelopes without replacing unrelated facilities.
+  } else if(solidKinds.has(f.kind)){
+   if(f.kind==='context'){
+@@ -131,10 +134,6 @@ for(const f of layout.facilities){
+     box(g,w,.18,2.1,0,j*3.8,-d/2+1.05,6);
+     for(let k=0;k<=12;k++)box(g,.32,3.6,.32,-w/2+.2+k*(w-.4)/12,j*3.8,-d/2+.18,6);
+    }
+- } else if(f.kind==='toilet'){
+-   const gap=2.1,wing=(d-gap)/2;
+-   box(g,w,h,wing,0,0,-(gap+wing)/2,0);box(g,w,h,wing,0,0,(gap+wing)/2,0);
+-   for(let j=0;j<(f.floors??4);j++)box(g,w,.18,gap,0,j*3.8,0,6);
+  } else if(f.kind==='gym'){
+    const s=new THREE.Shape();s.moveTo(-w/2,0);s.lineTo(w/2,0);s.lineTo(w/2,h*.62);s.lineTo(w*.29,h);s.lineTo(-w*.29,h);s.lineTo(-w/2,h*.62);s.closePath();
+    mesh(new THREE.ExtrudeGeometry(s,{depth:d,bevelEnabled:false}),mats[0],g,[0,0,-d/2]);
+@@ -196,8 +195,13 @@ select.onchange=()=>selectFacility(select.value,true);
+ el('inspect-btn').onclick=()=>{if(!selected)selectFacility('01',false);else setInspector(el('inspector').hidden);};
+ el('close-inspector').onclick=()=>setInspector(false);
+ function stopModes(){fly=false;tour=false;keys.clear();el('fly-btn').classList.remove('active');el('tour-btn').classList.remove('active');el('help').textContent='拖动环绕 · 右键平移 · 滚轮缩放 · 点击体块查证';}
++let toiletLevel=0;
++function setToiletLevel(level:number,focus=false){
++ toiletLevel=level;setToiletSection(roots,level);el<HTMLSelectElement>('toilet-level').value=String(level);
++ if(focus&&level){stopModes();active=camera;controls.enabled=true;topControls.enabled=false;const y=(level-1)*3.8;camera.position.set(7,y+10,238);controls.target.set(-10,y+1,224);controls.update();}
++}
+ function setView(name:string){
+- const p=layout.cameraPresets[name as keyof typeof layout.cameraPresets];if(!p)return;stopModes();view=name;
++ const p=layout.cameraPresets[name as keyof typeof layout.cameraPresets];if(!p)return;stopModes();view=name;setToiletLevel(name==='toilet-floor'?2:0);
+  document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',(b as HTMLElement).dataset.view===name));
+  active=name==='top'?topCamera:camera;controls.enabled=name!=='top';topControls.enabled=name==='top';
+  active.position.set(...p.position as Vec3);active.up.set(...(name==='top'?[0,0,-1]:[0,1,0]) as Vec3);
+@@ -206,6 +210,7 @@ function setView(name:string){
+  el('view-name').innerHTML=`${p.label}<span>体量校核 / 非精模 · 坐标全部为工作推定</span>`;
+ }
+ for(const btn of document.querySelectorAll<HTMLButtonElement>('[data-view]'))btn.onclick=()=>setView(btn.dataset.view!);
++el<HTMLSelectElement>('toilet-level').onchange=e=>setToiletLevel(Number((e.target as HTMLSelectElement).value),true);
+ el<HTMLInputElement>('labels-check').onchange=e=>labelsOn=(e.target as HTMLInputElement).checked;
+ el<HTMLInputElement>('roofs-check').onchange=e=>roofs.visible=(e.target as HTMLInputElement).checked;
+ el<HTMLInputElement>('grid-check').onchange=e=>grid.visible=(e.target as HTMLInputElement).checked;
+@@ -269,12 +274,13 @@ function probeSegment(a:number[],b:number[]){
+ }
+ function geometrySnapshot(){
+  scene.updateMatrixWorld(true);
+- const snapshot:any={};
+- for(const object of [...roots.values(),...roots.get('20')!.children,structures,...structures.children,roofs,...roofs.children,...structures.children.filter(v=>v!==roofs)]){
++ const snapshot:any={};const extra:THREE.Object3D[]=[];roots.get('25')?.traverse(o=>{if(o.name)extra.push(o);});extra.push(...surfaces.children.filter(o=>o.name.startsWith('road-')));
++ for(const object of [...extra,...roots.values(),...roots.get('20')!.children,structures,...structures.children,roofs,...roofs.children,...structures.children.filter(v=>v!==roofs)]){
+   const bb=new THREE.Box3().setFromObject(object);snapshot[object.name]={min:bb.min.toArray(),max:bb.max.toArray(),visible:object.visible};
+  }
+  return snapshot;
+ }
+-Object.assign(window,{__YALI_M10__:{version:layout.version,layout,report,setView,selectFacility,probeSegment,geometrySnapshot,
++Object.assign(window,{__YALI_M10__:{version:layout.version,layout,report,setView,selectFacility,setToiletLevel,probeSegment,geometrySnapshot,
++ probeFloor:(x:number,y:number,z:number)=>{scene.updateMatrixWorld(true);const objects:THREE.Object3D[]=[];scene.traverse(o=>{if(o instanceof THREE.Mesh)objects.push(o);});const ray=new THREE.Raycaster(new THREE.Vector3(x,y+.5,z),new THREE.Vector3(0,-1,0),0,.8);return ray.intersectObjects(objects,false).map(h=>({name:h.object.name,y:h.point.y}));},
+  probeSurface:(x:number,z:number)=>{scene.updateMatrixWorld(true);const ray=new THREE.Raycaster(new THREE.Vector3(x,3,z),new THREE.Vector3(0,-1,0),0,3.1);return ray.intersectObjects(surfaces.children,true).filter(h=>h.point.y>0).map(h=>({name:h.object.name,y:h.point.y}));},
+- getState:()=>({view,fly,tour,selected,camera:active.position.toArray(),renderer:renderer.info.render,canvas:[renderer.domElement.width,renderer.domElement.height],labelsOn,planOnly,roofsVisible:roofs.visible,webgl:renderer.getContext().getParameter(renderer.getContext().VERSION)}),ready:true}});
++ getState:()=>({toiletLevel,view,fly,tour,selected,camera:active.position.toArray(),renderer:renderer.info.render,canvas:[renderer.domElement.width,renderer.domElement.height],labelsOn,planOnly,roofsVisible:roofs.visible,webgl:renderer.getContext().getParameter(renderer.getContext().VERSION)}),ready:true}});
+diff --git a/apps/campus/src/revision-core.mjs b/apps/campus/src/revision-core.mjs
+index 14adf20..672b8b6 100644
+--- a/apps/campus/src/revision-core.mjs
++++ b/apps/campus/src/revision-core.mjs
+@@ -45,6 +45,7 @@ export function structureParts(layout){
+ }
+ /** Exact segment against an expanded rectangle (not 101-point sampling). */
+ export function segmentHitsRect(a,b,rect,r=0){
++ if(!a||!b||!rect)return true;
+  let t0=0,t1=1;
+  for(const [axis,min,max] of [[0,rect.minX-r,rect.maxX+r],[2,rect.minZ-r,rect.maxZ+r]]){
+   const start=a[axis],delta=b[axis]-start;
+diff --git a/apps/campus/src/revision-r3-core.mjs b/apps/campus/src/revision-r3-core.mjs
+index 40b0ab5..b4ef3a0 100644
+--- a/apps/campus/src/revision-r3-core.mjs
++++ b/apps/campus/src/revision-r3-core.mjs
+@@ -17,11 +17,11 @@ export function r3Checks(l,{bounds,overlap}){
+  put('R3_LONGYA_DOOR_ALIGNMENT',front&&Math.abs(front.position[0]-f('17').position[0])<EPS&&Math.abs(front.position[2]-b('17').minZ)<EPS&&front.facing[2]===-1&&Math.abs(target[0]-front.position[0])<EPS&&Math.abs(prev[0]-target[0])<EPS&&target[2]<front.position[2]&&front.position[2]-target[2]<=2.5&&edges.has('east-bottom|longya-entry'),'Longitudinal approach aims at a north-front opening, not south bypass');
+  const fam=f('20'),gap=b('11').minZ-b('20').maxZ;
+  put('R3_FAMILY_AREA_ENLARGED',fam.size[0]*fam.size[2]>54*58,'Larger envelope than54x58R2');
+- put('R3_FAMILY_CANTEEN_GAP',gap>0&&gap<=8,'Positive gap<=8working metres, formerly45; selected7H');
++ put('R3_FAMILY_CANTEEN_GAP',gap>0&&gap<=18,'R4 right/up shift replaces R3 exact7H; keep positive gap<=18H, not old45');
+  const blocks=(l.contextBlocks||[]).map(p=>({id:p.id,position:p.localPosition.map((x,i)=>x+fam.position[i]),size:p.size}));
+  const ext=blocks.map(bounds),env=b('20');
+  put('R3_CONTEXT_COMPONENTS_CONTAINED',blocks.length===6&&ext.every(v=>v.minX>=env.minX-EPS&&v.maxX<=env.maxX+EPS&&v.minZ>=env.minZ-EPS&&v.maxZ<=env.maxZ+EPS),'SixH blocks fit the envelope; not six historical verified buildings');
+- put('R3_CONTEXT_REAL_MASS_REACHES_CANTEEN',ext.length>0&&b('11').minZ-Math.max(...ext.map(v=>v.maxZ))<=8,'Actual building masses, not a baseplate, narrow the canteen gap');
++ put('R3_CONTEXT_REAL_MASS_REACHES_CANTEEN',ext.length>0&&b('11').minZ-Math.max(...ext.map(v=>v.maxZ))<=18,'Actual building masses, not a baseplate, narrow the canteen gap');
+  put('R3_CONTEXT_BLOCKS_DISJOINT',ext.every((a,i)=>ext.slice(i+1).every(b=>!overlap(a,b))),'No residential subvolume penetration');
+  const c=l.buildingContacts?.find(v=>v.id==='03-24-CONTACT'),g=b('03'),m=b('24');
+  const a=Math.max(g.minX,m.minX),z=Math.min(g.maxX,m.maxX);
+diff --git a/tests/m10/revision-r3.test.mjs b/tests/m10/revision-r3.test.mjs
+index 98e37ac..d23b86f 100644
+--- a/tests/m10/revision-r3.test.mjs
++++ b/tests/m10/revision-r3.test.mjs
+@@ -18,10 +18,10 @@ for(const [name,id,mutate] of [
+  ['external link restored','R3_NO_EXTERNAL_GYM_LINK',l=>l.buildingLinks.push({id:'03-24-LINK',path:[],width:2.4})],
+  ['shared doorway drifts','R3_SHARED_PORTALS',l=>l.entrances.find(e=>e.id==='24-gym').position[0]+=1]
+ ])test('R3 regression: '+name,()=>{const l=structuredClone(layout);mutate(l);assert.equal(checkLayout(l).results.find(r=>r.id===id).passed,false);});
+-test('R3 preserves 23 unrelated facility transforms and datum',()=>{
++test('R3/R4 preserve 22 unaffected facility transforms relative to R2',()=>{
+  const old=JSON.parse(readFileSync(new URL('../../data/m10/baseline-r2-input.json',import.meta.url),'utf8'));
+  const rows=old.facilityRows.map(r=>Object.fromEntries(old.facilityColumns.map((c,i)=>[c,r[i]])));
+- const allowed=new Set(['02','17','20','24','27']);let count=0;
++ const allowed=new Set(['02','17','20','24','27','10']);let count=0;
+  for(const f of layout.facilities){if(allowed.has(f.id))continue;const r=rows.find(r=>r.id===f.id);assert.deepEqual(f.position,r.position,f.id);assert.deepEqual(f.size,r.size,f.id);count++;}
+- assert.equal(count,23);assert.deepEqual(layout.origin,old.origin);assert.deepEqual(layout.axes,old.axes);
++ assert.equal(count,22);assert.deepEqual(layout.origin,old.origin);assert.deepEqual(layout.axes,old.axes);
+ });
+diff --git a/tools/m10/export-footprints.mjs b/tools/m10/export-footprints.mjs
+index 1afb5c6..4f18418 100644
+--- a/tools/m10/export-footprints.mjs
++++ b/tools/m10/export-footprints.mjs
+@@ -1,13 +1,13 @@
+ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+ import { footprint, checkLayout, toBlender } from '../../apps/campus/src/layout-core.mjs';
+ const root=new URL('../../',import.meta.url),load=p=>JSON.parse(readFileSync(new URL(p,root),'utf8'));
+-const l=load('data/m10/campus-layout.json');mkdirSync(new URL('qa/m10-r3/',root),{recursive:true});
++const l=load('data/m10/campus-layout.json');mkdirSync(new URL('qa/m10-r4/',root),{recursive:true});
+ const out={version:l.version,units:'working metres',crs:null,surveyVerified:false,origin:l.origin,axes:l.axes,features:l.facilities.map(f=>({id:f.id,name:f.name,footprintXZ:footprint(f),positionThree:f.position,positionBlender:f.position?toBlender(f.position):null,dimensions:f.size,evidence:f.evidence,measuredPosition:null}))};
+ writeFileSync(new URL('data/m10/footprints.json',root),JSON.stringify(out,null,2)+'\n');
+ const csv=['id,name,x_work_m,y_work_m,z_work_m,width_work_m,depth_work_m,height_work_m,survey_verified'];
+ for(const f of l.facilities)csv.push([f.id,`"${f.name.replaceAll('"','""')}"`,...(f.position??['','','']),...(f.size?[f.size[0],f.size[2],f.size[1]]:['','','']),false].join(','));
+ writeFileSync(new URL('data/m10/footprints.csv',root),'\uFEFF'+csv.join('\n')+'\n');
+-writeFileSync(new URL('qa/m10-r3/layout-report.json',root),JSON.stringify(checkLayout(l),null,2)+'\n');
++writeFileSync(new URL('qa/m10-r4/layout-report.json',root),JSON.stringify(checkLayout(l),null,2)+'\n');
+ 
+-const secondary={version:l.version,units:'working metres',surveyVerified:false,rearTrack:l.sports.rearTrack,canopy:l.sports.canopy,buildingLinks:l.buildingLinks,buildingContacts:l.buildingContacts,contextBlocks:l.contextBlocks,thresholds:l.thresholds,connections:l.connections,entrances:l.entrances,navigation:l.navigation};
++const secondary={version:l.version,units:'working metres',surveyVerified:false,rearTrack:l.sports.rearTrack,canopy:l.sports.canopy,buildingLinks:l.buildingLinks,buildingContacts:l.buildingContacts,contextBlocks:l.contextBlocks,thresholds:l.thresholds,connections:l.connections,entrances:l.entrances,navigation:l.navigation,toilet25:l.toilet25};
+ writeFileSync(new URL('data/m10/site-features.json',root),JSON.stringify(secondary,null,2)+'\n');

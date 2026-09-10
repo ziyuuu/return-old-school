@@ -1,0 +1,297 @@
+{
+  "source_commit": "601a0c6db5d40887ba461e0f60f1036363c06557",
+  "version": "M1.0.3-R4",
+  "mode": "HTTP production + standalone file",
+  "hardware_fps_certified": false,
+  "checks": [
+    {
+      "name": "R4 boot and layout checks",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "actual mesh ground route clearance",
+      "passed": true,
+      "detail": {
+        "tested": 351,
+        "fail": []
+      }
+    },
+    {
+      "name": "actual bridge and black-line door openings",
+      "passed": true,
+      "detail": {
+        "count": 13,
+        "fail": []
+      }
+    },
+    {
+      "name": "rostrum actual mesh moved up",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "family actual meshes shifted right and up",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "family enlarged mass remains near canteen",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "red-box road actual7m width",
+      "passed": true,
+      "detail": {
+        "min": [
+          -3.5,
+          0.019999999105930324,
+          158
+        ],
+        "max": [
+          3.5,
+          0.06500000089406967,
+          202
+        ],
+        "visible": true
+      }
+    },
+    {
+      "name": "green road has no remaining paving",
+      "passed": true,
+      "detail": [
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "name": "R3 stone and side gate retained",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "R3 gym music actual contact retained",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "R2 canopy retained",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "every floor bridge to both end doors unobstructed",
+      "passed": true,
+      "detail": {
+        "routes": 72,
+        "supports": 40,
+        "fail": []
+      }
+    },
+    {
+      "name": "every floor has actual slab support",
+      "passed": true,
+      "detail": {
+        "routes": 72,
+        "supports": 40,
+        "fail": []
+      }
+    },
+    {
+      "name": "four complete slab meshes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera overview",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera top",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera rostrum",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera family-canteen",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera black-routes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera longya",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera teaching",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera toilet-front",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera toilet-floor",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera underpass",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera sports",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera gym-contact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera entrances",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "toilet cutaway level1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "upper levels hidden1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "toilet cutaway level2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "upper levels hidden2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "toilet cutaway level3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "upper levels hidden3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "toilet cutaway level4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "upper levels hidden4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "roof switch hides geometry",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "cutaway and roof switches do not move facilities",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "footprint mode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "unknown remains unlocated",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "export current R4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "orbit works",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "tour ground eye1.7m",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "tour exits",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "free camera works",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile-size canvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no JS or shader errors",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "standalone file boots",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "errors": [],
+  "screenshots": [
+    "overview.png",
+    "top.png",
+    "rostrum.png",
+    "family-canteen.png",
+    "black-routes.png",
+    "longya.png",
+    "teaching.png",
+    "toilet-front.png",
+    "toilet-floor.png",
+    "underpass.png",
+    "sports.png",
+    "gym-contact.png",
+    "entrances.png",
+    "toilet-level-1.png",
+    "toilet-level-2.png",
+    "toilet-level-3.png",
+    "toilet-level-4.png",
+    "mobile.png"
+  ],
+  "browser": "151.0.7922.34",
+  "standalone_sha256": "11a1cca1f9faa0b76879468f7567c6f6b56a15cd57f723e761088fef88227a96",
+  "success": true
+}

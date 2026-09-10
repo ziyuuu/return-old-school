@@ -1,0 +1,374 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "id": "IDs",
+      "passed": true,
+      "detail": "28 stable semantic facility IDs, not 28 separate buildings"
+    },
+    {
+      "id": "NOT_SURVEYED",
+      "passed": true,
+      "detail": "Working metre coordinates; no whole-campus glyph rescaling"
+    },
+    {
+      "id": "UNLOCATED",
+      "passed": true,
+      "detail": "22 stays unlocated, not placed at origin or guessed silently"
+    },
+    {
+      "id": "SIX_COURTS",
+      "passed": true,
+      "detail": "3 columns x 2 rows"
+    },
+    {
+      "id": "DIRECT_EDGE",
+      "passed": true,
+      "detail": "05 east boundary = 06 west boundary; shared full working extent"
+    },
+    {
+      "id": "PARALLEL",
+      "passed": true,
+      "detail": "05 and 06 use identical orientation"
+    },
+    {
+      "id": "TRACK_BETWEEN",
+      "passed": true,
+      "detail": "28 | 05 | 06 image-left to image-right"
+    },
+    {
+      "id": "AUX_1F",
+      "passed": true,
+      "detail": "Alumnus: low single-storey auxiliary group"
+    },
+    {
+      "id": "MUSIC_4F",
+      "passed": true,
+      "detail": "Alumnus: distinct four-storey music volume, directly abutting03"
+    },
+    {
+      "id": "MUSIC_BEHIND",
+      "passed": true,
+      "detail": "Behind +Z under explicitly H gym orientation"
+    },
+    {
+      "id": "END_ROW",
+      "passed": true,
+      "detail": "24,26,04 remain at same END, not an invented exact common centreline"
+    },
+    {
+      "id": "POOL_TOILET_LEFT",
+      "passed": true,
+      "detail": "26 image-left of pool04; no copied25 internal plan"
+    },
+    {
+      "id": "MAIN_TOILET_LEFT",
+      "passed": true,
+      "detail": "25 image-left of15"
+    },
+    {
+      "id": "EACH_LEVEL",
+      "passed": true,
+      "detail": "One bridge for each working15 level"
+    },
+    {
+      "id": "BRIDGE_ENDPOINTS",
+      "passed": true,
+      "detail": "Bridge endpoints meet both footprints"
+    },
+    {
+      "id": "DOOR_FACES_MAIN",
+      "passed": true,
+      "detail": "25 entrance faces +X toward15"
+    },
+    {
+      "id": "ROSTRUM_LEFT",
+      "passed": true,
+      "detail": "10 image-left of08"
+    },
+    {
+      "id": "NO_MAIN_VOLUME_OVERLAPS",
+      "passed": true,
+      "detail": "Independent building proxies do not overlap; subspace12 is intentionally contained"
+    },
+    {
+      "id": "CANTEEN_SUBSPACE",
+      "passed": true,
+      "detail": "12 is inside lower part of11, not another freestanding building"
+    },
+    {
+      "id": "EXTERIOR_ROUTES_CLEAR",
+      "passed": true,
+      "detail": "Exact segment against inflated building rectangles; full pavement widths, not just sampled centreline"
+    },
+    {
+      "id": "ROUTE_GRAPH_CONNECTED",
+      "passed": true,
+      "detail": "All review route nodes reachable from gate"
+    },
+    {
+      "id": "R2_CANOPY_FULL_LENGTH",
+      "passed": true,
+      "detail": "05 has physical roof and columns, not a label"
+    },
+    {
+      "id": "R2_POSTS_OUTSIDE_COURTS",
+      "passed": true,
+      "detail": "All canopy posts remain inside05"
+    },
+    {
+      "id": "R2_MIDPOINT_LINK",
+      "passed": true,
+      "detail": "Both facing-wall midpoint z values match every link"
+    },
+    {
+      "id": "R2_MIDPOINT_PORTALS",
+      "passed": true,
+      "detail": "Both corresponding openings at the bridge midpoint"
+    },
+    {
+      "id": "R2_REAR_RUBBER_TRACK",
+      "passed": true,
+      "detail": "08-REAR overlaps the field rear edge, before forecourt14"
+    },
+    {
+      "id": "R2_PIT_ON_REAR_RIGHT",
+      "passed": true,
+      "detail": "Unique23 in rightmost quarter of rear track, not old128/198"
+    },
+    {
+      "id": "R2_REQUIRED_CHAIN_1",
+      "passed": true,
+      "detail": "side-gate → side-entry → side-branch → side-front-turn → side-upper → side-mid → side-lower → east-front → east-cross → east-bottom → longya-entry"
+    },
+    {
+      "id": "R2_REQUIRED_CHAIN_2",
+      "passed": true,
+      "detail": "forecourt → gap-entry → gap-north → gap-cross → gap-south → rear-west → rear-junction → library-entry"
+    },
+    {
+      "id": "R2_REQUIRED_CHAIN_3",
+      "passed": true,
+      "detail": "main-rear → rear-junction → library-entry"
+    },
+    {
+      "id": "R2_REQUIRED_CHAIN_4",
+      "passed": true,
+      "detail": "junction-museum → museum-entry"
+    },
+    {
+      "id": "R2_REQUIRED_CHAIN_5",
+      "passed": true,
+      "detail": "forecourt-15 → main-front → teaching-entry"
+    },
+    {
+      "id": "R2_REQUIRED_CHAIN_6",
+      "passed": true,
+      "detail": "main-east → east-cross → info-west"
+    },
+    {
+      "id": "R2_SIDE_GATE_BINDING",
+      "passed": true,
+      "detail": "02 moved from former unverified marker to the corrected route endpoint"
+    },
+    {
+      "id": "R2_OLD_LIBRARY_DETOUR_REMOVED",
+      "passed": true,
+      "detail": "Superseded western/southern detour removed, not drawn beneath new routes"
+    },
+    {
+      "id": "R2_GAP_ROUTE_BETWEEN_BUILDINGS",
+      "passed": true,
+      "detail": "Ground route passes between25 and15 at the bridge crossing"
+    },
+    {
+      "id": "R2_ROUTES_CLEAR_STRUCTURES",
+      "passed": true,
+      "detail": "Roof / bridge underside / columns clear2.2m-high ground route envelopes"
+    },
+    {
+      "id": "R2_GYM_ENLARGED",
+      "passed": true,
+      "detail": "42x42 working envelope; not a new measurement"
+    },
+    {
+      "id": "R2_POOL_TOILET_SMALLER",
+      "passed": true,
+      "detail": "26 small historical working volume, left of pool and toward courts"
+    },
+    {
+      "id": "R2_TOUR_USES_GRAPH",
+      "passed": true,
+      "detail": "Tour traverses actual corrected edges rather than cutting between them"
+    },
+    {
+      "id": "R3_STONE_LEFT",
+      "passed": true,
+      "detail": "27 is map-left (-X), not street-photo right"
+    },
+    {
+      "id": "R3_SIDE_GATE_AT_ENTRANCE",
+      "passed": true,
+      "detail": "02 is the former map-right stone position, not the field rear"
+    },
+    {
+      "id": "R3_NO_ENTRY_SHORTCUT",
+      "passed": true,
+      "detail": "No direct main-to-side shortcut; independent entrance is degree1"
+    },
+    {
+      "id": "R3_SIDE_PAVING_SEPARATE",
+      "passed": true,
+      "detail": "Side paving footprint does not enter main-road band at the entrance"
+    },
+    {
+      "id": "R3_LONGYA_SHIFTED_LEFT",
+      "passed": true,
+      "detail": "R3 chosen X129, previously165;H"
+    },
+    {
+      "id": "R3_LONGYA_DOOR_ALIGNMENT",
+      "passed": true,
+      "detail": "Longitudinal approach aims at a north-front opening, not south bypass"
+    },
+    {
+      "id": "R3_FAMILY_AREA_ENLARGED",
+      "passed": true,
+      "detail": "Larger envelope than54x58R2"
+    },
+    {
+      "id": "R3_FAMILY_CANTEEN_GAP",
+      "passed": true,
+      "detail": "R4 right/up shift replaces R3 exact7H; keep positive gap<=18H, not old45"
+    },
+    {
+      "id": "R3_CONTEXT_COMPONENTS_CONTAINED",
+      "passed": true,
+      "detail": "SixH blocks fit the envelope; not six historical verified buildings"
+    },
+    {
+      "id": "R3_CONTEXT_REAL_MASS_REACHES_CANTEEN",
+      "passed": true,
+      "detail": "Actual building masses, not a baseplate, narrow the canteen gap"
+    },
+    {
+      "id": "R3_CONTEXT_BLOCKS_DISJOINT",
+      "passed": true,
+      "detail": "No residential subvolume penetration"
+    },
+    {
+      "id": "R3_GYM_MUSIC_ABUT",
+      "passed": true,
+      "detail": "Positive-length common edge, zero gap, no overlapping footprints"
+    },
+    {
+      "id": "R3_SHARED_CONTACT_DATA",
+      "passed": true,
+      "detail": "Contact span derived from both current building bounds"
+    },
+    {
+      "id": "R3_NO_EXTERNAL_GYM_LINK",
+      "passed": true,
+      "detail": "No03-24-LINK portico/stair/roof geometry"
+    },
+    {
+      "id": "R3_SHARED_PORTALS",
+      "passed": true,
+      "detail": "Opposing openings at the same common-wall location; interior access detailsH"
+    },
+    {
+      "id": "R3_THRESHOLDS_CURRENT",
+      "passed": true,
+      "detail": "Doorstep geometry follows current entrance data"
+    },
+    {
+      "id": "R4_ROSTRUM_UP",
+      "passed": true,
+      "detail": "10 up only (-Z); numeric22m move is H"
+    },
+    {
+      "id": "R4_FAMILY_UP_RIGHT",
+      "passed": true,
+      "detail": "20 +X/-Z while keeping R3 size"
+    },
+    {
+      "id": "R4_FAMILY_SIZE_KEPT",
+      "passed": true,
+      "detail": "R3 larger mass retained"
+    },
+    {
+      "id": "R4_FAMILY_WITHIN_GROUND",
+      "passed": true,
+      "detail": "No hidden cropping of shifted family block"
+    },
+    {
+      "id": "R4_NO_GREEN_DETOUR",
+      "passed": true,
+      "detail": "Delete obsolete green path, do not invent a replacement garden entrance"
+    },
+    {
+      "id": "R4_MAIN_ROAD_WIDTH",
+      "passed": true,
+      "detail": "Explicit7m along entire09, including office→forecourt"
+    },
+    {
+      "id": "R4_BLACK_ROUTE_16",
+      "passed": true,
+      "detail": "Black annotation short connection 16"
+    },
+    {
+      "id": "R4_BLACK_ROUTE_15",
+      "passed": true,
+      "detail": "Black annotation short connection 15"
+    },
+    {
+      "id": "R4_BLACK_ROUTE_21",
+      "passed": true,
+      "detail": "Black annotation short connection 21"
+    },
+    {
+      "id": "R4_TOILET_CONTINUOUS",
+      "passed": true,
+      "detail": "Continuous body behind front gallery, no central slot"
+    },
+    {
+      "id": "R4_TOILET_EVERY_FLOOR",
+      "passed": true,
+      "detail": "Complete slab on every level, matching the bridge datum"
+    },
+    {
+      "id": "R4_TOILET_END_DOORS",
+      "passed": true,
+      "detail": "Two separated end doors on the same east-facing wall, not centre doors"
+    },
+    {
+      "id": "R4_TOILET_DOOR_RECORDS",
+      "passed": true,
+      "detail": "8 east-facing end door records, 25-link is only a gallery arrival"
+    },
+    {
+      "id": "R4_GALLERY_OPEN_AT_BRIDGE",
+      "passed": true,
+      "detail": "Front railing opening admits bridge width but end sections remain railed"
+    },
+    {
+      "id": "R4_FULL_SLAB_BOXES",
+      "passed": true,
+      "detail": "Each slab is one full rectangle, not a narrow centre ribbon"
+    },
+    {
+      "id": "R4_RAILS_ON_EACH_FLOOR",
+      "passed": true,
+      "detail": "Actual rail meshes, not annotation lines"
+    }
+  ],
+  "counts": {
+    "registered": 28,
+    "located": 27,
+    "courts": 6,
+    "bridges": 4
+  },
+  "limits": [
+    "These tests check internal consistency, not historic or measured accuracy."
+  ]
+}

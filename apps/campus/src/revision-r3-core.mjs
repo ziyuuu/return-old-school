@@ -17,11 +17,11 @@ export function r3Checks(l,{bounds,overlap}){
  put('R3_LONGYA_DOOR_ALIGNMENT',front&&Math.abs(front.position[0]-f('17').position[0])<EPS&&Math.abs(front.position[2]-b('17').minZ)<EPS&&front.facing[2]===-1&&Math.abs(target[0]-front.position[0])<EPS&&Math.abs(prev[0]-target[0])<EPS&&target[2]<front.position[2]&&front.position[2]-target[2]<=2.5&&edges.has('east-bottom|longya-entry'),'Longitudinal approach aims at a north-front opening, not south bypass');
  const fam=f('20'),gap=b('11').minZ-b('20').maxZ;
  put('R3_FAMILY_AREA_ENLARGED',fam.size[0]*fam.size[2]>54*58,'Larger envelope than54x58R2');
- put('R3_FAMILY_CANTEEN_GAP',gap>0&&gap<=8,'Positive gap<=8working metres, formerly45; selected7H');
+ put('R3_FAMILY_CANTEEN_GAP',gap>0&&gap<=18,'R4 right/up shift replaces R3 exact7H; keep positive gap<=18H, not old45');
  const blocks=(l.contextBlocks||[]).map(p=>({id:p.id,position:p.localPosition.map((x,i)=>x+fam.position[i]),size:p.size}));
  const ext=blocks.map(bounds),env=b('20');
  put('R3_CONTEXT_COMPONENTS_CONTAINED',blocks.length===6&&ext.every(v=>v.minX>=env.minX-EPS&&v.maxX<=env.maxX+EPS&&v.minZ>=env.minZ-EPS&&v.maxZ<=env.maxZ+EPS),'SixH blocks fit the envelope; not six historical verified buildings');
- put('R3_CONTEXT_REAL_MASS_REACHES_CANTEEN',ext.length>0&&b('11').minZ-Math.max(...ext.map(v=>v.maxZ))<=8,'Actual building masses, not a baseplate, narrow the canteen gap');
+ put('R3_CONTEXT_REAL_MASS_REACHES_CANTEEN',ext.length>0&&b('11').minZ-Math.max(...ext.map(v=>v.maxZ))<=18,'Actual building masses, not a baseplate, narrow the canteen gap');
  put('R3_CONTEXT_BLOCKS_DISJOINT',ext.every((a,i)=>ext.slice(i+1).every(b=>!overlap(a,b))),'No residential subvolume penetration');
  const c=l.buildingContacts?.find(v=>v.id==='03-24-CONTACT'),g=b('03'),m=b('24');
  const a=Math.max(g.minX,m.minX),z=Math.min(g.maxX,m.maxX);

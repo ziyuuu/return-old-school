@@ -18,10 +18,10 @@ for(const [name,id,mutate] of [
  ['external link restored','R3_NO_EXTERNAL_GYM_LINK',l=>l.buildingLinks.push({id:'03-24-LINK',path:[],width:2.4})],
  ['shared doorway drifts','R3_SHARED_PORTALS',l=>l.entrances.find(e=>e.id==='24-gym').position[0]+=1]
 ])test('R3 regression: '+name,()=>{const l=structuredClone(layout);mutate(l);assert.equal(checkLayout(l).results.find(r=>r.id===id).passed,false);});
-test('R3 preserves 23 unrelated facility transforms and datum',()=>{
+test('R3/R4 preserve 22 unaffected facility transforms relative to R2',()=>{
  const old=JSON.parse(readFileSync(new URL('../../data/m10/baseline-r2-input.json',import.meta.url),'utf8'));
  const rows=old.facilityRows.map(r=>Object.fromEntries(old.facilityColumns.map((c,i)=>[c,r[i]])));
- const allowed=new Set(['02','17','20','24','27']);let count=0;
+ const allowed=new Set(['02','17','20','24','27','10']);let count=0;
  for(const f of layout.facilities){if(allowed.has(f.id))continue;const r=rows.find(r=>r.id===f.id);assert.deepEqual(f.position,r.position,f.id);assert.deepEqual(f.size,r.size,f.id);count++;}
- assert.equal(count,23);assert.deepEqual(layout.origin,old.origin);assert.deepEqual(layout.axes,old.axes);
+ assert.equal(count,22);assert.deepEqual(layout.origin,old.origin);assert.deepEqual(layout.axes,old.axes);
 });

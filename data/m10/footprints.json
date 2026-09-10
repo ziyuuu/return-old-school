@@ -1,5 +1,5 @@
 {
-  "version": "M1.0.2-R3",
+  "version": "M1.0.3-R4",
   "units": "working metres",
   "crs": null,
   "surveyVerified": false,
@@ -445,29 +445,29 @@
       "footprintXZ": [
         [
           16,
-          120
+          98
         ],
         [
           22,
-          120
+          98
         ],
         [
           22,
-          144
+          122
         ],
         [
           16,
-          144
+          122
         ]
       ],
       "positionThree": [
         19,
         0,
-        132
+        110
       ],
       "positionBlender": [
         19,
-        -132,
+        -110,
         0
       ],
       "dimensions": [
@@ -908,30 +908,30 @@
       "name": "居住／家属区建筑群",
       "footprintXZ": [
         [
-          136,
-          30
+          142,
+          22
         ],
         [
-          196,
-          30
+          202,
+          22
         ],
         [
-          196,
-          134
+          202,
+          126
         ],
         [
-          136,
-          134
+          142,
+          126
         ]
       ],
       "positionThree": [
-        166,
+        172,
         0,
-        82
+        74
       ],
       "positionBlender": [
-        166,
-        -82,
+        172,
+        -74,
         0
       ],
       "dimensions": [
@@ -945,7 +945,7 @@
         "floorCount": "H",
         "sourceIds": [],
         "reference": "S03-013/020；U-R3校友确认",
-        "unknowns": "R3群体扩大靠近食堂；楼数/高度H，只有外部轮廓"
+        "unknowns": "R4整体右上移动已确认；精确位移、楼栋数、尺寸和年代仍H。"
       },
       "measuredPosition": null
     },
@@ -1155,7 +1155,7 @@
           "H07"
         ],
         "reference": "U-R2-01；校友草图",
-        "unknowns": "主楼侧墙中线/各层连桥确认；尺寸与构造H"
+        "unknowns": "R4已确认连续楼体、逐层完整楼板、两端门和桥侧开口护栏；未知尺寸、男女两端对应、器具与隐藏面。"
       },
       "measuredPosition": null
     },

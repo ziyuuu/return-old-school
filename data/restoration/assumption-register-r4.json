@@ -1,0 +1,80 @@
+{
+  "surveyVerified": false,
+  "items": [
+    {
+      "id": "H-R4-ROSTRUM",
+      "value": "Z110，较R3上移22工作米",
+      "evidence": "A上移/H数值"
+    },
+    {
+      "id": "H-R4-FAMILY",
+      "value": "X172/Z74，整体右6上8；食堂包络间距15m",
+      "supersedes": "R3 7m间距工作值",
+      "evidence": "A右上移/H位移；R3扩大尺寸不变"
+    },
+    {
+      "id": "H-R4-ROAD",
+      "value": "主干7m连续；支路3m；门前2.4m",
+      "evidence": "A等宽与黑线通路/H宽度"
+    },
+    {
+      "id": "H-R4-TOILET",
+      "value": {
+        "version": "R4-continuous-with-front-gallery",
+        "facilityId": "25",
+        "galleryWidth": 2.2,
+        "slabThickness": 0.18,
+        "slabTopOffset": 0.04,
+        "wallThickness": 0.24,
+        "doorWidth": 1.4,
+        "doorHeight": 2.4,
+        "doorEndInset": 2.1,
+        "railHeight": 1.05,
+        "railPostSpacing": 0.8,
+        "bridgeOpeningWidth": 2.4,
+        "continuousBody": true,
+        "floors": [
+          {
+            "level": 1,
+            "elevation": 0.0,
+            "hasFullSlab": true,
+            "doorOffsetsZ": [
+              -5.1,
+              5.1
+            ]
+          },
+          {
+            "level": 2,
+            "elevation": 3.8,
+            "hasFullSlab": true,
+            "doorOffsetsZ": [
+              -5.1,
+              5.1
+            ]
+          },
+          {
+            "level": 3,
+            "elevation": 7.6,
+            "hasFullSlab": true,
+            "doorOffsetsZ": [
+              -5.1,
+              5.1
+            ]
+          },
+          {
+            "level": 4,
+            "elevation": 11.4,
+            "hasFullSlab": true,
+            "doorOffsetsZ": [
+              -5.1,
+              5.1
+            ]
+          }
+        ],
+        "evidence": "A整栋连续/每层楼板/两端门朝15/桥侧护栏缺口；H尺寸、男女端分配、材质与分隔墙；未确认卫生器具数量",
+        "genderEndAssignment": "unknown: door A and B mark two ends, not a historical male/female orientation"
+      },
+      "evidence": "A拓扑/H全部尺寸；楼层数随15"
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "version": "M1.0.3-R4",
+  "baseCommit": "ccecc301ee30404ad5047ab08a9cb25b39458dc1",
+  "issues": [
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+  ],
+  "transformChanges": {
+    "10": {
+      "old": {
+        "position": [
+          19,
+          0,
+          132
+        ],
+        "size": [
+          6,
+          1.2,
+          24
+        ]
+      },
+      "new": {
+        "position": [
+          19,
+          0,
+          110
+        ],
+        "size": [
+          6,
+          1.2,
+          24
+        ]
+      }
+    },
+    "20": {
+      "old": {
+        "position": [
+          166,
+          0,
+          82
+        ],
+        "size": [
+          60,
+          23,
+          104
+        ]
+      },
+      "new": {
+        "position": [
+          172,
+          0,
+          74
+        ],
+        "size": [
+          60,
+          23,
+          104
+        ]
+      }
+    }
+  },
+  "preservedTransforms": [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08",
+    "09",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18",
+    "19",
+    "21",
+    "22",
+    "23",
+    "24",
+    "25",
+    "26",
+    "27",
+    "28"
+  ],
+  "userEvidence": [
+    "98821bfa-9401-4fb7-9aa2-f1d224bf99e6.png",
+    "dd9c3405-337d-48ec-a6a6-f289e8a9eca5.png",
+    "10590f42-edd6-4a86-9294-8220204e272e.png"
+  ],
+  "evidenceNote": "用户批注确认方向和拓扑；位移/栏杆/楼板尺寸为H，男女端别未知",
+  "removedGreenEdges": [
+    [
+      "east-bottom",
+      "garden-turn"
+    ],
+    [
+      "garden-turn",
+      "garden-east"
+    ],
+    [
+      "garden-east",
+      "garden-entry"
+    ]
+  ]
+}

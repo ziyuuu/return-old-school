@@ -45,6 +45,7 @@ export function structureParts(layout){
 }
 /** Exact segment against an expanded rectangle (not 101-point sampling). */
 export function segmentHitsRect(a,b,rect,r=0){
+ if(!a||!b||!rect)return true;
  let t0=0,t1=1;
  for(const [axis,min,max] of [[0,rect.minX-r,rect.maxX+r],[2,rect.minZ-r,rect.maxZ+r]]){
   const start=a[axis],delta=b[axis]-start;

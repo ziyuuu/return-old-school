@@ -1,4 +1,5 @@
 import { revisionChecks, edgeWidth, segmentHitsRect } from './revision-core.mjs';
+import { r4Checks } from './revision-r4-core.mjs';
 import { r3Checks } from './revision-r3-core.mjs';
 /** Render-independent geometry helpers. Coordinates are design hypotheses, never site measurements. */
 export const EPSILON = 1e-6;
@@ -68,6 +69,6 @@ export function checkLayout(layout) {
     const seen=new Set(['gate']);let changed=true;
   while(changed){changed=false;for(const [s,e] of layout.navigation.edges)if(seen.has(s)!==seen.has(e)){seen.add(s);seen.add(e);changed=true;}}
   check('ROUTE_GRAPH_CONNECTED',seen.size===Object.keys(layout.navigation.nodes).length,'All review route nodes reachable from gate');
-  results.push(...revisionChecks(layout,{bounds,overlap}),...r3Checks(layout,{bounds,overlap}));
+  results.push(...revisionChecks(layout,{bounds,overlap}),...r3Checks(layout,{bounds,overlap}),...r4Checks(layout,{bounds,overlap}));
   return {passed:results.every(r=>r.passed),results,counts:{registered:layout.facilities.length,located:layout.facilities.filter(v=>v.position).length,courts:6,bridges:layout.connections.length},limits:['These tests check internal consistency, not historic or measured accuracy.']};
 }

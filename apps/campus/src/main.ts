@@ -4,6 +4,7 @@ import source from '../../../data/m10/campus-layout.json';
 import { bounds, footprint, courtRects, checkLayout } from './layout-core.mjs';
 import './style.css';
 import { edgeWidth } from './revision-core.mjs';
+import { r4Facility, setToiletSection } from './revision-r4-scene';
 import { r3Facility, buildR3Thresholds } from './revision-r3-scene';
 import { revisedFacility, buildRevisionParts } from './revision-scene';
 
@@ -65,7 +66,7 @@ const mats=ramps.map((_,row)=>{
 const volumes=new THREE.Group(), surfaces=new THREE.Group(), outlines=new THREE.Group(), routeOverlay=new THREE.Group();
 scene.add(surfaces,volumes,outlines,routeOverlay);routeOverlay.visible=false;
 const roots=new Map<string,THREE.Group>(), pickables:THREE.Object3D[]=[], labels=new Map<string,{node:HTMLDivElement,point:THREE.Vector3}>();
-const keyLabels=new Set(['01','02','03','06','08','11','13','15','17','18','20','23','24','25','26','27']);
+const keyLabels=new Set(['01','02','03','06','08','10','11','13','15','17','18','20','23','24','25','26','27']);
 const solidKinds=new Set(['building','music','auxiliary','context','toilet-pool','canteen']);
 function mesh(geo:THREE.BufferGeometry,mat:THREE.Material,parent:THREE.Object3D,pos:Vec3=[0,0,0]){
  const m=new THREE.Mesh(geo,mat);m.position.set(...pos);m.castShadow=true;m.receiveShadow=true;parent.add(m);return m;
@@ -94,13 +95,15 @@ line([[minX,0,-12],[maxX,0,-12]],outlines,'#f3efe0',true);
 rect(outlines,minX,0,maxX,maxZ,.12,'#748e80');
 for(const [a,b] of layout.navigation.edges){
  const pa=layout.navigation.nodes[a as keyof typeof layout.navigation.nodes] as Vec3,pb=layout.navigation.nodes[b as keyof typeof layout.navigation.nodes] as Vec3;
+ const before=surfaces.children.length;
  ribbon([pa,pb],edgeWidth(layout,a,b));
+ for(const o of surfaces.children.slice(before)){o.name=`road-${a}--${b}`;o.userData.route=[a,b];o.userData.width=edgeWidth(layout,a,b);}
  line([[pa[0],.3,pa[2]],[pb[0],.3,pb[2]]],routeOverlay,'#b2793f',true);
 }
 const grid=new THREE.GridHelper(360,36,'#6a8f85','#a7b9a9');grid.position.set(51,-.005,139);grid.visible=false;scene.add(grid);
 const axes=new THREE.AxesHelper(16);axes.position.y=.2;scene.add(axes);
 rect(outlines,-2,-2,2,2,.18,'#b38146');
-const shortLabels:Record<string,string>={'02':'侧门','20':'家属区','24':'音乐楼 · 4F','25':'主楼厕所','26':'池畔厕所','27':'校名石'};
+const shortLabels:Record<string,string>={'10':'主席台','23':'沙坑','02':'侧门','20':'家属区','24':'音乐楼 · 4F','25':'主楼厕所','26':'池畔厕所','27':'校名石'};
 function addLabel(f:Facility){if(!f.position)return;
  const node=document.createElement('div');node.className='facility-label';node.innerHTML=`<b>${f.id}</b>${shortLabels[f.id] ?? f.name.replace(/（.*?）/g,'').replace('旧主教学楼／教室','旧主教学楼')}`;
  node.onclick=()=>selectFacility(f.id,true);viewport.append(node);
@@ -112,7 +115,7 @@ for(const f of layout.facilities){
  const [x,y,z]=f.position,[w,h,d]=f.size,g=new THREE.Group();g.name=`F${f.id}`;g.userData.facility=f.id;g.position.set(x,y,z);roots.set(f.id,g);
  (['field','courts','straight-track','pool','forecourt','sandpit','garden','route','marker','subspace'].includes(f.kind)?surfaces:volumes).add(g);
  addFootprint(f);addLabel(f);
- if(r3Facility(f,g,{box,mesh,line,rect,mats,layout}) || revisedFacility(f,g,{box,mesh,line,rect,mats,layout})) {
+ if(r4Facility(f,g,{box,mesh,line,rect,mats,layout}) || r3Facility(f,g,{box,mesh,line,rect,mats,layout}) || revisedFacility(f,g,{box,mesh,line,rect,mats,layout})) {
   // R2 builds real openings / larger envelopes without replacing unrelated facilities.
  } else if(solidKinds.has(f.kind)){
   if(f.kind==='context'){
@@ -131,10 +134,6 @@ for(const f of layout.facilities){
     box(g,w,.18,2.1,0,j*3.8,-d/2+1.05,6);
     for(let k=0;k<=12;k++)box(g,.32,3.6,.32,-w/2+.2+k*(w-.4)/12,j*3.8,-d/2+.18,6);
    }
- } else if(f.kind==='toilet'){
-   const gap=2.1,wing=(d-gap)/2;
-   box(g,w,h,wing,0,0,-(gap+wing)/2,0);box(g,w,h,wing,0,0,(gap+wing)/2,0);
-   for(let j=0;j<(f.floors??4);j++)box(g,w,.18,gap,0,j*3.8,0,6);
  } else if(f.kind==='gym'){
    const s=new THREE.Shape();s.moveTo(-w/2,0);s.lineTo(w/2,0);s.lineTo(w/2,h*.62);s.lineTo(w*.29,h);s.lineTo(-w*.29,h);s.lineTo(-w/2,h*.62);s.closePath();
    mesh(new THREE.ExtrudeGeometry(s,{depth:d,bevelEnabled:false}),mats[0],g,[0,0,-d/2]);
@@ -196,8 +195,13 @@ select.onchange=()=>selectFacility(select.value,true);
 el('inspect-btn').onclick=()=>{if(!selected)selectFacility('01',false);else setInspector(el('inspector').hidden);};
 el('close-inspector').onclick=()=>setInspector(false);
 function stopModes(){fly=false;tour=false;keys.clear();el('fly-btn').classList.remove('active');el('tour-btn').classList.remove('active');el('help').textContent='拖动环绕 · 右键平移 · 滚轮缩放 · 点击体块查证';}
+let toiletLevel=0;
+function setToiletLevel(level:number,focus=false){
+ toiletLevel=level;setToiletSection(roots,level);el<HTMLSelectElement>('toilet-level').value=String(level);
+ if(focus&&level){stopModes();active=camera;controls.enabled=true;topControls.enabled=false;const y=(level-1)*3.8;camera.position.set(7,y+10,238);controls.target.set(-10,y+1,224);controls.update();}
+}
 function setView(name:string){
- const p=layout.cameraPresets[name as keyof typeof layout.cameraPresets];if(!p)return;stopModes();view=name;
+ const p=layout.cameraPresets[name as keyof typeof layout.cameraPresets];if(!p)return;stopModes();view=name;setToiletLevel(name==='toilet-floor'?2:0);
  document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',(b as HTMLElement).dataset.view===name));
  active=name==='top'?topCamera:camera;controls.enabled=name!=='top';topControls.enabled=name==='top';
  active.position.set(...p.position as Vec3);active.up.set(...(name==='top'?[0,0,-1]:[0,1,0]) as Vec3);
@@ -206,6 +210,7 @@ function setView(name:string){
  el('view-name').innerHTML=`${p.label}<span>体量校核 / 非精模 · 坐标全部为工作推定</span>`;
 }
 for(const btn of document.querySelectorAll<HTMLButtonElement>('[data-view]'))btn.onclick=()=>setView(btn.dataset.view!);
+el<HTMLSelectElement>('toilet-level').onchange=e=>setToiletLevel(Number((e.target as HTMLSelectElement).value),true);
 el<HTMLInputElement>('labels-check').onchange=e=>labelsOn=(e.target as HTMLInputElement).checked;
 el<HTMLInputElement>('roofs-check').onchange=e=>roofs.visible=(e.target as HTMLInputElement).checked;
 el<HTMLInputElement>('grid-check').onchange=e=>grid.visible=(e.target as HTMLInputElement).checked;
@@ -269,12 +274,13 @@ function probeSegment(a:number[],b:number[]){
 }
 function geometrySnapshot(){
  scene.updateMatrixWorld(true);
- const snapshot:any={};
- for(const object of [...roots.values(),...roots.get('20')!.children,structures,...structures.children,roofs,...roofs.children,...structures.children.filter(v=>v!==roofs)]){
+ const snapshot:any={};const extra:THREE.Object3D[]=[];roots.get('25')?.traverse(o=>{if(o.name)extra.push(o);});extra.push(...surfaces.children.filter(o=>o.name.startsWith('road-')));
+ for(const object of [...extra,...roots.values(),...roots.get('20')!.children,structures,...structures.children,roofs,...roofs.children,...structures.children.filter(v=>v!==roofs)]){
   const bb=new THREE.Box3().setFromObject(object);snapshot[object.name]={min:bb.min.toArray(),max:bb.max.toArray(),visible:object.visible};
  }
  return snapshot;
 }
-Object.assign(window,{__YALI_M10__:{version:layout.version,layout,report,setView,selectFacility,probeSegment,geometrySnapshot,
+Object.assign(window,{__YALI_M10__:{version:layout.version,layout,report,setView,selectFacility,setToiletLevel,probeSegment,geometrySnapshot,
+ probeFloor:(x:number,y:number,z:number)=>{scene.updateMatrixWorld(true);const objects:THREE.Object3D[]=[];scene.traverse(o=>{if(o instanceof THREE.Mesh)objects.push(o);});const ray=new THREE.Raycaster(new THREE.Vector3(x,y+.5,z),new THREE.Vector3(0,-1,0),0,.8);return ray.intersectObjects(objects,false).map(h=>({name:h.object.name,y:h.point.y}));},
  probeSurface:(x:number,z:number)=>{scene.updateMatrixWorld(true);const ray=new THREE.Raycaster(new THREE.Vector3(x,3,z),new THREE.Vector3(0,-1,0),0,3.1);return ray.intersectObjects(surfaces.children,true).filter(h=>h.point.y>0).map(h=>({name:h.object.name,y:h.point.y}));},
- getState:()=>({view,fly,tour,selected,camera:active.position.toArray(),renderer:renderer.info.render,canvas:[renderer.domElement.width,renderer.domElement.height],labelsOn,planOnly,roofsVisible:roofs.visible,webgl:renderer.getContext().getParameter(renderer.getContext().VERSION)}),ready:true}});
+ getState:()=>({toiletLevel,view,fly,tour,selected,camera:active.position.toArray(),renderer:renderer.info.render,canvas:[renderer.domElement.width,renderer.domElement.height],labelsOn,planOnly,roofsVisible:roofs.visible,webgl:renderer.getContext().getParameter(renderer.getContext().VERSION)}),ready:true}});

@@ -1,13 +1,13 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { footprint, checkLayout, toBlender } from '../../apps/campus/src/layout-core.mjs';
 const root=new URL('../../',import.meta.url),load=p=>JSON.parse(readFileSync(new URL(p,root),'utf8'));
-const l=load('data/m10/campus-layout.json');mkdirSync(new URL('qa/m10-r3/',root),{recursive:true});
+const l=load('data/m10/campus-layout.json');mkdirSync(new URL('qa/m10-r4/',root),{recursive:true});
 const out={version:l.version,units:'working metres',crs:null,surveyVerified:false,origin:l.origin,axes:l.axes,features:l.facilities.map(f=>({id:f.id,name:f.name,footprintXZ:footprint(f),positionThree:f.position,positionBlender:f.position?toBlender(f.position):null,dimensions:f.size,evidence:f.evidence,measuredPosition:null}))};
 writeFileSync(new URL('data/m10/footprints.json',root),JSON.stringify(out,null,2)+'\n');
 const csv=['id,name,x_work_m,y_work_m,z_work_m,width_work_m,depth_work_m,height_work_m,survey_verified'];
 for(const f of l.facilities)csv.push([f.id,`"${f.name.replaceAll('"','""')}"`,...(f.position??['','','']),...(f.size?[f.size[0],f.size[2],f.size[1]]:['','','']),false].join(','));
 writeFileSync(new URL('data/m10/footprints.csv',root),'\uFEFF'+csv.join('\n')+'\n');
-writeFileSync(new URL('qa/m10-r3/layout-report.json',root),JSON.stringify(checkLayout(l),null,2)+'\n');
+writeFileSync(new URL('qa/m10-r4/layout-report.json',root),JSON.stringify(checkLayout(l),null,2)+'\n');
 
-const secondary={version:l.version,units:'working metres',surveyVerified:false,rearTrack:l.sports.rearTrack,canopy:l.sports.canopy,buildingLinks:l.buildingLinks,buildingContacts:l.buildingContacts,contextBlocks:l.contextBlocks,thresholds:l.thresholds,connections:l.connections,entrances:l.entrances,navigation:l.navigation};
+const secondary={version:l.version,units:'working metres',surveyVerified:false,rearTrack:l.sports.rearTrack,canopy:l.sports.canopy,buildingLinks:l.buildingLinks,buildingContacts:l.buildingContacts,contextBlocks:l.contextBlocks,thresholds:l.thresholds,connections:l.connections,entrances:l.entrances,navigation:l.navigation,toilet25:l.toilet25};
 writeFileSync(new URL('data/m10/site-features.json',root),JSON.stringify(secondary,null,2)+'\n');

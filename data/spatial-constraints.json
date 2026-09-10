@@ -112,5 +112,27 @@
   ],
   "metric_survey_completed": false,
   "sketch_registration": "Gym not drawn in sketch. Local group registration to the old plan remains an explicit hypothesis.",
-  "inference_policy": "Public analogues and H working parameters are authorized; never overwrite A/P evidence or measured fields."
+  "inference_policy": "Public analogues and H working parameters are authorized; never overwrite A/P evidence or measured fields.",
+  "revisions": [
+    {
+      "version": "R4",
+      "issues": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "confirmed": [
+        "主席台图面上移",
+        "家属区右上移",
+        "删除17东南绿线路",
+        "主路红框不收窄",
+        "黑线16侧路/14到15/15到21",
+        "25连续楼体/每层楼板/两端门朝15/桥侧护栏缺口"
+      ],
+      "assumptionRegister": "data/restoration/assumption-register-r4.json"
+    }
+  ]
 }

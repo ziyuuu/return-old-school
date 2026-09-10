@@ -300,7 +300,7 @@
       "kind": "toilet-door",
       "position": [
         -9.2,
-        0.0,
+        0,
         218.9
       ],
       "facing": [
@@ -319,7 +319,7 @@
       "kind": "toilet-door",
       "position": [
         -9.2,
-        0.0,
+        0,
         229.1
       ],
       "facing": [
@@ -860,7 +860,7 @@
       ]
     ],
     "clearance": 0.6,
-    "defaultWidth": 3.0,
+    "defaultWidth": 3,
     "reviewHeight": 1.7,
     "headClearance": 2.2,
     "edgeWidths": {
@@ -1529,7 +1529,7 @@
         0,
         249
       ],
-      "width": 3.0,
+      "width": 3,
       "evidence": "H门前短接，不穿越实心内部"
     },
     {
@@ -1625,7 +1625,7 @@
     "floors": [
       {
         "level": 1,
-        "elevation": 0.0,
+        "elevation": 0,
         "hasFullSlab": true,
         "doorOffsetsZ": [
           -5.1,
