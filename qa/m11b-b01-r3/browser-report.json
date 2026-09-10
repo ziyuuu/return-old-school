@@ -35,6 +35,14 @@
       }
     },
     {
+      "name": "wall feet have real foundations below lowered entrance aprons",
+      "passed": true,
+      "detail": {
+        "probes": 2,
+        "bad": []
+      }
+    },
+    {
       "name": "actual curved facade follows shallow arc, not flat metadata",
       "passed": true,
       "detail": {
@@ -180,8 +188,8 @@
         "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
         "glError": 0,
         "contextLost": false,
-        "calls": 677,
-        "triangles": 346776,
+        "calls": 679,
+        "triangles": 347100,
         "camera": [
           -142,
           96.80000000000003,
@@ -217,8 +225,8 @@
     "mobile.png"
   ],
   "errors": [],
-  "source_sha": "f372d318086934377803b85adeec8a4e4b4ffbc7",
-  "viewer_sha256": "cab19d834d73e871e69232a43de58be199d60a3b4a98ceb02e151b6a5840a2ea",
+  "source_sha": "82cdec32a035cbb3356d46c9ddefd810d1c14c28",
+  "viewer_sha256": "aaa54a473a61eb0bcb55c444298acae95cc97f13a3c9005d393b6095938ee465",
   "environment": "Playwright Chromium / SwiftShader WebGL2;1440x1000 and390x844 viewport",
   "alumniReview": "REVIEW_PENDING"
 }
