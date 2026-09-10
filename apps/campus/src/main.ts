@@ -116,6 +116,10 @@ Object.assign(cameraPresets,{
  'r3-axis':{label:'共轴保持 · 运动场 / 国旗 / 主楼 / 图书馆',position:[73,360,154],target:[73,0,154]},
  'r3-section':{label:'R2五层剖面保持 · 三层后排 / 四楼大坪',position:[140,24,231],target:[91,13,224]}
 });
+Object.assign(cameraPresets,{
+ 'r3-west-front':{label:'图面左端入口正视 · 真实门洞与三级台阶',position:[26.6,5.3,209],target:[26.6,5.1,219]},
+ 'r3-east-front':{label:'图面右端入口正视 · 真实门洞与三级台阶',position:[119.4,5.3,209],target:[119.4,5.1,219]}
+});
 cameraPresets['r2-side']=cameraPresets['r3-east'];
 const el=<T extends HTMLElement>(id:string)=>document.getElementById(id) as T;
 const viewport=el<HTMLDivElement>('viewport');
@@ -147,7 +151,7 @@ function setReviewShadow(target:number[],detail=false){
  else{sun.position.set(190,260,-80);sun.target.position.set(45,0,135);}
  const extent=detail?38:250;
  Object.assign(sun.shadow.camera,{left:-extent,right:extent,top:extent,bottom:-extent,near:1,far:900});
- sun.shadow.normalBias=detail?.025:.18;sun.shadow.bias=detail?-.000035:-.00015;
+ sun.shadow.normalBias=detail?.10:.18;sun.shadow.bias=detail?-.00008:-.00015;
  sun.shadow.camera.updateProjectionMatrix();sun.target.updateMatrixWorld();sun.updateMatrixWorld();sun.shadow.needsUpdate=true;
 }
 

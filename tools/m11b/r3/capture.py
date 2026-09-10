@@ -35,10 +35,10 @@ try:
   grade=page.evaluate('''()=>{const a=window.__YALI_M11A__,v=z=>a.probeGround(0,z).find(h=>h.name.startsWith('M11A-road-'))?.y;return[v(2),v(44)];}''');check('P3 entrance42m still rises3m',None not in grade and abs(grade[1]-grade[0]-3)<.01,grade)
   gym=page.evaluate('''()=>{const a=window.__YALI_P02__,bad=[],r=a.galleryRoute();for(const q of r)if(!a.support(...q).some(h=>Math.abs(h.y-q[1])<.015))bad.push(q);return{points:r.length,bad};}''');save('gym-stair-probes.json',gym);check('gym spectator stair retained',not gym['bad'],gym)
   page.evaluate('window.__YALI_R3__.setLabels(false)')
-  views=['r3-front','r3-overview','r3-west','r3-east','r3-wall','r3-porch-plan','r3-arc','r3-arc-plan','r3-axis','r3-section','r2-terrace','r2-fifth','r2-bridge5','p04-courts','p03-gate-out']
+  views=['r3-front','r3-overview','r3-west','r3-east','r3-west-front','r3-east-front','r3-wall','r3-porch-plan','r3-arc','r3-arc-plan','r3-axis','r3-section','r2-terrace','r2-fifth','r2-bridge5','p04-courts','p03-gate-out']
   for view in views:
    page.evaluate('(v)=>window.__YALI_R3__.setView(v)',view);page.wait_for_timeout(650);page.screenshot(path=str(Q/(view+'.png')),timeout=120000);shots.append(view+'.png');print('screenshot',view,flush=True)
-  check('captured15 fixed model views',len(shots)==15)
+  check('captured17 fixed model views',len(shots)==17)
   page.evaluate("window.__YALI_R3__.setView('r3-porch-plan')");check('first-floor notch view hides upper floors',page.evaluate('window.__YALI_R3__.detailState().level')==1)
   page.evaluate("window.__YALI_R3__.setView('r3-overview');document.body.classList.remove('clean')");page.wait_for_timeout(500);page.screenshot(path=str(Q/'desktop-ui.png'),timeout=120000);shots.append('desktop-ui.png')
   page.locator('#inspect-btn').click();check('inspector accessible',page.locator('#inspector').is_visible());page.locator('#toilet-level').select_option('5');check('five floors remain selectable',page.evaluate('window.__YALI_R3__.detailState().level')==5);page.locator('#close-inspector').click()

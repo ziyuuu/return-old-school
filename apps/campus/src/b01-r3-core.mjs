@@ -82,7 +82,8 @@ export function buildB01R3Model(layout,terrain,r2,p){
   const wx=(i?1:-1)*48.4,ww=e.barredWindowWidth;bx('glazing',1,wx-ww/2,wx+ww/2,e.doorWallZ+.06,e.doorWallZ+.10,fy+.8,fy+.8+e.barredWindowHeight);
   for(let k=0;k<6;k++){const x=wx-ww/2+ww*k/5;bx('window-grille',1,x-.017,x+.017,e.doorWallZ-.05,e.doorWallZ-.015,fy+.8,fy+.8+e.barredWindowHeight);}
   for(const y of [fy+.8,fy+2.7])bx('window-grille',1,wx-ww/2,wx+ww/2,e.doorWallZ-.07,e.doorWallZ-.015,y-.025,y+.025);
-  for(const sign of [-1,1])bx('door-reveal',1,cx+sign*e.doorWidth/2-.025,cx+sign*e.doorWidth/2+.025,e.doorWallZ-.025,e.doorWallZ+th+.025,fy,fy+e.doorHeight);
+  for(const sign of [-1,1])bx('frame',1,cx+sign*e.doorWidth/2-.025,cx+sign*e.doorWidth/2+.025,e.doorWallZ-.025,e.doorWallZ+th+.025,fy,fy+e.doorHeight);
+  bx('frame',1,cx-e.doorWidth/2-.04,cx+e.doorWidth/2+.04,e.doorWallZ-.04,e.doorWallZ+.12,fy+e.doorHeight,fy+e.doorHeight+.07,`R3-${side}-door-head`);
   const x=f.position[0]+cx,z=f.position[2],Y=terrain.anchors['15'].floor;
   access.push({id:side,door:[x,Y+fy,z+e.doorWallZ],normal:copy(e.frontNormal),clearRoute:[[x,Y+fy,z+stepEnd+.1],[x,Y+fy,z+e.doorWallZ+.4],[f.position[0]+(i?46:-46),Y+fy,z-2.4],[f.position[0]+(i?46:-46),Y+fy,z]],apron:[[x,z+e.apron.startZ],[x,z+stepStart]],stepProbes:Array.from({length:e.steps},(_,n)=>[x,Y+lower+e.totalRise*(n+1)/e.steps,z+stepStart+e.stepRun*(n+.5)/e.steps]),stepStart,stepEnd});
  }
