@@ -9,7 +9,7 @@ checks=[];errors=[];shots=[];done=False
 def check(name,ok,detail=None):
     checks.append({'name':name,'passed':bool(ok),'detail':detail})
     print(name,bool(ok),str(detail)[:150] if not ok else '',flush=True)
-    if not ok: raise AssertionError(name)
+    # Retain every probe failure, but collect real diagnostic screenshots before failing.
 
 def save(name,obj): (Q/name).write_text(json.dumps(obj,ensure_ascii=False,indent=2))
 
@@ -39,13 +39,14 @@ try:
   save('main-portals-terrace.json',probes)
   for key in ['underpass','front','rear','terraceDoor','terraceSky']:check('actual clear '+key,not probes[key],probes[key])
   check('terrace actual supported floor',any(abs(h['y']-(roots['15'][1]+11.44))<.012 for h in probes['terraceFloor']))
-  # Sample every road centreline and two width edges, maintaining all inherited road topology.
-  road=page.evaluate('''()=>{const a=window.__YALI_M11A__,bad=[];let probes=0;for(const r of a.model.profiles){const f=r.samples[0],e=r.samples.at(-1),len=Math.hypot(e.x-f.x,e.z-f.z),dx=(e.x-f.x)/len,dz=(e.z-f.z)/len;for(let j=0;j<r.samples.length;j+=8){const q=r.samples[j];for(const d of [0,-r.width/2+.12,r.width/2-.12]){const x=q.x+dz*d,z=q.z-dx*d,hits=a.probeGround(x,z);probes++;if(!hits.some(h=>h.name.startsWith('M11A-road-')))bad.push({from:r.from,to:r.to,x,z});}}}return{probes,bad};}''')
-  save('road-support.json',road);check('all inherited road widths supported',not road['bad'],road)
+  # Probe road interiors at centre and both width edges. Inset terminal samples 5mm
+  # because Float32 mesh endpoints can round ~1e-5m outside double-precision rays.
+  # This is a sampling tolerance, not a geometry/topology change.
+  road=page.evaluate('''()=>{const a=window.__YALI_M11A__,bad=[];let probes=0;for(const r of a.model.profiles){const f=r.samples[0],e=r.samples.at(-1),len=Math.hypot(e.x-f.x,e.z-f.z),dx=(e.x-f.x)/len,dz=(e.z-f.z)/len;for(let j=0;j<r.samples.length;j+=8){const q=r.samples[j],eps=j===0?.005:j===r.samples.length-1?-.005:0;for(const d of [0,-r.width/2+.12,r.width/2-.12]){const x=q.x+dx*eps+dz*d,z=q.z+dz*eps-dx*d,hits=a.probeGround(x,z);probes++;if(!hits.some(h=>h.name.startsWith('M11A-road-')))bad.push({from:r.from,to:r.to,x,z});}}}return{probes,bad};}''')
+  road['terminal_sample_inset_m']=.005;save('road-support.json',road);check('all inherited road widths supported',not road['bad'],road)
   grade=page.evaluate('''()=>{const a=window.__YALI_M11A__,v=z=>a.probeGround(0,z).find(h=>h.name.startsWith('M11A-road-'))?.y;return[v(2),v(44)];}''');check('entrance42m rises3m in actual mesh',all(v is not None for v in grade) and abs(grade[1]-grade[0]-3)<.01,grade)
   stairs=page.evaluate('''()=>{const a=window.__YALI_M11A__,bad=[];let count=0;for(const s of a.model.stairs){for(let i=0;i<s.steps;i++){const t=(i+.5)/s.steps,x=s.start[0]+(s.end[0]-s.start[0])*t,z=s.start[1]+(s.end[1]-s.start[1])*t,y=s.base+.04+(i+1)*s.rise/s.steps;count++;const hits=a.probeGround(x,z);if(!hits.some(h=>h.name===s.id+'-step-'+(i+1)&&Math.abs(h.y-y)<.01))bad.push({id:s.id,i,x,z,y,hits});}}return{count,bad};}''');save('site-step-support.json',stairs);check('all field and site stairs supported',not stairs['bad'],stairs)
   gym=page.evaluate('''()=>{const a=window.__YALI_P02__,bad=[],r=a.galleryRoute();for(const q of r)if(!a.support(...q).some(h=>Math.abs(h.y-q[1])<.015))bad.push(q);return{points:r.length,bad};}''');save('gym-stair-support.json',gym);check('gym spectator stair retained',not gym['bad'],gym)
-  # Screenshots are collected even if later responsive/UI checks fail.
   views=['b01-front','b01-oblique','b01-entry','b01-rear','b01-terrace','b01-toilet','b01-bridge','b01-floor2','b01-underpass','b01-overview','p04-courts','p04-flags','p04-shop','p03-gate-out','p03-edge','gym-p02-stair','top']
   page.evaluate('window.__YALI_B01__.setLabels(false)')
   for view in views:
@@ -71,3 +72,6 @@ try:
 finally:
  server.terminate();server.wait(timeout=10)
  save('browser-report.json',{'version':'M1.1-B.Batch01','complete':done,'passed':done and all(c['passed'] for c in checks),'checks':checks,'errors':errors,'screenshots':shots,'source_sha':os.getenv('SOURCE_SHA',os.getenv('GITHUB_SHA')),'viewer_sha256':hashlib.sha256(A.read_bytes()).hexdigest(),'environment':'Playwright Chromium / SwiftShader software WebGL2; desktop1440x1000 and mobile viewport390x844','note':'Geometry/visual QA, not a physical phone performance claim. Alumni review for B01 remains pending.'})
+
+if not done or not all(c['passed'] for c in checks):
+ raise AssertionError('Browser QA failures: '+', '.join(c['name'] for c in checks if not c['passed']))
