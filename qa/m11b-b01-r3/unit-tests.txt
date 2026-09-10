@@ -1,0 +1,4138 @@
+TAP version 13
+# Subtest: IDs
+ok 1 - IDs
+  ---
+  duration_ms: 2.257179
+  type: 'test'
+  ...
+# Subtest: NOT_SURVEYED
+ok 2 - NOT_SURVEYED
+  ---
+  duration_ms: 0.242682
+  type: 'test'
+  ...
+# Subtest: UNLOCATED
+ok 3 - UNLOCATED
+  ---
+  duration_ms: 0.137396
+  type: 'test'
+  ...
+# Subtest: SIX_COURTS
+ok 4 - SIX_COURTS
+  ---
+  duration_ms: 0.170628
+  type: 'test'
+  ...
+# Subtest: DIRECT_EDGE
+ok 5 - DIRECT_EDGE
+  ---
+  duration_ms: 0.147926
+  type: 'test'
+  ...
+# Subtest: PARALLEL
+ok 6 - PARALLEL
+  ---
+  duration_ms: 0.140291
+  type: 'test'
+  ...
+# Subtest: TRACK_BETWEEN
+ok 7 - TRACK_BETWEEN
+  ---
+  duration_ms: 0.129993
+  type: 'test'
+  ...
+# Subtest: AUX_1F
+ok 8 - AUX_1F
+  ---
+  duration_ms: 0.170868
+  type: 'test'
+  ...
+# Subtest: MUSIC_4F
+ok 9 - MUSIC_4F
+  ---
+  duration_ms: 0.497147
+  type: 'test'
+  ...
+# Subtest: MUSIC_BEHIND
+ok 10 - MUSIC_BEHIND
+  ---
+  duration_ms: 0.529006
+  type: 'test'
+  ...
+# Subtest: END_ROW
+ok 11 - END_ROW
+  ---
+  duration_ms: 0.215552
+  type: 'test'
+  ...
+# Subtest: POOL_TOILET_LEFT
+ok 12 - POOL_TOILET_LEFT
+  ---
+  duration_ms: 0.120575
+  type: 'test'
+  ...
+# Subtest: MAIN_TOILET_LEFT
+ok 13 - MAIN_TOILET_LEFT
+  ---
+  duration_ms: 0.108482
+  type: 'test'
+  ...
+# Subtest: EACH_LEVEL
+ok 14 - EACH_LEVEL
+  ---
+  duration_ms: 0.134921
+  type: 'test'
+  ...
+# Subtest: BRIDGE_ENDPOINTS
+ok 15 - BRIDGE_ENDPOINTS
+  ---
+  duration_ms: 0.086772
+  type: 'test'
+  ...
+# Subtest: DOOR_FACES_MAIN
+ok 16 - DOOR_FACES_MAIN
+  ---
+  duration_ms: 0.089026
+  type: 'test'
+  ...
+# Subtest: ROSTRUM_LEFT
+ok 17 - ROSTRUM_LEFT
+  ---
+  duration_ms: 0.091661
+  type: 'test'
+  ...
+# Subtest: NO_MAIN_VOLUME_OVERLAPS
+ok 18 - NO_MAIN_VOLUME_OVERLAPS
+  ---
+  duration_ms: 0.081011
+  type: 'test'
+  ...
+# Subtest: CANTEEN_SUBSPACE
+ok 19 - CANTEEN_SUBSPACE
+  ---
+  duration_ms: 0.074269
+  type: 'test'
+  ...
+# Subtest: EXTERIOR_ROUTES_CLEAR
+ok 20 - EXTERIOR_ROUTES_CLEAR
+  ---
+  duration_ms: 0.072907
+  type: 'test'
+  ...
+# Subtest: ROUTE_GRAPH_CONNECTED
+ok 21 - ROUTE_GRAPH_CONNECTED
+  ---
+  duration_ms: 0.071934
+  type: 'test'
+  ...
+# Subtest: R2_CANOPY_FULL_LENGTH
+ok 22 - R2_CANOPY_FULL_LENGTH
+  ---
+  duration_ms: 0.074609
+  type: 'test'
+  ...
+# Subtest: R2_POSTS_OUTSIDE_COURTS
+ok 23 - R2_POSTS_OUTSIDE_COURTS
+  ---
+  duration_ms: 0.111559
+  type: 'test'
+  ...
+# Subtest: R2_MIDPOINT_LINK
+ok 24 - R2_MIDPOINT_LINK
+  ---
+  duration_ms: 0.073366
+  type: 'test'
+  ...
+# Subtest: R2_MIDPOINT_PORTALS
+ok 25 - R2_MIDPOINT_PORTALS
+  ---
+  duration_ms: 0.068708
+  type: 'test'
+  ...
+# Subtest: R2_REAR_RUBBER_TRACK
+ok 26 - R2_REAR_RUBBER_TRACK
+  ---
+  duration_ms: 0.069189
+  type: 'test'
+  ...
+# Subtest: R2_PIT_ON_REAR_RIGHT
+ok 27 - R2_PIT_ON_REAR_RIGHT
+  ---
+  duration_ms: 0.067926
+  type: 'test'
+  ...
+# Subtest: R2_REQUIRED_CHAIN_1
+ok 28 - R2_REQUIRED_CHAIN_1
+  ---
+  duration_ms: 0.070842
+  type: 'test'
+  ...
+# Subtest: R2_REQUIRED_CHAIN_2
+ok 29 - R2_REQUIRED_CHAIN_2
+  ---
+  duration_ms: 0.079258
+  type: 'test'
+  ...
+# Subtest: R2_REQUIRED_CHAIN_3
+ok 30 - R2_REQUIRED_CHAIN_3
+  ---
+  duration_ms: 0.093404
+  type: 'test'
+  ...
+# Subtest: R2_REQUIRED_CHAIN_4
+ok 31 - R2_REQUIRED_CHAIN_4
+  ---
+  duration_ms: 0.073958
+  type: 'test'
+  ...
+# Subtest: R2_REQUIRED_CHAIN_5
+ok 32 - R2_REQUIRED_CHAIN_5
+  ---
+  duration_ms: 0.098594
+  type: 'test'
+  ...
+# Subtest: R2_REQUIRED_CHAIN_6
+ok 33 - R2_REQUIRED_CHAIN_6
+  ---
+  duration_ms: 0.081032
+  type: 'test'
+  ...
+# Subtest: R2_SIDE_GATE_BINDING
+ok 34 - R2_SIDE_GATE_BINDING
+  ---
+  duration_ms: 0.077485
+  type: 'test'
+  ...
+# Subtest: R2_OLD_LIBRARY_DETOUR_REMOVED
+ok 35 - R2_OLD_LIBRARY_DETOUR_REMOVED
+  ---
+  duration_ms: 0.140672
+  type: 'test'
+  ...
+# Subtest: R2_GAP_ROUTE_BETWEEN_BUILDINGS
+ok 36 - R2_GAP_ROUTE_BETWEEN_BUILDINGS
+  ---
+  duration_ms: 0.102692
+  type: 'test'
+  ...
+# Subtest: R2_ROUTES_CLEAR_STRUCTURES
+ok 37 - R2_ROUTES_CLEAR_STRUCTURES
+  ---
+  duration_ms: 0.082103
+  type: 'test'
+  ...
+# Subtest: R2_GYM_ENLARGED
+ok 38 - R2_GYM_ENLARGED
+  ---
+  duration_ms: 0.096169
+  type: 'test'
+  ...
+# Subtest: R2_POOL_TOILET_SMALLER
+ok 39 - R2_POOL_TOILET_SMALLER
+  ---
+  duration_ms: 0.078627
+  type: 'test'
+  ...
+# Subtest: R2_TOUR_USES_GRAPH
+ok 40 - R2_TOUR_USES_GRAPH
+  ---
+  duration_ms: 0.069941
+  type: 'test'
+  ...
+# Subtest: R3_STONE_LEFT
+ok 41 - R3_STONE_LEFT
+  ---
+  duration_ms: 0.098824
+  type: 'test'
+  ...
+# Subtest: R3_SIDE_GATE_AT_ENTRANCE
+ok 42 - R3_SIDE_GATE_AT_ENTRANCE
+  ---
+  duration_ms: 0.091871
+  type: 'test'
+  ...
+# Subtest: R3_NO_ENTRY_SHORTCUT
+ok 43 - R3_NO_ENTRY_SHORTCUT
+  ---
+  duration_ms: 0.100978
+  type: 'test'
+  ...
+# Subtest: R3_SIDE_PAVING_SEPARATE
+ok 44 - R3_SIDE_PAVING_SEPARATE
+  ---
+  duration_ms: 0.103142
+  type: 'test'
+  ...
+# Subtest: R3_LONGYA_SHIFTED_LEFT
+ok 45 - R3_LONGYA_SHIFTED_LEFT
+  ---
+  duration_ms: 0.084066
+  type: 'test'
+  ...
+# Subtest: R3_LONGYA_DOOR_ALIGNMENT
+ok 46 - R3_LONGYA_DOOR_ALIGNMENT
+  ---
+  duration_ms: 0.083315
+  type: 'test'
+  ...
+# Subtest: R3_FAMILY_AREA_ENLARGED
+ok 47 - R3_FAMILY_AREA_ENLARGED
+  ---
+  duration_ms: 0.095157
+  type: 'test'
+  ...
+# Subtest: R3_FAMILY_CANTEEN_GAP
+ok 48 - R3_FAMILY_CANTEEN_GAP
+  ---
+  duration_ms: 0.081922
+  type: 'test'
+  ...
+# Subtest: R3_CONTEXT_COMPONENTS_CONTAINED
+ok 49 - R3_CONTEXT_COMPONENTS_CONTAINED
+  ---
+  duration_ms: 0.085229
+  type: 'test'
+  ...
+# Subtest: R3_CONTEXT_REAL_MASS_REACHES_CANTEEN
+ok 50 - R3_CONTEXT_REAL_MASS_REACHES_CANTEEN
+  ---
+  duration_ms: 0.079047
+  type: 'test'
+  ...
+# Subtest: R3_CONTEXT_BLOCKS_DISJOINT
+ok 51 - R3_CONTEXT_BLOCKS_DISJOINT
+  ---
+  duration_ms: 0.081692
+  type: 'test'
+  ...
+# Subtest: R3_GYM_MUSIC_ABUT
+ok 52 - R3_GYM_MUSIC_ABUT
+  ---
+  duration_ms: 0.08076
+  type: 'test'
+  ...
+# Subtest: R3_SHARED_CONTACT_DATA
+ok 53 - R3_SHARED_CONTACT_DATA
+  ---
+  duration_ms: 0.078797
+  type: 'test'
+  ...
+# Subtest: R3_NO_EXTERNAL_GYM_LINK
+ok 54 - R3_NO_EXTERNAL_GYM_LINK
+  ---
+  duration_ms: 0.087654
+  type: 'test'
+  ...
+# Subtest: R3_SHARED_PORTALS
+ok 55 - R3_SHARED_PORTALS
+  ---
+  duration_ms: 0.090308
+  type: 'test'
+  ...
+# Subtest: R3_THRESHOLDS_CURRENT
+ok 56 - R3_THRESHOLDS_CURRENT
+  ---
+  duration_ms: 0.09663
+  type: 'test'
+  ...
+# Subtest: R4_ROSTRUM_UP
+ok 57 - R4_ROSTRUM_UP
+  ---
+  duration_ms: 0.120435
+  type: 'test'
+  ...
+# Subtest: R4_FAMILY_UP_RIGHT
+ok 58 - R4_FAMILY_UP_RIGHT
+  ---
+  duration_ms: 0.079529
+  type: 'test'
+  ...
+# Subtest: R4_FAMILY_SIZE_KEPT
+ok 59 - R4_FAMILY_SIZE_KEPT
+  ---
+  duration_ms: 0.071193
+  type: 'test'
+  ...
+# Subtest: R4_FAMILY_WITHIN_GROUND
+ok 60 - R4_FAMILY_WITHIN_GROUND
+  ---
+  duration_ms: 0.070592
+  type: 'test'
+  ...
+# Subtest: R4_NO_GREEN_DETOUR
+ok 61 - R4_NO_GREEN_DETOUR
+  ---
+  duration_ms: 0.070982
+  type: 'test'
+  ...
+# Subtest: R4_MAIN_ROAD_WIDTH
+ok 62 - R4_MAIN_ROAD_WIDTH
+  ---
+  duration_ms: 0.082223
+  type: 'test'
+  ...
+# Subtest: R4_BLACK_ROUTE_16
+ok 63 - R4_BLACK_ROUTE_16
+  ---
+  duration_ms: 0.08007
+  type: 'test'
+  ...
+# Subtest: R4_BLACK_ROUTE_15
+ok 64 - R4_BLACK_ROUTE_15
+  ---
+  duration_ms: 0.09119
+  type: 'test'
+  ...
+# Subtest: R4_BLACK_ROUTE_21
+ok 65 - R4_BLACK_ROUTE_21
+  ---
+  duration_ms: 1.587971
+  type: 'test'
+  ...
+# Subtest: R4_TOILET_CONTINUOUS
+ok 66 - R4_TOILET_CONTINUOUS
+  ---
+  duration_ms: 0.108943
+  type: 'test'
+  ...
+# Subtest: R4_TOILET_EVERY_FLOOR
+ok 67 - R4_TOILET_EVERY_FLOOR
+  ---
+  duration_ms: 0.088445
+  type: 'test'
+  ...
+# Subtest: R4_TOILET_END_DOORS
+ok 68 - R4_TOILET_END_DOORS
+  ---
+  duration_ms: 0.080119
+  type: 'test'
+  ...
+# Subtest: R4_TOILET_DOOR_RECORDS
+ok 69 - R4_TOILET_DOOR_RECORDS
+  ---
+  duration_ms: 0.074229
+  type: 'test'
+  ...
+# Subtest: R4_GALLERY_OPEN_AT_BRIDGE
+ok 70 - R4_GALLERY_OPEN_AT_BRIDGE
+  ---
+  duration_ms: 0.109444
+  type: 'test'
+  ...
+# Subtest: R4_FULL_SLAB_BOXES
+ok 71 - R4_FULL_SLAB_BOXES
+  ---
+  duration_ms: 0.073998
+  type: 'test'
+  ...
+# Subtest: R4_RAILS_ON_EACH_FLOOR
+ok 72 - R4_RAILS_ON_EACH_FLOOR
+  ---
+  duration_ms: 0.068638
+  type: 'test'
+  ...
+# Subtest: coordinate conversion roundtrips
+ok 73 - coordinate conversion roundtrips
+  ---
+  duration_ms: 1.166145
+  type: 'test'
+  ...
+# Subtest: null footprint stays unknown
+ok 74 - null footprint stays unknown
+  ---
+  duration_ms: 0.156161
+  type: 'test'
+  ...
+# Subtest: world footprint dimensions match H values
+ok 75 - world footprint dimensions match H values
+  ---
+  duration_ms: 0.170348
+  type: 'test'
+  ...
+# Subtest: six distinct court rectangles in perimeter
+ok 76 - six distinct court rectangles in perimeter
+  ---
+  duration_ms: 0.434981
+  type: 'test'
+  ...
+# Subtest: regression: one metre gap fails
+ok 77 - regression: one metre gap fails
+  ---
+  duration_ms: 11.380463
+  type: 'test'
+  ...
+# Subtest: regression: missing floor bridge fails
+ok 78 - regression: missing floor bridge fails
+  ---
+  duration_ms: 13.176472
+  type: 'test'
+  ...
+# Subtest: regression: music gets one storey fails
+ok 79 - regression: music gets one storey fails
+  ---
+  duration_ms: 15.274043
+  type: 'test'
+  ...
+# Subtest: regression: office moved onto route fails
+ok 80 - regression: office moved onto route fails
+  ---
+  duration_ms: 9.960634
+  type: 'test'
+  ...
+# Subtest: regression R2: canopy disabled fails
+ok 81 - regression R2: canopy disabled fails
+  ---
+  duration_ms: 8.198809
+  type: 'test'
+  ...
+# Subtest: regression R2: off-centre bridges fail
+ok 82 - regression R2: off-centre bridges fail
+  ---
+  duration_ms: 11.705899
+  type: 'test'
+  ...
+# Subtest: regression R2: old sandpit location fails
+ok 83 - regression R2: old sandpit location fails
+  ---
+  duration_ms: 11.92611
+  type: 'test'
+  ...
+# Subtest: regression R2: missing side path edge fails
+ok 84 - regression R2: missing side path edge fails
+  ---
+  duration_ms: 6.281754
+  type: 'test'
+  ...
+# Subtest: regression R2: rear door isolated fails
+ok 85 - regression R2: rear door isolated fails
+  ---
+  duration_ms: 5.189618
+  type: 'test'
+  ...
+# Subtest: regression R2: library wrong-side detour fails
+ok 86 - regression R2: library wrong-side detour fails
+  ---
+  duration_ms: 2.883588
+  type: 'test'
+  ...
+# Subtest: regression R2: large former toilet fails
+ok 87 - regression R2: large former toilet fails
+  ---
+  duration_ms: 4.229878
+  type: 'test'
+  ...
+# Subtest: regression R2: bridge below headroom fails
+ok 88 - regression R2: bridge below headroom fails
+  ---
+  duration_ms: 4.758527
+  type: 'test'
+  ...
+# Subtest: regression R2: tour skips a graph edge fails
+ok 89 - regression R2: tour skips a graph edge fails
+  ---
+  duration_ms: 4.185796
+  type: 'test'
+  ...
+# Subtest: R3 regression: stone on old side
+ok 90 - R3 regression: stone on old side
+  ---
+  duration_ms: 19.053838
+  type: 'test'
+  ...
+# Subtest: R3 regression: side gate at field rear
+ok 91 - R3 regression: side gate at field rear
+  ---
+  duration_ms: 10.130331
+  type: 'test'
+  ...
+# Subtest: R3 regression: shortcut reinserted
+ok 92 - R3 regression: shortcut reinserted
+  ---
+  duration_ms: 19.46396
+  type: 'test'
+  ...
+# Subtest: R3 regression: geometric path crossing main
+ok 93 - R3 regression: geometric path crossing main
+  ---
+  duration_ms: 21.741734
+  type: 'test'
+  ...
+# Subtest: R3 regression: longya shift reverted
+ok 94 - R3 regression: longya shift reverted
+  ---
+  duration_ms: 8.962514
+  type: 'test'
+  ...
+# Subtest: R3 regression: road misses front door
+ok 95 - R3 regression: road misses front door
+  ---
+  duration_ms: 12.030675
+  type: 'test'
+  ...
+# Subtest: R3 regression: small residential envelope
+ok 96 - R3 regression: small residential envelope
+  ---
+  duration_ms: 19.655133
+  type: 'test'
+  ...
+# Subtest: R3 regression: old large residential gap
+ok 97 - R3 regression: old large residential gap
+  ---
+  duration_ms: 12.019094
+  type: 'test'
+  ...
+# Subtest: R3 regression: shrunken actual residential mass
+ok 98 - R3 regression: shrunken actual residential mass
+  ---
+  duration_ms: 12.463882
+  type: 'test'
+  ...
+# Subtest: R3 regression: one metre music gap
+ok 99 - R3 regression: one metre music gap
+  ---
+  duration_ms: 9.595761
+  type: 'test'
+  ...
+# Subtest: R3 regression: music intersects gym
+ok 100 - R3 regression: music intersects gym
+  ---
+  duration_ms: 6.444998
+  type: 'test'
+  ...
+# Subtest: R3 regression: external link restored
+ok 101 - R3 regression: external link restored
+  ---
+  duration_ms: 4.904707
+  type: 'test'
+  ...
+# Subtest: R3 regression: shared doorway drifts
+ok 102 - R3 regression: shared doorway drifts
+  ---
+  duration_ms: 5.379773
+  type: 'test'
+  ...
+# Subtest: R3/R4 preserve 22 unaffected facility transforms relative to R2
+ok 103 - R3/R4 preserve 22 unaffected facility transforms relative to R2
+  ---
+  duration_ms: 2.535549
+  type: 'test'
+  ...
+# Subtest: R4 rejects rostrum down again
+ok 104 - R4 rejects rostrum down again
+  ---
+  duration_ms: 18.953034
+  type: 'test'
+  ...
+# Subtest: R4 rejects family stays at R3
+ok 105 - R4 rejects family stays at R3
+  ---
+  duration_ms: 5.379241
+  type: 'test'
+  ...
+# Subtest: R4 rejects family exceeds boundary
+ok 106 - R4 rejects family exceeds boundary
+  ---
+  duration_ms: 9.674523
+  type: 'test'
+  ...
+# Subtest: R4 rejects green road returns
+ok 107 - R4 rejects green road returns
+  ---
+  duration_ms: 19.618735
+  type: 'test'
+  ...
+# Subtest: R4 rejects red-box road narrows
+ok 108 - R4 rejects red-box road narrows
+  ---
+  duration_ms: 9.153247
+  type: 'test'
+  ...
+# Subtest: R4 rejects 16 spur missing
+ok 109 - R4 rejects 16 spur missing
+  ---
+  duration_ms: 16.296281
+  type: 'test'
+  ...
+# Subtest: R4 rejects front approach missing
+ok 110 - R4 rejects front approach missing
+  ---
+  duration_ms: 10.602171
+  type: 'test'
+  ...
+# Subtest: R4 rejects 21 spur missing
+ok 111 - R4 rejects 21 spur missing
+  ---
+  duration_ms: 5.477063
+  type: 'test'
+  ...
+# Subtest: R4 rejects split toilet returns
+ok 112 - R4 rejects split toilet returns
+  ---
+  duration_ms: 4.769424
+  type: 'test'
+  ...
+# Subtest: R4 rejects third floor slab missing
+ok 113 - R4 rejects third floor slab missing
+  ---
+  duration_ms: 8.384945
+  type: 'test'
+  ...
+# Subtest: R4 rejects doors moved to centre
+ok 114 - R4 rejects doors moved to centre
+  ---
+  duration_ms: 5.645137
+  type: 'test'
+  ...
+# Subtest: R4 rejects bridge railing sealed
+ok 115 - R4 rejects bridge railing sealed
+  ---
+  duration_ms: 8.466077
+  type: 'test'
+  ...
+# Subtest: R4 rejects door faces away
+ok 116 - R4 rejects door faces away
+  ---
+  duration_ms: 4.669438
+  type: 'test'
+  ...
+# Subtest: R4 only changes10/20 footprints relative to verified R3
+ok 117 - R4 only changes10/20 footprints relative to verified R3
+  ---
+  duration_ms: 2.170548
+  type: 'test'
+  ...
+# Subtest: every toilet floor full slab and two branching routes
+ok 118 - every toilet floor full slab and two branching routes
+  ---
+  duration_ms: 0.794632
+  type: 'test'
+  ...
+# Subtest: P02_IDS_AND_UNLOCATED
+ok 119 - P02_IDS_AND_UNLOCATED
+  ---
+  duration_ms: 2.350653
+  type: 'test'
+  ...
+# Subtest: P02_ALL_XZ_PRESERVED
+ok 120 - P02_ALL_XZ_PRESERVED
+  ---
+  duration_ms: 0.158626
+  type: 'test'
+  ...
+# Subtest: P02_ONLY_GYM_HEIGHT
+ok 121 - P02_ONLY_GYM_HEIGHT
+  ---
+  duration_ms: 0.195785
+  type: 'test'
+  ...
+# Subtest: P02_OTHER_NODES_UNCHANGED
+ok 122 - P02_OTHER_NODES_UNCHANGED
+  ---
+  duration_ms: 0.132156
+  type: 'test'
+  ...
+# Subtest: P02_OLD_EDGES_WIDTHS_PRESERVED
+ok 123 - P02_OLD_EDGES_WIDTHS_PRESERVED
+  ---
+  duration_ms: 0.132828
+  type: 'test'
+  ...
+# Subtest: P02_NO_OLD_ENTRY_SPUR
+ok 124 - P02_NO_OLD_ENTRY_SPUR
+  ---
+  duration_ms: 0.151323
+  type: 'test'
+  ...
+# Subtest: P02_FRONT_FACES_MAIN
+ok 125 - P02_FRONT_FACES_MAIN
+  ---
+  duration_ms: 0.124792
+  type: 'test'
+  ...
+# Subtest: P02_FORECOURT_SPACE
+ok 126 - P02_FORECOURT_SPACE
+  ---
+  duration_ms: 0.132728
+  type: 'test'
+  ...
+# Subtest: P02_LOOP_CLOSED
+ok 127 - P02_LOOP_CLOSED
+  ---
+  duration_ms: 0.495393
+  type: 'test'
+  ...
+# Subtest: P02_NO_SHARED_WALL_ROAD
+ok 128 - P02_NO_SHARED_WALL_ROAD
+  ---
+  duration_ms: 0.526082
+  type: 'test'
+  ...
+# Subtest: P02_FROZEN_MAIN_TOILET
+ok 129 - P02_FROZEN_MAIN_TOILET
+  ---
+  duration_ms: 0.262269
+  type: 'test'
+  ...
+# Subtest: P02_FORBIDDEN_ROUTES
+ok 130 - P02_FORBIDDEN_ROUTES
+  ---
+  duration_ms: 0.118682
+  type: 'test'
+  ...
+# Subtest: P02_ENTRANCE_5_PERCENT
+ok 131 - P02_ENTRANCE_5_PERCENT
+  ---
+  duration_ms: 0.099395
+  type: 'test'
+  ...
+# Subtest: P02_SPORTS_FLAT
+ok 132 - P02_SPORTS_FLAT
+  ---
+  duration_ms: 0.090168
+  type: 'test'
+  ...
+# Subtest: P02_PAIRED_FLOORS
+ok 133 - P02_PAIRED_FLOORS
+  ---
+  duration_ms: 0.087272
+  type: 'test'
+  ...
+# Subtest: P02_SPECTATOR_LEFT
+ok 134 - P02_SPECTATOR_LEFT
+  ---
+  duration_ms: 0.105678
+  type: 'test'
+  ...
+# Subtest: P02_SPECTATOR_LEVEL
+ok 135 - P02_SPECTATOR_LEVEL
+  ---
+  duration_ms: 0.088485
+  type: 'test'
+  ...
+# Subtest: P02_STAIR_DIMENSIONS
+ok 136 - P02_STAIR_DIMENSIONS
+  ---
+  duration_ms: 0.092082
+  type: 'test'
+  ...
+# Subtest: P02_FACADE_LEVEL_ORDER
+ok 137 - P02_FACADE_LEVEL_ORDER
+  ---
+  duration_ms: 0.086882
+  type: 'test'
+  ...
+# Subtest: P02_NOT_SURVEYED
+ok 138 - P02_NOT_SURVEYED
+  ---
+  duration_ms: 0.08577
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_gate_junction-gym
+ok 139 - P02_GRADE_gate_junction-gym
+  ---
+  duration_ms: 0.088616
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_junction-sports_sports-front
+ok 140 - P02_GRADE_junction-sports_sports-front
+  ---
+  duration_ms: 0.093965
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_sports-front_pool-entry
+ok 141 - P02_GRADE_sports-front_pool-entry
+  ---
+  duration_ms: 0.093684
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_junction-sports_junction-office
+ok 142 - P02_GRADE_junction-sports_junction-office
+  ---
+  duration_ms: 0.084468
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_junction-office_office-entry
+ok 143 - P02_GRADE_junction-office_office-entry
+  ---
+  duration_ms: 0.084057
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_forecourt_main-front
+ok 144 - P02_GRADE_forecourt_main-front
+  ---
+  duration_ms: 0.077444
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_main-front_east-front
+ok 145 - P02_GRADE_main-front_east-front
+  ---
+  duration_ms: 0.07479
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_east-front_science-entry
+ok 146 - P02_GRADE_east-front_science-entry
+  ---
+  duration_ms: 0.075942
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_east-front_east-mid
+ok 147 - P02_GRADE_east-front_east-mid
+  ---
+  duration_ms: 0.074539
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_east-mid_canteen-entry
+ok 148 - P02_GRADE_east-mid_canteen-entry
+  ---
+  duration_ms: 0.107941
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_east-bottom_longya-entry
+ok 149 - P02_GRADE_east-bottom_longya-entry
+  ---
+  duration_ms: 0.120475
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_side-branch_side-front-turn
+ok 150 - P02_GRADE_side-branch_side-front-turn
+  ---
+  duration_ms: 0.08595
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_side-front-turn_side-upper
+ok 151 - P02_GRADE_side-front-turn_side-upper
+  ---
+  duration_ms: 0.079859
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_side-upper_side-mid
+ok 152 - P02_GRADE_side-upper_side-mid
+  ---
+  duration_ms: 0.085439
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_side-mid_side-lower
+ok 153 - P02_GRADE_side-mid_side-lower
+  ---
+  duration_ms: 0.084537
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_side-lower_east-front
+ok 154 - P02_GRADE_side-lower_east-front
+  ---
+  duration_ms: 0.089276
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_forecourt_gap-entry
+ok 155 - P02_GRADE_forecourt_gap-entry
+  ---
+  duration_ms: 0.116577
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_gap-entry_gap-north
+ok 156 - P02_GRADE_gap-entry_gap-north
+  ---
+  duration_ms: 0.084377
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_gap-north_gap-cross
+ok 157 - P02_GRADE_gap-north_gap-cross
+  ---
+  duration_ms: 0.078798
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_gap-cross_gap-south
+ok 158 - P02_GRADE_gap-cross_gap-south
+  ---
+  duration_ms: 0.09098
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_gap-south_rear-west
+ok 159 - P02_GRADE_gap-south_rear-west
+  ---
+  duration_ms: 0.079878
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_rear-west_rear-junction
+ok 160 - P02_GRADE_rear-west_rear-junction
+  ---
+  duration_ms: 0.079789
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_rear-junction_library-entry
+ok 161 - P02_GRADE_rear-junction_library-entry
+  ---
+  duration_ms: 0.105948
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_rear-junction_main-rear
+ok 162 - P02_GRADE_rear-junction_main-rear
+  ---
+  duration_ms: 0.09104
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_side-gate_side-entry
+ok 163 - P02_GRADE_side-gate_side-entry
+  ---
+  duration_ms: 0.081181
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_side-entry_side-branch
+ok 164 - P02_GRADE_side-entry_side-branch
+  ---
+  duration_ms: 0.09659
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_sports-front_music-approach
+ok 165 - P02_GRADE_sports-front_music-approach
+  ---
+  duration_ms: 0.073767
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_music-approach_music-entry
+ok 166 - P02_GRADE_music-approach_music-entry
+  ---
+  duration_ms: 0.105126
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_junction-office_junction-museum
+ok 167 - P02_GRADE_junction-office_junction-museum
+  ---
+  duration_ms: 0.074489
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_junction-museum_forecourt
+ok 168 - P02_GRADE_junction-museum_forecourt
+  ---
+  duration_ms: 0.074299
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_junction-museum_museum-entry
+ok 169 - P02_GRADE_junction-museum_museum-entry
+  ---
+  duration_ms: 0.074218
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_forecourt-15_main-front
+ok 170 - P02_GRADE_forecourt-15_main-front
+  ---
+  duration_ms: 0.072535
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_main-front_teaching-entry
+ok 171 - P02_GRADE_main-front_teaching-entry
+  ---
+  duration_ms: 0.079178
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_east-front_east-cross
+ok 172 - P02_GRADE_east-front_east-cross
+  ---
+  duration_ms: 0.079318
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_east-cross_east-bottom
+ok 173 - P02_GRADE_east-cross_east-bottom
+  ---
+  duration_ms: 0.079909
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_main-east_east-cross
+ok 174 - P02_GRADE_main-east_east-cross
+  ---
+  duration_ms: 0.081943
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_east-cross_info-west
+ok 175 - P02_GRADE_east-cross_info-west
+  ---
+  duration_ms: 0.119143
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_junction-gym_gym-loop-north
+ok 176 - P02_GRADE_junction-gym_gym-loop-north
+  ---
+  duration_ms: 0.097261
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_gym-loop-north_gym-loop-west-north
+ok 177 - P02_GRADE_gym-loop-north_gym-loop-west-north
+  ---
+  duration_ms: 0.079499
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_gym-loop-west-north_gym-loop-west-south
+ok 178 - P02_GRADE_gym-loop-west-north_gym-loop-west-south
+  ---
+  duration_ms: 0.079989
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_gym-loop-west-south_music-approach
+ok 179 - P02_GRADE_gym-loop-west-south_music-approach
+  ---
+  duration_ms: 0.076323
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_junction-gym_gym-main-junction
+ok 180 - P02_GRADE_junction-gym_gym-main-junction
+  ---
+  duration_ms: 0.07501
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_gym-main-junction_junction-sports
+ok 181 - P02_GRADE_gym-main-junction_junction-sports
+  ---
+  duration_ms: 0.07544
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_gym-main-junction_gym-forecourt
+ok 182 - P02_GRADE_gym-main-junction_gym-forecourt
+  ---
+  duration_ms: 0.068959
+  type: 'test'
+  ...
+# Subtest: P02_GRADE_gym-forecourt_gym-entry
+ok 183 - P02_GRADE_gym-forecourt_gym-entry
+  ---
+  duration_ms: 0.078106
+  type: 'test'
+  ...
+# Subtest: P02 does not mutate inputs
+ok 184 - P02 does not mutate inputs
+  ---
+  duration_ms: 2.683494
+  type: 'test'
+  ...
+# Subtest: P02 every original facility XZ still exactly matches
+ok 185 - P02 every original facility XZ still exactly matches
+  ---
+  duration_ms: 1.201621
+  type: 'test'
+  ...
+# Subtest: P02 stair starts at lower floor and ends on gallery
+ok 186 - P02 stair starts at lower floor and ends on gallery
+  ---
+  duration_ms: 0.207587
+  type: 'test'
+  ...
+# Subtest: P02 stair tread elevation increases monotonically
+ok 187 - P02 stair tread elevation increases monotonically
+  ---
+  duration_ms: 0.197188
+  type: 'test'
+  ...
+# Subtest: P02 gallery route reaches actual upper level
+ok 188 - P02 gallery route reaches actual upper level
+  ---
+  duration_ms: 0.320468
+  type: 'test'
+  ...
+# Subtest: P02 left of main-facing facade is plan +Z
+ok 189 - P02 left of main-facing facade is plan +Z
+  ---
+  duration_ms: 0.130072
+  type: 'test'
+  ...
+# Subtest: P02 rejects wrong door orientation
+ok 190 - P02 rejects wrong door orientation
+  ---
+  duration_ms: 38.155082
+  type: 'test'
+  ...
+# Subtest: P02 rejects old entry spur
+ok 191 - P02 rejects old entry spur
+  ---
+  duration_ms: 8.142545
+  type: 'test'
+  ...
+# Subtest: P02 rejects open loop
+ok 192 - P02 rejects open loop
+  ---
+  duration_ms: 13.657769
+  type: 'test'
+  ...
+# Subtest: P02 rejects missing forecourt
+ok 193 - P02 rejects missing forecourt
+  ---
+  duration_ms: 11.510485
+  type: 'test'
+  ...
+# Subtest: P02 rejects old shallow slope
+ok 194 - P02 rejects old shallow slope
+  ---
+  duration_ms: 7.565024
+  type: 'test'
+  ...
+# Subtest: P02 rejects moved music footprint
+ok 195 - P02 rejects moved music footprint
+  ---
+  duration_ms: 12.24078
+  type: 'test'
+  ...
+# Subtest: P02 rejects restored green road
+ok 196 - P02 rejects restored green road
+  ---
+  duration_ms: 14.724829
+  type: 'test'
+  ...
+# Subtest: P02 rejects short gym
+ok 197 - P02 rejects short gym
+  ---
+  duration_ms: 13.571419
+  type: 'test'
+  ...
+# Subtest: P02 rejects changed toilet floor
+ok 198 - P02 rejects changed toilet floor
+  ---
+  duration_ms: 11.975442
+  type: 'test'
+  ...
+# Subtest: P02 route tour has only valid edges
+ok 199 - P02 route tour has only valid edges
+  ---
+  duration_ms: 3.20695
+  type: 'test'
+  ...
+# Subtest: P02 interior relative deltas preserved after rise
+ok 200 - P02 interior relative deltas preserved after rise
+  ---
+  duration_ms: 64.099981
+  type: 'test'
+  ...
+# Subtest: BASELINE_XZ_TOPOLOGY
+ok 201 - BASELINE_XZ_TOPOLOGY
+  ---
+  duration_ms: 2.882435
+  type: 'test'
+  ...
+# Subtest: RELATIVE_NOT_SURVEYED
+ok 202 - RELATIVE_NOT_SURVEYED
+  ---
+  duration_ms: 0.2628
+  type: 'test'
+  ...
+# Subtest: GATE_DATUM
+ok 203 - GATE_DATUM
+  ---
+  duration_ms: 0.131515
+  type: 'test'
+  ...
+# Subtest: ENTRY_ASCENDS
+ok 204 - ENTRY_ASCENDS
+  ---
+  duration_ms: 0.132487
+  type: 'test'
+  ...
+# Subtest: MUSIC_GYM_LEVEL
+ok 205 - MUSIC_GYM_LEVEL
+  ---
+  duration_ms: 0.180075
+  type: 'test'
+  ...
+# Subtest: MAIN_TOILET_LEVEL
+ok 206 - MAIN_TOILET_LEVEL
+  ---
+  duration_ms: 0.135001
+  type: 'test'
+  ...
+# Subtest: SUBSPACE_LEVEL
+ok 207 - SUBSPACE_LEVEL
+  ---
+  duration_ms: 0.120515
+  type: 'test'
+  ...
+# Subtest: SPORT_FLAT_04
+ok 208 - SPORT_FLAT_04
+  ---
+  duration_ms: 0.122148
+  type: 'test'
+  ...
+# Subtest: SPORT_FLAT_05
+ok 209 - SPORT_FLAT_05
+  ---
+  duration_ms: 0.50388
+  type: 'test'
+  ...
+# Subtest: SPORT_FLAT_06
+ok 210 - SPORT_FLAT_06
+  ---
+  duration_ms: 0.597675
+  type: 'test'
+  ...
+# Subtest: SPORT_FLAT_08
+ok 211 - SPORT_FLAT_08
+  ---
+  duration_ms: 0.208769
+  type: 'test'
+  ...
+# Subtest: SPORT_FLAT_23
+ok 212 - SPORT_FLAT_23
+  ---
+  duration_ms: 0.108382
+  type: 'test'
+  ...
+# Subtest: SPORT_FLAT_28
+ok 213 - SPORT_FLAT_28
+  ---
+  duration_ms: 0.08575
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_gate_junction-gym
+ok 214 - ROAD_GRADE_gate_junction-gym
+  ---
+  duration_ms: 0.088696
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_junction-gym_gym-entry
+ok 215 - ROAD_GRADE_junction-gym_gym-entry
+  ---
+  duration_ms: 0.083876
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_junction-gym_junction-sports
+ok 216 - ROAD_GRADE_junction-gym_junction-sports
+  ---
+  duration_ms: 0.13927
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_junction-sports_sports-front
+ok 217 - ROAD_GRADE_junction-sports_sports-front
+  ---
+  duration_ms: 0.086923
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_sports-front_pool-entry
+ok 218 - ROAD_GRADE_sports-front_pool-entry
+  ---
+  duration_ms: 0.084788
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_junction-sports_junction-office
+ok 219 - ROAD_GRADE_junction-sports_junction-office
+  ---
+  duration_ms: 0.080671
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_junction-office_office-entry
+ok 220 - ROAD_GRADE_junction-office_office-entry
+  ---
+  duration_ms: 0.100568
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_forecourt_main-front
+ok 221 - ROAD_GRADE_forecourt_main-front
+  ---
+  duration_ms: 0.103753
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_main-front_east-front
+ok 222 - ROAD_GRADE_main-front_east-front
+  ---
+  duration_ms: 0.127047
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_east-front_science-entry
+ok 223 - ROAD_GRADE_east-front_science-entry
+  ---
+  duration_ms: 0.08586
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_east-front_east-mid
+ok 224 - ROAD_GRADE_east-front_east-mid
+  ---
+  duration_ms: 0.126035
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_east-mid_canteen-entry
+ok 225 - ROAD_GRADE_east-mid_canteen-entry
+  ---
+  duration_ms: 0.08069
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_east-bottom_longya-entry
+ok 226 - ROAD_GRADE_east-bottom_longya-entry
+  ---
+  duration_ms: 0.083906
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_side-branch_side-front-turn
+ok 227 - ROAD_GRADE_side-branch_side-front-turn
+  ---
+  duration_ms: 0.09122
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_side-front-turn_side-upper
+ok 228 - ROAD_GRADE_side-front-turn_side-upper
+  ---
+  duration_ms: 0.079548
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_side-upper_side-mid
+ok 229 - ROAD_GRADE_side-upper_side-mid
+  ---
+  duration_ms: 0.079227
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_side-mid_side-lower
+ok 230 - ROAD_GRADE_side-mid_side-lower
+  ---
+  duration_ms: 0.101309
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_side-lower_east-front
+ok 231 - ROAD_GRADE_side-lower_east-front
+  ---
+  duration_ms: 0.09132
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_forecourt_gap-entry
+ok 232 - ROAD_GRADE_forecourt_gap-entry
+  ---
+  duration_ms: 0.647127
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_gap-entry_gap-north
+ok 233 - ROAD_GRADE_gap-entry_gap-north
+  ---
+  duration_ms: 0.098945
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_gap-north_gap-cross
+ok 234 - ROAD_GRADE_gap-north_gap-cross
+  ---
+  duration_ms: 0.083345
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_gap-cross_gap-south
+ok 235 - ROAD_GRADE_gap-cross_gap-south
+  ---
+  duration_ms: 0.081762
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_gap-south_rear-west
+ok 236 - ROAD_GRADE_gap-south_rear-west
+  ---
+  duration_ms: 0.138117
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_rear-west_rear-junction
+ok 237 - ROAD_GRADE_rear-west_rear-junction
+  ---
+  duration_ms: 0.087132
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_rear-junction_library-entry
+ok 238 - ROAD_GRADE_rear-junction_library-entry
+  ---
+  duration_ms: 0.077324
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_rear-junction_main-rear
+ok 239 - ROAD_GRADE_rear-junction_main-rear
+  ---
+  duration_ms: 0.078917
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_side-gate_side-entry
+ok 240 - ROAD_GRADE_side-gate_side-entry
+  ---
+  duration_ms: 0.077665
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_side-entry_side-branch
+ok 241 - ROAD_GRADE_side-entry_side-branch
+  ---
+  duration_ms: 0.076051
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_sports-front_music-approach
+ok 242 - ROAD_GRADE_sports-front_music-approach
+  ---
+  duration_ms: 0.076243
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_music-approach_music-entry
+ok 243 - ROAD_GRADE_music-approach_music-entry
+  ---
+  duration_ms: 0.075331
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_junction-office_junction-museum
+ok 244 - ROAD_GRADE_junction-office_junction-museum
+  ---
+  duration_ms: 0.083976
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_junction-museum_forecourt
+ok 245 - ROAD_GRADE_junction-museum_forecourt
+  ---
+  duration_ms: 0.134651
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_junction-museum_museum-entry
+ok 246 - ROAD_GRADE_junction-museum_museum-entry
+  ---
+  duration_ms: 0.088816
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_forecourt-15_main-front
+ok 247 - ROAD_GRADE_forecourt-15_main-front
+  ---
+  duration_ms: 0.087373
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_main-front_teaching-entry
+ok 248 - ROAD_GRADE_main-front_teaching-entry
+  ---
+  duration_ms: 0.089738
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_east-front_east-cross
+ok 249 - ROAD_GRADE_east-front_east-cross
+  ---
+  duration_ms: 0.091771
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_east-cross_east-bottom
+ok 250 - ROAD_GRADE_east-cross_east-bottom
+  ---
+  duration_ms: 0.099064
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_main-east_east-cross
+ok 251 - ROAD_GRADE_main-east_east-cross
+  ---
+  duration_ms: 0.088044
+  type: 'test'
+  ...
+# Subtest: ROAD_GRADE_east-cross_info-west
+ok 252 - ROAD_GRADE_east-cross_info-west
+  ---
+  duration_ms: 0.09129
+  type: 'test'
+  ...
+# Subtest: STEP_START_ST-GYM
+ok 253 - STEP_START_ST-GYM
+  ---
+  duration_ms: 0.0962
+  type: 'test'
+  ...
+# Subtest: STEP_RISE_ST-GYM
+ok 254 - STEP_RISE_ST-GYM
+  ---
+  duration_ms: 0.086511
+  type: 'test'
+  ...
+# Subtest: STEP_MATCH_ST-GYM
+ok 255 - STEP_MATCH_ST-GYM
+  ---
+  duration_ms: 0.080921
+  type: 'test'
+  ...
+# Subtest: STEP_GEOMETRY_ST-GYM
+ok 256 - STEP_GEOMETRY_ST-GYM
+  ---
+  duration_ms: 0.09089
+  type: 'test'
+  ...
+# Subtest: STEP_START_ST-MUSIC
+ok 257 - STEP_START_ST-MUSIC
+  ---
+  duration_ms: 0.108242
+  type: 'test'
+  ...
+# Subtest: STEP_RISE_ST-MUSIC
+ok 258 - STEP_RISE_ST-MUSIC
+  ---
+  duration_ms: 0.081231
+  type: 'test'
+  ...
+# Subtest: STEP_MATCH_ST-MUSIC
+ok 259 - STEP_MATCH_ST-MUSIC
+  ---
+  duration_ms: 0.077194
+  type: 'test'
+  ...
+# Subtest: STEP_GEOMETRY_ST-MUSIC
+ok 260 - STEP_GEOMETRY_ST-MUSIC
+  ---
+  duration_ms: 0.09069
+  type: 'test'
+  ...
+# Subtest: STEP_START_ST-LONGYA
+ok 261 - STEP_START_ST-LONGYA
+  ---
+  duration_ms: 0.132887
+  type: 'test'
+  ...
+# Subtest: STEP_RISE_ST-LONGYA
+ok 262 - STEP_RISE_ST-LONGYA
+  ---
+  duration_ms: 0.088475
+  type: 'test'
+  ...
+# Subtest: STEP_MATCH_ST-LONGYA
+ok 263 - STEP_MATCH_ST-LONGYA
+  ---
+  duration_ms: 0.072996
+  type: 'test'
+  ...
+# Subtest: STEP_GEOMETRY_ST-LONGYA
+ok 264 - STEP_GEOMETRY_ST-LONGYA
+  ---
+  duration_ms: 0.076583
+  type: 'test'
+  ...
+# Subtest: STEP_START_ST-LIBRARY
+ok 265 - STEP_START_ST-LIBRARY
+  ---
+  duration_ms: 0.071894
+  type: 'test'
+  ...
+# Subtest: STEP_RISE_ST-LIBRARY
+ok 266 - STEP_RISE_ST-LIBRARY
+  ---
+  duration_ms: 0.121256
+  type: 'test'
+  ...
+# Subtest: STEP_MATCH_ST-LIBRARY
+ok 267 - STEP_MATCH_ST-LIBRARY
+  ---
+  duration_ms: 0.084357
+  type: 'test'
+  ...
+# Subtest: STEP_GEOMETRY_ST-LIBRARY
+ok 268 - STEP_GEOMETRY_ST-LIBRARY
+  ---
+  duration_ms: 0.092172
+  type: 'test'
+  ...
+# Subtest: NO_NEW_ROUTE_TO_GARDEN
+ok 269 - NO_NEW_ROUTE_TO_GARDEN
+  ---
+  duration_ms: 0.089948
+  type: 'test'
+  ...
+# Subtest: NO_MISSING_FACILITY_FILL
+ok 270 - NO_MISSING_FACILITY_FILL
+  ---
+  duration_ms: 0.121256
+  type: 'test'
+  ...
+# Subtest: EXAGGERATION_1
+ok 271 - EXAGGERATION_1
+  ---
+  duration_ms: 0.089567
+  type: 'test'
+  ...
+# Subtest: frozen file unchanged apps/campus/src/layout-core.mjs
+ok 272 - frozen file unchanged apps/campus/src/layout-core.mjs
+  ---
+  duration_ms: 0.851117
+  type: 'test'
+  ...
+# Subtest: frozen file unchanged data/m10/layout-input.json
+ok 273 - frozen file unchanged data/m10/layout-input.json
+  ---
+  duration_ms: 0.284992
+  type: 'test'
+  ...
+# Subtest: frozen file unchanged data/m10/campus-layout.json
+ok 274 - frozen file unchanged data/m10/campus-layout.json
+  ---
+  duration_ms: 0.205784
+  type: 'test'
+  ...
+# Subtest: frozen file unchanged data/spatial-constraints.json
+ok 275 - frozen file unchanged data/spatial-constraints.json
+  ---
+  duration_ms: 0.184434
+  type: 'test'
+  ...
+# Subtest: reject regression moved building
+ok 276 - reject regression moved building
+  ---
+  duration_ms: 41.867084
+  type: 'test'
+  ...
+# Subtest: reject regression narrowed trunk
+ok 277 - reject regression narrowed trunk
+  ---
+  duration_ms: 20.577552
+  type: 'test'
+  ...
+# Subtest: reject regression removed edge
+ok 278 - reject regression removed edge
+  ---
+  duration_ms: 17.928865
+  type: 'test'
+  ...
+# Subtest: reject regression steep grade
+ok 279 - reject regression steep grade
+  ---
+  duration_ms: 32.229542
+  type: 'test'
+  ...
+# Subtest: reject regression longya invalid step count
+ok 280 - reject regression longya invalid step count
+  ---
+  duration_ms: 11.949161
+  type: 'test'
+  ...
+# Subtest: reject regression library incorrect rise
+ok 281 - reject regression library incorrect rise
+  ---
+  duration_ms: 6.222895
+  type: 'test'
+  ...
+# Subtest: node height consistent gate
+ok 282 - node height consistent gate
+  ---
+  duration_ms: 0.276957
+  type: 'test'
+  ...
+# Subtest: node height consistent junction-gym
+ok 283 - node height consistent junction-gym
+  ---
+  duration_ms: 0.125163
+  type: 'test'
+  ...
+# Subtest: node height consistent gym-entry
+ok 284 - node height consistent gym-entry
+  ---
+  duration_ms: 0.102802
+  type: 'test'
+  ...
+# Subtest: node height consistent junction-sports
+ok 285 - node height consistent junction-sports
+  ---
+  duration_ms: 1.308089
+  type: 'test'
+  ...
+# Subtest: node height consistent sports-front
+ok 286 - node height consistent sports-front
+  ---
+  duration_ms: 0.147685
+  type: 'test'
+  ...
+# Subtest: node height consistent music-entry
+ok 287 - node height consistent music-entry
+  ---
+  duration_ms: 0.095509
+  type: 'test'
+  ...
+# Subtest: node height consistent junction-office
+ok 288 - node height consistent junction-office
+  ---
+  duration_ms: 0.088155
+  type: 'test'
+  ...
+# Subtest: node height consistent office-entry
+ok 289 - node height consistent office-entry
+  ---
+  duration_ms: 0.083746
+  type: 'test'
+  ...
+# Subtest: node height consistent forecourt
+ok 290 - node height consistent forecourt
+  ---
+  duration_ms: 0.088475
+  type: 'test'
+  ...
+# Subtest: node height consistent main-front
+ok 291 - node height consistent main-front
+  ---
+  duration_ms: 0.09676
+  type: 'test'
+  ...
+# Subtest: node height consistent east-front
+ok 292 - node height consistent east-front
+  ---
+  duration_ms: 0.086632
+  type: 'test'
+  ...
+# Subtest: node height consistent canteen-entry
+ok 293 - node height consistent canteen-entry
+  ---
+  duration_ms: 0.090669
+  type: 'test'
+  ...
+# Subtest: node height consistent science-entry
+ok 294 - node height consistent science-entry
+  ---
+  duration_ms: 0.125213
+  type: 'test'
+  ...
+# Subtest: node height consistent east-mid
+ok 295 - node height consistent east-mid
+  ---
+  duration_ms: 0.095519
+  type: 'test'
+  ...
+# Subtest: node height consistent east-bottom
+ok 296 - node height consistent east-bottom
+  ---
+  duration_ms: 0.084147
+  type: 'test'
+  ...
+# Subtest: node height consistent longya-entry
+ok 297 - node height consistent longya-entry
+  ---
+  duration_ms: 0.083165
+  type: 'test'
+  ...
+# Subtest: node height consistent museum-entry
+ok 298 - node height consistent museum-entry
+  ---
+  duration_ms: 0.087583
+  type: 'test'
+  ...
+# Subtest: node height consistent pool-entry
+ok 299 - node height consistent pool-entry
+  ---
+  duration_ms: 0.077474
+  type: 'test'
+  ...
+# Subtest: node height consistent side-branch
+ok 300 - node height consistent side-branch
+  ---
+  duration_ms: 0.079098
+  type: 'test'
+  ...
+# Subtest: node height consistent side-front-turn
+ok 301 - node height consistent side-front-turn
+  ---
+  duration_ms: 0.080069
+  type: 'test'
+  ...
+# Subtest: node height consistent side-upper
+ok 302 - node height consistent side-upper
+  ---
+  duration_ms: 0.135813
+  type: 'test'
+  ...
+# Subtest: node height consistent side-mid
+ok 303 - node height consistent side-mid
+  ---
+  duration_ms: 0.082344
+  type: 'test'
+  ...
+# Subtest: node height consistent side-gate
+ok 304 - node height consistent side-gate
+  ---
+  duration_ms: 0.072034
+  type: 'test'
+  ...
+# Subtest: node height consistent gap-entry
+ok 305 - node height consistent gap-entry
+  ---
+  duration_ms: 0.072946
+  type: 'test'
+  ...
+# Subtest: node height consistent gap-north
+ok 306 - node height consistent gap-north
+  ---
+  duration_ms: 0.077134
+  type: 'test'
+  ...
+# Subtest: node height consistent gap-cross
+ok 307 - node height consistent gap-cross
+  ---
+  duration_ms: 0.070801
+  type: 'test'
+  ...
+# Subtest: node height consistent gap-south
+ok 308 - node height consistent gap-south
+  ---
+  duration_ms: 0.079037
+  type: 'test'
+  ...
+# Subtest: node height consistent rear-west
+ok 309 - node height consistent rear-west
+  ---
+  duration_ms: 0.079679
+  type: 'test'
+  ...
+# Subtest: node height consistent rear-junction
+ok 310 - node height consistent rear-junction
+  ---
+  duration_ms: 0.070833
+  type: 'test'
+  ...
+# Subtest: node height consistent main-rear
+ok 311 - node height consistent main-rear
+  ---
+  duration_ms: 0.068007
+  type: 'test'
+  ...
+# Subtest: node height consistent library-entry
+ok 312 - node height consistent library-entry
+  ---
+  duration_ms: 0.119193
+  type: 'test'
+  ...
+# Subtest: node height consistent side-entry
+ok 313 - node height consistent side-entry
+  ---
+  duration_ms: 0.071594
+  type: 'test'
+  ...
+# Subtest: node height consistent side-lower
+ok 314 - node height consistent side-lower
+  ---
+  duration_ms: 0.074188
+  type: 'test'
+  ...
+# Subtest: node height consistent music-approach
+ok 315 - node height consistent music-approach
+  ---
+  duration_ms: 0.074679
+  type: 'test'
+  ...
+# Subtest: node height consistent junction-museum
+ok 316 - node height consistent junction-museum
+  ---
+  duration_ms: 0.071233
+  type: 'test'
+  ...
+# Subtest: node height consistent forecourt-15
+ok 317 - node height consistent forecourt-15
+  ---
+  duration_ms: 0.65957
+  type: 'test'
+  ...
+# Subtest: node height consistent teaching-entry
+ok 318 - node height consistent teaching-entry
+  ---
+  duration_ms: 0.097962
+  type: 'test'
+  ...
+# Subtest: node height consistent east-cross
+ok 319 - node height consistent east-cross
+  ---
+  duration_ms: 0.091661
+  type: 'test'
+  ...
+# Subtest: node height consistent main-east
+ok 320 - node height consistent main-east
+  ---
+  duration_ms: 0.092542
+  type: 'test'
+  ...
+# Subtest: node height consistent info-west
+ok 321 - node height consistent info-west
+  ---
+  duration_ms: 0.083085
+  type: 'test'
+  ...
+# Subtest: solid steps / support ST-GYM
+ok 322 - solid steps / support ST-GYM
+  ---
+  duration_ms: 0.453536
+  type: 'test'
+  ...
+# Subtest: solid steps / support ST-MUSIC
+ok 323 - solid steps / support ST-MUSIC
+  ---
+  duration_ms: 0.129121
+  type: 'test'
+  ...
+# Subtest: solid steps / support ST-LONGYA
+ok 324 - solid steps / support ST-LONGYA
+  ---
+  duration_ms: 0.223828
+  type: 'test'
+  ...
+# Subtest: solid steps / support ST-LIBRARY
+ok 325 - solid steps / support ST-LIBRARY
+  ---
+  duration_ms: 2.591222
+  type: 'test'
+  ...
+# Subtest: no mutation by builders
+ok 326 - no mutation by builders
+  ---
+  duration_ms: 39.595372
+  type: 'test'
+  ...
+# Subtest: bridge/toilet floor datum matches after lift
+ok 327 - bridge/toilet floor datum matches after lift
+  ---
+  duration_ms: 0.284771
+  type: 'test'
+  ...
+# Subtest: sports pads no slope at corners
+ok 328 - sports pads no slope at corners
+  ---
+  duration_ms: 0.624765
+  type: 'test'
+  ...
+# Subtest: reject regression flat entrance contradicts source
+ok 329 - reject regression flat entrance contradicts source
+  ---
+  duration_ms: 24.406974
+  type: 'test'
+  ...
+# Subtest: P03-H-NOT-SURVEYED
+ok 330 - P03-H-NOT-SURVEYED
+  ---
+  duration_ms: 1.963473
+  type: 'test'
+  ...
+# Subtest: P03-XZ-FROZEN
+ok 331 - P03-XZ-FROZEN
+  ---
+  duration_ms: 0.176238
+  type: 'test'
+  ...
+# Subtest: P03-LONGER
+ok 332 - P03-LONGER
+  ---
+  duration_ms: 0.093765
+  type: 'test'
+  ...
+# Subtest: P03-STEEPER
+ok 333 - P03-STEEPER
+  ---
+  duration_ms: 0.089016
+  type: 'test'
+  ...
+# Subtest: P03-PROFILE-CONSISTENT
+ok 334 - P03-PROFILE-CONSISTENT
+  ---
+  duration_ms: 0.135784
+  type: 'test'
+  ...
+# Subtest: P03-GATE-ZERO
+ok 335 - P03-GATE-ZERO
+  ---
+  duration_ms: 0.095478
+  type: 'test'
+  ...
+# Subtest: P03-FIELD-DEPRESSED
+ok 336 - P03-FIELD-DEPRESSED
+  ---
+  duration_ms: 0.086802
+  type: 'test'
+  ...
+# Subtest: P03-GYM-APRON-HELD
+ok 337 - P03-GYM-APRON-HELD
+  ---
+  duration_ms: 0.113291
+  type: 'test'
+  ...
+# Subtest: P03-GYM-MUSIC-LEVEL
+ok 338 - P03-GYM-MUSIC-LEVEL
+  ---
+  duration_ms: 0.35926
+  type: 'test'
+  ...
+# Subtest: P03-TOILET-LEVEL
+ok 339 - P03-TOILET-LEVEL
+  ---
+  duration_ms: 0.343341
+  type: 'test'
+  ...
+# Subtest: P03-SPORTS-PLANAR
+ok 340 - P03-SPORTS-PLANAR
+  ---
+  duration_ms: 0.145151
+  type: 'test'
+  ...
+# Subtest: P03-ROSTRUM-LEVEL
+ok 341 - P03-ROSTRUM-LEVEL
+  ---
+  duration_ms: 0.071483
+  type: 'test'
+  ...
+# Subtest: P03-OPENINGS
+ok 342 - P03-OPENINGS
+  ---
+  duration_ms: 0.132818
+  type: 'test'
+  ...
+# Subtest: P03-STEP-SUPPORT-P03-WEST
+ok 343 - P03-STEP-SUPPORT-P03-WEST
+  ---
+  duration_ms: 0.12355
+  type: 'test'
+  ...
+# Subtest: P03-STEP-SIZE-P03-WEST
+ok 344 - P03-STEP-SIZE-P03-WEST
+  ---
+  duration_ms: 0.088516
+  type: 'test'
+  ...
+# Subtest: P03-STEP-SUPPORT-P03-REAR
+ok 345 - P03-STEP-SUPPORT-P03-REAR
+  ---
+  duration_ms: 0.089056
+  type: 'test'
+  ...
+# Subtest: P03-STEP-SIZE-P03-REAR
+ok 346 - P03-STEP-SIZE-P03-REAR
+  ---
+  duration_ms: 0.09093
+  type: 'test'
+  ...
+# Subtest: P03-STEP-SUPPORT-P03-ROSTRUM
+ok 347 - P03-STEP-SUPPORT-P03-ROSTRUM
+  ---
+  duration_ms: 0.089116
+  type: 'test'
+  ...
+# Subtest: P03-STEP-SIZE-P03-ROSTRUM
+ok 348 - P03-STEP-SIZE-P03-ROSTRUM
+  ---
+  duration_ms: 0.070161
+  type: 'test'
+  ...
+# Subtest: P03-RAMP-CONTINUOUS
+ok 349 - P03-RAMP-CONTINUOUS
+  ---
+  duration_ms: 0.053881
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-gate--junction-gym
+ok 350 - P03-ROAD-gate--junction-gym
+  ---
+  duration_ms: 0.052929
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-junction-sports--sports-front
+ok 351 - P03-ROAD-junction-sports--sports-front
+  ---
+  duration_ms: 0.052668
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-sports-front--pool-entry
+ok 352 - P03-ROAD-sports-front--pool-entry
+  ---
+  duration_ms: 0.056816
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-junction-sports--junction-office
+ok 353 - P03-ROAD-junction-sports--junction-office
+  ---
+  duration_ms: 0.066103
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-junction-office--office-entry
+ok 354 - P03-ROAD-junction-office--office-entry
+  ---
+  duration_ms: 0.052187
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-forecourt--main-front
+ok 355 - P03-ROAD-forecourt--main-front
+  ---
+  duration_ms: 0.051646
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-main-front--east-front
+ok 356 - P03-ROAD-main-front--east-front
+  ---
+  duration_ms: 0.050504
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-east-front--science-entry
+ok 357 - P03-ROAD-east-front--science-entry
+  ---
+  duration_ms: 0.047819
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-east-front--east-mid
+ok 358 - P03-ROAD-east-front--east-mid
+  ---
+  duration_ms: 0.048491
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-east-mid--canteen-entry
+ok 359 - P03-ROAD-east-mid--canteen-entry
+  ---
+  duration_ms: 0.049964
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-east-bottom--longya-entry
+ok 360 - P03-ROAD-east-bottom--longya-entry
+  ---
+  duration_ms: 0.050344
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-side-branch--side-front-turn
+ok 361 - P03-ROAD-side-branch--side-front-turn
+  ---
+  duration_ms: 0.049643
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-side-front-turn--side-upper
+ok 362 - P03-ROAD-side-front-turn--side-upper
+  ---
+  duration_ms: 0.048531
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-side-upper--side-mid
+ok 363 - P03-ROAD-side-upper--side-mid
+  ---
+  duration_ms: 0.050053
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-side-mid--side-lower
+ok 364 - P03-ROAD-side-mid--side-lower
+  ---
+  duration_ms: 0.057688
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-side-lower--east-front
+ok 365 - P03-ROAD-side-lower--east-front
+  ---
+  duration_ms: 0.054793
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-forecourt--gap-entry
+ok 366 - P03-ROAD-forecourt--gap-entry
+  ---
+  duration_ms: 0.049753
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-gap-entry--gap-north
+ok 367 - P03-ROAD-gap-entry--gap-north
+  ---
+  duration_ms: 0.077024
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-gap-north--gap-cross
+ok 368 - P03-ROAD-gap-north--gap-cross
+  ---
+  duration_ms: 0.053069
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-gap-cross--gap-south
+ok 369 - P03-ROAD-gap-cross--gap-south
+  ---
+  duration_ms: 0.0481
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-gap-south--rear-west
+ok 370 - P03-ROAD-gap-south--rear-west
+  ---
+  duration_ms: 0.047899
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-rear-west--rear-junction
+ok 371 - P03-ROAD-rear-west--rear-junction
+  ---
+  duration_ms: 0.047239
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-rear-junction--library-entry
+ok 372 - P03-ROAD-rear-junction--library-entry
+  ---
+  duration_ms: 0.052387
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-rear-junction--main-rear
+ok 373 - P03-ROAD-rear-junction--main-rear
+  ---
+  duration_ms: 0.053399
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-side-gate--side-entry
+ok 374 - P03-ROAD-side-gate--side-entry
+  ---
+  duration_ms: 0.050494
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-side-entry--side-branch
+ok 375 - P03-ROAD-side-entry--side-branch
+  ---
+  duration_ms: 0.048159
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-sports-front--music-approach
+ok 376 - P03-ROAD-sports-front--music-approach
+  ---
+  duration_ms: 0.046276
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-music-approach--music-entry
+ok 377 - P03-ROAD-music-approach--music-entry
+  ---
+  duration_ms: 0.047329
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-junction-office--junction-museum
+ok 378 - P03-ROAD-junction-office--junction-museum
+  ---
+  duration_ms: 0.05871
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-junction-museum--forecourt
+ok 379 - P03-ROAD-junction-museum--forecourt
+  ---
+  duration_ms: 0.072255
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-junction-museum--museum-entry
+ok 380 - P03-ROAD-junction-museum--museum-entry
+  ---
+  duration_ms: 0.064079
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-forecourt-15--main-front
+ok 381 - P03-ROAD-forecourt-15--main-front
+  ---
+  duration_ms: 0.050365
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-main-front--teaching-entry
+ok 382 - P03-ROAD-main-front--teaching-entry
+  ---
+  duration_ms: 0.057517
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-east-front--east-cross
+ok 383 - P03-ROAD-east-front--east-cross
+  ---
+  duration_ms: 0.05952
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-east-cross--east-bottom
+ok 384 - P03-ROAD-east-cross--east-bottom
+  ---
+  duration_ms: 0.062476
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-main-east--east-cross
+ok 385 - P03-ROAD-main-east--east-cross
+  ---
+  duration_ms: 0.049833
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-east-cross--info-west
+ok 386 - P03-ROAD-east-cross--info-west
+  ---
+  duration_ms: 0.148066
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-junction-gym--gym-loop-north
+ok 387 - P03-ROAD-junction-gym--gym-loop-north
+  ---
+  duration_ms: 0.100879
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-gym-loop-north--gym-loop-west-north
+ok 388 - P03-ROAD-gym-loop-north--gym-loop-west-north
+  ---
+  duration_ms: 0.094837
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-gym-loop-west-north--gym-loop-west-south
+ok 389 - P03-ROAD-gym-loop-west-north--gym-loop-west-south
+  ---
+  duration_ms: 0.128499
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-gym-loop-west-south--music-approach
+ok 390 - P03-ROAD-gym-loop-west-south--music-approach
+  ---
+  duration_ms: 0.092883
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-junction-gym--gym-main-junction
+ok 391 - P03-ROAD-junction-gym--gym-main-junction
+  ---
+  duration_ms: 0.095158
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-gym-main-junction--junction-sports
+ok 392 - P03-ROAD-gym-main-junction--junction-sports
+  ---
+  duration_ms: 0.084839
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-gym-main-junction--gym-forecourt
+ok 393 - P03-ROAD-gym-main-junction--gym-forecourt
+  ---
+  duration_ms: 0.101119
+  type: 'test'
+  ...
+# Subtest: P03-ROAD-gym-forecourt--gym-entry
+ok 394 - P03-ROAD-gym-forecourt--gym-entry
+  ---
+  duration_ms: 0.085549
+  type: 'test'
+  ...
+# Subtest: P03-UNKNOWN22
+ok 395 - P03-UNKNOWN22
+  ---
+  duration_ms: 0.082685
+  type: 'test'
+  ...
+# Subtest: P04-RAISED
+ok 396 - P04-RAISED
+  ---
+  duration_ms: 0.098724
+  type: 'test'
+  ...
+# Subtest: P04-PLANAR
+ok 397 - P04-PLANAR
+  ---
+  duration_ms: 0.108432
+  type: 'test'
+  ...
+# Subtest: P04-05-28-UNCHANGED
+ok 398 - P04-05-28-UNCHANGED
+  ---
+  duration_ms: 0.088305
+  type: 'test'
+  ...
+# Subtest: P04-TWO-ENTRIES
+ok 399 - P04-TWO-ENTRIES
+  ---
+  duration_ms: 0.094216
+  type: 'test'
+  ...
+# Subtest: P04-THREE-FLAGS
+ok 400 - P04-THREE-FLAGS
+  ---
+  duration_ms: 0.088014
+  type: 'test'
+  ...
+# Subtest: P04-FLAGS-NEAR-FIELD
+ok 401 - P04-FLAGS-NEAR-FIELD
+  ---
+  duration_ms: 0.079268
+  type: 'test'
+  ...
+# Subtest: P04-WIDE-FORECOURT
+ok 402 - P04-WIDE-FORECOURT
+  ---
+  duration_ms: 0.089486
+  type: 'test'
+  ...
+# Subtest: P04-SHOP-PARENT
+ok 403 - P04-SHOP-PARENT
+  ---
+  duration_ms: 0.153627
+  type: 'test'
+  ...
+# Subtest: P04-SHOP-LEVEL
+ok 404 - P04-SHOP-LEVEL
+  ---
+  duration_ms: 0.150731
+  type: 'test'
+  ...
+# Subtest: P04-SHOP-OPEN
+ok 405 - P04-SHOP-OPEN
+  ---
+  duration_ms: 0.101129
+  type: 'test'
+  ...
+# Subtest: B01-XZ-ROADS-FROZEN
+ok 406 - B01-XZ-ROADS-FROZEN
+  ---
+  duration_ms: 0.106539
+  type: 'test'
+  ...
+# Subtest: B01-FOUR-FLOORS
+ok 407 - B01-FOUR-FLOORS
+  ---
+  duration_ms: 0.08611
+  type: 'test'
+  ...
+# Subtest: B01-COMMON-DATUM
+ok 408 - B01-COMMON-DATUM
+  ---
+  duration_ms: 0.089748
+  type: 'test'
+  ...
+# Subtest: B01-OLD-NOT-MODERN
+ok 409 - B01-OLD-NOT-MODERN
+  ---
+  duration_ms: 0.084348
+  type: 'test'
+  ...
+# Subtest: B01-REAL-WINDOWS
+ok 410 - B01-REAL-WINDOWS
+  ---
+  duration_ms: 0.084628
+  type: 'test'
+  ...
+# Subtest: B01-L1-FULL-TOILET-SLAB
+ok 411 - B01-L1-FULL-TOILET-SLAB
+  ---
+  duration_ms: 0.092342
+  type: 'test'
+  ...
+# Subtest: B01-L1-CONTINUOUS-BODY
+ok 412 - B01-L1-CONTINUOUS-BODY
+  ---
+  duration_ms: 0.082224
+  type: 'test'
+  ...
+# Subtest: B01-L1-A-SUPPORTED
+ok 413 - B01-L1-A-SUPPORTED
+  ---
+  duration_ms: 0.120014
+  type: 'test'
+  ...
+# Subtest: B01-L1-A-CLEAR
+ok 414 - B01-L1-A-CLEAR
+  ---
+  duration_ms: 0.093585
+  type: 'test'
+  ...
+# Subtest: B01-L1-B-SUPPORTED
+ok 415 - B01-L1-B-SUPPORTED
+  ---
+  duration_ms: 0.111598
+  type: 'test'
+  ...
+# Subtest: B01-L1-B-CLEAR
+ok 416 - B01-L1-B-CLEAR
+  ---
+  duration_ms: 0.082755
+  type: 'test'
+  ...
+# Subtest: B01-L2-FULL-TOILET-SLAB
+ok 417 - B01-L2-FULL-TOILET-SLAB
+  ---
+  duration_ms: 0.092423
+  type: 'test'
+  ...
+# Subtest: B01-L2-CONTINUOUS-BODY
+ok 418 - B01-L2-CONTINUOUS-BODY
+  ---
+  duration_ms: 0.081773
+  type: 'test'
+  ...
+# Subtest: B01-L2-A-SUPPORTED
+ok 419 - B01-L2-A-SUPPORTED
+  ---
+  duration_ms: 0.076964
+  type: 'test'
+  ...
+# Subtest: B01-L2-A-CLEAR
+ok 420 - B01-L2-A-CLEAR
+  ---
+  duration_ms: 0.078587
+  type: 'test'
+  ...
+# Subtest: B01-L2-B-SUPPORTED
+ok 421 - B01-L2-B-SUPPORTED
+  ---
+  duration_ms: 0.117038
+  type: 'test'
+  ...
+# Subtest: B01-L2-B-CLEAR
+ok 422 - B01-L2-B-CLEAR
+  ---
+  duration_ms: 0.081383
+  type: 'test'
+  ...
+# Subtest: B01-L3-FULL-TOILET-SLAB
+ok 423 - B01-L3-FULL-TOILET-SLAB
+  ---
+  duration_ms: 0.135443
+  type: 'test'
+  ...
+# Subtest: B01-L3-CONTINUOUS-BODY
+ok 424 - B01-L3-CONTINUOUS-BODY
+  ---
+  duration_ms: 0.089968
+  type: 'test'
+  ...
+# Subtest: B01-L3-A-SUPPORTED
+ok 425 - B01-L3-A-SUPPORTED
+  ---
+  duration_ms: 0.087403
+  type: 'test'
+  ...
+# Subtest: B01-L3-A-CLEAR
+ok 426 - B01-L3-A-CLEAR
+  ---
+  duration_ms: 0.088104
+  type: 'test'
+  ...
+# Subtest: B01-L3-B-SUPPORTED
+ok 427 - B01-L3-B-SUPPORTED
+  ---
+  duration_ms: 0.075411
+  type: 'test'
+  ...
+# Subtest: B01-L3-B-CLEAR
+ok 428 - B01-L3-B-CLEAR
+  ---
+  duration_ms: 0.073397
+  type: 'test'
+  ...
+# Subtest: B01-L4-FULL-TOILET-SLAB
+ok 429 - B01-L4-FULL-TOILET-SLAB
+  ---
+  duration_ms: 0.17707
+  type: 'test'
+  ...
+# Subtest: B01-L4-CONTINUOUS-BODY
+ok 430 - B01-L4-CONTINUOUS-BODY
+  ---
+  duration_ms: 0.057467
+  type: 'test'
+  ...
+# Subtest: B01-L4-A-SUPPORTED
+ok 431 - B01-L4-A-SUPPORTED
+  ---
+  duration_ms: 0.044673
+  type: 'test'
+  ...
+# Subtest: B01-L4-A-CLEAR
+ok 432 - B01-L4-A-CLEAR
+  ---
+  duration_ms: 0.045194
+  type: 'test'
+  ...
+# Subtest: B01-L4-B-SUPPORTED
+ok 433 - B01-L4-B-SUPPORTED
+  ---
+  duration_ms: 0.042359
+  type: 'test'
+  ...
+# Subtest: B01-L4-B-CLEAR
+ok 434 - B01-L4-B-CLEAR
+  ---
+  duration_ms: 0.041387
+  type: 'test'
+  ...
+# Subtest: B01-BRIDGE-UNDERPASS
+ok 435 - B01-BRIDGE-UNDERPASS
+  ---
+  duration_ms: 0.040235
+  type: 'test'
+  ...
+# Subtest: B01-REAR-DOOR
+ok 436 - B01-REAR-DOOR
+  ---
+  duration_ms: 0.041738
+  type: 'test'
+  ...
+# Subtest: B01-TERRACE-OPEN-SKY
+ok 437 - B01-TERRACE-OPEN-SKY
+  ---
+  duration_ms: 0.115455
+  type: 'test'
+  ...
+# Subtest: B01-TERRACE-FLOOR
+ok 438 - B01-TERRACE-FLOOR
+  ---
+  duration_ms: 0.084157
+  type: 'test'
+  ...
+# Subtest: B01-TERRACE-RAIL
+ok 439 - B01-TERRACE-RAIL
+  ---
+  duration_ms: 0.08574
+  type: 'test'
+  ...
+# Subtest: B01-TERRACE-DOOR
+ok 440 - B01-TERRACE-DOOR
+  ---
+  duration_ms: 0.111738
+  type: 'test'
+  ...
+# Subtest: B01 pure generation preserves all inputs
+ok 441 - B01 pure generation preserves all inputs
+  ---
+  duration_ms: 52.45801
+  type: 'test'
+  ...
+# Subtest: B01 all parts have unique IDs, positive finite geometry
+ok 442 - B01 all parts have unique IDs, positive finite geometry
+  ---
+  duration_ms: 10.988765
+  type: 'test'
+  ...
+# Subtest: B01 keeps original15 and25 footprint envelopes
+ok 443 - B01 keeps original15 and25 footprint envelopes
+  ---
+  duration_ms: 3.418017
+  type: 'test'
+  ...
+# Subtest: B01 bridge floors inherit R4 exact end points
+ok 444 - B01 bridge floors inherit R4 exact end points
+  ---
+  duration_ms: 1.321926
+  type: 'test'
+  ...
+# Subtest: B01 4 full main floors and4 full toilet floors
+ok 445 - B01 4 full main floors and4 full toilet floors
+  ---
+  duration_ms: 0.837512
+  type: 'test'
+  ...
+# Subtest: B01 has eight through-door supported routes
+ok 446 - B01 has eight through-door supported routes
+  ---
+  duration_ms: 0.170859
+  type: 'test'
+  ...
+# Subtest: B01 no gender-end assignment fabricated
+ok 447 - B01 no gender-end assignment fabricated
+  ---
+  duration_ms: 0.309216
+  type: 'test'
+  ...
+# Subtest: B01 P4 base remains approved, B01 review not inherited
+ok 448 - B01 P4 base remains approved, B01 review not inherited
+  ---
+  duration_ms: 0.20879
+  type: 'test'
+  ...
+# Subtest: B01 front and rear doorway have real headroom
+ok 449 - B01 front and rear doorway have real headroom
+  ---
+  duration_ms: 6.274797
+  type: 'test'
+  ...
+# Subtest: FAULT removed second floor
+ok 450 - FAULT removed second floor
+  ---
+  duration_ms: 829.736348
+  type: 'test'
+  ...
+# Subtest: FAULT bridge slab raised
+ok 451 - FAULT bridge slab raised
+  ---
+  duration_ms: 842.483299
+  type: 'test'
+  ...
+# Subtest: FAULT gallery floor cut in half
+ok 452 - FAULT gallery floor cut in half
+  ---
+  duration_ms: 541.699511
+  type: 'test'
+  ...
+# Subtest: FAULT toilet wrong datum
+ok 453 - FAULT toilet wrong datum
+  ---
+  duration_ms: 727.977439
+  type: 'test'
+  ...
+# Subtest: FAULT modern orange material
+ok 454 - FAULT modern orange material
+  ---
+  duration_ms: 889.195299
+  type: 'test'
+  ...
+# Subtest: FAULT windowless mass
+ok 455 - FAULT windowless mass
+  ---
+  duration_ms: 595.833982
+  type: 'test'
+  ...
+# Subtest: FAULT terrace roofed over
+ok 456 - FAULT terrace roofed over
+  ---
+  duration_ms: 441.208642
+  type: 'test'
+  ...
+# Subtest: FAULT terrace guard removed
+ok 457 - FAULT terrace guard removed
+  ---
+  duration_ms: 477.028959
+  type: 'test'
+  ...
+# Subtest: FAULT road data changed
+ok 458 - FAULT road data changed
+  ---
+  duration_ms: 436.032334
+  type: 'test'
+  ...
+# Subtest: FAULT toilet partition deleted
+ok 459 - FAULT toilet partition deleted
+  ---
+  duration_ms: 653.434486
+  type: 'test'
+  ...
+# Subtest: FAULT L1 blocked bridge gap
+ok 460 - FAULT L1 blocked bridge gap
+  ---
+  duration_ms: 896.937387
+  type: 'test'
+  ...
+# Subtest: FAULT L1 blocked end A door
+ok 461 - FAULT L1 blocked end A door
+  ---
+  duration_ms: 915.00112
+  type: 'test'
+  ...
+# Subtest: FAULT L1 blocked end B door
+ok 462 - FAULT L1 blocked end B door
+  ---
+  duration_ms: 851.612007
+  type: 'test'
+  ...
+# Subtest: FAULT L2 blocked bridge gap
+ok 463 - FAULT L2 blocked bridge gap
+  ---
+  duration_ms: 911.34725
+  type: 'test'
+  ...
+# Subtest: FAULT L2 blocked end A door
+ok 464 - FAULT L2 blocked end A door
+  ---
+  duration_ms: 598.982908
+  type: 'test'
+  ...
+# Subtest: FAULT L2 blocked end B door
+ok 465 - FAULT L2 blocked end B door
+  ---
+  duration_ms: 824.157166
+  type: 'test'
+  ...
+# Subtest: FAULT L3 blocked bridge gap
+ok 466 - FAULT L3 blocked bridge gap
+  ---
+  duration_ms: 465.399507
+  type: 'test'
+  ...
+# Subtest: FAULT L3 blocked end A door
+ok 467 - FAULT L3 blocked end A door
+  ---
+  duration_ms: 546.723296
+  type: 'test'
+  ...
+# Subtest: FAULT L3 blocked end B door
+ok 468 - FAULT L3 blocked end B door
+  ---
+  duration_ms: 450.032979
+  type: 'test'
+  ...
+# Subtest: FAULT L4 blocked bridge gap
+ok 469 - FAULT L4 blocked bridge gap
+  ---
+  duration_ms: 447.893844
+  type: 'test'
+  ...
+# Subtest: FAULT L4 blocked end A door
+ok 470 - FAULT L4 blocked end A door
+  ---
+  duration_ms: 474.933283
+  type: 'test'
+  ...
+# Subtest: FAULT L4 blocked end B door
+ok 471 - FAULT L4 blocked end B door
+  ---
+  duration_ms: 486.011219
+  type: 'test'
+  ...
+# Subtest: FAULT closed underpass
+ok 472 - FAULT closed underpass
+  ---
+  duration_ms: 469.672432
+  type: 'test'
+  ...
+# Subtest: FAULT closed rear door
+ok 473 - FAULT closed rear door
+  ---
+  duration_ms: 456.194213
+  type: 'test'
+  ...
+# Subtest: FAULT closed terrace door
+ok 474 - FAULT closed terrace door
+  ---
+  duration_ms: 438.481347
+  type: 'test'
+  ...
+# Subtest: FAULT P3 short slope
+ok 475 - FAULT P3 short slope
+  ---
+  duration_ms: 19.215195
+  type: 'test'
+  ...
+# Subtest: FAULT P3 shallow slope
+ok 476 - FAULT P3 shallow slope
+  ---
+  duration_ms: 25.767494
+  type: 'test'
+  ...
+# Subtest: FAULT P3 level field
+ok 477 - FAULT P3 level field
+  ---
+  duration_ms: 12.485424
+  type: 'test'
+  ...
+# Subtest: FAULT P3 sunken apron
+ok 478 - FAULT P3 sunken apron
+  ---
+  duration_ms: 13.786861
+  type: 'test'
+  ...
+# Subtest: FAULT P3 sealed field
+ok 479 - FAULT P3 sealed field
+  ---
+  duration_ms: 18.203207
+  type: 'test'
+  ...
+# Subtest: FAULT P3 tilted field
+ok 480 - FAULT P3 tilted field
+  ---
+  duration_ms: 18.730981
+  type: 'test'
+  ...
+# Subtest: FAULT P4 flat courts
+ok 481 - FAULT P4 flat courts
+  ---
+  duration_ms: 15.302388
+  type: 'test'
+  ...
+# Subtest: FAULT P4 tilted courts
+ok 482 - FAULT P4 tilted courts
+  ---
+  duration_ms: 17.812438
+  type: 'test'
+  ...
+# Subtest: FAULT P4 sealed courts
+ok 483 - FAULT P4 sealed courts
+  ---
+  duration_ms: 14.424992
+  type: 'test'
+  ...
+# Subtest: FAULT P4 one flag
+ok 484 - FAULT P4 one flag
+  ---
+  duration_ms: 12.651895
+  type: 'test'
+  ...
+# Subtest: FAULT P4 flag moved back
+ok 485 - FAULT P4 flag moved back
+  ---
+  duration_ms: 13.071317
+  type: 'test'
+  ...
+# Subtest: FAULT P4 narrow forecourt
+ok 486 - FAULT P4 narrow forecourt
+  ---
+  duration_ms: 12.732265
+  type: 'test'
+  ...
+# Subtest: FAULT P4 detached shop
+ok 487 - FAULT P4 detached shop
+  ---
+  duration_ms: 12.478221
+  type: 'test'
+  ...
+# Subtest: FAULT P4 sealed shop
+ok 488 - FAULT P4 sealed shop
+  ---
+  duration_ms: 13.061369
+  type: 'test'
+  ...
+# Subtest: R2_AXIS_ALL_FOUR
+ok 489 - R2_AXIS_ALL_FOUR
+  ---
+  duration_ms: 2.306231
+  type: 'test'
+  ...
+# Subtest: R2_ONLY_AUTHORIZED_FACILITIES
+ok 490 - R2_ONLY_AUTHORIZED_FACILITIES
+  ---
+  duration_ms: 0.2253
+  type: 'test'
+  ...
+# Subtest: R2_ONLY_AUTHORIZED_ROAD_NODES
+ok 491 - R2_ONLY_AUTHORIZED_ROAD_NODES
+  ---
+  duration_ms: 0.122999
+  type: 'test'
+  ...
+# Subtest: R2_EDGES_WIDTHS_UNCHANGED
+ok 492 - R2_EDGES_WIDTHS_UNCHANGED
+  ---
+  duration_ms: 0.159697
+  type: 'test'
+  ...
+# Subtest: R2_NO_NEW_NODE_OR_SHORTCUT
+ok 493 - R2_NO_NEW_NODE_OR_SHORTCUT
+  ---
+  duration_ms: 0.132227
+  type: 'test'
+  ...
+# Subtest: R2_FIVE_LEVELS
+ok 494 - R2_FIVE_LEVELS
+  ---
+  duration_ms: 0.125233
+  type: 'test'
+  ...
+# Subtest: R2_CENTRAL_CORRIDORS
+ok 495 - R2_CENTRAL_CORRIDORS
+  ---
+  duration_ms: 0.110466
+  type: 'test'
+  ...
+# Subtest: R2_ROOM_ROWS_L1
+ok 496 - R2_ROOM_ROWS_L1
+  ---
+  duration_ms: 0.119503
+  type: 'test'
+  ...
+# Subtest: R2_ROOM_ROWS_L2
+ok 497 - R2_ROOM_ROWS_L2
+  ---
+  duration_ms: 0.432337
+  type: 'test'
+  ...
+# Subtest: R2_ROOM_ROWS_L3
+ok 498 - R2_ROOM_ROWS_L3
+  ---
+  duration_ms: 0.569081
+  type: 'test'
+  ...
+# Subtest: R2_ROOM_ROWS_L4
+ok 499 - R2_ROOM_ROWS_L4
+  ---
+  duration_ms: 0.198379
+  type: 'test'
+  ...
+# Subtest: R2_ROOM_ROWS_L5
+ok 500 - R2_ROOM_ROWS_L5
+  ---
+  duration_ms: 0.099485
+  type: 'test'
+  ...
+# Subtest: R2_LIBRARY_ENTRY_ON_AXIS
+ok 501 - R2_LIBRARY_ENTRY_ON_AXIS
+  ---
+  duration_ms: 0.077645
+  type: 'test'
+  ...
+# Subtest: R2_TERRACE_HAS_FLOOR
+ok 502 - R2_TERRACE_HAS_FLOOR
+  ---
+  duration_ms: 0.074529
+  type: 'test'
+  ...
+# Subtest: R2_TERRACE_OPEN_SKY
+ok 503 - R2_TERRACE_OPEN_SKY
+  ---
+  duration_ms: 0.072125
+  type: 'test'
+  ...
+# Subtest: R2_CORRIDOR_COVERED_ABOVE_L4
+ok 504 - R2_CORRIDOR_COVERED_ABOVE_L4
+  ---
+  duration_ms: 0.071344
+  type: 'test'
+  ...
+# Subtest: R2_NO_L5_REAR_SLAB
+ok 505 - R2_NO_L5_REAR_SLAB
+  ---
+  duration_ms: 0.109564
+  type: 'test'
+  ...
+# Subtest: R2_FUNCTIONAL_PROJECTION
+ok 506 - R2_FUNCTIONAL_PROJECTION
+  ---
+  duration_ms: 0.078367
+  type: 'test'
+  ...
+# Subtest: R2_BLANK_STAIR_BANDS
+ok 507 - R2_BLANK_STAIR_BANDS
+  ---
+  duration_ms: 0.072926
+  type: 'test'
+  ...
+# Subtest: R2_SIDE_PORCH
+ok 508 - R2_SIDE_PORCH
+  ---
+  duration_ms: 0.073086
+  type: 'test'
+  ...
+# Subtest: R2_PAIRED_DATUM
+ok 509 - R2_PAIRED_DATUM
+  ---
+  duration_ms: 0.073447
+  type: 'test'
+  ...
+# Subtest: R2_FIVE_BRIDGES_AND_FULL_TOILET_SLABS
+ok 510 - R2_FIVE_BRIDGES_AND_FULL_TOILET_SLABS
+  ---
+  duration_ms: 0.074319
+  type: 'test'
+  ...
+# Subtest: R2_BRIDGE_ENDS
+ok 511 - R2_BRIDGE_ENDS
+  ---
+  duration_ms: 0.069871
+  type: 'test'
+  ...
+# Subtest: R2-L1-A_SUPPORT
+ok 512 - R2-L1-A_SUPPORT
+  ---
+  duration_ms: 0.072124
+  type: 'test'
+  ...
+# Subtest: R2-L1-A_CLEAR
+ok 513 - R2-L1-A_CLEAR
+  ---
+  duration_ms: 0.082253
+  type: 'test'
+  ...
+# Subtest: R2-L1-B_SUPPORT
+ok 514 - R2-L1-B_SUPPORT
+  ---
+  duration_ms: 0.073347
+  type: 'test'
+  ...
+# Subtest: R2-L1-B_CLEAR
+ok 515 - R2-L1-B_CLEAR
+  ---
+  duration_ms: 0.102882
+  type: 'test'
+  ...
+# Subtest: R2-L2-A_SUPPORT
+ok 516 - R2-L2-A_SUPPORT
+  ---
+  duration_ms: 0.072635
+  type: 'test'
+  ...
+# Subtest: R2-L2-A_CLEAR
+ok 517 - R2-L2-A_CLEAR
+  ---
+  duration_ms: 0.085861
+  type: 'test'
+  ...
+# Subtest: R2-L2-B_SUPPORT
+ok 518 - R2-L2-B_SUPPORT
+  ---
+  duration_ms: 0.070382
+  type: 'test'
+  ...
+# Subtest: R2-L2-B_CLEAR
+ok 519 - R2-L2-B_CLEAR
+  ---
+  duration_ms: 0.070953
+  type: 'test'
+  ...
+# Subtest: R2-L3-A_SUPPORT
+ok 520 - R2-L3-A_SUPPORT
+  ---
+  duration_ms: 0.072415
+  type: 'test'
+  ...
+# Subtest: R2-L3-A_CLEAR
+ok 521 - R2-L3-A_CLEAR
+  ---
+  duration_ms: 0.072615
+  type: 'test'
+  ...
+# Subtest: R2-L3-B_SUPPORT
+ok 522 - R2-L3-B_SUPPORT
+  ---
+  duration_ms: 0.824267
+  type: 'test'
+  ...
+# Subtest: R2-L3-B_CLEAR
+ok 523 - R2-L3-B_CLEAR
+  ---
+  duration_ms: 0.093745
+  type: 'test'
+  ...
+# Subtest: R2-L4-A_SUPPORT
+ok 524 - R2-L4-A_SUPPORT
+  ---
+  duration_ms: 0.08614
+  type: 'test'
+  ...
+# Subtest: R2-L4-A_CLEAR
+ok 525 - R2-L4-A_CLEAR
+  ---
+  duration_ms: 0.078106
+  type: 'test'
+  ...
+# Subtest: R2-L4-B_SUPPORT
+ok 526 - R2-L4-B_SUPPORT
+  ---
+  duration_ms: 0.070591
+  type: 'test'
+  ...
+# Subtest: R2-L4-B_CLEAR
+ok 527 - R2-L4-B_CLEAR
+  ---
+  duration_ms: 0.124893
+  type: 'test'
+  ...
+# Subtest: R2-L5-A_SUPPORT
+ok 528 - R2-L5-A_SUPPORT
+  ---
+  duration_ms: 0.074719
+  type: 'test'
+  ...
+# Subtest: R2-L5-A_CLEAR
+ok 529 - R2-L5-A_CLEAR
+  ---
+  duration_ms: 0.073707
+  type: 'test'
+  ...
+# Subtest: R2-L5-B_SUPPORT
+ok 530 - R2-L5-B_SUPPORT
+  ---
+  duration_ms: 0.074029
+  type: 'test'
+  ...
+# Subtest: R2-L5-B_CLEAR
+ok 531 - R2-L5-B_CLEAR
+  ---
+  duration_ms: 0.070732
+  type: 'test'
+  ...
+# Subtest: R2_CLEAR_front
+ok 532 - R2_CLEAR_front
+  ---
+  duration_ms: 0.076674
+  type: 'test'
+  ...
+# Subtest: R2_CLEAR_rear
+ok 533 - R2_CLEAR_rear
+  ---
+  duration_ms: 0.072846
+  type: 'test'
+  ...
+# Subtest: R2_CLEAR_underpass
+ok 534 - R2_CLEAR_underpass
+  ---
+  duration_ms: 0.073016
+  type: 'test'
+  ...
+# Subtest: R2_CLEAR_side
+ok 535 - R2_CLEAR_side
+  ---
+  duration_ms: 0.071944
+  type: 'test'
+  ...
+# Subtest: R2_CORRIDOR_WINDOWS
+ok 536 - R2_CORRIDOR_WINDOWS
+  ---
+  duration_ms: 0.071032
+  type: 'test'
+  ...
+# Subtest: R2_EAST_UPPER_END_CLOSED_L2
+ok 537 - R2_EAST_UPPER_END_CLOSED_L2
+  ---
+  duration_ms: 0.081051
+  type: 'test'
+  ...
+# Subtest: R2_EAST_UPPER_END_CLOSED_L3
+ok 538 - R2_EAST_UPPER_END_CLOSED_L3
+  ---
+  duration_ms: 0.071063
+  type: 'test'
+  ...
+# Subtest: R2_EAST_UPPER_END_CLOSED_L4
+ok 539 - R2_EAST_UPPER_END_CLOSED_L4
+  ---
+  duration_ms: 0.069008
+  type: 'test'
+  ...
+# Subtest: R2_EAST_UPPER_END_CLOSED_L5
+ok 540 - R2_EAST_UPPER_END_CLOSED_L5
+  ---
+  duration_ms: 0.068558
+  type: 'test'
+  ...
+# Subtest: R2_IDS_UNIQUE
+ok 541 - R2_IDS_UNIQUE
+  ---
+  duration_ms: 0.06991
+  type: 'test'
+  ...
+# Subtest: R2 pure builders preserve original input and approved P4 flag position
+ok 542 - R2 pure builders preserve original input and approved P4 flag position
+  ---
+  duration_ms: 5.342067
+  type: 'test'
+  ...
+# Subtest: R2 exact protected file hashes unchanged
+ok 543 - R2 exact protected file hashes unchanged
+  ---
+  duration_ms: 3.387287
+  type: 'test'
+  ...
+# Subtest: R2 approved ground/elevations retained at grid and site landmarks
+ok 544 - R2 approved ground/elevations retained at grid and site landmarks
+  ---
+  duration_ms: 110.102802
+  type: 'test'
+  ...
+# Subtest: R2 library stairs translate only in X
+ok 545 - R2 library stairs translate only in X
+  ---
+  duration_ms: 0.290171
+  type: 'test'
+  ...
+# Subtest: R2 toilet five complete floors and ten end doors with shared gap
+ok 546 - R2 toilet five complete floors and ten end doors with shared gap
+  ---
+  duration_ms: 0.434009
+  type: 'test'
+  ...
+# Subtest: FAULT four-storey regression
+ok 547 - FAULT four-storey regression
+  ---
+  duration_ms: 330.402082
+  type: 'test'
+  ...
+# Subtest: FAULT corridor returned to front edge
+ok 548 - FAULT corridor returned to front edge
+  ---
+  duration_ms: 382.84797
+  type: 'test'
+  ...
+# Subtest: FAULT fourth floor has rear classroom instead of terrace
+ok 549 - FAULT fourth floor has rear classroom instead of terrace
+  ---
+  duration_ms: 287.80453
+  type: 'test'
+  ...
+# Subtest: FAULT upper full-depth floor blocks terrace sky
+ok 550 - FAULT upper full-depth floor blocks terrace sky
+  ---
+  duration_ms: 283.238621
+  type: 'test'
+  ...
+# Subtest: FAULT missing fourth terrace slab
+ok 551 - FAULT missing fourth terrace slab
+  ---
+  duration_ms: 287.747954
+  type: 'test'
+  ...
+# Subtest: FAULT remove central projection
+ok 552 - FAULT remove central projection
+  ---
+  duration_ms: 278.407377
+  type: 'test'
+  ...
+# Subtest: FAULT add windows to blank stair band
+ok 553 - FAULT add windows to blank stair band
+  ---
+  duration_ms: 289.669579
+  type: 'test'
+  ...
+# Subtest: FAULT remove side portico roof
+ok 554 - FAULT remove side portico roof
+  ---
+  duration_ms: 189.023997
+  type: 'test'
+  ...
+# Subtest: FAULT axis array loses library
+ok 555 - FAULT axis array loses library
+  ---
+  duration_ms: 306.39855
+  type: 'test'
+  ...
+# Subtest: FAULT flag axis drifts
+ok 556 - FAULT flag axis drifts
+  ---
+  duration_ms: 318.230755
+  type: 'test'
+  ...
+# Subtest: FAULT fifth toilet slab missing
+ok 557 - FAULT fifth toilet slab missing
+  ---
+  duration_ms: 299.752344
+  type: 'test'
+  ...
+# Subtest: FAULT bridge raised off floor
+ok 558 - FAULT bridge raised off floor
+  ---
+  duration_ms: 302.406792
+  type: 'test'
+  ...
+# Subtest: FAULT L1 blocked bridge-gap
+ok 559 - FAULT L1 blocked bridge-gap
+  ---
+  duration_ms: 294.61756
+  type: 'test'
+  ...
+# Subtest: FAULT L1 blocked end-A
+ok 560 - FAULT L1 blocked end-A
+  ---
+  duration_ms: 293.691072
+  type: 'test'
+  ...
+# Subtest: FAULT L1 blocked end-B
+ok 561 - FAULT L1 blocked end-B
+  ---
+  duration_ms: 225.498904
+  type: 'test'
+  ...
+# Subtest: FAULT L2 blocked bridge-gap
+ok 562 - FAULT L2 blocked bridge-gap
+  ---
+  duration_ms: 297.938208
+  type: 'test'
+  ...
+# Subtest: FAULT L2 blocked end-A
+ok 563 - FAULT L2 blocked end-A
+  ---
+  duration_ms: 329.570707
+  type: 'test'
+  ...
+# Subtest: FAULT L2 blocked end-B
+ok 564 - FAULT L2 blocked end-B
+  ---
+  duration_ms: 342.530861
+  type: 'test'
+  ...
+# Subtest: FAULT L3 blocked bridge-gap
+ok 565 - FAULT L3 blocked bridge-gap
+  ---
+  duration_ms: 301.285654
+  type: 'test'
+  ...
+# Subtest: FAULT L3 blocked end-A
+ok 566 - FAULT L3 blocked end-A
+  ---
+  duration_ms: 311.158468
+  type: 'test'
+  ...
+# Subtest: FAULT L3 blocked end-B
+ok 567 - FAULT L3 blocked end-B
+  ---
+  duration_ms: 303.583321
+  type: 'test'
+  ...
+# Subtest: FAULT L4 blocked bridge-gap
+ok 568 - FAULT L4 blocked bridge-gap
+  ---
+  duration_ms: 306.714681
+  type: 'test'
+  ...
+# Subtest: FAULT L4 blocked end-A
+ok 569 - FAULT L4 blocked end-A
+  ---
+  duration_ms: 306.091478
+  type: 'test'
+  ...
+# Subtest: FAULT L4 blocked end-B
+ok 570 - FAULT L4 blocked end-B
+  ---
+  duration_ms: 372.925899
+  type: 'test'
+  ...
+# Subtest: FAULT L5 blocked bridge-gap
+ok 571 - FAULT L5 blocked bridge-gap
+  ---
+  duration_ms: 314.073244
+  type: 'test'
+  ...
+# Subtest: FAULT L5 blocked end-A
+ok 572 - FAULT L5 blocked end-A
+  ---
+  duration_ms: 303.985
+  type: 'test'
+  ...
+# Subtest: FAULT L5 blocked end-B
+ok 573 - FAULT L5 blocked end-B
+  ---
+  duration_ms: 298.539996
+  type: 'test'
+  ...
+# Subtest: FAULT unrelated facility moved 03
+ok 574 - FAULT unrelated facility moved 03
+  ---
+  duration_ms: 350.419221
+  type: 'test'
+  ...
+# Subtest: FAULT unrelated facility moved 17
+ok 575 - FAULT unrelated facility moved 17
+  ---
+  duration_ms: 333.092136
+  type: 'test'
+  ...
+# Subtest: FAULT unrelated facility moved 20
+ok 576 - FAULT unrelated facility moved 20
+  ---
+  duration_ms: 303.278476
+  type: 'test'
+  ...
+# Subtest: FAULT unrelated facility moved 08
+ok 577 - FAULT unrelated facility moved 08
+  ---
+  duration_ms: 297.440704
+  type: 'test'
+  ...
+# Subtest: FAULT road narrow
+ok 578 - FAULT road narrow
+  ---
+  duration_ms: 275.590715
+  type: 'test'
+  ...
+# Subtest: FAULT road remove-edge
+ok 579 - FAULT road remove-edge
+  ---
+  duration_ms: 249.019227
+  type: 'test'
+  ...
+# Subtest: FAULT road move-unrelated-node
+ok 580 - FAULT road move-unrelated-node
+  ---
+  duration_ms: 255.815178
+  type: 'test'
+  ...
+# Subtest: FAULT library centre moved from confirmed axis
+ok 581 - FAULT library centre moved from confirmed axis
+  ---
+  duration_ms: 247.966725
+  type: 'test'
+  ...
+# Subtest: FAULT visual review: corridor glazing removed
+ok 582 - FAULT visual review: corridor glazing removed
+  ---
+  duration_ms: 163.471884
+  type: 'test'
+  ...
+# Subtest: FAULT visual review: second floor east exit opens onto void
+ok 583 - FAULT visual review: second floor east exit opens onto void
+  ---
+  duration_ms: 202.616121
+  type: 'test'
+  ...
+# Subtest: R3_FACILITIES_UNMOVED
+ok 584 - R3_FACILITIES_UNMOVED
+  ---
+  duration_ms: 1.670547
+  type: 'test'
+  ...
+# Subtest: R3_ROADS_UNCHANGED
+ok 585 - R3_ROADS_UNCHANGED
+  ---
+  duration_ms: 0.174205
+  type: 'test'
+  ...
+# Subtest: R3_AXIS
+ok 586 - R3_AXIS
+  ---
+  duration_ms: 0.122499
+  type: 'test'
+  ...
+# Subtest: R3_FIVE_FLOORS
+ok 587 - R3_FIVE_FLOORS
+  ---
+  duration_ms: 0.089207
+  type: 'test'
+  ...
+# Subtest: R3_NO_OBSOLETE_PORCH
+ok 588 - R3_NO_OBSOLETE_PORCH
+  ---
+  duration_ms: 0.093474
+  type: 'test'
+  ...
+# Subtest: R3_RETIRED_EAST_CLOSED
+ok 589 - R3_RETIRED_EAST_CLOSED
+  ---
+  duration_ms: 0.094276
+  type: 'test'
+  ...
+# Subtest: R3_FRONT_DOOR_RECORDS
+ok 590 - R3_FRONT_DOOR_RECORDS
+  ---
+  duration_ms: 0.087564
+  type: 'test'
+  ...
+# Subtest: R3_west_NORMAL
+ok 591 - R3_west_NORMAL
+  ---
+  duration_ms: 0.088766
+  type: 'test'
+  ...
+# Subtest: R3_west_DOOR_RECESS
+ok 592 - R3_west_DOOR_RECESS
+  ---
+  duration_ms: 0.34299
+  type: 'test'
+  ...
+# Subtest: R3_west_CONTINUING_5F_WALL
+ok 593 - R3_west_CONTINUING_5F_WALL
+  ---
+  duration_ms: 0.332109
+  type: 'test'
+  ...
+# Subtest: R3_west_POSTS
+ok 594 - R3_west_POSTS
+  ---
+  duration_ms: 0.140553
+  type: 'test'
+  ...
+# Subtest: R3_west_CANOPY
+ok 595 - R3_west_CANOPY
+  ---
+  duration_ms: 0.071604
+  type: 'test'
+  ...
+# Subtest: R3_west_STEP_0
+ok 596 - R3_west_STEP_0
+  ---
+  duration_ms: 0.083185
+  type: 'test'
+  ...
+# Subtest: R3_west_STEP_1
+ok 597 - R3_west_STEP_1
+  ---
+  duration_ms: 0.055083
+  type: 'test'
+  ...
+# Subtest: R3_west_STEP_2
+ok 598 - R3_west_STEP_2
+  ---
+  duration_ms: 0.051596
+  type: 'test'
+  ...
+# Subtest: R3_west_ROUTE_SUPPORT
+ok 599 - R3_west_ROUTE_SUPPORT
+  ---
+  duration_ms: 0.050234
+  type: 'test'
+  ...
+# Subtest: R3_west_ROUTE_CLEAR
+ok 600 - R3_west_ROUTE_CLEAR
+  ---
+  duration_ms: 0.047738
+  type: 'test'
+  ...
+# Subtest: R3_west_REAL_NOTCH_L2
+ok 601 - R3_west_REAL_NOTCH_L2
+  ---
+  duration_ms: 0.047328
+  type: 'test'
+  ...
+# Subtest: R3_west_REAL_NOTCH_L3
+ok 602 - R3_west_REAL_NOTCH_L3
+  ---
+  duration_ms: 0.04786
+  type: 'test'
+  ...
+# Subtest: R3_west_REAL_NOTCH_L4
+ok 603 - R3_west_REAL_NOTCH_L4
+  ---
+  duration_ms: 0.047258
+  type: 'test'
+  ...
+# Subtest: R3_west_REAL_NOTCH_L5
+ok 604 - R3_west_REAL_NOTCH_L5
+  ---
+  duration_ms: 0.051126
+  type: 'test'
+  ...
+# Subtest: R3_east_NORMAL
+ok 605 - R3_east_NORMAL
+  ---
+  duration_ms: 0.05344
+  type: 'test'
+  ...
+# Subtest: R3_east_DOOR_RECESS
+ok 606 - R3_east_DOOR_RECESS
+  ---
+  duration_ms: 0.052838
+  type: 'test'
+  ...
+# Subtest: R3_east_CONTINUING_5F_WALL
+ok 607 - R3_east_CONTINUING_5F_WALL
+  ---
+  duration_ms: 0.048832
+  type: 'test'
+  ...
+# Subtest: R3_east_POSTS
+ok 608 - R3_east_POSTS
+  ---
+  duration_ms: 0.061645
+  type: 'test'
+  ...
+# Subtest: R3_east_CANOPY
+ok 609 - R3_east_CANOPY
+  ---
+  duration_ms: 0.047819
+  type: 'test'
+  ...
+# Subtest: R3_east_STEP_0
+ok 610 - R3_east_STEP_0
+  ---
+  duration_ms: 0.049763
+  type: 'test'
+  ...
+# Subtest: R3_east_STEP_1
+ok 611 - R3_east_STEP_1
+  ---
+  duration_ms: 0.061525
+  type: 'test'
+  ...
+# Subtest: R3_east_STEP_2
+ok 612 - R3_east_STEP_2
+  ---
+  duration_ms: 0.049432
+  type: 'test'
+  ...
+# Subtest: R3_east_ROUTE_SUPPORT
+ok 613 - R3_east_ROUTE_SUPPORT
+  ---
+  duration_ms: 0.122188
+  type: 'test'
+  ...
+# Subtest: R3_east_ROUTE_CLEAR
+ok 614 - R3_east_ROUTE_CLEAR
+  ---
+  duration_ms: 0.092773
+  type: 'test'
+  ...
+# Subtest: R3_east_REAL_NOTCH_L2
+ok 615 - R3_east_REAL_NOTCH_L2
+  ---
+  duration_ms: 0.08604
+  type: 'test'
+  ...
+# Subtest: R3_east_REAL_NOTCH_L3
+ok 616 - R3_east_REAL_NOTCH_L3
+  ---
+  duration_ms: 0.084317
+  type: 'test'
+  ...
+# Subtest: R3_east_REAL_NOTCH_L4
+ok 617 - R3_east_REAL_NOTCH_L4
+  ---
+  duration_ms: 0.086491
+  type: 'test'
+  ...
+# Subtest: R3_east_REAL_NOTCH_L5
+ok 618 - R3_east_REAL_NOTCH_L5
+  ---
+  duration_ms: 0.091971
+  type: 'test'
+  ...
+# Subtest: R3_CENTRAL_ARC
+ok 619 - R3_CENTRAL_ARC
+  ---
+  duration_ms: 0.134671
+  type: 'test'
+  ...
+# Subtest: R3_ARC_PLAN_GEOMETRY
+ok 620 - R3_ARC_PLAN_GEOMETRY
+  ---
+  duration_ms: 0.05912
+  type: 'test'
+  ...
+# Subtest: R3_NO_OLD_FLAT_FRONT
+ok 621 - R3_NO_OLD_FLAT_FRONT
+  ---
+  duration_ms: 0.049533
+  type: 'test'
+  ...
+# Subtest: R3_MAIN_DOOR_OPEN
+ok 622 - R3_MAIN_DOOR_OPEN
+  ---
+  duration_ms: 0.049061
+  type: 'test'
+  ...
+# Subtest: R3_TERRACE_SKY
+ok 623 - R3_TERRACE_SKY
+  ---
+  duration_ms: 0.046397
+  type: 'test'
+  ...
+# Subtest: R3_TERRACE_FLOOR
+ok 624 - R3_TERRACE_FLOOR
+  ---
+  duration_ms: 0.047168
+  type: 'test'
+  ...
+# Subtest: R3_L5_CORRIDOR_COVERS_L4
+ok 625 - R3_L5_CORRIDOR_COVERS_L4
+  ---
+  duration_ms: 0.046747
+  type: 'test'
+  ...
+# Subtest: R3_R2-L1-A_SUPPORT
+ok 626 - R3_R2-L1-A_SUPPORT
+  ---
+  duration_ms: 0.050515
+  type: 'test'
+  ...
+# Subtest: R3_R2-L1-A_CLEAR
+ok 627 - R3_R2-L1-A_CLEAR
+  ---
+  duration_ms: 0.05371
+  type: 'test'
+  ...
+# Subtest: R3_R2-L1-B_SUPPORT
+ok 628 - R3_R2-L1-B_SUPPORT
+  ---
+  duration_ms: 0.045374
+  type: 'test'
+  ...
+# Subtest: R3_R2-L1-B_CLEAR
+ok 629 - R3_R2-L1-B_CLEAR
+  ---
+  duration_ms: 0.047439
+  type: 'test'
+  ...
+# Subtest: R3_R2-L2-A_SUPPORT
+ok 630 - R3_R2-L2-A_SUPPORT
+  ---
+  duration_ms: 0.044974
+  type: 'test'
+  ...
+# Subtest: R3_R2-L2-A_CLEAR
+ok 631 - R3_R2-L2-A_CLEAR
+  ---
+  duration_ms: 0.044854
+  type: 'test'
+  ...
+# Subtest: R3_R2-L2-B_SUPPORT
+ok 632 - R3_R2-L2-B_SUPPORT
+  ---
+  duration_ms: 0.047269
+  type: 'test'
+  ...
+# Subtest: R3_R2-L2-B_CLEAR
+ok 633 - R3_R2-L2-B_CLEAR
+  ---
+  duration_ms: 0.045485
+  type: 'test'
+  ...
+# Subtest: R3_R2-L3-A_SUPPORT
+ok 634 - R3_R2-L3-A_SUPPORT
+  ---
+  duration_ms: 0.078346
+  type: 'test'
+  ...
+# Subtest: R3_R2-L3-A_CLEAR
+ok 635 - R3_R2-L3-A_CLEAR
+  ---
+  duration_ms: 0.050494
+  type: 'test'
+  ...
+# Subtest: R3_R2-L3-B_SUPPORT
+ok 636 - R3_R2-L3-B_SUPPORT
+  ---
+  duration_ms: 0.04815
+  type: 'test'
+  ...
+# Subtest: R3_R2-L3-B_CLEAR
+ok 637 - R3_R2-L3-B_CLEAR
+  ---
+  duration_ms: 0.045444
+  type: 'test'
+  ...
+# Subtest: R3_R2-L4-A_SUPPORT
+ok 638 - R3_R2-L4-A_SUPPORT
+  ---
+  duration_ms: 0.046647
+  type: 'test'
+  ...
+# Subtest: R3_R2-L4-A_CLEAR
+ok 639 - R3_R2-L4-A_CLEAR
+  ---
+  duration_ms: 0.045906
+  type: 'test'
+  ...
+# Subtest: R3_R2-L4-B_SUPPORT
+ok 640 - R3_R2-L4-B_SUPPORT
+  ---
+  duration_ms: 0.046036
+  type: 'test'
+  ...
+# Subtest: R3_R2-L4-B_CLEAR
+ok 641 - R3_R2-L4-B_CLEAR
+  ---
+  duration_ms: 0.046516
+  type: 'test'
+  ...
+# Subtest: R3_R2-L5-A_SUPPORT
+ok 642 - R3_R2-L5-A_SUPPORT
+  ---
+  duration_ms: 0.045475
+  type: 'test'
+  ...
+# Subtest: R3_R2-L5-A_CLEAR
+ok 643 - R3_R2-L5-A_CLEAR
+  ---
+  duration_ms: 0.045725
+  type: 'test'
+  ...
+# Subtest: R3_R2-L5-B_SUPPORT
+ok 644 - R3_R2-L5-B_SUPPORT
+  ---
+  duration_ms: 0.044984
+  type: 'test'
+  ...
+# Subtest: R3_R2-L5-B_CLEAR
+ok 645 - R3_R2-L5-B_CLEAR
+  ---
+  duration_ms: 0.044893
+  type: 'test'
+  ...
+# Subtest: R3_UNDERPASS_CLEAR
+ok 646 - R3_UNDERPASS_CLEAR
+  ---
+  duration_ms: 0.045665
+  type: 'test'
+  ...
+# Subtest: R3_PARTS_VALID_UNIQUE
+ok 647 - R3_PARTS_VALID_UNIQUE
+  ---
+  duration_ms: 0.045324
+  type: 'test'
+  ...
+# Subtest: R3 old protected files retain their exact hashes
+ok 648 - R3 old protected files retain their exact hashes
+  ---
+  duration_ms: 2.805544
+  type: 'test'
+  ...
+# Subtest: R3 only two entrance records change; every old non-east entrance preserved
+ok 649 - R3 only two entrance records change; every old non-east entrance preserved
+  ---
+  duration_ms: 1.440748
+  type: 'test'
+  ...
+# Subtest: R3 protected terrain is identical outside two stated apron envelopes
+ok 650 - R3 protected terrain is identical outside two stated apron envelopes
+  ---
+  duration_ms: 97.936187
+  type: 'test'
+  ...
+# Subtest: R3 aprons terminate at three actual risers rather than a raised floating porch
+ok 651 - R3 aprons terminate at three actual risers rather than a raised floating porch
+  ---
+  duration_ms: 2.589842
+  type: 'test'
+  ...
+# Subtest: R3 shallow arc symmetry, apex and fixed central axis
+ok 652 - R3 shallow arc symmetry, apex and fixed central axis
+  ---
+  duration_ms: 0.222485
+  type: 'test'
+  ...
+# Subtest: R3 original fifth floor / rear terrace / toilet semantic spaces retained
+ok 653 - R3 original fifth floor / rear terrace / toilet semantic spaces retained
+  ---
+  duration_ms: 0.505723
+  type: 'test'
+  ...
+# Subtest: FAULT R3 west rotates door back onto mountain wall
+ok 654 - FAULT R3 west rotates door back onto mountain wall
+  ---
+  duration_ms: 401.461686
+  type: 'test'
+  ...
+# Subtest: FAULT R3 west collapses entrance recess
+ok 655 - FAULT R3 west collapses entrance recess
+  ---
+  duration_ms: 353.350747
+  type: 'test'
+  ...
+# Subtest: FAULT R3 west body wall stops at porch
+ok 656 - FAULT R3 west body wall stops at porch
+  ---
+  duration_ms: 297.832519
+  type: 'test'
+  ...
+# Subtest: FAULT R3 west upper continuation wall missing
+ok 657 - FAULT R3 west upper continuation wall missing
+  ---
+  duration_ms: 411.521826
+  type: 'test'
+  ...
+# Subtest: FAULT R3 west canopy removed
+ok 658 - FAULT R3 west canopy removed
+  ---
+  duration_ms: 564.031309
+  type: 'test'
+  ...
+# Subtest: FAULT R3 west one front post removed
+ok 659 - FAULT R3 west one front post removed
+  ---
+  duration_ms: 332.161756
+  type: 'test'
+  ...
+# Subtest: FAULT R3 west step floats
+ok 660 - FAULT R3 west step floats
+  ---
+  duration_ms: 290.790591
+  type: 'test'
+  ...
+# Subtest: FAULT R3 west step removed
+ok 661 - FAULT R3 west step removed
+  ---
+  duration_ms: 287.631978
+  type: 'test'
+  ...
+# Subtest: FAULT R3 west closed door
+ok 662 - FAULT R3 west closed door
+  ---
+  duration_ms: 394.843163
+  type: 'test'
+  ...
+# Subtest: FAULT R3 west upper notch filled by old rectangular slab
+ok 663 - FAULT R3 west upper notch filled by old rectangular slab
+  ---
+  duration_ms: 456.508742
+  type: 'test'
+  ...
+# Subtest: FAULT R3 east rotates door back onto mountain wall
+ok 664 - FAULT R3 east rotates door back onto mountain wall
+  ---
+  duration_ms: 631.429343
+  type: 'test'
+  ...
+# Subtest: FAULT R3 east collapses entrance recess
+ok 665 - FAULT R3 east collapses entrance recess
+  ---
+  duration_ms: 603.00727
+  type: 'test'
+  ...
+# Subtest: FAULT R3 east body wall stops at porch
+ok 666 - FAULT R3 east body wall stops at porch
+  ---
+  duration_ms: 557.611737
+  type: 'test'
+  ...
+# Subtest: FAULT R3 east upper continuation wall missing
+ok 667 - FAULT R3 east upper continuation wall missing
+  ---
+  duration_ms: 593.527235
+  type: 'test'
+  ...
+# Subtest: FAULT R3 east canopy removed
+ok 668 - FAULT R3 east canopy removed
+  ---
+  duration_ms: 557.0986
+  type: 'test'
+  ...
+# Subtest: FAULT R3 east one front post removed
+ok 669 - FAULT R3 east one front post removed
+  ---
+  duration_ms: 539.688632
+  type: 'test'
+  ...
+# Subtest: FAULT R3 east step floats
+ok 670 - FAULT R3 east step floats
+  ---
+  duration_ms: 546.043139
+  type: 'test'
+  ...
+# Subtest: FAULT R3 east step removed
+ok 671 - FAULT R3 east step removed
+  ---
+  duration_ms: 559.07315
+  type: 'test'
+  ...
+# Subtest: FAULT R3 east closed door
+ok 672 - FAULT R3 east closed door
+  ---
+  duration_ms: 611.124098
+  type: 'test'
+  ...
+# Subtest: FAULT R3 east upper notch filled by old rectangular slab
+ok 673 - FAULT R3 east upper notch filled by old rectangular slab
+  ---
+  duration_ms: 575.046363
+  type: 'test'
+  ...
+# Subtest: FAULT R3 central arc made flat in parameter
+ok 674 - FAULT R3 central arc made flat in parameter
+  ---
+  duration_ms: 516.316979
+  type: 'test'
+  ...
+# Subtest: FAULT R3 central arc floor actually flattened
+ok 675 - FAULT R3 central arc floor actually flattened
+  ---
+  duration_ms: 553.395259
+  type: 'test'
+  ...
+# Subtest: FAULT R3 arc walls deleted
+ok 676 - FAULT R3 arc walls deleted
+  ---
+  duration_ms: 422.740793
+  type: 'test'
+  ...
+# Subtest: FAULT R3 old flat facade restored
+ok 677 - FAULT R3 old flat facade restored
+  ---
+  duration_ms: 285.611319
+  type: 'test'
+  ...
+# Subtest: FAULT R3 central entrance blocked
+ok 678 - FAULT R3 central entrance blocked
+  ---
+  duration_ms: 297.853418
+  type: 'test'
+  ...
+# Subtest: FAULT R3 fifth main level deleted
+ok 679 - FAULT R3 fifth main level deleted
+  ---
+  duration_ms: 280.653406
+  type: 'test'
+  ...
+# Subtest: FAULT R3 fourth terrace lost
+ok 680 - FAULT R3 fourth terrace lost
+  ---
+  duration_ms: 287.030625
+  type: 'test'
+  ...
+# Subtest: FAULT R3 terrace roofed over
+ok 681 - FAULT R3 terrace roofed over
+  ---
+  duration_ms: 278.597999
+  type: 'test'
+  ...
+# Subtest: FAULT R3 toilet fifth floor lost
+ok 682 - FAULT R3 toilet fifth floor lost
+  ---
+  duration_ms: 274.466611
+  type: 'test'
+  ...
+# Subtest: FAULT R3 fifth bridge raised
+ok 683 - FAULT R3 fifth bridge raised
+  ---
+  duration_ms: 285.076591
+  type: 'test'
+  ...
+# Subtest: FAULT R3 bridge opening sealed
+ok 684 - FAULT R3 bridge opening sealed
+  ---
+  duration_ms: 278.474319
+  type: 'test'
+  ...
+# Subtest: FAULT R3 axis drifts
+ok 685 - FAULT R3 axis drifts
+  ---
+  duration_ms: 284.697675
+  type: 'test'
+  ...
+# Subtest: FAULT R3 unrelated library moved
+ok 686 - FAULT R3 unrelated library moved
+  ---
+  duration_ms: 306.215774
+  type: 'test'
+  ...
+# Subtest: FAULT R3 road graph changed
+ok 687 - FAULT R3 road graph changed
+  ---
+  duration_ms: 307.851785
+  type: 'test'
+  ...
+# Subtest: FAULT R3 old east door wall reopened
+ok 688 - FAULT R3 old east door wall reopened
+  ---
+  duration_ms: 299.954427
+  type: 'test'
+  ...
+1..688
+# tests 688
+# suites 0
+# pass 688
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 17681.213621

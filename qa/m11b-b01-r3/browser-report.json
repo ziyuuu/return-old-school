@@ -1,0 +1,222 @@
+{
+  "version": "M1.1-B.Batch01.R3",
+  "complete": true,
+  "passed": true,
+  "checks": [
+    {
+      "name": "R3 actual WebGL model startup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "R2 axis and building anchors retained",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "P3/P4 sports gym/music anchors retained",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "both front entrances steps/landing/corridor full-width support and clearance",
+      "passed": true,
+      "detail": {
+        "probes": 278,
+        "bad": []
+      }
+    },
+    {
+      "name": "five-storey walls actually extend beyond both canopies",
+      "passed": true,
+      "detail": {
+        "probes": 10,
+        "bad": []
+      }
+    },
+    {
+      "name": "actual curved facade follows shallow arc, not flat metadata",
+      "passed": true,
+      "detail": {
+        "rows": [
+          {
+            "x": -4,
+            "expected": 215.4889372336064,
+            "actual": 215.48894954806633
+          },
+          {
+            "x": -3,
+            "expected": 215.36215593953827,
+            "actual": 215.3622288777021
+          },
+          {
+            "x": 0,
+            "expected": 215.2,
+            "actual": 215.1999999995725
+          },
+          {
+            "x": 3,
+            "expected": 215.36215593953827,
+            "actual": 215.3622288777021
+          },
+          {
+            "x": 4,
+            "expected": 215.4889372336064,
+            "actual": 215.48894954806633
+          }
+        ],
+        "bad": []
+      }
+    },
+    {
+      "name": "R2 five floors and ten toilet routes still supported and open",
+      "passed": true,
+      "detail": {
+        "routes": 10,
+        "probes": 1240,
+        "bad": []
+      }
+    },
+    {
+      "name": "inherited clear front",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "inherited clear rear",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "inherited clear underpass",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "inherited clear library",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "inherited clear sky",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "old mountain-wall exit is now solid",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "fourth terrace supported, fifth covers corridor only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all inherited road widths supported",
+      "passed": true,
+      "detail": {
+        "probes": 1008,
+        "bad": []
+      }
+    },
+    {
+      "name": "P3 entrance42m still rises3m",
+      "passed": true,
+      "detail": [
+        0.03999999910593033,
+        3.0399999618530273
+      ]
+    },
+    {
+      "name": "gym spectator stair retained",
+      "passed": true,
+      "detail": {
+        "points": 32,
+        "bad": []
+      }
+    },
+    {
+      "name": "captured15 fixed model views",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "first-floor notch view hides upper floors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "inspector accessible",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "five floors remain selectable",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "actual new camera button",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile viewport and no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "offline HTML default P4 and R3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no WebGL error",
+      "passed": true,
+      "detail": {
+        "view": "r3-overview",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 678,
+        "triangles": 346752,
+        "camera": [
+          -142,
+          96.80000000000003,
+          24.000000000000057
+        ]
+      }
+    },
+    {
+      "name": "no JS or shader error",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "screenshots": [
+    "r3-front.png",
+    "r3-overview.png",
+    "r3-west.png",
+    "r3-east.png",
+    "r3-wall.png",
+    "r3-porch-plan.png",
+    "r3-arc.png",
+    "r3-arc-plan.png",
+    "r3-axis.png",
+    "r3-section.png",
+    "r2-terrace.png",
+    "r2-fifth.png",
+    "r2-bridge5.png",
+    "p04-courts.png",
+    "p03-gate-out.png",
+    "desktop-ui.png",
+    "mobile.png"
+  ],
+  "errors": [],
+  "source_sha": "d132b09fb271a582d40d79110eb84d7f7d6d2d7d",
+  "viewer_sha256": "4a10b351c086b4e6a6c183369f309be8d3767ff1e93f93227f0ba5b5fe1ce7a8",
+  "environment": "Playwright Chromium / SwiftShader WebGL2;1440x1000 and390x844 viewport",
+  "alumniReview": "REVIEW_PENDING"
+}

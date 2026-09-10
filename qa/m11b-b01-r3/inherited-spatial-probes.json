@@ -1,0 +1,43 @@
+{
+  "front": [],
+  "rear": [],
+  "retiredEast": [
+    {
+      "name": "R2-15-1|retired-east-door-closure|box",
+      "facility": "15",
+      "distance": 0.9999989345669746
+    },
+    {
+      "name": "R2-15-1|retired-east-door-closure|box",
+      "facility": "15",
+      "distance": 1.2399989292025566
+    }
+  ],
+  "underpass": [],
+  "library": [],
+  "sky": [],
+  "cover": [
+    {
+      "name": "R3-main-floor-5",
+      "facility": "15",
+      "distance": 2.6199999964237186
+    },
+    {
+      "name": "R3-main-floor-5",
+      "facility": "15",
+      "distance": 2.800000003576276
+    }
+  ],
+  "terrace": [
+    {
+      "name": "R3-main-floor-4",
+      "y": 14.890000003576276,
+      "role": "slab"
+    },
+    {
+      "name": "R3-main-floor-4",
+      "y": 14.709999996423718,
+      "role": "slab"
+    }
+  ]
+}
