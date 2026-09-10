@@ -28,9 +28,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Integrate explicitly checked current source once
+      - name: Integrate explicitly checked source and screenshot refinements once
         run: |
           python tools/m11b/r2/integrate.py
+          python tools/m11b/r2/polish.py
           git diff --exit-code -- data/m10 data/m11a/patch03 data/m11a/patch04
       - name: Run every inherited and new regression and production build
         run: |
@@ -41,12 +42,12 @@ jobs:
           npm run build --prefix apps/campus | tee qa/m11b-b01-r2/build.txt
           node tools/m11b/r2/export.mjs
           git diff --exit-code -- data/m10 data/m11a/patch03 data/m11a/patch04
-      - name: Commit readable integration and derived R2-only data
+      - name: Commit readable integration, screenshot fixes and derived R2-only data
         run: |
           git config user.name 'return-old-school validation bot'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add apps/campus/src/main.ts apps/campus/index.html data/m11b/batch01-r2
-          git diff --cached --quiet || git commit -m 'feat: integrate B01 R2 five-storey section and authorized issue28 campus axis'
+          git add apps/campus/src apps/campus/index.html data/m11b/batch01-r2 tools/m11b/r2 docs/development-plan.md
+          git diff --cached --quiet || git commit -m 'fix: retain screenshot-reviewed R2 corridor glazing, guarded end walls and camera framing'
           git push origin HEAD:main
           echo "SOURCE_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
           git rev-parse HEAD > qa/m11b-b01-r2/source-commit.txt
