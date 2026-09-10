@@ -1,0 +1,22 @@
+{
+  "data/m10/freeze-manifest.json": "f04efc86d503cca4028882c79243c5cebc967a1c1ee6184d3ae6a990a0de9a0f",
+  "data/m10/site-features.json": "facf46579a35ee58a09759f519cdace60331f758a4f7186472145320ea8a8caf",
+  "data/m10/footprints.csv": "91e8194b880d5488864e7db3a9ac02e7f5b9323a65fd54efc365c731c3f143d2",
+  "data/m10/revision-r3.json": "74ea8cd6299f5f49860ddaf9a27acccf034a0518b20b00c09c4970c389f25fe7",
+  "data/m10/revision-r4.json": "797bbc187a3fdccc39de0b4e61a7dbff62df00978cbbd55d4766fb6ae80c3779",
+  "data/m10/baseline-r2-input.json": "3626c94d80a5d188e28ef4529f25c1d6b29305ace2bd83d6c05f7d4e5c263ec3",
+  "data/m10/layout-input.json": "8c4e11fab558f20bf21752da3ef2304579f507f17f252fa18ca55cbebb8ad004",
+  "data/m10/campus-layout.json": "a9b78a1f9400637432018eed4d0a88d683bb685352d61e271ec71358f218cc89",
+  "data/m10/baseline-r3-input.json": "f5d35f86ffca50fc6bca627c06352841cac0c90e918e985ad3a4e46bc9ee62f6",
+  "data/m10/footprints.json": "857c7ab6397dcf0f91e4d579479a5469b61c025e9207483e508992eb4679ec28",
+  "data/m10/revision-r2.json": "a0c7e9031bb974dcd25c74a71afa52e7d048cb8ba753023de960f1b375f8c74a",
+  "data/m11a/patch03/evidence-manifest.json": "5e0be51bf69bf82c1c0e10bae2c32a9bb97693b257d993bea9961c9c60ed3d71",
+  "data/m11a/patch03/resolved-terrain.json": "2eff1126cf4ef51101c1210ad545ecdc3e35141ccc0420dc972364ac6d14b0a8",
+  "data/m11a/patch03/research-review.csv": "7eac241f2b8eddf62428af4f4228e540ec252c41f9444d5cd9be0b12a9e4c820",
+  "data/m11a/patch03/input.json": "9a9cbf904f180a5a8978e1b85c3b8b12db56caa9199378c309d2e35dea27c99d",
+  "data/m11a/patch04/evidence-manifest.json": "9458b98be80a998d0881ef68c57f9e9210a4d4deff6a75f2ebff58ff8d2b34fd",
+  "data/m11a/patch04/resolved-terrain.json": "defa0596c5cce80481c9ae265edfdf181d67348bff345038abbc901005aff65f",
+  "data/m11a/patch04/input.json": "436c91f502ef63f2b9af54ff6190d43b595cb81fe59aeb5dda3922841cebb6bc",
+  "apps/campus/src/layout-core.mjs": "6248a617d6021068cd28ecac3cf5243d1bba1a4904042046e588de691e4639df",
+  "data/spatial-constraints.json": "a287e59ae10c32d33f01a3dd2be1d72964c106e9026b0497a9c294691b122d0f"
+}
