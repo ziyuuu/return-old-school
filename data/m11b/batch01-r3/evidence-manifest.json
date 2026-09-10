@@ -1,0 +1,13 @@
+{
+ "targetYears":[2006,2010],"issue":29,"newSurvey":false,
+ "records":[
+  {"id":"R3-A-01","source":"本线程用户逐次纠正与圈注","grade":"A","claim":"侧门位于正面两端退让处，门朝操场，不是山墙门","use":"入口朝向及建筑局部轮廓"},
+  {"id":"R3-A-02","source":"本线程IMG_5508.png与圈注示意","grade":"A","claim":"一层门廊旁的墙属于五层主体并向门前继续延伸","use":"五层高墙和一层门廊的前后错位"},
+  {"id":"R3-A-03","source":"本线程用户：主教学楼前面那一个突出，是稍微有点弧度的","grade":"A","claim":"中央功能区前凸略带弧度","use":"中央形体，不限定尚未证明的完整曲率"},
+  {"id":"R3-P-01","source":"用户363.jpeg左下旧照片，亦见新浪100张旧照片系列","grade":"P","claim":"平顶门罩、方柱、瓷砖外墙、邻窗护栏和台阶","limitations":"具体拍摄年和隐藏面未定，构件数量细部按工作补全","historicalGeometryAllowed":true},
+  {"id":"R3-H-01","source":"data/m11b/batch01-r3/input.json","grade":"H","claim":"入口后退2m，主体局部前伸2m，门罩前缘后于高墙1.7m，三级台阶0.45m","use":"可替换局部模型工作几何"},
+  {"id":"R3-H-02","source":"data/m11b/batch01-r3/input.json","grade":"H","claim":"中部轻弧解释为水平浅圆弧，8.8m宽、0.35m矢高，最前点及主轴不变","use":"统一墙体/楼板/檐口曲线"}
+ ],
+ "excludedAsEvidence":["此前生成式建筑解读图","生成图内凭空增加的方位、标语和装饰"],
+ "alumniReview":"REVIEW_PENDING"
+}

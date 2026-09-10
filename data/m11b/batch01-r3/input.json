@@ -1,0 +1,21 @@
+{
+  "version":"M1.1-B.Batch01.R3",
+  "status":"IMPLEMENTED / REVIEW_PENDING",
+  "issue":29,
+  "baseMain":"0b000a17ac1f507886fda56d7119312bcbaa5313",
+  "targetYears":[2006,2010],
+  "numericEvidence":"H: replaceable historical reconstruction geometry",
+  "alumniReview":"REVIEW_PENDING",
+  "entrances":{
+    "frontNormal":[0,0,-1],"doorCentersX":[-46.4,46.4],"outerX":49,"returnX":44.5,"innerX":43,
+    "doorWallZ":-5,"forwardWallZ":-9,"canopyFrontZ":-7.3,"canopyBackZ":-4.9,"canopyWidth":3.8,
+    "canopyHeight":3.1,"canopyThickness":0.2,"trimHeight":0.10,"postWidth":0.30,"postSpacing":2.9,"postZ":-7.03,
+    "doorWidth":1.85,"doorHeight":2.7,"landingWidth":3.5,"landingFrontZ":-7.5,"steps":3,"stepRun":0.96,"totalRise":0.45,
+    "barredWindowWidth":0.68,"barredWindowHeight":1.9,
+    "apron":{"halfWidth":2.8,"flatHalfWidth":1.85,"startZ":-14,"flatZ":-8.7,"backZ":-4.85},
+    "evidence":"A: both entrances on front ends, recessed beside full-height continuing wall. P: original side-door crop shows canopy, posts, barred window, steps. Every numeric value H."
+  },
+  "central":{"halfWidth":4.4,"apexZ":-8.8,"sagitta":0.35,"segments":64,"role":"broadcast-and-other-functional-spaces","interpretation":"A slight curvature; H shallow horizontal convex circular arc, not an arch or semicircular tower; apex and centre axis retained"},
+  "invariants":["R2 five-storey section and fourth-floor open terrace","field-national-flag-main-library axis X73","all toilet floors and bridge routes","P3/P4 outside two local front aprons","no unrelated road graph or facility relocation"],
+  "excluded":["generated images as historical evidence","full internal stairs or furnishings","new gameplay","modern orange-red teaching building"]
+}
