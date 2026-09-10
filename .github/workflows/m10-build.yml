@@ -1,70 +1,29 @@
-name: Build and verify M1.0 R4 campus
+name: Recheck frozen M1.0 R4 (manual)
+# M1.0 is accepted/frozen. Never apply old R4 migrations to active M1.1 code.
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - 'apps/campus/**'
-      - 'data/m10/layout-input.json'
-      - 'tools/m10/**'
-      - 'tests/m10/**'
-      - '.github/workflows/m10-build.yml'
 permissions:
-  contents: write
-concurrency:
-  group: m10-${{ github.ref }}
-  cancel-in-progress: true
+  contents: read
 jobs:
-  verify:
+  frozen:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: baseline/m1.0-r4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Apply auditable R4 and resolve current layout
+      - name: Recheck the accepted source without modifying its branch
+        working-directory: apps/campus
         run: |
-          python tools/m10/repair-r4.py
-          python tools/m10/apply-r4-source.py
-          python tools/m10/generate-layout.py
-          python tools/check_restoration_v07.py
-      - name: Build pinned runtime and execute regressions
-        run: |
-          set -o pipefail
-          mkdir -p qa/m10-r4
-          cd apps/campus
           npm ci
-          npm test | tee ../../qa/m10-r4/unit-tests.txt
-          npm run build | tee ../../qa/m10-r4/build.txt
+          npm test
+          npm run build
           npm run standalone
-          cd ../..
-          node tools/m10/export-footprints.mjs
-      - name: Install actual browser
-        run: |
-          python -m pip install playwright==1.62.0
-          python -m playwright install chromium
-          sudo apt-get -o Acquire::Retries=3 install -y fonts-noto-cjk
-      - name: Verify actual meshes, every toilet floor, routes and controls
-        run: python tools/m10/capture-r4.py
-      - name: Export same-data plan, checklist and readable workspace
-        run: python tools/m10/package-r4.py
       - uses: actions/upload-artifact@v4
-        if: always()
         with:
-          name: Yali-M1.0-R4-review
-          path: |
-            artifacts/m10/
-            qa/m10-r4/
+          name: M1.0-R4-frozen-rebuild
+          path: artifacts/m10/
           retention-days: 30
-          if-no-files-found: error
-      - name: Commit only verified source and evidence
-        if: success()
-        run: |
-          git config user.name 'return-old-school validation bot'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add apps/campus/src apps/campus/index.html data/m10 data/restoration data/spatial-constraints.json tests/m10 tools/m10/export-footprints.mjs README.md docs/development-plan.md docs/m10/regression-r4.md docs/plates/masterplan-m10-r4.svg .github/m10-r4.patch qa/m10-r4
-          git diff --cached --quiet || git commit -m 'fix: commit verified R4 topology, continuous toilet floors and actual browser evidence'
-          git push origin HEAD:main
