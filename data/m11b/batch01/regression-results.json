@@ -1,0 +1,180 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "id": "B01-XZ-ROADS-FROZEN",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-FOUR-FLOORS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-COMMON-DATUM",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-OLD-NOT-MODERN",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-REAL-WINDOWS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-L1-FULL-TOILET-SLAB",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-L1-CONTINUOUS-BODY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-L1-A-SUPPORTED",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-L1-A-CLEAR",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-L1-B-SUPPORTED",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-L1-B-CLEAR",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-L2-FULL-TOILET-SLAB",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-L2-CONTINUOUS-BODY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-L2-A-SUPPORTED",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-L2-A-CLEAR",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-L2-B-SUPPORTED",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-L2-B-CLEAR",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-L3-FULL-TOILET-SLAB",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-L3-CONTINUOUS-BODY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-L3-A-SUPPORTED",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-L3-A-CLEAR",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-L3-B-SUPPORTED",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-L3-B-CLEAR",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-L4-FULL-TOILET-SLAB",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-L4-CONTINUOUS-BODY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-L4-A-SUPPORTED",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-L4-A-CLEAR",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-L4-B-SUPPORTED",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-L4-B-CLEAR",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-BRIDGE-UNDERPASS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-REAR-DOOR",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-TERRACE-OPEN-SKY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-TERRACE-FLOOR",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-TERRACE-RAIL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "id": "B01-TERRACE-DOOR",
+      "passed": true,
+      "detail": ""
+    }
+  ]
+}

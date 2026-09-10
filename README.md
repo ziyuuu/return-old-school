@@ -1,5 +1,16 @@
 # 复原雅礼 · Return Old School
 
+## 当前交付 / M1.1-B 第一批
+
+M1.1-A（P3/P4）已获校友确认。当前制作 **15旧主教学楼＋25连续厕所＋四层连接桥**，状态 **IMPLEMENTED / REVIEW_PENDING**。目标2006—2010旧楼外壳，不套用后来橘红色新楼。
+
+[第一批方案](docs/m11b/batch01/plan.md) · [证据判断](docs/m11b/batch01/evidence-decisions.md) · [交付与复现](docs/m11b/batch01/delivery.md) · [浏览器QA](qa/m11b-b01/browser-report.json)
+
+运行`node tools/m11b/export.mjs`生成独立离线Viewer；`tools/m11b/capture.py`执行真实Chromium截图，`package.py`生成Review与Workspace。`M1.0`冻结占地、既有道路、M1.1-A地形及三旗前坪均保留。后续依次推进其他建筑外壳、实际人物通行、全校复核和精化。
+
+下面记录此前阶段的历史交付；其旧状态与测试数量不代表当前第一批状态。
+
+
 为校庆与同学回忆制作的雅礼中学东塘校区数字复原项目，不是商业游戏。
 
 **校园真实复原 > 模型精度与环境完整度 > 正常白天 > 夜间中式梦核 > 剧情和具体玩法。**

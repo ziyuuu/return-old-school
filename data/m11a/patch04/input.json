@@ -1,0 +1,211 @@
+{
+  "version": "M1.1-A.Patch04",
+  "status": "COMPLETE / ALUMNI_APPROVED",
+  "alumniReview": "APPROVED",
+  "surveyVerified": false,
+  "measured": null,
+  "baseMain": "524367a31c03f74bd8585433195dab27e8077f84",
+  "frozenBranch": "baseline/m1.0-r4",
+  "frozenCommit": "43afdd725c884ba17534372195b026bc977fddd5",
+  "issues": [
+    24,
+    25,
+    26
+  ],
+  "previousPatch": {
+    "version": "Patch03",
+    "alumniReview": "APPROVED",
+    "confirmation": "P3确认。",
+    "date": "2026-09-10",
+    "engineeringValidation": "separate gate; previous delivery was not browser-verified"
+  },
+  "numericEvidence": "H: every length, level, step count, fence height and exact position is unmeasured",
+  "courts": {
+    "id": "06",
+    "evidenceRelation": [
+      "A",
+      "P"
+    ],
+    "lift": 0.3,
+    "datum": 3.0,
+    "top": 3.3,
+    "tilt": 0,
+    "bounds": [
+      -65,
+      88,
+      -10,
+      152
+    ],
+    "candidates": [
+      {
+        "lift": 0.15,
+        "decision": "smallest candidate; visible edge may be understated"
+      },
+      {
+        "lift": 0.3,
+        "decision": "selected conservative modest raised pad, not a full podium"
+      },
+      {
+        "lift": 0.45,
+        "decision": "possible but stronger than evidence supports"
+      }
+    ],
+    "fenceHeight": 3.2,
+    "fencePitch": 2.5,
+    "fenceStyle": "H neutral open lattice; do not reproduce modern blue paint as established historical fact",
+    "openings": [
+      {
+        "id": "P04-court-east",
+        "axis": "x",
+        "at": -10,
+        "from": 118,
+        "to": 122
+      },
+      {
+        "id": "P04-court-canopy",
+        "axis": "x",
+        "at": -65,
+        "from": 118.5,
+        "to": 121.5
+      }
+    ],
+    "ramp": {
+      "start": [
+        -5.5,
+        120
+      ],
+      "end": [
+        -10,
+        120
+      ],
+      "width": 4,
+      "run": 4.5,
+      "evidence": "H; toe follows existing road shoulder; top is flat court datum; derived rise is about0.25m, not a new surveyed value"
+    },
+    "stairs": {
+      "id": "P04-05-06",
+      "facilityId": "06",
+      "kind": "stairs",
+      "start": [
+        -65.64,
+        120
+      ],
+      "end": [
+        -65,
+        120
+      ],
+      "width": 3,
+      "length": 0.64,
+      "steps": 2,
+      "base": 3.0,
+      "top": 3.3,
+      "rise": 0.3,
+      "evidence": "H: two0.15 risers/0.32 treads from05; 05 and28 stay at prior level"
+    },
+    "historicalFenceDetailVerified": false
+  },
+  "forecourt": {
+    "id": "14",
+    "pavingBounds": [
+      25,
+      190,
+      119,
+      217
+    ],
+    "previousPavingBounds": [
+      25,
+      192,
+      119,
+      204
+    ],
+    "evidence": [
+      "A wider teaching-side plaza",
+      "P C01 relationship",
+      "H exact paving extents"
+    ],
+    "grade": "Draped over accepted Patch03 ground, not a new arbitrary level; existing roads remain above paving finish",
+    "flag": {
+      "id": "14-flags",
+      "count": 3,
+      "center": [
+        64,
+        192.5
+      ],
+      "oldCenter": [
+        64,
+        198
+      ],
+      "platformWidth": 10.8,
+      "platformDepth": 3.2,
+      "platformRise": 0.45,
+      "steps": 3,
+      "tread": 0.32,
+      "poleSpacing": 2.0,
+      "poleHeights": [
+        10,
+        10.8,
+        10
+      ],
+      "clothWidth": 1.4,
+      "clothHeight": 0.9,
+      "graphicsVerified": false,
+      "note": "Three flags/poles A/P. Cloths neutral placeholders, no invented historical school-flag logo. Precise sizes and movement5.5m H."
+    },
+    "exceptionIssue": 25,
+    "exception": "Only flag site-feature coordinates and additional paving extents. Archive14 locator, 15 building and all road XZ/width/topology unchanged."
+  },
+  "shop": {
+    "id": "12",
+    "parent": "11",
+    "evidenceExistence": [
+      "A near canteen",
+      "R memoir explicitly says canteen lower level"
+    ],
+    "doorWidth": 2.4,
+    "doorHeight": 2.5,
+    "wallHeight": 3.1,
+    "recessDepth": 3,
+    "frontLocalX": -7,
+    "closedDoor": false,
+    "doorCenter": [
+      151,
+      149
+    ],
+    "approach": [
+      [
+        142,
+        152
+      ],
+      [
+        148,
+        149
+      ],
+      [
+        151,
+        149
+      ],
+      [
+        153.2,
+        149
+      ]
+    ],
+    "approachWidth": 2.4,
+    "facing": "H west-facing recess within frozen12 envelope",
+    "interiorModelled": false,
+    "newDetachedBuilding": false,
+    "note": "Only minimal frontage/threshold shell; do not use dining-hall photo S03-032 as shop interior. No invented shelves, products or brand signage."
+  },
+  "renderSurfaceOffset": 0.04,
+  "history": {
+    "target": [
+      2006,
+      2010
+    ],
+    "modernMaterialsImported": false
+  },
+  "display": {
+    "exaggeration": 1,
+    "comparison": "Patch04 / Patch03 / Patch02 working vertical and local site-feature schemes. Never a complete historical rollback."
+  },
+  "engineeringValidation": "See qa/m11a-p04/browser-report.json; only passed=true and complete=true constitute verification"
+}

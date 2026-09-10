@@ -1,0 +1,58 @@
+{
+  "phase": "M1.1-B Batch01",
+  "target_period": "2006-2010",
+  "entries": [
+    {
+      "id": "S03-038",
+      "source": "https://k.sina.cn/article_6430641585_17f4bcdb1001003x9v.html",
+      "image_url": "http://k.sinaimg.cn/n/sinacn/w720h366/20180312/67aa-fyscsmu8207787.jpg/w700d1q75cms.jpg",
+      "sha256": "6d374263b83ec9acc81ef87c1a963484aeb889c9877e7ba372299194715154ae",
+      "publication_date": "2018-03-13",
+      "photographed_at": null,
+      "grade": "P",
+      "reviewed": true,
+      "visible": "四楼露天后坪、建筑门窗及连续外侧围护",
+      "not_visible": "完整背面尺寸、精确门窗数量和历次改造界线",
+      "historical_geometry": true,
+      "modern_material_reference": false,
+      "asset_redistributed": false
+    },
+    {
+      "id": "S03-040",
+      "source": "https://k.sina.cn/article_6430641585_17f4bcdb1001003x9v.html",
+      "image_url": "http://k.sinaimg.cn/n/sinacn/w1080h811/20180312/4956-fyscsmu8207943.jpg/w700d1q75cms.jpg",
+      "sha256": "5833dad5b9812c4c9ea1382c47794bef706d499249d7f46ebe03a500d94eee4a",
+      "publication_date": "2018-03-13",
+      "photographed_at": null,
+      "grade": "P",
+      "reviewed": true,
+      "visible": "左上旧主楼浅色外墙、成组窗洞、较平直屋檐和小圆顶",
+      "not_visible": "完整背面尺寸、精确门窗数量和历次改造界线",
+      "historical_geometry": true,
+      "modern_material_reference": false,
+      "asset_redistributed": false
+    },
+    {
+      "id": "B01-A01",
+      "source": "project conversation / user approvals and R4",
+      "grade": "A",
+      "visible": "15/25四层逐层连接，厕所完整楼体和楼板，两端门朝主楼，外廊及桥口护栏缺口；A阶段已认可",
+      "historical_geometry": true
+    },
+    {
+      "id": "B01-R01",
+      "source": "https://k.sina.com.cn/article_6430641585_17f4bcdb1001003x9v.html",
+      "grade": "R",
+      "publication_date": "2018-03-13",
+      "visible": "作者明确区分旧主楼及后来橘红色主楼，描述旧楼四楼后坪",
+      "historical_geometry": true
+    },
+    {
+      "id": "B01-H01",
+      "source": "data/m11b/batch01/input.json",
+      "grade": "H",
+      "visible": "范围内保守补全隐藏立面、退台参数、小圆顶、窗洞和围护细断面",
+      "historical_geometry": true
+    }
+  ]
+}

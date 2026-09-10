@@ -3,10 +3,11 @@ import {buildTerrainModel,terrainChecks,rectOf} from './terrain-core.mjs';
 /** Add a reversible vertical adapter. The frozen layout is never mutated. */
 export function installTerrain(api:any, spec:any){
  const {scene,surfaces,volumes,outlines,routeOverlay,roots,labels,layout,box,mats,structures}=api;
- const model=buildTerrainModel(layout,spec),report=api.reportOverride??terrainChecks(layout,spec);
+ const model=api.modelOverride??buildTerrainModel(layout,spec),report=api.reportOverride??terrainChecks(layout,spec);
  const surfaceGroup=new THREE.Group();surfaceGroup.name='M11A-ground-and-roads';surfaces.add(surfaceGroup);
  const solidGroup=new THREE.Group();solidGroup.name='M11A-foundations-and-landings';volumes.add(solidGroup);
  const walking:THREE.Object3D[]=[],added:THREE.Object3D[]=[],hidden:THREE.Object3D[]=[],originalPositions=new Map<THREE.Object3D,number>();
+ const extras=(api.extraAnchored??[]) as THREE.Object3D[];for(const o of extras)saveExtra(o);function saveExtra(o:any){originalPositions.set(o,o.position.y);}
  const oldLabels=new Map<string,number>(),lineCopies:{object:any,old:THREE.BufferGeometry,raised:THREE.BufferGeometry}[]=[];
  let enabled=false;
  const saveY=(o:any)=>{if(!originalPositions.has(o))originalPositions.set(o,o.position.y);};
@@ -17,9 +18,9 @@ export function installTerrain(api:any, spec:any){
  for(const o of surfaces.children)if(o.name.startsWith('road-')||thresholdIds.has(o.name))hidden.push(o);
  structures.traverse((o:any)=>{if(o instanceof THREE.Mesh||o instanceof THREE.Line)saveY(o);});
  for(const parent of [outlines,routeOverlay])parent.traverse((o:any)=>{if(!(o instanceof THREE.Line))return;const old=o.geometry,raised=old.clone(),a=raised.getAttribute('position');for(let i=0;i<a.count;i++)a.setY(i,a.getY(i)+model.groundHeight(a.getX(i),a.getZ(i)));raised.computeBoundingSphere();lineCopies.push({object:o,old,raised});});
- function patchGrid(name:string,b:number[],step:number,offset:number,row:number,parent:THREE.Group=surfaceGroup,walk=true){
+ function patchGrid(name:string,b:number[],step:number,offset:number,row:number,parent:THREE.Group=surfaceGroup,walk=true,heightFn:any=null){
   const nx=Math.ceil((b[2]-b[0])/step),nz=Math.ceil((b[3]-b[1])/step),pos:number[]=[],indices:number[]=[];
-  for(let j=0;j<=nz;j++)for(let i=0;i<=nx;i++){const x=b[0]+(b[2]-b[0])*i/nx,z=b[1]+(b[3]-b[1])*j/nz;pos.push(x,model.groundHeight(x,z)+offset,z);}
+  for(let j=0;j<=nz;j++)for(let i=0;i<=nx;i++){const x=b[0]+(b[2]-b[0])*i/nx,z=b[1]+(b[3]-b[1])*j/nz;pos.push(x,(heightFn?heightFn(x,z):model.groundHeight(x,z))+offset,z);}
   for(let j=0;j<nz;j++)for(let i=0;i<nx;i++){const a=j*(nx+1)+i,b=a+1,c=a+nx+1,d=c+1;indices.push(a,c,b,b,c,d);}
   const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));geo.setIndex(indices);geo.computeVertexNormals();geo.computeBoundingBox();geo.computeBoundingSphere();
   const m=new THREE.Mesh(geo,mats[row]);m.name=name;m.receiveShadow=true;m.castShadow=false;m.userData.terrain=true;parent.add(m);added.push(m);if(walk)walking.push(m);return m;
@@ -32,7 +33,8 @@ export function installTerrain(api:any, spec:any){
   const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));geo.setIndex(indices);geo.computeVertexNormals();geo.computeBoundingBox();geo.computeBoundingSphere();
   const m=new THREE.Mesh(geo,mats[row]);m.name=name;m.userData.width=width;m.userData.terrain=true;m.receiveShadow=true;m.castShadow=false;surfaceGroup.add(m);walking.push(m);added.push(m);return m;
  }
- patchGrid('M11A-site-surface',layout.ground.bounds,1,0,1);
+ if(model.tiles){for(const [i,t]of model.tiles.entries())patchGrid('P03-ground-'+t.kind+'-'+i,t.bounds,1,0,1,surfaceGroup,true,(x:number,z:number)=>model.tileHeight(t.kind,x,z));}
+ else patchGrid('M11A-site-surface',layout.ground.bounds,1,0,1);
  const gb=layout.ground.bounds,corners=[[gb[0],gb[1]],[gb[2],gb[1]],[gb[2],gb[3]],[gb[0],gb[3]]];
  for(let side=0;side<4;side++){
   const a=corners[side],b=corners[(side+1)%4],n=Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])),pos:number[]=[],idx:number[]=[];
@@ -64,6 +66,7 @@ export function installTerrain(api:any, spec:any){
  function setEnabled(on:boolean){enabled=on;surfaceGroup.visible=solidGroup.visible=on;hidden.forEach(o=>o.visible=!on);
   for(const[id,g]of roots){g.position.y=originalPositions.get(g)!+(on?(model.anchors[id]?.floor??0):0);}
   structures.traverse((o:any)=>{if(!originalPositions.has(o))return;const id=o.userData.facility??'25';o.position.y=originalPositions.get(o)!+(on?(model.anchors[id]?.floor??0):0);});
+  for(const o of extras)o.position.y=originalPositions.get(o)!+(on?(model.anchors[o.userData.terrainAnchor??'08']?.floor??0):0);
   flagPole.position.y=originalPositions.get(flagPole)!+(on ? .23 : 0);
   for(const v of lineCopies)v.object.geometry=on?v.raised:v.old;
   for(const[id,l]of labels)l.point.y=oldLabels.get(id)!+(on?(model.anchors[id]?.floor??0):0);

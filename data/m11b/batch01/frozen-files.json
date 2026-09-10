@@ -1,0 +1,13 @@
+{
+  "data/m10/footprints.csv": "91e8194b880d5488864e7db3a9ac02e7f5b9323a65fd54efc365c731c3f143d2",
+  "data/m10/footprints.json": "857c7ab6397dcf0f91e4d579479a5469b61c025e9207483e508992eb4679ec28",
+  "data/m10/revision-r4.json": "797bbc187a3fdccc39de0b4e61a7dbff62df00978cbbd55d4766fb6ae80c3779",
+  "data/m10/baseline-r3-input.json": "f5d35f86ffca50fc6bca627c06352841cac0c90e918e985ad3a4e46bc9ee62f6",
+  "data/m10/baseline-r2-input.json": "3626c94d80a5d188e28ef4529f25c1d6b29305ace2bd83d6c05f7d4e5c263ec3",
+  "data/m10/freeze-manifest.json": "f04efc86d503cca4028882c79243c5cebc967a1c1ee6184d3ae6a990a0de9a0f",
+  "data/m10/revision-r3.json": "74ea8cd6299f5f49860ddaf9a27acccf034a0518b20b00c09c4970c389f25fe7",
+  "data/m10/campus-layout.json": "a9b78a1f9400637432018eed4d0a88d683bb685352d61e271ec71358f218cc89",
+  "data/m10/revision-r2.json": "a0c7e9031bb974dcd25c74a71afa52e7d048cb8ba753023de960f1b375f8c74a",
+  "data/m10/layout-input.json": "8c4e11fab558f20bf21752da3ef2304579f507f17f252fa18ca55cbebb8ad004",
+  "data/m10/site-features.json": "facf46579a35ee58a09759f519cdace60331f758a4f7186472145320ea8a8caf"
+}

@@ -1,0 +1,138 @@
+{
+  "version": "M1.1-A.Patch04",
+  "surveyVerified": false,
+  "entries": [
+    {
+      "id": "A-P03-APPROVAL",
+      "source": "User current message",
+      "grade": "A",
+      "visible": "P3确认",
+      "notVisible": "Does not supply physical measurements or confirm newly proposedP04 values",
+      "reviewedAt": "2026-09-10",
+      "photographedAt": null,
+      "measured": null,
+      "historicalGeometry": true
+    },
+    {
+      "id": "A-COURT",
+      "source": "User current message",
+      "grade": "A",
+      "visible": "Basketball pad is slightly raised",
+      "notVisible": "Exact rise and entry coordinates",
+      "reviewedAt": "2026-09-10",
+      "photographedAt": null,
+      "measured": null,
+      "historicalGeometry": true
+    },
+    {
+      "id": "P-COURT",
+      "source": "User image fa9e7683-aaf1-4669-9915-51420562deff.png / S03-022 same montage",
+      "grade": "P",
+      "visible": "Upper-left: upward entry apron, curb edge, open entry and tall fence; other panels: flat playing surface",
+      "notVisible": "Exact elevation; photo year; whether05 shares height; hidden access",
+      "reviewedAt": "2026-09-10",
+      "photographedAt": null,
+      "measured": null,
+      "sha256": "4e5f7f2e3fd495d39477ced672db191c56f10dbe81c1b946e5b2be956ad0040f",
+      "historicalGeometry": "relation only; metricH",
+      "publishedAt": "2018-03-13 article, not capture date",
+      "modernReferenceOnly": "material/color unverified",
+      "duplicateGroup": "S03-022"
+    },
+    {
+      "id": "P-COURT-SECOND",
+      "source": "https://k.sina.com.cn/article_6430641585_17f4bcdb1001003x9v.html / S03-023",
+      "grade": "P",
+      "visible": "Second court view: flat plane/fence/surroundings",
+      "notVisible": "No calibrated rise; cannot date from graduation cohort",
+      "reviewedAt": "2026-09-10",
+      "photographedAt": null,
+      "measured": null,
+      "historicalGeometry": "relation only",
+      "modernReferenceOnly": true
+    },
+    {
+      "id": "A-FLAGS-PLAZA",
+      "source": "User current message",
+      "grade": "A",
+      "visible": "Three flags nearer field; wider teaching forecourt",
+      "notVisible": "Exact displacement, pole dimensions, paving materials",
+      "reviewedAt": "2026-09-10",
+      "photographedAt": null,
+      "measured": null,
+      "historicalGeometry": true
+    },
+    {
+      "id": "P-C01-REVIEW",
+      "source": "https://commons.wikimedia.org/wiki/File:Yali_High_School_sports_field_2006.jpg",
+      "grade": "P",
+      "visible": "Re-reviewed1024x630 image: three poles on one broad stage near field-side planted/low-rail edge; wider teaching-side circulation",
+      "notVisible": "Pole tops cropped; exact dimensions, flag graphics and survey; full metadata page unavailable this run",
+      "reviewedAt": "2026-09-10",
+      "photographedAt": null,
+      "measured": null,
+      "historicalGeometry": true,
+      "epoch": "File title2006; metadata not independently reverified this pass",
+      "retrieval": "Existing repository research copy, not newly found photo",
+      "sha256": "d753e7bf52a625707df42f03f9d61a563fbb81209553fe63a3c9a9aa326957af"
+    },
+    {
+      "id": "A-SHOP",
+      "source": "User current message",
+      "grade": "A",
+      "visible": "Small shop near canteen",
+      "notVisible": "Not independent confirmation of a detached building or facade position",
+      "reviewedAt": "2026-09-10",
+      "photographedAt": null,
+      "measured": null,
+      "historicalGeometry": true
+    },
+    {
+      "id": "R-SHOP-MEMOIR",
+      "source": "https://www.sohu.com/a/225387012_391114",
+      "grade": "R",
+      "visible": "Article authors write as alumni: shop below canteen; same article mirrored on Sina2018-03-13",
+      "notVisible": "Not a photo of shop; exact layout/date/signage unknown",
+      "reviewedAt": "2026-09-10",
+      "photographedAt": null,
+      "measured": null,
+      "historicalGeometry": "parent relation alongsideexistingR4 and userA",
+      "publishedAt": "2018-03-12",
+      "duplicateGroup": "100-photos-memoir"
+    },
+    {
+      "id": "P-NOT-SHOP",
+      "source": "https://k.sina.com.cn/article_6430641585_17f4bcdb1001003x9v.html / S03-031/032",
+      "grade": "P",
+      "visible": "031canteen external entry;032dining hall",
+      "notVisible": "Neither is identified shop facade/interior",
+      "reviewedAt": "2026-09-10",
+      "photographedAt": null,
+      "measured": null,
+      "historicalGeometry": false
+    },
+    {
+      "id": "SEARCH-NO-METRIC",
+      "source": "Public searches: 雅礼中学 篮球场 台阶 / 篮球场 围栏 / 小卖部 楼下; Commons file/category",
+      "grade": "R",
+      "visible": "Related memoir and existing pictures located; many unrelated/new-campus results rejected",
+      "notVisible": "No independent historical surveyed court rise, exact flag location or shop facade found",
+      "reviewedAt": "2026-09-10",
+      "photographedAt": null,
+      "measured": null,
+      "historicalGeometry": false
+    },
+    {
+      "id": "H-SELECTED",
+      "source": "data/m11a/patch04/input.json",
+      "grade": "H",
+      "visible": "Court+0.30; flag feature toward field5.5; wider paved boundary; neutral shop recess",
+      "notVisible": "All remain working dimensions and require P04 alumni review",
+      "reviewedAt": "2026-09-10",
+      "photographedAt": null,
+      "measured": null,
+      "historicalGeometry": "working only"
+    }
+  ],
+  "rights": "Photo copies are research references only; not used as textures or redistributed in viewer/review."
+}

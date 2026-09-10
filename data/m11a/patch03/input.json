@@ -1,0 +1,360 @@
+{
+  "version": "M1.1-A.Patch03",
+  "status": "COMPLETE / ALUMNI_APPROVED",
+  "baseCommit": "1ea94b515ead173d51043283786e91d1ac3870ba",
+  "frozenBranch": "baseline/m1.0-r4",
+  "frozenCommit": "43afdd725c884ba17534372195b026bc977fddd5",
+  "issues": [
+    22,
+    23
+  ],
+  "surveyVerified": false,
+  "measured": null,
+  "numericalEvidence": "H: all dimensions/elevations/grades/access locations are working hypotheses, not measurements",
+  "datum": {
+    "id": "01",
+    "description": "Main gate relative zero; not altitude",
+    "absoluteElevation": null
+  },
+  "entrance": {
+    "evidenceDirection": "A",
+    "evidenceNumbers": "H",
+    "selected": "B",
+    "startZ": 2,
+    "endZ": 44,
+    "run": 42,
+    "rise": 3,
+    "averageGrade": 0.07142857142857142,
+    "knots": [
+      [
+        0,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        10,
+        0.32
+      ],
+      [
+        34,
+        2.6
+      ],
+      [
+        44,
+        3
+      ]
+    ],
+    "candidates": [
+      {
+        "id": "A",
+        "run": 36,
+        "rise": 2.16,
+        "grade": 0.06,
+        "decision": "reject: improvement modest against explicit stronger-memory feedback; no evidence uniquely selects it"
+      },
+      {
+        "id": "B",
+        "run": 42,
+        "rise": 3,
+        "grade": 0.07142857142857142,
+        "decision": "working: substantial longer/steeper profile, settles before frozen gym junction z45; no X/Z shift"
+      },
+      {
+        "id": "C",
+        "run": 54,
+        "rise": 4.05,
+        "grade": 0.075,
+        "decision": "reject: uphill extends beyond gym junction, forces more complex frontcourt transition; no evidence warrants extra rise"
+      }
+    ],
+    "segments": [
+      {
+        "start": 2,
+        "end": 10,
+        "run": 8,
+        "rise": 0.32,
+        "grade": 0.04
+      },
+      {
+        "start": 10,
+        "end": 34,
+        "run": 24,
+        "rise": 2.28,
+        "grade": 0.095
+      },
+      {
+        "start": 34,
+        "end": 44,
+        "run": 10,
+        "rise": 0.4,
+        "grade": 0.04
+      }
+    ],
+    "upperLanding": [
+      44,
+      80
+    ],
+    "note": "Segment junctions are engineering H breakpoints, not photo-resolved historical breakpoints; no vertical exaggeration."
+  },
+  "field": {
+    "evidenceRelation": [
+      "A",
+      "P"
+    ],
+    "evidenceNumbers": "H",
+    "upper": 3,
+    "depression": 1.2,
+    "lower": 1.8,
+    "candidateDrops": [
+      0.6,
+      1.2,
+      1.8
+    ],
+    "bounds": [
+      25,
+      42,
+      121,
+      188
+    ],
+    "rostrumBay": [
+      14,
+      94,
+      25,
+      126
+    ],
+    "rostrumBase": 1.8,
+    "rostrumTop": 3,
+    "playingSurfaceTilt": 0,
+    "note": "08/23/10/rear-track XZ unchanged. Independent H pit boundary includes rostrum-side recess; 1.20m is not inferred as an exact measurement from images. Rostrum top retains R4 1.20m body, now at upper circulation level. Flag platform14 is separate."
+  },
+  "gym": {
+    "forecourt": 3,
+    "floor": 3.6,
+    "gallery": 7.8,
+    "roofPeak": 22.8,
+    "note": "All H; P02 local dimensions unchanged; music24 uses exactly same floor3.60. Front apron does not follow sunken field."
+  },
+  "barrier": {
+    "retainingThickness": 0.24,
+    "edgeCapHeight": 0.1,
+    "railingHeight": 1.05,
+    "fenceHeight": 1.05,
+    "postSpacing": 2.4,
+    "evidence": "H neutral abstraction; no copied modern fence styling; wall exposed height follows actual ground difference, not a 2m enclosure",
+    "openings": [
+      {
+        "id": "WEST",
+        "side": "west",
+        "axis": 25,
+        "from": 58,
+        "to": 62
+      },
+      {
+        "id": "REAR",
+        "side": "rear",
+        "axis": 188,
+        "from": 80,
+        "to": 84
+      },
+      {
+        "id": "EAST",
+        "side": "east",
+        "axis": 121,
+        "from": 166,
+        "to": 170
+      },
+      {
+        "id": "ROSTRUM",
+        "side": "bay-west",
+        "axis": 14,
+        "from": 102,
+        "to": 118
+      }
+    ]
+  },
+  "access": [
+    {
+      "id": "P03-WEST",
+      "kind": "stairs",
+      "start": [
+        27.8,
+        60
+      ],
+      "end": [
+        25,
+        60
+      ],
+      "width": 4,
+      "steps": 8,
+      "rise": 1.2,
+      "base": 1.8,
+      "top": 3,
+      "approach": [
+        [
+          3.5,
+          60
+        ],
+        [
+          25,
+          60
+        ]
+      ],
+      "landing": [
+        [
+          27.8,
+          60
+        ],
+        [
+          30,
+          60
+        ]
+      ],
+      "evidence": "H additive access geometry; bottom-to-top start/end"
+    },
+    {
+      "id": "P03-REAR",
+      "kind": "stairs",
+      "start": [
+        82,
+        185.2
+      ],
+      "end": [
+        82,
+        188
+      ],
+      "width": 4,
+      "steps": 8,
+      "rise": 1.2,
+      "base": 1.8,
+      "top": 3,
+      "approach": [
+        [
+          82,
+          188
+        ],
+        [
+          82,
+          198
+        ]
+      ],
+      "landing": [
+        [
+          82,
+          185.2
+        ],
+        [
+          82,
+          184
+        ]
+      ],
+      "evidence": "H rear access clear of sandpit23"
+    },
+    {
+      "id": "P03-EAST",
+      "kind": "ramp",
+      "bounds": [
+        121,
+        148,
+        125,
+        170
+      ],
+      "start": [
+        123,
+        148
+      ],
+      "end": [
+        123,
+        166
+      ],
+      "run": 18,
+      "width": 4,
+      "rise": 1.2,
+      "top": 3,
+      "base": 1.8,
+      "grade": 0.06666666666666667,
+      "approach": [
+        [
+          129,
+          148
+        ],
+        [
+          123,
+          148
+        ]
+      ],
+      "landing": [
+        [
+          123,
+          168
+        ],
+        [
+          118,
+          168
+        ]
+      ],
+      "evidence": "H longitudinal side ramp; no statutory accessibility certification"
+    },
+    {
+      "id": "P03-ROSTRUM",
+      "kind": "stairs",
+      "start": [
+        24.8,
+        110
+      ],
+      "end": [
+        22,
+        110
+      ],
+      "width": 3,
+      "steps": 8,
+      "rise": 1.2,
+      "base": 1.8,
+      "top": 3,
+      "approach": [
+        [
+          12,
+          110
+        ],
+        [
+          16,
+          110
+        ]
+      ],
+      "landing": [
+        [
+          24.8,
+          110
+        ],
+        [
+          28,
+          110
+        ]
+      ],
+      "evidence": "H stage-to-field access; upper rear deck at3.00"
+    }
+  ],
+  "renderSurfaceOffset": 0.04,
+  "maxRoadGrade": 0.12,
+  "history": {
+    "target": [
+      2006,
+      2010
+    ],
+    "modernMaterialsImported": false,
+    "unknowns": [
+      "exact vertical survey",
+      "exact slope breakpoints",
+      "historical railing sections",
+      "number and precise locations of field access openings",
+      "stage-side terrain outline"
+    ]
+  },
+  "display": {
+    "exaggeration": 1,
+    "comparison": "Patch02 / Patch03 vertical schemes only; shared current X/Z and gym geometry, not full historical version rollback"
+  },
+  "alumniReview": "APPROVED"
+}

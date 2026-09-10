@@ -1,0 +1,25 @@
+{
+  "version": "M1.1-B.Batch01",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "issue": 27,
+  "targetYears": [2006, 2010],
+  "acceptedBase": "M1.1-A.Patch04",
+  "numericEvidence": "H",
+  "main": {
+    "id": "15", "floorCount": 4, "storyHeight": 3.8,
+    "corridorWidth": 2.1, "westReturnWidth": 3,
+    "wallThickness": 0.24, "slabThickness": 0.18,
+    "bayCount": 14, "centralWidth": 8.4,
+    "windowWidth": 1.45, "windowSill": 0.95, "windowHeight": 1.95,
+    "frameWidth": 0.07, "recess": 0.18,
+    "frontDoorWidth": 2.8, "rearDoorWidth": 2.8, "sideDoorWidth": 2.4,
+    "doorHeight": 2.7, "balustradeHeight": 0.94,
+    "terrace": {"level": 4, "rearWallZ": 1.8, "guardHeight": 1.05, "doorXs": [-32, 0, 32]},
+    "cupola": {"enabled": true, "center": [0,-0.8], "radius": 2.25, "drumHeight": 0.72, "capHeight": 1.7},
+    "material": "old-light-render; not modern orange-red main block"
+  },
+  "toilet": {"id": "25", "reuseContinuousR4Body": true, "highVentSill": 1.9, "highVentHeight": 0.72, "highVentWidth": 1.6, "parapetHeight": 0.32},
+  "bridge": {"railingHeight": 1.05, "postSpacing": 1.5, "keepGroundCrossingOpen": true},
+  "inScope": ["15 exterior shell", "25 continuous shell", "per-floor bridge/gallery/door paths", "fourth-floor rear terrace"],
+  "excluded": ["modern red main block", "full classroom interiors", "interior stair controller", "gameplay", "private residence interiors"]
+}
