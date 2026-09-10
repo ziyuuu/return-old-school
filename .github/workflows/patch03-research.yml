@@ -1,0 +1,45 @@
+name: Retrieve Patch03 reference audit and pinned toolchain
+on:
+  push:
+    paths: ['.github/workflows/patch03-research.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  retrieve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Pinned dependency archive for offline local QA
+        run: |
+          cd apps/campus
+          npm ci --no-audit --no-fund
+          tar -czf /tmp/patch03-node-modules.tgz node_modules
+      - name: Fetch only architectural research references, with failure records
+        run: |
+          python -m pip install requests beautifulsoup4 pillow
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('tools/collect_restoration_references.py')
+          s=p.read_text()
+          s=s.replace("(sid=='S03' and any(k in url for k in SINA_KEYS))", "(sid=='S03' and (number <= 40 or number in (47,49,62,63,64,65)))")
+          exec(compile(s,str(p),'exec'))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Patch03-reference-retrieval
+          path: research-download/
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Patch03-pinned-node-modules
+          path: /tmp/patch03-node-modules.tgz
+          retention-days: 7
