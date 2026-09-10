@@ -1,12 +1,13 @@
-name: Build and verify M1.1-A terrain
+name: Build and verify M1.1-A Patch02
 on:
   workflow_dispatch:
   push:
     paths:
       - 'apps/campus/**'
-      - 'data/m11a/**'
-      - 'tools/m11a/**'
-      - 'tests/m11a/**'
+      - 'data/m11a/patch02/**'
+      - 'tools/m11a/patch02/**'
+      - 'tests/m11a/patch02/**'
+      - '.github/patch02/**'
       - '.github/workflows/m11a-build.yml'
 permissions:
   contents: write
@@ -16,7 +17,7 @@ concurrency:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 18
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -25,45 +26,42 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Assert frozen R4 and integrate source-reviewed vertical layer
-        run: |
-          python tools/m11a/apply-stage.py
-          python tools/m11a/refine-review.py
-          python tools/m11a/apply-source-findings.py
-      - name: Locked runtime and frozen/new regressions
+      - name: Materialize auditable source once and verify frozen baseline
+        run: python tools/m11a/patch02/materialize.py
+      - name: Build pinned runtime and run old/new regressions
         run: |
           set -o pipefail
-          mkdir -p qa/m11a
+          mkdir -p qa/m11a-p02
           cd apps/campus
           npm ci
-          node --test ../../tests/m10/*.test.mjs ../../tests/m11a/*.test.mjs | tee ../../qa/m11a/unit-tests.txt
-          npm run build | tee ../../qa/m11a/build.txt
+          node --test ../../tests/m10/*.test.mjs ../../tests/m11a/*.test.mjs ../../tests/m11a/patch02/*.test.mjs | tee ../../qa/m11a-p02/unit-tests.txt
+          npm run build | tee ../../qa/m11a-p02/build.txt
           cd ../..
           node tools/m11a/build-standalone.mjs
-          node tools/m11a/export.mjs
-      - name: Install actual browser without unrelated apt index refresh
+          node tools/m11a/patch02/export.mjs
+      - name: Install real browser and CJK rendering support
         run: |
           python -m pip install playwright==1.62.0
           python -m playwright install chromium
           sudo apt-get -o Acquire::Retries=3 install -y fonts-noto-cjk
-      - name: Verify real ground, entrance slope, roads, steps and all toilet floors
-        run: python tools/m11a/capture.py
-      - name: Package verified terrain and study documents
-        run: python tools/m11a/package.py
+      - name: Check actual uphill surface, loop, gym doorway and spectator stairs
+        run: python tools/m11a/patch02/capture.py
+      - name: Package tested HTML, same-data plans and review
+        run: python tools/m11a/patch02/package.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: Yali-M1.1-A-review
+          name: Yali-M1.1-A-Patch02
           path: |
-            artifacts/m11a/
-            qa/m11a/
+            artifacts/m11a-p02/
+            qa/m11a-p02/
           retention-days: 60
           if-no-files-found: error
-      - name: Commit verified current source and generated terrain evidence
+      - name: Commit only verified readable source, data and browser evidence
         if: success()
         run: |
           git config user.name 'return-old-school validation bot'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add apps/campus/src apps/campus/index.html tools/m11a tests/m11a data/m11a docs/m11a qa/m11a
-          git diff --cached --quiet || git commit -m 'build: retain source-reviewed M1.1-A entrance slope and actual WebGL terrain evidence'
+          git add apps/campus/src apps/campus/index.html data/m11a/patch02 tools/m11a/patch02 tests/m11a/patch02 docs/m11a/patch02 qa/m11a-p02
+          git diff --cached --quiet || git commit -m 'fix: retain verified Patch02 slope, gym frontage, spectator staircase and loop evidence'
           git push origin HEAD:main
