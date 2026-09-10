@@ -2,7 +2,7 @@
 
 状态：工程实现通过；校友审阅待确认，非测绘级。
 
-单元/反例回归：329项通过。浏览器：34项通过。
+单元/反例回归：329项通过。浏览器：35项通过。
 
 新旧布局分离，R4冻结文件不覆写；有效视图只应用#19授权的体育馆入口与环路例外。
 
@@ -18,6 +18,7 @@
 - [x] real main-road front doorway
 - [x] old north doorway closed
 - [x] shared music contact remains open
+- [x] actual gym height matches H parameter
 - [x] camera top
 - [x] camera overview
 - [x] camera terrain-entrance

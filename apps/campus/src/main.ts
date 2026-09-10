@@ -27,8 +27,8 @@ const cameraPresets:any={...layout.cameraPresets,
  'gym-p02-front':{label:'体育馆正门 · 前坪 / 主路',position:[16,8.2,46],target:[-37,9,45]},
  'gym-p02-oblique':{label:'体育馆折面 · 左梯与前坪',position:[9,12,95],target:[-41,9,46]},
  'gym-p02-loop':{label:'绕馆环路 · 避开音乐楼及泳池',position:[-140,110,118],target:[-38,0,49]},
- 'gym-p02-stair':{label:'正门左侧外梯 · 通观赛层',position:[-17,7.5,69],target:[-31,4.7,63]},
- 'gym-p02-gallery':{label:'观赛层平台 · 实体楼梯顶端',position:[-36,7.5,63],target:[-45,6.4,46]},
+ 'gym-p02-stair':{label:'正门左侧外梯 · 通观赛层',position:[-9,11,80],target:[-31,4.7,63]},
+ 'gym-p02-gallery':{label:'观赛层平台 · 实体楼梯顶端',position:[-36,7.5,63],target:[-46,1.6,45]},
  'terrain-library':{label:'图书馆入口 · 3级H台阶',position:[68,3.8,232],target:[75,1.1,246]},
  'terrain-longya':{label:'长雅入口 · 6级H台阶',position:[120,4.3,236],target:[129,1.8,250]},
  'terrain-field':{label:'后缘跑道与前庭 · H地坪过渡',position:[120,5,192],target:[94,.2,183]},
@@ -56,13 +56,13 @@ const controls=new OrbitControls(camera,renderer.domElement);
 controls.enableDamping=true;controls.dampingFactor=.1;controls.minDistance=8;controls.maxDistance=900;controls.maxPolarAngle=Math.PI*.495;
 const topControls=new OrbitControls(topCamera,renderer.domElement);
 topControls.enableRotate=false;topControls.enableDamping=true;topControls.enabled=false;topControls.minZoom=.45;topControls.maxZoom=8;
-const sun=new THREE.DirectionalLight(0xffffff,3);sun.position.set(-100,260,-80);sun.target.position.set(45,0,135);sun.castShadow=true;
+const sun=new THREE.DirectionalLight(0xffffff,3);sun.position.set(190,260,-80);sun.target.position.set(45,0,135);sun.castShadow=true;
 sun.shadow.mapSize.set(2048,2048);Object.assign(sun.shadow.camera,{left:-250,right:250,top:250,bottom:-250,near:1,far:900});sun.shadow.normalBias=.18;sun.shadow.bias=-.00015;
 scene.add(sun,sun.target);
-const sunDirection=new THREE.Vector3(-145,260,-215).normalize();
+const sunDirection=new THREE.Vector3(145,260,-215).normalize();
 function setReviewShadow(target:number[],detail=false){
  if(detail){sun.target.position.set(target[0],target[1],target[2]);sun.position.copy(sun.target.position).addScaledVector(sunDirection,365);}
- else{sun.position.set(-100,260,-80);sun.target.position.set(45,0,135);}
+ else{sun.position.set(190,260,-80);sun.target.position.set(45,0,135);}
  const extent=detail?38:250;
  Object.assign(sun.shadow.camera,{left:-extent,right:extent,top:extent,bottom:-extent,near:1,far:900});
  sun.shadow.normalBias=detail?.025:.18;sun.shadow.bias=detail?-.000035:-.00015;

@@ -841,6 +841,11 @@
       "detail": []
     },
     {
+      "name": "actual gym height matches H parameter",
+      "passed": true,
+      "detail": null
+    },
+    {
       "name": "camera top",
       "passed": true,
       "detail": null
@@ -970,6 +975,6 @@
     "zero-datum-comparison.png",
     "mobile.png"
   ],
-  "source_input": "89df1793f5ff887a88935779c18e1b4a633818be",
+  "source_input": "09fb4dfab1a812e5bc8ca272bd7c7982761b096c",
   "environment": "Chromium software WebGL, not device performance certification"
 }

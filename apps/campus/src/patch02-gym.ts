@@ -48,10 +48,10 @@ export function buildPatch02Gym(f:any,g:THREE.Group,api:any,p:any):boolean{
  for(const sign of [-1,1]){
   const u=sign*20.72;
   prism('fold-side-'+sign,[[u,10.4,0],[u,p.gym.height,0],[u,p.gym.roofRearHeight,41.8],[u,4.8,41.8]],[sign*.28,0,0]);
-  prism('fold-front-'+sign,[[sign*15,10.4,.4],[sign*15,18,.4],[sign*20.72,19.2,0],[sign*20.72,5.4,0]],[0,0,.28]);
+  prism('fold-front-'+sign,[[sign*15,10.4,.4],[sign*15,p.gym.signTop,.4],[sign*20.72,p.gym.height,0],[sign*20.72,5.4,0]],[0,0,.28]);
  }
- const us=[-20.72,-15,15,20.72],ys=[19.2,18,18,19.2];
- for(let i=0;i<3;i++)prism('roof-'+i,[[us[i],ys[i],.4],[us[i+1],ys[i+1],.4],[us[i+1],11.8,41.8],[us[i],11.8,41.8]],[0,-.28,0],0);
+ const us=[-20.72,-15,15,20.72],ys=[p.gym.height,p.gym.signTop,p.gym.signTop,p.gym.height];
+ for(let i=0;i<3;i++)prism('roof-'+i,[[us[i],ys[i],.4],[us[i+1],ys[i+1],.4],[us[i+1],p.gym.roofRearHeight,41.8],[us[i],p.gym.roofRearHeight,41.8]],[0,-.28,0],0);
  // Lower side wall openings are not confused with the former wrong north entrance.
  B('north-lower-wall',.4,5.1,41.8,20.8,.04,20.9,0,'lower-wall');
  B('rear-wall',41.6,11.5,.4,0,.04,41.6,0,'lower-wall');
