@@ -1,0 +1,16 @@
+import {build} from '../../../apps/campus/node_modules/esbuild/lib/main.js';
+import fs from 'node:fs';import path from 'node:path';import{fileURLToPath}from'node:url';
+import{applyPatch02}from'../../../apps/campus/src/patch02-core.mjs';
+import{buildPatch03Model}from'../../../apps/campus/src/patch03-core.mjs';
+import{buildPatch04Model}from'../../../apps/campus/src/patch04-core.mjs';
+import{applyB01R2,buildB01R2Model,b01R2Checks}from'../../../apps/campus/src/b01-r2-core.mjs';
+const root=fileURLToPath(new URL('../../../',import.meta.url)),out=path.join(root,'artifacts/m11b-b01-r2');fs.mkdirSync(out,{recursive:true});
+const read=p=>JSON.parse(fs.readFileSync(path.join(root,p))),q=applyPatch02(read('data/m10/campus-layout.json'),read('data/m11a/terrain-input.json'),read('data/m11a/patch02/input.json')),p=read('data/m11b/batch01-r2/input.json'),e=applyB01R2(q.layout,q.terrain,read('data/m11a/patch04/input.json'),p),t=buildPatch04Model(buildPatch03Model(e.layout,e.spec,read('data/m11a/patch03/input.json')),e.site),m=buildB01R2Model(e.layout,t,p),checks=b01R2Checks(q.layout,e.layout,m,p);
+if(!checks.passed)throw Error(JSON.stringify(checks));
+const result=await build({entryPoints:[path.join(root,'apps/campus/src/main.ts')],bundle:true,format:'iife',target:'es2022',minify:true,write:false,outfile:'bundle.js',legalComments:'inline'}),js=result.outputFiles.find(f=>f.path.endsWith('.js')).text.replace(/<\/script/gi,'<\\/script'),css=result.outputFiles.find(f=>f.path.endsWith('.css')).text;
+const html=fs.readFileSync(path.join(root,'apps/campus/index.html'),'utf8').replace('</head>',()=>`<style>${css}</style></head>`).replace('<script type="module" src="/src/main.ts"></script>',()=>`<script>${js}</script>`);
+fs.writeFileSync(path.join(out,'Yali_M1_1_B_B01_R2_Viewer.html'),html);
+fs.writeFileSync(path.join(out,'THIRD_PARTY_NOTICES.txt'),'Three.js r180 / MIT\n'+fs.readFileSync(path.join(root,'apps/campus/node_modules/three/LICENSE'),'utf8'));
+const data='data/m11b/batch01-r2/';
+for(const [name,obj]of [['resolved-buildings.json',m.exportData()],['resolved-layout.json',e.layout],['changes.json',e.changes],['checks.json',checks]])fs.writeFileSync(path.join(root,data,name),JSON.stringify(obj,null,2)+'\n');
+console.log('Standalone',Buffer.byteLength(html),'bytes; parts',m.parts.length,'checks',checks.results.length);
