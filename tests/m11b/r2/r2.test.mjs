@@ -1,0 +1,31 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import crypto from 'node:crypto';
+import {applyPatch02} from '../../../apps/campus/src/patch02-core.mjs';
+import {buildPatch03Model} from '../../../apps/campus/src/patch03-core.mjs';
+import {buildPatch04Model} from '../../../apps/campus/src/patch04-core.mjs';
+import {applyB01R2,buildB01R2Model,b01R2Checks}from'../../../apps/campus/src/b01-r2-core.mjs';
+const read=p=>JSON.parse(fs.readFileSync(p)),q=applyPatch02(read('data/m10/campus-layout.json'),read('data/m11a/terrain-input.json'),read('data/m11a/patch02/input.json')),p=read('data/m11b/batch01-r2/input.json'),site=read('data/m11a/patch04/input.json'),p3=read('data/m11a/patch03/input.json');
+const effective=()=>applyB01R2(q.layout,q.terrain,site,p),terrain=e=>buildPatch04Model(buildPatch03Model(e.layout,e.spec,p3),e.site),e=effective(),t=terrain(e),model=buildB01R2Model(e.layout,t,p),report=b01R2Checks(q.layout,e.layout,model,p);
+for(const c of report.results)test(c.id,()=>assert.equal(c.passed,true,JSON.stringify(c)));
+test('R2 pure builders preserve original input and approved P4 flag position',()=>{const before=JSON.stringify([q,site,p3,p]);effective();assert.equal(JSON.stringify([q,site,p3,p]),before);assert.deepEqual(site.forecourt.flag.center,[64,192.5]);});
+test('R2 exact protected file hashes unchanged',()=>{const manifest=read('data/m11b/batch01-r2/protected-hashes.json');for(const [f,sha]of Object.entries(manifest))assert.equal(crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex'),sha,f);});
+test('R2 approved ground/elevations retained at grid and site landmarks',()=>{const old=buildPatch04Model(buildPatch03Model(q.layout,q.terrain,p3),site);for(let x=-100;x<200;x+=5)for(let z=0;z<290;z+=5)assert.ok(Math.abs(t.groundHeight(x,z)-old.groundHeight(x,z))<1e-7,`${x},${z}`);for(const id of ['03','24','08','06','05','28','23','10','11','12','15','25','18'])assert.equal(t.anchors[id].floor,old.anchors[id].floor,id);});
+test('R2 library stairs translate only in X',()=>{const before=q.terrain.stairs.find(s=>s.facilityId==='18'),after=e.spec.stairs.find(s=>s.facilityId==='18');assert.deepEqual(after.start,[before.start[0]-2,before.start[1]]);assert.deepEqual(after.end,[before.end[0]-2,before.end[1]]);assert.equal(after.steps,before.steps);assert.equal(after.rise,before.rise);});
+test('R2 toilet five complete floors and ten end doors with shared gap',()=>{assert.equal(e.layout.toilet25.floors.length,5);assert.equal(e.layout.entrances.filter(v=>v.kind==='toilet-door').length,10);for(const l of e.layout.toilet25.floors){assert.equal(l.hasFullSlab,true);assert.deepEqual(l.doorOffsetsZ,[-5.1,5.1]);}});
+function recenter(m){const origin=id=>id==='bridge'?[0,m.toiletFloor,0]:[e.layout.facilities.find(f=>f.id===id).position[0],id==='15'?m.mainFloor:m.toiletFloor,e.layout.facilities.find(f=>f.id===id).position[2]];m.worldParts=m.parts.map(q=>({...q,center:q.center.map((v,i)=>v+origin(q.owner)[i])}));}
+function fault(name,mutate){test('FAULT '+name,()=>{const m=structuredClone(model.exportData());m.p=structuredClone(p);mutate(m);recenter(m);assert.equal(b01R2Checks(q.layout,e.layout,m,p).passed,false);});}
+fault('four-storey regression',m=>m.parts=m.parts.filter(q=>q.owner!=='15'||q.level!==5));
+fault('corridor returned to front edge',m=>m.spaces.find(s=>s.kind==='corridor').bounds=[-49,-7,49,-4.4]);
+fault('fourth floor has rear classroom instead of terrace',m=>m.spaces.push({level:4,row:'rear',kind:'classroom'}));
+fault('upper full-depth floor blocks terrace sky',m=>{const slab=m.parts.find(q=>q.id==='R2-15-L5-floor');slab.size[2]=14;slab.center[2]=0;});
+fault('missing fourth terrace slab',m=>m.parts=m.parts.filter(q=>q.id!=='R2-15-L4-floor'));
+fault('remove central projection',m=>m.parts=m.parts.filter(q=>q.role!=='central-functional-front'));
+fault('add windows to blank stair band',m=>m.parts.push({id:'badglass',owner:'15',level:2,role:'glazing',shape:'box',size:[1.5,2,.04],center:[46,5.5,-6.9]}));
+fault('remove side portico roof',m=>m.parts=m.parts.filter(q=>q.role!=='porch-roof'));
+fault('axis array loses library',m=>m.axis.pop());
+fault('flag axis drifts',m=>m.axis[1].x-=2);
+fault('fifth toilet slab missing',m=>m.parts=m.parts.filter(q=>!(q.owner==='25'&&q.level===5&&q.role==='slab')));
+fault('bridge raised off floor',m=>m.parts.find(q=>q.id==='15-25-L05').center[1]+=.3);
+for(let l=1;l<=5;l++)for(const [name,x,z]of [['bridge-gap',-7,224],['end-A',-9.2,218.9],['end-B',-9.2,229.1]])fault(`L${l} blocked ${name}`,m=>m.parts.push({id:`bad-${l}-${name}`,owner:'bridge',level:l,role:'wall',shape:'box',center:[x,(l-1)*3.8+1.3,z],size:[.25,2.6,2.3]}));
+for(const id of ['03','17','20','08'])test('FAULT unrelated facility moved '+id,()=>{const a=effective();a.layout.facilities.find(f=>f.id===id).position[0]+=1;const m=buildB01R2Model(a.layout,terrain(a),p);assert.equal(b01R2Checks(q.layout,a.layout,m,p).passed,false);});
+for(const type of ['narrow','remove-edge','move-unrelated-node'])test('FAULT road '+type,()=>{const a=effective();if(type==='narrow')a.layout.navigation.edgeWidths['gate|junction-gym']=3;else if(type==='remove-edge')a.layout.navigation.edges.pop();else a.layout.navigation.nodes['side-front-turn'][0]+=3;const m=buildB01R2Model(a.layout,terrain(a),p);assert.equal(b01R2Checks(q.layout,a.layout,m,p).passed,false);});
+test('FAULT library centre moved from confirmed axis',()=>{const a=effective();a.layout.facilities.find(f=>f.id==='18').position[0]=75;const m=buildB01R2Model(a.layout,terrain(a),p);assert.equal(b01R2Checks(q.layout,a.layout,m,p).passed,false);});
