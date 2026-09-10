@@ -1,0 +1,25 @@
+{
+  "milestone": "M1.0",
+  "status": "COMPLETE_FROZEN",
+  "freeze_date": "2026-09-10",
+  "baseline_branch": "baseline/m1.0-r4",
+  "verified_source_commit": "64360bb0453c17d2077894da2f807bf0b83e9ed5",
+  "handoff_commit": "f2fec5ceaf6e42c668a77aab46f46bcea4575ddf",
+  "verification": {
+    "workflow_run_id": 34431211575,
+    "artifact_id": 10134601797,
+    "unit_and_regression_tests": 118,
+    "browser_checks": 47,
+    "result": "pass"
+  },
+  "scope": "spatial_baseline_only",
+  "survey_grade": false,
+  "evidence_levels": ["A", "P", "R", "H"],
+  "rules": {
+    "main_development_continues_on": "main",
+    "baseline_branch_is_reference_only": true,
+    "silent_overwrite_forbidden": true,
+    "reopen_only_for_baseline_breaking_evidence": true
+  },
+  "next_stage": "M1.1"
+}
