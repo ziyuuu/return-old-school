@@ -1,0 +1,24 @@
+name: Export Batch01 continuation source
+on:
+  push:
+    paths: ['.github/workflows/b01-resume-export.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: |
+          git archive HEAD -o /tmp/current-main.tar
+          git bundle create /tmp/current-main.bundle --all
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Batch01-continuation-source
+          path: |
+            /tmp/current-main.tar
+            /tmp/current-main.bundle
+          retention-days: 7
