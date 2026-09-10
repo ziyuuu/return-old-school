@@ -1,0 +1,107 @@
+{
+  "rows": [
+    {
+      "id": "ST-GYM",
+      "step": 1,
+      "expected": 0.99,
+      "actual": 0.9900000029802322
+    },
+    {
+      "id": "ST-GYM",
+      "step": 2,
+      "expected": 1.14,
+      "actual": 1.1400000059604645
+    },
+    {
+      "id": "ST-GYM",
+      "step": 3,
+      "expected": 1.29,
+      "actual": 1.2899999940395355
+    },
+    {
+      "id": "ST-GYM",
+      "step": 4,
+      "expected": 1.44,
+      "actual": 1.4400000119209289
+    },
+    {
+      "id": "ST-MUSIC",
+      "step": 1,
+      "expected": 0.99,
+      "actual": 0.9900000029802357
+    },
+    {
+      "id": "ST-MUSIC",
+      "step": 2,
+      "expected": 1.14,
+      "actual": 1.140000005960468
+    },
+    {
+      "id": "ST-MUSIC",
+      "step": 3,
+      "expected": 1.29,
+      "actual": 1.289999994039539
+    },
+    {
+      "id": "ST-MUSIC",
+      "step": 4,
+      "expected": 1.44,
+      "actual": 1.4400000119209253
+    },
+    {
+      "id": "ST-LONGYA",
+      "step": 1,
+      "expected": 1.44,
+      "actual": 1.4400000029802322
+    },
+    {
+      "id": "ST-LONGYA",
+      "step": 2,
+      "expected": 1.59,
+      "actual": 1.5900000059604644
+    },
+    {
+      "id": "ST-LONGYA",
+      "step": 3,
+      "expected": 1.74,
+      "actual": 1.7399999940395356
+    },
+    {
+      "id": "ST-LONGYA",
+      "step": 4,
+      "expected": 1.8900000000000001,
+      "actual": 1.890000011920929
+    },
+    {
+      "id": "ST-LONGYA",
+      "step": 5,
+      "expected": 2.04,
+      "actual": 2.04
+    },
+    {
+      "id": "ST-LONGYA",
+      "step": 6,
+      "expected": 2.19,
+      "actual": 2.1899999880790713
+    },
+    {
+      "id": "ST-LIBRARY",
+      "step": 1,
+      "expected": 1.44,
+      "actual": 1.4400000029802322
+    },
+    {
+      "id": "ST-LIBRARY",
+      "step": 2,
+      "expected": 1.59,
+      "actual": 1.5900000059604644
+    },
+    {
+      "id": "ST-LIBRARY",
+      "step": 3,
+      "expected": 1.74,
+      "actual": 1.7399999940395356
+    }
+  ],
+  "bad": []
+}

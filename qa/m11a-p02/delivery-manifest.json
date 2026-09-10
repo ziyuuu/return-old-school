@@ -1,0 +1,37 @@
+{
+  "version": "M1.1-A.Patch02",
+  "source_input": "89df1793f5ff887a88935779c18e1b4a633818be",
+  "passed": true,
+  "unit_tests": 329,
+  "browser_checks": 34,
+  "files": {
+    "Yali_M1_1_A_Patch02_Masterplan.svg": {
+      "bytes": 9141,
+      "sha256": "a68461a039856fb046ca822b0304976298631a34fee87a308912d88fa02c6563"
+    },
+    "Yali_M1_1_A_Patch02_Plan.md": {
+      "bytes": 3847,
+      "sha256": "0c3e2136b3a6179440496ffd7019368636e20d85dd156dbe98f968507e438372"
+    },
+    "Yali_M1_1_A_Patch02_Review.html": {
+      "bytes": 885911,
+      "sha256": "ecbf77e925e100681fc85ff5f15712004e157e0af071e3f4a94320fd19d1d5b3"
+    },
+    "Yali_M1_1_A_Patch02_Workspace.zip": {
+      "bytes": 1285698,
+      "sha256": "2f1242b2f1b220ea1f57093dbbc36dbffa38cdd69cd99fb6173a0090530e9346"
+    },
+    "Yali_M1_1_A_Patch02_Regression_Checklist.md": {
+      "bytes": 1592,
+      "sha256": "a0de0bd29ac757d30793de0d429a95a6e68dae6815aa00436ed28b03df1b9ef5"
+    },
+    "Yali_M1_1_A_Patch02_Viewer.html": {
+      "bytes": 665527,
+      "sha256": "fb4756a71e489480792f26e8228eba581887b417d9051badaf541bbac0c7b8ef"
+    },
+    "Yali_M1_1_A_Patch02_Height_Study.svg": {
+      "bytes": 1747,
+      "sha256": "ffdb4d88896dd70ead547527bc687809588e00cb7b3aad95c80b8ace81c5824a"
+    }
+  }
+}

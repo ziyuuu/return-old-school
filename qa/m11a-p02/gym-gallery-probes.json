@@ -1,0 +1,758 @@
+{
+  "support": [
+    {
+      "point": [
+        -24.5,
+        1.44,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-base-slab",
+          "y": 1.4400000035762786,
+          "role": "floor"
+        },
+        {
+          "name": "P02-GYM-spectator-bottom-landing",
+          "y": 1.4399999982118605,
+          "role": "floor"
+        },
+        {
+          "name": "M11A-foundation-03",
+          "y": 1.4399999868869782,
+          "role": "podium"
+        }
+      ]
+    },
+    {
+      "point": [
+        -25.665,
+        1.5899999999999999,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-1",
+          "y": 1.5900000029802321,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-1",
+          "y": 1.5900000029802321,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-base-slab",
+          "y": 1.4400000035762786,
+          "role": "floor"
+        },
+        {
+          "name": "M11A-foundation-03",
+          "y": 1.4399999868869782,
+          "role": "podium"
+        }
+      ]
+    },
+    {
+      "point": [
+        -25.995,
+        1.7399999999999998,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-2",
+          "y": 1.7400000059604643,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-2",
+          "y": 1.7400000059604643,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-base-slab",
+          "y": 1.4400000035762786,
+          "role": "floor"
+        },
+        {
+          "name": "M11A-foundation-03",
+          "y": 1.4399999868869782,
+          "role": "podium"
+        }
+      ]
+    },
+    {
+      "point": [
+        -26.325,
+        1.89,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-3",
+          "y": 1.8899999940395356,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-3",
+          "y": 1.8899999940395356,
+          "role": "spectator-step"
+        }
+      ]
+    },
+    {
+      "point": [
+        -26.655,
+        2.04,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-4",
+          "y": 2.0400000119209287,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-4",
+          "y": 2.0400000119209287,
+          "role": "spectator-step"
+        }
+      ]
+    },
+    {
+      "point": [
+        -26.985,
+        2.19,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-5",
+          "y": 2.19,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-5",
+          "y": 2.19,
+          "role": "spectator-step"
+        }
+      ]
+    },
+    {
+      "point": [
+        -27.315,
+        2.34,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-6",
+          "y": 2.3399999880790707,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-6",
+          "y": 2.3399999880790707,
+          "role": "spectator-step"
+        }
+      ]
+    },
+    {
+      "point": [
+        -27.645,
+        2.49,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-7",
+          "y": 2.489999976158142,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-7",
+          "y": 2.489999976158142,
+          "role": "spectator-step"
+        }
+      ]
+    },
+    {
+      "point": [
+        -27.975,
+        2.6399999999999997,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-8",
+          "y": 2.640000023841858,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-8",
+          "y": 2.640000023841858,
+          "role": "spectator-step"
+        }
+      ]
+    },
+    {
+      "point": [
+        -28.305,
+        2.79,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-9",
+          "y": 2.790000011920929,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-9",
+          "y": 2.790000011920929,
+          "role": "spectator-step"
+        }
+      ]
+    },
+    {
+      "point": [
+        -28.634999999999998,
+        2.94,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-10",
+          "y": 2.94,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-10",
+          "y": 2.94,
+          "role": "spectator-step"
+        }
+      ]
+    },
+    {
+      "point": [
+        -28.965,
+        3.09,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-11",
+          "y": 3.089999988079071,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-11",
+          "y": 3.089999988079071,
+          "role": "spectator-step"
+        }
+      ]
+    },
+    {
+      "point": [
+        -29.295,
+        3.24,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-12",
+          "y": 3.239999976158142,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-12",
+          "y": 3.239999976158142,
+          "role": "spectator-step"
+        }
+      ]
+    },
+    {
+      "point": [
+        -29.625,
+        3.3899999999999997,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-13",
+          "y": 3.390000023841858,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-13",
+          "y": 3.390000023841858,
+          "role": "spectator-step"
+        }
+      ]
+    },
+    {
+      "point": [
+        -29.955,
+        3.54,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-14",
+          "y": 3.5399999523162844,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-14",
+          "y": 3.5399999523162844,
+          "role": "spectator-step"
+        }
+      ]
+    },
+    {
+      "point": [
+        -30.285,
+        3.69,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-15",
+          "y": 3.69,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-15",
+          "y": 3.69,
+          "role": "spectator-step"
+        }
+      ]
+    },
+    {
+      "point": [
+        -30.615000000000002,
+        3.84,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-16",
+          "y": 3.8400000476837155,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-16",
+          "y": 3.8400000476837155,
+          "role": "spectator-step"
+        }
+      ]
+    },
+    {
+      "point": [
+        -30.945,
+        3.99,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-17",
+          "y": 3.989999976158142,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-17",
+          "y": 3.989999976158142,
+          "role": "spectator-step"
+        }
+      ]
+    },
+    {
+      "point": [
+        -31.275,
+        4.140000000000001,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-18",
+          "y": 4.140000023841858,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-18",
+          "y": 4.140000023841858,
+          "role": "spectator-step"
+        }
+      ]
+    },
+    {
+      "point": [
+        -31.605,
+        4.29,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-19",
+          "y": 4.289999952316284,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-19",
+          "y": 4.289999952316284,
+          "role": "spectator-step"
+        }
+      ]
+    },
+    {
+      "point": [
+        -31.935000000000002,
+        4.4399999999999995,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-20",
+          "y": 4.4399999999999995,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-20",
+          "y": 4.4399999999999995,
+          "role": "spectator-step"
+        }
+      ]
+    },
+    {
+      "point": [
+        -32.265,
+        4.59,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-21",
+          "y": 4.5900000476837155,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-21",
+          "y": 4.5900000476837155,
+          "role": "spectator-step"
+        }
+      ]
+    },
+    {
+      "point": [
+        -32.595,
+        4.74,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-22",
+          "y": 4.739999976158142,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-22",
+          "y": 4.739999976158142,
+          "role": "spectator-step"
+        }
+      ]
+    },
+    {
+      "point": [
+        -32.925,
+        4.890000000000001,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-23",
+          "y": 4.890000023841858,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-23",
+          "y": 4.890000023841858,
+          "role": "spectator-step"
+        }
+      ]
+    },
+    {
+      "point": [
+        -33.255,
+        5.040000000000001,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-24",
+          "y": 5.039999952316284,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-24",
+          "y": 5.039999952316284,
+          "role": "spectator-step"
+        }
+      ]
+    },
+    {
+      "point": [
+        -33.585,
+        5.1899999999999995,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-25",
+          "y": 5.1899999999999995,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-25",
+          "y": 5.1899999999999995,
+          "role": "spectator-step"
+        }
+      ]
+    },
+    {
+      "point": [
+        -33.915,
+        5.34,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-26",
+          "y": 5.3400000476837155,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-26",
+          "y": 5.3400000476837155,
+          "role": "spectator-step"
+        }
+      ]
+    },
+    {
+      "point": [
+        -34.245000000000005,
+        5.49,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-27",
+          "y": 5.4900000953674315,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-27",
+          "y": 5.4900000953674315,
+          "role": "spectator-step"
+        }
+      ]
+    },
+    {
+      "point": [
+        -34.575,
+        5.640000000000001,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-28",
+          "y": 5.639999904632568,
+          "role": "spectator-step"
+        },
+        {
+          "name": "P02-GYM-SPECTATOR-STEP-28",
+          "y": 5.639999904632568,
+          "role": "spectator-step"
+        }
+      ]
+    },
+    {
+      "point": [
+        -35.74,
+        5.640000000000001,
+        63
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-spectator-top-landing",
+          "y": 5.639999997317791,
+          "role": "gallery-floor"
+        }
+      ]
+    },
+    {
+      "point": [
+        -35.74,
+        5.640000000000001,
+        58.8
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-gallery-side-connection",
+          "y": 5.639999997317791,
+          "role": "gallery-floor"
+        }
+      ]
+    },
+    {
+      "point": [
+        -41,
+        5.640000000000001,
+        58.8
+      ],
+      "hits": [
+        {
+          "name": "P02-GYM-spectator-aisle",
+          "y": 5.639999997317791,
+          "role": "gallery-floor"
+        }
+      ]
+    }
+  ],
+  "clear": [
+    {
+      "i": 1,
+      "hits": []
+    },
+    {
+      "i": 2,
+      "hits": []
+    },
+    {
+      "i": 3,
+      "hits": []
+    },
+    {
+      "i": 4,
+      "hits": []
+    },
+    {
+      "i": 5,
+      "hits": []
+    },
+    {
+      "i": 6,
+      "hits": []
+    },
+    {
+      "i": 7,
+      "hits": []
+    },
+    {
+      "i": 8,
+      "hits": []
+    },
+    {
+      "i": 9,
+      "hits": []
+    },
+    {
+      "i": 10,
+      "hits": []
+    },
+    {
+      "i": 11,
+      "hits": []
+    },
+    {
+      "i": 12,
+      "hits": []
+    },
+    {
+      "i": 13,
+      "hits": []
+    },
+    {
+      "i": 14,
+      "hits": []
+    },
+    {
+      "i": 15,
+      "hits": []
+    },
+    {
+      "i": 16,
+      "hits": []
+    },
+    {
+      "i": 17,
+      "hits": []
+    },
+    {
+      "i": 18,
+      "hits": []
+    },
+    {
+      "i": 19,
+      "hits": []
+    },
+    {
+      "i": 20,
+      "hits": []
+    },
+    {
+      "i": 21,
+      "hits": []
+    },
+    {
+      "i": 22,
+      "hits": []
+    },
+    {
+      "i": 23,
+      "hits": []
+    },
+    {
+      "i": 24,
+      "hits": []
+    },
+    {
+      "i": 25,
+      "hits": []
+    },
+    {
+      "i": 26,
+      "hits": []
+    },
+    {
+      "i": 27,
+      "hits": []
+    },
+    {
+      "i": 28,
+      "hits": []
+    },
+    {
+      "i": 29,
+      "hits": []
+    },
+    {
+      "i": 30,
+      "hits": []
+    },
+    {
+      "i": 31,
+      "hits": []
+    }
+  ],
+  "bad": [],
+  "front": [],
+  "closed": [
+    {
+      "name": "P02-GYM-north-lower-wall",
+      "facility": "03",
+      "distance": 3.999999997019767
+    }
+  ],
+  "contact": []
+}

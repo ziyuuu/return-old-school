@@ -1,0 +1,100 @@
+{
+  "version": "M1.1-A.Patch02",
+  "baseCommit": "ad92e9791066b1393fe4e8818b40cab4360a2d48",
+  "scope": "Owner-authorized gym frontage and loop exception; R4 baseline files remain unchanged",
+  "issues": [
+    18,
+    19,
+    20,
+    21
+  ],
+  "surveyVerified": false,
+  "measured": null,
+  "entrance": {
+    "run": 20,
+    "rise": 1.0,
+    "previousRise": 0.2,
+    "startZ": 4,
+    "endZ": 24,
+    "interiorOffset": 0.8,
+    "basis": "A校友要求加陡；H20m升1m，不是测绘值"
+  },
+  "gym": {
+    "id": "03",
+    "frontNormal": [
+      1,
+      0,
+      0
+    ],
+    "height": 19.2,
+    "lobbyDoorHeight": 3.0,
+    "galleryHeight": 4.2,
+    "parapetHeight": 0.95,
+    "windowSill": 5.3,
+    "windowHead": 8.5,
+    "signBottom": 10.4,
+    "signTop": 18.0,
+    "roofRearHeight": 11.8,
+    "shellThickness": 0.28,
+    "doorWidth": 6.8,
+    "forecourtBounds": [
+      -24,
+      25,
+      -3.5,
+      65
+    ],
+    "entrySteps": 4,
+    "entryRise": 0.6,
+    "entryWidth": 38,
+    "entryStart": [
+      -20.5,
+      45
+    ],
+    "entryEnd": [
+      -24,
+      45
+    ],
+    "spectatorStair": {
+      "u": -18,
+      "startV": 1.5,
+      "width": 3,
+      "steps": 28,
+      "rise": 4.2,
+      "tread": 0.33,
+      "landingDepth": 2.2
+    },
+    "basis": "A正门朝主路、前坪、面对正门的左侧梯通观赛层；P轮廓层次；H数值与隐藏面"
+  },
+  "loop": {
+    "basis": "A侧路绕馆；H借主路和既有球场前路闭合，绕过03/24贴体组团，避开04/26，不穿共享墙",
+    "northZ": 21.8,
+    "westX": -76,
+    "southZ": 84,
+    "width": 3.0,
+    "cycle": [
+      "junction-gym",
+      "gym-loop-north",
+      "gym-loop-west-north",
+      "gym-loop-west-south",
+      "music-approach",
+      "sports-front",
+      "junction-sports",
+      "gym-main-junction",
+      "junction-gym"
+    ]
+  },
+  "photos": [
+    {
+      "file": "91565a27-452b-4920-89cd-1491147ca77e.png",
+      "sha256": "1ef60c55ad3ca9b0e5ead7c178622623321c477311d3e1d07f46544fc62a726c",
+      "evidence": "P",
+      "rights": "user-supplied reference only; no runtime texture or public photo asset"
+    },
+    {
+      "file": "dfbc1933-2c6b-4732-9356-770bf2b7d86c.png",
+      "sha256": "7c35f59a758ab5653a670c54531ba9125707d872b382f7febd8d2ca735b8efec",
+      "evidence": "P",
+      "rights": "user-supplied reference only; no runtime texture or public photo asset"
+    }
+  ]
+}

@@ -1,0 +1,975 @@
+{
+  "version": "M1.1-A.Patch02",
+  "checks": [
+    {
+      "name": "terrain initialized",
+      "passed": true,
+      "detail": {
+        "enabled": true,
+        "version": "M1.1-A.Patch02",
+        "report": {
+          "passed": true,
+          "results": [
+            {
+              "id": "P02_IDS_AND_UNLOCATED",
+              "passed": true,
+              "detail": "No missing site invented"
+            },
+            {
+              "id": "P02_ALL_XZ_PRESERVED",
+              "passed": true,
+              "detail": "All28 identities/27 positions and footprints unchanged"
+            },
+            {
+              "id": "P02_ONLY_GYM_HEIGHT",
+              "passed": true,
+              "detail": "Only03 working height changed"
+            },
+            {
+              "id": "P02_OTHER_NODES_UNCHANGED",
+              "passed": true,
+              "detail": "Only old gym-entry semantic/position replaced"
+            },
+            {
+              "id": "P02_OLD_EDGES_WIDTHS_PRESERVED",
+              "passed": true,
+              "detail": "Only gym dead end and one split main segment replaced"
+            },
+            {
+              "id": "P02_NO_OLD_ENTRY_SPUR",
+              "passed": true,
+              "detail": "North spur now loop, not doorway"
+            },
+            {
+              "id": "P02_FRONT_FACES_MAIN",
+              "passed": true,
+              "detail": "Main-road facade +X"
+            },
+            {
+              "id": "P02_FORECOURT_SPACE",
+              "passed": true,
+              "detail": "Open space between road and front"
+            },
+            {
+              "id": "P02_LOOP_CLOSED",
+              "passed": true,
+              "detail": "Closed route uses main-road east edge; no crossing attached music block"
+            },
+            {
+              "id": "P02_NO_SHARED_WALL_ROAD",
+              "passed": true,
+              "detail": "No loop through03/24 contact"
+            },
+            {
+              "id": "P02_FROZEN_MAIN_TOILET",
+              "passed": true,
+              "detail": "Every R4 floor/door preserved"
+            },
+            {
+              "id": "P02_FORBIDDEN_ROUTES",
+              "passed": true,
+              "detail": "No shortcut or deleted green road"
+            },
+            {
+              "id": "P02_ENTRANCE_5_PERCENT",
+              "passed": true,
+              "detail": "H1.00m rise /20m, no exaggeration"
+            },
+            {
+              "id": "P02_SPORTS_FLAT",
+              "passed": true,
+              "detail": "Relative sport platform .8m"
+            },
+            {
+              "id": "P02_PAIRED_FLOORS",
+              "passed": true,
+              "detail": "Contact pairs rise together"
+            },
+            {
+              "id": "P02_SPECTATOR_LEFT",
+              "passed": true,
+              "detail": "Left to viewer at main road, +Z in plan"
+            },
+            {
+              "id": "P02_SPECTATOR_LEVEL",
+              "passed": true,
+              "detail": "H4.2m gallery"
+            },
+            {
+              "id": "P02_STAIR_DIMENSIONS",
+              "passed": true,
+              "detail": "Working dimensions, not regulatory certification"
+            },
+            {
+              "id": "P02_FACADE_LEVEL_ORDER",
+              "passed": true,
+              "detail": "Lobby, gallery, recess, upper shell distinct"
+            },
+            {
+              "id": "P02_NOT_SURVEYED",
+              "passed": true,
+              "detail": "All exact dimensions H"
+            },
+            {
+              "id": "P02_GRADE_gate_junction-gym",
+              "passed": true,
+              "detail": 0.0537037037037037
+            },
+            {
+              "id": "P02_GRADE_junction-sports_sports-front",
+              "passed": true,
+              "detail": 0.03870361328124994
+            },
+            {
+              "id": "P02_GRADE_sports-front_pool-entry",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "P02_GRADE_junction-sports_junction-office",
+              "passed": true,
+              "detail": 0.0012500000000001954
+            },
+            {
+              "id": "P02_GRADE_junction-office_office-entry",
+              "passed": true,
+              "detail": 0.052677956918287014
+            },
+            {
+              "id": "P02_GRADE_forecourt_main-front",
+              "passed": true,
+              "detail": 0.0002374631095803023
+            },
+            {
+              "id": "P02_GRADE_main-front_east-front",
+              "passed": true,
+              "detail": 0.00448713666542189
+            },
+            {
+              "id": "P02_GRADE_east-front_science-entry",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "P02_GRADE_east-front_east-mid",
+              "passed": true,
+              "detail": 0.01961964010630142
+            },
+            {
+              "id": "P02_GRADE_east-mid_canteen-entry",
+              "passed": true,
+              "detail": 0.02379993888328211
+            },
+            {
+              "id": "P02_GRADE_east-bottom_longya-entry",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "P02_GRADE_side-branch_side-front-turn",
+              "passed": true,
+              "detail": 0.004878571201568982
+            },
+            {
+              "id": "P02_GRADE_side-front-turn_side-upper",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "P02_GRADE_side-upper_side-mid",
+              "passed": true,
+              "detail": 0.0012500000000001954
+            },
+            {
+              "id": "P02_GRADE_side-mid_side-lower",
+              "passed": true,
+              "detail": 0.011789480452674805
+            },
+            {
+              "id": "P02_GRADE_side-lower_east-front",
+              "passed": true,
+              "detail": 0.020997299382716328
+            },
+            {
+              "id": "P02_GRADE_forecourt_gap-entry",
+              "passed": true,
+              "detail": 0.0022196237726439007
+            },
+            {
+              "id": "P02_GRADE_gap-entry_gap-north",
+              "passed": true,
+              "detail": 0.0030333333333336654
+            },
+            {
+              "id": "P02_GRADE_gap-north_gap-cross",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "P02_GRADE_gap-cross_gap-south",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "P02_GRADE_gap-south_rear-west",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "P02_GRADE_rear-west_rear-junction",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "P02_GRADE_rear-junction_library-entry",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "P02_GRADE_rear-junction_main-rear",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "P02_GRADE_side-gate_side-entry",
+              "passed": true,
+              "detail": 0.050162962962962965
+            },
+            {
+              "id": "P02_GRADE_side-entry_side-branch",
+              "passed": true,
+              "detail": 0.03535533905932772
+            },
+            {
+              "id": "P02_GRADE_sports-front_music-approach",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "P02_GRADE_music-approach_music-entry",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "P02_GRADE_junction-office_junction-museum",
+              "passed": true,
+              "detail": 0.002777777777778212
+            },
+            {
+              "id": "P02_GRADE_junction-museum_forecourt",
+              "passed": true,
+              "detail": 0.002777777777777768
+            },
+            {
+              "id": "P02_GRADE_junction-museum_museum-entry",
+              "passed": true,
+              "detail": 0.00014297120701966073
+            },
+            {
+              "id": "P02_GRADE_forecourt-15_main-front",
+              "passed": true,
+              "detail": 0.052965020576131394
+            },
+            {
+              "id": "P02_GRADE_main-front_teaching-entry",
+              "passed": true,
+              "detail": 0.003067435156250403
+            },
+            {
+              "id": "P02_GRADE_east-front_east-cross",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "P02_GRADE_east-cross_east-bottom",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "P02_GRADE_main-east_east-cross",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "P02_GRADE_east-cross_info-west",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "P02_GRADE_junction-gym_gym-loop-north",
+              "passed": true,
+              "detail": 0.01857016211176213
+            },
+            {
+              "id": "P02_GRADE_gym-loop-north_gym-loop-west-north",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "P02_GRADE_gym-loop-west-north_gym-loop-west-south",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "P02_GRADE_gym-loop-west-south_music-approach",
+              "passed": true,
+              "detail": 0
+            },
+            {
+              "id": "P02_GRADE_junction-gym_gym-main-junction",
+              "passed": true,
+              "detail": 0.050000000000000266
+            },
+            {
+              "id": "P02_GRADE_gym-main-junction_junction-sports",
+              "passed": true,
+              "detail": 0.0012500000000001954
+            },
+            {
+              "id": "P02_GRADE_gym-main-junction_gym-forecourt",
+              "passed": true,
+              "detail": 0.037304687500000044
+            },
+            {
+              "id": "P02_GRADE_gym-forecourt_gym-entry",
+              "passed": true,
+              "detail": 0
+            }
+          ]
+        },
+        "anchors": {
+          "10": {
+            "site": 1.0375,
+            "floor": 1.038,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "11": {
+            "site": 1,
+            "floor": 1,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "12": {
+            "site": 1,
+            "floor": 1,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "R4食堂下层子空间随11整体垂直适配"
+            ]
+          },
+          "13": {
+            "site": 1.25,
+            "floor": 1.25,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "14": {
+            "site": 1.1,
+            "floor": 1.1,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "15": {
+            "site": 1.25,
+            "floor": 1.25,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "16": {
+            "site": 1.2166666666666668,
+            "floor": 1.217,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "17": {
+            "site": 1.25,
+            "floor": 2.15,
+            "rise": 0.9,
+            "measured": null,
+            "evidence": [
+              "S03-047",
+              "H6级×0.15m"
+            ]
+          },
+          "18": {
+            "site": 1.25,
+            "floor": 1.7,
+            "rise": 0.45,
+            "measured": null,
+            "evidence": [
+              "S03-049",
+              "H3级×0.15m"
+            ]
+          },
+          "19": {
+            "site": 1.25,
+            "floor": 1.25,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "20": {
+            "site": 1,
+            "floor": 1,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "21": {
+            "site": 1.25,
+            "floor": 1.25,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "22": null,
+          "23": {
+            "site": 0.8,
+            "floor": 0.8,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "24": {
+            "site": 0.8,
+            "floor": 1.4,
+            "rise": 0.6,
+            "measured": null,
+            "evidence": [
+              "USER-R3-CONTACT",
+              "H随03同基础标高，外门4级未证实"
+            ]
+          },
+          "25": {
+            "site": 1.25,
+            "floor": 1.25,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "26": {
+            "site": 0.8,
+            "floor": 0.8,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "27": {
+            "site": 0,
+            "floor": 0,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "28": {
+            "site": 0.8,
+            "floor": 0.8,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "01": {
+            "site": 0,
+            "floor": 0,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "02": {
+            "site": 0,
+            "floor": 0,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "03": {
+            "site": 0.8,
+            "floor": 1.4,
+            "rise": 0.6,
+            "measured": null,
+            "evidence": [
+              "S03-020",
+              "H4级×0.15m"
+            ]
+          },
+          "04": {
+            "site": 0.8,
+            "floor": 0.8,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "05": {
+            "site": 0.8,
+            "floor": 0.8,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "06": {
+            "site": 0.8,
+            "floor": 0.8,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "07": {
+            "site": 1.1277777777777778,
+            "floor": 1.128,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "08": {
+            "site": 0.8,
+            "floor": 0.8,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          },
+          "09": {
+            "site": 1.02875,
+            "floor": 1.02875,
+            "rise": 0,
+            "measured": null,
+            "evidence": [
+              "H中性场地基准"
+            ]
+          }
+        },
+        "groundBounds": [
+          -102,
+          -18,
+          204,
+          291
+        ],
+        "frozenBaselineFilesUnmodified": true,
+        "effectiveTopologyException": {
+          "issues": [
+            18,
+            19,
+            20,
+            21
+          ],
+          "exception": "gym front + connected local loop only; baseline branch immutable",
+          "loop": [
+            "junction-gym",
+            "gym-loop-north",
+            "gym-loop-west-north",
+            "gym-loop-west-south",
+            "music-approach",
+            "sports-front",
+            "junction-sports",
+            "gym-main-junction",
+            "junction-gym"
+          ],
+          "measured": null
+        },
+        "exaggeration": 1,
+        "addedMeshes": 134
+      }
+    },
+    {
+      "name": "authorized P02 layout constraints",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "actual entrance5 percent H grade",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all45 draped road centerlines supported",
+      "passed": true,
+      "detail": {
+        "n": 1270,
+        "max": 0.004751901377169965,
+        "fail": []
+      }
+    },
+    {
+      "name": "full road widths supported",
+      "passed": true,
+      "detail": {
+        "n": 90,
+        "bad": []
+      }
+    },
+    {
+      "name": "actual route clearance after grade change",
+      "passed": true,
+      "detail": {
+        "n": 1890,
+        "fail": []
+      }
+    },
+    {
+      "name": "17 physical entry steps and4 top portals",
+      "passed": true,
+      "detail": {
+        "rows": [
+          {
+            "id": "ST-GYM",
+            "step": 1,
+            "expected": 0.99,
+            "actual": 0.9900000029802322
+          },
+          {
+            "id": "ST-GYM",
+            "step": 2,
+            "expected": 1.14,
+            "actual": 1.1400000059604645
+          },
+          {
+            "id": "ST-GYM",
+            "step": 3,
+            "expected": 1.29,
+            "actual": 1.2899999940395355
+          },
+          {
+            "id": "ST-GYM",
+            "step": 4,
+            "expected": 1.44,
+            "actual": 1.4400000119209289
+          },
+          {
+            "id": "ST-MUSIC",
+            "step": 1,
+            "expected": 0.99,
+            "actual": 0.9900000029802357
+          },
+          {
+            "id": "ST-MUSIC",
+            "step": 2,
+            "expected": 1.14,
+            "actual": 1.140000005960468
+          },
+          {
+            "id": "ST-MUSIC",
+            "step": 3,
+            "expected": 1.29,
+            "actual": 1.289999994039539
+          },
+          {
+            "id": "ST-MUSIC",
+            "step": 4,
+            "expected": 1.44,
+            "actual": 1.4400000119209253
+          },
+          {
+            "id": "ST-LONGYA",
+            "step": 1,
+            "expected": 1.44,
+            "actual": 1.4400000029802322
+          },
+          {
+            "id": "ST-LONGYA",
+            "step": 2,
+            "expected": 1.59,
+            "actual": 1.5900000059604644
+          },
+          {
+            "id": "ST-LONGYA",
+            "step": 3,
+            "expected": 1.74,
+            "actual": 1.7399999940395356
+          },
+          {
+            "id": "ST-LONGYA",
+            "step": 4,
+            "expected": 1.8900000000000001,
+            "actual": 1.890000011920929
+          },
+          {
+            "id": "ST-LONGYA",
+            "step": 5,
+            "expected": 2.04,
+            "actual": 2.04
+          },
+          {
+            "id": "ST-LONGYA",
+            "step": 6,
+            "expected": 2.19,
+            "actual": 2.1899999880790713
+          },
+          {
+            "id": "ST-LIBRARY",
+            "step": 1,
+            "expected": 1.44,
+            "actual": 1.4400000029802322
+          },
+          {
+            "id": "ST-LIBRARY",
+            "step": 2,
+            "expected": 1.59,
+            "actual": 1.5900000059604644
+          },
+          {
+            "id": "ST-LIBRARY",
+            "step": 3,
+            "expected": 1.74,
+            "actual": 1.7399999940395356
+          }
+        ],
+        "bad": []
+      }
+    },
+    {
+      "name": "4 toilet slabs / 8 end-door routes retained",
+      "passed": true,
+      "detail": {
+        "rows": [
+          {
+            "level": 1,
+            "z": 218.9,
+            "supported": true
+          },
+          {
+            "level": 1,
+            "z": 229.1,
+            "supported": true
+          },
+          {
+            "level": 2,
+            "z": 218.9,
+            "supported": true
+          },
+          {
+            "level": 2,
+            "z": 229.1,
+            "supported": true
+          },
+          {
+            "level": 3,
+            "z": 218.9,
+            "supported": true
+          },
+          {
+            "level": 3,
+            "z": 229.1,
+            "supported": true
+          },
+          {
+            "level": 4,
+            "z": 218.9,
+            "supported": true
+          },
+          {
+            "level": 4,
+            "z": 229.1,
+            "supported": true
+          }
+        ],
+        "bad": []
+      }
+    },
+    {
+      "name": "28 spectator treads with supported landing and viewing aisle",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "real main-road front doorway",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "old north doorway closed",
+      "passed": true,
+      "detail": [
+        {
+          "name": "P02-GYM-north-lower-wall",
+          "facility": "03",
+          "distance": 3.999999997019767
+        }
+      ]
+    },
+    {
+      "name": "shared music contact remains open",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "camera top",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera overview",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera terrain-entrance",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera gym-p02-front",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera gym-p02-oblique",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera gym-p02-loop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera gym-p02-stair",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera gym-p02-gallery",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera terrain-longya",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera terrain-gap",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "camera courts-to-gym",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "gym cutaway hides only upper shell",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "comparison restores all root Y",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "8 toggles no accumulated displacement",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "actual shared gym/music floor",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "actual shared main/toilet floor",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "terrain export action",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "tour relative eye height",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "tour exits",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile viewport resized",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "standalone file startup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no page/shader errors",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "complete": true,
+  "errors": [],
+  "screenshots": [
+    "top.png",
+    "overview.png",
+    "terrain-entrance.png",
+    "gym-p02-front.png",
+    "gym-p02-oblique.png",
+    "gym-p02-loop.png",
+    "gym-p02-stair.png",
+    "gym-p02-gallery.png",
+    "terrain-longya.png",
+    "terrain-gap.png",
+    "courts-to-gym.png",
+    "gallery-cutaway.png",
+    "zero-datum-comparison.png",
+    "mobile.png"
+  ],
+  "source_input": "89df1793f5ff887a88935779c18e1b4a633818be",
+  "environment": "Chromium software WebGL, not device performance certification"
+}

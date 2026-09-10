@@ -1,0 +1,45 @@
+{
+  "rows": [
+    {
+      "level": 1,
+      "z": 218.9,
+      "supported": true
+    },
+    {
+      "level": 1,
+      "z": 229.1,
+      "supported": true
+    },
+    {
+      "level": 2,
+      "z": 218.9,
+      "supported": true
+    },
+    {
+      "level": 2,
+      "z": 229.1,
+      "supported": true
+    },
+    {
+      "level": 3,
+      "z": 218.9,
+      "supported": true
+    },
+    {
+      "level": 3,
+      "z": 229.1,
+      "supported": true
+    },
+    {
+      "level": 4,
+      "z": 218.9,
+      "supported": true
+    },
+    {
+      "level": 4,
+      "z": 229.1,
+      "supported": true
+    }
+  ],
+  "bad": []
+}

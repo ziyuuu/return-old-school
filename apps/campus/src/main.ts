@@ -3,7 +3,10 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import source from '../../../data/m10/campus-layout.json';
 import { bounds, footprint, courtRects, checkLayout } from './layout-core.mjs';
 import './style.css';
-import terrainSpec from '../../../data/m11a/terrain-input.json';
+import terrainBase from '../../../data/m11a/terrain-input.json';
+import patchInput from '../../../data/m11a/patch02/input.json';
+import {applyPatch02,patch02Checks,galleryRoute,gymWorld} from './patch02-core.mjs';
+import {buildPatch02Gym,setGymCutaway} from './patch02-gym';
 import {installTerrain} from './terrain-scene';
 import { edgeWidth } from './revision-core.mjs';
 import { r4Facility, setToiletSection } from './revision-r4-scene';
@@ -13,12 +16,19 @@ import { revisedFacility, buildRevisionParts } from './revision-scene';
 // M1.0 hypotheses, not site measurements. No gameplay or night layer.
 type Vec3 = [number, number, number];
 type Facility = typeof source.facilities[number];
-const layout=source, report=checkLayout(layout);
+const patch=applyPatch02(source,terrainBase,patchInput);
+const layout:typeof source=patch.layout,terrainSpec=patch.terrain,report=patch02Checks(layout,terrainSpec,patchInput,source);
 let terrainSystem:any=null;
 const groundEye=(x:number,z:number)=>layout.navigation.reviewHeight+(terrainSystem?.enabled?terrainSystem.surfaceHeight(x,z):0);
 const cameraPresets:any={...layout.cameraPresets,
- 'terrain-entrance':{label:'主门内上坡 · 文字依据 / H数值',position:[-7,2.5,4],target:[0,.3,25]},
- 'terrain-gym':{label:'体育馆入口 · 4级H台阶',position:[-53,4.2,10],target:[-45,1.3,25]},
+ 'terrain-entrance':{label:'门内上坡 · 5% H工作方案',position:[-7,2.6,2],target:[0,1.3,27]},
+ 'terrain-gym':{label:'主路 → 体育馆前坪与正门',position:[8,7.8,47],target:[-35,8.5,45]},
+ 'gym':{label:'体育馆正门朝主路',position:[16,10,48],target:[-36,9,45]},
+ 'gym-p02-front':{label:'体育馆正门 · 前坪 / 主路',position:[16,8.2,46],target:[-37,9,45]},
+ 'gym-p02-oblique':{label:'体育馆折面 · 左梯与前坪',position:[9,12,95],target:[-41,9,46]},
+ 'gym-p02-loop':{label:'绕馆环路 · 避开音乐楼及泳池',position:[-140,110,118],target:[-38,0,49]},
+ 'gym-p02-stair':{label:'正门左侧外梯 · 通观赛层',position:[-17,7.5,69],target:[-31,4.7,63]},
+ 'gym-p02-gallery':{label:'观赛层平台 · 实体楼梯顶端',position:[-36,7.5,63],target:[-45,6.4,46]},
  'terrain-library':{label:'图书馆入口 · 3级H台阶',position:[68,3.8,232],target:[75,1.1,246]},
  'terrain-longya':{label:'长雅入口 · 6级H台阶',position:[120,4.3,236],target:[129,1.8,250]},
  'terrain-field':{label:'后缘跑道与前庭 · H地坪过渡',position:[120,5,192],target:[94,.2,183]},
@@ -69,7 +79,9 @@ const ramps=[
  ['#6c7a79','#9eaba7','#c8d0c6'],
  ['#687a7a','#a2afaa','#ccd2c2'],
  ['#8c7d5e','#c1b186','#e5d7ad'],
- ['#73827c','#becbbb','#f2f0da']
+ ['#73827c','#becbbb','#f2f0da'],
+ ['#345c77','#397b9b','#57a3ba'],['#3e595e','#526b6a','#698179'],
+ ['#6f6760','#95735e','#ba8b65'],['#6f816b','#c4aa5a','#e6c555'],['#3e7068','#4c9479','#74b089']
 ];
 const lutCanvas=document.createElement('canvas');lutCanvas.width=256;lutCanvas.height=ramps.length;
 const ctx=lutCanvas.getContext('2d')!;
@@ -137,7 +149,7 @@ for(const f of layout.facilities){
  const [x,y,z]=f.position,[w,h,d]=f.size,g=new THREE.Group();g.name=`F${f.id}`;g.userData.facility=f.id;g.position.set(x,y,z);roots.set(f.id,g);
  (['field','courts','straight-track','pool','forecourt','sandpit','garden','route','marker','subspace'].includes(f.kind)?surfaces:volumes).add(g);
  addFootprint(f);addLabel(f);
- if(r4Facility(f,g,{box,mesh,line,rect,mats,layout}) || r3Facility(f,g,{box,mesh,line,rect,mats,layout}) || revisedFacility(f,g,{box,mesh,line,rect,mats,layout})) {
+ if(buildPatch02Gym(f,g,{box,mesh,line,rect,mats,layout},patchInput) || r4Facility(f,g,{box,mesh,line,rect,mats,layout}) || r3Facility(f,g,{box,mesh,line,rect,mats,layout}) || revisedFacility(f,g,{box,mesh,line,rect,mats,layout})) {
   // R2 builds real openings / larger envelopes without replacing unrelated facilities.
  } else if(solidKinds.has(f.kind)){
   if(f.kind==='context'){
@@ -207,7 +219,7 @@ function selectFacility(id:string,focus=false){
  selected=id;select.value=id;setInspector(true);
  const b=f.position&&f.size?bounds(f):null;selection.visible=Boolean(b);
  if(b)selection.box.set(new THREE.Vector3(b.minX,.1,b.minZ),new THREE.Vector3(b.maxX,(f.size?.[1]??0)+.6,b.maxZ));
- el('details').innerHTML=`${terrainSystem&&f.position?`<div class="terrain-note">地坪适配：H ${(terrainSystem.model.anchors[f.id]?.floor??0).toFixed(2)} m；主门相对零点，非海拔。${terrainSystem.enabled?'当前已开启':'当前R4对照'}</div>`:''}<h3>${f.id} / ${f.name}</h3><span class="tag">${f.position?'H · 米制位置推定':'U · 未定位，不生成占地'}</span><dl><dt>工作中心</dt><dd>${f.position?f.position.map(n=>n.toFixed(2)).join(' / ')+' m':'无坐标'}</dd><dt>占地 × 高</dt><dd>${f.size?`${f.size[0]} × ${f.size[2]} / ${f.size[1]} m`:'尚未指定'}</dd><dt>楼层</dt><dd>${f.floors??'—'} ${f.floors?`[${f.evidence.floorCount}]`:''}</dd><dt>来源</dt><dd>${f.evidence.reference}</dd></dl><p>${f.note}</p><p><strong>后续核对：</strong>${f.evidence.unknowns}</p>`;
+ el('details').innerHTML=`${terrainSystem&&f.position?`<div class="terrain-note">地坪适配：H ${(terrainSystem.model.anchors[f.id]?.floor??0).toFixed(2)} m；主门相对零点，非海拔。${terrainSystem.enabled?'当前已开启':'相对零地坪对照'}</div>`:''}<h3>${f.id} / ${f.name}</h3><span class="tag">${f.position?'H · 米制位置推定':'U · 未定位，不生成占地'}</span><dl><dt>工作中心</dt><dd>${f.position?f.position.map(n=>n.toFixed(2)).join(' / ')+' m':'无坐标'}</dd><dt>占地 × 高</dt><dd>${f.size?`${f.size[0]} × ${f.size[2]} / ${f.size[1]} m`:'尚未指定'}</dd><dt>楼层</dt><dd>${f.floors??'—'} ${f.floors?`[${f.evidence.floorCount}]`:''}</dd><dt>来源</dt><dd>${f.evidence.reference}</dd></dl><p>${f.note}</p><p><strong>后续核对：</strong>${f.evidence.unknowns}</p>`;
  if(focus&&f.position&&f.size){stopModes();active=camera;controls.enabled=true;topControls.enabled=false;
   const radius=Math.max(f.size[0],f.size[2],20);controls.target.set(...f.position as Vec3).y=Math.min(f.size[1]/2,9);
   camera.position.copy(controls.target).add(new THREE.Vector3(radius*.85,radius*.85,radius*1.15));controls.update();
@@ -223,13 +235,13 @@ function setToiletLevel(level:number,focus=false){
  if(focus&&level){stopModes();active=camera;controls.enabled=true;topControls.enabled=false;const y=(level-1)*3.8+(terrainSystem?.enabled?terrainSystem.model.anchors['25'].floor:0);camera.position.set(7,y+10,238);controls.target.set(-10,y+1,224);controls.update();}
 }
 function setView(name:string){
- const p=cameraPresets[name];if(!p)return;setReviewShadow(p.target,name.startsWith('terrain-'));stopModes();view=name;setToiletLevel(name==='toilet-floor'?2:0);
+ const p=cameraPresets[name];if(!p)return;setReviewShadow(p.target,name.startsWith('terrain-')||name.startsWith('gym-p02-'));stopModes();view=name;setToiletLevel(name==='toilet-floor'?2:0);
  document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',(b as HTMLElement).dataset.view===name));
  active=name==='top'?topCamera:camera;controls.enabled=name!=='top';topControls.enabled=name==='top';
  active.position.set(...p.position as Vec3);active.up.set(...(name==='top'?[0,0,-1]:[0,1,0]) as Vec3);
  (name==='top'?topControls:controls).target.set(...p.target as Vec3);active.lookAt(...p.target as Vec3);
  if(name==='top'){topCamera.zoom=1;topCamera.updateProjectionMatrix();}controls.update();topControls.update();
- el('view-name').innerHTML=`${p.label}<span>M1.1-A 地坪校核 · 标高H推定 / 非测绘</span>`;
+ el('view-name').innerHTML=`${p.label}<span>Patch02 · 坡道 / 前坪 / 环路 / 观赛层 · 尺寸H</span>`;
 }
 for(const btn of document.querySelectorAll<HTMLButtonElement>('[data-view]'))btn.onclick=()=>setView(btn.dataset.view!);
 el<HTMLSelectElement>('toilet-level').onchange=e=>setToiletLevel(Number((e.target as HTMLSelectElement).value),true);
@@ -286,8 +298,8 @@ function render(time:number){
 }
 setView('overview');renderer.setAnimationLoop(render);
 buildR3Thresholds(layout,{surfaces,box});
-terrainSystem=installTerrain({scene,surfaces,volumes,outlines,routeOverlay,roots,labels,layout,box,mats,structures},terrainSpec);
-function setTerrain(on:boolean){terrainSystem.setEnabled(on);el<HTMLInputElement>('terrain-check').checked=on;el('terrain-state').textContent=on?'地坪方案 H · 1×':'R4 平基准对照';if(selected)selectFacility(selected,false);}
+terrainSystem=installTerrain({scene,surfaces,volumes,outlines,routeOverlay,roots,labels,layout,box,mats,structures,reportOverride:report},terrainSpec);
+function setTerrain(on:boolean){terrainSystem.setEnabled(on);el<HTMLInputElement>('terrain-check').checked=on;el('terrain-state').textContent=on?'Patch02 地坪 H · 1×':'相对零地坪 · P02布局保留';if(selected)selectFacility(selected,false);}
 el<HTMLInputElement>('terrain-check').onchange=e=>setTerrain((e.target as HTMLInputElement).checked);
 el('terrain-compare').onclick=()=>setTerrain(!terrainSystem.enabled);
 el('terrain-export').onclick=()=>download('yali-m11a-terrain-working.json',new Blob([JSON.stringify(terrainSystem.model.exportData(),null,2)],{type:'application/json'}));
@@ -318,3 +330,16 @@ Object.assign(window,{__YALI_M10__:{version:layout.version,layout,report,setView
  probeFloor:(x:number,y:number,z:number)=>{scene.updateMatrixWorld(true);const objects:THREE.Object3D[]=[];scene.traverse(o=>{if(o instanceof THREE.Mesh)objects.push(o);});const ray=new THREE.Raycaster(new THREE.Vector3(x,y+.5,z),new THREE.Vector3(0,-1,0),0,.8);return ray.intersectObjects(objects,false).map(h=>({name:h.object.name,y:h.point.y}));},
  probeSurface:(x:number,z:number)=>{scene.updateMatrixWorld(true);const ray=new THREE.Raycaster(new THREE.Vector3(x,3,z),new THREE.Vector3(0,-1,0),0,3.1);return ray.intersectObjects(surfaces.children,true).filter(h=>h.point.y>0).map(h=>({name:h.object.name,y:h.point.y}));},
  getState:()=>({toiletLevel,view,fly,tour,selected,camera:active.position.toArray(),renderer:renderer.info.render,canvas:[renderer.domElement.width,renderer.domElement.height],labelsOn,planOnly,roofsVisible:roofs.visible,webgl:renderer.getContext().getParameter(renderer.getContext().VERSION)}),ready:true}});
+
+// Patch02 diagnostics expose the actual rendered shell and supported gallery route.
+let gymCutaway=false;
+el<HTMLInputElement>('gym-cutaway').onchange=e=>{gymCutaway=(e.target as HTMLInputElement).checked;setGymCutaway(roots,gymCutaway);};
+function visibleMeshList(){const list:THREE.Object3D[]=[];scene.traverse((o:any)=>{let a:THREE.Object3D|null=o;while(a){if(!a.visible)return;a=a.parent;}if(o instanceof THREE.Mesh)list.push(o);});return list;}
+function p02Support(x:number,y:number,z:number){scene.updateMatrixWorld(true);const ray=new THREE.Raycaster(new THREE.Vector3(x,y+.35,z),new THREE.Vector3(0,-1,0),0,.7);return ray.intersectObjects(visibleMeshList(),false).map(v=>({name:v.object.name,y:v.point.y,role:v.object.userData.role}));}
+function p02Snapshot(){scene.updateMatrixWorld(true);const d:any={};scene.traverse(o=>{if(o.name.startsWith('P02-')){const b=new THREE.Box3().setFromObject(o);d[o.name]={min:b.min.toArray(),max:b.max.toArray(),role:o.userData.role,visible:o.visible};}});return d;}
+Object.assign(window,{__YALI_P02__:{ready:true,version:patchInput.version,layout,report,parameters:patchInput,source,
+ geometrySnapshot:p02Snapshot,support:p02Support,probe:terrainSystem.probeActual,
+ galleryRoute:()=>galleryRoute(patchInput).map((q:any)=>gymWorld(q.u,q.y,q.v,terrainSystem.enabled?terrainSystem.model.anchors['03'].floor:0)),
+ setCutaway:(v:boolean)=>{gymCutaway=v;el<HTMLInputElement>('gym-cutaway').checked=v;setGymCutaway(roots,v);},
+ getState:()=>({gymCutaway,terrain:terrainSystem.enabled}),
+ exportData:()=>({layout,terrain:terrainSystem.model.exportData(),patch:patchInput,checks:report})}});

@@ -3,7 +3,7 @@ import {buildTerrainModel,terrainChecks,rectOf} from './terrain-core.mjs';
 /** Add a reversible vertical adapter. The frozen layout is never mutated. */
 export function installTerrain(api:any, spec:any){
  const {scene,surfaces,volumes,outlines,routeOverlay,roots,labels,layout,box,mats,structures}=api;
- const model=buildTerrainModel(layout,spec),report=terrainChecks(layout,spec);
+ const model=buildTerrainModel(layout,spec),report=api.reportOverride??terrainChecks(layout,spec);
  const surfaceGroup=new THREE.Group();surfaceGroup.name='M11A-ground-and-roads';surfaces.add(surfaceGroup);
  const solidGroup=new THREE.Group();solidGroup.name='M11A-foundations-and-landings';volumes.add(solidGroup);
  const walking:THREE.Object3D[]=[],added:THREE.Object3D[]=[],hidden:THREE.Object3D[]=[],originalPositions=new Map<THREE.Object3D,number>();
@@ -39,6 +39,7 @@ export function installTerrain(api:any, spec:any){
   for(let i=0;i<=n;i++){const x=a[0]+(b[0]-a[0])*i/n,z=a[1]+(b[1]-a[1])*i/n;pos.push(x,model.groundHeight(x,z),z,x,-1.5,z);if(i<n){const k=i*2;idx.push(k,k+1,k+2,k+1,k+3,k+2);}}
   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));g.setIndex(idx);g.computeVertexNormals();const m=new THREE.Mesh(g,mats[6]);m.material=mats[6].clone();m.material.onBeforeCompile=mats[6].onBeforeCompile;m.material.customProgramCacheKey=mats[6].customProgramCacheKey;(m.material as THREE.Material).side=THREE.DoubleSide;m.name='M11A-site-thickness-'+side;surfaceGroup.add(m);
  }
+ for(const fc of (spec.forecourts??[]))patchGrid('P02-'+fc.id,fc.bounds,.5,spec.roadSurfaceOffset-.003,fc.row??2);
  for(const p of model.profiles){const a=layout.navigation.nodes[p.from],b=layout.navigation.nodes[p.to];const m=strip(`M11A-road-${p.from}--${p.to}`,a,b,p.width,spec.roadSurfaceOffset);m.userData.route=[p.from,p.to];}
  for(const[id,p]of Object.entries(layout.navigation.nodes) as [string,number[]][]){const m=patchGrid('M11A-joint-'+id,[p[0]-.35,p[2]-.35,p[0]+.35,p[2]+.35],.35,spec.roadSurfaceOffset+.002,2);m.userData.node=id;}
  const stairByOwner=new Set(model.stairs.map((s:any)=>s.facilityId));
@@ -70,7 +71,7 @@ export function installTerrain(api:any, spec:any){
  }
  function probeGround(x:number,z:number){scene.updateMatrixWorld(true);const ray=new THREE.Raycaster(new THREE.Vector3(x,30,z),new THREE.Vector3(0,-1,0),0,40);return ray.intersectObjects(walking.filter(visible),false).map(h=>({name:h.object.name,y:h.point.y}));}
  function probeActual(a:number[],b:number[]){scene.updateMatrixWorld(true);const origin=new THREE.Vector3(a[0],a[1],a[2]),end=new THREE.Vector3(b[0],b[1],b[2]),len=origin.distanceTo(end),ray=new THREE.Raycaster(origin,end.sub(origin).normalize(),.002,len-.002),meshes:THREE.Object3D[]=[];scene.traverse((o:any)=>{if(o instanceof THREE.Mesh&&visible(o))meshes.push(o);});return ray.intersectObjects(meshes,false).map(h=>({name:h.object.name,facility:h.object.userData.facility??null,distance:h.distance}));}
- function state(){return {enabled,version:spec.version,report,anchors:model.anchors,groundBounds:layout.ground.bounds,frozenTopologyUnmodified:true,exaggeration:1,addedMeshes:added.length};}
+ function state(){return {enabled,version:spec.version,report,anchors:model.anchors,groundBounds:layout.ground.bounds,frozenBaselineFilesUnmodified:true,effectiveTopologyException:layout.patch02??null,exaggeration:1,addedMeshes:added.length};}
  function surfaceHeight(x:number,z:number){return enabled?model.walkHeight(x,z):.04;}
  function inspect(x:number,z:number){return {x,z,ground:model.groundHeight(x,z),walk:model.walkHeight(x,z),evidence:'H',measured:null};}
  setEnabled(true);
