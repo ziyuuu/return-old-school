@@ -1,0 +1,325 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "id": "R3_FACILITIES_UNMOVED",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_ROADS_UNCHANGED",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_AXIS",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_FIVE_FLOORS",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_NO_OBSOLETE_PORCH",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_RETIRED_EAST_CLOSED",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_FRONT_DOOR_RECORDS",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_west_NORMAL",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_west_DOOR_RECESS",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_west_CONTINUING_5F_WALL",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_west_POSTS",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_west_CANOPY",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_west_STEP_0",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_west_STEP_1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_west_STEP_2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_west_ROUTE_SUPPORT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_west_ROUTE_CLEAR",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_west_REAL_NOTCH_L2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_west_REAL_NOTCH_L3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_west_REAL_NOTCH_L4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_west_REAL_NOTCH_L5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_east_NORMAL",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_east_DOOR_RECESS",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_east_CONTINUING_5F_WALL",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_east_POSTS",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_east_CANOPY",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_east_STEP_0",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_east_STEP_1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_east_STEP_2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_east_ROUTE_SUPPORT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_east_ROUTE_CLEAR",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_east_REAL_NOTCH_L2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_east_REAL_NOTCH_L3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_east_REAL_NOTCH_L4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_east_REAL_NOTCH_L5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_CENTRAL_ARC",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_ARC_PLAN_GEOMETRY",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_NO_OLD_FLAT_FRONT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_MAIN_DOOR_OPEN",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_TERRACE_SKY",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_TERRACE_FLOOR",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_L5_CORRIDOR_COVERS_L4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_R2-L1-A_SUPPORT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_R2-L1-A_CLEAR",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_R2-L1-B_SUPPORT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_R2-L1-B_CLEAR",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_R2-L2-A_SUPPORT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_R2-L2-A_CLEAR",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_R2-L2-B_SUPPORT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_R2-L2-B_CLEAR",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_R2-L3-A_SUPPORT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_R2-L3-A_CLEAR",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_R2-L3-B_SUPPORT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_R2-L3-B_CLEAR",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_R2-L4-A_SUPPORT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_R2-L4-A_CLEAR",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_R2-L4-B_SUPPORT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_R2-L4-B_CLEAR",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_R2-L5-A_SUPPORT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_R2-L5-A_CLEAR",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_R2-L5-B_SUPPORT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_R2-L5-B_CLEAR",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_UNDERPASS_CLEAR",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R3_PARTS_VALID_UNIQUE",
+      "passed": true,
+      "detail": null
+    }
+  ]
+}
