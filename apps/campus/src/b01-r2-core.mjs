@@ -77,6 +77,8 @@ export function buildB01R2Model(layout,terrain,p){
    const cuts=portals.filter(v=>v.level===l&&v.row===row).map(v=>[v.x-v.width/2,v.x+v.width/2,fy,fy+2.5]);
    cuts.push([-1.5,1.5,fy,fy+m.doorHeight]);
    for(const [a,b]of bands)cuts.push([(a+b)/2-.75,(a+b)/2+.75,fy,fy+2.5]);
+   // Classroom-facing corridor windows are true openings, as visible on the terrace.
+   for(const r of rooms){const x=(r.a+r.b)/2+1.05,ww=2.45,sh=.95,hh=1.9;cuts.push([x-ww/2,x+ww/2,fy+sh,fy+sh+hh]);window(l,z,x,fy+sh,ww,hh);}
    wall('15',l,'z',z,-w/2,w/2,fy,ceiling,cuts,'corridor-wall');
   }
   for(const [a,b]of bands){
@@ -93,7 +95,8 @@ export function buildB01R2Model(layout,terrain,p){
   if(l>1)window(l,cp+.1,0,fy+.7,3.8,2.35);
   add('15',l,'cornice',[m.centralWidth+.15,.17,m.centralProjection+.16],[0,(j+1)*story-.08,front-m.centralProjection/2]);
   add('15',l,'cornice',[w,.14,.24],[0,(j+1)*story-.07,front+.10]);
-  for(const x of [-w/2+.12,w/2-.12])wall('15',l,'x',x,front,backLimit,fy,ceiling,[[c0+.15,c1-.15,fy,fy+m.doorHeight]],'end-wall');
+  // Only the west end has floor bridges. Do not repeat the east ground door above a void.
+  for(const x of [-w/2+.12,w/2-.12])wall('15',l,'x',x,front,backLimit,fy,ceiling,x<0||l===1?[[c0+.15,c1-.15,fy,fy+m.doorHeight]]:[],'end-wall');
   if(l<=3){const cuts=[];
    for(const r of rooms)for(const s of [-1,1]){const x=(r.a+r.b)/2+s*.95;cuts.push([x-m.windowWidth/2,x+m.windowWidth/2,fy+m.windowSill,fy+m.windowSill+m.windowHeight]);window(l,rear-.12,x,fy+m.windowSill);}
    if(l===1)cuts.push([-1.5,1.5,fy,fy+m.doorHeight]);
@@ -171,6 +174,8 @@ export function b01R2Checks(base,layout,model,p){
  for(const r of model.routes){let clear=true,support=true;for(let i=1;i<r.points.length;i++){const a=r.points[i-1],b=r.points[i],n=Math.ceil(Math.hypot(b[0]-a[0],b[2]-a[2]));for(let k=0;k<=n;k++)if(!hasFloor(model,a[0]+(b[0]-a[0])*k/n,a[1],a[2]+(b[2]-a[2])*k/n))support=false;for(const h of [.4,1.1,1.8])if(model.worldParts.some(q=>segmentBox([a[0],a[1]+h,a[2]],[b[0],b[1]+h,b[2]],q)))clear=false;}put(r.id+'_SUPPORT',support);put(r.id+'_CLEAR',clear);}
  const y=model.mainFloor+1.7,mx=p.axis.x;
  for(const [id,a,b]of [['front',[mx,y,213],[mx,y,224]],['rear',[mx,y,224],[mx,y,235]],['underpass',[6.5,y,216],[6.5,y,239]],['side',[126,y,224],[119,y,224]]])put('R2_CLEAR_'+id,!model.worldParts.some(q=>segmentBox(a,b,q)));
+ put('R2_CORRIDOR_WINDOWS',ps.filter(q=>q.owner==='15'&&q.role==='glazing'&&Math.abs(Math.abs(q.center[2])-1.4)<.01).length===96);
+ for(let l=2;l<=5;l++){const y=model.mainFloor+(l-1)*3.8+1.7;put('R2_EAST_UPPER_END_CLOSED_L'+l,model.worldParts.some(q=>q.role==='end-wall'&&segmentBox([123,y,224],[121,y,224],q)));}
  put('R2_IDS_UNIQUE',new Set(ps.map(q=>q.id)).size===ps.length);
  return {passed:out.every(c=>c.passed),results:out};
 }

@@ -1,25 +1,133 @@
 {
   "version": "M1.1-B.Batch01.R2",
-  "status": "IMPLEMENTATION_IN_PROGRESS / REVIEW_PENDING",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
   "issue": 28,
   "baseMain": "21e907cb5399078f9068aed51477dd650022dc44",
   "frozenCommit": "43afdd725c884ba17534372195b026bc977fddd5",
-  "targetYears": [2006,2010],
-  "evidence": {"relationships":"A: user photos, side-section sketch and explicit axial alignment", "dimensions":"H: reconstruction working dimensions", "alumniReview":"REVIEW_PENDING"},
-  "axis": {"sourceFacility":"08", "x":73, "facilityShifts":{"15":4,"18":-2}, "flagCenterBefore":[64,192.5], "flagCenterAfter":[73,192.5], "nodeShifts":{"main-front":4,"forecourt-15":4,"teaching-entry":4,"main-rear":4,"rear-junction":4,"main-east":4,"library-entry":-2}},
-  "main": {
-    "id":"15", "floorCount":5, "storyHeight":3.8, "wallThickness":0.24, "slabThickness":0.18,
-    "corridorZ":[-1.4,1.4], "stairBands":[[-49,-43],[43,49]], "classroomsPerWing":6,
-    "windowWidth":1.45, "windowHeight":1.9, "windowSill":0.95, "frameWidth":0.065,
-    "centralWidth":8.8, "centralProjection":1.8, "centralRole":"broadcast-and-other-functional-spaces", "centralFloorAssignments":"unknown; not an invented room-by-room broadcast-station allocation",
-    "frontDoorWidth":3, "doorHeight":2.7,
-    "terrace":{"level":4,"rearStartZ":1.4,"outerZ":7,"planterDepth":0.62,"planterHeight":1.05,"coveredByLevel5Corridor":true,"wholeTerraceRoofed":false},
-    "sidePorch":{"side":"east","orientationEvidence":"H on inherited15-east entrance; photo does not establish end direction", "projection":1.65,"width":3.5,"postWidth":0.32,"roofHeight":3.05,"roofThickness":0.24,"trimHeight":0.10,"thresholdTop":0.04,"levelPolicy":"retain accepted ground and interior datum; no invented external/internal stair rise"},
-    "cupola":{"radius":1.8,"drumHeight":0.8,"capHeight":1.2,"z":-3.0}
+  "targetYears": [
+    2006,
+    2010
+  ],
+  "evidence": {
+    "relationships": "A: user photos, side-section sketch and explicit axial alignment",
+    "dimensions": "H: reconstruction working dimensions",
+    "alumniReview": "REVIEW_PENDING"
   },
-  "toilet":{"id":"25","floorCount":5,"extensionBasis":"H extension of existing A every-floor connection; fifth toilet floor not independently identified in a photo", "genderEnds":"unknown A/B", "highVentSill":2.4,"highVentHeight":0.6},
-  "bridge":{"fifthLevel":true,"newMainEndpoint":24,"oldMainEndpoint":20,"fixedToiletEndpoint":-7,"z":224,"width":2.1},
-  "flag":{"centralIndex":1,"centralIdentity":"national-flag","sideIdentities":"unknown; neutral placeholders"},
-  "display":{"defaultView":"r2-overview","clippingX":91,"defaultLabels":false},
-  "excluded":["modern orange-red main block", "new gameplay", "full classroom furniture", "invented external bridge to another building", "relocation of sports area or unrelated roads"]
+  "axis": {
+    "sourceFacility": "08",
+    "x": 73,
+    "facilityShifts": {
+      "15": 4,
+      "18": -2
+    },
+    "flagCenterBefore": [
+      64,
+      192.5
+    ],
+    "flagCenterAfter": [
+      73,
+      192.5
+    ],
+    "nodeShifts": {
+      "main-front": 4,
+      "forecourt-15": 4,
+      "teaching-entry": 4,
+      "main-rear": 4,
+      "rear-junction": 4,
+      "main-east": 4,
+      "library-entry": -2
+    }
+  },
+  "main": {
+    "id": "15",
+    "floorCount": 5,
+    "storyHeight": 3.8,
+    "wallThickness": 0.24,
+    "slabThickness": 0.18,
+    "corridorZ": [
+      -1.4,
+      1.4
+    ],
+    "stairBands": [
+      [
+        -49,
+        -43
+      ],
+      [
+        43,
+        49
+      ]
+    ],
+    "classroomsPerWing": 6,
+    "windowWidth": 1.45,
+    "windowHeight": 1.9,
+    "windowSill": 0.95,
+    "frameWidth": 0.065,
+    "centralWidth": 8.8,
+    "centralProjection": 1.8,
+    "centralRole": "broadcast-and-other-functional-spaces",
+    "centralFloorAssignments": "unknown; not an invented room-by-room broadcast-station allocation",
+    "frontDoorWidth": 3,
+    "doorHeight": 2.7,
+    "terrace": {
+      "level": 4,
+      "rearStartZ": 1.4,
+      "outerZ": 7,
+      "planterDepth": 0.62,
+      "planterHeight": 1.05,
+      "coveredByLevel5Corridor": true,
+      "wholeTerraceRoofed": false
+    },
+    "sidePorch": {
+      "side": "east",
+      "orientationEvidence": "H on inherited15-east entrance; photo does not establish end direction",
+      "projection": 1.65,
+      "width": 3.5,
+      "postWidth": 0.32,
+      "roofHeight": 3.05,
+      "roofThickness": 0.24,
+      "trimHeight": 0.1,
+      "thresholdTop": 0.04,
+      "levelPolicy": "retain accepted ground and interior datum; no invented external/internal stair rise"
+    },
+    "cupola": {
+      "radius": 1.8,
+      "drumHeight": 0.8,
+      "capHeight": 1.2,
+      "z": -3.0
+    }
+  },
+  "toilet": {
+    "id": "25",
+    "floorCount": 5,
+    "extensionBasis": "H extension of existing A every-floor connection; fifth toilet floor not independently identified in a photo",
+    "genderEnds": "unknown A/B",
+    "highVentSill": 2.4,
+    "highVentHeight": 0.6
+  },
+  "bridge": {
+    "fifthLevel": true,
+    "newMainEndpoint": 24,
+    "oldMainEndpoint": 20,
+    "fixedToiletEndpoint": -7,
+    "z": 224,
+    "width": 2.1
+  },
+  "flag": {
+    "centralIndex": 1,
+    "centralIdentity": "national-flag",
+    "sideIdentities": "unknown; neutral placeholders"
+  },
+  "display": {
+    "defaultView": "r2-overview",
+    "clippingX": 91,
+    "defaultLabels": false
+  },
+  "excluded": [
+    "modern orange-red main block",
+    "new gameplay",
+    "full classroom furniture",
+    "invented external bridge to another building",
+    "relocation of sports area or unrelated roads"
+  ]
 }

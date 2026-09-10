@@ -8,7 +8,7 @@
 |M1.0 R4|COMPLETE / FROZEN|归档数据与冻结分支保持|
 |M1.1-A P3/P4|COMPLETE / ALUMNI_APPROVED|源码和成功QA已入库；不再要求用户重传|
 |M1.1-B 第一批初版|IMPLEMENTED / SUPERSEDED_BY_R2|四层假设被新A剖面纠正；原代码和488项测试保留|
-|M1.1-B 第一批R2|IMPLEMENTATION / REVIEW_PENDING|五层主楼、连续厕所和桥、主轴校正；工程结果以本轮QA为准|
+|M1.1-B 第一批R2|IMPLEMENTED / REVIEW_PENDING|五层主楼、连续厕所和桥、主轴校正；工程结果以本轮QA为准|
 |M1.1-B 第二批|NEXT / NOT STARTED|体育馆＋贴体音乐楼外壳深化|
 |M1.1-B 其余批次|PLANNED|旧图书馆/食堂，科学馆/长雅，其余建筑外壳|
 |M1.1-C|PLANNED|人物接地、碰撞、内部梯段和坡道实际通行|

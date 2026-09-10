@@ -5,7 +5,7 @@ R=Path(__file__).resolve().parents[3];D=R/'data/m11b/batch01-r2';Q=R/'qa/m11b-b0
 m=json.loads((D/'resolved-buildings.json').read_text());l=json.loads((D/'resolved-layout.json').read_text());p=m['input'];br=json.loads((Q/'browser-report.json').read_text());ok=br['passed']and br['complete']
 unit=(Q/'unit-tests.txt').read_text();total=next((v.split()[-1]for v in unit.splitlines()if v.startswith('# tests ')),'unknown');passed=sum(c['passed']for c in br['checks'])
 def text(x,y,t,size=17,fill='#304742',anchor='start'):
- return f'<text x="{x:.2f}" y="{y:.2f}" font-size="{size}" fill="{fill}" text-anchor="{anchor}" font-family="sans-serif">{html.escape(str(t))}</text>'
+ return f'<text x="{x:.2f}" y="{y:.2f}" font-size="{size}" fill="{fill}" text-anchor="{anchor}" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif">{html.escape(str(t))}</text>'
 def rect(x,y,w,h,fill,stroke='#86998f'):
  return f'<rect x="{x:.2f}" y="{y:.2f}" width="{w:.2f}" height="{h:.2f}" fill="{fill}" stroke="{stroke}" stroke-width="1"/>'
 def base(w,h,title,sub):return f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}"><rect width="{w}" height="{h}" fill="#f5f4ed"/>'+text(54,57,title,29)+text(54,91,sub,15)

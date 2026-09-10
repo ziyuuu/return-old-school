@@ -237,6 +237,31 @@
       "detail": null
     },
     {
+      "id": "R2_CORRIDOR_WINDOWS",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_EAST_UPPER_END_CLOSED_L2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_EAST_UPPER_END_CLOSED_L3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_EAST_UPPER_END_CLOSED_L4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "id": "R2_EAST_UPPER_END_CLOSED_L5",
+      "passed": true,
+      "detail": null
+    },
+    {
       "id": "R2_IDS_UNIQUE",
       "passed": true,
       "detail": null

@@ -87,12 +87,12 @@ Object.assign(cameraPresets,{
  'p04-shop':{label:'已确认基底 · 食堂下层小卖部',position:[138,6,143],target:[153,4.8,149]}
 });
 Object.assign(cameraPresets,{
- 'r2-front':{label:'五层旧主楼 · 中央功能区前凸',position:[73,14,146],target:[73,12,221]},
- 'r2-overview':{label:'第二轮 · 五层主楼、连续厕所和共轴图书馆',position:[-24,52,147],target:[57,10,229]},
+ 'r2-front':{label:'五层旧主楼 · 中央功能区前凸',position:[73,14,119],target:[73,12,221]},
+ 'r2-overview':{label:'第二轮 · 五层主楼、连续厕所和共轴图书馆',position:[-65,75,125],target:[51,10,227]},
  'r2-entry':{label:'中央国旗 → 主楼正门 / 功能区',position:[80,8,195],target:[73,9,216]},
  'r2-rear':{label:'三层后排教室 · 四楼大坪 · 五层单排主体',position:[134,33,255],target:[76,13,225]},
- 'r2-terrace':{label:'四楼后坪 · 内侧有顶廊 / 外侧露天',position:[110,17.5,229.5],target:[36,17.1,225.7]},
- 'r2-fifth':{label:'五楼走廊 · 下方四楼后坪',position:[110,21.5,224.8],target:[36,21.3,224.8]},
+ 'r2-terrace':{label:'四楼后坪 · 内侧有顶廊 / 外侧露天',position:[35,16.6,229.5],target:[111,16.55,225.8]},
+ 'r2-fifth':{label:'五楼走廊 · 下方四楼后坪',position:[35,20.35,224.5],target:[111,20.3,224.5]},
  'r2-section':{label:'侧剖校核 · 下三层双排 / 四层坪 / 五层廊',position:[140,24,231],target:[91,13,224]},
  'r2-floor2':{label:'二层剖看 · 双排教室与中走廊',position:[73,54,209],target:[73,7.3,224]},
  'r2-side':{label:'教学楼侧门 · 凸出门廊与内退门洞',position:[132,6.8,212],target:[122.5,5.5,224]},
@@ -318,7 +318,7 @@ function setView(name:string){
  active.position.set(...p.position as Vec3);active.up.set(...((name==='top'||name==='r2-axis')?[0,0,-1]:[0,1,0]) as Vec3);
  ((name==='top'||name==='r2-axis')?topControls:controls).target.set(...p.target as Vec3);if(innerWidth<700&&(name.startsWith('b01-')||name.startsWith('r2-'))&&name!=='r2-axis'){const t=new THREE.Vector3(...p.target as Vec3);active.position.sub(t).multiplyScalar(2.6).add(t);}
  active.lookAt(...p.target as Vec3);
- if((name==='top'||name==='r2-axis')){topCamera.zoom=1;topCamera.updateProjectionMatrix();}controls.update();topControls.update();
+ if((name==='top'||name==='r2-axis')){topCamera.zoom=name==='r2-axis'?1.5:1;topCamera.updateProjectionMatrix();}controls.update();topControls.update();
  el('view-name').innerHTML=`${p.label}<span>B01 R2 · 五层剖面 / 中央功能区 / 校园主轴 · 待审阅</span>`;
 }
 for(const btn of document.querySelectorAll<HTMLButtonElement>('[data-view]'))btn.onclick=()=>setView(btn.dataset.view!);
