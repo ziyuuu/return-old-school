@@ -2,8 +2,8 @@
 
 状态：IMPLEMENTED / REVIEW_PENDING；工程结果：PASS。
 
-单元/回归576；浏览器35/35；实际截图19。
-源码`cc439350885627472252c791fcac1f44212aafc7`；Viewer SHA256 `975148ba8e621c15d5ba12ef1f2fb8da972d2acb60f8bf14c2246d68215647ed`。
+单元/回归583；浏览器37/37；实际截图19。
+源码`9b211cf3065e3f7d878f1c399a54edfa9f9e32c9`；Viewer SHA256 `3e8afa6647def39e86a63880b17224d4a7a4301fc7a9d45e7ce26a119711e2ce`。
 
 本次从21e907cb继承已验证P3/P4+B01，按#28独立覆盖布局。不更改冻结data/m10、P3/P4输入。
 

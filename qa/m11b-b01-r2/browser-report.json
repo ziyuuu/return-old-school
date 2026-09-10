@@ -188,6 +188,88 @@
       }
     },
     {
+      "name": "upper east ends do not open onto void",
+      "passed": true,
+      "detail": [
+        {
+          "l": 2,
+          "hits": [
+            {
+              "name": "R2-15-2|end-wall|box",
+              "facility": "15",
+              "distance": 0.9999989345669746
+            },
+            {
+              "name": "R2-15-2|end-wall|box",
+              "facility": "15",
+              "distance": 1.2399989292025566
+            }
+          ]
+        },
+        {
+          "l": 3,
+          "hits": [
+            {
+              "name": "R2-15-3|end-wall|box",
+              "facility": "15",
+              "distance": 0.9999989345669746
+            },
+            {
+              "name": "R2-15-3|end-wall|box",
+              "facility": "15",
+              "distance": 1.2399989292025566
+            }
+          ]
+        },
+        {
+          "l": 4,
+          "hits": [
+            {
+              "name": "R2-15-4|end-wall|box",
+              "facility": "15",
+              "distance": 0.9999989345669746
+            },
+            {
+              "name": "R2-15-4|end-wall|box",
+              "facility": "15",
+              "distance": 1.2399989292025566
+            }
+          ]
+        },
+        {
+          "l": 5,
+          "hits": [
+            {
+              "name": "R2-15-5|end-wall|box",
+              "facility": "15",
+              "distance": 0.9999989345669746
+            },
+            {
+              "name": "R2-15-5|end-wall|box",
+              "facility": "15",
+              "distance": 1.2399989292025566
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "fourth corridor has actual glazing without solid wall behind",
+      "passed": true,
+      "detail": [
+        {
+          "name": "R2-15-4|glazing|box",
+          "facility": "15",
+          "distance": 2.379999976605177
+        },
+        {
+          "name": "R2-15-4|glazing|box",
+          "facility": "15",
+          "distance": 2.4199999757111073
+        }
+      ]
+    },
+    {
       "name": "captured all17 requested views",
       "passed": true,
       "detail": null
@@ -246,12 +328,12 @@
         "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
         "glError": 0,
         "contextLost": false,
-        "calls": 668,
-        "triangles": 302152,
+        "calls": 896,
+        "triangles": 358990,
         "camera": [
-          -153.60000000000002,
-          119.2,
-          15.799999999999983
+          -250.59999999999997,
+          178.99999999999997,
+          -38.200000000000074
         ]
       }
     },
@@ -283,8 +365,8 @@
     "mobile.png"
   ],
   "errors": [],
-  "source_sha": "cc439350885627472252c791fcac1f44212aafc7",
-  "viewer_sha256": "975148ba8e621c15d5ba12ef1f2fb8da972d2acb60f8bf14c2246d68215647ed",
+  "source_sha": "9b211cf3065e3f7d878f1c399a54edfa9f9e32c9",
+  "viewer_sha256": "3e8afa6647def39e86a63880b17224d4a7a4301fc7a9d45e7ce26a119711e2ce",
   "environment": "Playwright Chromium / SwiftShader WebGL2;1440x1000 and390x844 viewport",
   "alumniReview": "REVIEW_PENDING"
 }

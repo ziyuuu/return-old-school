@@ -1,0 +1,62 @@
+[
+  {
+    "l": 2,
+    "hits": [
+      {
+        "name": "R2-15-2|end-wall|box",
+        "facility": "15",
+        "distance": 0.9999989345669746
+      },
+      {
+        "name": "R2-15-2|end-wall|box",
+        "facility": "15",
+        "distance": 1.2399989292025566
+      }
+    ]
+  },
+  {
+    "l": 3,
+    "hits": [
+      {
+        "name": "R2-15-3|end-wall|box",
+        "facility": "15",
+        "distance": 0.9999989345669746
+      },
+      {
+        "name": "R2-15-3|end-wall|box",
+        "facility": "15",
+        "distance": 1.2399989292025566
+      }
+    ]
+  },
+  {
+    "l": 4,
+    "hits": [
+      {
+        "name": "R2-15-4|end-wall|box",
+        "facility": "15",
+        "distance": 0.9999989345669746
+      },
+      {
+        "name": "R2-15-4|end-wall|box",
+        "facility": "15",
+        "distance": 1.2399989292025566
+      }
+    ]
+  },
+  {
+    "l": 5,
+    "hits": [
+      {
+        "name": "R2-15-5|end-wall|box",
+        "facility": "15",
+        "distance": 0.9999989345669746
+      },
+      {
+        "name": "R2-15-5|end-wall|box",
+        "facility": "15",
+        "distance": 1.2399989292025566
+      }
+    ]
+  }
+]

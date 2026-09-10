@@ -9,5 +9,5 @@ rendering chunks...
 computing gzip size...
 [2mdist/[22m[32mindex.html                 [39m[1m[2m  8.01 kB[22m[1m[22m[2m │ gzip:   3.24 kB[22m
 [2mdist/[22m[2massets/[22m[35mindex-CyT87FfW.css  [39m[1m[2m  8.69 kB[22m[1m[22m[2m │ gzip:   2.68 kB[22m
-[2mdist/[22m[2massets/[22m[36mindex-CDWSw8L4.js   [39m[1m[2m694.87 kB[22m[1m[22m[2m │ gzip: 197.79 kB[22m
-[32m✓ built in 1.71s[39m
+[2mdist/[22m[2massets/[22m[36mindex-BfpSJ4gL.js   [39m[1m[2m695.30 kB[22m[1m[22m[2m │ gzip: 197.97 kB[22m
+[32m✓ built in 1.54s[39m
