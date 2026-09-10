@@ -137,7 +137,7 @@
       }
     },
     {
-      "name": "captured15 fixed model views",
+      "name": "captured17 fixed model views",
       "passed": true,
       "detail": null
     },
@@ -180,8 +180,8 @@
         "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
         "glError": 0,
         "contextLost": false,
-        "calls": 678,
-        "triangles": 346752,
+        "calls": 677,
+        "triangles": 346776,
         "camera": [
           -142,
           96.80000000000003,
@@ -200,6 +200,8 @@
     "r3-overview.png",
     "r3-west.png",
     "r3-east.png",
+    "r3-west-front.png",
+    "r3-east-front.png",
     "r3-wall.png",
     "r3-porch-plan.png",
     "r3-arc.png",
@@ -215,8 +217,8 @@
     "mobile.png"
   ],
   "errors": [],
-  "source_sha": "d132b09fb271a582d40d79110eb84d7f7d6d2d7d",
-  "viewer_sha256": "4a10b351c086b4e6a6c183369f309be8d3767ff1e93f93227f0ba5b5fe1ce7a8",
+  "source_sha": "f372d318086934377803b85adeec8a4e4b4ffbc7",
+  "viewer_sha256": "cab19d834d73e871e69232a43de58be199d60a3b4a98ceb02e151b6a5840a2ea",
   "environment": "Playwright Chromium / SwiftShader WebGL2;1440x1000 and390x844 viewport",
   "alumniReview": "REVIEW_PENDING"
 }
