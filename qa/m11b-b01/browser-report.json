@@ -1,0 +1,292 @@
+{
+  "version": "M1.1-B.Batch01",
+  "complete": true,
+  "passed": true,
+  "checks": [
+    {
+      "name": "WebGL2 startup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "B01 model report",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "P3 vertical report",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "default P4 accepted base",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "three actual flagpoles",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main-toilet datum equal",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "gym-music datum equal",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "courts raised over canopy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "field below apron",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "4 floors / 8 supported clear door routes",
+      "passed": true,
+      "detail": {
+        "routes": [
+          "B01-L1-A",
+          "B01-L1-B",
+          "B01-L2-A",
+          "B01-L2-B",
+          "B01-L3-A",
+          "B01-L3-B",
+          "B01-L4-A",
+          "B01-L4-B"
+        ],
+        "probes": 456,
+        "bad": []
+      }
+    },
+    {
+      "name": "actual clear underpass",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "actual clear front",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "actual clear rear",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "actual clear terraceDoor",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "actual clear terraceSky",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "terrace actual supported floor",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all inherited road widths supported",
+      "passed": true,
+      "detail": {
+        "probes": 1011,
+        "bad": [],
+        "terminal_sample_inset_m": 0.005
+      }
+    },
+    {
+      "name": "entrance42m rises3m in actual mesh",
+      "passed": true,
+      "detail": [
+        0.03999999910593033,
+        3.0399999618530273
+      ]
+    },
+    {
+      "name": "all field and site stairs supported",
+      "passed": true,
+      "detail": {
+        "count": 43,
+        "bad": []
+      }
+    },
+    {
+      "name": "gym spectator stair retained",
+      "passed": true,
+      "detail": {
+        "points": 32,
+        "bad": []
+      }
+    },
+    {
+      "name": "captured b01-front",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "captured b01-oblique",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "captured b01-entry",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "captured b01-rear",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "captured b01-terrace",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "captured b01-toilet",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "captured b01-bridge",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "captured b01-floor2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "captured b01-underpass",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "captured b01-overview",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "captured p04-courts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "captured p04-flags",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "captured p04-shop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "captured p03-gate-out",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "captured p03-edge",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "captured gym-p02-stair",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "captured top",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "upper floors hidden by section",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "inspector opens",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile canvas viewport",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile has no horizontal document overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "offline file startup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "WebGL no final error",
+      "passed": true,
+      "detail": {
+        "view": "b01-oblique",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 495,
+        "triangles": 288368,
+        "camera": [
+          -137.40000000000003,
+          55.20000000000001,
+          78.4
+        ]
+      }
+    },
+    {
+      "name": "no JS/shader console errors",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "errors": [],
+  "screenshots": [
+    "b01-front.png",
+    "b01-oblique.png",
+    "b01-entry.png",
+    "b01-rear.png",
+    "b01-terrace.png",
+    "b01-toilet.png",
+    "b01-bridge.png",
+    "b01-floor2.png",
+    "b01-underpass.png",
+    "b01-overview.png",
+    "p04-courts.png",
+    "p04-flags.png",
+    "p04-shop.png",
+    "p03-gate-out.png",
+    "p03-edge.png",
+    "gym-p02-stair.png",
+    "top.png",
+    "desktop-ui.png",
+    "mobile.png"
+  ],
+  "source_sha": "0dcd9f94faf585f34c17616441f142063d45f38d",
+  "viewer_sha256": "e239e80bc285ef7161b77631aa805d6d1abccb46bd8d7644cd04433380571b34",
+  "environment": "Playwright Chromium / SwiftShader software WebGL2; desktop1440x1000 and mobile viewport390x844",
+  "note": "Geometry/visual QA, not a physical phone performance claim. Alumni review for B01 remains pending."
+}

@@ -1,0 +1,14 @@
+{
+  "view": "b01-oblique",
+  "verticalScheme": "patch04",
+  "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+  "glError": 0,
+  "contextLost": false,
+  "calls": 495,
+  "triangles": 288368,
+  "camera": [
+    -137.40000000000003,
+    55.20000000000001,
+    78.4
+  ]
+}

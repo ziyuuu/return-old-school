@@ -1,0 +1,14 @@
+{
+  "underpass": [],
+  "front": [],
+  "rear": [],
+  "terraceDoor": [],
+  "terraceSky": [],
+  "terraceFloor": [
+    {
+      "name": "B01-15-L4-full-floor",
+      "y": 14.890000003576276,
+      "role": "slab"
+    }
+  ]
+}
