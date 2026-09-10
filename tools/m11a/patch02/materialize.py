@@ -1,6 +1,6 @@
 """One-time transport of a checksum-verified textual diff; final sources are committed by CI."""
 from pathlib import Path
-import base64, hashlib, json, lzma, subprocess
+import base64, hashlib, json, lzma, subprocess, sys
 R = Path(__file__).resolve().parents[3]
 EXPECTED = 'c4c2e2d0255755fcde69c3428c56e3ee7caef468a582e9bb57f0377846999adf'
 ALLOWED = {'apps/campus/src/main.ts','apps/campus/src/terrain-core.mjs','apps/campus/src/terrain-scene.ts','apps/campus/index.html','apps/campus/src/patch02-core.mjs','apps/campus/src/patch02-gym.ts','data/m11a/patch02/input.json','docs/m11a/patch02/plan.md','tests/m11a/patch02/patch02.test.mjs','tools/m11a/patch02/capture.py','tools/m11a/patch02/export.mjs','tools/m11a/patch02/package.py'}
@@ -20,3 +20,5 @@ lock = json.loads((R/'data/m11a/baseline-lock.json').read_text())
 for path, expected in lock['file_sha256'].items():
     assert hashlib.sha256((R/path).read_bytes()).hexdigest() == expected, f'frozen baseline altered: {path}'
 print('All four frozen baseline hashes unchanged; topology exception is an independent overlay.')
+review=R/'tools/m11a/patch02/refine-review.py'
+if review.is_file(): subprocess.run([sys.executable,str(review)],cwd=R,check=True)
