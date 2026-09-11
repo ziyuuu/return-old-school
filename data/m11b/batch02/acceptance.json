@@ -1,0 +1,15 @@
+{
+  "stage": "M1.1-B",
+  "batch": "B02",
+  "status": "COMPLETE / ALUMNI_APPROVED",
+  "accepted_on": "2026-09-11",
+  "accepted_by": "user/alumni",
+  "user_confirmation": "好的。这个版本已经通过了。请规划下一批如何交付。",
+  "source_sha": "ef4b057361313aaf3143afd7e7fcf7709981c281",
+  "delivery_sha": "47c1316d4ff3920e8e939a88a20a175b8c54d7e3",
+  "viewer_sha256": "a7f05a435b1a31a160e02ef2b44d3130f136425e38df54a3e72750c064b1d6d6",
+  "scope": ["03体育馆", "24四层贴体音乐楼", "真实门洞与门厅", "左外梯与观赛层", "绕馆通路"],
+  "historical_qa_status_preserved": true,
+  "remaining_hypotheses": "See docs/m11b/batch02/evidence.md; approval does not imply measurement.",
+  "new_frozen_baseline": false
+}
