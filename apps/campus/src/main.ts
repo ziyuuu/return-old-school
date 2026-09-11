@@ -1,3 +1,7 @@
+// B02_ACTIVE_ENTRY
+import batch02Input from '../../../data/m11b/batch02/input.json';
+import {applyB02Layout,buildB02Model} from './batch02-core.mjs';
+import {buildB02Facility} from './batch02-scene';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import source from '../../../data/m10/campus-layout.json';
@@ -33,7 +37,7 @@ type Facility = typeof source.facilities[number];
 const patch=applyPatch02(source,terrainBase,patchInput);
 const effective=applyB01R2(patch.layout,patch.terrain,patch04Base,batch01Input);
 const r2Layout=effective.layout;
-const layout:typeof source=applyB01R3Layout(r2Layout,revision3Input);
+const layout:typeof source=applyB02Layout(applyB01R3Layout(r2Layout,revision3Input),batch02Input);
 const patch04Input=effective.site;
 const requestedVertical=new URLSearchParams(location.search).get('vertical');
 const verticalScheme=requestedVertical==='patch02'?'patch02':requestedVertical==='patch03'?'patch03':'patch04';
@@ -41,6 +45,7 @@ const p03Model=verticalScheme!=='patch02'?buildPatch03Model(layout,effective.spe
 const rawCurrentModel=verticalScheme==='patch04'?buildPatch04Model(p03Model,patch04Input):p03Model;
 const currentModel=adaptB01R3Terrain(rawCurrentModel??buildTerrainModel(layout,effective.spec),layout,revision3Input);
 const b01Model=buildB01R3Model(layout,currentModel,batch01Input,revision3Input);
+const b02Model=buildB02Model(layout,currentModel,batch02Input);
 let b01Bridge:any=null;
 const terrainSpec=p03Model?.spec??effective.spec;
 const report=p03Model?patch03Checks(patch.layout,patch.terrain,patch03Input):patch02Checks(layout,terrainSpec,patchInput,source);
@@ -133,6 +138,24 @@ Object.assign(cameraPresets,{
  'r31-east-door':{label:'右端卷帘门近看 · 无关闭门板',position:[122.5,5.3,214.9],target:[117.5,4.95,217.5]}
 });
 cameraPresets['r2-side']=cameraPresets['r3-east'];
+// B02 presets: photo matching is approximate, not a solved camera calibration.
+Object.assign(cameraPresets,{
+ 'b02-photo-front':{label:'体育馆 · S03-020 低位斜正面',position:[16,5.35,82],target:[-39,12.5,44],fov:49},
+ 'b02-photo-side':{label:'体育馆 · S03-017 右前侧折面',position:[4,5.3,0],target:[-39,12,46],fov:49},
+ 'b02-front':{label:'主路正看 · 真正门洞在内退正墙',position:[26,7.1,45],target:[-36,12,45],fov:43},
+ 'b02-entry':{label:'前坪 / 低台阶 / 体育馆门厅',position:[-11,5.5,48],target:[-29.8,5.2,45],fov:49},
+ 'b02-lobby':{label:'体育馆门厅内回望 · 门后非实心墙',position:[-32.3,5.34,46.5],target:[-20,5.2,45],fov:62},
+ 'b02-stair':{label:'面对正门的左侧 · 外梯到观赛层',position:[-12,11.6,77],target:[-30,7.6,62],fov:51},
+ 'b02-stair-top':{label:'梯顶落脚 / 真正上层侧门',position:[-36.1,9.52,65],target:[-35.6,9.3,58.6],fov:66},
+ 'b02-gallery':{label:'短观赛廊 · 回到前平台的开口',position:[-33,9.5,58.3],target:[-27.3,9.3,58.3],fov:66},
+ 'b02-music':{label:'四层音乐楼 · 贴馆 / 既有入口',position:[-98,24,103],target:[-61,10,67],fov:48},
+ 'b02-music-entry':{label:'音乐楼南侧入口 · H保守补全',position:[-71.5,6.3,85],target:[-68,5.25,76.5],fov:58},
+ 'b02-music-lobby':{label:'音乐楼最小门厅内回望',position:[-68,5.28,75],target:[-68,5.3,81],fov:67},
+ 'b02-loop':{label:'绕馆道路关键转角 · 不穿共享墙',position:[-105,44,107],target:[-65,4,69],fov:49},
+ 'b02-field':{label:'下沉运动面看馆 · 前坪不降低',position:[49,4.2,64],target:[-31,9.3,44],fov:47},
+ 'b02-overview':{label:'第二批组团及既有运动区',position:[49,94,133],target:[-40,6,61],fov:48}
+});
+
 const el=<T extends HTMLElement>(id:string)=>document.getElementById(id) as T;
 const viewport=el<HTMLDivElement>('viewport');
 let renderer: THREE.WebGLRenderer;
@@ -248,7 +271,7 @@ for(const f of layout.facilities){
  const [x,y,z]=f.position,[w,h,d]=f.size,g=new THREE.Group();g.name=`F${f.id}`;g.userData.facility=f.id;g.position.set(x,y,z);roots.set(f.id,g);
  (['field','courts','straight-track','pool','forecourt','sandpit','garden','route','marker','subspace'].includes(f.kind)?surfaces:volumes).add(g);
  addFootprint(f);addLabel(f);
- if(batch01Facility(f,g,{mats},b01Model) || buildPatch02Gym(f,g,{box,mesh,line,rect,mats,layout},patchInput) || r4Facility(f,g,{box,mesh,line,rect,mats,layout}) || r3Facility(f,g,{box,mesh,line,rect,mats,layout}) || revisedFacility(f,g,{box,mesh,line,rect,mats,layout})) {
+ if(buildB02Facility(f,g,{mats},b02Model) || batch01Facility(f,g,{mats},b01Model) || buildPatch02Gym(f,g,{box,mesh,line,rect,mats,layout},patchInput) || r4Facility(f,g,{box,mesh,line,rect,mats,layout}) || r3Facility(f,g,{box,mesh,line,rect,mats,layout}) || revisedFacility(f,g,{box,mesh,line,rect,mats,layout})) {
   // R2 builds real openings / larger envelopes without replacing unrelated facilities.
  } else if(solidKinds.has(f.kind)){
   if(f.kind==='context'){
@@ -344,15 +367,15 @@ function setToiletLevel(level:number,focus=false){
  if(focus&&level){stopModes();active=camera;controls.enabled=true;topControls.enabled=false;const y=(level-1)*3.8+(terrainSystem?.enabled?terrainSystem.model.anchors['25'].floor:0);camera.position.set(7,y+10,238);controls.target.set(-10,y+1,224);controls.update();}
 }
 function setView(name:string){
- const p=cameraPresets[name];if(!p)return;setReviewShadow(p.target,name.startsWith('terrain-')||name.startsWith('gym-p02-')||name.startsWith('p03-')||name.startsWith('b01-')||(name.startsWith('r2-')||name.startsWith('r3-'))||name.startsWith('p04-'));stopModes();view=name;setToiletLevel(name==='r3-porch-plan'?1:name==='toilet-floor'||name==='b01-floor2'||name==='r2-floor2'?2:0);
+ const p=cameraPresets[name];if(!p)return;controls.maxPolarAngle=name.startsWith('b02-')?Math.PI*.85:Math.PI*.495;camera.fov=p.fov??43;camera.updateProjectionMatrix();setReviewShadow(p.target,name.startsWith('b02-')||name.startsWith('terrain-')||name.startsWith('gym-p02-')||name.startsWith('p03-')||name.startsWith('b01-')||(name.startsWith('r2-')||name.startsWith('r3-'))||name.startsWith('p04-'));stopModes();view=name;setToiletLevel(name==='r3-porch-plan'?1:name==='toilet-floor'||name==='b01-floor2'||name==='r2-floor2'?2:0);
  b01Bridge?.setMode((name==='r2-section'||name==='r3-section')?'section':(name==='r2-axis'||name==='r3-axis')?'axis':'normal');
  document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',(b as HTMLElement).dataset.view===name));
  active=(name==='top'||(name==='r2-axis'||name==='r3-axis'))?topCamera:camera;controls.enabled=(name!=='top'&&name!=='r2-axis');topControls.enabled=(name==='top'||(name==='r2-axis'||name==='r3-axis'));
  active.position.set(...p.position as Vec3);active.up.set(...((name==='top'||(name==='r2-axis'||name==='r3-axis'))?[0,0,-1]:[0,1,0]) as Vec3);
- ((name==='top'||(name==='r2-axis'||name==='r3-axis'))?topControls:controls).target.set(...p.target as Vec3);if(innerWidth<700&&(name.startsWith('b01-')||(name.startsWith('r2-')||name.startsWith('r3-')))&&name!=='r2-axis'){const t=new THREE.Vector3(...p.target as Vec3);active.position.sub(t).multiplyScalar(2.6).add(t);}
+ ((name==='top'||(name==='r2-axis'||name==='r3-axis'))?topControls:controls).target.set(...p.target as Vec3);if(innerWidth<700&&(name.startsWith('b02-')||name.startsWith('b01-')||(name.startsWith('r2-')||name.startsWith('r3-')))&&name!=='r2-axis'){const t=new THREE.Vector3(...p.target as Vec3);active.position.sub(t).multiplyScalar(name.startsWith('b02-')?1.9:2.6).add(t);}
  active.lookAt(...p.target as Vec3);
  if((name==='top'||(name==='r2-axis'||name==='r3-axis'))){topCamera.zoom=(name==='r2-axis'||name==='r3-axis')?1.5:1;topCamera.updateProjectionMatrix();}controls.update();topControls.update();
- el('view-name').innerHTML=`${p.label}<span>B01 R3 · 正面两端内退入口 / 主体前伸墙 / 中央轻弧 · 待审阅</span>`;
+ el('view-name').innerHTML=`${p.label}<span>B02 体育馆 / 音乐楼 · 待校友审阅｜B01 R3.1 已认可</span>`;
 }
 for(const btn of document.querySelectorAll<HTMLButtonElement>('[data-view]'))btn.onclick=()=>setView(btn.dataset.view!);
 el<HTMLSelectElement>('toilet-level').onchange=e=>setToiletLevel(Number((e.target as HTMLSelectElement).value),true);
@@ -458,7 +481,7 @@ function p02Support(x:number,y:number,z:number){scene.updateMatrixWorld(true);co
 function p02Snapshot(){scene.updateMatrixWorld(true);const d:any={};scene.traverse(o=>{if(o.name.startsWith('P02-')){const b=new THREE.Box3().setFromObject(o);d[o.name]={min:b.min.toArray(),max:b.max.toArray(),role:o.userData.role,visible:o.visible};}});return d;}
 Object.assign(window,{__YALI_P02__:{ready:true,version:patchInput.version,layout,report,parameters:patchInput,source,
  geometrySnapshot:p02Snapshot,support:p02Support,probe:terrainSystem.probeActual,
- galleryRoute:()=>galleryRoute(patchInput).map((q:any)=>gymWorld(q.u,q.y,q.v,terrainSystem.enabled?terrainSystem.model.anchors['03'].floor:0)),
+ galleryRoute:()=>b02Model.routes.find((r:any)=>r.id==='spectator')!.points,legacyParametersOnly:true,
  setCutaway:(v:boolean)=>{gymCutaway=v;el<HTMLInputElement>('gym-cutaway').checked=v;setGymCutaway(roots,v);},
  getState:()=>({gymCutaway,terrain:terrainSystem.enabled}),
  exportData:()=>({layout,terrain:terrainSystem.model.exportData(),patch:patchInput,checks:report})}});
@@ -486,3 +509,43 @@ labelsOn=false;el<HTMLInputElement>('labels-check').checked=false;
 el<HTMLInputElement>('r2-axis-check').onchange=e=>b01Bridge.setAxis((e.target as HTMLInputElement).checked);
 
 Object.assign(window,{__YALI_R3__:{...((window as any).__YALI_R2__),r3:revision3Input,model:b01Model,report:b01Report,baseLayout:r2Layout,terrain:currentModel}});
+
+// B02 access diagnostics raycast the FULL visible scene, not a proxy or flight path.
+Object.assign(window,{__YALI_B02__:{ready:true,version:batch02Input.version,input:batch02Input,model:b02Model,layout,
+ setView,support:p02Support,probe:terrainSystem.probeActual,setLabels:(on:boolean)=>{labelsOn=on;},
+ renderNow:()=>renderer.render(scene,active),getState:()=>({view,verticalScheme,webgl:renderer.getContext().getParameter(renderer.getContext().VERSION),glError:renderer.getContext().getError(),contextLost:renderer.getContext().isContextLost(),calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,camera:active.position.toArray()}),
+ snapshot:()=>{scene.updateMatrixWorld(true);return visibleMeshList().filter(o=>o.name.startsWith('B02-')||o.name.startsWith('P02-GYM-')).map(o=>{const b=new THREE.Box3().setFromObject(o);return {name:o.name,role:o.userData.role,min:b.min.toArray(),max:b.max.toArray()};});},
+ checkAccess:()=>{
+  scene.updateMatrixWorld(true);const meshes=visibleMeshList();
+  const ray=(a:number[],b:number[])=>{const o=new THREE.Vector3(...a as Vec3),end=new THREE.Vector3(...b as Vec3),len=o.distanceTo(end);if(len<.004)return [];return new THREE.Raycaster(o,end.sub(o).normalize(),.002,len-.002).intersectObjects(meshes,false).map(h=>({name:h.object.name,distance:h.distance,y:h.point.y}));};
+  const result=[];
+  for(const r of b02Model.routes){const bad:any[]=[],points=r.points;let supports=0,clearances=0,maxRiser=0;
+   for(let i=1;i<points.length;i++){
+    const a=points[i-1],b=points[i],dx=b[0]-a[0],dz=b[2]-a[2],len=Math.hypot(dx,dz),nx=len?-dz/len:0,nz=len?dx/len:0;
+    maxRiser=Math.max(maxRiser,Math.abs(a[1]-b[1]));
+    // Consecutive tread-centre transitions stay above both nosings; check at three widths.
+    for(const off of [-.38,0,.38]){
+     const h=Math.max(a[1],b[1]);
+     for(const dy of [.25,1.1,1.9]){clearances++;const hits=ray([a[0]+nx*off,h+dy,a[2]+nz*off],[b[0]+nx*off,h+dy,b[2]+nz*off]);if(hits.length)bad.push({kind:'body',segment:i,off,dy,hits:hits.slice(0,3)});}
+     const N=Math.max(1,Math.ceil(len/.7));
+     for(let j=0;j<=N;j++){
+      const u=j/N,x=a[0]+dx*u+nx*off,z=a[2]+dz*u+nz*off,y=a[1]+(b[1]-a[1])*u;
+      supports++;const hits=ray([x,y+.23,z],[x,y-.23,z]);
+      const floor=hits.find(q=>Math.abs(q.y-y)<.2);
+      if(!floor)bad.push({kind:'floor',segment:i,off,q:[x,y,z],hits:hits.slice(0,2)});
+      // Vertical capsule clearance from the ACTUAL support height catches overhead slabs.
+      if(floor){clearances++;const overhead=ray([x,floor.y+.19,z],[x,floor.y+1.9,z]);if(overhead.length)bad.push({kind:'head',segment:i,off,q:[x,floor.y,z],hits:overhead.slice(0,3)});}
+     }
+    }
+   }
+   result.push({id:r.id,label:r.label,supports,clearances,maxWaypointRise:maxRiser,bad:bad.slice(0,30),failures:bad.length});
+  }
+  // Check across near the full portal width and height, independent of route centre.
+  const doors=b02Model.portals.map((d:any)=>{const n=new THREE.Vector3(...d.normal as Vec3).normalize(),side=new THREE.Vector3(n.z,0,-n.x),c=new THREE.Vector3(...d.center as Vec3),bad:any[]=[];let probes=0;
+   for(const off of [-d.width/2+.18,0,d.width/2-.18])for(const h of [.25,1.5,d.height-.2]){const q=c.clone().addScaledVector(side,off);q.y=d.floor+h;const a=q.clone().addScaledVector(n,.55),b=q.clone().addScaledVector(n,-.55);probes++;const hits=ray(a.toArray(),b.toArray());if(hits.length)bad.push({off,h,hits});}return {id:d.id,probes,bad};});
+  return {routes:result,doors,sharedWallBlocked:ray([-60,4.9,65.3],[-60,4.9,66.7]).length>0,legacyGymCount:meshes.filter(o=>o.name.startsWith('P02-GYM-')).length};
+ }
+}});
+if(!params.has('view'))setView(innerWidth<700?'b02-front':'b02-overview');
+
+el<HTMLSelectElement>('b02-view-select').onchange=e=>setView((e.target as HTMLSelectElement).value);

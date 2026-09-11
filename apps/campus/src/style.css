@@ -15,3 +15,7 @@
 @media(max-width:700px){.b01-panel .view-grid{grid-template-columns:repeat(2,1fr)}.b01-panel{max-height:140px;overflow:auto}}
 
 .b01-panel{position:absolute;left:26px;top:185px;width:204px;z-index:8;background:#f7f8efec;padding:12px;border:1px solid #c7d0c6;border-radius:8px;max-height:calc(100vh - 320px);overflow:auto;margin:0}.b01-panel button.active{background:#315750;color:#f6f4e7}.b01-panel summary{font-size:12px}.views{bottom:82px} @media(max-width:700px){.b01-panel{top:auto;bottom:132px;left:12px;width:calc(100% - 24px);max-height:122px;padding:8px}.b01-panel .view-grid{grid-template-columns:repeat(5,1fr);gap:4px}.b01-panel button{font-size:10px;padding:6px 2px}.mode-chip{top:134px;max-width:calc(100% - 28px)}.views{bottom:76px}.masthead .eyebrow span{display:none}.terrain-tools{top:97px}.b01-panel summary{font-size:11px}}
+
+/* B02: leave the playfield clear; expanded inspections remain available on demand. */
+.b02-panel{width:210px;top:184px}.b02-panel:not([open]){width:210px}.mode-chip span{max-width:340px;line-height:1.6}.b02-panel .view-grid{grid-template-columns:1fr 1fr}
+@media(max-width:700px){.b02-panel{top:auto;bottom:133px;left:12px;width:calc(100% - 24px)!important;max-height:140px}.b02-panel .view-grid{grid-template-columns:repeat(4,1fr)}.mode-chip span{max-width:300px;font-size:9px}.masthead h1 span{font-size:10px}.terrain-tools{display:none}.mode-chip{top:111px}}

@@ -4,3 +4,6 @@ artifacts/m10/
 __pycache__/
 .env
 .env.*
+
+# B02 generated downloadable bundles (source and QA remain tracked)
+artifacts/m11b-b02/
