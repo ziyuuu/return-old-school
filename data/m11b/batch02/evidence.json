@@ -1,0 +1,40 @@
+{
+  "version": "M1.1-B.B02.R1",
+  "referencePhotos": [
+    {
+      "id": "S03-017",
+      "page_url": "https://k.sina.cn/article_6430641585_17f4bcdb1001003x9v.html",
+      "image_url": "http://k.sinaimg.cn/n/sinacn/w600h664/20180312/a21d-fyscsmu8206800.jpg/w700d1q75cms.jpg",
+      "photographed_at": null,
+      "local_file": "S03-017.jpg",
+      "sha256": "30f09ce6088cbb62768942e06f09de8d6a47fd6a6e1cc7a10bcf4d7cd2b6ee20",
+      "original_sha256": "dab4a321673f4e17890350bb15b64757416c77b1eddc3e175ebfb27099ac3380",
+      "original_size": [600,664],
+      "rights": "Refer to original source; not cleared for game distribution",
+      "viewed_in_this_batch": true,
+      "publishedAt": "2018-03-13",
+      "dateCaution": "Publication and graduate year do not establish capture date.",
+      "usedFor": ["long side folds","side window recess","wraparound balcony"]
+    },
+    {
+      "id": "S03-020",
+      "page_url": "https://k.sina.cn/article_6430641585_17f4bcdb1001003x9v.html",
+      "image_url": "http://k.sinaimg.cn/n/sinacn/w1000h667/20180312/e427-fyscsmu8206948.jpg/w700d1q75cms.jpg",
+      "photographed_at": null,
+      "local_file": "S03-020.jpg",
+      "sha256": "0551145b1b223d008f15b0d9592018c874f56180bf2945117a0c0d70f6c7ab0d",
+      "original_sha256": "1ff44b89c962aa7f7c4ea8b3c44884b028fe95b746ccc0ee933a1e219942a78f",
+      "original_size": [700,467],
+      "rights": "Refer to original source; not cleared for game distribution",
+      "viewed_in_this_batch": true,
+      "publishedAt": "2018-03-13",
+      "dateCaution": "Publication and graduate year do not establish capture date.",
+      "usedFor": ["low main-road-facing lobby","left external stair visible","two-band projecting balcony","deep inset glazing","five-ring panel and raised fold tips"]
+    }
+  ],
+  "missing": ["No independently identified old music entrance/front photograph found in the registered series or focused public searches.","No measured stair-top doorway or complete gym rear elevation."],
+  "A": ["03 frontage to main road","left spectator stair when facing entrance","24 four storeys directly attached","preserve P3/P4 and approved B01"],
+  "H": ["precise metric proportions, side-fold plan taper","number of stair treads, top side door, internal short aisle and front-gallery door","24 window rhythm, facade finish, entrance canopy and minimal lobby"],
+  "rejected": ["2014+ art-building facade as an assumed old music building","modern design proposals","generated illustrations as evidence","old H shared-ground-floor passage"],
+  "rightsPolicy": "Reference research only, not licensed game textures. No reference photo binaries are committed to the public repository. Review may load originals from the cited host; locally prepared private research Review can embed attributed reduced research copies."
+}

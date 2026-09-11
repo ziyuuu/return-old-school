@@ -1,0 +1,39 @@
+{
+  "version": "M1.1-B.B02.R1",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "baseline": "471f6bdd3eb234b10bf26c0e8874a88d708dc7a6",
+  "units": "metres; local y is relative to the CURRENT terrain anchor, not absolute elevation",
+  "evidence": {
+    "A": ["03 front faces main road", "exterior spectator stair on LEFT looking at front", "24 four storeys directly attached to 03", "retain P3/P4 and approved B01"],
+    "P": ["S03-020 low front lobby, two-band projecting fascia, recessed glazing, elevated ring panel", "S03-017 long side folds, side glazing and wraparound platform"],
+    "H": ["all exact dimensions", "fold splay in plan and roof section", "stair tread count and upper door/short circulation", "music facade rhythm, door leaves and minimal lobby; no independently identified entrance photograph"],
+    "photoDates": "S03 published 2018-03-13; capture dates unknown. Alumni graduation years are NOT capture dates. Later signs, doors and refurbishment not copied literally."
+  },
+  "gym": {
+    "id": "03",
+    "floorOffset": 0.04,
+    "galleryRise": 4.2,
+    "height": 19.2,
+    "roofRearHeight": 11.8,
+    "frontHalfWidth": 15.4,
+    "rearHalfWidth": 20.8,
+    "roofDepth": 41.8,
+    "roofThickness": 0.24,
+    "sign": {"width": 30.4, "bottom": 10.4, "top": 18.0, "v": 0.55},
+    "lobby": {"frontV": 2.8, "rearV": 10.3, "halfWidth": 15.4, "doorWidth": 6.8, "doorHeight": 3.1},
+    "glazing": {"frontV": 5.2, "sill": 5.25, "head": 8.15, "upperDoorU": -13.3, "upperDoorWidth": 2.4},
+    "balcony": {"frontV": 0.0, "backV": 5.65, "leftEdge": -15.8, "slabThickness": 0.26, "fasciaBottom": 3.72, "parapetTop": 5.32},
+    "stair": {"u": -18.0, "startV": 0.9, "width": 3.0, "steps": 28, "tread": 0.33, "landingDepth": 3.0, "doorCenterV": 11.65, "doorWidth": 2.4, "doorHeight": 3.1},
+    "insideGallery": {"u0": -15.8, "u1": -12.1, "v0": 5.55, "v1": 23.5},
+    "wallThickness": 0.32
+  },
+  "music": {
+    "id": "24", "floors": 4, "floorOffset": 0.04, "storeyHeight": 3.8, "height": 15.2,
+    "wallThickness": 0.32,
+    "entry": {"localX": -6, "localZ": 5.84, "width": 2.4, "height": 3.1, "frontNormal": [0,0,1]},
+    "lobby": {"x0": -7.68, "x1": -4.0, "z0": 1.6, "z1": 5.84},
+    "windows": {"width": 2.35, "height": 1.9, "sill": 0.9, "frontCenters": [-6,-2,2,6], "sideCenters": [-3.8,0,3.8]},
+    "sharedWall": {"worldZ": 66, "worldX": [-66,-54], "open": false, "basis": "A direct attachment; no evidence for an internal doorway. Retires the older H first-floor contact opening only."}
+  },
+  "routeProbe": {"halfWidth": 0.38, "clearanceHeight": 1.9, "spacing": 0.7, "maxStep": 0.18, "note": "Geometric support/clearance only; NOT a final character controller or accessibility/code certification."}
+}
