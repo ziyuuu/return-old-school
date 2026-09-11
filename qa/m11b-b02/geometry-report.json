@@ -1,0 +1,39 @@
+{
+  "version": "M1.1-B.B02.R1",
+  "passed": true,
+  "results": [
+    {
+      "id": "inherited footprints, roads and B01 approval",
+      "passed": true
+    },
+    {
+      "id": "current terrain datums and photographic layer order",
+      "passed": true
+    },
+    {
+      "id": "four storeys, direct contact, unsupported shared portal retired",
+      "passed": true
+    },
+    {
+      "id": "left flight, all treads and matched upper landing",
+      "passed": true
+    },
+    {
+      "id": "finite nonzero geometry and replacement dispatch",
+      "passed": true
+    },
+    {
+      "id": "real apertures through all four wall planes",
+      "passed": true
+    },
+    {
+      "id": "shared wall actually blocks crossing at ground level",
+      "passed": true
+    },
+    {
+      "id": "minimum lobbies have standing clearance",
+      "passed": true
+    }
+  ],
+  "note": "8 targeted groups; real scene-wide route support and occlusion are checked separately in Chromium."
+}

@@ -11,3 +11,11 @@
 导出：`node tools/m11b-b02/export.mjs`；正常构建：`npm run build --prefix apps/campus`；定向几何：`node tools/m11b-b02/check.mjs`；实际浏览器：`python tools/m11b-b02/capture.py`；通过后打包：`python tools/m11b-b02/package.py`。输出在 `artifacts/m11b-b02/`，Viewer、Review、Workspace、Access均使用 `Yali_M1_1_B_B02_` 前缀。
 
 不包含全场内装、完整看台、音乐教室家具或最终人物控制器。前坪/运动面高差、P3/P4、第一批侧返墙开启卷帘门、厕所连接与三旗主轴不改。`data/m10`及冻结基线不动。
+
+## 实际工程记录
+
+8组定向几何检查通过；11组真实Chromium检查通过。5条路线检查真实网格支撑及身体/头部净空，4个完整门洞抽查；共享墙阻断、旧馆体移除，B01入口/主轴/三旗及手机viewport抽查通过。
+
+实际截图16张（含两幅原照片近似对照机位、门厅内回望及手机viewport）。file://单文件加载未请求外部网络资源，无JavaScript/WebGL错误。
+
+受测源码 `983d11b501f94a97d1bbeccf747b6a79f0a5fe2d`；Viewer SHA256 `7f3f1255677a15b525b1126526863efce613b841d9597d5c66e18c1322312c44`。工程PASS不等于校友认可，本批继续REVIEW_PENDING。

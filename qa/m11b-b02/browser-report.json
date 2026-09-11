@@ -1,0 +1,580 @@
+{
+  "version": "M1.1-B.B02.R1",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "complete": true,
+  "passed": true,
+  "checks": [
+    {
+      "name": "B02 actual WebGL2 startup",
+      "passed": true,
+      "detail": {
+        "view": "b02-overview",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 1396,
+        "triangles": 214714,
+        "camera": [
+          48.99999999999997,
+          94,
+          132.99999999999994
+        ]
+      }
+    },
+    {
+      "name": "gym-main actual support and body/head clearance",
+      "passed": true,
+      "detail": {
+        "id": "gym-main",
+        "label": "主路→低台阶→真门洞→门厅",
+        "supports": 180,
+        "clearances": 270,
+        "maxWaypointRise": 0.15000000000000036,
+        "bad": [],
+        "failures": 0
+      }
+    },
+    {
+      "name": "spectator actual support and body/head clearance",
+      "passed": true,
+      "detail": {
+        "id": "spectator",
+        "label": "前坪→左外梯→上层侧门→短观赛廊",
+        "supports": 381,
+        "clearances": 741,
+        "maxWaypointRise": 0.15000000000000036,
+        "bad": [],
+        "failures": 0
+      }
+    },
+    {
+      "name": "front-platform actual support and body/head clearance",
+      "passed": true,
+      "detail": {
+        "id": "front-platform",
+        "label": "观赛层→前平台真正门洞",
+        "supports": 102,
+        "clearances": 129,
+        "maxWaypointRise": 0,
+        "bad": [],
+        "failures": 0
+      }
+    },
+    {
+      "name": "music actual support and body/head clearance",
+      "passed": true,
+      "detail": {
+        "id": "music",
+        "label": "绕馆路→既有门前台阶→音乐楼门厅",
+        "supports": 72,
+        "clearances": 144,
+        "maxWaypointRise": 0.15000000000000036,
+        "bad": [],
+        "failures": 0
+      }
+    },
+    {
+      "name": "loop actual support and body/head clearance",
+      "passed": true,
+      "detail": {
+        "id": "loop",
+        "label": "组团外缘连续绕馆路；不穿共享墙",
+        "supports": 3354,
+        "clearances": 8385,
+        "maxWaypointRise": 0.047844953809926594,
+        "bad": [],
+        "failures": 0
+      }
+    },
+    {
+      "name": "four real full-width door apertures",
+      "passed": true,
+      "detail": [
+        {
+          "id": "gym-main",
+          "probes": 9,
+          "bad": []
+        },
+        {
+          "id": "spectator",
+          "probes": 9,
+          "bad": []
+        },
+        {
+          "id": "front-platform",
+          "probes": 9,
+          "bad": []
+        },
+        {
+          "id": "music",
+          "probes": 9,
+          "bad": []
+        }
+      ]
+    },
+    {
+      "name": "shared wall closed and old gym removed",
+      "passed": true,
+      "detail": {
+        "sharedWallBlocked": true,
+        "oldMeshes": 0,
+        "retainedSite": [
+          "P02-GYM-FORECOURT"
+        ]
+      }
+    },
+    {
+      "name": "approved B01 shutters, axis, flags and current datums retained",
+      "passed": true,
+      "detail": {
+        "flags": 3,
+        "axis": [
+          73,
+          73,
+          73
+        ],
+        "musicGymFloor": [
+          3.6,
+          3.6
+        ],
+        "shutterClear": true,
+        "courts": [
+          -37.5,
+          0,
+          120
+        ]
+      }
+    },
+    {
+      "name": "mobile viewport and controls visible",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "downloaded file:// viewer works without network",
+      "passed": true,
+      "detail": {
+        "externalRequests": [],
+        "state": {
+          "view": "b02-front",
+          "verticalScheme": "patch04",
+          "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "glError": 0,
+          "contextLost": false,
+          "calls": 632,
+          "triangles": 122266,
+          "camera": [
+            81.8,
+            2.689999999999996,
+            45.00000000000001
+          ]
+        }
+      }
+    }
+  ],
+  "access": {
+    "routes": [
+      {
+        "id": "gym-main",
+        "label": "主路→低台阶→真门洞→门厅",
+        "supports": 180,
+        "clearances": 270,
+        "maxWaypointRise": 0.15000000000000036,
+        "bad": [],
+        "failures": 0
+      },
+      {
+        "id": "spectator",
+        "label": "前坪→左外梯→上层侧门→短观赛廊",
+        "supports": 381,
+        "clearances": 741,
+        "maxWaypointRise": 0.15000000000000036,
+        "bad": [],
+        "failures": 0
+      },
+      {
+        "id": "front-platform",
+        "label": "观赛层→前平台真正门洞",
+        "supports": 102,
+        "clearances": 129,
+        "maxWaypointRise": 0,
+        "bad": [],
+        "failures": 0
+      },
+      {
+        "id": "music",
+        "label": "绕馆路→既有门前台阶→音乐楼门厅",
+        "supports": 72,
+        "clearances": 144,
+        "maxWaypointRise": 0.15000000000000036,
+        "bad": [],
+        "failures": 0
+      },
+      {
+        "id": "loop",
+        "label": "组团外缘连续绕馆路；不穿共享墙",
+        "supports": 3354,
+        "clearances": 8385,
+        "maxWaypointRise": 0.047844953809926594,
+        "bad": [],
+        "failures": 0
+      }
+    ],
+    "doors": [
+      {
+        "id": "gym-main",
+        "probes": 9,
+        "bad": []
+      },
+      {
+        "id": "spectator",
+        "probes": 9,
+        "bad": []
+      },
+      {
+        "id": "front-platform",
+        "probes": 9,
+        "bad": []
+      },
+      {
+        "id": "music",
+        "probes": 9,
+        "bad": []
+      }
+    ],
+    "sharedWallBlocked": true,
+    "legacyGymCount": 0,
+    "retainedSiteNames": [
+      "P02-GYM-FORECOURT"
+    ]
+  },
+  "screenshots": [
+    {
+      "file": "b02-photo-front.png",
+      "view": "b02-photo-front",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b02-photo-front",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 843,
+        "triangles": 98580,
+        "camera": [
+          -1.999999999999993,
+          4.849999999999995,
+          72
+        ]
+      }
+    },
+    {
+      "file": "b02-photo-side.png",
+      "view": "b02-photo-side",
+      "width": 900,
+      "height": 996,
+      "state": {
+        "view": "b02-photo-side",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 1327,
+        "triangles": 160588,
+        "camera": [
+          -9.999999999999996,
+          4.8499999999999925,
+          -5.000000000000007
+        ]
+      }
+    },
+    {
+      "file": "b02-front.png",
+      "view": "b02-front",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b02-front",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 1064,
+        "triangles": 182828,
+        "camera": [
+          26,
+          7.100000000000001,
+          45.00000000000001
+        ]
+      }
+    },
+    {
+      "file": "b02-entry.png",
+      "view": "b02-entry",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b02-entry",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 503,
+        "triangles": 45214,
+        "camera": [
+          -10.999999999999996,
+          5.500000000000002,
+          48
+        ]
+      }
+    },
+    {
+      "file": "b02-lobby.png",
+      "view": "b02-lobby",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b02-lobby",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 214,
+        "triangles": 189300,
+        "camera": [
+          -32.3,
+          5.340000000000001,
+          46.5
+        ]
+      }
+    },
+    {
+      "file": "b02-stair.png",
+      "view": "b02-stair",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b02-stair",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 658,
+        "triangles": 97570,
+        "camera": [
+          -12.000000000000004,
+          11.6,
+          77
+        ]
+      }
+    },
+    {
+      "file": "b02-stair-top.png",
+      "view": "b02-stair-top",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b02-stair-top",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 308,
+        "triangles": 57642,
+        "camera": [
+          -36.1,
+          9.52,
+          65
+        ]
+      }
+    },
+    {
+      "file": "b02-gallery.png",
+      "view": "b02-gallery",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b02-gallery",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 380,
+        "triangles": 300120,
+        "camera": [
+          -33,
+          9.5,
+          58.3
+        ]
+      }
+    },
+    {
+      "file": "b02-music.png",
+      "view": "b02-music",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b02-music",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 1199,
+        "triangles": 232992,
+        "camera": [
+          -98,
+          24,
+          103
+        ]
+      }
+    },
+    {
+      "file": "b02-music-entry.png",
+      "view": "b02-music-entry",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b02-music-entry",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 755,
+        "triangles": 91280,
+        "camera": [
+          -71.5,
+          6.299999999999999,
+          85
+        ]
+      }
+    },
+    {
+      "file": "b02-music-lobby.png",
+      "view": "b02-music-lobby",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b02-music-lobby",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 743,
+        "triangles": 325692,
+        "camera": [
+          -68,
+          5.28,
+          75
+        ]
+      }
+    },
+    {
+      "file": "b02-loop.png",
+      "view": "b02-loop",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b02-loop",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 1256,
+        "triangles": 236666,
+        "camera": [
+          -105,
+          44,
+          107
+        ]
+      }
+    },
+    {
+      "file": "b02-field.png",
+      "view": "b02-field",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b02-field",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 1157,
+        "triangles": 191672,
+        "camera": [
+          49,
+          4.200000000000007,
+          64
+        ]
+      }
+    },
+    {
+      "file": "b02-overview.png",
+      "view": "b02-overview",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b02-overview",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 1396,
+        "triangles": 214714,
+        "camera": [
+          48.99999999999997,
+          94,
+          132.99999999999994
+        ]
+      }
+    },
+    {
+      "file": "r3-overview.png",
+      "view": "r3-overview",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "r3-overview",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 367,
+        "triangles": 265346,
+        "camera": [
+          -14.000000000000028,
+          44.00000000000002,
+          144
+        ]
+      }
+    },
+    {
+      "file": "mobile.png",
+      "view": "b02-front",
+      "width": 390,
+      "height": 844,
+      "state": {
+        "view": "b02-front",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 632,
+        "triangles": 122266,
+        "camera": [
+          81.8,
+          2.689999999999996,
+          45.00000000000001
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "exception": null,
+  "source_sha": "983d11b501f94a97d1bbeccf747b6a79f0a5fe2d",
+  "viewer_sha256": "7f3f1255677a15b525b1126526863efce613b841d9597d5c66e18c1322312c44",
+  "generatedAt": "2026-09-11T06:24:01.618861+00:00",
+  "environment": "GitHub Actions Ubuntu / Playwright Chromium / SwiftShader WebGL2; desktop + portrait 390x844 viewport (not physical phone). Local container WebGL context was unavailable."
+}
