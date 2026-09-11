@@ -205,7 +205,13 @@ export function buildB02Model(layout,terrain,p){
  const frontGallery=[world(-14,gy,s.doorCenterV),world(ud,gy,6.3),world(ud,gy,4.3),world(0,gy,3.3)];
  const musicRoute=[ground(-68,84),ground(-68,80.24),...entrySteps('24',null,null),mw(-6,M.floorOffset,5.95),mw(-6,M.floorOffset,5.35),mw(-6,M.floorOffset,3.2)];
  const loopIds=['junction-gym','gym-loop-north','gym-loop-west-north','gym-loop-west-south','music-approach','sports-front','junction-sports','gym-main-junction','junction-gym'];
- const loop=loopIds.map(id=>{const q=layout.navigation.nodes[id];return ground(q[0],q[2]);});
+ // Follow the existing NONLINEAR terrain profile; do not interpolate one straight
+ // elevation between distant road nodes. No node, road width or surface is changed.
+ const loop=[];
+ for(let i=1;i<loopIds.length;i++){
+  const a=layout.navigation.nodes[loopIds[i-1]],b=layout.navigation.nodes[loopIds[i]],N=Math.ceil(Math.hypot(b[0]-a[0],b[2]-a[2])/.5);
+  for(let j=i===1?0:1;j<=N;j++)loop.push(ground(a[0]+(b[0]-a[0])*j/N,a[2]+(b[2]-a[2])*j/N));
+ }
  for(const [id,label,points]of [['gym-main','主路→低台阶→真门洞→门厅',main],['spectator','前坪→左外梯→上层侧门→短观赛廊',stair],['front-platform','观赛层→前平台真正门洞',frontGallery],['music','绕馆路→既有门前台阶→音乐楼门厅',musicRoute],['loop','组团外缘连续绕馆路；不穿共享墙',loop]])routes.push({id,label,points});
  const portals=[
   {id:'gym-main',owner:'03',center:world(0,fy+1.5,lf),normal:[1,0,0],width:dw,height:G.lobby.doorHeight,floor:world(0,fy,lf)[1]},

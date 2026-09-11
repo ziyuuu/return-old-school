@@ -24,7 +24,7 @@ try:
   access=page.evaluate('window.__YALI_B02__.checkAccess()')
   for route in access['routes']:check(route['id']+' actual support and body/head clearance',route['failures']==0,route)
   check('four real full-width door apertures',all(not d['bad'] for d in access['doors']),access['doors'])
-  check('shared wall closed and old gym removed',access['sharedWallBlocked'] and access['legacyGymCount']==0,{'sharedWallBlocked':access['sharedWallBlocked'],'oldMeshes':access['legacyGymCount']})
+  check('shared wall closed and old gym removed',access['sharedWallBlocked'] and access['legacyGymCount']==0,{'sharedWallBlocked':access['sharedWallBlocked'],'oldMeshes':access['legacyGymCount'],'retainedSite':access['retainedSiteNames']})
   legacy=page.evaluate('''()=>{const a=window.__YALI_R3__,r=window.__YALI_M11A__.getRoots();return {flags:a.countFlags(),axis:[r['08'][0],r['15'][0],r['18'][0]],musicGymFloor:[r['03'][1],r['24'][1]],shutterClear:a.model.access.every((d,i)=>{const s=i?1:-1,[x,y,z]=d.door;return a.probe([x+s*.5,y+1.5,z],[x-s*.5,y+1.5,z]).length===0;}),courts:window.__YALI_B02__.layout.facilities.find(f=>f.id==='06').position};}''')
   check('approved B01 shutters, axis, flags and current datums retained',legacy['shutterClear'] and legacy['flags']==3 and legacy['axis']==[73,73,73] and legacy['musicGymFloor']==[3.6,3.6],legacy)
   page.evaluate('window.__YALI_B02__.setLabels(false)')

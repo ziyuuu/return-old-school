@@ -19,7 +19,7 @@
     "rearHalfWidth": 20.8,
     "roofDepth": 41.8,
     "roofThickness": 0.24,
-    "sign": {"width": 30.4, "bottom": 10.4, "top": 18.0, "v": 0.55},
+    "sign": {"width": 30.4, "bottom": 10.4, "top": 17.45, "v": 3.6},
     "lobby": {"frontV": 2.8, "rearV": 10.3, "halfWidth": 15.4, "doorWidth": 6.8, "doorHeight": 3.1},
     "glazing": {"frontV": 5.2, "sill": 5.25, "head": 8.15, "upperDoorU": -13.3, "upperDoorWidth": 2.4},
     "balcony": {"frontV": 0.0, "backV": 5.65, "leftEdge": -15.8, "slabThickness": 0.26, "fasciaBottom": 3.72, "parapetTop": 5.32},

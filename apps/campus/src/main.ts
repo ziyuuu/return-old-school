@@ -140,8 +140,8 @@ Object.assign(cameraPresets,{
 cameraPresets['r2-side']=cameraPresets['r3-east'];
 // B02 presets: photo matching is approximate, not a solved camera calibration.
 Object.assign(cameraPresets,{
- 'b02-photo-front':{label:'体育馆 · S03-020 低位斜正面',position:[16,5.35,82],target:[-39,12.5,44],fov:49},
- 'b02-photo-side':{label:'体育馆 · S03-017 右前侧折面',position:[4,5.3,0],target:[-39,12,46],fov:49},
+ 'b02-photo-front':{label:'体育馆 · S03-020 低位斜正面',position:[-2,4.85,72],target:[-37,12.3,47],fov:58},
+ 'b02-photo-side':{label:'体育馆 · S03-017 右前侧折面',position:[-10,4.85,-5],target:[-41,12,43],fov:55},
  'b02-front':{label:'主路正看 · 真正门洞在内退正墙',position:[26,7.1,45],target:[-36,12,45],fov:43},
  'b02-entry':{label:'前坪 / 低台阶 / 体育馆门厅',position:[-11,5.5,48],target:[-29.8,5.2,45],fov:49},
  'b02-lobby':{label:'体育馆门厅内回望 · 门后非实心墙',position:[-32.3,5.34,46.5],target:[-20,5.2,45],fov:62},
@@ -543,7 +543,7 @@ Object.assign(window,{__YALI_B02__:{ready:true,version:batch02Input.version,inpu
   // Check across near the full portal width and height, independent of route centre.
   const doors=b02Model.portals.map((d:any)=>{const n=new THREE.Vector3(...d.normal as Vec3).normalize(),side=new THREE.Vector3(n.z,0,-n.x),c=new THREE.Vector3(...d.center as Vec3),bad:any[]=[];let probes=0;
    for(const off of [-d.width/2+.18,0,d.width/2-.18])for(const h of [.25,1.5,d.height-.2]){const q=c.clone().addScaledVector(side,off);q.y=d.floor+h;const a=q.clone().addScaledVector(n,.55),b=q.clone().addScaledVector(n,-.55);probes++;const hits=ray(a.toArray(),b.toArray());if(hits.length)bad.push({off,h,hits});}return {id:d.id,probes,bad};});
-  return {routes:result,doors,sharedWallBlocked:ray([-60,4.9,65.3],[-60,4.9,66.7]).length>0,legacyGymCount:meshes.filter(o=>o.name.startsWith('P02-GYM-')).length};
+  return {routes:result,doors,sharedWallBlocked:ray([-60,4.9,65.3],[-60,4.9,66.7]).length>0,legacyGymCount:meshes.filter(o=>o.name.startsWith('P02-GYM-')&&o.userData.facility==='03').length,retainedSiteNames:meshes.filter(o=>o.name==='P02-GYM-FORECOURT').map(o=>o.name)};
  }
 }});
 if(!params.has('view'))setView(innerWidth<700?'b02-front':'b02-overview');
