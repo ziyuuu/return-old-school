@@ -29,18 +29,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Integrate the prepared local changes once without rerunning old B01 repair automation
+      - name: Apply the focused corrections identified in the first actual screenshots
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          if ! grep -q B02_ACTIVE_ENTRY apps/campus/src/main.ts; then
-            gh api repos/ziyuuu/return-old-school/git/blobs/8155a9679afe7a7f7d7e3d1f75fccad92ea50966 --jq .content | base64 -d > /tmp/b02-main.patch
-            gh api repos/ziyuuu/return-old-school/git/blobs/1702c5c1591ad94221bee52bdc78439de54f8ff9 --jq .content | base64 -d > /tmp/b02-rest.patch
-            test "$(git hash-object /tmp/b02-main.patch)" = 8155a9679afe7a7f7d7e3d1f75fccad92ea50966
-            test "$(git hash-object /tmp/b02-rest.patch)" = 1702c5c1591ad94221bee52bdc78439de54f8ff9
-            git apply --check /tmp/b02-main.patch /tmp/b02-rest.patch
-            git apply /tmp/b02-main.patch /tmp/b02-rest.patch
+          if grep -q '"top": 18.0, "v": 0.55' data/m11b/batch02/input.json; then
+            gh api repos/ziyuuu/return-old-school/git/blobs/3f8a519bb314ffaa13d0bbd53147e1c9480c8a8a --jq .content | base64 -d > /tmp/b02-correction.patch
+            test "$(git hash-object /tmp/b02-correction.patch)" = 3f8a519bb314ffaa13d0bbd53147e1c9480c8a8a
+            git apply --check /tmp/b02-correction.patch
+            git apply /tmp/b02-correction.patch
           fi
       - name: Normal typecheck/build and eight targeted geometric groups
         run: |
@@ -56,9 +54,9 @@ jobs:
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add apps/campus/src/main.ts apps/campus/src/style.css README.md docs/development-plan.md .gitignore docs/m11b/batch02/access.svg
+          git add apps/campus/src/main.ts apps/campus/src/style.css apps/campus/src/batch02-core.mjs data/m11b/batch02 tools/m11b-b02 README.md docs/development-plan.md .gitignore docs/m11b/batch02
           if ! git diff --cached --quiet; then
-            git commit -m 'feat(b02): integrate open gym/music shells and current-site access into the default Viewer (#31)'
+            git commit -m 'fix(b02): recess the five-ring panel after photo comparison; sample real loop grades and preserve forecourt (#31)'
             git push origin HEAD:main
           fi
           echo "SOURCE_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
