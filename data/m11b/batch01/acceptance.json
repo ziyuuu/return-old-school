@@ -1,0 +1,47 @@
+{
+  "stage": "M1.1-B.Batch01",
+  "acceptedVersion": "M1.1-B.Batch01.R3.1",
+  "status": "COMPLETE / ALUMNI_APPROVED",
+  "alumniReview": "APPROVED",
+  "recordedDate": "2026-09-11",
+  "approvalSource": {
+    "kind": "explicit_user_message_in_project_conversation",
+    "quote": "第一批可以了。请落地吧。然后告诉我后面还有几批，分别是要干什么？"
+  },
+  "acceptedModelSourceCommit": "8262ca7db79746ebce98210950e045eab11dfbe0",
+  "sourceAndQaArchiveCommit": "fff81099cbc4cb93e1c53bd85244099e66c3813c",
+  "viewer": {
+    "filename": "Yali_M1_1_B_B01_R3_1_Viewer.html",
+    "sha256": "715bdcc2e9c50e680c1d0d1bd4011a29ba95d041fd5cb2a21b5e7b6c6d9c38f7",
+    "changedForAcceptance": false
+  },
+  "scope": [
+    "five-storey main teaching building shell and fourth-floor open rear terrace",
+    "central shallow-curved functional block",
+    "front-end recessed porches with open roller shutters in the side return walls",
+    "enlarged canopy, outward columns, steps and supported entrance connection",
+    "continuous toilet block and floor-by-floor bridges",
+    "retained main campus axis and accepted P3/P4 site"
+  ],
+  "existingEngineeringEvidence": {
+    "report": "qa/m11b-shutter-fix/browser-report.json",
+    "focusedTests": 10,
+    "webglCheckGroups": 6,
+    "actualScreenshots": 8,
+    "rerunForAcceptance": false,
+    "historicalReportUnchanged": true
+  },
+  "relatedIssues": [27, 28, 29],
+  "geometryChangedForAcceptance": false,
+  "newBranchOrBaselineCreated": false,
+  "numericEvidenceUnchanged": "H",
+  "nextBatch": "M1.1-B.Batch02",
+  "remainingBuildingBatches": 4,
+  "statusPrecedence": "This later acceptance record supersedes historical REVIEW_PENDING labels only for the accepted Batch01 R3.1 scope; archived model inputs and QA remain execution-time records.",
+  "excludedFromCompletion": [
+    "complete building interiors and internal stairs",
+    "physics-based character circulation",
+    "final material and environment detailing",
+    "library shell refinement and later building batches"
+  ]
+}
