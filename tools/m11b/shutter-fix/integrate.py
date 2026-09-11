@@ -16,9 +16,9 @@ Object.assign(cameraPresets,{
  'r3-east':{label:'右端 · 侧墙开启卷帘门 / 放大雨棚',position:[125.2,6.7,211.8],target:[118.0,5.1,217.5]},
  'r3-west-front':{label:'左端正看 · 后墙封回 / 两柱外移',position:[25.0,5.8,207.5],target:[26.5,5.1,218]},
  'r3-east-front':{label:'右端正看 · 后墙封回 / 两柱外移',position:[121.0,5.8,207.5],target:[119.5,5.1,218]},
- 'r3-porch-plan':{label:'首层俯看 · 进门后转入中廊',position:[27,20,216.4],target:[27,3.45,217]},
- 'r31-west-door':{label:'左端卷帘门近看 · 无关闭门板',position:[25.4,5.1,216.6],target:[29.3,5.1,217.5]},
- 'r31-east-door':{label:'右端卷帘门近看 · 无关闭门板',position:[120.6,5.1,216.6],target:[116.7,5.1,217.5]}
+ 'r3-porch-plan':{label:'首层俯看 · 雨棚覆盖与平台',position:[27,20,216.4],target:[27,3.45,217]},
+ 'r31-west-door':{label:'左端卷帘门近看 · 无关闭门板',position:[23.5,5.3,214.9],target:[28.5,4.95,217.5]},
+ 'r31-east-door':{label:'右端卷帘门近看 · 无关闭门板',position:[122.5,5.3,214.9],target:[117.5,4.95,217.5]}
 });
 """
  s=s.replace("cameraPresets['r2-side']=cameraPresets['r3-east'];",insert+"cameraPresets['r2-side']=cameraPresets['r3-east'];")
@@ -26,14 +26,14 @@ p.write_text(s)
 p=R/'apps/campus/index.html';s=p.read_text();s=s.replace('B01 R3','B01 R3.1') if 'B01 R3.1' not in s else s
 s=s.replace('门洞朝操场','门洞在凹口侧墙').replace('两端正面入口','两端侧墙卷帘入口')
 p.write_text(s)
-
-p=R/'apps/campus/index.html';s=p.read_text();s=s.replace('第三轮 · 入口与轻弧修复','R3.1 · 侧墙卷帘门与雨棚');
+p=R/'apps/campus/index.html';s=p.read_text();s=s.replace('第三轮 · 入口与轻弧修复','R3.1 · 侧墙卷帘门与雨棚')
 if 'data-view="r31-east-door"' not in s:s=s.replace('<button data-view="r3-wall">', '<button data-view="r31-west-door">左卷帘门近看</button><button data-view="r31-east-door">右卷帘门近看</button><button data-view="r3-wall">')
 p.write_text(s)
-
 note='## R3.1 侧墙卷帘门修复'
 for filename in ['README.md','docs/development-plan.md']:
  p=R/filename;s=p.read_text()
  if note not in s:
   s=note+'\n\n两端凹口侧墙扩大开口，卷帘默认收起；雨棚与柱列扩大、外移。继承R3五层、后坪、轻弧与中轴。本轮仅10项定向检查及局部浏览器验证，不重开全校园基线。IMPLEMENTED / REVIEW_PENDING；工程结果见 `docs/m11b/shutter-fix/delivery.md` 和 `qa/m11b-shutter-fix/browser-report.json`（没有通过报告前不宣称已验收）。\n\n以下为前序阶段记录：\n\n'+s
  p.write_text(s)
+# Apply screenshot-framing corrections to an already-integrated entry as well.
+p=R/'apps/campus/src/main.ts';s=p.read_text().replace('position:[25.4,5.1,216.6],target:[29.3,5.1,217.5]','position:[23.5,5.3,214.9],target:[28.5,4.95,217.5]').replace('position:[120.6,5.1,216.6],target:[116.7,5.1,217.5]','position:[122.5,5.3,214.9],target:[117.5,4.95,217.5]').replace('首层俯看 · 进门后转入中廊','首层俯看 · 雨棚覆盖与平台');p.write_text(s)
