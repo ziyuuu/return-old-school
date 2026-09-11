@@ -1,0 +1,73 @@
+{
+  "version": "M1.1-B.Batch01.R3.1",
+  "passed": true,
+  "complete": true,
+  "checks": [
+    {
+      "name": "correct repaired WebGL model",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "west open roller, solid back, enlarged canopy/posts and route into corridor",
+      "passed": true,
+      "detail": {
+        "id": "west",
+        "probes": 171,
+        "bad": []
+      }
+    },
+    {
+      "name": "east open roller, solid back, enlarged canopy/posts and route into corridor",
+      "passed": true,
+      "detail": {
+        "id": "east",
+        "probes": 171,
+        "bad": []
+      }
+    },
+    {
+      "name": "five-storey datum and shared main axis retained",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile viewport",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "offline file renders without JS or WebGL errors",
+      "passed": true,
+      "detail": {
+        "view": "r3-overview",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 681,
+        "triangles": 346932,
+        "camera": [
+          -142,
+          96.80000000000003,
+          24.000000000000057
+        ]
+      }
+    }
+  ],
+  "screenshots": [
+    "r3-west.png",
+    "r3-east.png",
+    "r31-west-door.png",
+    "r31-east-door.png",
+    "r3-porch-plan.png",
+    "r3-overview.png",
+    "r3-front.png",
+    "mobile.png"
+  ],
+  "errors": [],
+  "source_sha": "8262ca7db79746ebce98210950e045eab11dfbe0",
+  "viewer_sha256": "715bdcc2e9c50e680c1d0d1bd4011a29ba95d041fd5cb2a21b5e7b6c6d9c38f7",
+  "alumniReview": "REVIEW_PENDING",
+  "environment": "Playwright Chromium / SwiftShader WebGL2, desktop1440x1000 / mobile390x844"
+}

@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: ENTRANCE_LAYOUT_AND_MAIN_AXIS
+ok 1 - ENTRANCE_LAYOUT_AND_MAIN_AXIS
+  ---
+  duration_ms: 1.043397
+  type: 'test'
+  ...
+# Subtest: west_SIDE_OPEN_ROLLER
+ok 2 - west_SIDE_OPEN_ROLLER
+  ---
+  duration_ms: 0.214115
+  type: 'test'
+  ...
+# Subtest: west_CANOPY_POSTS_AND_SOLID_BACK
+ok 3 - west_CANOPY_POSTS_AND_SOLID_BACK
+  ---
+  duration_ms: 0.095332
+  type: 'test'
+  ...
+# Subtest: west_STEPS_TO_INDOOR_CORRIDOR
+ok 4 - west_STEPS_TO_INDOOR_CORRIDOR
+  ---
+  duration_ms: 0.091926
+  type: 'test'
+  ...
+# Subtest: east_SIDE_OPEN_ROLLER
+ok 5 - east_SIDE_OPEN_ROLLER
+  ---
+  duration_ms: 0.092958
+  type: 'test'
+  ...
+# Subtest: east_CANOPY_POSTS_AND_SOLID_BACK
+ok 6 - east_CANOPY_POSTS_AND_SOLID_BACK
+  ---
+  duration_ms: 0.090562
+  type: 'test'
+  ...
+# Subtest: east_STEPS_TO_INDOOR_CORRIDOR
+ok 7 - east_STEPS_TO_INDOOR_CORRIDOR
+  ---
+  duration_ms: 0.077926
+  type: 'test'
+  ...
+# Subtest: FIVE_FLOORS_BRIDGES_AND_OPEN_TERRACE
+ok 8 - FIVE_FLOORS_BRIDGES_AND_OPEN_TERRACE
+  ---
+  duration_ms: 0.113953
+  type: 'test'
+  ...
+# Subtest: closed roller is detected in actual geometry
+ok 9 - closed roller is detected in actual geometry
+  ---
+  duration_ms: 1350.203532
+  type: 'test'
+  ...
+# Subtest: missing route floor is detected
+ok 10 - missing route floor is detected
+  ---
+  duration_ms: 1364.565604
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4699.529197
