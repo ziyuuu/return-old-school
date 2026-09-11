@@ -18,4 +18,4 @@
 
 实际截图16张（含两幅原照片近似对照机位、门厅内回望及手机viewport）。file://单文件加载未请求外部网络资源，无JavaScript/WebGL错误。
 
-受测源码 `983d11b501f94a97d1bbeccf747b6a79f0a5fe2d`；Viewer SHA256 `7f3f1255677a15b525b1126526863efce613b841d9597d5c66e18c1322312c44`。工程PASS不等于校友认可，本批继续REVIEW_PENDING。
+受测源码 `ef4b057361313aaf3143afd7e7fcf7709981c281`；Viewer SHA256 `a7f05a435b1a31a160e02ef2b44d3130f136425e38df54a3e72750c064b1d6d6`。工程PASS不等于校友认可，本批继续REVIEW_PENDING。

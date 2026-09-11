@@ -13,8 +13,8 @@
         "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
         "glError": 0,
         "contextLost": false,
-        "calls": 1396,
-        "triangles": 214714,
+        "calls": 1398,
+        "triangles": 214738,
         "camera": [
           48.99999999999997,
           94,
@@ -162,8 +162,8 @@
           "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
           "glError": 0,
           "contextLost": false,
-          "calls": 632,
-          "triangles": 122266,
+          "calls": 634,
+          "triangles": 122290,
           "camera": [
             81.8,
             2.689999999999996,
@@ -261,12 +261,12 @@
         "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
         "glError": 0,
         "contextLost": false,
-        "calls": 843,
-        "triangles": 98580,
+        "calls": 656,
+        "triangles": 97536,
         "camera": [
-          -1.999999999999993,
-          4.849999999999995,
-          72
+          15.999999999999993,
+          5.350000000000008,
+          82
         ]
       }
     },
@@ -281,12 +281,12 @@
         "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
         "glError": 0,
         "contextLost": false,
-        "calls": 1327,
-        "triangles": 160588,
+        "calls": 1255,
+        "triangles": 152952,
         "camera": [
-          -9.999999999999996,
-          4.8499999999999925,
-          -5.000000000000007
+          4.000000000000007,
+          5.300000000000001,
+          1.4210854715202004e-14
         ]
       }
     },
@@ -301,8 +301,8 @@
         "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
         "glError": 0,
         "contextLost": false,
-        "calls": 1064,
-        "triangles": 182828,
+        "calls": 1066,
+        "triangles": 182852,
         "camera": [
           26,
           7.100000000000001,
@@ -321,8 +321,8 @@
         "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
         "glError": 0,
         "contextLost": false,
-        "calls": 503,
-        "triangles": 45214,
+        "calls": 505,
+        "triangles": 45238,
         "camera": [
           -10.999999999999996,
           5.500000000000002,
@@ -361,8 +361,8 @@
         "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
         "glError": 0,
         "contextLost": false,
-        "calls": 658,
-        "triangles": 97570,
+        "calls": 660,
+        "triangles": 97594,
         "camera": [
           -12.000000000000004,
           11.6,
@@ -421,8 +421,8 @@
         "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
         "glError": 0,
         "contextLost": false,
-        "calls": 1199,
-        "triangles": 232992,
+        "calls": 1201,
+        "triangles": 233016,
         "camera": [
           -98,
           24,
@@ -441,8 +441,8 @@
         "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
         "glError": 0,
         "contextLost": false,
-        "calls": 755,
-        "triangles": 91280,
+        "calls": 757,
+        "triangles": 91304,
         "camera": [
           -71.5,
           6.299999999999999,
@@ -481,8 +481,8 @@
         "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
         "glError": 0,
         "contextLost": false,
-        "calls": 1256,
-        "triangles": 236666,
+        "calls": 1258,
+        "triangles": 236690,
         "camera": [
           -105,
           44,
@@ -501,8 +501,8 @@
         "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
         "glError": 0,
         "contextLost": false,
-        "calls": 1157,
-        "triangles": 191672,
+        "calls": 1159,
+        "triangles": 191696,
         "camera": [
           49,
           4.200000000000007,
@@ -521,8 +521,8 @@
         "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
         "glError": 0,
         "contextLost": false,
-        "calls": 1396,
-        "triangles": 214714,
+        "calls": 1398,
+        "triangles": 214738,
         "camera": [
           48.99999999999997,
           94,
@@ -561,8 +561,8 @@
         "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
         "glError": 0,
         "contextLost": false,
-        "calls": 632,
-        "triangles": 122266,
+        "calls": 634,
+        "triangles": 122290,
         "camera": [
           81.8,
           2.689999999999996,
@@ -573,8 +573,8 @@
   ],
   "errors": [],
   "exception": null,
-  "source_sha": "983d11b501f94a97d1bbeccf747b6a79f0a5fe2d",
-  "viewer_sha256": "7f3f1255677a15b525b1126526863efce613b841d9597d5c66e18c1322312c44",
-  "generatedAt": "2026-09-11T06:24:01.618861+00:00",
+  "source_sha": "ef4b057361313aaf3143afd7e7fcf7709981c281",
+  "viewer_sha256": "a7f05a435b1a31a160e02ef2b44d3130f136425e38df54a3e72750c064b1d6d6",
+  "generatedAt": "2026-09-11T06:35:16.009629+00:00",
   "environment": "GitHub Actions Ubuntu / Playwright Chromium / SwiftShader WebGL2; desktop + portrait 390x844 viewport (not physical phone). Local container WebGL context was unavailable."
 }
