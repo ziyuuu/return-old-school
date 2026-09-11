@@ -128,9 +128,9 @@ Object.assign(cameraPresets,{
  'r3-east':{label:'右端 · 侧墙开启卷帘门 / 放大雨棚',position:[125.2,6.7,211.8],target:[118.0,5.1,217.5]},
  'r3-west-front':{label:'左端正看 · 后墙封回 / 两柱外移',position:[25.0,5.8,207.5],target:[26.5,5.1,218]},
  'r3-east-front':{label:'右端正看 · 后墙封回 / 两柱外移',position:[121.0,5.8,207.5],target:[119.5,5.1,218]},
- 'r3-porch-plan':{label:'首层俯看 · 进门后转入中廊',position:[27,20,216.4],target:[27,3.45,217]},
- 'r31-west-door':{label:'左端卷帘门近看 · 无关闭门板',position:[25.4,5.1,216.6],target:[29.3,5.1,217.5]},
- 'r31-east-door':{label:'右端卷帘门近看 · 无关闭门板',position:[120.6,5.1,216.6],target:[116.7,5.1,217.5]}
+ 'r3-porch-plan':{label:'首层俯看 · 雨棚覆盖与平台',position:[27,20,216.4],target:[27,3.45,217]},
+ 'r31-west-door':{label:'左端卷帘门近看 · 无关闭门板',position:[23.5,5.3,214.9],target:[28.5,4.95,217.5]},
+ 'r31-east-door':{label:'右端卷帘门近看 · 无关闭门板',position:[122.5,5.3,214.9],target:[117.5,4.95,217.5]}
 });
 cameraPresets['r2-side']=cameraPresets['r3-east'];
 const el=<T extends HTMLElement>(id:string)=>document.getElementById(id) as T;
