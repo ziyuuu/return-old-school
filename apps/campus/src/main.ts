@@ -18,8 +18,10 @@ import {buildPatch04Model,patch04Checks} from './patch04-core.mjs';
 import {installPatch04Geometry} from './patch04-scene';
 import {applyB01R2,buildB01R2Model as buildBatch01Model,b01R2Checks} from './b01-r2-core.mjs';
 import {r3Facility as batch01Facility,installR3Details} from './b01-r3-scene';
-import revision3Input from '../../../data/m11b/batch01-r3/input.json';
-import {applyB01R3Layout,adaptB01R3Terrain,buildB01R3Model,b01R3Checks} from './b01-r3-core.mjs';
+import revision3Base from '../../../data/m11b/batch01-r3/input.json';
+import shutterFix from '../../../data/m11b/batch01-r3/shutter-fix.json';
+const revision3Input={...revision3Base,version:shutterFix.version,status:shutterFix.status,entrances:{...revision3Base.entrances,...shutterFix.entrances}};
+import {applyB01R3Layout,adaptB01R3Terrain,buildB01R3Model,b01R3Checks} from './b01-shutter-fix.mjs';
 import { edgeWidth } from './revision-core.mjs';
 import { r4Facility, setToiletSection } from './revision-r4-scene';
 import { r3Facility, buildR3Thresholds } from './revision-r3-scene';
@@ -119,6 +121,16 @@ Object.assign(cameraPresets,{
 Object.assign(cameraPresets,{
  'r3-west-front':{label:'图面左端入口正视 · 真实门洞与三级台阶',position:[26.6,5.3,209],target:[26.6,5.1,219]},
  'r3-east-front':{label:'图面右端入口正视 · 真实门洞与三级台阶',position:[119.4,5.3,209],target:[119.4,5.1,219]}
+});
+// SHUTTER_FIX_VIEWS
+Object.assign(cameraPresets,{
+ 'r3-west':{label:'左端 · 侧墙开启卷帘门 / 放大雨棚',position:[20.8,6.7,211.8],target:[28.0,5.1,217.5]},
+ 'r3-east':{label:'右端 · 侧墙开启卷帘门 / 放大雨棚',position:[125.2,6.7,211.8],target:[118.0,5.1,217.5]},
+ 'r3-west-front':{label:'左端正看 · 后墙封回 / 两柱外移',position:[25.0,5.8,207.5],target:[26.5,5.1,218]},
+ 'r3-east-front':{label:'右端正看 · 后墙封回 / 两柱外移',position:[121.0,5.8,207.5],target:[119.5,5.1,218]},
+ 'r3-porch-plan':{label:'首层俯看 · 进门后转入中廊',position:[27,20,216.4],target:[27,3.45,217]},
+ 'r31-west-door':{label:'左端卷帘门近看 · 无关闭门板',position:[25.4,5.1,216.6],target:[29.3,5.1,217.5]},
+ 'r31-east-door':{label:'右端卷帘门近看 · 无关闭门板',position:[120.6,5.1,216.6],target:[116.7,5.1,217.5]}
 });
 cameraPresets['r2-side']=cameraPresets['r3-east'];
 const el=<T extends HTMLElement>(id:string)=>document.getElementById(id) as T;

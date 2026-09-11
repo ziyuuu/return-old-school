@@ -1,3 +1,9 @@
+## R3.1 侧墙卷帘门修复
+
+两端凹口侧墙扩大开口，卷帘默认收起；雨棚与柱列扩大、外移。继承R3五层、后坪、轻弧与中轴。本轮仅10项定向检查及局部浏览器验证，不重开全校园基线。IMPLEMENTED / REVIEW_PENDING；工程结果见 `docs/m11b/shutter-fix/delivery.md` 和 `qa/m11b-shutter-fix/browser-report.json`（没有通过报告前不宣称已验收）。
+
+以下为前序阶段记录：
+
 # 复原雅礼 · Return Old School
 
 长沙雅礼中学东塘校区，2006—2010历史校园复原；校庆与校友回忆，非商业项目。
