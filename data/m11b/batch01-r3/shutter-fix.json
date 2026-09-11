@@ -1,0 +1,21 @@
+{
+  "version": "M1.1-B.Batch01.R3.1",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "baseCommit": "48ebac6ce588a89ef08dd93abbab99c2145e42be",
+  "alumniReview": "REVIEW_PENDING",
+  "evidence": "A: opening on recessed porch side wall, larger opening, raised roll-up shutter, larger canopy with posts moved out. All local dimensions H. Generated illustrations are not historical evidence.",
+  "entrances": {
+    "doorCentersX": [-46.8, 46.8],
+    "doorWidth": 2.65,
+    "doorHeight": 2.8,
+    "canopyFrontZ": -8.05,
+    "canopyBackZ": -4.9,
+    "canopyWidth": 4.5,
+    "postSpacing": 3.5,
+    "postZ": -7.65,
+    "landingWidth": 4.5,
+    "landingFrontZ": -7.95,
+    "apron": {"halfWidth": 3.0, "flatHalfWidth": 2.3, "startZ": -14, "flatZ": -9.1, "backZ": -4.85},
+    "sideShutter": {"centerZ": -6.5, "state": "open", "boxHeight": 0.26, "boxDepth": 0.24, "guideWidth": 0.045}
+  }
+}

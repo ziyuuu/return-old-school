@@ -1,0 +1,13 @@
+import fs from 'node:fs';
+import {build} from '../../../apps/campus/node_modules/esbuild/lib/main.js';
+import {context,root} from './context.mjs';
+const out=root+'artifacts/m11b-shutter-fix/';fs.mkdirSync(out,{recursive:true});
+const c=context();if(!c.report.passed)throw Error('Failed entrance geometry checks');
+const result=await build({entryPoints:[root+'apps/campus/src/main.ts'],bundle:true,format:'iife',target:'es2022',minify:true,write:false,outfile:'bundle.js',legalComments:'inline'});
+const js=result.outputFiles.find(v=>v.path.endsWith('.js')).text.replace(/<\/script/gi,'<\\/script');
+const css=result.outputFiles.find(v=>v.path.endsWith('.css')).text;
+const html=fs.readFileSync(root+'apps/campus/index.html','utf8').replace('</head>',()=>`<style>${css}</style></head>`).replace('<script type="module" src="/src/main.ts"></script>',()=>`<script>${js}</script>`);
+fs.writeFileSync(out+'Yali_M1_1_B_B01_R3_1_Viewer.html',html);
+fs.writeFileSync(out+'entrance-summary.json',JSON.stringify({version:c.p.version,parameters:c.fix,access:c.model.access,checks:c.report,axis:c.model.axis},null,2));
+fs.copyFileSync(root+'apps/campus/node_modules/three/LICENSE',out+'THIRD_PARTY_NOTICES.txt');
+console.log('R3.1 Viewer built:',Buffer.byteLength(html),'bytes');
