@@ -122,9 +122,11 @@ export function buildB02Model(layout,terrain,p){
   }
  }
  // Folded roof plates share exact edges. No old roof remains underneath.
- const us=[-G.frontHalfWidth,-14.9,14.9,G.frontHalfWidth],ys=[G.height,G.sign.top,G.sign.top,G.height];
- const rearUs=[-G.rearHalfWidth,-20.3,20.3,G.rearHalfWidth];
- for(let i=0;i<3;i++)gp('roof-'+i,'upper-shell',[[us[i],ys[i],0],[us[i+1],ys[i+1],0],[rearUs[i+1],G.roofRearHeight,G.roofDepth],[rearUs[i],G.roofRearHeight,G.roofDepth]],[0,-G.roofThickness,0]);
+ // Central roof starts over the RECESSED sign wall, not across its face.
+ // Side tips still project forward. Wall head meets roof underside without a seam.
+ const us=[-G.frontHalfWidth,-G.sign.width/2,G.sign.width/2,G.frontHalfWidth],ys=[G.height,G.sign.top+G.roofThickness,G.sign.top+G.roofThickness,G.height];
+ const frontVs=[0,G.sign.v,G.sign.v,0],rearUs=[-G.rearHalfWidth,-20.3,20.3,G.rearHalfWidth];
+ for(let i=0;i<3;i++)gp('roof-'+i,'upper-shell',[[us[i],ys[i],frontVs[i]],[us[i+1],ys[i+1],frontVs[i+1]],[rearUs[i+1],G.roofRearHeight,G.roofDepth],[rearUs[i],G.roofRearHeight,G.roofDepth]],[0,-G.roofThickness,0]);
  // Closed rear and lower flanks. The shared wall with music has NO portal.
  gb('rear-wall','wall',-21,21,fy,G.roofRearHeight-.22,41.68,42,14);
  for(const sign of [-1,1]){
@@ -137,6 +139,13 @@ export function buildB02Model(layout,terrain,p){
    for(let v=lf;v<13.2;v+=1.3)gb('side-lower-frame'+v,'frame',15.28,15.48,.5,3.4,v-.045,v+.045,6);
   }
  }
+ // Close the existing shared footprint under the inset fold. This is part of
+ // gym03's own roof/wall, not a bridge or a detached connector. The music back
+ // wall supplies the closed shared face; do not duplicate a coincident wall.
+ const cv0=gym.position[0]+gym.size[0]/2-M.sharedWall.worldX[1],cv1=G.roofDepth;
+ const cu=gym.position[2]-M.sharedWall.worldZ,ct=v=>G.height+(G.roofRearHeight-G.height)*v/G.roofDepth;
+ gb('contact-front-return','wall',cu,-sideU(cv0),gy,ct(cv0),cv0,cv0+.18,14,'A/H');
+ gp('contact-roof-return','upper-shell',[[cu,ct(cv0),cv0],[-sideU(cv0),ct(cv0),cv0],[-sideU(cv1),ct(cv1),cv1],[cu,ct(cv1),cv1]],[0,-G.roofThickness,0],14,'A/H');
  // The exterior flight is LEFT (u<0), open above the full tread run.
  const s=G.stair,end=s.startV+s.steps*s.tread,rise=G.galleryRise/s.steps;
  for(let i=0;i<s.steps;i++)gb('stair-'+String(i+1).padStart(2,'0'),'spectator-step',s.u-s.width/2,s.u+s.width/2,fy,fy+(i+1)*rise,s.startV+i*s.tread,s.startV+(i+1)*s.tread,15);

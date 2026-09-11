@@ -140,8 +140,8 @@ Object.assign(cameraPresets,{
 cameraPresets['r2-side']=cameraPresets['r3-east'];
 // B02 presets: photo matching is approximate, not a solved camera calibration.
 Object.assign(cameraPresets,{
- 'b02-photo-front':{label:'体育馆 · S03-020 低位斜正面',position:[-2,4.85,72],target:[-37,12.3,47],fov:58},
- 'b02-photo-side':{label:'体育馆 · S03-017 右前侧折面',position:[-10,4.85,-5],target:[-41,12,43],fov:55},
+ 'b02-photo-front':{label:'体育馆 · S03-020 低位斜正面',position:[16,5.35,82],target:[-39,12.5,44],fov:38},
+ 'b02-photo-side':{label:'体育馆 · S03-017 右前侧折面',position:[4,5.3,0],target:[-39,12,46],fov:49},
  'b02-front':{label:'主路正看 · 真正门洞在内退正墙',position:[26,7.1,45],target:[-36,12,45],fov:43},
  'b02-entry':{label:'前坪 / 低台阶 / 体育馆门厅',position:[-11,5.5,48],target:[-29.8,5.2,45],fov:49},
  'b02-lobby':{label:'体育馆门厅内回望 · 门后非实心墙',position:[-32.3,5.34,46.5],target:[-20,5.2,45],fov:62},
