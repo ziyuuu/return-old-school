@@ -2,37 +2,101 @@ name: B02 gym and music targeted verification
 on:
   workflow_dispatch:
   push:
+    branches: [main]
     paths:
       - '.github/workflows/m11b-b02.yml'
       - 'apps/campus/src/batch02*'
       - 'data/m11b/batch02/**'
       - 'tools/m11b-b02/**'
 permissions:
-  contents: read
+  contents: write
+concurrency:
+  group: yali-b02-main
+  cancel-in-progress: false
 jobs:
   b02:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: npm
           cache-dependency-path: apps/campus/package-lock.json
-      - name: Restore the existing pinned toolchain
-        run: npm ci --prefix apps/campus
-      # Bootstrap only: enables local Chromium/WebGL work without replacing the campus.
-      # This archive is NOT a B02 build or browser-pass claim.
-      - name: Package current source and toolchain for the offline construction workstation
-        run: |
-          git rev-parse HEAD > /tmp/b02-source-sha.txt
-          git archive --format=tar.gz HEAD > /tmp/b02-current-main.tar.gz
-          tar -czf /tmp/b02-toolchain.tar.gz apps/campus/node_modules
-      - uses: actions/upload-artifact@v4
+      - uses: actions/setup-python@v5
         with:
-          name: B02-inherited-source-and-toolchain
+          python-version: '3.12'
+      - name: Integrate the prepared local changes once without rerunning old B01 repair automation
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if ! grep -q B02_ACTIVE_ENTRY apps/campus/src/main.ts; then
+            gh api repos/ziyuuu/return-old-school/git/blobs/8155a9679afe7a7f7d7e3d1f75fccad92ea50966 --jq .content | base64 -d > /tmp/b02-main.patch
+            gh api repos/ziyuuu/return-old-school/git/blobs/1702c5c1591ad94221bee52bdc78439de54f8ff9 --jq .content | base64 -d > /tmp/b02-rest.patch
+            test "$(git hash-object /tmp/b02-main.patch)" = 8155a9679afe7a7f7d7e3d1f75fccad92ea50966
+            test "$(git hash-object /tmp/b02-rest.patch)" = 1702c5c1591ad94221bee52bdc78439de54f8ff9
+            git apply --check /tmp/b02-main.patch /tmp/b02-rest.patch
+            git apply /tmp/b02-main.patch /tmp/b02-rest.patch
+          fi
+      - name: Normal typecheck/build and eight targeted geometric groups
+        run: |
+          set -euo pipefail
+          mkdir -p qa/m11b-b02
+          npm ci --prefix apps/campus
+          npm run build --prefix apps/campus | tee qa/m11b-b02/build.txt
+          node tools/m11b-b02/check.mjs
+          node tools/m11b-b02/export.mjs
+          git diff --exit-code 471f6bdd3eb234b10bf26c0e8874a88d708dc7a6 -- data/m10 data/m11b/batch01 data/m11b/batch01-r2 data/m11b/batch01-r3 apps/campus/src/b01-shutter-fix.mjs
+      - name: Commit the actual integrated source before measuring its browser result
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add apps/campus/src/main.ts apps/campus/src/style.css README.md docs/development-plan.md .gitignore docs/m11b/batch02/access.svg
+          if ! git diff --cached --quiet; then
+            git commit -m 'feat(b02): integrate open gym/music shells and current-site access into the default Viewer (#31)'
+            git push origin HEAD:main
+          fi
+          echo "SOURCE_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+      - name: Set up real Chromium and CJK screenshot rendering
+        run: |
+          pip install playwright==1.62.0
+          python -m playwright install --with-deps chromium
+          sudo apt-get update -qq
+          sudo apt-get install -y fonts-noto-cjk
+      - name: Real full-scene route clearance, desktop/mobile screenshots, and offline single-file loading
+        run: python tools/m11b-b02/capture.py
+      - name: Archive actual QA, then package only the hash-matched tested file
+        run: |
+          set -euo pipefail
+          python tools/m11b-b02/package.py --prepare
+          git add qa/m11b-b02 docs/m11b/batch02
+          if ! git diff --cached --quiet; then
+            git commit -m 'qa(b02): archive actual WebGL screenshots and entry/route checks; alumni review pending (#31)'
+            git push origin HEAD:main
+          fi
+          export DELIVERY_SHA=$(git rev-parse HEAD)
+          python - <<'PY'
+          import json,os,pathlib
+          a=pathlib.Path('artifacts/m11b-b02')
+          b=json.loads(pathlib.Path('qa/m11b-b02/browser-report.json').read_text())
+          (a/'delivery-receipt.json').write_text(json.dumps({'source_sha':b['source_sha'],'delivery_sha':os.environ['DELIVERY_SHA'],'viewer_sha256':b['viewer_sha256'],'status':'IMPLEMENTED / REVIEW_PENDING'},indent=2))
+          PY
+          python tools/m11b-b02/package.py
+      - name: Retain the exact current source even when a targeted check finds an issue
+        if: always()
+        run: |
+          mkdir -p artifacts/m11b-b02
+          git archive --format=tar.gz HEAD > artifacts/m11b-b02/current-source.tar.gz
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Yali-M1-1-B-B02-Viewer-Review-Workspace
           path: |
-            /tmp/b02-current-main.tar.gz
-            /tmp/b02-toolchain.tar.gz
-            /tmp/b02-source-sha.txt
-          retention-days: 7
+            artifacts/m11b-b02/
+            qa/m11b-b02/
+          retention-days: 30
