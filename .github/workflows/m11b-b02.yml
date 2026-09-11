@@ -1,0 +1,38 @@
+name: B02 gym and music targeted verification
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/m11b-b02.yml'
+      - 'apps/campus/src/batch02*'
+      - 'data/m11b/batch02/**'
+      - 'tools/m11b-b02/**'
+permissions:
+  contents: read
+jobs:
+  b02:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: apps/campus/package-lock.json
+      - name: Restore the existing pinned toolchain
+        run: npm ci --prefix apps/campus
+      # Bootstrap only: enables local Chromium/WebGL work without replacing the campus.
+      # This archive is NOT a B02 build or browser-pass claim.
+      - name: Package current source and toolchain for the offline construction workstation
+        run: |
+          git rev-parse HEAD > /tmp/b02-source-sha.txt
+          git archive --format=tar.gz HEAD > /tmp/b02-current-main.tar.gz
+          tar -czf /tmp/b02-toolchain.tar.gz apps/campus/node_modules
+      - uses: actions/upload-artifact@v4
+        with:
+          name: B02-inherited-source-and-toolchain
+          path: |
+            /tmp/b02-current-main.tar.gz
+            /tmp/b02-toolchain.tar.gz
+            /tmp/b02-source-sha.txt
+          retention-days: 7
