@@ -1,3 +1,7 @@
+// B03_ACTIVE_ENTRY
+import batch03Input from '../../../data/m11b/batch03/input.json';
+import {applyB03Layout,adaptB03Terrain,buildB03Model} from './batch03-core.mjs';
+import {buildB03Facility,finishB03Integration,checkB03Access} from './batch03-scene';
 // B02_ACTIVE_ENTRY
 import batch02Input from '../../../data/m11b/batch02/input.json';
 import {applyB02Layout,buildB02Model} from './batch02-core.mjs';
@@ -37,13 +41,14 @@ type Facility = typeof source.facilities[number];
 const patch=applyPatch02(source,terrainBase,patchInput);
 const effective=applyB01R2(patch.layout,patch.terrain,patch04Base,batch01Input);
 const r2Layout=effective.layout;
-const layout:typeof source=applyB02Layout(applyB01R3Layout(r2Layout,revision3Input),batch02Input);
+const layout:typeof source=applyB03Layout(applyB02Layout(applyB01R3Layout(r2Layout,revision3Input),batch02Input),batch03Input);
 const patch04Input=effective.site;
 const requestedVertical=new URLSearchParams(location.search).get('vertical');
 const verticalScheme=requestedVertical==='patch02'?'patch02':requestedVertical==='patch03'?'patch03':'patch04';
 const p03Model=verticalScheme!=='patch02'?buildPatch03Model(layout,effective.spec,patch03Input):null;
 const rawCurrentModel=verticalScheme==='patch04'?buildPatch04Model(p03Model,patch04Input):p03Model;
-const currentModel=adaptB01R3Terrain(rawCurrentModel??buildTerrainModel(layout,effective.spec),layout,revision3Input);
+const currentModel=adaptB03Terrain(adaptB01R3Terrain(rawCurrentModel??buildTerrainModel(layout,effective.spec),layout,revision3Input),layout,batch03Input);
+const b03Model=buildB03Model(layout,currentModel,batch03Input);
 const b01Model=buildB01R3Model(layout,currentModel,batch01Input,revision3Input);
 const b02Model=buildB02Model(layout,currentModel,batch02Input);
 let b01Bridge:any=null;
@@ -138,6 +143,26 @@ Object.assign(cameraPresets,{
  'r31-east-door':{label:'右端卷帘门近看 · 无关闭门板',position:[122.5,5.3,214.9],target:[117.5,4.95,217.5]}
 });
 cameraPresets['r2-side']=cameraPresets['r3-east'];
+// B03 photo directions are approximate; no photogrammetric camera solution is claimed.
+Object.assign(cameraPresets,{
+ 'b03-library':{label:'旧图书馆 · 原位三层H / 大窗 / 攀藤',position:[49,14,234],target:[73,10.2,252],fov:58},
+ 'b03-photo-library':{label:'S03-049 · 内退入口 / 暗红门框 / 蓝色告示板',position:[72.3,7.1,237.5],target:[72.3,7.6,247.2],fov:59},
+ 'b03-library-lobby':{label:'真正门洞内 · 最小门厅与后花园出口',position:[73,6.85,249.5],target:[73,6.8,258.5],fov:64},
+ 'b03-uphill':{label:'主楼后门出发 · 路面爬升 / 不抬主楼后坪',position:[73,5.2,232.4],target:[73,7.5,248],fov:58},
+ 'b03-gap':{label:'桥下通路向图书馆 · 后路横向渐升',position:[6.5,5.2,233],target:[45,6.3,240],fov:60},
+ 'b03-garden':{label:'后花园 · 曲线池缘 / 铺地 / 弧梯',position:[88,11.2,285],target:[65,7.2,265.5],fov:58},
+ 'b03-spiral':{label:'S03-050 · 宽弧梯 / 实心内栏板 / 开敞中庭',position:[64.3,7.7,271.5],target:[58.6,7.2,263],fov:59},
+ 'b03-spiral-top':{label:'弧梯顶部 · 与二层平台、真实门洞相接',position:[55.4,10.6,264.0],target:[55.2,10.3,258.6],fov:67},
+ 'b03-garden-plan':{label:'图书馆—花园—弧梯 · 俯看接续',position:[68,47,282],target:[69,5,265],fov:57},
+ 'b03-canteen':{label:'食堂 · 下层店面与上层宽梯入口',position:[127,10.7,171],target:[155,8.5,152],fov:54},
+ 'b03-photo-canteen':{label:'S03-031 · 入口宽梯近似对照',position:[131,5.5,157.5],target:[151,8.2,157.5],fov:60},
+ 'b03-canteen-lobby':{label:'食堂上层门厅 · 真门洞后落脚空间',position:[157.5,8.54,157.4],target:[149,8.54,157.4],fov:66},
+ 'b03-shop':{label:'食堂下层小卖部 · 入口沿用H / 不另建独栋',position:[144.0,4.9,148],target:[154,4.75,149],fov:68},
+ 'b03-shop-inside':{label:'小卖部最小进深 · 无虚构货架商品',position:[155.5,4.9,149],target:[147,4.9,149],fov:69},
+ 'b03-perimeter':{label:'食堂外围道路与家属区间隙',position:[205,38,171],target:[164,6,149],fov:60},
+ 'b03-overview':{label:'第三批全景 · 图书馆与生活组团',position:[200,107,306],target:[88,6,222],fov:55},
+ 'b03-axis':{label:'已认可四节点主轴 · 图书馆只调标高',position:[73,325,200],target:[73,0,200],fov:48}
+});
 // B02 presets: photo matching is approximate, not a solved camera calibration.
 Object.assign(cameraPresets,{
  'b02-photo-front':{label:'体育馆 · S03-020 低位斜正面',position:[16,5.35,82],target:[-39,12.5,44],fov:38},
@@ -203,7 +228,7 @@ const ramps=[
  ['#73827c','#becbbb','#f2f0da'],
  ['#345c77','#397b9b','#57a3ba'],['#3e595e','#526b6a','#698179'],
  ['#6f6760','#95735e','#ba8b65'],['#6f816b','#c4aa5a','#e6c555'],['#3e7068','#4c9479','#74b089'],
- ['#82918d','#cad0c4','#efede1'],['#5b6f6d','#aeb9b3','#d9dfd4'],['#253d41','#405e60','#73918b'],['#774f4c','#a77770','#c69c92'],['#811e24','#b5252b','#d33b3c'],['#bb9436','#e5bb4e','#f8d169']
+ ['#82918d','#cad0c4','#efede1'],['#5b6f6d','#aeb9b3','#d9dfd4'],['#253d41','#405e60','#73918b'],['#774f4c','#a77770','#c69c92'],['#811e24','#b5252b','#d33b3c'],['#bb9436','#e5bb4e','#f8d169'],['#58383b','#845254','#a87673'],['#345a7b','#477da3','#7ba5c1']
 ];
 const lutCanvas=document.createElement('canvas');lutCanvas.width=256;lutCanvas.height=ramps.length;
 const ctx=lutCanvas.getContext('2d')!;
@@ -271,7 +296,7 @@ for(const f of layout.facilities){
  const [x,y,z]=f.position,[w,h,d]=f.size,g=new THREE.Group();g.name=`F${f.id}`;g.userData.facility=f.id;g.position.set(x,y,z);roots.set(f.id,g);
  (['field','courts','straight-track','pool','forecourt','sandpit','garden','route','marker','subspace'].includes(f.kind)?surfaces:volumes).add(g);
  addFootprint(f);addLabel(f);
- if(buildB02Facility(f,g,{mats},b02Model) || batch01Facility(f,g,{mats},b01Model) || buildPatch02Gym(f,g,{box,mesh,line,rect,mats,layout},patchInput) || r4Facility(f,g,{box,mesh,line,rect,mats,layout}) || r3Facility(f,g,{box,mesh,line,rect,mats,layout}) || revisedFacility(f,g,{box,mesh,line,rect,mats,layout})) {
+ if(buildB03Facility(f,g,{mats},b03Model) || buildB02Facility(f,g,{mats},b02Model) || batch01Facility(f,g,{mats},b01Model) || buildPatch02Gym(f,g,{box,mesh,line,rect,mats,layout},patchInput) || r4Facility(f,g,{box,mesh,line,rect,mats,layout}) || r3Facility(f,g,{box,mesh,line,rect,mats,layout}) || revisedFacility(f,g,{box,mesh,line,rect,mats,layout})) {
   // R2 builds real openings / larger envelopes without replacing unrelated facilities.
  } else if(solidKinds.has(f.kind)){
   if(f.kind==='context'){
@@ -367,15 +392,15 @@ function setToiletLevel(level:number,focus=false){
  if(focus&&level){stopModes();active=camera;controls.enabled=true;topControls.enabled=false;const y=(level-1)*3.8+(terrainSystem?.enabled?terrainSystem.model.anchors['25'].floor:0);camera.position.set(7,y+10,238);controls.target.set(-10,y+1,224);controls.update();}
 }
 function setView(name:string){
- const p=cameraPresets[name];if(!p)return;controls.maxPolarAngle=name.startsWith('b02-')?Math.PI*.85:Math.PI*.495;camera.fov=p.fov??43;camera.updateProjectionMatrix();setReviewShadow(p.target,name.startsWith('b02-')||name.startsWith('terrain-')||name.startsWith('gym-p02-')||name.startsWith('p03-')||name.startsWith('b01-')||(name.startsWith('r2-')||name.startsWith('r3-'))||name.startsWith('p04-'));stopModes();view=name;setToiletLevel(name==='r3-porch-plan'?1:name==='toilet-floor'||name==='b01-floor2'||name==='r2-floor2'?2:0);
+ const p=cameraPresets[name];if(!p)return;controls.maxPolarAngle=(name.startsWith('b02-')||name.startsWith('b03-'))?Math.PI*.85:Math.PI*.495;camera.fov=p.fov??43;camera.updateProjectionMatrix();setReviewShadow(p.target,(name.startsWith('b02-')||name.startsWith('b03-'))||name.startsWith('terrain-')||name.startsWith('gym-p02-')||name.startsWith('p03-')||name.startsWith('b01-')||(name.startsWith('r2-')||name.startsWith('r3-'))||name.startsWith('p04-'));stopModes();view=name;setToiletLevel(name==='r3-porch-plan'?1:name==='toilet-floor'||name==='b01-floor2'||name==='r2-floor2'?2:0);
  b01Bridge?.setMode((name==='r2-section'||name==='r3-section')?'section':(name==='r2-axis'||name==='r3-axis')?'axis':'normal');
  document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',(b as HTMLElement).dataset.view===name));
  active=(name==='top'||(name==='r2-axis'||name==='r3-axis'))?topCamera:camera;controls.enabled=(name!=='top'&&name!=='r2-axis');topControls.enabled=(name==='top'||(name==='r2-axis'||name==='r3-axis'));
  active.position.set(...p.position as Vec3);active.up.set(...((name==='top'||(name==='r2-axis'||name==='r3-axis'))?[0,0,-1]:[0,1,0]) as Vec3);
- ((name==='top'||(name==='r2-axis'||name==='r3-axis'))?topControls:controls).target.set(...p.target as Vec3);if(innerWidth<700&&(name.startsWith('b02-')||name.startsWith('b01-')||(name.startsWith('r2-')||name.startsWith('r3-')))&&name!=='r2-axis'){const t=new THREE.Vector3(...p.target as Vec3);active.position.sub(t).multiplyScalar(name.startsWith('b02-')?1.9:2.6).add(t);}
+ ((name==='top'||(name==='r2-axis'||name==='r3-axis'))?topControls:controls).target.set(...p.target as Vec3);if(innerWidth<700&&((name.startsWith('b02-')||name.startsWith('b03-'))||name.startsWith('b01-')||(name.startsWith('r2-')||name.startsWith('r3-')))&&name!=='r2-axis'){const t=new THREE.Vector3(...p.target as Vec3);active.position.sub(t).multiplyScalar((name.startsWith('b02-')||name.startsWith('b03-'))?1.9:2.6).add(t);}
  active.lookAt(...p.target as Vec3);
  if((name==='top'||(name==='r2-axis'||name==='r3-axis'))){topCamera.zoom=(name==='r2-axis'||name==='r3-axis')?1.5:1;topCamera.updateProjectionMatrix();}controls.update();topControls.update();
- el('view-name').innerHTML=`${p.label}<span>B02 体育馆 / 音乐楼 · 待校友审阅｜B01 R3.1 已认可</span>`;
+ el('view-name').innerHTML=`${p.label}<span>B03 图书馆 / 后花园 / 食堂 · 待校友审阅｜B01、B02 已认可</span>`;
 }
 for(const btn of document.querySelectorAll<HTMLButtonElement>('[data-view]'))btn.onclick=()=>setView(btn.dataset.view!);
 el<HTMLSelectElement>('toilet-level').onchange=e=>setToiletLevel(Number((e.target as HTMLSelectElement).value),true);
@@ -437,6 +462,7 @@ function setTerrain(_on:boolean){terrainSystem.setEnabled(true);el<HTMLInputElem
 function changeVertical(scheme:string){const u=new URL(location.href);u.searchParams.set('vertical',scheme);u.searchParams.set('view',view);location.href=u.href;}
 if(p03Model)p03Geometry=installPatch03Geometry({scene,surfaces,volumes,mats,box},p03Model);
 if(verticalScheme==='patch04')installPatch04Geometry({scene,surfaces,volumes,roots,terrainSystem,box,mats,layout},currentModel,patch04Input);
+finishB03Integration({scene,roots,mats},b03Model);
 b01Bridge=installR3Details({volumes,roots,structures,mats,scene,renderer,site:patch04Input,terrain:currentModel??terrainSystem.model},b01Model);
 setToiletLevel(0);
 
@@ -546,6 +572,8 @@ Object.assign(window,{__YALI_B02__:{ready:true,version:batch02Input.version,inpu
   return {routes:result,doors,sharedWallBlocked:ray([-60,4.9,65.3],[-60,4.9,66.7]).length>0,legacyGymCount:meshes.filter(o=>o.name.startsWith('P02-GYM-')&&o.userData.facility==='03').length,retainedSiteNames:meshes.filter(o=>o.name==='P02-GYM-FORECOURT').map(o=>o.name)};
  }
 }});
-if(!params.has('view'))setView(innerWidth<700?'b02-front':'b02-overview');
+if(!params.has('view'))setView(innerWidth<700?'b03-library':'b03-overview');
 
 el<HTMLSelectElement>('b02-view-select').onchange=e=>setView((e.target as HTMLSelectElement).value);
+
+Object.assign(window,{__YALI_B03__:{...((window as any).__YALI_B02__),ready:true,version:batch03Input.version,input:batch03Input,model:b03Model,terrain:currentModel,checkAccess:()=>checkB03Access(scene,visibleMeshList(),b03Model)}});

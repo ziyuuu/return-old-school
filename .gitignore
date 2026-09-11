@@ -7,3 +7,6 @@ __pycache__/
 
 # B02 generated downloadable bundles (source and QA remain tracked)
 artifacts/m11b-b02/
+
+# B03 generated private review/bundles; research photographs are not source assets
+artifacts/m11b-b03/

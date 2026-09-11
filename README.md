@@ -2,11 +2,13 @@
 
 长沙雅礼中学东塘校区，2006—2010 年历史校园复原；面向校庆与校友回忆的非商业项目。独立校友创作，不代表学校官方。
 
-## 当前状态：B02 已实施，待校友审阅
+## 当前状态：B03 已实施，待实际QA与校友审阅
 
-**体育馆03＋贴体四层音乐楼24：IMPLEMENTED / REVIEW_PENDING。** 默认Viewer已接入本批模型；真实门洞、最小门厅、左外梯与观赛层、绕馆通路同步制作。照片依据与H补全见 [B02交付](docs/m11b/batch02/delivery.md) 和 [照片取舍](docs/m11b/batch02/evidence.md)，入口图见 [同源SVG](docs/m11b/batch02/access.svg)。实际工程结果仅以 `qa/m11b-b02/browser-report.json` 为准。用户未审阅前不登记本批ALUMNI_APPROVED。
+**B01与B02：COMPLETE / ALUMNI_APPROVED。** B02认可依据 [acceptance.md](docs/m11b/batch02/acceptance.md) / [acceptance.json](data/m11b/batch02/acceptance.json)，旧QA中的待审状态保留为历史记录。
 
-导出：`node tools/m11b-b02/export.mjs`。定向几何：`node tools/m11b-b02/check.mjs`；浏览器和打包：`python tools/m11b-b02/capture.py`、`python tools/m11b-b02/package.py`。输出 `artifacts/m11b-b02/Yali_M1_1_B_B02_Viewer.html`、`Review.html`、`Workspace.zip` 和 `Access.svg`（同一B02文件名前缀）。下载的Viewer单HTML可直接打开，场景不联网。
+**B03：IMPLEMENTED / REVIEW_PENDING。** 18旧图书馆、19后花园与宽弧梯、主楼到图书馆的上坡、11食堂及12下层小卖部接入完整校园默认Viewer。真实门洞、最小门厅、梯顶入口与外部通路同步构建。[交付说明](docs/m11b/batch03/delivery.md) · [照片与H补全](docs/m11b/batch03/evidence.md) · [入口图](docs/m11b/batch03/access.svg)。工程状态以 `qa/m11b-b03/browser-report.json` 为准，不代替校友认可。
+
+导出 `node tools/m11b-b03/export.mjs`；定向几何 `node tools/m11b-b03/check.mjs`；实际浏览器/打包 `python tools/m11b-b03/capture.py` / `python tools/m11b-b03/package.py`。自包含文件输出至 `artifacts/m11b-b03/`，文件名前缀 `Yali_M1_1_B_B03_`。Workspace是完整可接续工程，参考照片不作为公开模型资产。
 
 ## 第一批认可成果继续继承
 
@@ -28,7 +30,7 @@ Viewer SHA256：`715bdcc2e9c50e680c1d0d1bd4011a29ba95d041fd5cb2a21b5e7b6c6d9c38f
 
 工程记录为 10 项定向测试、6 组实际 WebGL 检查和 8 张截图，见 [QA](qa/m11b-shutter-fix/browser-report.json)。QA 中的 REVIEW_PENDING 是截图生成时状态；后续认可由 acceptance.json 单独记录，不篡改历史报告、不把认可登记冒充重新测试。
 
-M1.1-B共五批：B01已获认可，B02已实施待审；后续三批为B03旧图书馆＋食堂/小卖部、B04科学馆＋长雅楼等、B05校门及体育生活附属建筑。B02的工程通过不替代校友认可。
+M1.1-B共五批：B01/B02已认可，B03已实施待审；之后为B04科学馆＋长雅楼等、B05校门及体育生活附属建筑。建筑批次之后进入M1.1-C通行整合。
 
 ## 运行与定向验证
 

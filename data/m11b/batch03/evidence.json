@@ -1,0 +1,93 @@
+{
+  "version": "M1.1-B.B03.R1",
+  "page_url": "https://k.sina.com.cn/article_6430641585_17f4bcdb1001003x9v.html",
+  "alternate_page": "https://www.sohu.com/a/162618801_391114",
+  "publication_dates": [
+    "2018-03-13",
+    "2017-08-06"
+  ],
+  "capture_date": null,
+  "referencePhotos": [
+    {
+      "id": "S03-049",
+      "url": "https://k.sinaimg.cn/n/sinacn/w600h450/20180312/fb06-fyscsmu8208695.jpg/w700d1q75cms.jpg",
+      "rights": "Reference research only; not licensed for public repository or game textures.",
+      "capture_date": null,
+      "bytes": 145618,
+      "sha256": "23465e6f843919ad6a3091334e91c2b563cc2afe24db0a4db789a70591e7fb31"
+    },
+    {
+      "id": "S03-050",
+      "url": "https://k.sinaimg.cn/n/sinacn/w1080h378/20180312/efdc-fyscsmu8208782.jpg/w700d1q75cms.jpg",
+      "rights": "Reference research only; not licensed for public repository or game textures.",
+      "capture_date": null,
+      "bytes": 197070,
+      "sha256": "73e3045e7503c795193f35c06304fcd72f4d0aca42d0d5e19307bd45dc720e7c"
+    },
+    {
+      "id": "S03-031",
+      "url": "https://k.sinaimg.cn/n/sinacn/w1080h721/20180312/07ba-fyscsmu8207486.jpg/w700d1q75cms.jpg",
+      "rights": "Reference research only; not licensed for public repository or game textures.",
+      "capture_date": null,
+      "bytes": 350143,
+      "sha256": "9c6a0905e56fe53b7a52d89304bb25969552dc1cd8c617b84247e1a8eb293a2d"
+    },
+    {
+      "id": "S03-032",
+      "url": "https://k.sinaimg.cn/n/sinacn/w1000h667/20180312/fe2c-fyscsmu8207556.jpg/w700d1q75cms.jpg",
+      "rights": "Reference research only; not licensed for public repository or game textures.",
+      "capture_date": null,
+      "bytes": 421531,
+      "sha256": "fa7cd6f39cdfb7b56dd765ffc56921ca47963b0b7fd7ce8b96b3748d6716c81f"
+    },
+    {
+      "id": "SOHU-LIBRARY",
+      "url": "https://img.mp.sohu.com/upload/20170806/350f283a43b749fd8e4b159b4826a46b_th.jpg",
+      "rights": "Reference research only; not licensed for public repository or game textures.",
+      "capture_date": null,
+      "bytes": 48101,
+      "sha256": "31ae1743dcc17aea2db48dbc8b854d8db7121b9fc8026668590920732cd6a237"
+    },
+    {
+      "id": "SOHU-GARDEN",
+      "url": "https://img.mp.sohu.com/upload/20170806/1ccb301b3a1349d7b9fd8b8bbdd7f5d3_th.jpg",
+      "rights": "Reference research only; not licensed for public repository or game textures.",
+      "capture_date": null,
+      "bytes": 166610,
+      "sha256": "4bbbacc20f90734829451ed3effa91e9baed0090548b1fb19a79eaf28ad0a12e"
+    }
+  ],
+  "viewed": [
+    "S03-049",
+    "S03-050",
+    "SOHU-GARDEN",
+    "S03-031",
+    "S03-032"
+  ],
+  "rightsPolicy": "Research reference only. No photograph binaries or textures in the public repository; attributed research copies may appear in the privately delivered Review.",
+  "A": [
+    "library behind main teaching building and shared axis",
+    "terrain rises from main building to library",
+    "rear garden and curved staircase",
+    "shop in canteen lower storey"
+  ],
+  "P": [
+    "S03-049 recessed burgundy glazed entry, white tile, blue notice area and vines",
+    "S03-050 broad curved flight, open well, tiled inner parapet, garden edge and stone paving",
+    "S03-031 broad entry steps and inset upper entrance",
+    "S03-032 column/window rhythm only; no shop imagery"
+  ],
+  "H": [
+    "exact 1.20m local grade and 0.45m entry rise",
+    "retained three-floor library and canteen envelopes; upper/hidden facades",
+    "rear exit, short through lobby and upper stair door location",
+    "half-circle stair,26 treads,exact radii and garden basin interpretation",
+    "canteen entry20 treads and dining level",
+    "shopfront design; no independent photograph"
+  ],
+  "missing": [
+    "full dated 2006–2010 library/canteen elevations",
+    "independently identified shop exterior",
+    "surveyed rear garden/stair endpoints"
+  ]
+}
