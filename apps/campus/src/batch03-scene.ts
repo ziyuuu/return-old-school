@@ -29,7 +29,7 @@ export function finishB03Integration(api:any,model:any){
  const {scene,roots,mats}=api;
  const shop=roots.get('12');shop.clear();buildB03Facility({id:'12'},shop,{mats},model);
  const obsolete:THREE.Object3D[]=[];
- scene.traverse((o:THREE.Object3D)=>{if(o.name.startsWith('P04-shop-approach-')||o.name==='M11A-entrance-deck-18')obsolete.push(o);});
+ scene.traverse((o:THREE.Object3D)=>{if(o.name.startsWith('P04-shop-approach-')||o.name==='M11A-entrance-deck-18'||o.name.startsWith('ST-LIBRARY-step-'))obsolete.push(o);});
  obsolete.forEach(o=>o.removeFromParent());scene.updateMatrixWorld(true);
 }
 /** Directional rays inspect full-scene triangles, including overhead slabs and planted objects. */

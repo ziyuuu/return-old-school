@@ -35,7 +35,7 @@ export function buildB03Model(layout,terrain,p){
  function wall(id,name,axis,k,a,b,y0,y1,holes=[],row=14,t=.24){const emit=(n,u,v,lo,hi,r=row,th=t,at=k)=>axis==='x'?box(id,name+n,'wall',[u,lo,at-th/2],[v,hi,at+th/2],r):box(id,name+n,'wall',[at-th/2,lo,u],[at+th/2,hi,v],r);panel(a,b,y0,y1,holes,(n,...v)=>emit(n,...v));}
  function frame(id,name,axis,k,a,b,y0,y1,row=6,glass=true){const B=(n,u,v,lo,hi,r,th=.10)=>axis==='x'?box(id,name+n,r===4?'window':'frame',[u,lo,k-th/2],[v,hi,k+th/2],r):box(id,name+n,r===4?'window':'frame',[k-th/2,lo,u],[k+th/2,hi,v],r);for(const u of [a,b])B('j'+u,u-.045,u+.045,y0,y1,row);for(const y of [y0,y1])B('h'+y,a,b,y-.045,y+.045,row);if(glass){B('glass',a+.05,b-.05,y0+.05,y1-.05,4,.035);const n=Math.max(1,Math.round((b-a)/1.05));for(let i=1;i<n;i++){const u=a+(b-a)*i/n;B('m'+i,u-.029,u+.029,y0,y1,row);}B('transom',a,b,y1-.55,y1-.50,row);}}
  function door(id,name,axis,k,center,floor,width,height,row=20){frame(id,name,axis,k,center-width/2,center+width/2,floor,floor+height,row,false);const normal=axis==='x'?[0,0,k<253?-1:1]:[-1,0,0],q=axis==='x'?[center,floor,k]:[k,floor,center];portals.push({id:name,facility:id,center:q,normal,width:width-.1,height:height-.08,floor});
-  for(const s of [-1,1]){const u=center+s*(width/2-.055);if(axis==='x')box(id,name+'open'+s,'open-door',[u-.035,floor+.05,k+.18],[u+.035,floor+height-.07,k+1.18],row);else box(id,name+'open'+s,'open-door',[k+.18,floor+.05,u-.035],[k+1.18,floor+height-.07,u+.035],row);}}
+  for(const s of [-1,1]){const u=center+s*(width/2-.055);if(axis==='x'){const z0=name==='library-garden'?k-1.18:k+.18,z1=name==='library-garden'?k-.18:k+1.18;box(id,name+'open'+s,'open-door',[u-.035,floor+.05,z0],[u+.035,floor+height-.07,z1],row);}else box(id,name+'open'+s,'open-door',[k+.18,floor+.05,u-.035],[k+1.18,floor+height-.07,u+.035],row);}}
  function rail(id,name,a,b,y,height=1.05){rod(id,name+'top',[a[0],y+height,a[1]],[b[0],y+height,b[1]]);rod(id,name+'mid',[a[0],y+.52,a[1]],[b[0],y+.52,b[1]],.025);const n=Math.ceil(Math.hypot(a[0]-b[0],a[1]-b[1])/1.1);for(let i=0;i<=n;i++){const x=a[0]+(b[0]-a[0])*i/n,z=a[1]+(b[1]-a[1])*i/n;rod(id,name+'p'+i,[x,y,z],[x,y+height,z],.032);}}
  const L=p.library,ly=terrain.anchors['18'].floor+L.floorOffset,gy=terrain.anchors['19'].floor+.04,lh=L.floorHeight;
  // Library: hollow, retained envelope; recessed lower entrance and large glazed window bays.
@@ -43,7 +43,7 @@ export function buildB03Model(layout,terrain,p){
  for(let f=0;f<L.floors;f++){
   const y=ly+f*lh,holes=[];
   for(const x of [49.2,55.4,61.6,67.8,78.2,84.4,90.6,96.8]){if(f===0&&x>65&&x<81)continue;holes.push([x-2.1,x+2.1,y+1.0,y+3.15]);frame('18','frontWin'+f+'-'+x,'x',front-.02,x-2.1,x+2.1,y+1,y+3.15);}
-  if(f===0){wall('18','frontL','x',front,left,67,y,y+lh,holes);wall('18','frontR','x',front,79,right,y,y+lh,holes);wall('18','recess','x',L.doorZ,67,79,y,y+lh,[[71.1,74.9,y,y+L.doorHeight],[70.4,75.6,y+L.doorHeight,y+3.25]]);wall('18','returnL','z',67,front,L.doorZ,y,y+lh);wall('18','returnR','z',79,front,L.doorZ,y,y+lh);door('18','library-main','x',L.doorZ,73,y,L.doorWidth,L.doorHeight);frame('18','mainTransom','x',L.doorZ-.03,70.4,75.6,y+L.doorHeight+.06,y+3.25,20);for(let j=0;j<5;j++)box('18','entryLouvre'+j,'louvre',[70.4,y+3.30+j*.065,L.doorZ-.08],[75.6,y+3.325+j*.065,L.doorZ+.025],20);box('18','blueNotice','notice-panel',[67.8,y+.7,L.doorZ-.16],[70,y+2.9,L.doorZ-.13],21);}
+  if(f===0){wall('18','frontL','x',front,left,67,y,y+lh,holes);wall('18','frontR','x',front,79,right,y,y+lh,holes);wall('18','recess','x',L.doorZ,67,79,y,y+lh,[[71.1,74.9,y,y+L.doorHeight],[70.4,75.6,y+L.doorHeight,y+3.25]]);wall('18','returnL','z',67,front,L.doorZ,y,y+lh);wall('18','returnR','z',79,front,L.doorZ,y,y+lh);door('18','library-main','x',L.doorZ,73,y,L.doorWidth,L.doorHeight);frame('18','mainTransom','x',L.doorZ-.03,70.4,75.6,y+L.doorHeight+.06,y+3.25,20);for(let j=0;j<5;j++)box('18','entryLouvre'+j,'louvre',[70.4,y+3.30+j*.065,L.doorZ-.08],[75.6,y+3.325+j*.065,L.doorZ+.025],20);box('18','blueNotice','notice-panel',[76,y+.7,L.doorZ-.16],[78.2,y+2.9,L.doorZ-.13],21);}
   else{holes.push([70.5,75.5,y+1,y+3.15]);frame('18','centralWindow'+f,'x',front-.02,70.5,75.5,y+1,y+3.15);wall('18','front'+f,'x',front,left,right,y,y+lh,holes);}
   for(const k of [left,right]){const h=[[248.5,251,y+1,y+3.05],[254,257.7,y+1,y+3.05]];wall('18','side'+f+'-'+k,'z',k,front,rear,y,y+lh,h);for(const [i,v]of h.entries())frame('18','sideW'+f+'-'+k+'-'+i,'z',k,...v);}
   const rholes=[],topX=p.spiral.center[0]-(p.spiral.innerRadius+p.spiral.outerRadius)/2;
@@ -54,6 +54,10 @@ export function buildB03Model(layout,terrain,p){
   if(f>0)box('18','floor'+f,'floor',[left,y-.22,front],[right,y,rear],15);
   box('18','band'+f,'cornice',[left-.10,y+lh-.12,front-.20],[right+.10,y+lh+.07,front+.22],15);
  }
+ // Front treads use inherited parameters with 6mm overlap at seams.
+ // No rise, route or clearance tolerance changes.
+ const entranceStair=terrain.stairs.find(s=>s.facilityId==='18');
+ for(const [i,t]of terrain.stairParts(entranceStair).entries()){const [x,,z]=t.center,[w,h,d]=t.size;box('18','mainStep'+i,'step',[x-w/2,t.top-h,z-d/2-.006],[x+w/2,t.top,z+d/2+.006],6,'P low entrance steps / H inherited dimensions and construction overlap');}
  // A short ground lobby connects real front and rear doors. Empty adjacent rooms are not a finished interior.
  for(const x of [69.4,76.6])wall('18','lobbySide'+x,'z',x,L.doorZ,rear,ly,ly+lh-.22,[],14,.18);
  box('18','roof','roof',[left-.35,ly+3*lh-.02,front-.4],[right+.35,ly+3*lh+.20,rear+.35],15);

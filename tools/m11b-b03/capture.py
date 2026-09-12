@@ -2,6 +2,7 @@
 import os,json,hashlib,subprocess,traceback
 from datetime import datetime,timezone
 from pathlib import Path
+from PIL import Image,ImageStat
 from playwright.sync_api import sync_playwright
 R=Path(__file__).resolve().parents[2];Q=R/'qa/m11b-b03';Q.mkdir(parents=True,exist_ok=True)
 A=R/'artifacts/m11b-b03/Yali_M1_1_B_B03_Viewer.html'
@@ -32,6 +33,9 @@ try:
    shots.append({'file':fn,'view':view,'width':width,'height':height,'state':page.evaluate('window.__YALI_B03__.getState()')});print('SCREENSHOT '+fn,flush=True)
   for view in ['b03-library','b03-photo-library','b03-library-lobby','b03-uphill','b03-gap','b03-garden','b03-spiral','b03-spiral-top','b03-garden-plan','b03-canteen','b03-photo-canteen','b03-canteen-lobby','b03-shop','b03-shop-inside','b03-perimeter','b03-overview']:shot(view)
   shot('b03-library',390,844,False,'mobile.png')
+  crop=Image.open(Q/'mobile.png').convert('RGB').crop((30,170,360,680))
+  spread=max(ImageStat.Stat(crop).stddev)
+  check('mobile rendered scene is not a flat wall',spread>12,{'central_image_stddev':spread})
   check('mobile viewport and controls',page.evaluate('document.documentElement.scrollWidth<=390&&document.querySelector("#viewport canvas").clientWidth===390&&getComputedStyle(document.querySelector(".views")).display!=="none"'))
   requests=[];page.on('request',lambda r:requests.append(r.url) if r.url.startswith(('http://','https://')) else None)
   page.goto(A.as_uri(),timeout=120000);page.wait_for_function('window.__YALI_B03__?.ready',timeout=120000);page.wait_for_timeout(400);off=page.evaluate('window.__YALI_B03__.getState()')
@@ -41,6 +45,6 @@ try:
 except Exception as e:exception=str(e);traceback.print_exc()
 finally:
  server.terminate();server.wait(timeout=10)
- report={'version':'M1.1-B.B03.R1','status':'IMPLEMENTED / REVIEW_PENDING','complete':complete,'passed':complete and all(c['passed'] for c in checks),'checks':checks,'access':access,'screenshots':shots,'errors':errors,'exception':exception,'source_sha':os.getenv('SOURCE_SHA'),'viewer_sha256':hashlib.sha256(A.read_bytes()).hexdigest(),'generatedAt':datetime.now(timezone.utc).isoformat(),'environment':'Actual GitHub Actions Ubuntu / Chromium / SwiftShader WebGL2; desktop and 390x844 viewport, not a physical phone. Local container cannot create WebGL2.'}
+ report={'version':json.loads((R/'data/m11b/batch03/input.json').read_text())['version'],'status':'IMPLEMENTED / REVIEW_PENDING','complete':complete,'passed':complete and all(c['passed'] for c in checks),'checks':checks,'access':access,'screenshots':shots,'errors':errors,'exception':exception,'source_sha':os.getenv('SOURCE_SHA'),'viewer_sha256':hashlib.sha256(A.read_bytes()).hexdigest(),'generatedAt':datetime.now(timezone.utc).isoformat(),'environment':'Actual GitHub Actions Ubuntu / Chromium / SwiftShader WebGL2; desktop and 390x844 viewport, not a physical phone. Local container cannot create WebGL2.'}
  (Q/'browser-report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
 if not report['passed']:raise AssertionError('B03 targeted checks failed; inspect actual screenshots and repair affected geometry.')
