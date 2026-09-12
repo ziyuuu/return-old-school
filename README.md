@@ -2,11 +2,11 @@
 
 长沙雅礼中学东塘校区，2006—2010 年历史校园复原；面向校庆与校友回忆的非商业项目。独立校友创作，不代表学校官方。
 
-## 当前状态：B03 已实施，待实际QA与校友审阅
+## 当前状态：B03 R1.1 已通过工程检查，待校友审阅
 
 **B01与B02：COMPLETE / ALUMNI_APPROVED。** B02认可依据 [acceptance.md](docs/m11b/batch02/acceptance.md) / [acceptance.json](data/m11b/batch02/acceptance.json)，旧QA中的待审状态保留为历史记录。
 
-**B03：IMPLEMENTED / REVIEW_PENDING。** 18旧图书馆、19后花园与宽弧梯、主楼到图书馆的上坡、11食堂及12下层小卖部接入完整校园默认Viewer。真实门洞、最小门厅、梯顶入口与外部通路同步构建。[交付说明](docs/m11b/batch03/delivery.md) · [照片与H补全](docs/m11b/batch03/evidence.md) · [入口图](docs/m11b/batch03/access.svg)。工程状态以 `qa/m11b-b03/browser-report.json` 为准，不代替校友认可。
+**B03 R1.1：IMPLEMENTED / REVIEW_PENDING。** 18旧图书馆、19后花园与宽弧梯、主楼到图书馆的上坡、11食堂及12下层小卖部接入完整校园默认Viewer。真实门洞、最小门厅、梯顶入口与外部通路同步构建。[交付说明](docs/m11b/batch03/delivery.md) · [照片与H补全](docs/m11b/batch03/evidence.md) · [入口图](docs/m11b/batch03/access.svg)。正常构建、8组定向几何、14组真实Chromium检查已通过：8条路线、5处门洞及桌面/手机viewport，17张实际截图。工程状态以 `qa/m11b-b03/browser-report.json` 为准，不代替校友认可。
 
 导出 `node tools/m11b-b03/export.mjs`；定向几何 `node tools/m11b-b03/check.mjs`；实际浏览器/打包 `python tools/m11b-b03/capture.py` / `python tools/m11b-b03/package.py`。自包含文件输出至 `artifacts/m11b-b03/`，文件名前缀 `Yali_M1_1_B_B03_`。Workspace是完整可接续工程，参考照片不作为公开模型资产。
 
@@ -16,7 +16,7 @@
 
 2026-09-11，用户明确确认：“第一批可以了。请落地吧。” 本次记录的是对已实现、已交付 R3.1 的认可，不是再次改模。后续批次直接继承这份建筑成果。
 
-[第一批认可记录](docs/m11b/batch01/acceptance.md) · [机器可读状态](data/m11b/batch01/acceptance.json) · [开发计划及后续三批](docs/development-plan.md) · [R3.1 交付](docs/m11b/shutter-fix/delivery.md)
+[第一批认可记录](docs/m11b/batch01/acceptance.md) · [机器可读状态](data/m11b/batch01/acceptance.json) · [开发计划及后续批次](docs/development-plan.md) · [R3.1 交付](docs/m11b/shutter-fix/delivery.md)
 
 已认可内容：五层主教学楼及四楼后坪；中央轻弧广播站等功能体量；两端前伸主体墙与内退门廊；凹口内侧墙上的扩大卷帘开口，默认收起；加大的雨棚和外移柱列；连续厕所楼体、逐层连接桥及桥下通路；田径场—中央国旗—主教学楼—旧图书馆共轴。
 
