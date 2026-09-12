@@ -4,15 +4,15 @@
 
 2026-09-12 本地模型与渲染精化第二轮：**193.5 万 → 329.8 万三角面**，进一步加密曲面、倒角与叶片，建立 17 类独立材质、校园局部反射，并在原色板内优化色彩。[最新交付与对比](docs/render-refinement-r2-2026-09-12.md) · [首轮记录](docs/render-upgrade-2026-09-12.md)。工程检查已通过，效果待用户审阅。
 
-## 当前状态：B03 R2 工程检查通过，待校友审阅
+## 当前状态：B01—B03 已认可，下一批 B04
 
 后续模型统一遵循 [模型、材质与渲染标准 v1.0](docs/model-rendering-standard.md)，包括几何精度、17 类材质、色板、日光与深度、共享模块接入及验收清单。实施入口见 [AGENTS.md](AGENTS.md)。
 
 **B01与B02：COMPLETE / ALUMNI_APPROVED。** [B02认可记录](docs/m11b/batch02/acceptance.md)及机器可读认可记录保持不变。
 
-**B03 R2：IMPLEMENTED / REVIEW_PENDING。** 本轮修正面对食堂的“左打印／中楼梯／右小卖部”，以及左右对称弧梯、圆形中间平台与中央上行段。圆台与精确梯形仍是依据校友暂定记忆的H补全，不冒称原照片证明。继承main的R1.1台阶接缝、后门扇、蓝色告示区与手机相机修复。
+**B03 R2：COMPLETE / ALUMNI_APPROVED（2026-09-13）。** [第三批认可记录](docs/m11b/batch03/acceptance.md) · [第四批新线程启动提示词](docs/m11b/batch04/start-next-thread.md)。已认可面对食堂的“左打印／中楼梯／右小卖部”，以及左右对称弧梯、圆形中间平台与中央上行段。圆台与精确梯形仍是依据校友暂定记忆的H补全，不冒称原照片证明。继承main的R1.1台阶接缝、后门扇、蓝色告示区与手机相机修复。
 
-[交付说明](docs/m11b/batch03/delivery.md) · [照片及H边界](docs/m11b/batch03/evidence.md) · [同源入口图](docs/m11b/batch03/access.svg)。本轮结果只以版本为R2的 `qa/m11b-b03/browser-report.json` 为准，R1.1通过不代表R2通过。
+[交付说明](docs/m11b/batch03/delivery.md) · [照片及H边界](docs/m11b/batch03/evidence.md) · [同源入口图](docs/m11b/batch03/access.svg)。原建筑 QA 见 `qa/m11b-b03/browser-report.json`，后续精化 QA 见 `qa/render-upgrade/r2/report.json`；旧报告及 Viewer 的待审文字保留生成时状态，当前认可由 acceptance 记录确定。
 
 导出 `node tools/m11b-b03/export.mjs`；检查 `node tools/m11b-b03/check.mjs`；实际浏览器/打包 `python tools/m11b-b03/capture.py` / `python tools/m11b-b03/package.py`。完整可接续Workspace与离线单文件Viewer、照片Review、SVG一起交付。照片不作场景材质，含原照的私下Review不公开提交。
 
@@ -36,7 +36,7 @@ Viewer SHA256：`715bdcc2e9c50e680c1d0d1bd4011a29ba95d041fd5cb2a21b5e7b6c6d9c38f
 
 工程记录为 10 项定向测试、6 组实际 WebGL 检查和 8 张截图，见 [QA](qa/m11b-shutter-fix/browser-report.json)。QA 中的 REVIEW_PENDING 是截图生成时状态；后续认可由 acceptance.json 单独记录，不篡改历史报告、不把认可登记冒充重新测试。
 
-M1.1-B共五批：B01/B02已认可，B03已实施待审；之后为B04科学馆＋长雅楼等、B05校门及体育生活附属建筑。建筑批次之后进入M1.1-C通行整合。
+M1.1-B共五批：B01/B02/B03已认可；下一批为B04科学馆＋长雅楼等，之后为B05校门及体育生活附属建筑。建筑批次之后进入M1.1-C通行整合。
 
 ## 运行与定向验证
 

@@ -1,6 +1,8 @@
 # B03 R2｜食堂正面与图书馆对称双梯
 
-状态 **IMPLEMENTED / REVIEW_PENDING**。B01/B02仍 **COMPLETE / ALUMNI_APPROVED**。本轮源码继承main `72d7808ffdea8f8271133f658e90b199998a0ce6`，不是覆盖为旧预修快照。
+当前状态 **COMPLETE / ALUMNI_APPROVED**（2026-09-13），见 [校友认可记录](acceptance.md)。B01/B02继续已认可。以下保留 R2 交付及 QA 的历史记录，其中 REVIEW_PENDING 是生成时状态，不覆盖当前认可。
+
+R2 交付当时状态为 **IMPLEMENTED / REVIEW_PENDING**。本轮源码继承main `72d7808ffdea8f8271133f658e90b199998a0ce6`，不是覆盖为旧预修快照。
 
 食堂：观察者站在正面（−X）面向+X，左（−Z）打印，中部楼梯，右（+Z）小卖部。楼梯所在上层楼板开口、柱列和门厅一起调整。打印、食堂、小卖部各有真实门洞与独立可达路线；不虚构商号、商品或历史招牌。12仍属于11内部。
 

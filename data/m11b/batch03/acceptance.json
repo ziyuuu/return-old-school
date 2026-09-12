@@ -1,0 +1,21 @@
+{
+  "stage": "M1.1-B",
+  "batch": "B03",
+  "version": "R2",
+  "render_refinement_version": "R2",
+  "status": "COMPLETE / ALUMNI_APPROVED",
+  "accepted_on": "2026-09-13",
+  "accepted_by": "user/alumni",
+  "user_confirmation": "现在第三批已经通过，请你给一份详细提示词，告诉新的chat gpt 6 pro线程进入下一批的开发。通过git完成阅读和上传。",
+  "source_sha": "332b0c30a0371df676bccd798fd4d37ad53cedc4",
+  "original_b03_r2_tested_source_sha": "990b7f68f065d70fb680ed2d47c5dd529c80f56f",
+  "viewer_path": "artifacts/render-upgrade/Yali_Material_Detail_R2_Viewer.html",
+  "viewer_sha256": "59f5c408d109f91c80828f97f127d7d2ba68da35350c7d6df703a86c966b529b",
+  "qa_path": "qa/render-upgrade/r2/report.json",
+  "scope": ["18旧图书馆", "19后花园及对称双弧梯", "主楼至图书馆局部上坡衔接", "11食堂", "食堂下层左打印／中楼梯／右小卖部12"],
+  "model_rendering_standard": "1.0",
+  "historical_qa_status_preserved": true,
+  "remaining_hypotheses": "See docs/m11b/batch03/evidence.md; alumni approval does not turn H dimensions, materials or missing views into measurements.",
+  "new_frozen_baseline": false,
+  "next_batch": "B04"
+}
