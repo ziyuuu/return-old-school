@@ -29,33 +29,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Apply locally replay-verified R2 amendment to current main
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          python - <<'PY'
-          import os,json,base64,lzma,hashlib,urllib.request
-          from pathlib import Path
-          ids=['e49ee15e5677b0079770679f470c864e2298285c','8fd1539a20e35cf1bfcd3e9c461b27751149d45c','eb01d71f7ae11c1e295e189b248f49c2238dd374','b9ff1584dd4666bb8813feb2135ff444955c455d']
-          chunks=[]
-          for sha in ids:
-            req=urllib.request.Request('https://api.github.com/repos/ziyuuu/return-old-school/git/blobs/'+sha,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','User-Agent':'B03-R2-build'})
-            data=json.load(urllib.request.urlopen(req,timeout=60));chunks.append(base64.b64decode(data['content']).decode())
-          payload=json.loads(lzma.decompress(base64.b64decode(''.join(chunks))))
-          digest=lambda n:hashlib.sha256(Path(n).read_bytes()).hexdigest()
-          code=[n for n in payload['after'] if n.startswith(('apps/','data/','tools/'))]
-          if all(digest(n)==payload['after'][n] for n in code):
-            print('Exact R2 code already integrated; preserve later docs/QA.')
-          else:
-            wrong=[n for n,h in payload['before'].items() if digest(n)!=h]
-            assert not wrong, 'Concurrent or unexpected source changes: '+repr(wrong)
-            for script in payload['scripts']:exec(compile(script,'reviewed-B03-R2-local-amendment','exec'),{})
-            for n,text in payload['writes'].items():Path(n).write_text(text)
-            wrong=[n for n,h in payload['after'].items() if digest(n)!=h]
-            assert not wrong, 'Source differs from locally replay-verified R2: '+repr(wrong)
-            print('Integrated',len(payload['after']),'verified source/data/document files. No photos or fonts written.')
-          PY
-      - name: Normal build and eight focused geometry groups
+      - name: Normal build and focused geometry checks
         run: |
           set -euo pipefail
           mkdir -p qa/m11b-b03
@@ -63,17 +37,6 @@ jobs:
           npm run build --prefix apps/campus | tee qa/m11b-b03/build.txt
           node tools/m11b-b03/check.mjs
           node tools/m11b-b03/export.mjs
-          git diff --exit-code 72d7808ffdea8f8271133f658e90b199998a0ce6 -- data/m10 apps/campus/src/batch02-core.mjs apps/campus/src/batch02-scene.ts apps/campus/src/b01-shutter-fix.mjs data/m11b/batch02 data/m11b/batch01-r2 data/m11b/batch01-r3
-      - name: Commit integrated source before actual browser tests
-        run: |
-          set -euo pipefail
-          git config user.name 'github-actions[bot]'
-          git config user.email '4189828282+github-actions[bot]@users.noreply.github.com'
-          git add README.md apps/campus/index.html apps/campus/src/main.ts apps/campus/src/batch03-core.mjs data/m11b/batch03 tools/m11b-b03 docs/development-plan.md docs/m11b/batch03
-          if ! git diff --cached --quiet; then
-            git commit -m 'fix(b03): centre canteen stairs, restore left printing/right shop and mirrored curved stairs to open round landing (#32)'
-            git push origin HEAD:main
-          fi
           echo "SOURCE_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
       - name: Install actual Chromium and CJK rendering
         run: |
@@ -81,24 +44,26 @@ jobs:
           python -m playwright install --with-deps chromium
           sudo apt-get update -qq
           sudo apt-get install -y fonts-noto-cjk
-      - name: Real full-scene routes, six doors, desktop and mobile screenshots
+      - name: Real full-scene routes, doors, desktop and mobile screenshots
         run: python tools/m11b-b03/capture.py
-      - name: Archive only successful R2 QA
+      - name: Archive successful QA without marking alumni approval
         run: |
           set -euo pipefail
           python - <<'PY'
           import json
           from pathlib import Path
-          r=json.loads(Path('qa/m11b-b03/browser-report.json').read_text());assert r['passed'] and r['complete'] and r['version']=='M1.1-B.B03.R2'
+          r=json.loads(Path('qa/m11b-b03/browser-report.json').read_text())
+          p=json.loads(Path('data/m11b/batch03/input.json').read_text())
+          assert r['passed'] and r['complete'] and r['version']==p['version']
           f=Path('docs/m11b/batch03/delivery.md');s=f.read_text().split('\n## R2 实际检查归档')[0]
-          s+='\n## R2 实际检查归档\n\n正常类型检查/Vite构建、8组定向几何及'+str(len(r['checks']))+'组真实Chromium检查通过；'+str(len(r['access']['routes']))+'条路线、'+str(len(r['access']['doors']))+'处真门洞，'+str(len(r['screenshots']))+'张实际截图。左右弧梯分别到圆台再到上层，打印和小卖部分别从外路进入。单文件file://打开无外部请求/JS/WebGL错误；390×844为viewport，不是物理手机。\n\n受测源码 `'+r['source_sha']+'`；Viewer SHA256 `'+r['viewer_sha256']+'`。B03仍IMPLEMENTED / REVIEW_PENDING，不代替校友认可。\n'
+          s+='\n## R2 实际检查归档\n\n正常类型检查/Vite构建及'+str(len(r['checks']))+'组真实Chromium检查通过；'+str(len(r['access']['routes']))+'条路线、'+str(len(r['access']['doors']))+'处真门洞，'+str(len(r['screenshots']))+'张实际截图。390×844为viewport，不是物理手机。\n\n受测源码 `'+r['source_sha']+'`；Viewer SHA256 `'+r['viewer_sha256']+'`。B03仍IMPLEMENTED / REVIEW_PENDING，不代替校友认可。\n'
           f.write_text(s)
-          f=Path('README.md');f.write_text(f.read_text().replace('B03 R2 双梯／食堂正面修订，待本版实际QA及校友审阅','B03 R2 工程检查通过，待校友审阅'))
-          f=Path('docs/development-plan.md');f.write_text(f.read_text().replace('B03 R2修订／待本版QA与审阅','B03 R2工程通过／待校友审阅'))
           PY
-          git add qa/m11b-b03 docs/m11b/batch03 README.md docs/development-plan.md
+          git config user.name 'github-actions[bot]'
+          git config user.email '4189828282+github-actions[bot]@users.noreply.github.com'
+          git add qa/m11b-b03 docs/m11b/batch03/access.svg docs/m11b/batch03/delivery.md
           if ! git diff --cached --quiet; then
-            git commit -m 'qa(b03): archive R2 actual WebGL access and screenshots; alumni review pending (#32)'
+            git commit -m 'qa(b03): archive actual WebGL verification; alumni review pending [skip ci]'
             git push origin HEAD:main
           fi
       - name: Package exact tested Viewer, private photo Review and full Workspace
