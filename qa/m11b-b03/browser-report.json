@@ -1,0 +1,647 @@
+{
+  "version": "M1.1-B.B03.R1.1",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "complete": true,
+  "passed": true,
+  "checks": [
+    {
+      "name": "actual WebGL2 startup",
+      "passed": true,
+      "detail": {
+        "view": "b03-overview",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 2742,
+        "triangles": 545636,
+        "camera": [
+          200,
+          107,
+          306
+        ]
+      }
+    },
+    {
+      "name": "main-library support/body/head clearance",
+      "passed": true,
+      "detail": {
+        "id": "main-library",
+        "label": "主楼后门—上坡—图书馆门厅",
+        "supports": 237,
+        "clearances": 552,
+        "failures": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "gap-library support/body/head clearance",
+      "passed": true,
+      "detail": {
+        "id": "gap-library",
+        "label": "15/25桥下—后路—图书馆",
+        "supports": 1353,
+        "clearances": 3342,
+        "failures": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "library-garden support/body/head clearance",
+      "passed": true,
+      "detail": {
+        "id": "library-garden",
+        "label": "图书馆短门厅—后门—后花园",
+        "supports": 270,
+        "clearances": 594,
+        "failures": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "garden-around support/body/head clearance",
+      "passed": true,
+      "detail": {
+        "id": "garden-around",
+        "label": "图书馆西侧绕行至后花园",
+        "supports": 1314,
+        "clearances": 3285,
+        "failures": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "garden-spiral support/body/head clearance",
+      "passed": true,
+      "detail": {
+        "id": "garden-spiral",
+        "label": "后花园—低台阶—弧梯—二层真门洞",
+        "supports": 390,
+        "clearances": 849,
+        "failures": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "canteen support/body/head clearance",
+      "passed": true,
+      "detail": {
+        "id": "canteen",
+        "label": "已有道路—食堂宽梯—上层门厅",
+        "supports": 309,
+        "clearances": 723,
+        "failures": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "shop support/body/head clearance",
+      "passed": true,
+      "detail": {
+        "id": "shop",
+        "label": "已有道路—食堂下层小卖部",
+        "supports": 207,
+        "clearances": 486,
+        "failures": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "canteen-perimeter support/body/head clearance",
+      "passed": true,
+      "detail": {
+        "id": "canteen-perimeter",
+        "label": "食堂外围通行／H局部外缘步道",
+        "supports": 1860,
+        "clearances": 4650,
+        "failures": 0,
+        "bad": []
+      }
+    },
+    {
+      "name": "five complete actual door apertures",
+      "passed": true,
+      "detail": [
+        {
+          "id": "library-main",
+          "bad": []
+        },
+        {
+          "id": "library-garden",
+          "bad": []
+        },
+        {
+          "id": "spiral-upper",
+          "bad": []
+        },
+        {
+          "id": "canteen-main",
+          "bad": []
+        },
+        {
+          "id": "shop-main",
+          "bad": []
+        }
+      ]
+    },
+    {
+      "name": "approved B01/B02 and campus axis preserved",
+      "passed": true,
+      "detail": {
+        "flags": 3,
+        "axis": [
+          73,
+          73,
+          73
+        ],
+        "shutterClear": true,
+        "b02Routes": [
+          {
+            "id": "gym-main",
+            "failures": 0
+          },
+          {
+            "id": "spectator",
+            "failures": 0
+          },
+          {
+            "id": "front-platform",
+            "failures": 0
+          },
+          {
+            "id": "music",
+            "failures": 0
+          },
+          {
+            "id": "loop",
+            "failures": 0
+          }
+        ],
+        "sharedWall": true,
+        "oldGym": 0,
+        "mainFloor": 3.45,
+        "libraryFloor": 5.1000000000000005
+      }
+    },
+    {
+      "name": "mobile rendered scene is not a flat wall",
+      "passed": true,
+      "detail": {
+        "central_image_stddev": 51.95618625587774
+      }
+    },
+    {
+      "name": "mobile viewport and controls",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "same single-file offline loading; no external assets",
+      "passed": true,
+      "detail": {
+        "requests": [],
+        "errors": []
+      }
+    }
+  ],
+  "access": {
+    "routes": [
+      {
+        "id": "main-library",
+        "label": "主楼后门—上坡—图书馆门厅",
+        "supports": 237,
+        "clearances": 552,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "gap-library",
+        "label": "15/25桥下—后路—图书馆",
+        "supports": 1353,
+        "clearances": 3342,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "library-garden",
+        "label": "图书馆短门厅—后门—后花园",
+        "supports": 270,
+        "clearances": 594,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "garden-around",
+        "label": "图书馆西侧绕行至后花园",
+        "supports": 1314,
+        "clearances": 3285,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "garden-spiral",
+        "label": "后花园—低台阶—弧梯—二层真门洞",
+        "supports": 390,
+        "clearances": 849,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "canteen",
+        "label": "已有道路—食堂宽梯—上层门厅",
+        "supports": 309,
+        "clearances": 723,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "shop",
+        "label": "已有道路—食堂下层小卖部",
+        "supports": 207,
+        "clearances": 486,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "canteen-perimeter",
+        "label": "食堂外围通行／H局部外缘步道",
+        "supports": 1860,
+        "clearances": 4650,
+        "failures": 0,
+        "bad": []
+      }
+    ],
+    "doors": [
+      {
+        "id": "library-main",
+        "bad": []
+      },
+      {
+        "id": "library-garden",
+        "bad": []
+      },
+      {
+        "id": "spiral-upper",
+        "bad": []
+      },
+      {
+        "id": "canteen-main",
+        "bad": []
+      },
+      {
+        "id": "shop-main",
+        "bad": []
+      }
+    ],
+    "passed": true,
+    "meshCount": 2727
+  },
+  "screenshots": [
+    {
+      "file": "b03-library.png",
+      "view": "b03-library",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b03-library",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 558,
+        "triangles": 195152,
+        "camera": [
+          49,
+          13.999999999999998,
+          234
+        ]
+      }
+    },
+    {
+      "file": "b03-photo-library.png",
+      "view": "b03-photo-library",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b03-photo-library",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 333,
+        "triangles": 171642,
+        "camera": [
+          72.3,
+          7.1,
+          237.5
+        ]
+      }
+    },
+    {
+      "file": "b03-library-lobby.png",
+      "view": "b03-library-lobby",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b03-library-lobby",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 222,
+        "triangles": 164846,
+        "camera": [
+          73.00000000000001,
+          6.849999999999999,
+          249.5
+        ]
+      }
+    },
+    {
+      "file": "b03-uphill.png",
+      "view": "b03-uphill",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b03-uphill",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 397,
+        "triangles": 172524,
+        "camera": [
+          73,
+          5.200000000000001,
+          232.4
+        ]
+      }
+    },
+    {
+      "file": "b03-gap.png",
+      "view": "b03-gap",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b03-gap",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 1058,
+        "triangles": 327968,
+        "camera": [
+          6.500000000000078,
+          5.200000000000003,
+          233
+        ]
+      }
+    },
+    {
+      "file": "b03-garden.png",
+      "view": "b03-garden",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b03-garden",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 2228,
+        "triangles": 472310,
+        "camera": [
+          88,
+          11.200000000000005,
+          285
+        ]
+      }
+    },
+    {
+      "file": "b03-spiral.png",
+      "view": "b03-spiral",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b03-spiral",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 2072,
+        "triangles": 460566,
+        "camera": [
+          64.3,
+          7.7,
+          271.5
+        ]
+      }
+    },
+    {
+      "file": "b03-spiral-top.png",
+      "view": "b03-spiral-top",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b03-spiral-top",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 2235,
+        "triangles": 521442,
+        "camera": [
+          55.4,
+          10.599999999999996,
+          264
+        ]
+      }
+    },
+    {
+      "file": "b03-garden-plan.png",
+      "view": "b03-garden-plan",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b03-garden-plan",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 650,
+        "triangles": 262222,
+        "camera": [
+          68,
+          47,
+          282
+        ]
+      }
+    },
+    {
+      "file": "b03-canteen.png",
+      "view": "b03-canteen",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b03-canteen",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 333,
+        "triangles": 108630,
+        "camera": [
+          127,
+          10.7,
+          171
+        ]
+      }
+    },
+    {
+      "file": "b03-photo-canteen.png",
+      "view": "b03-photo-canteen",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b03-photo-canteen",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 304,
+        "triangles": 100920,
+        "camera": [
+          131,
+          5.5,
+          157.5
+        ]
+      }
+    },
+    {
+      "file": "b03-canteen-lobby.png",
+      "view": "b03-canteen-lobby",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b03-canteen-lobby",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 2175,
+        "triangles": 504450,
+        "camera": [
+          157.5,
+          8.54,
+          157.4
+        ]
+      }
+    },
+    {
+      "file": "b03-shop.png",
+      "view": "b03-shop",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b03-shop",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 237,
+        "triangles": 99988,
+        "camera": [
+          144,
+          4.9,
+          148.00000000000003
+        ]
+      }
+    },
+    {
+      "file": "b03-shop-inside.png",
+      "view": "b03-shop-inside",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b03-shop-inside",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 2143,
+        "triangles": 490816,
+        "camera": [
+          155.5,
+          4.900000000000001,
+          149
+        ]
+      }
+    },
+    {
+      "file": "b03-perimeter.png",
+      "view": "b03-perimeter",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b03-perimeter",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 2044,
+        "triangles": 460588,
+        "camera": [
+          205,
+          38,
+          171
+        ]
+      }
+    },
+    {
+      "file": "b03-overview.png",
+      "view": "b03-overview",
+      "width": 1440,
+      "height": 960,
+      "state": {
+        "view": "b03-overview",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 2742,
+        "triangles": 545636,
+        "camera": [
+          200,
+          107,
+          306
+        ]
+      }
+    },
+    {
+      "file": "mobile.png",
+      "view": "b03-library",
+      "width": 390,
+      "height": 844,
+      "state": {
+        "view": "b03-library",
+        "verticalScheme": "patch04",
+        "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "glError": 0,
+        "contextLost": false,
+        "calls": 201,
+        "triangles": 162198,
+        "camera": [
+          73,
+          8.5,
+          237.5
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "exception": null,
+  "source_sha": "dda251c41efd31ffb540a652cb179da286e27c23",
+  "viewer_sha256": "f693ae0ab778dab6390e6c992b29fd9be42d5cc3d85a907d093daedea2e442a1",
+  "generatedAt": "2026-09-12T02:01:35.839006+00:00",
+  "environment": "Actual GitHub Actions Ubuntu / Chromium / SwiftShader WebGL2; desktop and 390x844 viewport, not a physical phone. Local container cannot create WebGL2."
+}

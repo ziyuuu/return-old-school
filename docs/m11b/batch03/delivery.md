@@ -19,3 +19,9 @@
 `npm ci --prefix apps/campus`；`npm run build --prefix apps/campus`；`node tools/m11b-b03/check.mjs`；`node tools/m11b-b03/export.mjs`；`python tools/m11b-b03/capture.py`；实际通过后 `python tools/m11b-b03/package.py`。
 
 输出 `artifacts/m11b-b03/Yali_M1_1_B_B03_Viewer.html`、`Review.html`、`Workspace.zip`、`Access.svg`（相同B03前缀）。单HTML场景自包含；照片只用于私下审阅，不提交公开仓库或用作场景材质。
+
+## R1.1 实际检查归档
+
+8组定向几何检查、14组真实Chromium检查通过；8条路线、5处完整门洞；17张实际截图（含390×844手机viewport）。file://单HTML打开无外部资源请求及JavaScript/WebGL错误。不是物理手机测试或人物控制器。
+
+受测源码 `dda251c41efd31ffb540a652cb179da286e27c23`；Viewer SHA256 `f693ae0ab778dab6390e6c992b29fd9be42d5cc3d85a907d093daedea2e442a1`。工程通过，本批仍 IMPLEMENTED / REVIEW_PENDING。

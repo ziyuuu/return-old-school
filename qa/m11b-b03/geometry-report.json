@@ -1,0 +1,86 @@
+{
+  "version": "M1.1-B.B03.R1.1",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "passed": true,
+  "checks": [
+    {
+      "id": "B03-preserved-plan-and-topology",
+      "passed": true,
+      "detail": "All facility X/Z footprints and existing navigation data unchanged."
+    },
+    {
+      "id": "B03-local-uphill-only",
+      "passed": true,
+      "detail": {
+        "libraryFloor": 5.140000000000001,
+        "libraryUpper": 8.940000000000001,
+        "gardenGround": 4.69,
+        "localTerrainRise": 1.2,
+        "mainRearGround": 3.49,
+        "canteenLower": 3.24,
+        "canteenDining": 6.84,
+        "stairTreads": 26,
+        "stairRiser": 0.14615384615384613,
+        "doorCount": 5,
+        "source": "S03-049/050/031/032; A uphill and rear garden; H metric completion"
+      }
+    },
+    {
+      "id": "B03-library-low-steps-and-doors",
+      "passed": true,
+      "detail": "Front, rear and upper receiving door are partitioned wall apertures."
+    },
+    {
+      "id": "B03-curved-stair-real-upper-landing",
+      "passed": true,
+      "detail": {
+        "steps": 26,
+        "riser": 0.14615384615384613,
+        "innerOpenRadius": 2.2
+      }
+    },
+    {
+      "id": "B03-canteen-shop-levels",
+      "passed": true,
+      "detail": {
+        "lower": 3.24,
+        "dining": 6.84
+      }
+    },
+    {
+      "id": "B03-five-real-portals-eight-routes",
+      "passed": true,
+      "detail": {
+        "doors": [
+          "library-main",
+          "library-garden",
+          "spiral-upper",
+          "canteen-main",
+          "shop-main"
+        ],
+        "routes": [
+          "main-library",
+          "gap-library",
+          "library-garden",
+          "garden-around",
+          "garden-spiral",
+          "canteen",
+          "shop",
+          "canteen-perimeter"
+        ]
+      }
+    },
+    {
+      "id": "B03-solids-finite",
+      "passed": true,
+      "detail": {
+        "solids": 3651
+      }
+    },
+    {
+      "id": "B03-shop-bounds-within-parent",
+      "passed": true,
+      "detail": "No detached shop volume."
+    }
+  ]
+}
