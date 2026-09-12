@@ -11,6 +11,13 @@
     "test": "node --test ../../tests/m10/*.test.mjs",
     "standalone": "node ../../tools/m10/build-standalone.mjs"
   },
-  "dependencies": { "three": "0.180.0" },
-  "devDependencies": { "@types/three": "0.180.0", "typescript": "5.7.3", "vite": "6.4.3" }
+  "dependencies": {
+    "three": "0.180.0",
+    "three-mesh-bvh": "0.9.15"
+  },
+  "devDependencies": {
+    "@types/three": "0.180.0",
+    "typescript": "5.7.3",
+    "vite": "6.4.3"
+  }
 }

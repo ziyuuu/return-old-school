@@ -1,13 +1,18 @@
 import * as THREE from 'three';
+import {addDetailedBoxInstances} from './render/detail-geometry.mjs';
+import {surfaceMaterial} from './render/materials';
 /** Render only 03/24. Returning true bypasses both old builders, not an overlay. */
 export function buildB02Facility(f:any,g:THREE.Group,{mats}:any,model:any):boolean{
  if(!['03','24'].includes(f.id))return false;
+ const boxes=new Map<string,any[]>();
  const vec=(q:number[])=>new THREE.Vector3(q[0],q[1],q[2]);
  for(const p of model.parts.filter((q:any)=>q.owner===f.id)){
+  // Keep each role separate so shell cutaway and facility picking still work.
+  if(p.shape==='box'){const key=p.role+'|'+p.row,list=boxes.get(key)??[];list.push(p);boxes.set(key,list);continue;}
   let geo:THREE.BufferGeometry;
   if(p.shape==='box')geo=new THREE.BoxGeometry(...p.size as [number,number,number]);
-  else if(p.shape==='ring')geo=new THREE.TorusGeometry(p.radius,p.tube,8,48);
-  else if(p.shape==='rod')geo=new THREE.CylinderGeometry(p.radius,p.radius,vec(p.a).distanceTo(vec(p.b)),6);
+  else if(p.shape==='ring')geo=new THREE.TorusGeometry(p.radius,p.tube,32,192);
+  else if(p.shape==='rod')geo=new THREE.CylinderGeometry(p.radius,p.radius,vec(p.a).distanceTo(vec(p.b)),48);
   else {
    const vs=p.points.map(vec),n=vs.length;vs.push(...p.points.map((q:number[])=>vec(q).add(vec(p.offset))));
    const c=vs.reduce((a:THREE.Vector3,b:THREE.Vector3)=>a.add(b),new THREE.Vector3()).multiplyScalar(1/vs.length),faces:number[][]=[];
@@ -18,11 +23,12 @@ export function buildB02Facility(f:any,g:THREE.Group,{mats}:any,model:any):boole
    geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));geo.computeVertexNormals();
   }
   geo.computeBoundingBox();geo.computeBoundingSphere();
-  const m=new THREE.Mesh(geo,mats[p.row]);m.name=p.id;m.userData={facility:f.id,role:p.role,evidence:p.evidence,batch:'B02'};
+  const m=new THREE.Mesh(geo,surfaceMaterial(mats[p.row],p.role));m.name=p.id;m.userData={facility:f.id,role:p.role,evidence:p.evidence,batch:'B02'};
   if(p.center)m.position.copy(vec(p.center));
   if(p.shape==='ring')m.rotation.y=Math.PI/2;
   if(p.shape==='rod'){const a=vec(p.a),b=vec(p.b);m.position.copy(a).add(b).multiplyScalar(.5);m.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),b.sub(a).normalize());}
   m.castShadow=m.receiveShadow=true;g.add(m);
  }
+ addDetailedBoxInstances(g,[...boxes.values()].flat(),(p:any)=>surfaceMaterial(mats[p.row],p.role),f.id,'B02');
  g.userData.batch02=true;return true;
 }

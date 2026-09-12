@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {addDetailedBoxInstances} from './render/detail-geometry.mjs';
 /** Renderer adapter for the R2 model. Geometry/semantic decisions live in the pure model. */
 const materialCache=new WeakMap<THREE.Material,THREE.Material>();
 function material(source:THREE.Material){let m=materialCache.get(source);if(!m){m=source.clone();m.onBeforeCompile=source.onBeforeCompile;m.customProgramCacheKey=source.customProgramCacheKey;m.side=THREE.DoubleSide;materialCache.set(source,m);}return m;}
@@ -9,10 +10,9 @@ function partsInto(parent:THREE.Group,parts:any[],mats:THREE.Material[],owner:st
   const key=p.level+'|'+p.role+'|'+p.shape;const a=buckets.get(key)??[];a.push(p);buckets.set(key,a);
  }
  for(const [key,list]of buckets){const p=list[0],mat=material(mats[row(p.role)]),g=levels.get(p.level)!;
-  if(p.shape!=='box'){for(const v of list){const geo=v.shape==='dome'?new THREE.SphereGeometry(1,28,14,0,Math.PI*2,0,Math.PI/2):new THREE.CylinderGeometry(1,1,1,24),mesh=new THREE.Mesh(geo,mat);mesh.position.set(...v.center as [number,number,number]);mesh.scale.set(v.size[0]/2,v.size[1],v.size[2]/2);mesh.name=v.id;mesh.userData={role:v.role,facility:owner};mesh.castShadow=mesh.receiveShadow=true;g.add(mesh);}continue;}
+  if(p.shape!=='box'){for(const v of list){const geo=v.shape==='dome'?new THREE.SphereGeometry(1,96,48,0,Math.PI*2,0,Math.PI/2):new THREE.CylinderGeometry(1,1,1,96),mesh=new THREE.Mesh(geo,mat);mesh.position.set(...v.center as [number,number,number]);mesh.scale.set(v.size[0]/2,v.size[1],v.size[2]/2);mesh.name=v.id;mesh.userData={role:v.role,facility:owner};mesh.castShadow=mesh.receiveShadow=true;g.add(mesh);}continue;}
   if(['slab','bridge-floor','porch-landing'].includes(p.role)){for(const v of list){const mesh=new THREE.Mesh(new THREE.BoxGeometry(...v.size as [number,number,number]),mat);mesh.position.set(...v.center as [number,number,number]);mesh.name=v.id;mesh.userData={role:v.role,facility:owner};mesh.castShadow=mesh.receiveShadow=true;g.add(mesh);}continue;}
-  const mesh=new THREE.InstancedMesh(new THREE.BoxGeometry(1,1,1),mat,list.length),mx=new THREE.Matrix4(),q=new THREE.Quaternion();
-  list.forEach((v:any,i:number)=>{mx.compose(new THREE.Vector3(...v.center as [number,number,number]),q,new THREE.Vector3(...v.size as [number,number,number]));mesh.setMatrixAt(i,mx);});mesh.instanceMatrix.needsUpdate=true;mesh.computeBoundingSphere();mesh.name=`R2-${owner}-${key}`;mesh.userData={role:p.role,facility:owner,partIds:list.map(v=>v.id)};mesh.castShadow=mesh.receiveShadow=true;g.add(mesh);
+  addDetailedBoxInstances(g,list,()=>mat,owner,'R2-'+p.level);
  }
 }
 export function r2Facility(f:any,g:THREE.Group,api:any,model:any){if(!['15','25'].includes(f.id))return false;partsInto(g,model.parts.filter((p:any)=>p.owner===f.id),api.mats,f.id);return true;}

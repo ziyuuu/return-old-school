@@ -1,16 +1,23 @@
 import * as THREE from 'three';
 import {mergeGeometries} from 'three/addons/utils/BufferGeometryUtils.js';
+import {addDetailedBoxInstances,detailBox} from './render/detail-geometry.mjs';
+import {surfaceMaterial} from './render/materials';
+import {foliageGeometry} from './render/foliage-geometry.mjs';
 /** Render the same solids used by the access report. No textured facades or proxy doors. */
 export function buildB03Facility(f:any,g:THREE.Group,{mats}:any,model:any):boolean{
  if(!['11','12','18','19'].includes(f.id))return false;
- const batches=new Map<string,{row:number,role:string,geos:THREE.BufferGeometry[]}>();
+ const batches=new Map<string,{row:number,role:string,material:THREE.Material,geos:THREE.BufferGeometry[]}>();
+ const boxes=new Map<string,any[]>();
  const v=(a:number[])=>new THREE.Vector3(a[0],a[1],a[2]);
  for(const p of model.parts.filter((q:any)=>q.owner===f.id)){
+  if(p.shape==='box'&&!['paving','planting','frame','railing','cornice','seat-edge','parapet','louvre'].includes(p.role)){
+   const key=p.role+'|'+p.row,list=boxes.get(key)??[];list.push(p);boxes.set(key,list);continue;
+  }
   let geo:THREE.BufferGeometry;
-  if(p.shape==='box')geo=new THREE.BoxGeometry(...p.size as [number,number,number]);
-  else if(p.shape==='leaf'){geo=new THREE.IcosahedronGeometry(1,1);geo.scale(...p.size as [number,number,number]);}
+  if(p.shape==='box')geo=detailBox(p.size,p.role);
+  else if(p.shape==='leaf')geo=foliageGeometry(p);
   else if(p.shape==='rod'){
-   const a=v(p.a),b=v(p.b),d=b.clone().sub(a);geo=new THREE.CylinderGeometry(p.radius,p.radius,d.length(),7);
+   const a=v(p.a),b=v(p.b),d=b.clone().sub(a);geo=new THREE.CylinderGeometry(p.radius,p.radius,d.length(),48);
    geo.applyQuaternion(new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,1,0),d.normalize()));geo.translate(...a.add(b).multiplyScalar(.5).toArray() as [number,number,number]);
   }else{
    const shape=new THREE.Shape(p.points.map((q:number[])=>new THREE.Vector2(q[0],-q[1])));geo=new THREE.ExtrudeGeometry(shape,{depth:p.y1-p.y0,bevelEnabled:false,steps:1,curveSegments:1});geo.rotateX(-Math.PI/2);geo.translate(0,p.y0,0);
@@ -18,10 +25,12 @@ export function buildB03Facility(f:any,g:THREE.Group,{mats}:any,model:any):boole
   if(p.center)geo.translate(...p.center as [number,number,number]);
   // Material/role batching reduces draw calls, without changing triangles or hiding collision.
   if(['paving','planting','frame','railing','cornice','seat-edge','parapet','louvre'].includes(p.role)){
-   const key=p.role+'-'+p.row,b=batches.get(key)??{row:p.row,role:p.role,geos:[] as THREE.BufferGeometry[]};b.geos.push(geo.toNonIndexed? (geo.index?geo.toNonIndexed():geo):geo);batches.set(key,b);
-  }else{const m=new THREE.Mesh(geo,mats[p.row]);m.name=p.id;m.userData={facility:f.id,role:p.role,batch:'B03',evidence:p.evidence};m.castShadow=m.receiveShadow=true;g.add(m);}
+   const material=surfaceMaterial(mats[p.row],p.role,p.shape),key=p.role+'-'+p.row+'-'+material.userData.finish;
+   const b=batches.get(key)??{row:p.row,role:p.role,material,geos:[] as THREE.BufferGeometry[]};b.geos.push(geo.index?geo.toNonIndexed():geo);batches.set(key,b);
+  }else{const m=new THREE.Mesh(geo,surfaceMaterial(mats[p.row],p.role,p.shape));m.name=p.id;m.userData={facility:f.id,role:p.role,surfaceShape:p.shape,batch:'B03',evidence:p.evidence};m.castShadow=m.receiveShadow=true;g.add(m);}
  }
- for(const [key,b]of batches){const geo=mergeGeometries(b.geos,false);b.geos.forEach(g=>g.dispose());if(!geo)throw Error('B03 merge failed '+key);const m=new THREE.Mesh(geo,mats[b.row]);m.name=`B03-${f.id}-${key}-merged`;m.userData={facility:f.id,role:b.role,batch:'B03'};m.castShadow=b.role!=='paving';m.receiveShadow=true;g.add(m);}
+ addDetailedBoxInstances(g,[...boxes.values()].flat(),(p:any)=>surfaceMaterial(mats[p.row],p.role),f.id,'B03');
+ for(const [key,b]of batches){const geo=mergeGeometries(b.geos,false);b.geos.forEach(g=>g.dispose());if(!geo)throw Error('B03 merge failed '+key);const m=new THREE.Mesh(geo,b.material);m.name=`B03-${f.id}-${key}-merged`;m.userData={facility:f.id,role:b.role,surfaceResolved:true,batch:'B03'};m.castShadow=b.role!=='paving';m.receiveShadow=true;g.add(m);}
  g.userData.batch03=true;return true;
 }
 /** P04 owns a legacy shop override. Retire just the superseded shop, not P04 courts/flags. */

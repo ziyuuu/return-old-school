@@ -1,0 +1,715 @@
+{
+  "phase": "after",
+  "generatedAt": "2026-09-12T07:37:55.235Z",
+  "browser": "152.0.7977.83",
+  "errors": [],
+  "views": [
+    {
+      "view": "overview",
+      "file": "overview.png",
+      "verticalScheme": "patch04",
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 1478,
+      "triangles": 1935504,
+      "camera": [
+        340,
+        387.2,
+        485
+      ],
+      "frameMsMedian": 16.699999999999818,
+      "frameMsP95": 33.399999999999636,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "logarithmicDepthBuffer": true,
+        "shadowResolution": 4096,
+        "shadowExtent": 250,
+        "shadowRevision": 10,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.18,
+        "exposure": 1,
+        "spatialIndex": {
+          "indexedGeometries": 494,
+          "buildMs": 1231,
+          "method": "BVH over rendered triangles"
+        }
+      },
+      "programs": 19
+    },
+    {
+      "view": "r3-overview",
+      "file": "r3-overview.png",
+      "verticalScheme": "patch04",
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 492,
+      "triangles": 1430194,
+      "camera": [
+        -14.000000000000028,
+        44.00000000000002,
+        144
+      ],
+      "frameMsMedian": 16.700000000000728,
+      "frameMsP95": 33.30000000000109,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "logarithmicDepthBuffer": true,
+        "shadowResolution": 4096,
+        "shadowExtent": 100,
+        "shadowRevision": 13,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.18,
+        "exposure": 1,
+        "spatialIndex": {
+          "indexedGeometries": 494,
+          "buildMs": 1231,
+          "method": "BVH over rendered triangles"
+        }
+      },
+      "programs": 19
+    },
+    {
+      "view": "b02-photo-front",
+      "file": "b02-photo-front.png",
+      "verticalScheme": "patch04",
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 268,
+      "triangles": 244920,
+      "camera": [
+        15.999999999999993,
+        5.350000000000008,
+        82
+      ],
+      "frameMsMedian": 16.69999999999891,
+      "frameMsP95": 16.799999999999272,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "logarithmicDepthBuffer": true,
+        "shadowResolution": 4096,
+        "shadowExtent": 68,
+        "shadowRevision": 16,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.18,
+        "exposure": 1,
+        "spatialIndex": {
+          "indexedGeometries": 494,
+          "buildMs": 1231,
+          "method": "BVH over rendered triangles"
+        }
+      },
+      "programs": 19
+    },
+    {
+      "view": "b03-photo-library",
+      "file": "b03-photo-library.png",
+      "verticalScheme": "patch04",
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 225,
+      "triangles": 1165570,
+      "camera": [
+        72.3,
+        7.1,
+        237.5
+      ],
+      "frameMsMedian": 16.69999999999891,
+      "frameMsP95": 16.80000000000109,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "logarithmicDepthBuffer": true,
+        "shadowResolution": 4096,
+        "shadowExtent": 28,
+        "shadowRevision": 19,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.18,
+        "exposure": 1,
+        "spatialIndex": {
+          "indexedGeometries": 494,
+          "buildMs": 1231,
+          "method": "BVH over rendered triangles"
+        }
+      },
+      "programs": 19
+    },
+    {
+      "view": "b03-garden",
+      "file": "b03-garden.png",
+      "verticalScheme": "patch04",
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 1247,
+      "triangles": 1700118,
+      "camera": [
+        89,
+        13.000000000000002,
+        288
+      ],
+      "frameMsMedian": 33.19999999999891,
+      "frameMsP95": 33.5,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "logarithmicDepthBuffer": true,
+        "shadowResolution": 4096,
+        "shadowExtent": 44,
+        "shadowRevision": 22,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.18,
+        "exposure": 1,
+        "spatialIndex": {
+          "indexedGeometries": 494,
+          "buildMs": 1231,
+          "method": "BVH over rendered triangles"
+        }
+      },
+      "programs": 19
+    },
+    {
+      "view": "b03-canteen",
+      "file": "b03-canteen.png",
+      "verticalScheme": "patch04",
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 55,
+      "triangles": 203960,
+      "camera": [
+        127.99999999999997,
+        7.999999999999999,
+        152
+      ],
+      "frameMsMedian": 16.700000000000728,
+      "frameMsP95": 16.80000000000291,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "logarithmicDepthBuffer": true,
+        "shadowResolution": 4096,
+        "shadowExtent": 40,
+        "shadowRevision": 25,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.18,
+        "exposure": 1,
+        "spatialIndex": {
+          "indexedGeometries": 494,
+          "buildMs": 1231,
+          "method": "BVH over rendered triangles"
+        }
+      },
+      "programs": 19
+    }
+  ],
+  "scene": {
+    "meshes": 1406,
+    "triangles": 1935492,
+    "geometryBytes": 62503880,
+    "geometries": 1406,
+    "materials": 86,
+    "largest": [
+      {
+        "name": "B03-18-frame-6-merged",
+        "role": "frame",
+        "type": "BufferGeometry",
+        "triangles": 131400,
+        "instances": 1
+      },
+      {
+        "name": "B03-11-frame-6-merged",
+        "role": "frame",
+        "type": "BufferGeometry",
+        "triangles": 90600,
+        "instances": 1
+      },
+      {
+        "name": "B03-18-planting-13-merged",
+        "role": "planting",
+        "type": "BufferGeometry",
+        "triangles": 63360,
+        "instances": 1
+      },
+      {
+        "name": "P04-court-open-fence",
+        "type": "BufferGeometry",
+        "triangles": 51012,
+        "instances": 1
+      },
+      {
+        "name": "R2-1-15-frame-detail-0",
+        "role": "frame",
+        "type": "RoundedBoxGeometry",
+        "triangles": 43200,
+        "instances": 144
+      },
+      {
+        "name": "R2-2-15-frame-detail-0",
+        "role": "frame",
+        "type": "RoundedBoxGeometry",
+        "triangles": 43200,
+        "instances": 144
+      },
+      {
+        "name": "R2-3-15-frame-detail-0",
+        "role": "frame",
+        "type": "RoundedBoxGeometry",
+        "triangles": 43200,
+        "instances": 144
+      },
+      {
+        "name": "B03-18-planting-1-merged",
+        "role": "planting",
+        "type": "BufferGeometry",
+        "triangles": 33600,
+        "instances": 1
+      },
+      {
+        "name": "R2-1-15-frame-detail-4",
+        "role": "frame",
+        "type": "RoundedBoxGeometry",
+        "triangles": 28800,
+        "instances": 96
+      },
+      {
+        "name": "R2-2-15-frame-detail-4",
+        "role": "frame",
+        "type": "RoundedBoxGeometry",
+        "triangles": 28800,
+        "instances": 96
+      },
+      {
+        "name": "R2-3-15-frame-detail-4",
+        "role": "frame",
+        "type": "RoundedBoxGeometry",
+        "triangles": 28800,
+        "instances": 96
+      },
+      {
+        "name": "R2-1-15-sill-detail-1",
+        "role": "sill",
+        "type": "RoundedBoxGeometry",
+        "triangles": 28224,
+        "instances": 48
+      },
+      {
+        "name": "R2-2-15-sill-detail-1",
+        "role": "sill",
+        "type": "RoundedBoxGeometry",
+        "triangles": 28224,
+        "instances": 48
+      },
+      {
+        "name": "R2-3-15-sill-detail-1",
+        "role": "sill",
+        "type": "RoundedBoxGeometry",
+        "triangles": 28224,
+        "instances": 48
+      },
+      {
+        "name": "R2-5-15-rail-post-detail-0",
+        "role": "rail-post",
+        "type": "RoundedBoxGeometry",
+        "triangles": 27000,
+        "instances": 90
+      },
+      {
+        "name": "R2-1-15-frame-detail-2",
+        "role": "frame",
+        "type": "RoundedBoxGeometry",
+        "triangles": 21600,
+        "instances": 72
+      },
+      {
+        "name": "R2-2-15-frame-detail-2",
+        "role": "frame",
+        "type": "RoundedBoxGeometry",
+        "triangles": 21600,
+        "instances": 72
+      },
+      {
+        "name": "R2-3-15-frame-detail-2",
+        "role": "frame",
+        "type": "RoundedBoxGeometry",
+        "triangles": 21600,
+        "instances": 72
+      },
+      {
+        "name": "R2-4-15-frame-detail-0",
+        "role": "frame",
+        "type": "RoundedBoxGeometry",
+        "triangles": 21600,
+        "instances": 72
+      },
+      {
+        "name": "R2-5-15-frame-detail-0",
+        "role": "frame",
+        "type": "RoundedBoxGeometry",
+        "triangles": 21600,
+        "instances": 72
+      }
+    ],
+    "gpu": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001638) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+  },
+  "mobile": {
+    "view": "b03-library",
+    "verticalScheme": "patch04",
+    "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "glError": 0,
+    "contextLost": false,
+    "calls": 187,
+    "triangles": 1137426,
+    "camera": [
+      73,
+      8.5,
+      237.5
+    ],
+    "noOverflow": true
+  },
+  "access": {
+    "b02": {
+      "routes": [
+        {
+          "id": "gym-main",
+          "label": "主路→低台阶→真门洞→门厅",
+          "supports": 180,
+          "clearances": 270,
+          "maxWaypointRise": 0.15000000000000036,
+          "bad": [],
+          "failures": 0
+        },
+        {
+          "id": "spectator",
+          "label": "前坪→左外梯→上层侧门→短观赛廊",
+          "supports": 381,
+          "clearances": 741,
+          "maxWaypointRise": 0.15000000000000036,
+          "bad": [],
+          "failures": 0
+        },
+        {
+          "id": "front-platform",
+          "label": "观赛层→前平台真正门洞",
+          "supports": 102,
+          "clearances": 129,
+          "maxWaypointRise": 0,
+          "bad": [],
+          "failures": 0
+        },
+        {
+          "id": "music",
+          "label": "绕馆路→既有门前台阶→音乐楼门厅",
+          "supports": 72,
+          "clearances": 144,
+          "maxWaypointRise": 0.15000000000000036,
+          "bad": [],
+          "failures": 0
+        },
+        {
+          "id": "loop",
+          "label": "组团外缘连续绕馆路；不穿共享墙",
+          "supports": 3354,
+          "clearances": 8385,
+          "maxWaypointRise": 0.047844953809926594,
+          "bad": [],
+          "failures": 0
+        }
+      ],
+      "doors": [
+        {
+          "id": "gym-main",
+          "probes": 9,
+          "bad": []
+        },
+        {
+          "id": "spectator",
+          "probes": 9,
+          "bad": []
+        },
+        {
+          "id": "front-platform",
+          "probes": 9,
+          "bad": []
+        },
+        {
+          "id": "music",
+          "probes": 9,
+          "bad": []
+        }
+      ],
+      "sharedWallBlocked": true,
+      "legacyGymCount": 0,
+      "retainedSiteNames": [
+        "P02-GYM-FORECOURT"
+      ]
+    },
+    "b03": {
+      "routes": [
+        {
+          "id": "main-library",
+          "label": "主楼后门—上坡—图书馆门厅",
+          "supports": 237,
+          "clearances": 552,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "gap-library",
+          "label": "15/25桥下—后路—图书馆",
+          "supports": 1353,
+          "clearances": 3342,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "library-garden",
+          "label": "图书馆短门厅—后门—后花园",
+          "supports": 192,
+          "clearances": 399,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "garden-around",
+          "label": "图书馆西侧绕行至后花园（绕开双梯）",
+          "supports": 1464,
+          "clearances": 3660,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "garden-spiral",
+          "label": "花园右起步—右弧梯—圆台—中央上梯—真门洞",
+          "supports": 498,
+          "clearances": 1137,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "garden-spiral-left",
+          "label": "花园左起步—左弧梯—圆台—中央上梯—真门洞",
+          "supports": 456,
+          "clearances": 1032,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "canteen",
+          "label": "已有道路—正面中部楼梯—餐厅门厅",
+          "supports": 225,
+          "clearances": 513,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "shop",
+          "label": "已有道路—正面右侧下层小卖部",
+          "supports": 261,
+          "clearances": 621,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "printing",
+          "label": "已有道路—正面左侧打印门面",
+          "supports": 261,
+          "clearances": 621,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "canteen-perimeter",
+          "label": "食堂外围通行／H局部外缘步道",
+          "supports": 1860,
+          "clearances": 4650,
+          "failures": 0,
+          "bad": []
+        }
+      ],
+      "doors": [
+        {
+          "id": "library-main",
+          "bad": []
+        },
+        {
+          "id": "library-garden",
+          "bad": []
+        },
+        {
+          "id": "spiral-upper",
+          "bad": []
+        },
+        {
+          "id": "canteen-main",
+          "bad": []
+        },
+        {
+          "id": "print-main",
+          "bad": []
+        },
+        {
+          "id": "shop-main",
+          "bad": []
+        }
+      ],
+      "passed": true,
+      "meshCount": 1406
+    },
+    "flags": 3,
+    "roots": {
+      "10": [
+        19,
+        1.8,
+        110
+      ],
+      "11": [
+        167,
+        3.2,
+        152
+      ],
+      "12": [
+        158,
+        3.2,
+        158.7
+      ],
+      "13": [
+        166,
+        3.45,
+        199
+      ],
+      "14": [
+        72,
+        3.3,
+        198
+      ],
+      "15": [
+        73,
+        3.45,
+        224
+      ],
+      "16": [
+        -44,
+        3.372,
+        202
+      ],
+      "17": [
+        129,
+        4.3500000000000005,
+        258
+      ],
+      "18": [
+        73,
+        5.1000000000000005,
+        253
+      ],
+      "19": [
+        76,
+        4.65,
+        277
+      ],
+      "20": [
+        172,
+        3.2,
+        74
+      ],
+      "21": [
+        166,
+        3.45,
+        225
+      ],
+      "23": [
+        108,
+        1.72,
+        183.5
+      ],
+      "24": [
+        -62,
+        3.6,
+        72
+      ],
+      "25": [
+        -10,
+        3.45,
+        224
+      ],
+      "26": [
+        -61,
+        3,
+        80
+      ],
+      "27": [
+        -17,
+        0,
+        1
+      ],
+      "28": [
+        -80,
+        3,
+        118
+      ],
+      "01": [
+        0,
+        0,
+        0
+      ],
+      "02": [
+        17,
+        0,
+        1
+      ],
+      "03": [
+        -45,
+        3.6,
+        45
+      ],
+      "04": [
+        -38,
+        3,
+        76
+      ],
+      "05": [
+        -68.5,
+        3,
+        120
+      ],
+      "06": [
+        -37.5,
+        3.3,
+        120
+      ],
+      "07": [
+        -45,
+        3.165,
+        170
+      ],
+      "08": [
+        73,
+        1.8,
+        114
+      ],
+      "09": [
+        0,
+        3.02875,
+        103
+      ]
+    }
+  },
+  "accessDurationMs": 25100,
+  "invariants": {
+    "axis": [
+      73,
+      73,
+      73
+    ],
+    "mainFloor": 3.45,
+    "shutters": true
+  },
+  "passed": true
+}

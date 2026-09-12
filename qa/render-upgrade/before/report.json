@@ -1,0 +1,270 @@
+{
+  "phase": "before",
+  "generatedAt": "2026-09-12T06:58:08.799Z",
+  "browser": "152.0.7977.83",
+  "errors": [],
+  "views": [
+    {
+      "view": "overview",
+      "file": "overview.png",
+      "verticalScheme": "patch04",
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 2821,
+      "triangles": 550912,
+      "camera": [
+        340,
+        387.2,
+        485
+      ],
+      "frameMsMedian": 50,
+      "frameMsP95": 66.5,
+      "programs": 41
+    },
+    {
+      "view": "r3-overview",
+      "file": "r3-overview.png",
+      "verticalScheme": "patch04",
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 866,
+      "triangles": 331278,
+      "camera": [
+        -14.000000000000028,
+        44.00000000000002,
+        144
+      ],
+      "frameMsMedian": 16.700000000000728,
+      "frameMsP95": 33.5,
+      "programs": 41
+    },
+    {
+      "view": "b02-photo-front",
+      "file": "b02-photo-front.png",
+      "verticalScheme": "patch04",
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 666,
+      "triangles": 98076,
+      "camera": [
+        15.999999999999993,
+        5.350000000000008,
+        82
+      ],
+      "frameMsMedian": 16.700000000000728,
+      "frameMsP95": 33.399999999999636,
+      "programs": 41
+    },
+    {
+      "view": "b03-photo-library",
+      "file": "b03-photo-library.png",
+      "verticalScheme": "patch04",
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 350,
+      "triangles": 175790,
+      "camera": [
+        72.3,
+        7.1,
+        237.5
+      ],
+      "frameMsMedian": 16.69999999999891,
+      "frameMsP95": 33.100000000000364,
+      "programs": 41
+    },
+    {
+      "view": "b03-garden",
+      "file": "b03-garden.png",
+      "verticalScheme": "patch04",
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 2150,
+      "triangles": 435134,
+      "camera": [
+        89,
+        13.000000000000002,
+        288
+      ],
+      "frameMsMedian": 33.29999999999927,
+      "frameMsP95": 33.70000000000073,
+      "programs": 41
+    },
+    {
+      "view": "b03-canteen",
+      "file": "b03-canteen.png",
+      "verticalScheme": "patch04",
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 332,
+      "triangles": 109036,
+      "camera": [
+        127.99999999999997,
+        7.999999999999999,
+        152
+      ],
+      "frameMsMedian": 16.700000000000728,
+      "frameMsP95": 16.799999999999272,
+      "programs": 41
+    }
+  ],
+  "scene": {
+    "meshes": 2750,
+    "triangles": 550912,
+    "geometryBytes": 21091648,
+    "geometries": 2750,
+    "materials": 84,
+    "largest": [
+      {
+        "name": "P04-court-open-fence",
+        "type": "BufferGeometry",
+        "triangles": 51012,
+        "instances": 1
+      },
+      {
+        "name": "P04-teaching-forecourt",
+        "type": "BufferGeometry",
+        "triangles": 20304,
+        "instances": 1
+      },
+      {
+        "name": "P03-ground-upper-65",
+        "type": "BufferGeometry",
+        "triangles": 19776,
+        "instances": 1
+      },
+      {
+        "name": "P03-railing",
+        "role": "P03-railing",
+        "type": "BufferGeometry",
+        "triangles": 17844,
+        "instances": 1
+      },
+      {
+        "name": "P03-ground-upper-87",
+        "type": "BufferGeometry",
+        "triangles": 16274,
+        "instances": 1
+      },
+      {
+        "name": "B03-18-planting-13-merged",
+        "role": "planting",
+        "type": "BufferGeometry",
+        "triangles": 15840,
+        "instances": 1
+      },
+      {
+        "name": "B03-19-paving-2-merged",
+        "role": "paving",
+        "type": "BufferGeometry",
+        "triangles": 14772,
+        "instances": 1
+      },
+      {
+        "name": "P03-fence",
+        "role": "P03-fence",
+        "type": "BufferGeometry",
+        "triangles": 14544,
+        "instances": 1
+      },
+      {
+        "name": "P03-wall",
+        "role": "P03-wall",
+        "type": "BufferGeometry",
+        "triangles": 11784,
+        "instances": 1
+      },
+      {
+        "name": "P03-ground-upper-55",
+        "type": "BufferGeometry",
+        "triangles": 11520,
+        "instances": 1
+      },
+      {
+        "name": "P03-edge",
+        "role": "P03-edge",
+        "type": "BufferGeometry",
+        "triangles": 11472,
+        "instances": 1
+      },
+      {
+        "name": "P03-ground-upper-21",
+        "type": "BufferGeometry",
+        "triangles": 11330,
+        "instances": 1
+      },
+      {
+        "name": "P03-ground-upper-77",
+        "type": "BufferGeometry",
+        "triangles": 9480,
+        "instances": 1
+      },
+      {
+        "name": "P03-ground-pit-56",
+        "type": "BufferGeometry",
+        "triangles": 8832,
+        "instances": 1
+      },
+      {
+        "name": "B03-18-planting-1-merged",
+        "role": "planting",
+        "type": "BufferGeometry",
+        "triangles": 8400,
+        "instances": 1
+      },
+      {
+        "name": "P03-ground-upper-10",
+        "type": "BufferGeometry",
+        "triangles": 7622,
+        "instances": 1
+      },
+      {
+        "name": "P03-ground-upper-78",
+        "type": "BufferGeometry",
+        "triangles": 7268,
+        "instances": 1
+      },
+      {
+        "name": "P03-ground-upper-11",
+        "type": "BufferGeometry",
+        "triangles": 6600,
+        "instances": 1
+      },
+      {
+        "name": "P02-GYM-FORECOURT",
+        "type": "BufferGeometry",
+        "triangles": 6560,
+        "instances": 1
+      },
+      {
+        "name": "R2-15-1|frame|box",
+        "role": "frame",
+        "type": "BoxGeometry",
+        "triangles": 5328,
+        "instances": 444
+      }
+    ],
+    "gpu": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001638) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+  },
+  "mobile": {
+    "view": "b03-library",
+    "verticalScheme": "patch04",
+    "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "glError": 0,
+    "contextLost": false,
+    "calls": 213,
+    "triangles": 165134,
+    "camera": [
+      73,
+      8.5,
+      237.5
+    ],
+    "noOverflow": true
+  },
+  "passed": true
+}

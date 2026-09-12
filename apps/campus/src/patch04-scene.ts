@@ -33,7 +33,7 @@ export function installPatch04Geometry(api:any,m:any,p:any){
  const base=box(group,f.platformWidth,f.platformRise,f.platformDepth,fx,fy,fz,6);base.name='P04-three-flag-platform';
  for(let i=0;i<f.steps;i++){const h=f.platformRise*(i+1)/f.steps,z=fz+f.platformDepth/2+f.tread*(f.steps-i-.5);const o=box(group,f.platformWidth,h,f.tread,fx,fy,z,6);o.name='P04-flag-step-'+i;}
  for(let i=0;i<f.count;i++){
-  const x=fx+(i-1)*f.poleSpacing,h=f.poleHeights[i];const o=new THREE.Mesh(new THREE.CylinderGeometry(.065,.085,h,8),mats[6]);o.position.set(x,fy+f.platformRise+h/2,fz);o.name='P04-flagpole-'+i;o.castShadow=true;group.add(o);
+  const x=fx+(i-1)*f.poleSpacing,h=f.poleHeights[i];const o=new THREE.Mesh(new THREE.CylinderGeometry(.065,.085,h,32),mats[6]);o.position.set(x,fy+f.platformRise+h/2,fz);o.name='P04-flagpole-'+i;o.castShadow=true;group.add(o);
   const cloth=box(group,f.clothWidth,f.clothHeight,.025,x+f.clothWidth/2,fy+f.platformRise+h-1.1,fz,8);cloth.name='P04-flag-cloth-placeholder-'+i;
  }
  const shop=roots.get('12'),s=p.shop;shop.clear();const [w,,d]=api.layout.facilities.find((v:any)=>v.id==='12').size,dh=s.doorHeight,h=s.wallHeight,dw=s.doorWidth;

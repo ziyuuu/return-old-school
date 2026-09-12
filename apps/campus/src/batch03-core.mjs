@@ -78,7 +78,7 @@ export function buildB03Model(layout,terrain,p){
  for(const [n,x0,x1,y0,y1,z]of [['left',46,66,ly+.4,ly+7.8,front-.19],['head',67,79,ly+3.8,ly+5.0,front-.22],['right',81,90,ly+.5,ly+5.0,front-.18]])for(let i=0;i<160;i++){const x=x0+rnd()*(x1-x0),y=y0+rnd()*(y1-y0);if(Math.sin(x*1.1+y*.5)+Math.sin(y*1.7)<-.45)continue;leaf('18','ivy-'+n+'-'+i,[x,y,z],[.19+rnd()*.16,.18+rnd()*.17,.08],i%3?13:1);}
  // A symmetric pair of curved flights. The round middle landing is H, not verified from the collage.
  const S=p.spiral,[cx,cz]=S.center,midY=gy+S.midRiseFromGarden,topY=ly+lh;
- const circle=Array.from({length:64},(_,i)=>[cx+S.midPlatformRadius*Math.cos(i*Math.PI/32),cz+S.midPlatformRadius*Math.sin(i*Math.PI/32)]);
+ const circle=Array.from({length:192},(_,i)=>[cx+S.midPlatformRadius*Math.cos(i*Math.PI/96),cz+S.midPlatformRadius*Math.sin(i*Math.PI/96)]);
  poly('19','roundPlatform','floor',circle,midY-.24,midY,15,'H central round landing suggested by alumni recollection');
  // Supports stay below the landing. Nothing fills its walkable disk above the floor.
  for(const sign of [-1,1])rod('19','roundSupport'+sign,[cx+sign*.9,gy,cz+.5],[cx+sign*.9,midY-.24,cz+.5],.18,14,'column');
@@ -108,7 +108,7 @@ export function buildB03Model(layout,terrain,p){
  // Garden stone terrace and curved low basin/seat edge, exactly linked to the rear steps.
  const B=p.garden.pavingBounds;
  for(let z=B[1];z<B[3];z+=1)for(let x=B[0];x<B[2];x+=1){const xe=Math.min(x+1,B[2]),ze=Math.min(z+1,B[3]),y=terrain.groundHeight((x+xe)/2,(z+ze)/2)+.035;box('19','pave'+x+'-'+z,'paving',[x,y-.10,z],[xe,y,ze],(Math.floor(x+z)%11===0)?6:2);}
- const [pcx,pcz]=p.garden.pondCenter,[rx,rz]=p.garden.pondRadius,n=64,outline=Array.from({length:n},(_,i)=>{const a=i/n*Math.PI*2,r=1+.07*Math.sin(3*a);return [pcx+rx*r*Math.cos(a),pcz+rz*r*Math.sin(a)];});
+ const [pcx,pcz]=p.garden.pondCenter,[rx,rz]=p.garden.pondRadius,n=192,outline=Array.from({length:n},(_,i)=>{const a=i/n*Math.PI*2,r=1+.07*Math.sin(3*a);return [pcx+rx*r*Math.cos(a),pcz+rz*r*Math.sin(a)];});
  poly('19','basin','basin',outline,gy+.03,gy+.11,4,'P curved depression / H dark surface state');
  for(let i=0;i<n;i++){const a=i/n*Math.PI*2,b=(i+1)/n*Math.PI*2,q=outline[i],r=outline[(i+1)%n],qa=[q[0]+.32*Math.cos(a),q[1]+.32*Math.sin(a)],rb=[r[0]+.32*Math.cos(b),r[1]+.32*Math.sin(b)];poly('19','basinEdge'+i,'seat-edge',[q,r,rb,qa],gy,gy+.42,14,'P low curved edge / H dimensions');}
  for(const [i,t]of p.garden.trees.entries()){const [x,z,h,r]=t,by=terrain.groundHeight(x,z);box('19','bed'+i,'planter',[x-r,by,z-r*.65],[x+r,by+.42,z+r*.65],6);box('19','soil'+i,'planting',[x-r+.12,by+.42,z-r*.65+.12],[x+r-.12,by+.47,z+r*.65-.12],1);rod('19','trunk'+i,[x,by+.46,z],[x-.15,by+h-.2,z+.1],.15,11,'tree-trunk');for(let j=0;j<7;j++)leaf('19','crown'+i+'-'+j,[x+(rnd()-.5)*r,by+h+(rnd()-.4)*r,z+(rnd()-.5)*r],[r*.74,r*.53,r*.74],j%2?1:13);}

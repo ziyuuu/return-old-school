@@ -10,3 +10,6 @@ artifacts/m11b-b02/
 
 # B03 generated private review/bundles; research photographs are not source assets
 artifacts/m11b-b03/
+
+# Reproducible local high-detail rendering deliverables
+artifacts/render-upgrade/

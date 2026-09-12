@@ -8,6 +8,10 @@ import {applyB02Layout,buildB02Model} from './batch02-core.mjs';
 import {buildB02Facility} from './batch02-scene';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import {createCampusMaterials,finishCampusSurfaces} from './render/materials';
+import {installCampusReflections} from './render/reflections';
+import {installDaylight} from './render/daylight';
+import {installSpatialIndex} from './render/spatial-index.mjs';
 import source from '../../../data/m10/campus-layout.json';
 import { bounds, footprint, courtRects, checkLayout } from './layout-core.mjs';
 import './style.css';
@@ -28,7 +32,7 @@ import {applyB01R2,buildB01R2Model as buildBatch01Model,b01R2Checks} from './b01
 import {r3Facility as batch01Facility,installR3Details} from './b01-r3-scene';
 import revision3Base from '../../../data/m11b/batch01-r3/input.json';
 import shutterFix from '../../../data/m11b/batch01-r3/shutter-fix.json';
-const revision3Input={...revision3Base,version:shutterFix.version,status:shutterFix.status,entrances:{...revision3Base.entrances,...shutterFix.entrances}};
+const revision3Input={...revision3Base,version:shutterFix.version,status:shutterFix.status,central:{...revision3Base.central,segments:256},entrances:{...revision3Base.entrances,...shutterFix.entrances}};
 import {applyB01R3Layout,adaptB01R3Terrain,buildB01R3Model,b01R3Checks} from './b01-shutter-fix.mjs';
 import { edgeWidth } from './revision-core.mjs';
 import { r4Facility, setToiletSection } from './revision-r4-scene';
@@ -185,11 +189,17 @@ Object.assign(cameraPresets,{
 const el=<T extends HTMLElement>(id:string)=>document.getElementById(id) as T;
 const viewport=el<HTMLDivElement>('viewport');
 let renderer: THREE.WebGLRenderer;
-try {renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true,alpha:false});}
+// Reverse depth preserves fine surface separation and hardware MSAA at shared edges.
+// Older WebGL2 drivers retain the logarithmic fallback for distant site surfaces.
+try {
+ const canvas=document.createElement('canvas');
+ const context=canvas.getContext('webgl2',{antialias:true,preserveDrawingBuffer:true,alpha:false});
+ if(!context)throw new Error('WebGL2 unavailable');
+ const reversedDepthBuffer=Boolean(context.getExtension('EXT_clip_control'));
+ renderer=new THREE.WebGLRenderer({canvas,context,antialias:true,preserveDrawingBuffer:true,alpha:false,reversedDepthBuffer,logarithmicDepthBuffer:!reversedDepthBuffer});
+}
 catch {el('error').hidden=false;el('error').textContent='此浏览器无法建立 WebGL2 场景。请在支持硬件加速的桌面浏览器中打开；本文件不是静态图片。';throw new Error('WebGL2 unavailable');}
 renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.setSize(innerWidth,innerHeight);
-renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.NoToneMapping;
-renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 viewport.append(renderer.domElement);
 renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();el('error').hidden=false;el('error').textContent='WebGL 上下文已丢失。当前只有校核视角，无游戏进度；恢复后刷新即可重新加载。';});
 renderer.domElement.addEventListener('webglcontextrestored',()=>location.reload());
@@ -203,18 +213,11 @@ const controls=new OrbitControls(camera,renderer.domElement);
 controls.enableDamping=true;controls.dampingFactor=.1;controls.minDistance=1.2;controls.maxDistance=900;controls.maxPolarAngle=Math.PI*.495;
 const topControls=new OrbitControls(topCamera,renderer.domElement);
 topControls.enableRotate=false;topControls.enableDamping=true;topControls.enabled=false;topControls.minZoom=.45;topControls.maxZoom=8;
-const sun=new THREE.DirectionalLight(0xffffff,3);sun.position.set(190,260,-80);sun.target.position.set(45,0,135);sun.castShadow=true;
-sun.shadow.mapSize.set(2048,2048);Object.assign(sun.shadow.camera,{left:-250,right:250,top:250,bottom:-250,near:1,far:900});sun.shadow.normalBias=.18;sun.shadow.bias=-.00015;
-scene.add(sun,sun.target);
-const sunDirection=new THREE.Vector3(145,260,-215).normalize();
-function setReviewShadow(target:number[],detail=false){
- if(detail){sun.target.position.set(target[0],target[1],target[2]);sun.position.copy(sun.target.position).addScaledVector(sunDirection,365);}
- else{sun.position.set(190,260,-80);sun.target.position.set(45,0,135);}
- const extent=detail?38:250;
- Object.assign(sun.shadow.camera,{left:-extent,right:extent,top:extent,bottom:-extent,near:1,far:900});
- sun.shadow.normalBias=detail?.10:.18;sun.shadow.bias=detail?-.00008:-.00015;
- sun.shadow.camera.updateProjectionMatrix();sun.target.updateMatrixWorld();sun.updateMatrixWorld();sun.shadow.needsUpdate=true;
+const daylight=installDaylight(renderer,scene);
+function setReviewShadow(target:number[],detail=false,distance=80){
+ daylight.focus(new THREE.Vector3(...target as Vec3),detail?distance:Infinity);
 }
+document.addEventListener('change',()=>daylight.invalidate());
 
 // Architectural colours use a Canvas Ramp LUT. Debug lines/HTML are a separate annotation layer.
 const ramps=[
@@ -231,20 +234,7 @@ const ramps=[
  ['#6f6760','#95735e','#ba8b65'],['#6f816b','#c4aa5a','#e6c555'],['#3e7068','#4c9479','#74b089'],
  ['#82918d','#cad0c4','#efede1'],['#5b6f6d','#aeb9b3','#d9dfd4'],['#253d41','#405e60','#73918b'],['#774f4c','#a77770','#c69c92'],['#811e24','#b5252b','#d33b3c'],['#bb9436','#e5bb4e','#f8d169'],['#58383b','#845254','#a87673'],['#345a7b','#477da3','#7ba5c1']
 ];
-const lutCanvas=document.createElement('canvas');lutCanvas.width=256;lutCanvas.height=ramps.length;
-const ctx=lutCanvas.getContext('2d')!;
-ramps.forEach((row,y)=>row.forEach((colour,j)=>{ctx.fillStyle=colour;const starts=[0,95,182],ends=[95,182,256];ctx.fillRect(starts[j],y,ends[j]-starts[j],1);}));
-const lut=new THREE.CanvasTexture(lutCanvas);lut.colorSpace=THREE.SRGBColorSpace;lut.minFilter=lut.magFilter=THREE.NearestFilter;lut.generateMipmaps=false;lut.flipY=false;
-const mats=ramps.map((_,row)=>{
- const mat=new THREE.MeshLambertMaterial({color:0xffffff});
- mat.onBeforeCompile=shader=>{
-  shader.uniforms.uRamp={value:lut};shader.uniforms.uRampRow={value:(row+.5)/ramps.length};
-  shader.fragmentShader=shader.fragmentShader.replace('#include <shadowmap_pars_fragment>','#include <shadowmap_pars_fragment>\n#include <shadowmask_pars_fragment>\nuniform sampler2D uRamp;\nuniform float uRampRow;');
-  shader.fragmentShader=shader.fragmentShader.replace('vec3 outgoingLight = reflectedLight.directDiffuse + reflectedLight.indirectDiffuse + totalEmissiveRadiance;',
-   'float rampIntensity = 0.7;\n#if NUM_DIR_LIGHTS > 0\nrampIntensity = dot(normal, normalize(directionalLights[0].direction)) * 0.5 + 0.5;\n#endif\nrampIntensity *= getShadowMask();\nvec3 outgoingLight = texture2D(uRamp, vec2(clamp(rampIntensity,0.002,0.998),uRampRow)).rgb;');
- };
- mat.customProgramCacheKey=()=>`yali-ramp-${row}`;return mat;
-});
+const mats=createCampusMaterials(ramps,renderer);
 const volumes=new THREE.Group(), surfaces=new THREE.Group(), outlines=new THREE.Group(), routeOverlay=new THREE.Group();
 scene.add(surfaces,volumes,outlines,routeOverlay);routeOverlay.visible=false;
 const roots=new Map<string,THREE.Group>(), pickables:THREE.Object3D[]=[], labels=new Map<string,{node:HTMLDivElement,point:THREE.Vector3}>();
@@ -389,6 +379,7 @@ el('close-inspector').onclick=()=>setInspector(false);
 function stopModes(){fly=false;tour=false;keys.clear();el('fly-btn').classList.remove('active');el('tour-btn').classList.remove('active');el('help').textContent='拖动环绕 · 右键平移 · 滚轮缩放 · 点击体块查证';}
 let toiletLevel=0;
 function setToiletLevel(level:number,focus=false){
+ daylight.invalidate();
  toiletLevel=level;setToiletSection(roots,level);b01Bridge?.setSection(level);el<HTMLSelectElement>('toilet-level').value=String(level);
  if(focus&&level){stopModes();active=camera;controls.enabled=true;topControls.enabled=false;const y=(level-1)*3.8+(terrainSystem?.enabled?terrainSystem.model.anchors['25'].floor:0);camera.position.set(7,y+10,238);controls.target.set(-10,y+1,224);controls.update();}
 }
@@ -402,6 +393,7 @@ function setView(name:string){
  active.position.set(...p.position as Vec3);active.up.set(...((name==='top'||(name==='r2-axis'||name==='r3-axis'))?[0,0,-1]:[0,1,0]) as Vec3);
  ((name==='top'||(name==='r2-axis'||name==='r3-axis'))?topControls:controls).target.set(...p.target as Vec3);if(innerWidth<700&&!name.startsWith('b03-')&&((name.startsWith('b02-')||name.startsWith('b03-'))||name.startsWith('b01-')||(name.startsWith('r2-')||name.startsWith('r3-')))&&name!=='r2-axis'){const t=new THREE.Vector3(...p.target as Vec3);active.position.sub(t).multiplyScalar((name.startsWith('b02-')||name.startsWith('b03-'))?1.9:2.6).add(t);}
  active.lookAt(...p.target as Vec3);
+ setReviewShadow(p.target,active!==topCamera,active.position.distanceTo(new THREE.Vector3(...p.target as Vec3)));
  if((name==='top'||(name==='r2-axis'||name==='r3-axis'))){topCamera.zoom=(name==='r2-axis'||name==='r3-axis')?1.5:1;topCamera.updateProjectionMatrix();}controls.update();topControls.update();
  el('view-name').innerHTML=`${p.label}<span>B03 图书馆 / 后花园 / 食堂 · 待校友审阅｜B01、B02 已认可</span>`;
 }
@@ -452,6 +444,7 @@ function render(time:number){
   if(tourT>=1){tourT=0;tourEdge++;if(tourEdge>=tourPath.length-1){setView('overview');return;}}
   const tx=THREE.MathUtils.lerp(a[0],b[0],tourT),tz=THREE.MathUtils.lerp(a[2],b[2],tourT);camera.position.set(tx,groundEye(tx,tz),tz);const lt=Math.min(1,tourT+3/Math.max(len,1)),lx=THREE.MathUtils.lerp(a[0],b[0],lt),lz=THREE.MathUtils.lerp(a[2],b[2],lt);camera.lookAt(lx,groundEye(lx,lz),lz);
  }else {if(controls.enabled)controls.update();if(topControls.enabled)topControls.update();}
+ if(!fly&&!tour)daylight.focus(active===topCamera?topControls.target:controls.target,active===topCamera?Infinity:active.position.distanceTo(controls.target));
  renderer.render(scene,active);
  for(const [id,label] of labels){
   projected.copy(label.point).project(active);const visible=labelsOn&&(keyLabels.has(id)||selected===id||view==='sports'&&['04','05','24','26','28'].includes(id)||view==='teaching'&&id==='25')&&projected.z<1&&projected.z>-1;
@@ -504,14 +497,14 @@ Object.assign(window,{__YALI_M10__:{version:layout.version,layout,report,setView
 
 // Patch02 diagnostics expose the actual rendered shell and supported gallery route.
 let gymCutaway=false;
-el<HTMLInputElement>('gym-cutaway').onchange=e=>{gymCutaway=(e.target as HTMLInputElement).checked;setGymCutaway(roots,gymCutaway);};
+el<HTMLInputElement>('gym-cutaway').onchange=e=>{gymCutaway=(e.target as HTMLInputElement).checked;setGymCutaway(roots,gymCutaway);daylight.invalidate();};
 function visibleMeshList(){const list:THREE.Object3D[]=[];scene.traverse((o:any)=>{let a:THREE.Object3D|null=o;while(a){if(!a.visible)return;a=a.parent;}if(o instanceof THREE.Mesh)list.push(o);});return list;}
 function p02Support(x:number,y:number,z:number){scene.updateMatrixWorld(true);const ray=new THREE.Raycaster(new THREE.Vector3(x,y+.35,z),new THREE.Vector3(0,-1,0),0,.7);return ray.intersectObjects(visibleMeshList(),false).map(v=>({name:v.object.name,y:v.point.y,role:v.object.userData.role}));}
 function p02Snapshot(){scene.updateMatrixWorld(true);const d:any={};scene.traverse(o=>{if(o.name.startsWith('P02-')){const b=new THREE.Box3().setFromObject(o);d[o.name]={min:b.min.toArray(),max:b.max.toArray(),role:o.userData.role,visible:o.visible};}});return d;}
 Object.assign(window,{__YALI_P02__:{ready:true,version:patchInput.version,layout,report,parameters:patchInput,source,
  geometrySnapshot:p02Snapshot,support:p02Support,probe:terrainSystem.probeActual,
  galleryRoute:()=>b02Model.routes.find((r:any)=>r.id==='spectator')!.points,legacyParametersOnly:true,
- setCutaway:(v:boolean)=>{gymCutaway=v;el<HTMLInputElement>('gym-cutaway').checked=v;setGymCutaway(roots,v);},
+ setCutaway:(v:boolean)=>{gymCutaway=v;el<HTMLInputElement>('gym-cutaway').checked=v;setGymCutaway(roots,v);daylight.invalidate();},
  getState:()=>({gymCutaway,terrain:terrainSystem.enabled}),
  exportData:()=>({layout,terrain:terrainSystem.model.exportData(),patch:patchInput,checks:report})}});
 
@@ -580,3 +573,11 @@ if(!params.has('view'))setView(innerWidth<700?'b03-library':'b03-canteen');
 el<HTMLSelectElement>('b02-view-select').onchange=e=>setView((e.target as HTMLSelectElement).value);
 
 Object.assign(window,{__YALI_B03__:{...((window as any).__YALI_B02__),ready:true,version:batch03Input.version,input:batch03Input,model:b03Model,terrain:currentModel,checkAccess:()=>checkB03Access(scene,visibleMeshList(),b03Model)}});
+
+// Opt-in render inspection for reproducible browser measurements.
+const surfaceFinishes=finishCampusSurfaces(scene,layout);
+const spatialIndex=installSpatialIndex(scene);
+const reflectionProbes=installCampusReflections(renderer,scene);
+daylight.invalidate();
+if(params.get('diagnostics')==='1')Object.assign(window,{__YALI_RENDER_RAW__:{scene,renderer,camera:()=>active}});
+Object.assign(window,{__YALI_RENDER__:{state:()=>({...daylight.state(),spatialIndex,surfaceFinishes,reflectionProbes}),invalidateShadows:daylight.invalidate}});

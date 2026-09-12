@@ -1,0 +1,1458 @@
+{
+  "phase": "r2",
+  "validation": "full",
+  "generatedAt": "2026-09-12T08:41:47.935Z",
+  "browser": "152.0.7977.83",
+  "errors": [],
+  "requestedViews": [
+    "overview",
+    "r3-overview",
+    "b02-photo-front",
+    "b03-photo-library",
+    "b03-garden",
+    "b03-canteen"
+  ],
+  "forceLogDepth": false,
+  "views": [
+    {
+      "requestedView": "overview",
+      "file": "overview.png",
+      "view": "overview",
+      "verticalScheme": "patch04",
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 1481,
+      "triangles": 3297836,
+      "camera": [
+        340,
+        387.2,
+        485
+      ],
+      "frameMsMedian": 16.799999999999272,
+      "frameMsP95": 33.399999999999636,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 250,
+        "shadowRevision": 11,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 501,
+          "buildMs": 2786,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 824,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 4,
+          "resolution": 256,
+          "reflectiveMeshes": 286,
+          "buildMs": 2518,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ]
+          }
+        }
+      },
+      "programs": 37
+    },
+    {
+      "requestedView": "r3-overview",
+      "file": "r3-overview.png",
+      "view": "r3-overview",
+      "verticalScheme": "patch04",
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 494,
+      "triangles": 2518190,
+      "camera": [
+        -14.000000000000028,
+        44.00000000000002,
+        144
+      ],
+      "frameMsMedian": 16.700000000000728,
+      "frameMsP95": 33.29999999999927,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 100,
+        "shadowRevision": 14,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 501,
+          "buildMs": 2786,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 824,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 4,
+          "resolution": 256,
+          "reflectiveMeshes": 286,
+          "buildMs": 2518,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ]
+          }
+        }
+      },
+      "programs": 37
+    },
+    {
+      "requestedView": "b02-photo-front",
+      "file": "b02-photo-front.png",
+      "view": "b02-photo-front",
+      "verticalScheme": "patch04",
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 268,
+      "triangles": 371448,
+      "camera": [
+        15.999999999999993,
+        5.350000000000008,
+        82
+      ],
+      "frameMsMedian": 16.69999999999709,
+      "frameMsP95": 16.80000000000291,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 68,
+        "shadowRevision": 17,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 501,
+          "buildMs": 2786,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 824,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 4,
+          "resolution": 256,
+          "reflectiveMeshes": 286,
+          "buildMs": 2518,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ]
+          }
+        }
+      },
+      "programs": 37
+    },
+    {
+      "requestedView": "b03-photo-library",
+      "file": "b03-photo-library.png",
+      "view": "b03-photo-library",
+      "verticalScheme": "patch04",
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 227,
+      "triangles": 2156222,
+      "camera": [
+        72.3,
+        7.1,
+        237.5
+      ],
+      "frameMsMedian": 16.700000000000728,
+      "frameMsP95": 16.799999999999272,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 28,
+        "shadowRevision": 20,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 501,
+          "buildMs": 2786,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 824,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 4,
+          "resolution": 256,
+          "reflectiveMeshes": 286,
+          "buildMs": 2518,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ]
+          }
+        }
+      },
+      "programs": 37
+    },
+    {
+      "requestedView": "b03-garden",
+      "file": "b03-garden.png",
+      "view": "b03-garden",
+      "verticalScheme": "patch04",
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 1249,
+      "triangles": 2947914,
+      "camera": [
+        89,
+        13.000000000000002,
+        288
+      ],
+      "frameMsMedian": 16.700000000000728,
+      "frameMsP95": 33.5,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 44,
+        "shadowRevision": 23,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 501,
+          "buildMs": 2786,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 824,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 4,
+          "resolution": 256,
+          "reflectiveMeshes": 286,
+          "buildMs": 2518,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ]
+          }
+        }
+      },
+      "programs": 37
+    },
+    {
+      "requestedView": "b03-canteen",
+      "file": "b03-canteen.png",
+      "view": "b03-canteen",
+      "verticalScheme": "patch04",
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 56,
+      "triangles": 300024,
+      "camera": [
+        127.99999999999997,
+        7.999999999999999,
+        152
+      ],
+      "frameMsMedian": 16.700000000000728,
+      "frameMsP95": 16.799999999999272,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 40,
+        "shadowRevision": 26,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 501,
+          "buildMs": 2786,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 824,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 4,
+          "resolution": 256,
+          "reflectiveMeshes": 286,
+          "buildMs": 2518,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ]
+          }
+        }
+      },
+      "programs": 37
+    }
+  ],
+  "source": {
+    "url": "file:///C:/Users/zyuu/OneDrive/Documents/ChatGPT/return-old-school/artifacts/render-upgrade/Yali_Material_Detail_R2_Viewer.html",
+    "sha256": "59f5c408d109f91c80828f97f127d7d2ba68da35350c7d6df703a86c966b529b"
+  },
+  "scene": {
+    "meshes": 1409,
+    "triangles": 3297824,
+    "geometryBytes": 109517856,
+    "geometries": 1409,
+    "materials": 65,
+    "finishes": [
+      "bark",
+      "concrete",
+      "fabric",
+      "foliage",
+      "glass",
+      "metal",
+      "paint",
+      "painted-metal",
+      "paving",
+      "plaster",
+      "road",
+      "rubber",
+      "sand",
+      "soil",
+      "stone",
+      "turf",
+      "water"
+    ],
+    "materialSamples": [
+      {
+        "finish": "paving",
+        "row": 2,
+        "colour": "#abb0ab",
+        "roughness": 0.78,
+        "metalness": 0,
+        "bump": 0.008,
+        "clearcoat": 0,
+        "opacity": 1,
+        "feature": "错缝、细窄灰缝、块面色差"
+      },
+      {
+        "finish": "water",
+        "row": 4,
+        "colour": "#769494",
+        "roughness": 0.12,
+        "metalness": 0,
+        "bump": 0.026,
+        "clearcoat": 0.85,
+        "opacity": 0.96,
+        "reflectionProbe": "gym",
+        "feature": "细波纹、天空与建筑倒影"
+      },
+      {
+        "finish": "rubber",
+        "row": 3,
+        "colour": "#b89882",
+        "roughness": 0.86,
+        "metalness": 0,
+        "bump": 0.004,
+        "clearcoat": 0,
+        "opacity": 1,
+        "feature": "细橡胶颗粒、低光泽"
+      },
+      {
+        "finish": "rubber",
+        "row": 1,
+        "colour": "#7c937e",
+        "roughness": 0.86,
+        "metalness": 0,
+        "bump": 0.004,
+        "clearcoat": 0,
+        "opacity": 1,
+        "feature": "细橡胶颗粒、低光泽"
+      },
+      {
+        "finish": "turf",
+        "row": 1,
+        "colour": "#79917d",
+        "roughness": 1,
+        "metalness": 0,
+        "bump": 0.006,
+        "clearcoat": 0,
+        "opacity": 1,
+        "feature": "细叶颗粒、疏密变化"
+      },
+      {
+        "finish": "plaster",
+        "row": 14,
+        "colour": "#e0e1d8",
+        "roughness": 0.91,
+        "metalness": 0,
+        "bump": 0.004,
+        "clearcoat": 0,
+        "opacity": 1,
+        "feature": "细砂、柔和漫反射"
+      },
+      {
+        "finish": "paint",
+        "row": 6,
+        "colour": "#a9b4ad",
+        "roughness": 0.44,
+        "metalness": 0,
+        "bump": 0.0004,
+        "clearcoat": 0.25,
+        "opacity": 1,
+        "feature": "连续色面、柔和漆膜高光"
+      },
+      {
+        "finish": "concrete",
+        "row": 15,
+        "colour": "#bbbdbb",
+        "roughness": 0.83,
+        "metalness": 0,
+        "bump": 0.012,
+        "clearcoat": 0,
+        "opacity": 1,
+        "feature": "矿物骨料、浅孔隙"
+      },
+      {
+        "finish": "metal",
+        "row": 6,
+        "colour": "#b0b2b1",
+        "roughness": 0.26,
+        "metalness": 0.86,
+        "bump": 0.0003,
+        "clearcoat": 0,
+        "opacity": 1,
+        "reflectionProbe": "teaching",
+        "feature": "细拉丝、集中反射"
+      },
+      {
+        "finish": "concrete",
+        "row": 14,
+        "colour": "#d0d1ce",
+        "roughness": 0.83,
+        "metalness": 0,
+        "bump": 0.012,
+        "clearcoat": 0,
+        "opacity": 1,
+        "feature": "矿物骨料、浅孔隙"
+      },
+      {
+        "finish": "concrete",
+        "row": 6,
+        "colour": "#afb2b0",
+        "roughness": 0.83,
+        "metalness": 0,
+        "bump": 0.012,
+        "clearcoat": 0,
+        "opacity": 1,
+        "feature": "矿物骨料、浅孔隙"
+      },
+      {
+        "finish": "bark",
+        "row": 11,
+        "colour": "#8a766b",
+        "roughness": 0.95,
+        "metalness": 0,
+        "bump": 0.018,
+        "clearcoat": 0,
+        "opacity": 1,
+        "feature": "纵向纤维与浅裂纹"
+      },
+      {
+        "finish": "metal",
+        "row": 16,
+        "colour": "#5b6060",
+        "roughness": 0.26,
+        "metalness": 0.86,
+        "bump": 0.0003,
+        "clearcoat": 0,
+        "opacity": 1,
+        "reflectionProbe": "garden",
+        "feature": "细拉丝、集中反射"
+      },
+      {
+        "finish": "paving",
+        "row": 6,
+        "colour": "#b0b5b1",
+        "roughness": 0.78,
+        "metalness": 0,
+        "bump": 0.008,
+        "clearcoat": 0,
+        "opacity": 1,
+        "feature": "错缝、细窄灰缝、块面色差"
+      },
+      {
+        "finish": "soil",
+        "row": 1,
+        "colour": "#897569",
+        "roughness": 0.98,
+        "metalness": 0,
+        "bump": 0.021,
+        "clearcoat": 0,
+        "opacity": 1,
+        "feature": "深暖褐、松散土粒"
+      },
+      {
+        "finish": "foliage",
+        "row": 13,
+        "colour": "#50947a",
+        "roughness": 0.74,
+        "metalness": 0,
+        "bump": 0.001,
+        "clearcoat": 0,
+        "opacity": 1,
+        "feature": "叶脉、蜡质柔光"
+      },
+      {
+        "finish": "foliage",
+        "row": 1,
+        "colour": "#78917c",
+        "roughness": 0.74,
+        "metalness": 0,
+        "bump": 0.001,
+        "clearcoat": 0,
+        "opacity": 1,
+        "feature": "叶脉、蜡质柔光"
+      },
+      {
+        "finish": "sand",
+        "row": 7,
+        "colour": "#c7bc9e",
+        "roughness": 0.97,
+        "metalness": 0,
+        "bump": 0.009,
+        "clearcoat": 0,
+        "opacity": 1,
+        "feature": "暖砂色、细颗粒"
+      },
+      {
+        "finish": "road",
+        "row": 2,
+        "colour": "#a8aca8",
+        "roughness": 0.94,
+        "metalness": 0,
+        "bump": 0.005,
+        "clearcoat": 0,
+        "opacity": 1,
+        "feature": "细骨料、连续灰色路面"
+      },
+      {
+        "finish": "plaster",
+        "row": 0,
+        "colour": "#d5d7ca",
+        "roughness": 0.91,
+        "metalness": 0,
+        "bump": 0.004,
+        "clearcoat": 0,
+        "opacity": 1,
+        "feature": "细砂、柔和漫反射"
+      },
+      {
+        "finish": "glass",
+        "row": 4,
+        "colour": "#7c9798",
+        "roughness": 0.09,
+        "metalness": 0,
+        "bump": 0,
+        "clearcoat": 0.7,
+        "opacity": 0.88,
+        "reflectionProbe": "gym",
+        "feature": "冷青玻璃、场景反射"
+      },
+      {
+        "finish": "metal",
+        "row": 15,
+        "colour": "#bcbdbc",
+        "roughness": 0.26,
+        "metalness": 0.86,
+        "bump": 0.0003,
+        "clearcoat": 0,
+        "opacity": 1,
+        "reflectionProbe": "gym",
+        "feature": "细拉丝、集中反射"
+      },
+      {
+        "finish": "painted-metal",
+        "row": 9,
+        "colour": "#568096",
+        "roughness": 0.33,
+        "metalness": 0.28,
+        "bump": 0.0003,
+        "clearcoat": 0.45,
+        "opacity": 1,
+        "reflectionProbe": "gym",
+        "feature": "漆膜与金属边缘高光"
+      },
+      {
+        "finish": "painted-metal",
+        "row": 10,
+        "colour": "#5a6b6a",
+        "roughness": 0.33,
+        "metalness": 0.28,
+        "bump": 0.0003,
+        "clearcoat": 0.45,
+        "opacity": 1,
+        "reflectionProbe": "gym",
+        "feature": "漆膜与金属边缘高光"
+      },
+      {
+        "finish": "painted-metal",
+        "row": 11,
+        "colour": "#947a6b",
+        "roughness": 0.33,
+        "metalness": 0.28,
+        "bump": 0.0003,
+        "clearcoat": 0.45,
+        "opacity": 1,
+        "reflectionProbe": "gym",
+        "feature": "漆膜与金属边缘高光"
+      },
+      {
+        "finish": "painted-metal",
+        "row": 12,
+        "colour": "#beaa74",
+        "roughness": 0.33,
+        "metalness": 0.28,
+        "bump": 0.0003,
+        "clearcoat": 0.45,
+        "opacity": 1,
+        "reflectionProbe": "gym",
+        "feature": "漆膜与金属边缘高光"
+      },
+      {
+        "finish": "painted-metal",
+        "row": 13,
+        "colour": "#62917c",
+        "roughness": 0.33,
+        "metalness": 0.28,
+        "bump": 0.0003,
+        "clearcoat": 0.45,
+        "opacity": 1,
+        "reflectionProbe": "gym",
+        "feature": "漆膜与金属边缘高光"
+      },
+      {
+        "finish": "paint",
+        "row": 4,
+        "colour": "#92aaa5",
+        "roughness": 0.44,
+        "metalness": 0,
+        "bump": 0.0004,
+        "clearcoat": 0.25,
+        "opacity": 1,
+        "feature": "连续色面、柔和漆膜高光"
+      },
+      {
+        "finish": "glass",
+        "row": 16,
+        "colour": "#3b5559",
+        "roughness": 0.09,
+        "metalness": 0,
+        "bump": 0,
+        "clearcoat": 0.7,
+        "opacity": 0.88,
+        "reflectionProbe": "gym",
+        "feature": "冷青玻璃、场景反射"
+      },
+      {
+        "finish": "concrete",
+        "row": 7,
+        "colour": "#b5b1a7",
+        "roughness": 0.83,
+        "metalness": 0,
+        "bump": 0.012,
+        "clearcoat": 0,
+        "opacity": 1,
+        "feature": "矿物骨料、浅孔隙"
+      },
+      {
+        "finish": "paint",
+        "row": 8,
+        "colour": "#c6d0c0",
+        "roughness": 0.44,
+        "metalness": 0,
+        "bump": 0.0004,
+        "clearcoat": 0.25,
+        "opacity": 1,
+        "feature": "连续色面、柔和漆膜高光"
+      },
+      {
+        "finish": "paint",
+        "row": 17,
+        "colour": "#aa7e77",
+        "roughness": 0.44,
+        "metalness": 0,
+        "bump": 0.0004,
+        "clearcoat": 0.25,
+        "opacity": 1,
+        "feature": "连续色面、柔和漆膜高光"
+      },
+      {
+        "finish": "painted-metal",
+        "row": 14,
+        "colour": "#cfd3ca",
+        "roughness": 0.33,
+        "metalness": 0.28,
+        "bump": 0.0003,
+        "clearcoat": 0.45,
+        "opacity": 1,
+        "reflectionProbe": "teaching",
+        "feature": "漆膜与金属边缘高光"
+      },
+      {
+        "finish": "painted-metal",
+        "row": 5,
+        "colour": "#a7afac",
+        "roughness": 0.33,
+        "metalness": 0.28,
+        "bump": 0.0003,
+        "clearcoat": 0.45,
+        "opacity": 1,
+        "reflectionProbe": "teaching",
+        "feature": "漆膜与金属边缘高光"
+      },
+      {
+        "finish": "paint",
+        "row": 20,
+        "colour": "#885a5b",
+        "roughness": 0.44,
+        "metalness": 0,
+        "bump": 0.0004,
+        "clearcoat": 0.25,
+        "opacity": 1,
+        "feature": "连续色面、柔和漆膜高光"
+      },
+      {
+        "finish": "paint",
+        "row": 21,
+        "colour": "#5583a5",
+        "roughness": 0.44,
+        "metalness": 0,
+        "bump": 0.0004,
+        "clearcoat": 0.25,
+        "opacity": 1,
+        "feature": "连续色面、柔和漆膜高光"
+      },
+      {
+        "finish": "paint",
+        "row": 13,
+        "colour": "#56977b",
+        "roughness": 0.44,
+        "metalness": 0,
+        "bump": 0.0004,
+        "clearcoat": 0.25,
+        "opacity": 1,
+        "feature": "连续色面、柔和漆膜高光"
+      },
+      {
+        "finish": "painted-metal",
+        "row": 20,
+        "colour": "#846262",
+        "roughness": 0.33,
+        "metalness": 0.28,
+        "bump": 0.0003,
+        "clearcoat": 0.45,
+        "opacity": 1,
+        "reflectionProbe": "library",
+        "feature": "漆膜与金属边缘高光"
+      },
+      {
+        "finish": "concrete",
+        "row": 0,
+        "colour": "#c3c6c2",
+        "roughness": 0.83,
+        "metalness": 0,
+        "bump": 0.012,
+        "clearcoat": 0,
+        "opacity": 1,
+        "feature": "矿物骨料、浅孔隙"
+      },
+      {
+        "finish": "stone",
+        "row": 7,
+        "colour": "#c0b8a4",
+        "roughness": 0.72,
+        "metalness": 0,
+        "bump": 0.014,
+        "clearcoat": 0,
+        "opacity": 1,
+        "feature": "细晶粒与矿物色差"
+      },
+      {
+        "finish": "turf",
+        "row": 6,
+        "colour": "#a5b1ab",
+        "roughness": 1,
+        "metalness": 0,
+        "bump": 0.006,
+        "clearcoat": 0,
+        "opacity": 1,
+        "feature": "细叶颗粒、疏密变化"
+      },
+      {
+        "finish": "fabric",
+        "row": 8,
+        "colour": "#c2cdbe",
+        "roughness": 0.97,
+        "metalness": 0,
+        "bump": 0.0014,
+        "clearcoat": 0,
+        "opacity": 1,
+        "feature": "经纬细纹、柔和绒光"
+      },
+      {
+        "finish": "fabric",
+        "row": 18,
+        "colour": "#b53438",
+        "roughness": 0.97,
+        "metalness": 0,
+        "bump": 0.0014,
+        "clearcoat": 0,
+        "opacity": 1,
+        "feature": "经纬细纹、柔和绒光"
+      },
+      {
+        "finish": "paint",
+        "row": 19,
+        "colour": "#e5bd5c",
+        "roughness": 0.44,
+        "metalness": 0,
+        "bump": 0.0004,
+        "clearcoat": 0.25,
+        "opacity": 1,
+        "feature": "连续色面、柔和漆膜高光"
+      }
+    ],
+    "largest": [
+      {
+        "name": "B03-18-frame-6-metal-merged",
+        "role": "frame",
+        "type": "BufferGeometry",
+        "triangles": 257544,
+        "instances": 1
+      },
+      {
+        "name": "B03-11-frame-6-metal-merged",
+        "role": "frame",
+        "type": "BufferGeometry",
+        "triangles": 177576,
+        "instances": 1
+      },
+      {
+        "name": "B03-18-planting-13-foliage-merged",
+        "role": "planting",
+        "type": "BufferGeometry",
+        "triangles": 166320,
+        "instances": 1
+      },
+      {
+        "name": "B03-18-planting-1-foliage-merged",
+        "role": "planting",
+        "type": "BufferGeometry",
+        "triangles": 88200,
+        "instances": 1
+      },
+      {
+        "name": "R2-1-15-frame-detail-0",
+        "role": "frame",
+        "type": "RoundedBoxGeometry",
+        "triangles": 84672,
+        "instances": 144
+      },
+      {
+        "name": "R2-2-15-frame-detail-0",
+        "role": "frame",
+        "type": "RoundedBoxGeometry",
+        "triangles": 84672,
+        "instances": 144
+      },
+      {
+        "name": "R2-3-15-frame-detail-0",
+        "role": "frame",
+        "type": "RoundedBoxGeometry",
+        "triangles": 84672,
+        "instances": 144
+      },
+      {
+        "name": "R2-1-15-frame-detail-4",
+        "role": "frame",
+        "type": "RoundedBoxGeometry",
+        "triangles": 56448,
+        "instances": 96
+      },
+      {
+        "name": "R2-2-15-frame-detail-4",
+        "role": "frame",
+        "type": "RoundedBoxGeometry",
+        "triangles": 56448,
+        "instances": 96
+      },
+      {
+        "name": "R2-3-15-frame-detail-4",
+        "role": "frame",
+        "type": "RoundedBoxGeometry",
+        "triangles": 56448,
+        "instances": 96
+      },
+      {
+        "name": "R2-5-15-rail-post-detail-0",
+        "role": "rail-post",
+        "type": "RoundedBoxGeometry",
+        "triangles": 52920,
+        "instances": 90
+      },
+      {
+        "name": "P04-court-open-fence",
+        "type": "BufferGeometry",
+        "triangles": 51012,
+        "instances": 1
+      },
+      {
+        "name": "R2-1-15-sill-detail-1",
+        "role": "sill",
+        "type": "RoundedBoxGeometry",
+        "triangles": 46656,
+        "instances": 48
+      },
+      {
+        "name": "R2-2-15-sill-detail-1",
+        "role": "sill",
+        "type": "RoundedBoxGeometry",
+        "triangles": 46656,
+        "instances": 48
+      },
+      {
+        "name": "R2-3-15-sill-detail-1",
+        "role": "sill",
+        "type": "RoundedBoxGeometry",
+        "triangles": 46656,
+        "instances": 48
+      },
+      {
+        "name": "R2-1-15-frame-detail-2",
+        "role": "frame",
+        "type": "RoundedBoxGeometry",
+        "triangles": 42336,
+        "instances": 72
+      },
+      {
+        "name": "R2-2-15-frame-detail-2",
+        "role": "frame",
+        "type": "RoundedBoxGeometry",
+        "triangles": 42336,
+        "instances": 72
+      },
+      {
+        "name": "R2-3-15-frame-detail-2",
+        "role": "frame",
+        "type": "RoundedBoxGeometry",
+        "triangles": 42336,
+        "instances": 72
+      },
+      {
+        "name": "R2-4-15-frame-detail-0",
+        "role": "frame",
+        "type": "RoundedBoxGeometry",
+        "triangles": 42336,
+        "instances": 72
+      },
+      {
+        "name": "R2-5-15-frame-detail-0",
+        "role": "frame",
+        "type": "RoundedBoxGeometry",
+        "triangles": 42336,
+        "instances": 72
+      }
+    ],
+    "gpu": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001638) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+  },
+  "mobile": {
+    "view": "b03-library",
+    "verticalScheme": "patch04",
+    "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "glError": 0,
+    "contextLost": false,
+    "calls": 189,
+    "triangles": 2116430,
+    "camera": [
+      73,
+      8.5,
+      237.5
+    ],
+    "noOverflow": true
+  },
+  "access": {
+    "b02": {
+      "routes": [
+        {
+          "id": "gym-main",
+          "label": "主路→低台阶→真门洞→门厅",
+          "supports": 180,
+          "clearances": 270,
+          "maxWaypointRise": 0.15000000000000036,
+          "bad": [],
+          "failures": 0
+        },
+        {
+          "id": "spectator",
+          "label": "前坪→左外梯→上层侧门→短观赛廊",
+          "supports": 381,
+          "clearances": 741,
+          "maxWaypointRise": 0.15000000000000036,
+          "bad": [],
+          "failures": 0
+        },
+        {
+          "id": "front-platform",
+          "label": "观赛层→前平台真正门洞",
+          "supports": 102,
+          "clearances": 129,
+          "maxWaypointRise": 0,
+          "bad": [],
+          "failures": 0
+        },
+        {
+          "id": "music",
+          "label": "绕馆路→既有门前台阶→音乐楼门厅",
+          "supports": 72,
+          "clearances": 144,
+          "maxWaypointRise": 0.15000000000000036,
+          "bad": [],
+          "failures": 0
+        },
+        {
+          "id": "loop",
+          "label": "组团外缘连续绕馆路；不穿共享墙",
+          "supports": 3354,
+          "clearances": 8385,
+          "maxWaypointRise": 0.047844953809926594,
+          "bad": [],
+          "failures": 0
+        }
+      ],
+      "doors": [
+        {
+          "id": "gym-main",
+          "probes": 9,
+          "bad": []
+        },
+        {
+          "id": "spectator",
+          "probes": 9,
+          "bad": []
+        },
+        {
+          "id": "front-platform",
+          "probes": 9,
+          "bad": []
+        },
+        {
+          "id": "music",
+          "probes": 9,
+          "bad": []
+        }
+      ],
+      "sharedWallBlocked": true,
+      "legacyGymCount": 0,
+      "retainedSiteNames": [
+        "P02-GYM-FORECOURT"
+      ]
+    },
+    "b03": {
+      "routes": [
+        {
+          "id": "main-library",
+          "label": "主楼后门—上坡—图书馆门厅",
+          "supports": 237,
+          "clearances": 552,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "gap-library",
+          "label": "15/25桥下—后路—图书馆",
+          "supports": 1353,
+          "clearances": 3342,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "library-garden",
+          "label": "图书馆短门厅—后门—后花园",
+          "supports": 192,
+          "clearances": 399,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "garden-around",
+          "label": "图书馆西侧绕行至后花园（绕开双梯）",
+          "supports": 1464,
+          "clearances": 3660,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "garden-spiral",
+          "label": "花园右起步—右弧梯—圆台—中央上梯—真门洞",
+          "supports": 498,
+          "clearances": 1137,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "garden-spiral-left",
+          "label": "花园左起步—左弧梯—圆台—中央上梯—真门洞",
+          "supports": 456,
+          "clearances": 1032,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "canteen",
+          "label": "已有道路—正面中部楼梯—餐厅门厅",
+          "supports": 225,
+          "clearances": 513,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "shop",
+          "label": "已有道路—正面右侧下层小卖部",
+          "supports": 261,
+          "clearances": 621,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "printing",
+          "label": "已有道路—正面左侧打印门面",
+          "supports": 261,
+          "clearances": 621,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "canteen-perimeter",
+          "label": "食堂外围通行／H局部外缘步道",
+          "supports": 1860,
+          "clearances": 4650,
+          "failures": 0,
+          "bad": []
+        }
+      ],
+      "doors": [
+        {
+          "id": "library-main",
+          "bad": []
+        },
+        {
+          "id": "library-garden",
+          "bad": []
+        },
+        {
+          "id": "spiral-upper",
+          "bad": []
+        },
+        {
+          "id": "canteen-main",
+          "bad": []
+        },
+        {
+          "id": "print-main",
+          "bad": []
+        },
+        {
+          "id": "shop-main",
+          "bad": []
+        }
+      ],
+      "passed": true,
+      "meshCount": 1409
+    },
+    "flags": 3,
+    "roots": {
+      "10": [
+        19,
+        1.8,
+        110
+      ],
+      "11": [
+        167,
+        3.2,
+        152
+      ],
+      "12": [
+        158,
+        3.2,
+        158.7
+      ],
+      "13": [
+        166,
+        3.45,
+        199
+      ],
+      "14": [
+        72,
+        3.3,
+        198
+      ],
+      "15": [
+        73,
+        3.45,
+        224
+      ],
+      "16": [
+        -44,
+        3.372,
+        202
+      ],
+      "17": [
+        129,
+        4.3500000000000005,
+        258
+      ],
+      "18": [
+        73,
+        5.1000000000000005,
+        253
+      ],
+      "19": [
+        76,
+        4.65,
+        277
+      ],
+      "20": [
+        172,
+        3.2,
+        74
+      ],
+      "21": [
+        166,
+        3.45,
+        225
+      ],
+      "23": [
+        108,
+        1.72,
+        183.5
+      ],
+      "24": [
+        -62,
+        3.6,
+        72
+      ],
+      "25": [
+        -10,
+        3.45,
+        224
+      ],
+      "26": [
+        -61,
+        3,
+        80
+      ],
+      "27": [
+        -17,
+        0,
+        1
+      ],
+      "28": [
+        -80,
+        3,
+        118
+      ],
+      "01": [
+        0,
+        0,
+        0
+      ],
+      "02": [
+        17,
+        0,
+        1
+      ],
+      "03": [
+        -45,
+        3.6,
+        45
+      ],
+      "04": [
+        -38,
+        3,
+        76
+      ],
+      "05": [
+        -68.5,
+        3,
+        120
+      ],
+      "06": [
+        -37.5,
+        3.3,
+        120
+      ],
+      "07": [
+        -45,
+        3.165,
+        170
+      ],
+      "08": [
+        73,
+        1.8,
+        114
+      ],
+      "09": [
+        0,
+        3.02875,
+        103
+      ]
+    }
+  },
+  "accessDurationMs": 25195,
+  "invariants": {
+    "axis": [
+      73,
+      73,
+      73
+    ],
+    "mainFloor": 3.45,
+    "shutters": true
+  },
+  "passed": true
+}
