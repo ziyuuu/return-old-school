@@ -1,54 +1,66 @@
-"""Package the exact verified Viewer and privately attributed research Review."""
+"""Package ONLY the exact R2 WebGL-tested Viewer. Research photos stay private."""
 import base64, hashlib, html, json, os, subprocess, urllib.request, zipfile
-from datetime import datetime, timezone
 from pathlib import Path
-R=Path(__file__).resolve().parents[2];Q=R/'qa/m11b-b03';A=R/'artifacts/m11b-b03';P='Yali_M1_1_B_B03_';V=A/(P+'Viewer.html')
-r=json.loads((Q/'browser-report.json').read_text());digest=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
-if not r.get('complete') or not r.get('passed'):raise RuntimeError('Actual browser verification has not passed.')
-if r['viewer_sha256']!=digest(V):raise RuntimeError('Viewer changed after actual screenshot verification.')
-p=json.loads((R/'data/m11b/batch03/input.json').read_text());e=json.loads((R/'data/m11b/batch03/evidence.json').read_text())
-refs=Path(os.environ.get('REFERENCE_DIR','/tmp/yali-b03-reference-only'));refs.mkdir(parents=True,exist_ok=True);photos={}
+from datetime import datetime, timezone
+R=Path(__file__).resolve().parents[2];A=R/'artifacts/m11b-b03';Q=R/'qa/m11b-b03';P='Yali_M1_1_B_B03_'
+p=json.loads((R/'data/m11b/batch03/input.json').read_text());r=json.loads((Q/'browser-report.json').read_text());g=json.loads((Q/'geometry-report.json').read_text());v=A/(P+'Viewer.html')
+sha=lambda f:hashlib.sha256(f.read_bytes()).hexdigest();esc=lambda s:html.escape(str(s),quote=True)
+assert r['complete'] and r['passed'] and g['passed'] and r['version']==p['version']==g['version']
+assert sha(v)==r['viewer_sha256'], 'Viewer changed after screenshot verification'
+shots={x['file']:x for x in r['screenshots']}
+e=json.loads((R/'data/m11b/batch03/evidence.json').read_text());ref=Path(os.getenv('REFERENCE_DIR','/tmp/b03-private-photos'));ref.mkdir(parents=True,exist_ok=True);photos={}
 for item in e['referencePhotos']:
  if item['id'] not in ['S03-049','S03-050','S03-031','S03-032']:continue
- f=refs/(item['id']+'.jpg')
+ f=ref/(item['id']+'.jpg')
  if not f.exists():
-  req=urllib.request.Request(item['url'],headers={'User-Agent':'Mozilla/5.0','Referer':e['page_url']});f.write_bytes(urllib.request.urlopen(req,timeout=60).read())
- if digest(f)!=item['sha256']:raise RuntimeError('Reference hash mismatch: '+item['id'])
+  request=urllib.request.Request(item['url'],headers={'User-Agent':'Mozilla/5.0','Referer':e['page_url']})
+  f.write_bytes(urllib.request.urlopen(request,timeout=60).read())
+ assert sha(f)==item['sha256'], 'Reference photo hash mismatch'
  photos[item['id']]=f
-esc=lambda s:html.escape(str(s),quote=True)
-def image(f,caption,cls=''):
- mime='image/jpeg' if f.suffix=='.jpg' else 'image/png';data=base64.b64encode(f.read_bytes()).decode()
- return f'<figure class="{cls}"><img src="data:{mime};base64,{data}" alt="{esc(caption)}"><figcaption>{esc(caption)}</figcaption></figure>'
-def pair(title,ref,shot,matched,pending):
- return '<section><h2>'+title+'</h2><div class="pair">'+image(photos[ref],ref+' · 原照片（拍摄日期未核实）')+image(Q/shot,shot+' · 实际 Chromium/WebGL 截图')+'</div><p><b>已对应：</b>'+matched+'</p><p class="note"><b>仍为H／差异：</b>'+pending+'</p></section>'
-source=r.get('source_sha') or 'see repository HEAD'
-c=f'''<header><div class="eyebrow">RETURN OLD SCHOOL / 复原雅礼 · M1.1-B</div><h1>B03｜图书馆与后花园<br>食堂与下层小卖部</h1><p class="lead">R1.1 可审阅版 · <strong>IMPLEMENTED / REVIEW_PENDING</strong></p><p>在原校园中完成本批外壳与必要交通空间。B01、B02保持校友已认可状态。工程检查通过，不代表历史比例或本批已获校友认可。</p><nav><a href="{P}Viewer.html">打开同版本 Viewer</a><a href="{P}Access.svg">入口与标高校核图</a></nav><p class="meta">受测源码 <code>{esc(source)}</code><br>Viewer SHA256 <code>{r['viewer_sha256']}</code></p></header><main><section><h2>先看这四处</h2><p>主楼后方上坡与图书馆门口；图书馆内退入口与大窗；后花园宽弧梯的起步、平台和上层开口；食堂上层餐厅与下层小卖部的关系。</p><p>单文件Viewer的“B03 · 入口与建筑视角”可切换上述机位。飞行相机允许穿模；通行结论来自真实场景网格的支撑、身体与头部净空检查，不是最终人物控制器。</p></section>'''
-c+=pair('01 / 图书馆入口','S03-049','b03-photo-library.png','入口内退、深红门框、上部玻璃气窗／百叶、面对正门左侧蓝色区域、外墙攀藤。左右以原照片观察方向核对。','原照只覆盖入口近景，不证明整栋三层或55×15m包络。当前门窗细分、立面比例与简化攀藤密度并非完全吻合；公告内容不编造。')
-c+=pair('02 / 后花园与宽弧形旋梯','S03-050','b03-spiral.png','宽弧梯、开敞内井、实体内侧栏板、金属扶手和落脚空间。原图为三幅局部拼版，不是连贯全景。','半圈、26级、确切位置与二层落点均为H；不可从拼版推出完整花园平面。没有用细杆中心柱式螺旋梯代替。')
-c+='<section><h2>03 / 后花园整体与梯顶入口</h2><div class="pair">'+image(Q/'b03-garden.png','后花园实际画面 · 铺地、曲线低边缘与植物')+image(Q/'b03-spiral-top.png','梯顶实际画面 · 平台后真实开口')+'</div><p>花园与旋梯的存在是A；可见曲线边缘、石铺地和局部结构是P。曲池尺寸、水面解释、树种与分布、上层门位仍为H。当前花园比照片更稀疏，植被精化尚未完成。</p></section>'
-c+=pair('04 / 食堂入口与上下层','S03-031','b03-photo-canteen.png','宽楼梯、较高入口平台、柱列及内退门口的层次。小卖部保留在同一食堂下层。','原图虚焦且局部遮挡，不支持精确整体立面、楼层数或旧牌匾内容。上层数、窗距、20级宽梯和标高继续H。')
-c+='<section><h2>05 / 食堂室内参考不等于完成内装</h2><div class="pair">'+image(photos['S03-032'],'S03-032 原照片 · 食堂大厅内部')+image(Q/'b03-canteen-lobby.png','实际模型 · 仅食堂入口门厅，不是完整餐厅复刻')+'</div><p>此照片只辅助柱网／窗带与空间理解。本批未制作完整餐厅、厨房、成套餐桌椅；这张照片也不是小卖部证据。</p></section>'
-c+='<section><h2>06 / 下层小卖部：没有独立原图</h2><div class="pair">'+image(Q/'b03-shop.png','实际小卖部入口 · 位于食堂下层')+image(Q/'b03-shop-inside.png','实际店内回望 · 真实开口与最小进深')+'</div><p>依据既有下层关系和位置登记进行H级补全。没有独立历史原图与之配对；门扇、开口细部及内部分间不冒称照片复原。没有虚构商品、商号或卷帘门。</p></section>'
-c+='<section><h2>07 / 八条实体路线与五处门洞</h2><div class="table-scroll"><table><thead><tr><th>路线</th><th>实际检查</th><th>支撑采样 / 净空检查</th></tr></thead><tbody>'
-for route in r['access']['routes']:c+=f'<tr><td>{esc(route["label"])}</td><td class="ok">{"通过" if route["failures"]==0 else "未通过"}</td><td>{route["supports"]} / {route["clearances"]}</td></tr>'
-c+='</tbody></table></div><p>五处门洞：图书馆正门、图书馆后门、旋梯上层门、食堂餐厅门、小卖部门。门洞后存在落脚空间。全场景三条横向身体采样与垂直支撑／头部净空检查，不是无障碍或建筑规范认证。</p>'
-s=json.loads((A/'access-model.json').read_text())['summary']
-c+=f'<p class="note">H工作标高：主楼后方地面 +{s["mainRearGround"]:.2f}m → 图书馆前场 +{s["gardenGround"]:.2f}m → 门厅 +{s["libraryFloor"]:.2f}m；旋梯上层 +{s["libraryUpper"]:.2f}m。食堂下层 +{s["canteenLower"]:.2f}m，上层入口 +{s["canteenDining"]:.2f}m。非测绘海拔；未抬高主楼后坪。</p>'
-c+=(A/(P+'Access.svg')).read_text()+'</section><section><h2>08 / 真实场景补充视角</h2><div class="gallery">'
-for name,caption in [('b03-uphill.png','主楼后门出发 · 爬升通路'),('b03-gap.png','15/25桥下方向 · 图书馆通路'),('b03-library.png','图书馆外壳 · 全层数仍H'),('b03-library-lobby.png','图书馆前后最小交通空间'),('b03-garden-plan.png','后花园俯看 · 平面仅为H补全'),('b03-canteen.png','食堂整体 · 上下层关系'),('b03-perimeter.png','食堂外围与家属区间隙'),('b03-overview.png','完整校园中的B03'),('mobile.png','390×844手机viewport · 非物理手机实测')]:c+=image(Q/name,caption,'mobile' if name=='mobile.png' else '')
-c+='</div></section>'
-brief={'version':r['version'],'source_sha':source,'viewer_sha256':r['viewer_sha256'],'passed':r['passed'],'checks':[{'name':q['name'],'passed':q['passed']} for q in r['checks']]}
-c+=f'''<section><h2>09 / 检查依据与边界</h2><p>正常TypeScript/Vite构建、8组定向几何检查、{len(r['checks'])}组真实Chromium检查。截图共{len(r['screenshots'])}张。单HTML离线打开检查无外部场景资源请求，未发现JavaScript/WebGL错误。B01侧返墙卷帘门、B02五条路线／共享墙与三旗主轴做了关联抽查。桌面与390×844 viewport，不是物理手机实测。</p><p>首轮真实报告曾有台阶接缝、后门扇挡旋梯路线的问题，R1.1作局部修订后重新检查；没有修改净空阈值。手机拉远机位落入主楼的问题也已单独修正。</p><p>本批仍待校友审阅。没有完整阅览室、全楼内部交通、餐厅厨房、商品货架或最终人物控制器。三层包络、隐藏立面、精确坡度、后花园格局和小卖部细部保留H。</p><details><summary>原图来源与权利说明</summary><p>“100张旧照片”系列：<a href="{esc(e['page_url'])}">新浪版本</a>；<a href="{esc(e['alternate_page'])}">搜狐较早版本</a>。2018-03-13／2017-08-06为文章发表日期，不等于照片拍摄日期。</p><p>本私下审阅页内嵌已登记SHA256的研究参考副本。照片权利归原作者，未获公共仓库再发布授权；不提交这些照片或内嵌照片的Review到公开仓库，不用作场景贴图。不能从模型反推历史事实。</p></details><details><summary>实际检查摘要</summary><pre>{esc(json.dumps(brief,ensure_ascii=False,indent=2))}</pre></details></section></main><footer>复原雅礼 · B03 R1.1 · 工程PASS / 校友REVIEW_PENDING</footer>'''
-css='''*{box-sizing:border-box}body{margin:0;background:#f3f2ec;color:#21392f;font:16px/1.75 system-ui,-apple-system,"Microsoft YaHei",sans-serif}header,main,footer{max-width:1200px;margin:auto}header{padding:48px 28px 28px}h1{font-size:38px;line-height:1.28;letter-spacing:-.02em}h2{font-size:23px;line-height:1.45;margin:0 0 20px}.eyebrow{font-size:12px;letter-spacing:.16em;color:#63766b}.lead{font-size:19px}section{padding:28px;background:#fffdf8;border-top:1px solid #d4dbcf;margin:0 0 18px;border-radius:10px}nav{display:flex;gap:12px;flex-wrap:wrap}nav a{padding:10px 16px;border:1px solid #728c7a;border-radius:5px;background:#e4ebe1}a{color:#205745;text-decoration:none}code,.meta{font-size:12px;overflow-wrap:anywhere}.meta{margin-top:22px;color:#5d6f62}.pair,.gallery{display:grid;grid-template-columns:1fr 1fr;gap:18px}figure{margin:0;background:#edf0e9;border-radius:5px;overflow:hidden}img{display:block;width:100%;height:auto}figcaption{padding:10px 12px;font-size:12px;line-height:1.55;color:#4f6357}.note{background:#f0eadc;padding:13px 16px;border-left:3px solid #a18745}svg{max-width:100%;height:auto}.gallery{row-gap:24px}.mobile img{max-width:260px;margin:auto}.table-scroll{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:12px;border-bottom:1px solid #d9dfd6}th{background:#eaf0e7}.ok{font-weight:700;color:#276247}pre{font-size:12px;white-space:pre-wrap;overflow-wrap:anywhere}details{margin-top:20px}summary{cursor:pointer;font-weight:650}footer{padding:24px 28px 50px;font-size:12px;color:#6a796e}@media(max-width:700px){header{padding:28px 16px 20px}h1{font-size:29px}h2{font-size:20px}section{padding:18px 16px;margin-bottom:12px;border-radius:0}.pair,.gallery{grid-template-columns:1fr}table{font-size:12px}th,td{padding:8px}.meta{font-size:11px}nav a{font-size:14px}}'''
-review=A/(P+'Review.html');review.write_text('<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>B03 R1.1｜复原雅礼审阅</title><style>'+css+'</style>'+c+'</html>',encoding='utf8')
-(A/(P+'QA.json')).write_text(json.dumps(r,ensure_ascii=False,indent=2),encoding='utf8')
-manifest={'version':p['version'],'status':p['status'],'source_sha':source,'archive_sha':subprocess.check_output(['git','rev-parse','HEAD'],cwd=R,text=True).strip(),'createdAt':datetime.now(timezone.utc).isoformat(),'files':{f.name:digest(f) for f in [V,review,A/(P+'Access.svg'),A/(P+'QA.json')]},'reference_photo_policy':'Private review research only; not public source or scene textures.'}
-(A/'delivery-manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf8')
+
+def picture(f,label):
+ assert f.is_file()
+ mime='image/jpeg' if f.suffix=='.jpg' else 'image/png'
+ return '<figure><img alt="'+esc(label)+'" src="data:'+mime+';base64,'+base64.b64encode(f.read_bytes()).decode()+'"><figcaption>'+esc(label)+'</figcaption></figure>'
+def shot(name,label):
+ assert name in shots, 'Refusing to reuse an older screenshot: '+name
+ return picture(Q/name,label)
+def pair(ref_id,name,label):
+ return '<div class="pair">'+picture(photos[ref_id],ref_id+' · 历史参考原照，拍摄年月未核实')+shot(name,label+' · 同版本实际WebGL截图')+'</div>'
+
+c='<header><small>RETURN OLD SCHOOL / 复原雅礼</small><h1>B03 R2 · 食堂正面与对称双梯</h1><p class="lead">左打印 · 中楼梯 · 右小卖部<br>双侧弧梯 → 中央圆平台（H） → 上层入口</p><p><b>IMPLEMENTED / REVIEW_PENDING</b> · 工程检查通过；等候校友审阅。B01、B02认可保持。</p><nav><a href="'+P+'Viewer.html">打开同版本Viewer</a><a href="#access">入口检查</a><a href="#photos">照片对照</a></nav></header><main>'
+c+='<section><h2>本轮改了什么</h2><p>食堂正面按用户明确的顺序重排，入口对应的楼板、柱列、门厅、打印与小卖部门洞一起调整，不能靠标签交换代替。观察者从−X看向+X，左为−Z，右为+Z。</p><p>图书馆两翼采用同源镜像弧形梯段。中央圆台上方留空，护栏只在外围未通行的弧段，两翼抵达口和上梯口开放。<b>圆台及中央回梯仍是按“似乎”的记忆作H补全，不是已经由照片确认的测绘结果。</b></p><p>继承main R1.1的前台阶接缝、后门向内开启、蓝色区域左右与手机相机修复；没有覆盖已认可B01/B02或改动校园道路。</p></section>'
+c+='<section id="photos"><h2>01 / 食堂正面：左打印｜中楼梯｜右小卖部</h2>'+pair('S03-031','b03-canteen.png','食堂正面三段关系')+'<p>原照提供宽梯、入口进退和柱列线索；三个区域的顺序以此次用户确认为A。尺寸、整体三层包络与店面细部是H。照片虚焦，不从中虚构打印店招牌、商品或商号。</p><div class="pair">'+shot('b03-print.png','左侧打印：真实开口及最低限度室内落脚')+shot('b03-shop.png','右侧小卖部：保持食堂下层，实际门洞')+'</div><p class="note">打印和小卖部没有可独立核实的店面原照；以上两图是实际模型，不是历史照片。位置关系A，门框、门扇和分间H。</p></section>'
+c+='<section><h2>02 / 后花园：对称弧梯、圆平台和中央上行段</h2>'+pair('S03-050','b03-spiral.png','双侧弧梯正面')+'<p>原图是三个局部的拼版，可见弧形混凝土踏步、栏杆和花园曲边，但不能证明完整对称平面。对称关系来自用户确认；圆平台、起步位置、每侧14级和中央12级均为可替换H。</p><div class="pair">'+shot('b03-garden-plan.png','从上方检查两翼镜像、圆平台及接入')+shot('b03-spiral-top.png','中央上梯到二层平台和真门洞')+'</div><p>旧预修版填满圆平台的实心体已移除；新平台下方有支撑。左右路线分别检查，不以右边通过推断左边也通过。</p></section>'
+c+='<section><h2>03 / 保留图书馆入口与主楼后方爬升</h2>'+pair('S03-049','b03-photo-library.png','图书馆原位入口')+'<div class="pair">'+shot('b03-uphill.png','主楼后方到图书馆的上坡')+shot('b03-garden.png','完整后花园与图书馆背侧')+'</div><p>图书馆前坪升高1.20m的工作参数及主楼后坪原标高不改。照片不证明整栋楼层数、隐藏立面、圆池用途或花园完整平面。</p></section>'
+c+='<section><h2>04 / 餐厅门厅范围</h2><div class="pair">'+picture(photos['S03-032'],'S03-032 · 食堂大厅历史参考，不能冒充小卖部原照')+shot('b03-canteen-lobby.png','模型仅完成最小门厅，未复原完整餐厅内装')+'</div></section>'
+c+='<section id="access"><h2>05 / 本轮实际入口与通路检查</h2><p>以下是完整校园场景的三角网格支撑、身体与头部净空检查，不是飞行相机穿墙测试，也不是最终人物控制器或法规认证。</p><div class="table-scroll"><table><thead><tr><th>路径</th><th>结果</th><th>支撑／净空采样</th></tr></thead><tbody>'
+for row in r['access']['routes']:
+ c+='<tr><td>'+esc(row['label'])+'</td><td>'+('通过' if row['failures']==0 else '未通过')+'</td><td>'+str(row['supports'])+' / '+str(row['clearances'])+'</td></tr>'
+c+='</tbody></table></div><p>六处真实门洞：图书馆正门、后门、双梯上层入口、中央食堂入口、左打印、右小卖部。两翼分别走到圆台，再经中央上梯穿过上层门洞。</p>'+(A/(P+'Access.svg')).read_text()+'</section>'
+c+='<section><h2>06 / 手机与全校园位置</h2><div class="pair mobile">'+shot('mobile.png','390×844 · 图书馆手机viewport')+shot('mobile-canteen.png','390×844 · 食堂手机viewport')+'</div>'+shot('b03-overview.png','完整校园中的B03；B01/B02及运动区保持')+'<p>不是物理手机实机测试。Viewer默认电脑显示食堂正面；手机保留已修正的图书馆机位，可从按钮切换食堂、双梯和打印入口。</p></section>'
+brief={k:r[k] for k in ['version','passed','source_sha','viewer_sha256','generatedAt','environment']};brief['checks']=[{'name':x['name'],'passed':x['passed']} for x in r['checks']]
+c+='<section><h2>07 / 版本与证据边界</h2><p>本轮'+str(len(g['checks']))+'组定向几何、'+str(len(r['checks']))+'组真实Chromium检查通过；'+str(len(r['screenshots']))+'张实际模型截图。交付Viewer哈希与受测文件一致，没有将R1.1的成功报告复用于R2。</p><p>未制作完整阅览室、厨房、商品、打印设备或全楼内装。全部场景材料仍为程序化材质，不使用原照片贴图。</p><p>原图来自“100张旧照片”系列。文章来源日期不等于拍摄日期；两个转载版本不算两组独立拍摄证据。仅在这份私下Review内嵌研究参考，不能将此页或原照目录公开提交到仓库。</p><p><a href="'+esc(e['page_url'])+'">新浪来源</a> · <a href="'+esc(e['alternate_page'])+'">较早搜狐版本</a></p><details><summary>受测文件和实际QA摘要</summary><pre>'+esc(json.dumps(brief,ensure_ascii=False,indent=2))+'</pre></details></section></main><footer>B03 R2 · 工程通过 / 校友待审</footer>'
+css='''*{box-sizing:border-box}body{margin:0;background:#f3f2ec;color:#243d32;font:16px/1.75 system-ui,-apple-system,"Microsoft YaHei",sans-serif}header,main,footer{max-width:1180px;margin:auto}header{padding:40px 28px}h1{font-size:36px;line-height:1.25}h2{font-size:23px;line-height:1.45}.lead{font-size:21px}small{letter-spacing:.16em;font-size:12px}section{padding:26px;background:#fffdf8;margin-bottom:20px;border:1px solid #dce2d6;border-radius:8px}.pair{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}figure{margin:0;background:#e9eee5;border-radius:6px;overflow:hidden}img{display:block;width:100%;height:auto}figcaption{font-size:12px;padding:10px 12px}.note{background:#f2ebdc;padding:15px;border-left:3px solid #9a8049}.mobile figure{max-width:275px;margin:auto}nav{display:flex;gap:10px;flex-wrap:wrap}a{color:#285c4a}nav a{padding:8px 16px;background:#e6eddf;border:1px solid #98a78d;border-radius:5px;text-decoration:none}svg{width:100%;height:auto}.table-scroll{overflow:auto}table{border-collapse:collapse;width:100%;font-size:14px}th,td{text-align:left;border-bottom:1px solid #d5dccf;padding:10px}th{background:#e8efdf}pre{font-size:12px;white-space:pre-wrap;overflow-wrap:anywhere}footer{padding:25px;font-size:13px}summary{cursor:pointer}p{overflow-wrap:anywhere}@media(max-width:700px){header{padding:26px 16px}h1{font-size:27px}.lead{font-size:17px}section{padding:18px 14px;border-radius:0}.pair{grid-template-columns:1fr}h2{font-size:20px}.mobile figure{max-width:245px}table{font-size:12px}}'''
+review=A/(P+'Review.html');review.write_text('<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>B03 R2 审阅</title><style>'+css+'</style></head><body>'+c+'</body></html>')
+(A/(P+'QA.json')).write_text(json.dumps(r,ensure_ascii=False,indent=2))
+# Real HTML rendering verifies the delivery page, separately from WebGL model tests.
+from playwright.sync_api import sync_playwright
+with sync_playwright() as pw:
+ opts={'headless':True,'args':['--no-sandbox']}
+ if os.getenv('CHROMIUM_PATH'):opts['executable_path']=os.environ['CHROMIUM_PATH']
+ b=pw.chromium.launch(**opts);page=b.new_page(viewport={'width':1280,'height':900});page.set_content(review.read_text(),wait_until='load');page.wait_for_function('Array.from(document.images).every(i=>i.complete&&i.naturalWidth>0)');count=page.locator('img').count();assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
+ page.locator('#photos .pair').first.screenshot(path=str(A/'R2-canteen-compare.png'))
+ page.set_viewport_size({'width':390,'height':844});assert page.evaluate('document.documentElement.scrollWidth<=innerWidth');b.close()
+ manifest={'version':p['version'],'status':p['status'],'source_sha':r['source_sha'],'archive_sha':subprocess.check_output(['git','rev-parse','HEAD'],cwd=R,text=True).strip(),'createdAt':datetime.now(timezone.utc).isoformat(),'viewer_matches_actual_capture':True,'review_rendered_images':count,'files':{f.name:sha(f) for f in [v,review,A/(P+'Access.svg'),A/(P+'QA.json')]}}
+(A/'delivery-manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2))
 tracked=subprocess.check_output(['git','ls-files','-z'],cwd=R).decode().split('\0');workspace=A/(P+'Workspace.zip')
 with zipfile.ZipFile(workspace,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
  for name in tracked:
   f=R/name
   if name and f.is_file() and not name.startswith(('artifacts/','node_modules/')) and f.suffix.lower() not in ('.ttf','.otf','.woff','.woff2'):z.write(f,'return-old-school/'+name)
- for f in [V,review,A/(P+'Access.svg'),A/(P+'QA.json'),A/'delivery-manifest.json',A/'THIRD_PARTY_NOTICES.txt',A/'access-model.json']:z.write(f,'return-old-school/delivery/'+f.name)
- z.writestr('return-old-school/START_HERE.txt','B03 R1.1 review delivery\nOpen delivery/'+P+'Viewer.html in a WebGL2 browser.\nReview includes privately attributed research photographs; do not republish as public source.\nContinue: npm ci --prefix apps/campus; npm run dev --prefix apps/campus.\nBuild: npm run build --prefix apps/campus.\nExport: node tools/m11b-b03/export.mjs\nQA: python tools/m11b-b03/capture.py (Playwright + Chromium).\nPackage: python tools/m11b-b03/package.py (network to registered photo URLs, or REFERENCE_DIR).\nB01/B02 COMPLETE / ALUMNI_APPROVED; B03 IMPLEMENTED / REVIEW_PENDING.\nSource: '+source+'\n')
-print(json.dumps({'viewer':str(V),'review':str(review),'workspace':str(workspace),'workspace_bytes':workspace.stat().st_size,'viewer_sha256':digest(V)},indent=2))
+ for f in [v,review,A/(P+'Access.svg'),A/(P+'QA.json'),A/'delivery-manifest.json',A/'THIRD_PARTY_NOTICES.txt',A/'access-model.json',A/'R2-canteen-compare.png']:z.write(f,'return-old-school/delivery/'+f.name)
+ for f in photos.values():z.write(f,'return-old-school/research/b03-references/'+f.name)
+ z.writestr('return-old-school/START_HERE.txt','B03 R2 / IMPLEMENTED / REVIEW_PENDING\nOpen delivery/'+P+'Viewer.html and '+P+'Review.html.\nSource '+r['source_sha']+'\nContinue: npm ci --prefix apps/campus; npm run dev --prefix apps/campus\nBuild/export/check: tools/m11b-b03/ and docs/m11b/batch03/delivery.md\nPrivate research images/Review must not be pushed to public GitHub. No font files.\nB01 and B02 remain ALUMNI_APPROVED.\n')
+ z.writestr('return-old-school/research/.gitignore','*\n!.gitignore\n')
+print(json.dumps({'version':p['version'],'workspace_bytes':workspace.stat().st_size,'viewer_sha256':sha(v),'review_images':count},indent=2))

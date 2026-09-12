@@ -5,13 +5,16 @@ const clamp=v=>Math.max(0,Math.min(1,v));
 export function applyB03Layout(base,p){
  const l=structuredClone(base);
  for(const id of ['18','11']){const f=l.facilities.find(f=>f.id===id),s=id==='18'?p.library:p.canteen;f.floors=s.floors;f.size[1]=s.floors*s.floorHeight;f.note=s.basis;}
+ // The requested shop relocation updates its effective subspace metadata, not the canteen or campus plan.
+ const shop=l.facilities.find(f=>f.id==='12'),[sx,sz,ex,ez]=p.shop.bounds;shop.position=[(sx+ex)/2,shop.position[1],(sz+ez)/2];shop.size=[ex-sx,shop.size[1],ez-sz];
  const entries=[{id:'18-front',facilityId:'18',position:[73,0,p.library.doorZ],facing:[0,0,-1],width:p.library.doorWidth,status:'A axis and approach; P recessed front entrance; H exact doorway'},
  {id:'18-rear',facilityId:'18',position:[73,0,260.5],facing:[0,0,1],width:p.library.rearDoorWidth,status:'H minimal lobby exit to A rear garden'},
- {id:'18-spiral',facilityId:'18',position:[p.spiral.center[0]-(p.spiral.innerRadius+p.spiral.outerRadius)/2,0,260.5],facing:[0,0,1],status:'P curved stair / H exact upper doorway'},
+ {id:'18-spiral',facilityId:'18',position:[p.spiral.center[0],0,260.5],facing:[0,0,1],status:'A symmetric flights; H round landing and exact upper doorway'},
  {id:'11-front',facilityId:'11',position:[p.canteen.doorX,0,p.canteen.stair.centerZ],facing:[-1,0,0],width:p.canteen.doorWidth,status:'P stair/upper entrance; H recessed wall and level'},
+ {id:'11-print',facilityId:'11',position:[p.canteen.printing.doorX,0,p.canteen.printing.doorZ],facing:[-1,0,0],width:p.canteen.printing.doorWidth,status:'A observer-left printing / H aperture details'},
  {id:'12-front',facilityId:'12',position:[p.shop.doorX,0,p.shop.doorZ],facing:[-1,0,0],width:p.shop.doorWidth,status:'R canteen lower shop / H retained location and open doorway'}];
  for(const e of entries){const i=l.entrances.findIndex(q=>q.id===e.id);if(i<0)l.entrances.push(e);else l.entrances[i]={...l.entrances[i],...e};}
- l.batch03={version:p.version,status:p.status,relatedFacilities:['18','19','11','12'],localException:'A library approach climbs; H local terrain lift only behind z232.8. Existing road nodes/widths and facility X/Z unchanged.'};
+ l.batch03={version:p.version,status:p.status,relatedFacilities:['18','19','11','12'],localException:'A library approach climbs; H local terrain lift only behind z232.8. Existing road nodes/widths and building footprints unchanged; A relocation of subspace12 inside11 only.'};
  return l;
 }
 export function adaptB03Terrain(base,layout,p){
@@ -46,8 +49,8 @@ export function buildB03Model(layout,terrain,p){
   if(f===0){wall('18','frontL','x',front,left,67,y,y+lh,holes);wall('18','frontR','x',front,79,right,y,y+lh,holes);wall('18','recess','x',L.doorZ,67,79,y,y+lh,[[71.1,74.9,y,y+L.doorHeight],[70.4,75.6,y+L.doorHeight,y+3.25]]);wall('18','returnL','z',67,front,L.doorZ,y,y+lh);wall('18','returnR','z',79,front,L.doorZ,y,y+lh);door('18','library-main','x',L.doorZ,73,y,L.doorWidth,L.doorHeight);frame('18','mainTransom','x',L.doorZ-.03,70.4,75.6,y+L.doorHeight+.06,y+3.25,20);for(let j=0;j<5;j++)box('18','entryLouvre'+j,'louvre',[70.4,y+3.30+j*.065,L.doorZ-.08],[75.6,y+3.325+j*.065,L.doorZ+.025],20);box('18','blueNotice','notice-panel',[76,y+.7,L.doorZ-.16],[78.2,y+2.9,L.doorZ-.13],21);}
   else{holes.push([70.5,75.5,y+1,y+3.15]);frame('18','centralWindow'+f,'x',front-.02,70.5,75.5,y+1,y+3.15);wall('18','front'+f,'x',front,left,right,y,y+lh,holes);}
   for(const k of [left,right]){const h=[[248.5,251,y+1,y+3.05],[254,257.7,y+1,y+3.05]];wall('18','side'+f+'-'+k,'z',k,front,rear,y,y+lh,h);for(const [i,v]of h.entries())frame('18','sideW'+f+'-'+k+'-'+i,'z',k,...v);}
-  const rholes=[],topX=p.spiral.center[0]-(p.spiral.innerRadius+p.spiral.outerRadius)/2;
-  for(const x of [49.5,60.6,66.8,79.2,85.4,91.6,97]){rholes.push([x-2.0,x+2.0,y+.95,y+3.1]);frame('18','rearW'+f+'-'+x,'x',rear+.03,x-2,x+2,y+.95,y+3.1);}
+  const rholes=[],topX=p.spiral.center[0];
+  for(const x of [49.5,60.6,66.8,79.2,85.4,91.6,97]){if(f===1&&Math.abs(x-topX)<3.3)continue;rholes.push([x-2.0,x+2.0,y+.95,y+3.1]);frame('18','rearW'+f+'-'+x,'x',rear+.03,x-2,x+2,y+.95,y+3.1);}
   if(f===0){rholes.push([71.6,74.4,y,y+2.8]);door('18','library-garden','x',rear,73,y,2.8,2.8);}
   if(f===1){rholes.push([topX-1.25,topX+1.25,y,y+2.8]);door('18','spiral-upper','x',rear,topX,y,2.5,2.8);}
   wall('18','rear'+f,'x',rear,left,right,y,y+lh,rholes);
@@ -64,26 +67,44 @@ export function buildB03Model(layout,terrain,p){
  for(const z of [front,rear])box('18','roofParapet'+z,'parapet',[left,ly+3*lh+.2,z-.13],[right,ly+3*lh+.58,z+.13],14);
  // A covered rear landing and upper receiving platform are part of the building, not floating stair doors.
  box('18','rearGroundLanding','floor',[49,ly-.24,rear],[79,ly,262.4],15);
- box('18','rearUpperLanding','floor',[49,ly+lh-.24,rear],[66.5,ly+lh,262.2],15);
- const topX=p.spiral.center[0]-(p.spiral.innerRadius+p.spiral.outerRadius)/2;
- rail('18','upperEdgeL',[49,262.2],[topX-1.18,262.2],ly+lh);rail('18','upperEdgeR',[topX+1.18,262.2],[66.5,262.2],ly+lh);rail('18','upperEnd',[66.5,260.5],[66.5,262.2],ly+lh);
- for(const x of [49.3,65.7,78.7])box('18','rearColumn'+x,'column',[x-.15,gy,262.15],[x+.15,ly+lh-.24,262.45],14);
+ box('18','rearUpperLanding','floor',[55.8,ly+lh-.24,rear],[61.2,ly+lh,262.2],15);
+ const topX=p.spiral.center[0];
+ rail('18','upperEdgeL',[55.8,262.2],[topX-p.spiral.upperWidth/2-.06,262.2],ly+lh);rail('18','upperEdgeR',[topX+p.spiral.upperWidth/2+.06,262.2],[61.2,262.2],ly+lh);rail('18','upperEndL',[55.8,260.5],[55.8,262.2],ly+lh);rail('18','upperEndR',[61.2,260.5],[61.2,262.2],ly+lh);
+ for(const x of [56.0,61.0,78.7])box('18','rearColumn'+x,'column',[x-.15,gy,262.15],[x+.15,ly+lh-.24,262.45],14);
  for(let i=0;i<3;i++)box('18','gardenStep'+i,'step',[71.3,gy,263.6-.4*(i+1)],[74.7,gy+.15*(i+1),263.6-.4*i],6);
  // Photo-visible green lower dado; no foliage may cover door clearance.
  wall('18','rearDado','x',rear+.14,left,right,ly,ly+.8,[[71.5,74.5,ly,ly+.8]],13,.035);
  let seed=3050;const rnd=()=>{seed=(1664525*seed+1013904223)>>>0;return seed/4294967296;};
  for(const [n,x0,x1,y0,y1,z]of [['left',46,66,ly+.4,ly+7.8,front-.19],['head',67,79,ly+3.8,ly+5.0,front-.22],['right',81,90,ly+.5,ly+5.0,front-.18]])for(let i=0;i<160;i++){const x=x0+rnd()*(x1-x0),y=y0+rnd()*(y1-y0);if(Math.sin(x*1.1+y*.5)+Math.sin(y*1.7)<-.45)continue;leaf('18','ivy-'+n+'-'+i,[x,y,z],[.19+rnd()*.16,.18+rnd()*.17,.08],i%3?13:1);}
- // Wide curved stair: annular concrete treads and open central well (no pole).
- const S=p.spiral,[cx,cz]=S.center,rm=(S.innerRadius+S.outerRadius)/2,xy=(r,a)=>[cx+r*Math.cos(a),cz+r*Math.sin(a)],arc=(r,a,b,n=4)=>Array.from({length:n+1},(_,i)=>xy(r,a+(b-a)*i/n));
- const stairPoints=[[cx+rm,ly,261.7]];
- for(let i=0;i<S.steps;i++){
-  const a=S.startAngle+i*S.sweep/S.steps,b=S.startAngle+(i+1)*S.sweep/S.steps,y=ly+(i+1)*S.rise/S.steps;
-  poly('19','curvedTread'+i,'step',[...arc(S.outerRadius,a,b),...arc(S.innerRadius,b,a)],y-.23,y,6,'P curved flight / H tread dimensions');
-  poly('19','innerParapet'+i,'parapet',[...arc(S.innerRadius+.13,a,b),...arc(S.innerRadius-.06,b,a)],y-.30,y+.78,14,'P tiled inner parapet');
-  for(const r of [S.innerRadius+.025,S.outerRadius-.08]){const qa=xy(r,a),qb=xy(r,b),ya=ly+i*S.rise/S.steps;rod('19','curveRail'+i+'-'+r,[qa[0],ya+1.01,qa[1]],[qb[0],y+1.01,qb[1]],.045,16);if(i%2===0)rod('19','curvePost'+i+'-'+r,[qa[0],ya+.02,qa[1]],[qa[0],ya+1.01,qa[1]],.031,16);}
-  const q=xy(rm,(a+b)/2);stairPoints.push([q[0],y,q[1]]);
+ // A symmetric pair of curved flights. The round middle landing is H, not verified from the collage.
+ const S=p.spiral,[cx,cz]=S.center,midY=gy+S.midRiseFromGarden,topY=ly+lh;
+ const circle=Array.from({length:64},(_,i)=>[cx+S.midPlatformRadius*Math.cos(i*Math.PI/32),cz+S.midPlatformRadius*Math.sin(i*Math.PI/32)]);
+ poly('19','roundPlatform','floor',circle,midY-.24,midY,15,'H central round landing suggested by alumni recollection');
+ // Supports stay below the landing. Nothing fills its walkable disk above the floor.
+ for(const sign of [-1,1])rod('19','roundSupport'+sign,[cx+sign*.9,gy,cz+.5],[cx+sign*.9,midY-.24,cz+.5],.18,14,'column');
+ const bezier=(points,t)=>{const u=1-t;return [0,1].map(k=>u*u*u*points[0][k]+3*u*u*t*points[1][k]+3*u*t*t*points[2][k]+t*t*t*points[3][k]);};
+ function flight(name,centres,y0,y1,width){
+  const n=centres.length-1,edges=centres.map((q,i)=>{const a=centres[Math.max(0,i-1)],b=centres[Math.min(n,i+1)],dx=b[0]-a[0],dz=b[1]-a[1],l=Math.hypot(dx,dz);return [[q[0]-dz/l*width/2,q[1]+dx/l*width/2],[q[0]+dz/l*width/2,q[1]-dx/l*width/2]];});
+  const points=[];points.push([centres[0][0],y0,centres[0][1]]);
+  for(let i=0;i<n;i++){
+   const a=centres[i],b=centres[i+1],dx=b[0]-a[0],dz=b[1]-a[1],len=Math.hypot(dx,dz),over=.008,y=y0+(y1-y0)*(i+1)/n;
+   const e0=edges[i].map(q=>[q[0]-dx/len*over,q[1]-dz/len*over]),e1=edges[i+1].map(q=>[q[0]+dx/len*over,q[1]+dz/len*over]);
+   poly('19',name+'Tread'+i,'step',[e0[0],e1[0],e1[1],e0[1]],y-.25,y,6,'A symmetric / P concrete curved treads / H rise and run');
+   points.push([(a[0]+b[0])/2,y,(a[1]+b[1])/2]);
+   for(const side of [0,1]){const qa=edges[i][side],qb=edges[i+1][side],ya=y0+(y1-y0)*i/n;rod('19',name+'Rail'+side+'-'+i,[qa[0],ya+1.02,qa[1]],[qb[0],y+1.02,qb[1]],.043,16);if(i%2===0)rod('19',name+'Post'+side+'-'+i,[qa[0],ya,qa[1]],[qa[0],ya+1.02,qa[1]],.03,16);}
+   if(i===Math.floor(n/2)){const x=(a[0]+b[0])/2,z=(a[1]+b[1])/2;rod('19',name+'Support',[x,gy,z],[x,y-.25,z],.15,14,'column');}
+  }
+  points.push([centres[n][0],y1,centres[n][1]]);return points;
  }
- stairPoints.push([topX,ly+lh,261.7],[topX,ly+lh,259.1],[topX,ly+lh,257.9]);
+ const rightCentres=Array.from({length:S.lowerStepsPerSide+1},(_,i)=>bezier(S.rightControlOffsets,i/S.lowerStepsPerSide).map((v,k)=>v+(k?cz:cx))),leftCentres=rightCentres.map(([x,z])=>[2*cx-x,z]);
+ const rightFlight=flight('rightWing',rightCentres,gy,midY,S.lowerWidth),leftFlight=flight('leftWing',leftCentres,gy,midY,S.lowerWidth);
+ const upperStartZ=cz-1.7,upperCentres=Array.from({length:S.upperSteps+1},(_,i)=>[cx,upperStartZ+(S.upperEndZ-upperStartZ)*i/S.upperSteps]);
+ const upperFlight=flight('upper',upperCentres,midY,topY,S.upperWidth);
+ // Guard only unused arcs of the circle. Side arrivals and the upper-run opening stay empty.
+ for(const [j,[start,end]]of [[0,[.52,Math.PI-.52]],[1,[Math.PI+.52,1.5*Math.PI-.715]],[2,[1.5*Math.PI+.715,2*Math.PI-.52]]]){const n=Math.ceil((end-start)*12);for(let i=0;i<n;i++){const a=start+(end-start)*i/n,b=start+(end-start)*(i+1)/n;rail('19','roundGuard'+j+'-'+i,[cx+S.midPlatformRadius*Math.cos(a),cz+S.midPlatformRadius*Math.sin(a)],[cx+S.midPlatformRadius*Math.cos(b),cz+S.midPlatformRadius*Math.sin(b)],midY);}}
+ const upperRoute=[[cx,midY,cz],...upperFlight,[cx,topY,261.65],[cx,topY,259.2],[cx,topY,257.9]];
+ const stairPoints=[...rightFlight,...upperRoute],stairLeftPoints=[...leftFlight,...upperRoute];
+ const stairPlan={center:S.center,radius:S.midPlatformRadius,leftCentres,rightCentres,upperCentres,midY,bottom:gy,top:topY};
  // Garden stone terrace and curved low basin/seat edge, exactly linked to the rear steps.
  const B=p.garden.pavingBounds;
  for(let z=B[1];z<B[3];z+=1)for(let x=B[0];x<B[2];x+=1){const xe=Math.min(x+1,B[2]),ze=Math.min(z+1,B[3]),y=terrain.groundHeight((x+xe)/2,(z+ze)/2)+.035;box('19','pave'+x+'-'+z,'paving',[x,y-.10,z],[xe,y,ze],(Math.floor(x+z)%11===0)?6:2);}
@@ -91,46 +112,53 @@ export function buildB03Model(layout,terrain,p){
  poly('19','basin','basin',outline,gy+.03,gy+.11,4,'P curved depression / H dark surface state');
  for(let i=0;i<n;i++){const a=i/n*Math.PI*2,b=(i+1)/n*Math.PI*2,q=outline[i],r=outline[(i+1)%n],qa=[q[0]+.32*Math.cos(a),q[1]+.32*Math.sin(a)],rb=[r[0]+.32*Math.cos(b),r[1]+.32*Math.sin(b)];poly('19','basinEdge'+i,'seat-edge',[q,r,rb,qa],gy,gy+.42,14,'P low curved edge / H dimensions');}
  for(const [i,t]of p.garden.trees.entries()){const [x,z,h,r]=t,by=terrain.groundHeight(x,z);box('19','bed'+i,'planter',[x-r,by,z-r*.65],[x+r,by+.42,z+r*.65],6);box('19','soil'+i,'planting',[x-r+.12,by+.42,z-r*.65+.12],[x+r-.12,by+.47,z+r*.65-.12],1);rod('19','trunk'+i,[x,by+.46,z],[x-.15,by+h-.2,z+.1],.15,11,'tree-trunk');for(let j=0;j<7;j++)leaf('19','crown'+i+'-'+j,[x+(rnd()-.5)*r,by+h+(rnd()-.4)*r,z+(rnd()-.5)*r],[r*.74,r*.53,r*.74],j%2?1:13);}
- // Canteen: lower shop/undercroft + dining entrance one level up. Stair stays inside the existing footprint.
+ // Canteen front faces -X. Observer-left is -Z; observer-right is +Z.
  const C=p.canteen,cy=terrain.anchors['11'].floor+C.floorOffset,ch=C.floorHeight,dy=cy+ch,st=C.stair,z0=st.centerZ-st.width/2,z1=st.centerZ+st.width/2;
  box('11','groundFloor','floor',[145,cy-.18,141],[189,cy,163],6);
- for(const x of [145.35,166,188.65])for(const z of [141.4,153.0,162.6])box('11','baseColumn'+x+'-'+z,'column',[x-.19,cy,z-.19],[x+.19,dy-.24,z+.19],14);
- // Divided upper slab leaves the entire real stairwell empty, with a landing at its end.
- box('11','diningSlabRear','floor',[151,dy-.24,141],[189,dy,163],15);
- box('11','diningSlabNorth','floor',[145,dy-.24,141],[151,dy,z0],15);
- box('11','diningSlabSouth','floor',[145,dy-.24,z1],[151,dy,163],15);
+ for(const x of [145.35,166,188.65])for(const z of [141.4,162.6])box('11','baseColumn'+x+'-'+z,'column',[x-.19,cy,z-.19],[x+.19,dy-.24,z+.19],14);
+ // Slab opening matches the moved central stair, rather than covering its last steps.
+ box('11','diningSlabRear','floor',[st.endX,dy-.24,141],[189,dy,163],15);
+ box('11','diningSlabLeft','floor',[145,dy-.24,141],[st.endX,dy,z0],15);
+ box('11','diningSlabRight','floor',[145,dy-.24,z1],[st.endX,dy,163],15);
  for(let f=1;f<C.floors;f++){
   const y=cy+f*ch,holes=[];
-  for(const z of [144.2,149.7]){holes.push([z-2.1,z+2.1,y+.9,y+3.0]);frame('11','westWin'+f+'-'+z,'z',144.96,z-2.1,z+2.1,y+.9,y+3.0);}
-  if(f===1){wall('11','westNorth','z',145,141,z0,y,y+ch,holes);wall('11','westSouth','z',145,z1,163,y,y+ch);wall('11','entryRecess','z',C.doorX,z0,z1,y,y+ch,[[st.centerZ-C.doorWidth/2,st.centerZ+C.doorWidth/2,y,y+C.doorHeight]]);door('11','canteen-main','z',C.doorX,st.centerZ,y,C.doorWidth,C.doorHeight,6);wall('11','recessReturn','x',z0,145,C.doorX,y,y+ch);wall('11','recessReturnS','x',z1,145,C.doorX,y,y+ch);}
-  else{holes.push([154.8,159.9,y+.9,y+3.0]);frame('11','westWinUpper','z',144.96,154.8,159.9,y+.9,y+3);wall('11','westUpper','z',145,141,163,y,y+ch,holes);box('11','upperSlab','floor',[145,y-.24,141],[189,y,163],15);}
+  for(const z of [145.2,158.8]){holes.push([z-2.1,z+2.1,y+.9,y+3]);frame('11','westWin'+f+'-'+z,'z',144.96,z-2.1,z+2.1,y+.9,y+3);}
+  if(f===1){wall('11','westLeft','z',145,141,z0,y,y+ch,holes);wall('11','westRight','z',145,z1,163,y,y+ch,holes);wall('11','entryRecess','z',C.doorX,z0,z1,y,y+ch,[[st.centerZ-C.doorWidth/2,st.centerZ+C.doorWidth/2,y,y+C.doorHeight]]);door('11','canteen-main','z',C.doorX,st.centerZ,y,C.doorWidth,C.doorHeight,6);for(const z of [z0,z1])wall('11','recessReturn'+z,'x',z,145,C.doorX,y,y+ch);}
+  else{holes.push([150,154,y+.9,y+3]);frame('11','westWinUpper','z',144.96,150,154,y+.9,y+3);wall('11','westUpper','z',145,141,163,y,y+ch,holes);box('11','upperSlab','floor',[145,y-.24,141],[189,y,163],15);}
   for(const z of [141,163]){const hs=[];for(let x=150;x<188;x+=6.8){hs.push([x-2.4,x+2.4,y+.9,y+2.9]);frame('11','sideWin'+f+'-'+x+'-'+z,'x',z,x-2.4,x+2.4,y+.9,y+2.9);}wall('11','longSide'+f+'-'+z,'x',z,145,189,y,y+ch,hs);}
   wall('11','back'+f,'z',189,141,163,y,y+ch,[[143,148,y+1,y+2.9],[153,159,y+1,y+2.9]]);for(const q of [[143,148],[153,159]])frame('11','backWin'+f+'-'+q[0],'z',189,...q,y+1,y+2.9);
  }
- for(let i=0;i<st.steps;i++){const a=st.startX+(st.endX-st.startX)*i/st.steps,b=st.startX+(st.endX-st.startX)*(i+1)/st.steps;box('11','entryTread'+i,'step',[a,cy,z0],[b,cy+(i+1)*st.rise/st.steps,z1],6,'P broad entry stair / H exact count');}
- for(const z of [z0+.10,z1-.10]){rod('11','stairRail'+z,[145,cy+1.03,z],[151,dy+1.03,z],.05);for(let i=0;i<=st.steps;i+=3){const x=145+6*i/st.steps,y=cy+st.rise*i/st.steps;rod('11','stairPost'+z+'-'+i,[x,y,z],[x,y+1.03,z],.033);}}
- box('11','lobbyBack','wall',[161.3,dy,154.4],[161.5,dy+ch-.24,162],14);
- box('11','roof','roof',[144.7,cy+3*ch,140.7],[189.3,cy+3*ch+.24,163.3],15);
- for(const z of [141,163])box('11','roofEdge'+z,'parapet',[145,cy+3*ch+.24,z-.12],[189,cy+3*ch+.67,z+.12]);
- // Shop remains wholly within 11. All lower legacy solid shop blocks will be bypassed.
- const K=p.shop,ky=terrain.anchors['12'].floor+.04,kz=K.doorZ;
- wall('12','shopFront','z',K.doorX,144,154,ky,ky+3.35,[[kz-K.doorWidth/2,kz+K.doorWidth/2,ky,ky+K.doorHeight]]);door('12','shop-main','z',K.doorX,kz,ky,K.doorWidth,K.doorHeight,6);
- for(const z of [144,154])wall('12','shopSide'+z,'x',z,151,165,ky,ky+3.35);wall('12','shopBack','z',165,144,154,ky,ky+3.35);box('12','shopCeiling','floor',[151,ky+3.32,144],[165,ky+3.48,154],15);
+ for(let i=0;i<st.steps;i++){const a=st.startX+(st.endX-st.startX)*i/st.steps,b=st.startX+(st.endX-st.startX)*(i+1)/st.steps;box('11','entryTread'+i,'step',[a,cy,z0],[b+.005,cy+(i+1)*st.rise/st.steps,z1],6,'A central / P broad entry stair / H count');}
+ for(const z of [z0+.1,z1-.1]){rod('11','stairRail'+z,[st.startX,cy+1.03,z],[st.endX,dy+1.03,z],.05);for(let i=0;i<=st.steps;i+=3){const x=st.startX+(st.endX-st.startX)*i/st.steps,y=cy+st.rise*i/st.steps;rod('11','stairPost'+z+'-'+i,[x,y,z],[x,y+1.03,z],.033);}}
+ box('11','lobbyBack','wall',[161.3,dy,z0],[161.5,dy+ch-.24,z1],14);
+ box('11','roof','roof',[144.7,cy+C.floors*ch,140.7],[189.3,cy+C.floors*ch+.24,163.3],15);
+ for(const z of [141,163])box('11','roofEdge'+z,'parapet',[145,cy+C.floors*ch+.24,z-.12],[189,cy+C.floors*ch+.67,z+.12]);
+ function storefront(owner,name,K){const [x0,z0,x1,z1]=K.bounds,y=cy;wall(owner,name+'Front','z',K.doorX,z0,z1,y,y+3.35,[[K.doorZ-K.doorWidth/2,K.doorZ+K.doorWidth/2,y,y+K.doorHeight]]);door(owner,name+'-main','z',K.doorX,K.doorZ,y,K.doorWidth,K.doorHeight,6);for(const z of [z0,z1])wall(owner,name+'Side'+z,'x',z,x0,x1,y,y+3.35);wall(owner,name+'Back','z',x1,z0,z1,y,y+3.35);box(owner,name+'Ceiling','floor',[x0,y+3.32,z0],[x1,y+3.48,z1],15);}
+ storefront('11','print',C.printing);storefront('12','shop',p.shop);
+ const K=p.shop,ky=cy,kz=K.doorZ;
  // Short new access paving, joined to existing road/terrain, never crossing another building.
  function path(id,name,ps,width=2.2){for(let k=1;k<ps.length;k++){const a=ps[k-1],b=ps[k],dx=b[0]-a[0],dz=b[1]-a[1],len=Math.hypot(dx,dz),n=Math.ceil(len/.5),nx=-dz/len*width/2,nz=dx/len*width/2;for(let i=0;i<n;i++){const x=a[0]+dx*i/n,z=a[1]+dz*i/n,xx=a[0]+dx*(i+1)/n,zz=a[1]+dz*(i+1)/n,y=terrain.groundHeight((x+xx)/2,(z+zz)/2)+.04;poly(id,name+k+'-'+i,'paving',[[x+nx,z+nz],[xx+nx,zz+nz],[xx-nx,zz-nz],[x-nx,z-nz]],y-.15,y,2);}}}
- path('19','westGardenPath',[[73,242],[43,242],[43,269],[68,269],[73,270]],2.4);path('11','canteenApproach',[[142,152],[142,157.5],[145,157.5]],2.4);path('12','shopApproach',[[142,152],[142,149],[151,149]],2.4);path('11','perimeterWalk',[[142,166],[142,137],[192,137],[192,166]],2.2);
+ const gardenBypass=[[73,242],[43,242],[43,275],[70.5,275],[71.5,270],[73,270]];
+ path('19','westGardenPath',gardenBypass,2.4);
+ path('11','canteenApproach',[[142,152],[145,152]],2.4);
+ path('12','shopApproach',[[142,152],[142,K.doorZ],[151,K.doorZ]],2.4);
+ path('11','printApproach',[[142,152],[142,C.printing.doorZ],[151,C.printing.doorZ]],2.4);
+ path('11','perimeterWalk',[[142,166],[142,137],[192,137],[192,166]],2.2);
  const gp=ps=>{const result=[];for(let k=1;k<ps.length;k++){const a=ps[k-1],b=ps[k],n=Math.ceil(Math.hypot(a[0]-b[0],a[1]-b[1])/.4);for(let i=0;i<n;i++){const x=a[0]+(b[0]-a[0])*i/n,z=a[1]+(b[1]-a[1])*i/n;result.push([x,terrain.groundHeight(x,z)+.04,z]);}}const a=ps.at(-1);result.push([a[0],terrain.groundHeight(...a)+.04,a[1]]);return result;};
  const libSteps=Array.from({length:3},(_,i)=>[73,terrain.anchors['18'].site+.04+(i+1)*.15,243.6+1.9*(i+.5)/3]);
  const libEnd=[...libSteps,[73,ly,245.5],[73,ly,246.4],[73,ly,248.0],[73,ly,251.0]];
  routes.push({id:'main-library',label:'主楼后门—上坡—图书馆门厅',points:[...gp([[73,232.8],[73,239],[73,243.6]]),...libEnd]});
  routes.push({id:'gap-library',label:'15/25桥下—后路—图书馆',points:[...gp([[6.5,224],[6.5,238],[30,239],[73,239],[73,243.6]]),...libEnd]});
  const rearSteps=Array.from({length:3},(_,i)=>[73,ly-.15*i,262.6+.4*i]);
- routes.push({id:'library-garden',label:'图书馆短门厅—后门—后花园',points:[[73,ly,251],[73,ly,258.8],[73,ly,261.4],[73,ly,262.35],...rearSteps,...gp([[73,263.8],[73,270],[68,270]])]});
- routes.push({id:'garden-around',label:'图书馆西侧绕行至后花园',points:gp([[73,242],[43,242],[43,269],[68,269],[73,270]])});
- routes.push({id:'garden-spiral',label:'后花园—低台阶—弧梯—二层真门洞',points:[...gp([[73,270],[73,263.8]]),...rearSteps.toReversed(),[73,ly,261.3],[cx+rm,ly,261.3],...stairPoints]});
+ routes.push({id:'library-garden',label:'图书馆短门厅—后门—后花园',points:[[73,ly,251],[73,ly,258.8],[73,ly,261.4],[73,ly,262.35],...rearSteps,...gp([[73,263.8],[73,270]])]});
+ routes.push({id:'garden-around',label:'图书馆西侧绕行至后花园（绕开双梯）',points:gp(gardenBypass)});
+ const r0=rightCentres[0],l0=leftCentres[0],dir=[1.2/Math.hypot(1.2,4.1),4.1/Math.hypot(1.2,4.1)],rEntry=[r0[0]-dir[0],r0[1]-dir[1]],lEntry=[2*cx-rEntry[0],rEntry[1]];
+ routes.push({id:'garden-spiral',label:'花园右起步—右弧梯—圆台—中央上梯—真门洞',points:[...gp([[73,270],[70.5,270],[70.5,rEntry[1]],rEntry,r0]),...rightFlight.slice(1),...upperRoute]});
+ routes.push({id:'garden-spiral-left',label:'花园左起步—左弧梯—圆台—中央上梯—真门洞',points:[...gp([[43,269],[46.5,lEntry[1]],lEntry,l0]),...leftFlight.slice(1),...upperRoute]});
  const foodSteps=Array.from({length:st.steps},(_,i)=>[st.startX+(st.endX-st.startX)*(i+.5)/st.steps,cy+(i+1)*st.rise/st.steps,st.centerZ]);
- routes.push({id:'canteen',label:'已有道路—食堂宽梯—上层门厅',points:[...gp([[142,152],[142,157.5],[145,157.5]]),...foodSteps,[151.3,dy,157.5],[153,dy,157.5],[155.2,dy,157.5],[159,dy,157.5]]});
- routes.push({id:'shop',label:'已有道路—食堂下层小卖部',points:[...gp([[142,152],[142,149],[150.2,149]]),[151.7,ky,149],[155,ky,149]]});
+ routes.push({id:'canteen',label:'已有道路—正面中部楼梯—餐厅门厅',points:[...gp([[142,152],[145,152]]),...foodSteps,[151.3,dy,152],[153,dy,152],[155.2,dy,152],[159,dy,152]]});
+ routes.push({id:'shop',label:'已有道路—正面右侧下层小卖部',points:[...gp([[142,152],[142,K.doorZ],[150.2,K.doorZ]]),[151.7,ky,K.doorZ],[155,ky,K.doorZ]]});
+ routes.push({id:'printing',label:'已有道路—正面左侧打印门面',points:[...gp([[142,152],[142,C.printing.doorZ],[150.2,C.printing.doorZ]]),[151.7,cy,C.printing.doorZ],[155,cy,C.printing.doorZ]]});
  routes.push({id:'canteen-perimeter',label:'食堂外围通行／H局部外缘步道',points:gp([[139,181],[142,166],[142,152],[142,137],[168,137],[192,137],[192,166]])});
- return {version:p.version,parts,portals,routes,anchors:terrain.anchors,stairPoints,summary:{libraryFloor:ly,libraryUpper:ly+lh,gardenGround:gy,localTerrainRise:p.terrain.rise,mainRearGround:terrain.groundHeight(73,232.8)+.04,canteenLower:cy,canteenDining:dy,stairTreads:S.steps,stairRiser:S.rise/S.steps,doorCount:portals.length,source:'S03-049/050/031/032; A uphill and rear garden; H metric completion'}};
+ return {version:p.version,parts,portals,routes,anchors:terrain.anchors,stairPoints,stairLeftPoints,stairPlan,frontage:{normal:[-1,0,0],observerRight:[0,0,1],printing:C.printing,stair:C.stair,shop:K},summary:{libraryFloor:ly,libraryUpper:ly+lh,gardenGround:gy,localTerrainRise:p.terrain.rise,mainRearGround:terrain.groundHeight(73,232.8)+.04,canteenLower:cy,canteenDining:dy,stairTreads:2*S.lowerStepsPerSide+S.upperSteps,stairRiser:Math.max((midY-gy)/S.lowerStepsPerSide,(topY-midY)/S.upperSteps),roundPlatformLevel:midY,doorCount:portals.length,source:'S03-049/050/031/032; A uphill and rear garden; H metric completion'}};
 }

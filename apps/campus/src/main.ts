@@ -150,15 +150,16 @@ Object.assign(cameraPresets,{
  'b03-library-lobby':{label:'真正门洞内 · 最小门厅与后花园出口',position:[73,6.85,249.5],target:[73,6.8,258.5],fov:64},
  'b03-uphill':{label:'主楼后门出发 · 路面爬升 / 不抬主楼后坪',position:[73,5.2,232.4],target:[73,7.5,248],fov:58},
  'b03-gap':{label:'桥下通路向图书馆 · 后路横向渐升',position:[6.5,5.2,233],target:[45,6.3,240],fov:60},
- 'b03-garden':{label:'后花园 · 曲线池缘 / 铺地 / 弧梯',position:[88,11.2,285],target:[65,7.2,265.5],fov:58},
- 'b03-spiral':{label:'S03-050 · 宽弧梯 / 实心内栏板 / 开敞中庭',position:[64.3,7.7,271.5],target:[58.6,7.2,263],fov:59},
- 'b03-spiral-top':{label:'弧梯顶部 · 与二层平台、真实门洞相接',position:[55.4,10.6,264.0],target:[55.2,10.3,258.6],fov:67},
- 'b03-garden-plan':{label:'图书馆—花园—弧梯 · 俯看接续',position:[68,47,282],target:[69,5,265],fov:57},
- 'b03-canteen':{label:'食堂 · 下层店面与上层宽梯入口',position:[127,10.7,171],target:[155,8.5,152],fov:54},
- 'b03-photo-canteen':{label:'S03-031 · 入口宽梯近似对照',position:[131,5.5,157.5],target:[151,8.2,157.5],fov:60},
- 'b03-canteen-lobby':{label:'食堂上层门厅 · 真门洞后落脚空间',position:[157.5,8.54,157.4],target:[149,8.54,157.4],fov:66},
- 'b03-shop':{label:'食堂下层小卖部 · 入口沿用H / 不另建独栋',position:[144.0,4.9,148],target:[154,4.75,149],fov:68},
- 'b03-shop-inside':{label:'小卖部最小进深 · 无虚构货架商品',position:[155.5,4.9,149],target:[147,4.9,149],fov:69},
+ 'b03-garden':{label:'后花园 · 对称双弧梯与中央圆平台（平台H）',position:[89,13,288],target:[59.5,7,268],fov:58},
+ 'b03-spiral':{label:'左右对称弧梯 → 圆平台H → 中央上梯 → 二层入口',position:[58.5,10.6,283],target:[58.5,7,266.7],fov:58},
+ 'b03-spiral-top':{label:'中央上梯与二层真门洞 · 无封闭圆盘或堵口栏杆',position:[58.5,10.65,265],target:[58.5,10.3,258.7],fov:66},
+ 'b03-garden-plan':{label:'双梯对称与汇合路径 · 同源俯视 / 圆平台H',position:[58.5,37,283],target:[58.5,6.5,267.2],fov:56},
+ 'b03-canteen':{label:'面对食堂：左打印 ｜ 中楼梯 ｜ 右下层小卖部',position:[128,8.0,152],target:[154,6.8,152],fov:60},
+ 'b03-photo-canteen':{label:'S03-031附近机位 · 中央宽梯 / 两侧下层店面',position:[131,5.5,152],target:[152,7.1,152],fov:60},
+ 'b03-canteen-lobby':{label:'中央宽梯后方 · 上层食堂门厅',position:[157.5,8.54,152],target:[147,8.54,152],fov:66},
+ 'b03-print':{label:'正面左侧打印门面 · 独立真开口 / 内部分间H',position:[146.2,4.9,145.4],target:[154.5,4.8,145.4],fov:68},
+ 'b03-shop':{label:'正面右侧小卖部 · 12仍在11下层 / 门面细节H',position:[146.2,4.9,158.7],target:[155,4.8,158.7],fov:68},
+ 'b03-shop-inside':{label:'小卖部内回望 · 不虚构货架和商品',position:[155.5,4.9,158.7],target:[147,4.9,158.7],fov:69},
  'b03-perimeter':{label:'食堂外围道路与家属区间隙',position:[205,38,171],target:[164,6,149],fov:60},
  'b03-overview':{label:'第三批全景 · 图书馆与生活组团',position:[200,107,306],target:[88,6,222],fov:55},
  'b03-axis':{label:'已认可四节点主轴 · 图书馆只调标高',position:[73,325,200],target:[73,0,200],fov:48}
@@ -394,7 +395,7 @@ function setToiletLevel(level:number,focus=false){
 function setView(name:string){
  const preset=cameraPresets[name];if(!preset)return;
  // Narrow screens keep B03 cameras in known free space, not inside B01.
- const p=(innerWidth<700&&name==='b03-library')?{...preset,position:[73,8.5,237.5],target:[73,8,247.2],fov:68}:preset;controls.maxPolarAngle=(name.startsWith('b02-')||name.startsWith('b03-'))?Math.PI*.85:Math.PI*.495;camera.fov=p.fov??43;camera.updateProjectionMatrix();setReviewShadow(p.target,(name.startsWith('b02-')||name.startsWith('b03-'))||name.startsWith('terrain-')||name.startsWith('gym-p02-')||name.startsWith('p03-')||name.startsWith('b01-')||(name.startsWith('r2-')||name.startsWith('r3-'))||name.startsWith('p04-'));stopModes();view=name;setToiletLevel(name==='r3-porch-plan'?1:name==='toilet-floor'||name==='b01-floor2'||name==='r2-floor2'?2:0);
+ const p=(innerWidth<700&&name==='b03-library')?{...preset,position:[73,8.5,237.5],target:[73,8,247.2],fov:68}:(innerWidth<700&&name==='b03-canteen')?{...preset,position:[116,17,152],target:[153,6,152],fov:72}:preset;controls.maxPolarAngle=(name.startsWith('b02-')||name.startsWith('b03-'))?Math.PI*.85:Math.PI*.495;camera.fov=p.fov??43;camera.updateProjectionMatrix();setReviewShadow(p.target,(name.startsWith('b02-')||name.startsWith('b03-'))||name.startsWith('terrain-')||name.startsWith('gym-p02-')||name.startsWith('p03-')||name.startsWith('b01-')||(name.startsWith('r2-')||name.startsWith('r3-'))||name.startsWith('p04-'));stopModes();view=name;setToiletLevel(name==='r3-porch-plan'?1:name==='toilet-floor'||name==='b01-floor2'||name==='r2-floor2'?2:0);
  b01Bridge?.setMode((name==='r2-section'||name==='r3-section')?'section':(name==='r2-axis'||name==='r3-axis')?'axis':'normal');
  document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',(b as HTMLElement).dataset.view===name));
  active=(name==='top'||(name==='r2-axis'||name==='r3-axis'))?topCamera:camera;controls.enabled=(name!=='top'&&name!=='r2-axis');topControls.enabled=(name==='top'||(name==='r2-axis'||name==='r3-axis'));
@@ -574,7 +575,7 @@ Object.assign(window,{__YALI_B02__:{ready:true,version:batch02Input.version,inpu
   return {routes:result,doors,sharedWallBlocked:ray([-60,4.9,65.3],[-60,4.9,66.7]).length>0,legacyGymCount:meshes.filter(o=>o.name.startsWith('P02-GYM-')&&o.userData.facility==='03').length,retainedSiteNames:meshes.filter(o=>o.name==='P02-GYM-FORECOURT').map(o=>o.name)};
  }
 }});
-if(!params.has('view'))setView(innerWidth<700?'b03-library':'b03-overview');
+if(!params.has('view'))setView(innerWidth<700?'b03-library':'b03-canteen');
 
 el<HTMLSelectElement>('b02-view-select').onchange=e=>setView((e.target as HTMLSelectElement).value);
 

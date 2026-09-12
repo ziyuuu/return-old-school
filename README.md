@@ -2,13 +2,15 @@
 
 长沙雅礼中学东塘校区，2006—2010 年历史校园复原；面向校庆与校友回忆的非商业项目。独立校友创作，不代表学校官方。
 
-## 当前状态：B03 R1.1 已通过工程检查，待校友审阅
+## 当前状态：B03 R2 双梯／食堂正面修订，待本版实际QA及校友审阅
 
-**B01与B02：COMPLETE / ALUMNI_APPROVED。** B02认可依据 [acceptance.md](docs/m11b/batch02/acceptance.md) / [acceptance.json](data/m11b/batch02/acceptance.json)，旧QA中的待审状态保留为历史记录。
+**B01与B02：COMPLETE / ALUMNI_APPROVED。** [B02认可记录](docs/m11b/batch02/acceptance.md)及机器可读认可记录保持不变。
 
-**B03 R1.1：IMPLEMENTED / REVIEW_PENDING。** 18旧图书馆、19后花园与宽弧梯、主楼到图书馆的上坡、11食堂及12下层小卖部接入完整校园默认Viewer。真实门洞、最小门厅、梯顶入口与外部通路同步构建。[交付说明](docs/m11b/batch03/delivery.md) · [照片与H补全](docs/m11b/batch03/evidence.md) · [入口图](docs/m11b/batch03/access.svg)。正常构建、8组定向几何、14组真实Chromium检查已通过：8条路线、5处门洞及桌面/手机viewport，17张实际截图。工程状态以 `qa/m11b-b03/browser-report.json` 为准，不代替校友认可。
+**B03 R2：IMPLEMENTED / REVIEW_PENDING。** 本轮修正面对食堂的“左打印／中楼梯／右小卖部”，以及左右对称弧梯、圆形中间平台与中央上行段。圆台与精确梯形仍是依据校友暂定记忆的H补全，不冒称原照片证明。继承main的R1.1台阶接缝、后门扇、蓝色告示区与手机相机修复。
 
-导出 `node tools/m11b-b03/export.mjs`；定向几何 `node tools/m11b-b03/check.mjs`；实际浏览器/打包 `python tools/m11b-b03/capture.py` / `python tools/m11b-b03/package.py`。自包含文件输出至 `artifacts/m11b-b03/`，文件名前缀 `Yali_M1_1_B_B03_`。Workspace是完整可接续工程，参考照片不作为公开模型资产。
+[交付说明](docs/m11b/batch03/delivery.md) · [照片及H边界](docs/m11b/batch03/evidence.md) · [同源入口图](docs/m11b/batch03/access.svg)。本轮结果只以版本为R2的 `qa/m11b-b03/browser-report.json` 为准，R1.1通过不代表R2通过。
+
+导出 `node tools/m11b-b03/export.mjs`；检查 `node tools/m11b-b03/check.mjs`；实际浏览器/打包 `python tools/m11b-b03/capture.py` / `python tools/m11b-b03/package.py`。完整可接续Workspace与离线单文件Viewer、照片Review、SVG一起交付。照片不作场景材质，含原照的私下Review不公开提交。
 
 ## 第一批认可成果继续继承
 

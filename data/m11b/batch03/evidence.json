@@ -89,5 +89,10 @@
     "full dated 2006–2010 library/canteen elevations",
     "independently identified shop exterior",
     "surveyed rear garden/stair endpoints"
-  ]
+  ],
+  "r2AlumniCorrections": {
+    "frontage": "A: print-left / stair-centre / shop-right from the front",
+    "stair": "A symmetric; H provisional round landing then upper run",
+    "date": "2026-09-12"
+  }
 }

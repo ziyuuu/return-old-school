@@ -1,12 +1,149 @@
 {
-  "version":"M1.1-B.B03.R1.1",
-  "status":"IMPLEMENTED / REVIEW_PENDING",
-  "sourceBaseline":"cda970b1d32a7a24e0702373cf2c61c4bcabd6f0",
-  "evidencePolicy":"A relationship / P visible photograph / R written reference / H reversible metric completion",
-  "terrain":{"rise":1.20,"startZ":232.8,"crestZ":243.6,"endPlateauZ":282,"endZ":290,"leftStartX":12,"leftPlateauX":45.5,"rightPlateauX":100.5,"rightEndX":106,"basis":"A uphill from main building to library; H exact rise and local grading extent. B01 rear floor and all other facility anchors stay unchanged."},
-  "library":{"floorOffset":0.04,"floors":3,"floorHeight":3.8,"doorWidth":3.8,"doorHeight":2.65,"doorZ":247.2,"rearDoorWidth":2.8,"wall":0.24,"basis":"P S03-049 entrance, glazing/transom, vines; H retained 55x15m envelope, three storeys, concealed facades and through-lobby."},
-  "spiral":{"center":[58.5,262.2],"innerRadius":2.2,"outerRadius":4.4,"steps":26,"rise":3.8,"startAngle":0,"sweep":3.141592653589793,"basis":"P S03-050 broad curved flight, open well, tiled solid inner parapet and rails; H semicircular plan, exact position, 26 treads and second-floor landing. No central pole."},
-  "garden":{"pavingBounds":[44,262.4,101,282],"pondCenter":[84,276.5],"pondRadius":[10,3.0],"pondSurface":"H dark basin/water interpretation, not a proven original water level","trees":[[48,278,5.1,2.6],[64,280.3,4.6,2.8],[99,279.6,5.8,2.2]],"basis":"A garden behind library; P curved low basin/planter edge, stone paving, trees in S03-050; H exact layout/species."},
-  "canteen":{"floorOffset":0.04,"floorHeight":3.6,"floors":3,"stair":{"startX":145,"endX":151,"centerZ":157.5,"width":5.4,"steps":20,"rise":3.6},"doorX":154,"doorWidth":3.4,"doorHeight":2.9,"basis":"P S03-031 broad entry stair, white columns and recessed upper entrance; P/R S03-032 hall column/window rhythm; H retained envelope and upper floor count."},
-  "shop":{"doorX":151,"doorZ":149,"doorWidth":3.5,"doorHeight":2.7,"parent":"11","basis":"A/R shop at canteen lower level; H existing 12 location and undecorated open shopfront. No independent photograph and no invented merchant/sign/merchandise."}
+  "version": "M1.1-B.B03.R2",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "sourceBaseline": "72d7808ffdea8f8271133f658e90b199998a0ce6",
+  "evidencePolicy": "A relationship / P visible photograph / R written reference / H reversible metric completion",
+  "terrain": {
+    "rise": 1.2,
+    "startZ": 232.8,
+    "crestZ": 243.6,
+    "endPlateauZ": 282,
+    "endZ": 290,
+    "leftStartX": 12,
+    "leftPlateauX": 45.5,
+    "rightPlateauX": 100.5,
+    "rightEndX": 106,
+    "basis": "A uphill from main building to library; H exact rise and local grading extent. B01 rear floor and all other facility anchors stay unchanged."
+  },
+  "library": {
+    "floorOffset": 0.04,
+    "floors": 3,
+    "floorHeight": 3.8,
+    "doorWidth": 3.8,
+    "doorHeight": 2.65,
+    "doorZ": 247.2,
+    "rearDoorWidth": 2.8,
+    "wall": 0.24,
+    "basis": "P S03-049 entrance, glazing/transom, vines; H retained 55x15m envelope, three storeys, concealed facades and through-lobby."
+  },
+  "spiral": {
+    "center": [
+      58.5,
+      270.3
+    ],
+    "midPlatformRadius": 2.25,
+    "midRiseFromGarden": 2.2,
+    "lowerWidth": 2.1,
+    "lowerStepsPerSide": 14,
+    "rightControlOffsets": [
+      [
+        8.4,
+        -6.2
+      ],
+      [
+        9.6,
+        -2.1
+      ],
+      [
+        7,
+        0
+      ],
+      [
+        2.15,
+        0
+      ]
+    ],
+    "upperWidth": 2.6,
+    "upperSteps": 12,
+    "upperEndZ": 262.2,
+    "upperDoorWidth": 2.5,
+    "basis": "A mirrored flights; P S03-050 curved concrete treads, railings and open well, not a central-pole spiral. H round intermediate landing/return run guided by tentative alumni recollection; radii, rise, step counts, exact attachment remain H."
+  },
+  "garden": {
+    "pavingBounds": [
+      44,
+      262.4,
+      101,
+      282
+    ],
+    "pondCenter": [
+      84,
+      276.5
+    ],
+    "pondRadius": [
+      10,
+      3.0
+    ],
+    "pondSurface": "H dark basin/water interpretation, not a proven original water level",
+    "trees": [
+      [
+        48,
+        278,
+        5.1,
+        2.6
+      ],
+      [
+        64,
+        280.3,
+        4.6,
+        2.8
+      ],
+      [
+        99,
+        279.6,
+        5.8,
+        2.2
+      ]
+    ],
+    "basis": "A garden behind library; P curved low basin/planter edge, stone paving, trees in S03-050; H exact layout/species."
+  },
+  "canteen": {
+    "floorOffset": 0.04,
+    "floorHeight": 3.6,
+    "floors": 3,
+    "stair": {
+      "startX": 145,
+      "endX": 151,
+      "centerZ": 152.0,
+      "width": 5.6,
+      "steps": 20,
+      "rise": 3.6
+    },
+    "doorX": 154,
+    "doorWidth": 3.4,
+    "doorHeight": 2.9,
+    "basis": "A front order print-left / central stair / shop-right. P S03-031 broad entrance stairs and columns; H footprint, upper levels, door dimensions. Facing from -X towards +X, left is -Z, right is +Z.",
+    "printing": {
+      "bounds": [
+        151,
+        141.6,
+        162.8,
+        149.0
+      ],
+      "doorX": 151,
+      "doorZ": 145.4,
+      "doorWidth": 3.1,
+      "doorHeight": 2.7,
+      "basis": "A printing to observer-left of central stairs; H door/opening details, no invented merchant."
+    }
+  },
+  "shop": {
+    "bounds": [
+      151,
+      155.0,
+      165,
+      162.4
+    ],
+    "doorX": 151,
+    "doorZ": 158.7,
+    "doorWidth": 3.5,
+    "doorHeight": 2.7,
+    "parent": "11",
+    "basis": "A canteen lower-right shop, facing from -X; H exact internal bounds and shopfront. Facility 12 remains a subspace of 11; no independent storefront photograph."
+  },
+  "alumniRevision": {
+    "canteen": "A: facing the canteen front, printing on the left, stairs at centre, shop on the right.",
+    "gardenStair": "A: symmetric flights. Provisional H guided by alumni recollection: both meet a round middle landing, then ascend to the upper level.",
+    "inheritedFixes": "Keep R1.1 front-tread seam overlap, inward garden-door leaves, blue panel on observer-left, mobile camera repair."
+  }
 }
