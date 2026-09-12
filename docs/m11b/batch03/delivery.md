@@ -13,3 +13,9 @@ R1.1台阶接缝重叠、后门向内开启、图书馆蓝色板在观察者左�
 复现：`npm ci --prefix apps/campus`；`npm run build --prefix apps/campus`；`node tools/m11b-b03/check.mjs`；`node tools/m11b-b03/export.mjs`；`python tools/m11b-b03/capture.py`；实际通过后 `python tools/m11b-b03/package.py`。
 
 参数 `data/m11b/batch03/input.json`；同源模型/截图接口 `batch03-core.mjs`、`batch03-scene.ts`。导出文件在 `artifacts/m11b-b03/`。只有版本与Viewer SHA256匹配的新报告才算本轮检查结果；旧R1.1成功不能复用成R2成功。
+
+## R2 实际检查归档
+
+正常类型检查/Vite构建、8组定向几何及17组真实Chromium检查通过；10条路线、6处真门洞，14张实际截图。左右弧梯分别到圆台再到上层，打印和小卖部分别从外路进入。单文件file://打开无外部请求/JS/WebGL错误；390×844为viewport，不是物理手机。
+
+受测源码 `990b7f68f065d70fb680ed2d47c5dd529c80f56f`；Viewer SHA256 `e53549bf5fedd3eb8306c21ca878f253c8c5d1b57264c2072bf2fbd6187c4464`。B03仍IMPLEMENTED / REVIEW_PENDING，不代替校友认可。

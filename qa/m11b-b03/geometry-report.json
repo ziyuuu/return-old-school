@@ -1,12 +1,12 @@
 {
-  "version": "M1.1-B.B03.R1.1",
+  "version": "M1.1-B.B03.R2",
   "status": "IMPLEMENTED / REVIEW_PENDING",
   "passed": true,
   "checks": [
     {
-      "id": "B03-preserved-plan-and-topology",
+      "id": "B03-preserved-building-plan-and-topology",
       "passed": true,
-      "detail": "All facility X/Z footprints and existing navigation data unchanged."
+      "detail": "All building footprints and old road nodes/widths unchanged; only A-directed shop subspace12 moves within11."
     },
     {
       "id": "B03-local-uphill-only",
@@ -19,36 +19,50 @@
         "mainRearGround": 3.49,
         "canteenLower": 3.24,
         "canteenDining": 6.84,
-        "stairTreads": 26,
-        "stairRiser": 0.14615384615384613,
-        "doorCount": 5,
+        "stairTreads": 40,
+        "stairRiser": 0.1708333333333334,
+        "roundPlatformLevel": 6.890000000000001,
+        "doorCount": 6,
         "source": "S03-049/050/031/032; A uphill and rear garden; H metric completion"
       }
     },
     {
-      "id": "B03-library-low-steps-and-doors",
+      "id": "B03-library-inherited-steps-and-three-doors",
       "passed": true,
-      "detail": "Front, rear and upper receiving door are partitioned wall apertures."
+      "detail": "Retain R1.1 true front/rear/upper holes and seam-overlapped front steps."
     },
     {
-      "id": "B03-curved-stair-real-upper-landing",
+      "id": "B03-symmetric-stairs-round-landing-and-upper-return",
       "passed": true,
       "detail": {
-        "steps": 26,
-        "riser": 0.14615384615384613,
-        "innerOpenRadius": 2.2
+        "midY": 6.890000000000001,
+        "leftAndRightSteps": 14,
+        "upperSteps": 12,
+        "mirrored": true,
+        "platform": "walkable disk; separated perimeter guards, no solid overfill"
       }
     },
     {
-      "id": "B03-canteen-shop-levels",
+      "id": "B03-observer-left-print-central-stair-right-shop",
       "passed": true,
       "detail": {
-        "lower": 3.24,
-        "dining": 6.84
+        "normal": [
+          -1,
+          0,
+          0
+        ],
+        "rightVector": [
+          0,
+          0,
+          1
+        ],
+        "printZ": 145.4,
+        "stairZ": 152,
+        "shopZ": 158.7
       }
     },
     {
-      "id": "B03-five-real-portals-eight-routes",
+      "id": "B03-six-real-portals-ten-relevant-routes",
       "passed": true,
       "detail": {
         "doors": [
@@ -56,6 +70,7 @@
           "library-garden",
           "spiral-upper",
           "canteen-main",
+          "print-main",
           "shop-main"
         ],
         "routes": [
@@ -64,8 +79,10 @@
           "library-garden",
           "garden-around",
           "garden-spiral",
+          "garden-spiral-left",
           "canteen",
           "shop",
+          "printing",
           "canteen-perimeter"
         ]
       }
@@ -74,13 +91,25 @@
       "id": "B03-solids-finite",
       "passed": true,
       "detail": {
-        "solids": 3651
+        "solids": 3872
       }
     },
     {
-      "id": "B03-shop-bounds-within-parent",
+      "id": "B03-shop-bounds-and-metadata-within-parent",
       "passed": true,
-      "detail": "No detached shop volume."
+      "detail": {
+        "position": [
+          158,
+          0,
+          158.7
+        ],
+        "size": [
+          14,
+          3.4,
+          7.400000000000006
+        ],
+        "scope": "Internal subspace relocation requested by alumni; no detached shop."
+      }
     }
   ]
 }
