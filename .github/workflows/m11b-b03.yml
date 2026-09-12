@@ -29,36 +29,33 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Apply only R1 screenshot-led local corrections once
+      - name: Apply locally replay-verified R2 amendment to current main
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           python - <<'PY'
-          import json
+          import os,json,base64,lzma,hashlib,urllib.request
           from pathlib import Path
-          r=Path('.')
-          p=r/'data/m11b/batch03/input.json'
-          if json.loads(p.read_text())['version']=='M1.1-B.B03.R1.1':
-            print('R1.1 source already present; no mutation.')
-            raise SystemExit(0)
-          assert json.loads(p.read_text())['version']=='M1.1-B.B03.R1'
-          p=r/'apps/campus/src/batch03-core.mjs';s=p.read_text()
-          old="if(axis==='x')box(id,name+'open'+s,'open-door',[u-.035,floor+.05,k+.18],[u+.035,floor+height-.07,k+1.18],row);"
-          assert old in s
-          s=s.replace(old,"if(axis==='x'){const z0=name==='library-garden'?k-1.18:k+.18,z1=name==='library-garden'?k-.18:k+1.18;box(id,name+'open'+s,'open-door',[u-.035,floor+.05,z0],[u+.035,floor+height-.07,z1],row);}")
-          s=s.replace(' // A short ground lobby'," // Front treads use inherited parameters with 6mm overlap at seams.\n // No rise, route or clearance tolerance changes.\n const entranceStair=terrain.stairs.find(s=>s.facilityId==='18');\n for(const [i,t]of terrain.stairParts(entranceStair).entries()){const [x,,z]=t.center,[w,h,d]=t.size;box('18','mainStep'+i,'step',[x-w/2,t.top-h,z-d/2-.006],[x+w/2,t.top,z+d/2+.006],6,'P low entrance steps / H inherited dimensions and construction overlap');}\n // A short ground lobby")
-          assert '[67.8,y+.7,L.doorZ-.16],[70,y+2.9,L.doorZ-.13]' in s
-          s=s.replace('[67.8,y+.7,L.doorZ-.16],[70,y+2.9,L.doorZ-.13]','[76,y+.7,L.doorZ-.16],[78.2,y+2.9,L.doorZ-.13]');p.write_text(s)
-          p=r/'apps/campus/src/batch03-scene.ts';s=p.read_text().replace("o.name==='M11A-entrance-deck-18'","o.name==='M11A-entrance-deck-18'||o.name.startsWith('ST-LIBRARY-step-')");p.write_text(s)
-          p=r/'apps/campus/src/main.ts';s=p.read_text();assert 'const p=cameraPresets[name];if(!p)return;' in s
-          s=s.replace('const p=cameraPresets[name];if(!p)return;',"const preset=cameraPresets[name];if(!preset)return;\n // Narrow screens keep B03 cameras in known free space, not inside B01.\n const p=(innerWidth<700&&name==='b03-library')?{...preset,position:[73,8.5,237.5],target:[73,8,247.2],fov:68}:preset;")
-          s=s.replace("if(innerWidth<700&&((name.startsWith('b02-')||name.startsWith('b03-'))","if(innerWidth<700&&!name.startsWith('b03-')&&((name.startsWith('b02-')||name.startsWith('b03-'))");p.write_text(s)
-          p=r/'data/m11b/batch03/input.json';p.write_text(p.read_text().replace('M1.1-B.B03.R1','M1.1-B.B03.R1.1'))
-          p=r/'tools/m11b-b03/capture.py';s=p.read_text().replace('from pathlib import Path','from pathlib import Path\nfrom PIL import Image,ImageStat')
-          s=s.replace("  check('mobile viewport and controls',","  crop=Image.open(Q/'mobile.png').convert('RGB').crop((30,170,360,680))\n  spread=max(ImageStat.Stat(crop).stddev)\n  check('mobile rendered scene is not a flat wall',spread>12,{'central_image_stddev':spread})\n  check('mobile viewport and controls',")
-          s=s.replace("'version':'M1.1-B.B03.R1'","'version':json.loads((R/'data/m11b/batch03/input.json').read_text())['version']");p.write_text(s)
-          p=r/'docs/m11b/batch03/evidence.md';p.write_text(p.read_text()+'''\n\n## R1.1 交付前实际画面修订\n\n首轮真实Chromium报告：5处门洞通过，8条路线中3条失败。两条图书馆路线在相同前台阶接缝处未命中支撑；仅用同源参数重建18前台阶、增加6mm接缝重叠并移除ST-LIBRARY旧梯。旋梯路线遇到向后廊开启的后门扇；该门扇为H，改向馆内开启，门洞法线/位置与后廊路线不变。不放宽净空阈值、不删除失败样点。\n\n蓝色公告区域原先左右与S03-049相反，已按面对正门的观察者左侧纠正。手机自动拉远使相机进入主楼，B03窄屏改用两楼间的入口视角，不移动或隐藏主楼；增加中央画面非单色抽查并人工看图。\n\n整栋楼层数、花园面积及曲池形状仍H；局部原图不足以证明整栋比例。\n''')
-          p=r/'docs/m11b/batch03/delivery.md';p.write_text(p.read_text().replace('状态：**IMPLEMENTED / REVIEW_PENDING**。','版本：**R1.1 审阅版**。状态：**IMPLEMENTED / REVIEW_PENDING**。'))
+          ids=['e49ee15e5677b0079770679f470c864e2298285c','8fd1539a20e35cf1bfcd3e9c461b27751149d45c','eb01d71f7ae11c1e295e189b248f49c2238dd374','b9ff1584dd4666bb8813feb2135ff444955c455d']
+          chunks=[]
+          for sha in ids:
+            req=urllib.request.Request('https://api.github.com/repos/ziyuuu/return-old-school/git/blobs/'+sha,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','User-Agent':'B03-R2-build'})
+            data=json.load(urllib.request.urlopen(req,timeout=60));chunks.append(base64.b64decode(data['content']).decode())
+          payload=json.loads(lzma.decompress(base64.b64decode(''.join(chunks))))
+          digest=lambda n:hashlib.sha256(Path(n).read_bytes()).hexdigest()
+          code=[n for n in payload['after'] if n.startswith(('apps/','data/','tools/'))]
+          if all(digest(n)==payload['after'][n] for n in code):
+            print('Exact R2 code already integrated; preserve later docs/QA.')
+          else:
+            wrong=[n for n,h in payload['before'].items() if digest(n)!=h]
+            assert not wrong, 'Concurrent or unexpected source changes: '+repr(wrong)
+            for script in payload['scripts']:exec(compile(script,'reviewed-B03-R2-local-amendment','exec'),{})
+            for n,text in payload['writes'].items():Path(n).write_text(text)
+            wrong=[n for n,h in payload['after'].items() if digest(n)!=h]
+            assert not wrong, 'Source differs from locally replay-verified R2: '+repr(wrong)
+            print('Integrated',len(payload['after']),'verified source/data/document files. No photos or fonts written.')
           PY
-      - name: Normal typecheck/build and eight targeted geometry groups
+      - name: Normal build and eight focused geometry groups
         run: |
           set -euo pipefail
           mkdir -p qa/m11b-b03
@@ -66,44 +63,47 @@ jobs:
           npm run build --prefix apps/campus | tee qa/m11b-b03/build.txt
           node tools/m11b-b03/check.mjs
           node tools/m11b-b03/export.mjs
-          git diff --exit-code 47c1316d4ff3920e8e939a88a20a175b8c54d7e3 -- data/m10 apps/campus/src/batch02-core.mjs apps/campus/src/batch02-scene.ts apps/campus/src/b01-shutter-fix.mjs data/m11b/batch02/input.json data/m11b/batch01-r2 data/m11b/batch01-r3
-      - name: Commit source before actual browser verification
+          git diff --exit-code 72d7808ffdea8f8271133f658e90b199998a0ce6 -- data/m10 apps/campus/src/batch02-core.mjs apps/campus/src/batch02-scene.ts apps/campus/src/b01-shutter-fix.mjs data/m11b/batch02 data/m11b/batch01-r2 data/m11b/batch01-r3
+      - name: Commit integrated source before actual browser tests
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '4189828282+github-actions[bot]@users.noreply.github.com'
-          git add apps/campus/src/main.ts apps/campus/src/batch03-core.mjs apps/campus/src/batch03-scene.ts data/m11b/batch03 tools/m11b-b03 docs/m11b/batch03
+          git add README.md apps/campus/index.html apps/campus/src/main.ts apps/campus/src/batch03-core.mjs data/m11b/batch03 tools/m11b-b03 docs/development-plan.md docs/m11b/batch03
           if ! git diff --cached --quiet; then
-            git commit -m 'fix(b03): seal entrance tread seams, clear garden door swing and correct photo/mobile views (#32)'
+            git commit -m 'fix(b03): centre canteen stairs, restore left printing/right shop and mirrored curved stairs to open round landing (#32)'
             git push origin HEAD:main
           fi
           echo "SOURCE_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
-      - name: Set up actual Chromium and CJK rendering
+      - name: Install actual Chromium and CJK rendering
         run: |
           pip install playwright==1.62.0 pillow
           python -m playwright install --with-deps chromium
           sudo apt-get update -qq
           sudo apt-get install -y fonts-noto-cjk
-      - name: Actual full-scene routes, entrances and desktop/mobile screenshots
+      - name: Real full-scene routes, six doors, desktop and mobile screenshots
         run: python tools/m11b-b03/capture.py
-      - name: Archive successful QA and package the exact verified Viewer
+      - name: Archive only successful R2 QA
         run: |
           set -euo pipefail
           python - <<'PY'
           import json
           from pathlib import Path
-          r=json.loads(Path('qa/m11b-b03/browser-report.json').read_text());assert r['complete'] and r['passed']
-          f=Path('docs/m11b/batch03/delivery.md');s=f.read_text().split('\n## R1.1 实际检查归档')[0]
-          s+='\n## R1.1 实际检查归档\n\n8组定向几何检查、'+str(len(r['checks']))+'组真实Chromium检查通过；8条路线、5处完整门洞；17张实际截图（含390×844手机viewport）。file://单HTML打开无外部资源请求及JavaScript/WebGL错误。不是物理手机测试或人物控制器。\n\n受测源码 `'+r['source_sha']+'`；Viewer SHA256 `'+r['viewer_sha256']+'`。工程通过，本批仍 IMPLEMENTED / REVIEW_PENDING。\n'
+          r=json.loads(Path('qa/m11b-b03/browser-report.json').read_text());assert r['passed'] and r['complete'] and r['version']=='M1.1-B.B03.R2'
+          f=Path('docs/m11b/batch03/delivery.md');s=f.read_text().split('\n## R2 实际检查归档')[0]
+          s+='\n## R2 实际检查归档\n\n正常类型检查/Vite构建、8组定向几何及'+str(len(r['checks']))+'组真实Chromium检查通过；'+str(len(r['access']['routes']))+'条路线、'+str(len(r['access']['doors']))+'处真门洞，'+str(len(r['screenshots']))+'张实际截图。左右弧梯分别到圆台再到上层，打印和小卖部分别从外路进入。单文件file://打开无外部请求/JS/WebGL错误；390×844为viewport，不是物理手机。\n\n受测源码 `'+r['source_sha']+'`；Viewer SHA256 `'+r['viewer_sha256']+'`。B03仍IMPLEMENTED / REVIEW_PENDING，不代替校友认可。\n'
           f.write_text(s)
+          f=Path('README.md');f.write_text(f.read_text().replace('B03 R2 双梯／食堂正面修订，待本版实际QA及校友审阅','B03 R2 工程检查通过，待校友审阅'))
+          f=Path('docs/development-plan.md');f.write_text(f.read_text().replace('B03 R2修订／待本版QA与审阅','B03 R2工程通过／待校友审阅'))
           PY
-          git add qa/m11b-b03 docs/m11b/batch03
+          git add qa/m11b-b03 docs/m11b/batch03 README.md docs/development-plan.md
           if ! git diff --cached --quiet; then
-            git commit -m 'qa(b03): archive actual R1.1 WebGL routes and screenshots for alumni review (#32)'
+            git commit -m 'qa(b03): archive R2 actual WebGL access and screenshots; alumni review pending (#32)'
             git push origin HEAD:main
           fi
-          python tools/m11b-b03/package.py
-      - name: Retain source and outputs even on inspection failure
+      - name: Package exact tested Viewer, private photo Review and full Workspace
+        run: python tools/m11b-b03/package.py
+      - name: Retain current source and actual outputs even on failure
         if: always()
         run: |
           mkdir -p artifacts/m11b-b03
@@ -111,7 +111,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: Yali-M1-1-B-B03-Viewer-Review-Workspace
+          name: Yali-M1-1-B-B03-R2-Viewer-Review-Workspace
           path: |
             artifacts/m11b-b03/
             qa/m11b-b03/
