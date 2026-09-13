@@ -39,7 +39,7 @@ test('Six inherited court rectangles, twelve H hoops, two goals and open perimet
  for(const c of model.courts){const hoops=model.hoops.filter(h=>h.court===c.id);assert.equal(hoops.length,2);assert.equal(hoops[0].normal[2],-hoops[1].normal[2]);}
  assert.ok(!model.fenceSegments.some(f=>f.a[0]===-10&&f.b[0]===-10&&Math.min(f.a[1],f.b[1])<120&&Math.max(f.a[1],f.b[1])>120));
  assert.ok(!model.fenceSegments.some(f=>f.a[0]===-65&&f.b[0]===-65&&Math.min(f.a[1],f.b[1])<120&&Math.max(f.a[1],f.b[1])>120));
- assert.deepEqual(model.invariants.stoneAnchor,[-17,0,1]);
+ assert.deepEqual(model.invariants.stoneAnchorBefore,[-17,0,1]);assert.deepEqual(model.invariants.stoneAnchor,[-10.9,.75,-4.5]);
  for(const b of model.blocks){const old=layout.contextBlocks.find(q=>q.id===b.id);assert.deepEqual(b.size,old.size);}
 });
 test('Shared materials distinguish stone rails, thin fabric nets, glass and frames without a photo texture',()=>{

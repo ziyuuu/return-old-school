@@ -11,7 +11,7 @@ export function b05Geometry(p){
  if(p.shape==='box'){g=detailBox(p.size,p.role);g.translate(...p.center);}
  else if(p.shape==='rod'){
   const a=v(p.a),b=v(p.b),d=b.clone().sub(a);if(d.length()<1e-6)throw Error('Zero rod '+p.id);
-  g=new THREE.CylinderGeometry(p.radius,p.radius,d.length(),p.segments??48);g.applyQuaternion(new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,1,0),d.normalize()));g.translate(...a.add(b).multiplyScalar(.5).toArray());
+  g=new THREE.CylinderGeometry(p.radiusTop??p.radius,p.radius,d.length(),p.segments??48);g.applyQuaternion(new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,1,0),d.normalize()));g.translate(...a.add(b).multiplyScalar(.5).toArray());
  }else if(p.shape==='ring'){
   g=new THREE.TorusGeometry(p.radius,p.tube,32,192);g.applyQuaternion(new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,0,1),v(p.normal).normalize()));g.translate(...p.center);
  }else if(p.shape==='tube'){

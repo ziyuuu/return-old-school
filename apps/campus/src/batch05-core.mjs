@@ -1,3 +1,4 @@
+import {reviseB05R12} from './batch05-r12.mjs';
 import {courtRects} from './layout-core.mjs';
 /** B05 world-space part catalogue. One source drives meshes, BVH, support rays and evidence.
  * No independent terrain or replacement road graph. Every metric here is explicitly H.
@@ -288,8 +289,8 @@ export function buildB05Model(layout, terrain, p, site) {
     box('rear-bed'+a,'planter-soil',a,b,3.30,3.48,188.8,190.7,11);for(const z of[188.8,190.7])box('rear-kerb'+a+z,'stone-plaque',a,b,3.28,3.53,z-.06,z+.06,8);
     for(let x=a+.5;x<b;x+=1.1)add('rear-hedge'+x,'foliage','leaf',{center:[x,3.69,190.2],size:[.68,.3,.39]},13);
   }
-  return {version:p.version,status:p.status,standard:p.standard,parts,portals,routes,fixtures,trees,hoops,goals,blocks,courts,fenceSegments,retiredNames,replaceRoots:p.replaceRoots,
+  return reviseB05R12({version:p.version,status:p.status,standard:p.standard,parts,portals,routes,fixtures,trees,hoops,goals,blocks,courts,fenceSegments,retiredNames,replaceRoots:p.replaceRoots,
     invariants:{base:p.baseCommit,terrainUnchanged:true,roadGraphUnchanged:true,stoneAnchor:[...get('27').position],flagCenter:[ax,az],flagCount:flags.count,unlocated22:get('22').position},
-    limits:['No measured coordinates or species; new metrics H.','Full scene rays are geometric review, not a character controller.','22 is intentionally unlocated; 20 blocks are not verified dwelling identities.']};
+    limits:['No measured coordinates or species; new metrics H.','Full scene rays are geometric review, not a character controller.','22 is intentionally unlocated; 20 blocks are not verified dwelling identities.']},layout,terrain);
 }
 export function stadiumPoints(width,length,segments=192){const r=width/2,a=length/2-r,pts=[];for(let i=0;i<=segments/2;i++){const t=Math.PI+Math.PI*i/(segments/2);pts.push([r*Math.cos(t),-a+r*Math.sin(t)]);}for(let i=0;i<=segments/2;i++){const t=Math.PI*i/(segments/2);pts.push([r*Math.cos(t),a+r*Math.sin(t)]);}return pts;}

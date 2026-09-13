@@ -1,3 +1,5 @@
+> 当前修订：**B05 R1.2 / IMPLEMENTED / REVIEW_PENDING**，校友新指示的校园石前置平台、连续侧路围墙与树木建模修正。[本轮说明与复现](r12-correction.md)。下文R1.1的Viewer/QA属于保留历史，不代表新修订已完成浏览器验证。
+
 # B05 R1.1｜交付
 
 状态：**IMPLEMENTED / REVIEW_PENDING**。本批没有登记acceptance；B01—B04（B03建筑R2，B04 R1）继续已认可。

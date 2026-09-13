@@ -6,6 +6,15 @@ import * as THREE from 'three';
 export function foliageGeometry(part) {
   if (!part.id.includes('ivy-')) {
     const geometry = new THREE.IcosahedronGeometry(1, 4);
+    if(part.crownProfile === 'lobed') {
+      const position=geometry.attributes.position,seed=(part.seed??0)*.17;
+      for(let i=0;i<position.count;i++) {
+        const x=position.getX(i),y=position.getY(i),z=position.getZ(i),a=Math.atan2(z,x);
+        const r=.90+.055*Math.sin(a*5+seed+y*4)+.04*Math.sin(a*9-seed-y*3);
+        position.setXYZ(i,x*r,y*r,z*r);
+      }
+      geometry.computeVertexNormals();
+    }
     geometry.scale(...part.size); return geometry;
   }
   const control = [[0, 1], [.30, .44], [.78, .61], [.59, .08], [1, -.12],

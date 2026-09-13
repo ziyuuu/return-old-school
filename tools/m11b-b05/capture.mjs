@@ -13,7 +13,7 @@ const require=createRequire(import.meta.url),{chromium}=require(process.env.PLAY
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const group=process.env.B05_GROUP||'gate',phase=process.env.B05_PHASE||'iteration-01';
 const baseline=group==='baseline',mobile=group==='mobile',fallback=group==='fallback';
-const viewer=path.join(root,baseline?'artifacts/m11b-b04/Yali_B04_R1_Viewer.html':'artifacts/m11b-b05/Yali_B05_R1_1_Viewer.html');
+const viewer=path.join(root,baseline?'artifacts/m11b-b04/Yali_B04_R1_Viewer.html':(process.env.B05_VIEWER_FILE||'artifacts/m11b-b05/Yali_B05_R1_1_Viewer.html'));
 const out=path.join(root,'qa/m11b-b05',phase,group);await fs.mkdir(out,{recursive:true});
 const sha=b=>createHash('sha256').update(b).digest('hex'),viewport=mobile?{width:390,height:844}:{width:1280,height:840};
 const groups={gate:['b05-gate','b05-gate-close','b05-stone','b05-side-gate'],courts:['b05-courts','b05-hoop','b05-court-entry','b05-track','b05-auxiliary','b05-pool'],field:['b05-field','b05-goal','b05-rostrum','b05-flags','b05-planted-axis'],residential:['b05-residential','b05-residential-entry','b05-overview'],regression:['overview','r3-overview','b02-photo-front','b03-photo-library','b03-garden','b03-canteen','top','r3-axis'],baseline:['overview','r3-overview','b02-photo-front','b03-photo-library','b03-garden','b03-canteen','top','r3-axis'],checks:[],mobile:[null,'b05-court-entry','b05-flags'],fallback:['b05-hoop','top','r3-axis'],performance:['b05-gate-close','b05-hoop','b05-overview']};

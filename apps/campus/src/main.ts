@@ -215,7 +215,10 @@ const el=<T extends HTMLElement>(id:string)=>document.getElementById(id) as T;
 Object.assign(cameraPresets,{
  'b05-gate':{label:'B05 正门 · 校名石 / 独立侧门',position:[-22,10,-36],target:[0,3.4,2],fov:55},
  'b05-gate-close':{label:'正门 · 不对称门架 / 开放伸缩门',position:[-3,4.3,-24],target:[-1,3.4,0],fov:60},
- 'b05-stone':{label:'校名石 · 真实左右关系 / 精确坐标H',position:[-21.5,3.0,-6.8],target:[-17,1.3,1],fov:50},
+ 'b05-stone':{label:'校名石 · 真实左右关系 / 精确坐标H',position:[-20.5,4.0,-14.2],target:[-10.9,1.8,-4.5],fov:50},
+ 'b05-lane':{label:'连续围墙 · 侧门至家属区三叉路',position:[17,1.8,5],target:[17,1.8,14],fov:67},
+ 'b05-fork':{label:'侧路围墙尽端 · 家属区三叉路H',position:[117,5,26],target:[128,3.2,33],fov:65},
+ 'b05-tree':{label:'树木 · 分层冠簇 / 保留detail4',position:[15,7,154],target:[7,8,160],fov:54},
  'b05-side-gate':{label:'侧门 · 与主门独立的道路',position:[24,4.1,-8],target:[17,1.8,3],fov:55},
  'b05-courts':{label:'六片篮球场 · 篮架 / 蓝色围网 / 出入口',position:[21,35,158],target:[-39,5.5,119],fov:58},
  'b05-hoop':{label:'篮架近景 · 悬臂 / 篮板 / 篮筐 / 球网',position:[-19,6.6,140],target:[-20.5,5.7,147],fov:62},
