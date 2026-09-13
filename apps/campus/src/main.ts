@@ -1,3 +1,6 @@
+import batch05Input from '../../../data/m11b/batch05/input.json';
+import {buildB05Model} from './batch05-core.mjs';
+import {finishB05Integration} from './batch05-scene';
 // B04_ACTIVE_ENTRY
 import batch04Input from '../../../data/m11b/batch04/input.json';
 import {applyB04Layout,buildB04Model} from './batch04-core.mjs';
@@ -59,6 +62,7 @@ const rawCurrentModel=verticalScheme==='patch04'?buildPatch04Model(p03Model,patc
 const currentModel=adaptB03Terrain(adaptB01R3Terrain(rawCurrentModel??buildTerrainModel(layout,effective.spec),layout,revision3Input),layout,batch03Input);
 const b03Model=buildB03Model(layout,currentModel,batch03Input);
 const b04Model=buildB04Model(layout,currentModel,batch04Input);
+const b05Model=buildB05Model(layout,currentModel,batch05Input,patch04Input);
 const b01Model=buildB01R3Model(layout,currentModel,batch01Input,revision3Input);
 const b02Model=buildB02Model(layout,currentModel,batch02Input);
 let b01Bridge:any=null;
@@ -208,6 +212,26 @@ Object.assign(cameraPresets,{
  'b04-overview':{label:'B04 五栋外壳 · B01—B03继承',position:[243,161,333],target:[67,5,177],fov:55}
 });
 const el=<T extends HTMLElement>(id:string)=>document.getElementById(id) as T;
+Object.assign(cameraPresets,{
+ 'b05-gate':{label:'B05 正门 · 校名石 / 独立侧门',position:[-22,10,-36],target:[0,3.4,2],fov:55},
+ 'b05-gate-close':{label:'正门 · 不对称门架 / 开放伸缩门',position:[-3,4.3,-24],target:[-1,3.4,0],fov:60},
+ 'b05-stone':{label:'校名石 · 真实左右关系 / 精确坐标H',position:[-21.5,3.0,-6.8],target:[-17,1.3,1],fov:50},
+ 'b05-side-gate':{label:'侧门 · 与主门独立的道路',position:[24,4.1,-8],target:[17,1.8,3],fov:55},
+ 'b05-courts':{label:'六片篮球场 · 篮架 / 蓝色围网 / 出入口',position:[21,35,158],target:[-39,5.5,119],fov:58},
+ 'b05-hoop':{label:'篮架近景 · 悬臂 / 篮板 / 篮筐 / 球网',position:[-19,6.6,140],target:[-20.5,5.7,147],fov:62},
+ 'b05-court-entry':{label:'主路 → 原坡道 → 围网真实缺口',position:[2.5,5.4,127],target:[-16,4.9,120],fov:60},
+ 'b05-track':{label:'风雨直跑道 · 双侧柱列 / 中部横路',position:[-69,5.1,83],target:[-68.5,5.0,119],fov:64},
+ 'b05-auxiliary':{label:'单层体育辅助用房28 · 屋盖H / 真实门厅',position:[-73,5.2,116],target:[-80,4.6,118],fov:62},
+ 'b05-pool':{label:'泳池 / 池畔厕所26 · 原位置 / 公共入口',position:[-66,22,62],target:[-39,3.5,77],fov:60},
+ 'b05-field':{label:'操场 · 两端球门 / 主席台 / 场边树阵',position:[124,33,191],target:[69,3,112],fov:60},
+ 'b05-goal':{label:'2006白色球门结构 · 同源细杆网',position:[85,4.9,146],target:[73,3.1,158.8],fov:55},
+ 'b05-rostrum':{label:'主席台 · 中部高棚 / 两翼 / 上下接入',position:[41,8,136],target:[19,5.1,110],fov:62},
+ 'b05-flags':{label:'升旗台 · 原三旗杆 / 台阶 / 石栏',position:[87,8.6,209],target:[73,7.5,192.5],fov:65},
+ 'b05-planted-axis':{label:'主要树阵 · 场边低绿篱 / 既有场地出入口',position:[125,16,211],target:[67,5.2,187],fov:60},
+ 'b05-residential':{label:'生活区六个H体量 · 不虚构具体栋名',position:[236,65,146],target:[174,12,77],fov:58},
+ 'b05-residential-entry':{label:'生活区公共过道H · 实开入口 / 最小门厅',position:[171,5.7,28],target:[171,5.7,72],fov:68},
+ 'b05-overview':{label:'B05 场地构件与主要植被 · B01—B04继承',position:[287,206,-149],target:[58,6,133],fov:52}
+});
 const viewport=el<HTMLDivElement>('viewport');
 let renderer: THREE.WebGLRenderer;
 // Reverse depth preserves fine surface separation and hardware MSAA at shared edges.
@@ -407,16 +431,16 @@ function setToiletLevel(level:number,focus=false){
 function setView(name:string){
  const preset=cameraPresets[name];if(!preset)return;
  // Narrow screens keep B03 cameras in known free space, not inside B01.
- const p=(innerWidth<700&&name==='b04-longya-close')?{...preset,position:[129,10,237],target:[129,11,255],fov:78}:(innerWidth<700&&name==='b03-library')?{...preset,position:[73,8.5,237.5],target:[73,8,247.2],fov:68}:(innerWidth<700&&name==='b03-canteen')?{...preset,position:[116,17,152],target:[153,6,152],fov:72}:preset;controls.maxPolarAngle=(name.startsWith('b04-')||name.startsWith('b02-')||name.startsWith('b03-'))?Math.PI*.85:Math.PI*.495;camera.fov=p.fov??43;camera.updateProjectionMatrix();setReviewShadow(p.target,(name.startsWith('b04-')||name.startsWith('b02-')||name.startsWith('b03-'))||name.startsWith('terrain-')||name.startsWith('gym-p02-')||name.startsWith('p03-')||name.startsWith('b01-')||(name.startsWith('r2-')||name.startsWith('r3-'))||name.startsWith('p04-'));stopModes();view=name;setToiletLevel(name==='r3-porch-plan'?1:name==='toilet-floor'||name==='b01-floor2'||name==='r2-floor2'?2:0);
+ const p=(innerWidth<700&&name==='b04-longya-close')?{...preset,position:[129,10,237],target:[129,11,255],fov:78}:(innerWidth<700&&name==='b03-library')?{...preset,position:[73,8.5,237.5],target:[73,8,247.2],fov:68}:(innerWidth<700&&name==='b03-canteen')?{...preset,position:[116,17,152],target:[153,6,152],fov:72}:preset;controls.maxPolarAngle=(name.startsWith('b05-')||name.startsWith('b04-')||name.startsWith('b02-')||name.startsWith('b03-'))?Math.PI*.85:Math.PI*.495;camera.fov=p.fov??43;camera.updateProjectionMatrix();setReviewShadow(p.target,(name.startsWith('b05-')||name.startsWith('b04-')||name.startsWith('b02-')||name.startsWith('b03-'))||name.startsWith('terrain-')||name.startsWith('gym-p02-')||name.startsWith('p03-')||name.startsWith('b01-')||(name.startsWith('r2-')||name.startsWith('r3-'))||name.startsWith('p04-'));stopModes();view=name;setToiletLevel(name==='r3-porch-plan'?1:name==='toilet-floor'||name==='b01-floor2'||name==='r2-floor2'?2:0);
  b01Bridge?.setMode((name==='r2-section'||name==='r3-section')?'section':(name==='r2-axis'||name==='r3-axis')?'axis':'normal');
  document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',(b as HTMLElement).dataset.view===name));
  active=(name==='top'||(name==='r2-axis'||name==='r3-axis'))?topCamera:camera;controls.enabled=(name!=='top'&&name!=='r2-axis');topControls.enabled=(name==='top'||(name==='r2-axis'||name==='r3-axis'));
  active.position.set(...p.position as Vec3);active.up.set(...((name==='top'||(name==='r2-axis'||name==='r3-axis'))?[0,0,-1]:[0,1,0]) as Vec3);
- ((name==='top'||(name==='r2-axis'||name==='r3-axis'))?topControls:controls).target.set(...p.target as Vec3);if(innerWidth<700&&!name.startsWith('b03-')&&((name.startsWith('b04-')||name.startsWith('b02-')||name.startsWith('b03-'))||name.startsWith('b01-')||(name.startsWith('r2-')||name.startsWith('r3-')))&&name!=='r2-axis'){const t=new THREE.Vector3(...p.target as Vec3);active.position.sub(t).multiplyScalar((name.startsWith('b04-')||name.startsWith('b02-')||name.startsWith('b03-'))?1.9:2.6).add(t);}
+ ((name==='top'||(name==='r2-axis'||name==='r3-axis'))?topControls:controls).target.set(...p.target as Vec3);if(innerWidth<700&&!name.startsWith('b03-')&&((name.startsWith('b05-')||name.startsWith('b04-')||name.startsWith('b02-')||name.startsWith('b03-'))||name.startsWith('b01-')||(name.startsWith('r2-')||name.startsWith('r3-')))&&name!=='r2-axis'){const t=new THREE.Vector3(...p.target as Vec3);active.position.sub(t).multiplyScalar((name.startsWith('b05-')||name.startsWith('b04-')||name.startsWith('b02-')||name.startsWith('b03-'))?1.9:2.6).add(t);}
  active.lookAt(...p.target as Vec3);
  setReviewShadow(p.target,active!==topCamera,active.position.distanceTo(new THREE.Vector3(...p.target as Vec3)));
  if((name==='top'||(name==='r2-axis'||name==='r3-axis'))){topCamera.zoom=(name==='r2-axis'||name==='r3-axis')?1.5:1;topCamera.updateProjectionMatrix();}controls.update();topControls.update();
- el('view-name').innerHTML=`${p.label}<span>B04 科学馆 / 长雅楼等 · 待校友审阅｜B01—B03 已认可</span>`;
+ el('view-name').innerHTML=`${p.label}<span>B05 固定设施 / 主要植被 · 待校友审阅｜B01—B04 已认可</span>`;
 }
 for(const btn of document.querySelectorAll<HTMLButtonElement>('[data-view]'))btn.onclick=()=>setView(btn.dataset.view!);
 el<HTMLSelectElement>('toilet-level').onchange=e=>setToiletLevel(Number((e.target as HTMLSelectElement).value),true);
@@ -483,6 +507,7 @@ finishB03Integration({scene,roots,mats},b03Model);
 const b04Integration=finishB04Integration(scene);
 b01Bridge=installR3Details({volumes,roots,structures,mats,scene,renderer,site:patch04Input,terrain:currentModel??terrainSystem.model},b01Model);
 setToiletLevel(0);
+const b05Integration=finishB05Integration({scene,roots,mats,pickables},b05Model);
 
 el<HTMLInputElement>('terrain-check').onchange=e=>setTerrain((e.target as HTMLInputElement).checked);
 el('terrain-compare').onclick=()=>changeVertical(verticalScheme==='patch04'?'patch03':'patch04');
@@ -590,7 +615,7 @@ Object.assign(window,{__YALI_B02__:{ready:true,version:batch02Input.version,inpu
   return {routes:result,doors,sharedWallBlocked:ray([-60,4.9,65.3],[-60,4.9,66.7]).length>0,legacyGymCount:meshes.filter(o=>o.name.startsWith('P02-GYM-')&&o.userData.facility==='03').length,retainedSiteNames:meshes.filter(o=>o.name==='P02-GYM-FORECOURT').map(o=>o.name)};
  }
 }});
-if(!params.has('view'))setView(innerWidth<700?'b04-longya-close':'b04-science');
+if(!params.has('view'))setView(innerWidth<700?'b05-gate-close':'b05-overview');
 
 el<HTMLSelectElement>('b02-view-select').onchange=e=>setView((e.target as HTMLSelectElement).value);
 
@@ -601,10 +626,16 @@ const surfaceFinishes=finishCampusSurfaces(scene,layout);
 const spatialIndex=installSpatialIndex(scene);
 const reflectionProbes=installCampusReflections(renderer,scene);
 daylight.invalidate();
-if(params.get('diagnostics')==='1')Object.assign(window,{__YALI_RENDER_RAW__:{scene,renderer,camera:()=>active}});
+if(params.get('diagnostics')==='1')Object.assign(window,{__YALI_RENDER_RAW__:{scene,renderer,camera:()=>active,pause:()=>renderer.setAnimationLoop(null),resume:()=>renderer.setAnimationLoop(render),renderFrame:()=>render(performance.now())}});
 Object.assign(window,{__YALI_RENDER__:{state:()=>({...daylight.state(),spatialIndex,surfaceFinishes,reflectionProbes}),invalidateShadows:daylight.invalidate}});
 
 Object.assign(window,{__YALI_B04__:{ready:true,input:batch04Input,model:b04Model,layout,terrain:currentModel,integration:b04Integration,setView,
  checkAccess:()=>{const meshes:THREE.Object3D[]=[];scene.traverseVisible((o:any)=>{if(o.isMesh)meshes.push(o);});return checkB03Access(scene,meshes,b04Model);},
  getState:()=>({view,verticalScheme,camera:active.position.toArray(),target:(active===topCamera?topControls:controls).target.toArray(),fov:active===camera?camera.fov:null,
  webgl:renderer.getContext().getParameter(renderer.getContext().VERSION),glError:renderer.getContext().getError(),contextLost:renderer.getContext().isContextLost(),calls:renderer.info.render.calls,triangles:renderer.info.render.triangles})}});
+
+Object.assign(window,{__YALI_B05__:{...((window as any).__YALI_B04__),ready:true,input:batch05Input,model:b05Model,integration:b05Integration,
+ checkAccess:()=>checkB03Access(scene,visibleMeshList(),b05Model),
+ checkInherited:()=>({b03:checkB03Access(scene,visibleMeshList(),b03Model),b04:checkB03Access(scene,visibleMeshList(),b04Model)}),
+ currentAcceptance:{B01:'ALUMNI_APPROVED',B02:'ALUMNI_APPROVED',B03:'R2 ALUMNI_APPROVED',B04:'R1 ALUMNI_APPROVED',B05:'IMPLEMENTED / REVIEW_PENDING'}
+}});

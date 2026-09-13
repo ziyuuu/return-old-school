@@ -32,6 +32,10 @@ export const defaultFinishes = [
 
 /** Semantics take precedence over a palette row shared by unrelated materials. */
 export function resolveFinish(row, role = '', shape = '') {
+  // B05 exact semantic additions; inherited role resolution below stays unchanged.
+  if (['boulder','stone-plaque','stone-balustrade'].includes(role)) return 'stone';
+  if (['metal-roof','medallion'].includes(role)) return 'painted-metal';
+  if (role === 'line-paint') return 'paint';
   if (shape === 'leaf' || /foliage|ivy|crown/.test(role)) return 'foliage';
   if (/tree-trunk|bark/.test(role)) return 'bark';
   if (/planter-soil|planting|^soil$/.test(role)) return 'soil';
