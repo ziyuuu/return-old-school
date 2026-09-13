@@ -1,0 +1,42 @@
+name: B05 continuation acquisition
+on:
+  push:
+    branches: [codex/b05-development]
+    paths: [.github/workflows/b05-resume-acquire.yml]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/b05-development
+          fetch-depth: 0
+      - name: Verify inherited main and package Git continuation
+        run: |
+          set -euo pipefail
+          git fetch origin
+          git merge-base --is-ancestor 9e28225532718e3d60cc518aaac36ccc65f3fc2c HEAD
+          git merge-base --is-ancestor origin/main HEAD
+          test -z "$(git status --short)"
+          mkdir -p /tmp/b05-resume
+          git bundle create /tmp/b05-resume/current.bundle HEAD ^d30dcca00c94417697e5e368510aabd6287783cb
+          git rev-parse HEAD > /tmp/b05-resume/current-head.txt
+          git ls-remote origin refs/heads/main refs/heads/codex/b05-development > /tmp/b05-resume/remote-refs.txt
+          sha256sum /tmp/b05-resume/current.bundle
+      - name: Retrieve only existing public model QA from exact run
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh run download 34752358220 --repo ziyuuu/return-old-school --pattern 'B05-R1-*' --dir /tmp/b05-resume/qa-artifacts
+          gh api repos/ziyuuu/return-old-school/actions/runs/34752358220 > /tmp/b05-resume/run.json
+          gh api repos/ziyuuu/return-old-school/actions/runs/34752358220/jobs > /tmp/b05-resume/jobs.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: B05-recovered-continuation
+          path: /tmp/b05-resume
+          retention-days: 7
