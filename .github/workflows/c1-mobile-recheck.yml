@@ -1,0 +1,52 @@
+name: C1 real touch cancellation recheck
+on:
+  push:
+    branches: [codex/c1-player-controller]
+    paths: [.github/workflows/c1-mobile-recheck.yml]
+permissions:
+  contents: write
+jobs:
+  mobile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/c1-player-controller
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Correct only the invalid synthetic-pointer QA event
+        run: |
+          set -euo pipefail
+          git apply --check .github/c1-mobile-test.patch
+          git apply .github/c1-mobile-test.patch
+          node --check tools/m11c-c1/capture.mjs
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add tools/m11c-c1/capture.mjs
+          git commit -m 'test(c1): use real active CDP touch for pointercancel; runtime unchanged [skip ci]'
+          git push origin HEAD:codex/c1-player-controller
+          echo '96d2404bd56a9cf766a452f586bb4b6141957605c8266a710af9e9513e0737dc  artifacts/m11c-c1/Yali_C1_R1_Viewer.html' | sha256sum -c -
+      - name: Locked browser and source dependencies
+        run: |
+          npm ci --prefix apps/campus
+          npm install --prefix "$RUNNER_TEMP/c1-browser" --save-exact playwright@1.62.0
+          "$RUNNER_TEMP/c1-browser/node_modules/.bin/playwright" install --with-deps chromium
+          sudo apt-get install -y fonts-noto-cjk
+          echo "PLAYWRIGHT_MODULE=$RUNNER_TEMP/c1-browser/node_modules/playwright" >> "$GITHUB_ENV"
+      - name: Actual touch input, release, cancel and fresh 390x844 screen
+        env:
+          C1_GROUP: mobile
+          C1_PHASE: iteration-01
+        run: |
+          set -o pipefail
+          mkdir -p qa/m11c-c1/iteration-01/mobile
+          node tools/m11c-c1/capture.mjs 2>&1 | tee qa/m11c-c1/iteration-01/mobile/capture.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: C1-mobile-recheck
+          path: qa/m11c-c1/iteration-01/mobile
+          retention-days: 14
