@@ -1,0 +1,42 @@
+name: B05 collect exact final evidence
+on:
+  push:
+    branches: [codex/b05-development]
+    paths: [.github/workflows/b05-collect.yml]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Wait for the specified actual browser run and collect only its artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p evidence
+          for i in $(seq 1 90); do
+            status=$(gh api repos/ziyuuu/return-old-school/actions/runs/34752358220 --jq .status)
+            echo "Exact B05 run status: $status"
+            [ "$status" = completed ] && break
+            sleep 15
+          done
+          gh api repos/ziyuuu/return-old-school/actions/runs/34752358220 > evidence/run.json
+          gh api repos/ziyuuu/return-old-school/actions/runs/34752358220/jobs > evidence/jobs.json
+          gh api repos/ziyuuu/return-old-school/actions/runs/34752358220/artifacts > evidence/artifacts.json
+          gh run download 34752358220 --repo ziyuuu/return-old-school --pattern 'B05-R1-*' --dir evidence/artifacts
+          python - <<'PY'
+          import pathlib,json
+          r=json.loads(pathlib.Path('evidence/run.json').read_text())
+          print('Actual run conclusion:',r['conclusion'])
+          for p in sorted(pathlib.Path('evidence/artifacts').rglob('report.json')):
+              d=json.loads(p.read_text());print(p,d.get('passed'),len(d.get('views',[])),len(d.get('samples',[])),d.get('errors'))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: B05-R1-inspection-evidence
+          path: evidence
+          retention-days: 7
