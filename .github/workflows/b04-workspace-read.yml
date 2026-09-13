@@ -28,11 +28,13 @@ jobs:
           git merge-base --is-ancestor 332b0c30a0371df676bccd798fd4d37ad53cedc4 HEAD
           test -f docs/m11b/batch04/start-next-thread.md
           git switch --track origin/codex/b04-development
+          git rev-parse HEAD | tee ../branch-head.txt
+          git status --short | tee ../branch-status.txt
           npm ci --prefix apps/campus
           npm run build --prefix apps/campus
-          git log -3 --oneline
+          git log -8 --oneline
           git ls-remote origin refs/heads/main refs/heads/codex/b04-development | tee ../remote-refs.txt
-      - name: Package public source and locked dependencies (no research originals)
+      - name: Package current public source and locked dependencies (no research originals)
         run: |
           tar -czf b04-current-workspace.tar.gz -C staging .
           sha256sum b04-current-workspace.tar.gz
