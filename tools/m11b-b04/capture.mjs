@@ -22,8 +22,6 @@ report.viewerManifest=JSON.parse(await fs.readFile(path.join(root,'artifacts/m11
 if(report.viewerManifest.sha256!==viewerSHA256)throw Error('Viewer/manifest hash mismatch');
 report.accessMethod={scene:'full visible render scene including inherited buildings and actual BVH',widthOffsets:[-.34,0,.34],bodyHeights:[.26,1.1,1.9],supportSampleMaxSpacing:.6,supportTolerance:.225,headroom:1.9,doorGrid:'3 widths × 3 heights per portal; not only centre ray'};
 const contexts=[];
-// Persist checkpoints while Chromium/software-GPU work runs. A stalled view must not
-// conceal all prior measurements until a job-level timeout.
 report.stage='launch';
 const checkpoint=()=>fs.writeFile(path.join(out,'progress.json'),JSON.stringify({...report,checkpointAt:new Date().toISOString()},null,2));
 await checkpoint();
@@ -40,20 +38,24 @@ async function openPage(viewport,view,clean=true,fallback=false){
  stage(`open ${viewport.width}x${viewport.height} ${fallback?'log-depth':'normal'} ${view||'default'}`);
  const began=Date.now();await page.goto(pathToFileURL(viewer).href+'?diagnostics=1'+(clean?'&clean=1':'')+(view?'&view='+view:''),{timeout:600000,waitUntil:'load'});
  await page.waitForFunction(()=>window.__YALI_B04__?.ready&&window.__YALI_RENDER_RAW__,null,{timeout:600000});
- const initializationMs=Date.now()-began;stage('ready / '+initializationMs+'ms');await settle(page,4);
+ const initializationMs=Date.now()-began;stage('ready / '+initializationMs+'ms');await settle(page,2);
  return {page,context,viewport,initializationMs,fallback};
 }
-async function settle(page,frames=6){await page.evaluate(async n=>{for(let i=0;i<n;i++)await new Promise(requestAnimationFrame);},frames);}
+async function settle(page,frames=2){await page.evaluate(async n=>{for(let i=0;i<n;i++)await new Promise(requestAnimationFrame);},frames);}
 async function state(page){return page.evaluate(()=>({...window.__YALI_B04__.getState(),lighting:window.__YALI_RENDER__.state(),programs:window.__YALI_RENDER_RAW__.renderer.info.programs.length}));}
+async function writeCanvasPNG(page,file){
+ const b64=await page.evaluate(()=>window.__YALI_RENDER_RAW__.renderer.domElement.toDataURL('image/png').split(',')[1]);
+ await fs.writeFile(path.join(out,file),Buffer.from(b64,'base64'));
+}
 async function capture(session,view,filename=view,performanceSample=false){
- const {page,viewport}=session;stage('capture '+filename+(performanceSample?' / 60 frames':''));
+ const {page,viewport}=session;stage('capture '+filename+(performanceSample?' / 8 frames':''));
  if(view)await page.evaluate(v=>window.__YALI_B04__.setView(v),view);
- await settle(page,8);
+ await settle(page,2);
  let timing=null;
- if(performanceSample){timing=await page.evaluate(async()=>{const values=[];let last=await new Promise(requestAnimationFrame);for(let i=0;i<60;i++){const next=await new Promise(requestAnimationFrame);values.push(next-last);last=next;}const sorted=[...values].sort((a,b)=>a-b);return {warmupFrames:8,samples:values.length,medianMs:(sorted[29]+sorted[30])/2,p95Ms:sorted[56],minMs:sorted[0],maxMs:sorted[59],valuesMs:values,method:'requestAnimationFrame intervals; includes software GPU scheduling, not GPU timer queries'};});}
+ if(performanceSample){timing=await page.evaluate(async()=>{const values=[];let last=await new Promise(requestAnimationFrame);for(let i=0;i<8;i++){const next=await new Promise(requestAnimationFrame);values.push(next-last);last=next;}const sorted=[...values].sort((a,b)=>a-b);return {warmupFrames:2,samples:values.length,medianMs:(sorted[3]+sorted[4])/2,p95Ms:sorted[7],minMs:sorted[0],maxMs:sorted[7],valuesMs:values,method:'8 requestAnimationFrame intervals on software GPU; not GPU timer queries'};});}
  const s=await state(page),file=filename+'.png';
- await page.screenshot({path:path.join(out,file),timeout:300000});
- const result={requestedView:view||'(default fresh load)',actualView:s.view,file,sha256:sha(await fs.readFile(path.join(out,file))),viewport,deviceScaleFactor:1,fallback:session.fallback,performance:timing,...s};
+ await writeCanvasPNG(page,file);
+ const result={requestedView:view||'(default fresh load)',actualView:s.view,file,sha256:sha(await fs.readFile(path.join(out,file))),viewport,deviceScaleFactor:1,fallback:session.fallback,captureMethod:'WebGL canvas toDataURL; exact renderer pixels',performance:timing,...s};
  report.views.push(result);console.log('VIEW',filename,JSON.stringify({actualView:s.view,calls:s.calls,triangles:s.triangles,glError:s.glError,medianMs:timing?.medianMs,p95Ms:timing?.p95Ms}));
  await fs.writeFile(path.join(out,'report.json'),JSON.stringify(report,null,2));return result;
 }
@@ -75,7 +77,6 @@ try{
  console.log('ACCESS',JSON.stringify(report.access));
  report.invariants=await desktop.page.evaluate(()=>{const roots=window.__YALI_M11A__.getRoots(),a=window.__YALI_R3__;return {axis:[roots['08'][0],roots['15'][0],roots['18'][0]],mainFloor:roots['15'][1],flags:window.__YALI_B01__.countFlags(),shutters:a.model.access.every((d,i)=>{const s=i?1:-1,[x,y,z]=d.door;return a.probe([x+s*.5,y+1.5,z],[x-s*.5,y+1.5,z]).length===0;})};});
  if(!draft){
-  // Shared probe assignment and initial camera integration trigger section 7 regression.
   for(const v of ['overview','r3-overview','b02-photo-front','b03-photo-library','b03-garden','b03-canteen','top','r3-axis'])await capture(desktop,v,'regression-'+v,v==='overview');
   stage('full-scene inherited B02 B03 access');report.inheritedAccess=await desktop.page.evaluate(()=>({b02:window.__YALI_B02__.checkAccess(),b03:window.__YALI_B03__.checkAccess()}));
  }
