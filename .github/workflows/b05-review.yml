@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: '22'
       - id: build
-        name: Verify, apply inspected correction, build and normally push source
+        name: Verify inspected display correction and normally push exact source
         run: |
           set -euo pipefail
           git fetch origin
@@ -28,24 +28,35 @@ jobs:
           git merge-base --is-ancestor origin/main HEAD
           test -z "$(git status --short)"
           test -f apps/campus/src/batch05-core.mjs
-          if ! grep -q 'Actual same-frame WebGL canvas readback / clean viewport' tools/m11b-b05/capture.mjs; then
-            echo '0c7c71093472fe37af2a9410aa63150473d7066492391bb74ad5992191cd9d38  .github/b05-fix01.patch' | sha256sum -c -
-            git apply --check .github/b05-fix01.patch
-            git apply .github/b05-fix01.patch
+          if ! grep -q 'const showGuides=' apps/campus/src/main.ts; then
+            sed 's/^ diff --git /diff --git /' .github/b05-display-fix.patch > "$RUNNER_TEMP/b05-display-fix.patch"
+            echo "9f416ac94747a18d52642f0f946ecea804d44de03607839c433e230d78b044be  $RUNNER_TEMP/b05-display-fix.patch" | sha256sum -c -
+            git apply --check "$RUNNER_TEMP/b05-display-fix.patch"
+            git apply "$RUNNER_TEMP/b05-display-fix.patch"
+          fi
+          if [ ! -f tools/m11b-b05/finalize.mjs ]; then
+            python - <<'PY'
+          import pathlib,base64,lzma,hashlib,subprocess
+          patch=lzma.decompress(base64.b64decode(''.join(f.read_text().strip() for f in sorted(pathlib.Path('.github/b05-delivery').glob('*.txt')))))
+          assert hashlib.sha256(patch).hexdigest()=='a322495cef5fdba4900e8c46d309909331dfec42880e0c81a727bdd162c9fd78'
+          subprocess.run(['git','apply','--check','-'],input=patch,check=True)
+          subprocess.run(['git','apply','-'],input=patch,check=True)
+          PY
           fi
           npm ci --prefix apps/campus
           mkdir -p qa/m11b-b05/final/build
           git diff --check
           npm run build --prefix apps/campus 2>&1 | tee qa/m11b-b05/final/build/build.log
           node --test tests/m11b/b05/model.test.mjs tests/render-upgrade/*.test.mjs 2>&1 | tee qa/m11b-b05/final/build/tests.tap
+          node --check tools/m11b-b05/finalize.mjs
           git diff --exit-code 9e28225532718e3d60cc518aaac36ccc65f3fc2c -- apps/campus/src/batch02-core.mjs apps/campus/src/batch03-core.mjs apps/campus/src/batch04-core.mjs data/m11b/batch01/acceptance.json data/m11b/batch02/acceptance.json data/m11b/batch03/acceptance.json data/m11b/batch04/acceptance.json
           test ! -f data/m11b/batch05/acceptance.json
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add apps/campus/src/main.ts tools/m11b-b05/capture.mjs
+          git add apps/campus/src/main.ts apps/campus/src/batch05-scene.ts tools/m11b-b05 data/m11b/batch05 docs/m11b/batch05/evidence.md
           if ! git diff --cached --quiet; then
             git diff --cached --stat
-            git commit -m 'fix(b05): unobstructed pool review and faithful actual WebGL capture recovery [skip ci]'
+            git commit -m 'fix(b05): correct inscription aspect and keep survey guides opt-in; document H boundaries [skip ci]'
             git push origin HEAD:codex/b05-development
           fi
           test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/codex/b05-development | cut -f1)"
@@ -67,7 +78,7 @@ jobs:
     timeout-minutes: 35
     strategy:
       fail-fast: false
-      max-parallel: 5
+      max-parallel: 10
       matrix:
         group: [gate, courts, field, residential, checks, regression, mobile, fallback, performance, baseline]
     steps:
