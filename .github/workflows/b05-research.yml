@@ -1,0 +1,60 @@
+name: B05 encrypted photographic research
+on:
+  push:
+    branches: [codex/b05-development]
+    paths: [.github/workflows/b05-research.yml]
+permissions:
+  contents: read
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Retrieve registered images outside tracked source
+        run: |
+          python - <<'PY'
+          import pathlib,json,urllib.request,hashlib,datetime,re,concurrent.futures
+          out=pathlib.Path('/tmp/b05-private-reference');out.mkdir()
+          entries=json.load(open('data/m11a/patch03/evidence-manifest.json'))['entries']
+          selected={'S03-'+str(i).zfill(3) for i in [13,14,15,20,21,22,23,25,26,27,28,29,30]}
+          records=[dict(id=e['id'],url=e['imageURL'].replace('http:','https:')) for e in entries if e['id'] in selected]
+          records += [dict(id='C01-field-2006',url='https://upload.wikimedia.org/wikipedia/commons/9/9c/Yali_High_School_sports_field_2006.jpg'),dict(id='C02-football-2006',url='https://upload.wikimedia.org/wikipedia/commons/c/ce/Yali_High_School_sports_ground_football_practice.jpg')]
+          def fetch(e):
+              try:
+                  data=urllib.request.urlopen(urllib.request.Request(e['url'],headers={'User-Agent':'ReturnOldSchool-history-research/1.0 (noncommercial source inspection)'}),timeout=40).read()
+                  if not data.startswith(b'\xff\xd8'):raise ValueError('Not a JPEG')
+                  (out/(e['id']+'.jpg')).write_bytes(data);e.update(bytes=len(data),sha256=hashlib.sha256(data).hexdigest(),retrievedAt=datetime.datetime.now(datetime.timezone.utc).isoformat(),status='downloaded')
+              except Exception as ex:e.update(status='failed',error=str(ex))
+              return e
+          records=list(concurrent.futures.ThreadPoolExecutor(max_workers=4).map(fetch,records))
+          (out/'retrieval.json').write_text(json.dumps(records,ensure_ascii=False,indent=2))
+          print(json.dumps([{k:e[k] for k in ['id','status','bytes','sha256','error'] if k in e} for e in records],indent=2))
+          assert any(e['status']=='downloaded' for e in records)
+          PY
+      - name: Encrypt before any artifact upload (no original photos in public Git or artifacts)
+        run: |
+          set -euo pipefail
+          cat > /tmp/b05-research.pub <<'KEY'
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArIntkGLyBKF0U/63e1AZ
+          iBi3thFLNINPDOZfi9oZZfTJ/0jCo/Y1Df+WzUcsfw+bDlrAYOfzCoUBU+yZC004
+          DrL/yGqgHglqxZO7b9iT7Z4PmsWSVgxwN/do1evrdVBEfjovOi1a6l6XpCRPtI6M
+          zlyxGQzHjs2CEtF/Bc0sY5rohGWYsvUZkP11kuvCepBUqhY+SMVknDP16/PKqpV3
+          U5OdqhdtXPpZ42f+74hSn0jh+p8WdX8tIk/OfhmkAvEZSBIRwdf576nrJPFaeVPa
+          m8IWKdSS14xwvTH6XlZXm0GGFezt1ky1Ire7jTElWK4/DkVRECmBK9om0YQYDHtI
+          bQIDAQAB
+          -----END PUBLIC KEY-----
+          KEY
+          mkdir sealed
+          openssl rand -base64 32 > /tmp/b05-pass
+          tar -czf /tmp/b05-references.tar.gz -C /tmp/b05-private-reference .
+          openssl enc -aes-256-cbc -salt -pbkdf2 -iter 200000 -in /tmp/b05-references.tar.gz -out sealed/references.enc -pass file:/tmp/b05-pass
+          openssl pkeyutl -encrypt -pubin -inkey /tmp/b05-research.pub -pkeyopt rsa_padding_mode:oaep -in /tmp/b05-pass -out sealed/pass.enc
+          sha256sum sealed/* > sealed/SHA256SUMS
+          rm -rf /tmp/b05-private-reference /tmp/b05-references.tar.gz /tmp/b05-pass
+      - uses: actions/upload-artifact@v4
+        with:
+          name: B05-encrypted-references
+          path: sealed
+          retention-days: 3
