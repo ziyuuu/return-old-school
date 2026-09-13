@@ -1,0 +1,148 @@
+name: B04 hash-bound review delivery
+on:
+  push:
+    branches: [codex/b04-development]
+    paths: [.github/workflows/b04-final.yml]
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: b04-final-delivery
+  cancel-in-progress: false
+jobs:
+  deliver:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/b04-development
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify history and apply inspected evidence and QA supplement
+        run: |
+          set -euo pipefail
+          git fetch origin
+          git status --short
+          git merge-base --is-ancestor f8ece5fcade5c64332cc7fb34ac707b1d3aad8fc HEAD
+          git merge-base --is-ancestor origin/main HEAD
+          git merge-base --is-ancestor 2e893e6846fb7dba4e017168d4e80c355d2903a9 HEAD
+          if [ ! -f tools/m11b-b04/finalize.mjs ]; then
+            python - <<'PY'
+          import pathlib,base64,lzma,hashlib,subprocess
+          p=lzma.decompress(base64.b64decode(''.join(p.read_text().strip() for p in sorted(pathlib.Path('.github/b04-followup').glob('*.txt')))))
+          assert hashlib.sha256(p).hexdigest()=='abc60357c732a4b58ac029126b230ffc41d00b2b1fb1f88c44be2a5c374d4a05'
+          subprocess.run(['git','apply','--check','-'],input=p,check=True)
+          subprocess.run(['git','apply','-'],input=p,check=True)
+          PY
+          fi
+          git diff --check
+          npm ci --prefix apps/campus
+          mkdir -p qa/m11b-b04/final
+          npm run build --prefix apps/campus 2>&1 | tee qa/m11b-b04/final/build.log
+          node --test tests/m11b/b04/model.test.mjs tests/render-upgrade/*.test.mjs 2>&1 | tee qa/m11b-b04/final/tests.tap
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/m11b/batch04/input.json data/m11b/batch04/evidence.json docs/m11b/batch04/evidence.md tools/m11b-b04/export.mjs tools/m11b-b04/capture.mjs tools/m11b-b04/finalize.mjs
+          if ! git diff --cached --quiet; then
+            git diff --cached --stat
+            git commit -m 'docs(b04): bind inspected photographic evidence and complete reproducible QA tools'
+            git push origin HEAD:codex/b04-development
+          fi
+          test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/codex/b04-development | cut -f1)"
+          node tools/m11b-b04/export.mjs
+          git rev-parse HEAD | tee qa/m11b-b04/final/tested-source-commit.txt
+      - name: Remove only the temporary reference transport already downloaded for private inspection
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Research originals are not delivery or public Git material.
+          if gh api repos/ziyuuu/return-old-school/actions/artifacts/10310471673 >/dev/null 2>&1; then
+            gh api --method DELETE repos/ziyuuu/return-old-school/actions/artifacts/10310471673
+          fi
+      - name: Install pinned external browser harness and system CJK fonts
+        run: |
+          npm install --prefix "$RUNNER_TEMP/b04-playwright" playwright@1.62.0
+          "$RUNNER_TEMP/b04-playwright/node_modules/.bin/playwright" install --with-deps chromium
+          sudo apt-get install -y fonts-noto-cjk
+          echo "PLAYWRIGHT_MODULE=$RUNNER_TEMP/b04-playwright/node_modules/playwright" >> "$GITHUB_ENV"
+      - name: Start actual full offline Viewer QA and retain startup checkpoint
+        env:
+          B04_QA_PHASE: final
+        run: |
+          nohup bash -c 'node tools/m11b-b04/capture.mjs > qa/m11b-b04/final/capture.log 2>&1; echo $? > qa/m11b-b04/final/capture.exit' > "$RUNNER_TEMP/b04-capture-launch.log" 2>&1 &
+          echo $! > "$RUNNER_TEMP/b04-capture.pid"
+          sleep 45
+          tail -15 qa/m11b-b04/final/capture.log || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: B04-startup-checkpoint
+          path: |
+            qa/m11b-b04/final
+            artifacts/m11b-b04
+          retention-days: 3
+      - name: Retain early real screenshots without hiding a stalled camera
+        run: |
+          for i in $(seq 1 60); do
+            [ -f qa/m11b-b04/final/capture.exit ] && break
+            count=$(find qa/m11b-b04/final -maxdepth 1 -name '*.png' | wc -l)
+            [ "$count" -ge 3 ] && break
+            sleep 5
+          done
+          tail -15 qa/m11b-b04/final/capture.log || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: B04-early-visual-checkpoint
+          path: |
+            qa/m11b-b04/final
+            artifacts/m11b-b04
+          retention-days: 3
+      - name: Complete the actual browser suite
+        run: |
+          for i in $(seq 1 630); do
+            [ -f qa/m11b-b04/final/capture.exit ] && break
+            sleep 5
+          done
+          cat qa/m11b-b04/final/capture.log
+          test -f qa/m11b-b04/final/capture.exit
+          test "$(cat qa/m11b-b04/final/capture.exit)" = 0
+          node tools/m11b-b04/finalize.mjs
+      - name: Check public scope, commit actual QA and verify normal Git push
+        run: |
+          set -euo pipefail
+          git diff --check
+          test ! -f data/m11b/batch04/acceptance.json
+          test -z "$(find qa/m11b-b04 artifacts/m11b-b04 docs/m11b/batch04 data/m11b/batch04 -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.woff*' -o -iname '*.ttf' -o -iname '*.otf' \))"
+          git diff --exit-code f8ece5fcade5c64332cc7fb34ac707b1d3aad8fc -- data/m11b/batch01/acceptance.json data/m11b/batch02/acceptance.json data/m11b/batch03/acceptance.json apps/campus/src/batch02-core.mjs apps/campus/src/batch03-core.mjs data/m11b/batch03/input.json
+          git add README.md docs/development-plan.md docs/m11b/batch04 data/m11b/batch04 artifacts/m11b-b04 qa/m11b-b04/final qa/m11b-b04/README.md
+          git diff --cached --stat
+          git commit -m 'feat(b04): deliver tested offline Viewer, real browser screenshots and access QA; review pending'
+          git push origin HEAD:codex/b04-development
+          git rev-parse HEAD | tee "$RUNNER_TEMP/b04-delivery-commit.txt"
+          git ls-remote origin refs/heads/main refs/heads/codex/b04-development | tee "$RUNNER_TEMP/b04-remote-refs.txt"
+          test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/codex/b04-development | cut -f1)"
+          git status --short
+      - name: Package public Git continuation without credentials or installed dependencies
+        if: always()
+        run: |
+          git bundle create "$RUNNER_TEMP/b04-current.bundle" HEAD ^f8ece5fcade5c64332cc7fb34ac707b1d3aad8fc
+          git rev-parse HEAD > "$RUNNER_TEMP/b04-current-head.txt"
+          git ls-remote origin refs/heads/main refs/heads/codex/b04-development > "$RUNNER_TEMP/b04-remote-refs.txt"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: B04-reviewable-delivery
+          path: |
+            qa/m11b-b04
+            artifacts/m11b-b04
+            docs/m11b/batch04
+            data/m11b/batch04
+            ${{ runner.temp }}/b04-current.bundle
+            ${{ runner.temp }}/b04-current-head.txt
+            ${{ runner.temp }}/b04-remote-refs.txt
+            ${{ runner.temp }}/b04-delivery-commit.txt
+          retention-days: 7
