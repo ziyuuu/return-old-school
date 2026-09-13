@@ -1,0 +1,116 @@
+{
+  "version": "M1.1-C.C1.R1",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "standard": "1.0",
+  "baseCommit": "c6dcf6ed2bc7a976cd7994402305b80ef0fb6127",
+  "purpose": "C1 controller parameters, not historical measurements or a final student avatar",
+  "body": {
+    "height": 1.72,
+    "radius": 0.28,
+    "skin": 0.015
+  },
+  "movement": {
+    "walkSpeed": 1.65,
+    "runSpeed": 3.4,
+    "acceleration": 12,
+    "braking": 18,
+    "gravity": 18,
+    "terminalSpeed": 30,
+    "maxStep": 0.28,
+    "stepWidth": 0.16,
+    "snapDistance": 0.32,
+    "climbDegrees": 42,
+    "slideDegrees": 48,
+    "groundStickSpeed": 0.12
+  },
+  "simulation": {
+    "hz": 60,
+    "maxCatchupSteps": 8,
+    "maxFrameSeconds": 0.15
+  },
+  "camera": {
+    "distance": 3.6,
+    "minimumDistance": 0.75,
+    "maximumDistance": 7,
+    "radius": 0.18,
+    "eyeHeight": 1.59,
+    "targetHeight": 1.28,
+    "fov": 55,
+    "pitch": 0.25,
+    "minimumPitch": -0.25,
+    "maximumPitch": 1.05,
+    "sensitivity": 0.004,
+    "recoveryRate": 6
+  },
+  "collision": {
+    "regionRadius": 26,
+    "refreshDistance": 9,
+    "verticalMin": -30,
+    "verticalMax": 100,
+    "geometry": "Exact rendered triangle subset selected by BVH; coplanar conditioning splits long triangles to <=12m edges without changing the surface or visible mesh",
+    "nonBlocking": [
+      "foliage",
+      "turf paint",
+      "name marks",
+      "water surface",
+      "survey guides",
+      "player visualization"
+    ],
+    "glassBlocking": true,
+    "solidNetBlocking": true
+  },
+  "spawns": {
+    "gate": {
+      "label": "主校门",
+      "feet": [
+        0,
+        0.12,
+        -3.5
+      ],
+      "yaw": 0
+    },
+    "lane": {
+      "label": "侧门围墙小路",
+      "feet": [
+        17,
+        0.18,
+        4.4
+      ],
+      "yaw": 0
+    },
+    "courts": {
+      "label": "篮球场东入口",
+      "feet": [
+        -5,
+        3.15,
+        120
+      ],
+      "yaw": -1.5707963267948966
+    },
+    "stone": {
+      "label": "校名石坡脚",
+      "feet": [
+        -8.1,
+        0.14,
+        -11.65
+      ],
+      "yaw": 0
+    },
+    "gym": {
+      "label": "体育馆前坪",
+      "feet": [
+        -20,
+        3.15,
+        45
+      ],
+      "yaw": -1.5707963267948966
+    }
+  },
+  "avatar": {
+    "type": "articulated scale mannequin",
+    "historicalUniform": false,
+    "label": "C1 比例人形；C2 再制作有依据的学生形象",
+    "shadow": "procedural contact shadow; static campus daylight unchanged"
+  },
+  "scopeBoundary": "C1 validates controller and representative routes only. C2 final avatar and C3 whole-campus traversal acceptance remain planned. No jump, swimming, interactions, NPCs or narrative mechanics."
+}

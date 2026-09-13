@@ -1,3 +1,4 @@
+import {createPlayerMode,type PlayerMode} from './player/player-mode';
 import batch05Input from '../../../data/m11b/batch05/input.json';
 import {buildB05Model} from './batch05-core.mjs';
 import {finishB05Integration} from './batch05-scene';
@@ -257,6 +258,7 @@ const camera=new THREE.PerspectiveCamera(43,innerWidth/innerHeight,.08,1100);
 const topCamera=new THREE.OrthographicCamera(-200,200,200,-200,1,1100);
 topCamera.up.set(0,0,-1);
 let active:THREE.PerspectiveCamera|THREE.OrthographicCamera=camera;
+let playerMode:PlayerMode|null=null;
 const controls=new OrbitControls(camera,renderer.domElement);
 controls.enableDamping=true;controls.dampingFactor=.1;controls.minDistance=1.2;controls.maxDistance=900;controls.maxPolarAngle=Math.PI*.495;
 const topControls=new OrbitControls(topCamera,renderer.domElement);
@@ -434,6 +436,7 @@ function setToiletLevel(level:number,focus=false){
  if(focus&&level){stopModes();active=camera;controls.enabled=true;topControls.enabled=false;const y=(level-1)*3.8+(terrainSystem?.enabled?terrainSystem.model.anchors['25'].floor:0);camera.position.set(7,y+10,238);controls.target.set(-10,y+1,224);controls.update();}
 }
 function setView(name:string){
+ if(playerMode?.enabled)playerMode.disable();
  const preset=cameraPresets[name];if(!preset)return;
  // Keep narrow-screen review cameras in known free space, not inside B01.
  const b05NarrowFlags=innerWidth<700&&name==='b05-flags';
@@ -467,15 +470,16 @@ el('fly-btn').onclick=()=>{setReviewShadow([45,0,135],false);
 const tourPath=layout.navigation.tourPath;
 let tourEdge=0,tourT=0;
 el('tour-btn').onclick=()=>{setReviewShadow([45,0,135],false);if(tour){setView('overview');return;}stopModes();tour=true;active=camera;controls.enabled=topControls.enabled=false;camera.up.set(0,1,0);tourEdge=tourT=0;const start=layout.navigation.nodes[tourPath[0] as keyof typeof layout.navigation.nodes],next=layout.navigation.nodes[tourPath[1] as keyof typeof layout.navigation.nodes];camera.position.set(start[0],groundEye(start[0],start[2]),start[2]);camera.lookAt(next[0],groundEye(next[0],next[2]),next[2]);el('tour-btn').classList.add('active');el('help').textContent='沿连通图进行地面路线巡览 · 点击停止或 Esc · 不是物理角色';};
-renderer.domElement.addEventListener('pointerdown',e=>{pointerDown=true;pointerLast=clickStart=[e.clientX,e.clientY];});
+renderer.domElement.addEventListener('pointerdown',e=>{if(playerMode?.enabled)return;pointerDown=true;pointerLast=clickStart=[e.clientX,e.clientY];});
 window.addEventListener('pointerup',e=>{
+ if(playerMode?.enabled){pointerDown=false;return;}
  if(pointerDown&&!fly&&!tour&&Math.hypot(e.clientX-clickStart[0],e.clientY-clickStart[1])<5){
   const r=renderer.domElement.getBoundingClientRect();const ray=new THREE.Raycaster();ray.setFromCamera(new THREE.Vector2((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1),active);
   const hit=ray.intersectObjects(pickables.filter(v=>!planOnly||v.parent?.parent!==volumes),false)[0];if(hit?.object.userData.facility)selectFacility(hit.object.userData.facility);
  }pointerDown=false;
 });
 window.addEventListener('pointermove',e=>{if(pointerDown&&fly){theta-=(e.clientX-pointerLast[0])*.004;phi=THREE.MathUtils.clamp(phi-(e.clientY-pointerLast[1])*.004,-1.45,1.45);pointerLast=[e.clientX,e.clientY];}});
-window.addEventListener('keydown',e=>{if((e.target as HTMLElement)?.matches('input,select,textarea'))return;if(e.key==='Escape'){setView(view);setInspector(false);return;}keys.add(e.code);if(fly&&['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyR','Space'].includes(e.code))e.preventDefault();});
+window.addEventListener('keydown',e=>{if(playerMode?.enabled)return;if((e.target as HTMLElement)?.matches('input,select,textarea'))return;if(e.key==='Escape'){setView(view);setInspector(false);return;}keys.add(e.code);if(fly&&['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyR','Space'].includes(e.code))e.preventDefault();});
 window.addEventListener('keyup',e=>keys.delete(e.code));window.addEventListener('blur',()=>{keys.clear();pointerDown=false;});
 function resize(){
  renderer.setSize(innerWidth,innerHeight);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();
@@ -484,8 +488,9 @@ function resize(){
 }window.addEventListener('resize',resize);resize();
 const projected=new THREE.Vector3();
 function render(time:number){
- const dt=Math.min((time-last)/1000||0,.05);last=time;
- if(fly){
+ const rawDt=Math.max(0,(time-last)/1000||0),dt=Math.min(rawDt,.05);last=time;
+ if(playerMode?.enabled){playerMode.update(rawDt);active=camera;}
+ else if(fly){
   const speed=(keys.has('ShiftLeft')?65:18)*dt,forward=new THREE.Vector3(-Math.sin(theta),0,-Math.cos(theta)),right=new THREE.Vector3(Math.cos(theta),0,-Math.sin(theta));
   const movement=new THREE.Vector3();if(keys.has('KeyW'))movement.add(forward);if(keys.has('KeyS'))movement.sub(forward);if(keys.has('KeyD'))movement.add(right);if(keys.has('KeyA'))movement.sub(right);
   if(keys.has('KeyR'))movement.y+=1;if(keys.has('KeyQ'))movement.y-=1;if(movement.lengthSq())camera.position.addScaledVector(movement.normalize(),speed);
@@ -496,10 +501,11 @@ function render(time:number){
   if(tourT>=1){tourT=0;tourEdge++;if(tourEdge>=tourPath.length-1){setView('overview');return;}}
   const tx=THREE.MathUtils.lerp(a[0],b[0],tourT),tz=THREE.MathUtils.lerp(a[2],b[2],tourT);camera.position.set(tx,groundEye(tx,tz),tz);const lt=Math.min(1,tourT+3/Math.max(len,1)),lx=THREE.MathUtils.lerp(a[0],b[0],lt),lz=THREE.MathUtils.lerp(a[2],b[2],lt);camera.lookAt(lx,groundEye(lx,lz),lz);
  }else {if(controls.enabled)controls.update();if(topControls.enabled)topControls.update();}
- if(!fly&&!tour)daylight.focus(active===topCamera?topControls.target:controls.target,active===topCamera?Infinity:active.position.distanceTo(controls.target));
+ if(playerMode?.enabled)daylight.focus(playerMode.target(),12);
+ else if(!fly&&!tour)daylight.focus(active===topCamera?topControls.target:controls.target,active===topCamera?Infinity:active.position.distanceTo(controls.target));
  renderer.render(scene,active);
  for(const [id,label] of labels){
-  projected.copy(label.point).project(active);const visible=labelsOn&&(keyLabels.has(id)||selected===id||view==='sports'&&['04','05','24','26','28'].includes(id)||view==='teaching'&&id==='25')&&projected.z<1&&projected.z>-1;
+  projected.copy(label.point).project(active);const visible=!playerMode?.enabled&&labelsOn&&(keyLabels.has(id)||selected===id||view==='sports'&&['04','05','24','26','28'].includes(id)||view==='teaching'&&id==='25')&&projected.z<1&&projected.z>-1;
   label.node.style.display=visible?'block':'none';const ox=view==='top'?(id==='27'?-35:id==='02'?35:0):0,oy=view==='top'?(id==='01'?-18:['02','27'].includes(id)?8:0):0;label.node.style.left=`${(projected.x*.5+.5)*innerWidth+ox}px`;label.node.style.top=`${(-projected.y*.5+.5)*innerHeight+oy}px`;label.node.classList.toggle('selected',selected===id);
  }
 }
@@ -644,5 +650,21 @@ Object.assign(window,{__YALI_B04__:{ready:true,input:batch04Input,model:b04Model
 Object.assign(window,{__YALI_B05__:{...((window as any).__YALI_B04__),ready:true,input:batch05Input,model:b05Model,integration:b05Integration,
  checkAccess:()=>checkB03Access(scene,visibleMeshList(),b05Model),
  checkInherited:()=>({b03:checkB03Access(scene,visibleMeshList(),b03Model),b04:checkB03Access(scene,visibleMeshList(),b04Model)}),
- currentAcceptance:{B01:'ALUMNI_APPROVED',B02:'ALUMNI_APPROVED',B03:'R2 ALUMNI_APPROVED',B04:'R1 ALUMNI_APPROVED',B05:'IMPLEMENTED / REVIEW_PENDING'}
+ currentAcceptance:{B01:'ALUMNI_APPROVED',B02:'ALUMNI_APPROVED',B03:'R2 ALUMNI_APPROVED',B04:'R1 ALUMNI_APPROVED',B05:'R1.2 ALUMNI_APPROVED'}
 }});
+
+// C1 is an opt-in mode for old ?view= review URLs and the default on a fresh load.
+// Initialize after the immutable accepted scene, BVH and static reflection capture.
+const poolPart=b05Model.parts.find((p:any)=>p.id==='B05-04-water')!;
+void createPlayerMode({scene,camera,canvas:renderer.domElement,mats,
+ prepare:()=>{setView('b05-gate-close');stopModes();active=camera;controls.enabled=false;topControls.enabled=false;
+  planOnly=false;volumes.visible=true;roots.get('12')!.visible=true;roofs.visible=true;
+  el<HTMLInputElement>('footprints-check').checked=false;el<HTMLInputElement>('roofs-check').checked=true;
+  setGymCutaway(roots,false);el<HTMLInputElement>('gym-cutaway').checked=false;setToiletLevel(0);setInspector(false);
+ },
+ review:()=>setView('b05-overview'),
+ pool:{x:poolPart.center[0],z:poolPart.center[2],width:poolPart.size[0],depth:poolPart.size[2],surface:poolPart.center[1]+poolPart.size[1]/2}
+}).then(p=>{playerMode=p;Object.assign(window,{__YALI_C1_READY__:true});}).catch(error=>{
+ console.error('C1 initialization failed',error);document.body.classList.remove('c1-mode');
+ el('error').hidden=false;el('error').textContent='C1角色初始化失败：'+String(error)+'。建筑审阅模式仍可使用。';
+});
