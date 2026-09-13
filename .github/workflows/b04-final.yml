@@ -58,7 +58,6 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          # Research originals are not delivery or public Git material.
           if gh api repos/ziyuuu/return-old-school/actions/artifacts/10310471673 >/dev/null 2>&1; then
             gh api --method DELETE repos/ziyuuu/return-old-school/actions/artifacts/10310471673
           fi
@@ -147,3 +146,4 @@ jobs:
             ${{ runner.temp }}/b04-delivery-commit.txt
           retention-days: 7
 # retrigger 2026-09-13 B04 final review delivery
+# retrigger after deterministic SwiftShader capture fix
