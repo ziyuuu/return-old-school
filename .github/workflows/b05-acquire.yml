@@ -1,0 +1,44 @@
+name: B05 verified Git acquisition
+on:
+  push:
+    branches: [codex/b05-development]
+    paths: [.github/workflows/b05-acquire.yml]
+permissions:
+  contents: read
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Fresh clone and verify approved continuation
+        run: |
+          set -euo pipefail
+          git clone https://github.com/ziyuuu/return-old-school.git source
+          cd source
+          git fetch origin
+          git switch main
+          git pull --ff-only origin main
+          git rev-parse HEAD | tee ../main-head.txt
+          git status --short | tee ../main-status.txt
+          git merge-base --is-ancestor 9e28225532718e3d60cc518aaac36ccc65f3fc2c HEAD
+          python - <<'PY'
+          import json
+          for batch in ['01','02','03','04']:
+              p=json.load(open('data/m11b/batch'+batch+'/acceptance.json'))
+              assert p['status']=='COMPLETE / ALUMNI_APPROVED',p
+          PY
+          git switch --track origin/codex/b05-development
+          git merge-base --is-ancestor origin/main HEAD
+          git bundle create ../b05-current.bundle main codex/b05-development ^f8ece5fcade5c64332cc7fb34ac707b1d3aad8fc
+          git ls-remote origin refs/heads/main refs/heads/codex/b05-development | tee ../remote-refs.txt
+          sha256sum ../b05-current.bundle | tee ../bundle-sha256.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: B05-current-Git-history
+          path: |
+            b05-current.bundle
+            main-head.txt
+            main-status.txt
+            remote-refs.txt
+            bundle-sha256.txt
+          retention-days: 7
