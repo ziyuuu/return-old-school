@@ -1,0 +1,36 @@
+name: B05 final public Git audit
+on:
+  push:
+    branches: [codex/b05-development]
+    paths: [.github/workflows/b05-final-audit.yml]
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Fresh Git clone and verify approved ancestry
+        run: |
+          set -euo pipefail
+          git clone https://github.com/ziyuuu/return-old-school.git campus
+          cd campus
+          git fetch origin
+          git switch main
+          git pull --ff-only origin main
+          git merge-base --is-ancestor 9e28225532718e3d60cc518aaac36ccc65f3fc2c HEAD
+          git switch --track origin/codex/b05-development
+          git merge-base --is-ancestor origin/main HEAD
+          git merge-base --is-ancestor 6d19950e1eea1422621b92394b2553e90c889f84 HEAD
+          test -z "$(git status --short)"
+          mkdir -p ../audit
+          git rev-parse HEAD > ../audit/head.txt
+          git ls-remote origin refs/heads/main refs/heads/codex/b05-development > ../audit/remote-refs.txt
+          git bundle create ../audit/continuation.bundle HEAD ^9e28225532718e3d60cc518aaac36ccc65f3fc2c
+          git bundle verify ../audit/continuation.bundle
+          sha256sum ../audit/continuation.bundle > ../audit/bundle-sha256.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: B05-final-public-Git
+          path: audit
+          retention-days: 7
