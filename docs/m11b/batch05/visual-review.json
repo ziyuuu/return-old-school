@@ -1,0 +1,28 @@
+{
+  "batch": "B05",
+  "version": "R1.1",
+  "status": "REVIEWED / NO_BLOCKING_VISUAL_DEFECTS",
+  "reviewed": true,
+  "reviewedAt": "2026-09-13T13:35:50.135267+00:00",
+  "reviewer": "assistant visual inspection",
+  "viewerSHA256": "d9e91cad8a2cf49af997da14e4a4ba97066f6115c01517473c049c22815b5e4e",
+  "testedSourceCommit": "6d19950e1eea1422621b92394b2553e90c889f84",
+  "run": "34755586253",
+  "groups": ["gate", "courts", "field", "residential", "regression", "mobile", "fallback", "performance", "baseline"],
+  "method": "Opened actual hash-verified Chromium screenshots in grouped contact sheets; compared final field, gym sightline, gate, courts and flags with supplied research contact and the separately labelled B04 baseline. No research originals in the public package.",
+  "findings": {
+    "gate": "逐图检查主门、题字、校名石、独立侧门。主入口开放，立石与题字未拉伸；低饱和题字远景对比偏弱为非阻断限制。校园石精确落点仍H，不能从当前截图声称实测定位。",
+    "courts": "六场组团、篮架/后撑、围网网孔与入口、棚道柱列、辅助门洞、泳池均可见；东/西入口未被围网封死。远距网丝有正常细线采样/摩尔风险，不将缩略图当无限分辨率保证。",
+    "field": "真实环形跑道与草坪分离，没有早期整片场面串色；球门/背撑/网格可辨，主席台及三旗台台阶与开口可见。主席台上盖年代、球门规格与树木个体仍H/U。",
+    "residential": "六个登记居住包络及公共入口短路可见，门洞不是贴图；全景可审阅整体路网。立面为保守H，不声称已经识别各栋宿舍名称或户型。",
+    "regression": "与本次B04重拍基线对照：教学楼、图书馆、食堂、双弧梯区域和中轴未重新摆放；B02五环与入口不再被两棵新增H树遮住。树列与既有公共路径相容，冠形仍简化表达。",
+    "mobile": "实际390×844三个完整界面图已看：初始校门、篮球场口、升旗台；无横向溢出；旗台镜头在前坪而不在主楼内。此为桌面Chromium窄视口，不是实体手机验证。",
+    "fallback": "对数深度实际路径的篮架近景、顶视、主轴正交可见；未见阻断审阅的严重黑屏、阴影反向或大片纹理排序错误。模拟扩展缺失不等同额外实体GPU测试。",
+    "performance": "三个独立60帧会话的截图逐张查看，与同名机位一致；帧耗数据很高但按原始值保留。不声明60FPS或性能达标。",
+    "baseline": "本次重拍B04原Viewer的8张同机位图单独标记，哈希d8e2…；仅作变化对照，未冒充B05截图或改写B04认可。"
+  },
+  "approvalBoundary": "No blocking visual defect for this review delivery is not historical/alumni acceptance or a hardware performance pass. H/U boundaries and fine-wire sampling limits remain.",
+  "acceptanceCreated": false,
+  "reviewedScreenshots": 43,
+  "screenshotsManifest": "qa/m11b-b05/screenshots-manifest.json"
+}
