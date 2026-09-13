@@ -1,0 +1,127 @@
+name: B05 R1.1 inspected delivery publication
+on:
+  push:
+    branches: [codex/b05-development]
+    paths: [.github/workflows/b05-publish.yml]
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: b05-inspected-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/b05-development
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify current history and retrieve only inspected public QA
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git fetch origin
+          git merge-base --is-ancestor origin/main HEAD
+          git merge-base --is-ancestor 6d19950e1eea1422621b92394b2553e90c889f84 HEAD
+          test -z "$(git status --short)"
+          test ! -f data/m11b/batch05/acceptance.json
+          test "$(gh api repos/ziyuuu/return-old-school/actions/runs/34755586253 --jq .conclusion)" = success
+          gh run download 34755692960 --repo ziyuuu/return-old-school --name B05-R11-inspection-evidence --dir "$RUNNER_TEMP/b05-inspected"
+          gh run download 34748960425 --repo ziyuuu/return-old-school --pattern 'B05-final-*' --dir "$RUNNER_TEMP/b05-historical"
+          npm ci --prefix apps/campus
+      - name: Correct stale report metadata without altering any runtime source
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('tools/m11b-b05/finalize.mjs');t=p.read_text()
+          assert "version:'R1'" in t and "tests:{passed:17" in t
+          t=t.replace("version:'R1'","version:'R1.1'").replace("tests:{passed:17","tests:{passed:19").replace("??'34752358220'","??'34755586253'")
+          t=t.replace("const checks=reports.checks;assert.equal(checks.access.passed,true);", "const checks=reports.checks;assert.equal(checks.access.passed,true);\nassert.ok(checks.access.routes.every(r=>r.failures===0&&r.bad.length===0));\nassert.ok(checks.access.doors.every(d=>d.bad.length===0));\nassert.ok(checks.inherited.b02.routes.every(r=>r.failures===0));\nassert.ok(checks.inherited.b02.doors.every(d=>d.bad.length===0));\nassert.equal(checks.inherited.b02.sharedWallBlocked,true);assert.equal(checks.invariants.shutters,true);")
+          t=t.replace("## 实测成本，不是用户硬件FPS\\n\\n", "## 实测成本，不是用户硬件FPS\\n\\n**软件渲染性能限制：本次SwiftShader会话非常慢，近景及全景可达到数秒至数十秒一个帧间隔。采样完成不表示流畅性通过；尚无真实用户GPU或手机的性能验收。**\\n\\n")
+          p.write_text(t)
+          p=Path('tools/m11b-b05/assemble.mjs');p.write_text(p.read_text().replace('gh run download 34752358220','gh run download 34755586253'))
+          PY
+          node --check tools/m11b-b05/assemble.mjs
+          node --check tools/m11b-b05/finalize.mjs
+          git diff --exit-code 6d19950e1eea1422621b92394b2553e90c889f84 -- apps/campus/src apps/campus/index.html apps/campus/package-lock.json data/m11b/batch05/input.json
+      - name: Import exact Viewer, original reports and selected earlier failures
+        env:
+          B05_SOURCE_COMMIT: 6d19950e1eea1422621b92394b2553e90c889f84
+          B05_RUN_ID: '34755586253'
+          B05_VERIFIED_RUN: '34755586253'
+        run: |
+          set -euo pipefail
+          B05_ARTIFACT_ROOT="$RUNNER_TEMP/b05-inspected/artifacts" node tools/m11b-b05/assemble.mjs
+          python - <<'PY'
+          from pathlib import Path
+          import json,hashlib,shutil,os
+          old=Path(os.environ['RUNNER_TEMP'])/'b05-historical';h=Path('qa/m11b-b05/history/before-closeout')
+          h.mkdir(parents=True,exist_ok=True);digest=lambda b:hashlib.sha256(b).hexdigest()
+          selections={'mobile':['report.json','capture.log','mobile-initial.png','b05-flags.png'],'field':['report.json','capture.log','b05-field.png','b05-goal.png'],'regression':['report.json','capture.log','b02-photo-front.png'],'performance':['report.json','capture.log']}
+          rows=[]
+          for group,names in selections.items():
+              source=old/('B05-final-'+group);records={}
+              for name in names:
+                  matches=[p for p in source.rglob(name) if p.parent.name==group]
+                  if not matches:continue
+                  assert len(matches)==1
+                  p=h/group/name;p.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(matches[0],p);records[name]=digest(p.read_bytes())
+              d=json.loads((h/group/'report.json').read_text());rows.append({'group':group,'viewerSHA256':d['viewerSHA256'],'passed':d.get('passed'),'files':records})
+          (h/'manifest.json').write_text(json.dumps({'note':'Pre-R1.1 authentic historical reports; never used as final green evidence.','items':rows},ensure_ascii=False,indent=2)+'\n')
+          (h/'README.md').write_text('# B05 修复前历史证据\n\n本目录保留前序 `final` 会话的原始报告、日志及选定截图：旧手机升旗台机位、操场叠面、体育馆视线和未完成的性能会话。每份报告保持原Viewer哈希和passed值，不因归档而变绿。这里只归档必要的修订对照，不重新运行旧模型。\n\n最终审阅唯一依据为 `../../final-r1.1/` 中绑定 `d9e91cad8a2cf49af997da14e4a4ba97066f6115c01517473c049c22815b5e4e` 的报告。B04对照组另用B04哈希，不与最终B05混用。\n\n旧Actions运行：34748960425；最终R1.1运行：34755586253。历史全套产物的Actions存储有到期时间，本目录选定证据与Git归档长期保留。\n')
+          for name in ['Yali_B05_R1_Viewer.html','viewer-manifest.json','THIRD_PARTY_NOTICES.txt']:
+              matches=[p for p in (old/'B05-final-courts').rglob(name) if p.parent.name=='m11b-b05']
+              assert len(matches)==1
+              dest=Path('artifacts/m11b-b05/history/pre-r11')/name;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(matches[0],dest)
+          PY
+          node tools/m11b-b05/finalize.mjs
+      - name: Check public scope and normally commit and push complete delivery
+        run: |
+          set -euo pipefail
+          git diff --check
+          python - <<'PY'
+          from pathlib import Path
+          import json,hashlib,re
+          q=json.loads(Path('qa/m11b-b05/final-summary.json').read_text())
+          assert q['version']=='R1.1' and q['tests']['passed']==19 and q['run']=='34755586253'
+          assert q['viewerSHA256']=='d9e91cad8a2cf49af997da14e4a4ba97066f6115c01517473c049c22815b5e4e'
+          assert q['screenshots']['b05']==35 and q['screenshots']['inheritedBaseline']==8
+          assert q['access']['routes']==21 and q['access']['portals']==14
+          assert not Path('data/m11b/batch05/acceptance.json').exists()
+          for folder in ['qa/m11b-b05','artifacts/m11b-b05','data/m11b/batch05','docs/m11b/batch05']:
+              for p in Path(folder).rglob('*'):
+                  assert p.suffix.lower() not in ['.jpg','.jpeg','.woff','.woff2','.ttf','.otf','.ttc'],str(p)
+          for f in ['README.md','docs/development-plan.md','docs/m11b/batch05/delivery.md','qa/m11b-b05/README.md']:
+              for link in re.findall(r'\]\(([^)]+)\)',Path(f).read_text()):
+                  if re.match(r'^[a-z]+:',link) or link.startswith('#'):continue
+                  target=Path(f).parent/link.split('#')[0]
+                  assert target.exists(),f+' -> '+link
+          PY
+          git fetch origin
+          test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/codex/b05-development | cut -f1)"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md docs/development-plan.md docs/m11b/batch05 data/m11b/batch05 qa/m11b-b05 artifacts/m11b-b05 tools/m11b-b05/assemble.mjs tools/m11b-b05/finalize.mjs
+          git diff --cached --stat
+          git commit -m 'feat(b05): deliver R1.1 offline Viewer, inspected screenshots and exact access QA; review pending [skip ci]'
+          git push origin HEAD:codex/b05-development
+          mkdir -p "$RUNNER_TEMP/b05-release"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/b05-release/delivery-commit.txt"
+          git ls-remote origin refs/heads/main refs/heads/codex/b05-development | tee "$RUNNER_TEMP/b05-release/remote-refs.txt"
+          test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/codex/b05-development | cut -f1)"
+          test -z "$(git status --short)"
+          git bundle create "$RUNNER_TEMP/b05-release/delivery.bundle" HEAD ^9e28225532718e3d60cc518aaac36ccc65f3fc2c
+          git archive --format=zip --output="$RUNNER_TEMP/b05-release/B05_R1_1_Review.zip" HEAD artifacts/m11b-b05 qa/m11b-b05 docs/m11b/batch05 data/m11b/batch05
+          sha256sum "$RUNNER_TEMP/b05-release/B05_R1_1_Review.zip" "$RUNNER_TEMP/b05-release/delivery.bundle" | tee "$RUNNER_TEMP/b05-release/SHA256SUMS.txt"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: B05-R11-published-delivery
+          path: ${{ runner.temp }}/b05-release
+          retention-days: 14
