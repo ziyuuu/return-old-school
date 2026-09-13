@@ -1,0 +1,33 @@
+{
+  "stage": "M1.1-B",
+  "batch": "B05",
+  "version": "R1.2",
+  "status": "COMPLETE / ALUMNI_APPROVED",
+  "accepted_on": "2026-09-14",
+  "accepted_by": "user/alumni",
+  "user_confirmation": "通过了。先登记，合并。然后告诉我下一步是？",
+  "accepted_delivery_sha": "58b83bf379db0d757d0ce3405acb4c578164169d",
+  "tested_source_sha": "69f40cd6a2a6aeaa7baad62e59cba77929ce89f9",
+  "viewer_path": "artifacts/m11b-b05/Yali_B05_R1_2_Viewer.html",
+  "viewer_sha256": "c8ae60282d04f079e0669f453925529d536c4f186869209e122403cf5a118d77",
+  "qa_run": "34763298392",
+  "qa_scope": ["prepare", "checks", "entrance", "mobile_390x844", "landscape_tree_and_regression", "fallback"],
+  "scope": [
+    "01主校门与值班体量",
+    "02独立侧门及连续围墙侧路至家属区三叉路",
+    "27校门石斜坡—平台—石头空间关系",
+    "05风雨直跑道与28体育辅助用房",
+    "06六片篮球场、篮架、围网及出入口",
+    "08田径场／足球坪与两端球门",
+    "10主席台与14三旗台",
+    "04泳池、26池旁厕所、23沙坑",
+    "20生活区外壳与公共入口",
+    "09主要植被与R1.2树木建模优化"
+  ],
+  "model_rendering_standard": "1.0",
+  "historical_qa_status_preserved": true,
+  "remaining_hypotheses": "See docs/m11b/batch05/evidence.md and docs/m11b/batch05/r12-correction.md. Approval does not convert H/U coordinates, dimensions, chronology, species or hidden-face reconstruction into surveyed facts.",
+  "new_frozen_baseline": false,
+  "m11b_complete": true,
+  "next_stage": "M1.1-C"
+}
