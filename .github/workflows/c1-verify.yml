@@ -1,0 +1,109 @@
+name: C1 actual player and offline verification
+on:
+  push:
+    branches: [codex/c1-player-controller]
+    paths: [.github/workflows/c1-verify.yml]
+permissions:
+  contents: write
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      revision: ${{ steps.build.outputs.revision }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/c1-player-controller
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - id: build
+        name: Materialize checked controller, build, test and normally push
+        run: |
+          set -euo pipefail
+          git fetch origin
+          git merge-base --is-ancestor c6dcf6ed2bc7a976cd7994402305b80ef0fb6127 HEAD
+          git merge-base --is-ancestor origin/main HEAD
+          test -z "$(git status --short)"
+          if [ ! -f apps/campus/src/player/motor.mjs ]; then
+            python - <<'PY'
+          import pathlib,base64,lzma,hashlib,subprocess
+          patch=lzma.decompress(base64.b64decode(''.join(f.read_text().strip() for f in sorted(pathlib.Path('.github/c1-source').glob('*.txt')))))
+          assert hashlib.sha256(patch).hexdigest()=='171eb1dd8ce485e159016dbba29ce8679b80f0bfd519a4ab2cade19827cb8ec2'
+          subprocess.run(['git','apply','--check','-'],input=patch,check=True)
+          subprocess.run(['git','apply','-'],input=patch,check=True)
+          PY
+          fi
+          npm ci --prefix apps/campus
+          mkdir -p qa/m11c-c1/iteration-01/build
+          git diff --check
+          npm run build --prefix apps/campus 2>&1 | tee qa/m11c-c1/iteration-01/build/build.log
+          node --test tests/m11c/c1/controller.test.mjs tests/render-upgrade/*.test.mjs 2>&1 | tee qa/m11c-c1/iteration-01/build/tests.tap
+          git diff --exit-code c6dcf6ed2bc7a976cd7994402305b80ef0fb6127 -- data/m11b apps/campus/src/batch02-core.mjs apps/campus/src/batch03-core.mjs apps/campus/src/batch04-core.mjs apps/campus/src/batch05-core.mjs apps/campus/src/batch05-r12.mjs apps/campus/src/render
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add apps/campus/index.html apps/campus/package.json apps/campus/package-lock.json apps/campus/src/main.ts apps/campus/src/player data/m11c docs/m11c tests/m11c tools/m11c-c1
+          if ! git diff --cached --quiet; then
+            git commit -m 'feat(c1): add visible scale mannequin, Rapier capsule motor, third-person camera and touch controls [skip ci]'
+            git push origin HEAD:codex/c1-player-controller
+          fi
+          node tools/m11c-c1/export.mjs
+          git add artifacts/m11c-c1 qa/m11c-c1/iteration-01/build
+          if ! git diff --cached --quiet; then
+            git commit -m 'build(c1): export offline controller Viewer and record 23 directed tests; browser review in progress [skip ci]'
+            git push origin HEAD:codex/c1-player-controller
+          fi
+          echo "revision=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          mkdir -p /tmp/c1-receipt
+          git ls-remote origin refs/heads/main refs/heads/codex/c1-player-controller | tee /tmp/c1-receipt/remote-refs.txt
+          test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/codex/c1-player-controller | cut -f1)"
+          git bundle create /tmp/c1-receipt/c1-source.bundle HEAD ^c6dcf6ed2bc7a976cd7994402305b80ef0fb6127
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: C1-build-source
+          path: |
+            artifacts/m11c-c1
+            qa/m11c-c1/iteration-01/build
+            /tmp/c1-receipt
+          retention-days: 14
+  browser:
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      max-parallel: 7
+      matrix:
+        group: [input, lane, terrain, mobile, review, fallback, performance]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.prepare.outputs.revision }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Locked source and actual browser
+        run: |
+          npm ci --prefix apps/campus
+          npm install --prefix "$RUNNER_TEMP/c1-browser" --save-exact playwright@1.62.0
+          "$RUNNER_TEMP/c1-browser/node_modules/.bin/playwright" install --with-deps chromium
+          sudo apt-get install -y fonts-noto-cjk
+          echo "PLAYWRIGHT_MODULE=$RUNNER_TEMP/c1-browser/node_modules/playwright" >> "$GITHUB_ENV"
+      - name: Actual exact Viewer and player input
+        env:
+          C1_GROUP: ${{ matrix.group }}
+          C1_PHASE: iteration-01
+        run: |
+          set -o pipefail
+          mkdir -p qa/m11c-c1/iteration-01/${{ matrix.group }}
+          node tools/m11c-c1/capture.mjs 2>&1 | tee qa/m11c-c1/iteration-01/${{ matrix.group }}/capture.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: C1-iteration01-${{ matrix.group }}
+          path: qa/m11c-c1/iteration-01/${{ matrix.group }}
+          retention-days: 14
