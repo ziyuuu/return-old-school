@@ -1,0 +1,92 @@
+name: B05 isolated performance completion
+on:
+  push:
+    branches: [codex/b05-development]
+    paths: [.github/workflows/b05-measure.yml]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Fresh Git clone and verify latest approved main and requested branch
+        run: |
+          set -euo pipefail
+          git clone https://github.com/ziyuuu/return-old-school.git source
+          cd source
+          git fetch origin
+          git switch main
+          git pull --ff-only origin main
+          git rev-parse HEAD
+          git status --short
+          git merge-base --is-ancestor 9e28225532718e3d60cc518aaac36ccc65f3fc2c HEAD
+          git switch --track origin/codex/b05-development
+          git switch --detach '${{ github.sha }}'
+          git merge-base --is-ancestor origin/main HEAD
+          git merge-base --is-ancestor 330f2afd5f12c5552573dd53e3d6d2eb02442ade HEAD
+          mkdir -p qa/m11b-b05/completion/build
+          git ls-remote origin refs/heads/main refs/heads/codex/b05-development | tee qa/m11b-b05/completion/build/remote-refs.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Locked production build, real geometry tests and unchanged Viewer hash
+        working-directory: source
+        run: |
+          set -euo pipefail
+          npm ci --prefix apps/campus
+          npm run build --prefix apps/campus 2>&1 | tee qa/m11b-b05/completion/build/build.log
+          node --test tests/m11b/b05/model.test.mjs tests/render-upgrade/*.test.mjs 2>&1 | tee qa/m11b-b05/completion/build/tests.tap
+          node --check tools/m11b-b05/measure.mjs
+          node tools/m11b-b05/export.mjs
+          echo 'd351d434c2196a85645cc6a05a0d32671dd33938b1504f07d257456a9c6c550e  artifacts/m11b-b05/Yali_B05_R1_Viewer.html' | sha256sum -c -
+          test ! -f data/m11b/batch05/acceptance.json
+          git bundle create /tmp/b05-completion-source.bundle HEAD ^9e28225532718e3d60cc518aaac36ccc65f3fc2c
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: B05-completion-build
+          path: |
+            source/qa/m11b-b05/completion/build
+            /tmp/b05-completion-source.bundle
+          retention-days: 7
+  measure:
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        view: [b05-gate-close, b05-hoop, b05-overview]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Exact runtime and pinned external browser
+        run: |
+          set -euo pipefail
+          npm ci --prefix apps/campus
+          npm install --prefix "$RUNNER_TEMP/b05-browser" playwright@1.62.0
+          "$RUNNER_TEMP/b05-browser/node_modules/.bin/playwright" install --with-deps chromium
+          sudo apt-get install -y fonts-noto-cjk
+          echo "PLAYWRIGHT_MODULE=$RUNNER_TEMP/b05-browser/node_modules/playwright" >> "$GITHUB_ENV"
+          node tools/m11b-b05/export.mjs
+          echo 'd351d434c2196a85645cc6a05a0d32671dd33938b1504f07d257456a9c6c550e  artifacts/m11b-b05/Yali_B05_R1_Viewer.html' | sha256sum -c -
+      - name: Sixty separately synchronized actual frames
+        env:
+          B05_MEASURE_VIEW: ${{ matrix.view }}
+          B05_PHASE: completion
+        run: |
+          set -o pipefail
+          mkdir -p qa/m11b-b05/completion/performance-resume/${{ matrix.view }}
+          node tools/m11b-b05/measure.mjs 2>&1 | tee qa/m11b-b05/completion/performance-resume/${{ matrix.view }}/capture.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: B05-measure-${{ matrix.view }}
+          path: qa/m11b-b05/completion/performance-resume/${{ matrix.view }}
+          retention-days: 7
