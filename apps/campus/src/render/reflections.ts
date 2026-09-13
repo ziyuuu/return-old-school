@@ -10,6 +10,7 @@ export function installCampusReflections(renderer: THREE.WebGLRenderer, scene: T
   const started = performance.now();
   const locations: Record<string, [number, number, number]> = {
     teaching: [73, 8, 194], gym: [-15, 7, 48], library: [73, 8, 239], garden: [73, 7, 274],
+    eastTeaching: [139, 8, 212], longya: [129, 9, 242], westTeaching: [-23, 7, 188],
   };
   const objects: { mesh: THREE.Mesh; key: string; material: THREE.MeshPhysicalMaterial }[] = [];
   const hidden: THREE.Object3D[] = [];
@@ -18,7 +19,8 @@ export function installCampusReflections(renderer: THREE.WebGLRenderer, scene: T
     const finish = object.material.userData.finish;
     if (!surfaceProfiles[finish]?.reflection) return;
     const owner = object.userData.facility;
-    const key = ['03', '24', '04'].includes(owner) ? 'gym' : owner === '18' ? 'library' : owner === '19' ? 'garden' : 'teaching';
+    const key = ['13', '21'].includes(owner) ? 'eastTeaching' : owner === '17' ? 'longya' : ['07', '16'].includes(owner) ? 'westTeaching' :
+      ['03', '24', '04'].includes(owner) ? 'gym' : owner === '18' ? 'library' : owner === '19' ? 'garden' : 'teaching';
     objects.push({ mesh: object, key, material: object.material });
     if (finish === 'glass' || finish === 'water') hidden.push(object);
   });

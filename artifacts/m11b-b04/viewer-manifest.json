@@ -1,0 +1,19 @@
+{
+  "file": "Yali_B04_R1_Viewer.html",
+  "sha256": "d8e2b969802cfefcaba9d27da496f26ef8e9d1d85eb2a8bc7681d243f3002eda",
+  "bytes": 934655,
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "standard": "1.0",
+  "generatedAt": "2026-09-13T02:39:27.878Z",
+  "gitHead": "cc20ccaf276da7738250b4d534b9d6e08b11af61",
+  "source": "current worktree; per-file digests identify source even before commit",
+  "sources": {
+    "apps/campus/src/main.ts": "2e373f99e604532c2b151f7c271fbb5e903fe4597e6e7bde441bfa5efc049131",
+    "apps/campus/src/batch04-core.mjs": "faa13a35422407322b1d5748f663e32bb77400e065bd6f90ada9d955c3fc1676",
+    "apps/campus/src/batch04-geometry.mjs": "f613c35a289e0582eb142d4e58387a331f4699b9d572934d39218a90bae2bbd2",
+    "apps/campus/src/batch04-scene.ts": "21d05cf8ff58af84bc2f8f4ac65955c84727fbfad5fca2d6dddae5a6ab6198c3",
+    "apps/campus/src/render/reflections.ts": "28d0a34769ebeee1e063af6c7a7c54cd6bfaed23a55ae025da54d13b3d0634d8",
+    "apps/campus/index.html": "ebb3774a198347d707eef6db07b59aec59a1dc4fec2a5de2839b29def3c2d9bc",
+    "data/m11b/batch04/input.json": "c16f657f7a5cd10043eaced3403835d703d3a6b8a20ee4297f52c095c0f57274"
+  }
+}

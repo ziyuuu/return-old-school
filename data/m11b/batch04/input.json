@@ -1,0 +1,52 @@
+{
+  "version": "M1.1-B.B04.R1",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "standard": "1.0",
+  "baseCommit": "f8ece5fcade5c64332cc7fb34ac707b1d3aad8fc",
+  "surveyVerified": false,
+  "measured": null,
+  "scope": ["13", "17", "07", "16", "21"],
+  "metricEvidence": "H: all dimensions, floor heights, concealed faces and historical material choices. P describes visible features of undated photographs, not measured 2006–2010 elevations.",
+  "common": {"wall": 0.24, "floorOffset": 0.04, "frame": 0.055, "curveSegments": 192, "pathWidth": 2.4},
+  "science": {
+    "owner": "13", "front": "-X", "floors": 4, "storey": 3.65, "rise": 0.42,
+    "entry": {"u": -3.1, "v": -18.8, "width": 3.8, "height": 2.9},
+    "secondary": {"u": 6.0, "v": -19.6, "width": 2.25, "height": 3.0},
+    "steps": {"count": 3, "startV": -22.0, "endV": -20.0, "width": 15.4},
+    "tower": {"u0": 4.2, "u1": 7.85, "rearV": -10.0, "height": 15.2},
+    "stair": {"u": 6.0, "width": 2.45, "startV": -17.3, "steps": 22, "tread": 0.30},
+    "canopy": {"u0": -8.0, "u1": 4.3, "frontV": -20.8, "rearV": -18.35, "bottom": 3.14, "thickness": 0.40},
+    "sideWindowCentersV": [-14.0, -7.3, -0.6, 6.1, 12.8, 17.1],
+    "basis": "S03-033 P entrance, warm horizontal canopy, metal-framed glazed doors and right glazed circulation bay. Four floors/envelope inherited H; concealed façades and short stair are replaceable H; S03-035 unavailable in this run."
+  },
+  "longya": {
+    "owner": "17", "front": "-Z", "floors": 5, "storey": 3.65,
+    "entry": {"u": 0, "v": -9.0, "width": 3.0, "height": 3.12},
+    "wings": {"frontV": -7.8, "leftHeight": 18.0, "rightHeight": 18.5},
+    "tower": {"halfWidth": 4.2, "flatHalfWidth": 2.35, "frontV": -9.0, "returnV": -7.0, "projectionBottom": 7.30, "height": 19.0},
+    "canopy": {"halfWidth": 5.5, "frontV": -11.3, "rearV": -8.4, "bottom": 3.18, "thickness": 0.42},
+    "steps": {"lowerWidth": 12.0, "upperWidth": 10.2, "sideSplay": 0.5},
+    "wingWindowsU": [-19.0, -14.8, -10.6, -6.6, 6.6, 10.6, 14.8, 19.0],
+    "basis": "S03-047 P faceted glazed central tower, lower wings, rounded warm canopy/two posts and splayed steps. A road directly reaches front. Existing five floors/44×18 envelope and six steps/rise .90 preserved H. S03-048 not fetched; no later orange main-building façade copied."
+  },
+  "office": {
+    "owner": "07", "front": "-Z", "floors": 3, "storey": 3.65,
+    "entry": {"u": 0, "v": -7.70, "width": 2.80, "height": 2.85},
+    "frontV": -8.5, "windowCentersU": [-18, -13.7, -9.4, -5.1, 5.1, 9.4, 13.7, 18],
+    "basis": "H conservative three-storey shell and recessed porch at existing office-entry road. S03-024 is a blurred background lead and not re-fetched here; no infirmary location, cross, room number or official building name invented."
+  },
+  "museum": {
+    "owner": "16", "front": "+X", "floors": 1, "eaves": 4.90, "ridge": 7.60,
+    "entry": {"u": 0, "v": -15.0, "width": 2.80, "height": 2.30},
+    "arch": {"spring": 2.40, "radius": 1.40},
+    "sideWindowCentersV": [-8.6, -0.8, 7.0],
+    "basis": "S03-051 P low gabled front with central arch, two large windows and grey pilasters/cornice. H replace former two-storey placeholder by one visible hall within unchanged30×13×7.6 envelope. Undated façade; precise ornament/back and 2006–2010 function U/H, not music24."
+  },
+  "information": {
+    "owner": "21", "front": "-X", "floors": 4, "storey": 3.65,
+    "entry": {"u": -1.0, "v": -21.0, "width": 2.8, "height": 2.95},
+    "sideWindowCentersV": [-16, -9.6, -3.2, 3.2, 9.6, 16.0],
+    "basis": "U identity; information building is a working label only. H inherited four-storey42×19 envelope, west road/portal, conservative narrow front glazing and paired side apertures; no dated photo or formal name."
+  },
+  "exclusions": ["B05", "full interiors", "final character collision controller", "new main roads", "photographic textures", "new official names", "acceptance registration"]
+}
