@@ -1,0 +1,119 @@
+name: C1 inspected player delivery
+on:
+  push:
+    branches: [codex/c1-player-controller]
+    paths: [.github/workflows/c1-publish.yml]
+permissions:
+  contents: write
+  actions: read
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/c1-player-controller
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify continuation and fetch only the exact completed browser artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git fetch origin
+          git merge-base --is-ancestor c6dcf6ed2bc7a976cd7994402305b80ef0fb6127 HEAD
+          git merge-base --is-ancestor origin/main HEAD
+          test -z "$(git status --short)"
+          incoming="$RUNNER_TEMP/c1-incoming"
+          mkdir -p "$incoming"
+          for name in input lane terrain review fallback performance mobile; do
+            artifact="C1-iteration01-$name"
+            gh run download 34769723661 --repo ziyuuu/return-old-school --name "$artifact" --dir "$incoming/$artifact"
+          done
+          gh run download 34770237456 --repo ziyuuu/return-old-school --name C1-mobile-recheck --dir "$incoming/C1-mobile-recheck"
+          echo "C1_INCOMING=$incoming" >> "$GITHUB_ENV"
+          gh api repos/ziyuuu/return-old-school/actions/runs/34769723661 > "$incoming/main-run.json"
+          gh api repos/ziyuuu/return-old-school/actions/runs/34770237456 > "$incoming/mobile-run.json"
+          python - <<'PY'
+          from pathlib import Path
+          compile(Path('tools/m11c-c1/publish.py').read_text(), 'publish.py', 'exec')
+          PY
+      - name: Recheck build and directed tests, then bind the unmodified Viewer and original pixels
+        run: |
+          set -euo pipefail
+          npm ci --prefix apps/campus
+          mkdir -p qa/m11c-c1/closeout-build
+          npm run build --prefix apps/campus 2>&1 | tee qa/m11c-c1/closeout-build/build.log
+          node --test tests/m11c/c1/controller.test.mjs tests/render-upgrade/*.test.mjs 2>&1 | tee qa/m11c-c1/closeout-build/tests.tap
+          python tools/m11c-c1/publish.py
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          d=Path(os.environ['C1_INCOMING'])
+          r=json.loads((d/'main-run.json').read_text())
+          m=json.loads((d/'mobile-run.json').read_text())
+          assert r['conclusion']=='failure' and m['conclusion']=='success'
+          result={'originalRun':{'id':r['id'],'conclusion':r['conclusion']},'mobileRecheck':{'id':m['id'],'conclusion':m['conclusion']},'note':'Original run failure preserved; valid groups and corrected real-touch recheck share exact Viewer bytes. Publication does not rerun browser or invent measurements.'}
+          Path('qa/m11c-c1/run-status.json').write_text(json.dumps(result,indent=2)+'\n')
+          PY
+          echo '96d2404bd56a9cf766a452f586bb4b6141957605c8266a710af9e9513e0737dc  artifacts/m11c-c1/Yali_C1_R1_Viewer.html' | sha256sum -c -
+          test ! -f data/m11c/c1/acceptance.json
+      - name: Review public changes and normally commit and push the C1 branch
+        run: |
+          set -euo pipefail
+          git diff --check
+          git diff --exit-code -- apps/campus data/m11b artifacts/m11c-c1
+          git add README.md docs/development-plan.md docs/m11c/c1 data/m11c/c1/delivery.json qa/m11c-c1
+          git diff --cached --check
+          git diff --cached --stat
+          python - <<'PY'
+          import subprocess
+          names=subprocess.check_output(['git','diff','--cached','--name-only'],text=True).splitlines()
+          for n in names:
+            assert n in ['README.md','docs/development-plan.md','data/m11c/c1/delivery.json'] or n.startswith(('docs/m11c/c1/','qa/m11c-c1/')),n
+            assert not any(w in n.lower() for w in ['.ttf','.otf','research-original','node_modules','private']),n
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if ! git diff --cached --quiet; then
+            git commit -m 'feat(c1): deliver playable R1 Viewer, inspected 26 frames and hash-bound controller QA; review pending [skip ci]'
+            git push origin HEAD:codex/c1-player-controller
+          fi
+          mkdir -p "$RUNNER_TEMP/c1-published"
+          git rev-parse HEAD > "$RUNNER_TEMP/c1-published/delivery-commit.txt"
+          git ls-remote origin refs/heads/main refs/heads/codex/c1-player-controller | tee "$RUNNER_TEMP/c1-published/remote-refs.txt"
+          test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/codex/c1-player-controller | cut -f1)"
+          test -z "$(git status --short)"
+      - name: Package public review files without fonts, dependencies or research photographs
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile,hashlib,os,json,subprocess
+          root=Path.cwd();out=Path(os.environ['RUNNER_TEMP'])/'c1-published'
+          files=[]
+          for d in ['artifacts/m11c-c1','qa/m11c-c1','docs/m11c/c1','data/m11c/c1']:
+            files += [p for p in (root/d).rglob('*') if p.is_file()]
+          files += [root/'README.md',root/'docs/development-plan.md',root/'docs/model-rendering-standard.md']
+          sha='96d2404bd56a9cf766a452f586bb4b6141957605c8266a710af9e9513e0737dc'
+          receipt={'branch':'codex/c1-player-controller','commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'viewerSHA256':sha,'status':'IMPLEMENTED / REVIEW_PENDING','source':'Clone the public repository and switch to the recorded commit. Review package has no node_modules or private reference photos.'}
+          with zipfile.ZipFile(out/'C1_R1_Review.zip','w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
+            for p in sorted(set(files)):
+              assert p.suffix.lower() not in ['.ttf','.otf','.woff','.woff2']
+              z.write(p,p.relative_to(root))
+            z.writestr('delivery-receipt.json',json.dumps(receipt,ensure_ascii=False,indent=2)+'\n')
+            z.writestr('START_HERE.html','<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>C1校园漫游</title><h1>C1 R1 · 可控校园漫游</h1><p>IMPLEMENTED / REVIEW_PENDING</p><p><a href="artifacts/m11c-c1/Yali_C1_R1_Viewer.html">打开离线Viewer</a></p><p><a href="qa/m11c-c1/review.html">查看26张实际截图</a></p><p>WASD移动，Shift跑步，拖动观察，V切换视角，Esc暂停。触屏左摇杆移动，右侧拖动观察。比例人形不是C2最终学生形象。</p><p>软件GPU性能数据不代表真实GPU/手机流畅性验收。</p></html>')
+          digest=hashlib.sha256((out/'C1_R1_Review.zip').read_bytes()).hexdigest()
+          (out/'SHA256SUMS.txt').write_text(digest+'  C1_R1_Review.zip\n'+sha+'  artifacts/m11c-c1/Yali_C1_R1_Viewer.html\n')
+          (out/'receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')
+          print('REVIEW_PACKAGE_SHA256',digest)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: C1-R1-published-delivery
+          path: ${{ runner.temp }}/c1-published
+          retention-days: 30
