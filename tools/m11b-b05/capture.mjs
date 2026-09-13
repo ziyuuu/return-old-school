@@ -13,24 +13,31 @@ const require=createRequire(import.meta.url),{chromium}=require(process.env.PLAY
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const group=process.env.B05_GROUP||'gate',phase=process.env.B05_PHASE||'iteration-01';
 const baseline=group==='baseline',mobile=group==='mobile',fallback=group==='fallback';
-const viewer=path.join(root,baseline?'artifacts/m11b-b04/Yali_B04_R1_Viewer.html':'artifacts/m11b-b05/Yali_B05_R1_Viewer.html');
+const viewer=path.join(root,baseline?'artifacts/m11b-b04/Yali_B04_R1_Viewer.html':'artifacts/m11b-b05/Yali_B05_R1_1_Viewer.html');
 const out=path.join(root,'qa/m11b-b05',phase,group);await fs.mkdir(out,{recursive:true});
 const sha=b=>createHash('sha256').update(b).digest('hex'),viewport=mobile?{width:390,height:844}:{width:1280,height:840};
 const groups={gate:['b05-gate','b05-gate-close','b05-stone','b05-side-gate'],courts:['b05-courts','b05-hoop','b05-court-entry','b05-track','b05-auxiliary','b05-pool'],field:['b05-field','b05-goal','b05-rostrum','b05-flags','b05-planted-axis'],residential:['b05-residential','b05-residential-entry','b05-overview'],regression:['overview','r3-overview','b02-photo-front','b03-photo-library','b03-garden','b03-canteen','top','r3-axis'],baseline:['overview','r3-overview','b02-photo-front','b03-photo-library','b03-garden','b03-canteen','top','r3-axis'],checks:[],mobile:[null,'b05-court-entry','b05-flags'],fallback:['b05-hoop','top','r3-axis'],performance:['b05-gate-close','b05-hoop','b05-overview']};
+if(process.env.B05_VIEWS)groups[group]=process.env.B05_VIEWS.split(',');
 if(!groups[group])throw Error('Unknown B05 group '+group);
 const report={batch:'B05',phase,group,status:'IMPLEMENTED / REVIEW_PENDING',standard:'1.0',viewer:path.relative(root,viewer),viewerSHA256:sha(await fs.readFile(viewer)),sourceCommit:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),startedAt:new Date().toISOString(),viewport,deviceScaleFactor:1,baseline,fallback,errors:[],warnings:[],externalRequests:[],views:[],passed:false};
 const checkpoint=async()=>fs.writeFile(path.join(out,'report.json'),JSON.stringify(report,null,2));
 function stage(s){report.stage=s;console.log(new Date().toISOString(),s);}
-const browser=await chromium.launch({headless:true,timeout:120000,args:['--no-sandbox','--disable-dev-shm-usage','--use-angle=swiftshader','--enable-unsafe-swiftshader','--disable-background-timer-throttling','--disable-renderer-backgrounding']});
+const browser=await chromium.launch({headless:true,timeout:120000,...(process.env.CHROMIUM_PATH?{executablePath:process.env.CHROMIUM_PATH}:{}),args:['--no-sandbox','--disable-dev-shm-usage','--use-angle=swiftshader','--enable-unsafe-swiftshader','--disable-background-timer-throttling','--disable-renderer-backgrounding']});
 report.environment={browser:browser.version(),node:process.version,platform:process.platform,runner:process.env.GITHUB_ACTIONS?'GitHub Actions hosted Linux':'local',rendering:'ANGLE SwiftShader software GPU; not user hardware',capture:'Actual browser pixels: Playwright/CDP viewport or recorded same-frame canvas readback for clean views; full geometry/materials/shadow resolution; ordinary render function'};
 const context=await browser.newContext({viewport,deviceScaleFactor:1}),page=await context.newPage();page.setDefaultTimeout(240000);
-page.on('pageerror',e=>report.errors.push(String(e)));page.on('console',e=>{if(e.type()==='error')report.errors.push(e.text());else if(e.type()==='warning'&&report.warnings.length<30)report.warnings.push(e.text());});page.on('request',r=>{if(/^https?:/.test(r.url()))report.externalRequests.push(r.url());});
+page.on('pageerror',e=>report.errors.push(String(e)));page.on('console',e=>{if(e.type()==='error')report.errors.push(e.text());else if(e.type()==='warning'&&report.warnings.length<30)report.warnings.push(e.text());});page.on('request',r=>{if(/^https?:/.test(r.url())){if(r.isNavigationRequest()&&process.env.B05_VIEWER_ORIGIN&&r.url().startsWith(process.env.B05_VIEWER_ORIGIN+'/'))report.documentRequest=r.url();else report.externalRequests.push(r.url());}});
 if(fallback)await page.addInitScript(()=>{const original=WebGL2RenderingContext.prototype.getExtension;WebGL2RenderingContext.prototype.getExtension=function(name){return name==='EXT_clip_control'?null:original.call(this,name);};});
 async function renderOnce(){return page.evaluate(()=>{const r=window.__YALI_RENDER_RAW__;if(r.renderFrame)r.renderFrame();else r.renderer.render(r.scene,r.camera());r.renderer.getContext().finish();return r.renderer.info.render;});}
 async function getState(){return page.evaluate(()=>({...((window.__YALI_B05__||window.__YALI_B04__).getState()),lighting:window.__YALI_RENDER__.state(),programs:window.__YALI_RENDER_RAW__.renderer.info.programs.length}));}
 try{
  const started=Date.now(),initial=mobile?null:(groups[group][0]??'b05-gate-close');stage('open '+(initial??'fresh default'));
- await page.goto(pathToFileURL(viewer).href+'?diagnostics=1'+(!mobile?'&clean=1':'')+(initial?'&view='+initial:''),{waitUntil:'load',timeout:600000});
+ if(process.env.B05_LOAD_MODE==='memory'){
+  report.viewerLoading='Exact exported HTML bytes loaded through Playwright setContent; local browser navigation policy unchanged';
+  await page.evaluate(q=>history.replaceState({},'', 'about:blank'+q),'?diagnostics=1'+(!mobile?'&clean=1':'')+(initial?'&view='+initial:''));
+  await page.setContent(await fs.readFile(viewer,'utf8'),{waitUntil:'load',timeout:600000});
+ }else{report.viewerLoading=process.env.B05_VIEWER_ORIGIN?'Local HTTP document; no external dependencies':'Direct offline file URL';
+ await page.goto((process.env.B05_VIEWER_ORIGIN?process.env.B05_VIEWER_ORIGIN+'/'+path.relative(root,viewer):pathToFileURL(viewer).href)+'?diagnostics=1'+(!mobile?'&clean=1':'')+(initial?'&view='+initial:''),{waitUntil:'load',timeout:600000});
+ }
  await page.waitForFunction(()=>window.__YALI_RENDER_RAW__&&(window.__YALI_B05__?.ready||window.__YALI_B04__?.ready),null,{timeout:600000});
  await page.evaluate(()=>window.__YALI_RENDER_RAW__.renderer.setAnimationLoop(null));await renderOnce();await renderOnce();
  report.initializationMs=Date.now()-started;

@@ -151,7 +151,7 @@ export function buildB05Model(layout, terrain, p, site) {
   portal('track-crossing',[x0,ty+.04,120],[-1,0,0],3.0,3.0);
   // 08 original stadium shape preserved; improve curved lane paint, not the plan.
   owner='08';const F=get('08'),[fx,,fz]=F.position,[fw,,fd]=F.size,gy=fy('08');
-  add('stadium','track-surface','stadium',{center:[fx,gy+.04,fz],width:fw,length:fd,scale:[1,1]},3,'A retained footprint; H smooth curve');
+  add('stadium','track-surface','stadium',{center:[fx,gy+.04,fz],width:fw,length:fd,scale:[1,1],innerScale:[.86,.88]},3,'A retained footprint; H smooth curve; actual ring excludes turf');
   add('infield','turf','stadium',{center:[fx,gy+.044,fz],width:fw,length:fd,scale:[.86,.88]},1);
   for(let j=1;j<=p.field.laneCount;j++){const pts=stadiumPoints(fw,fd,192).map(([x,z])=>[fx+x*(1-.14*j/p.field.laneCount),gy+.051,fz+z*(1-.12*j/p.field.laneCount)]);paintLine('lane'+j,[...pts,pts[0]],.052);}
   const pw=fw*.62,pl=fd*.64,py=gy+.055;
@@ -268,7 +268,9 @@ export function buildB05Model(layout, terrain, p, site) {
   for(const xx of[bx-bw/2,bx+bw/2])box('pit-end'+xx,'stone-plaque',xx-.075,xx+.075,by-.04,by+.035,bz-bd/2,bz+bd/2,6);
   // Major planted spatial structure only. Explicit constrained rows, no random scatter.
   owner='09';
-  function tree(id,x,z,r,h,drooping=false){const y=terrain.groundHeight(x,z),stem=p.vegetation.minimumClearStem;
+  function tree(id,x,z,r,h,drooping=false){
+    const revised=p.vegetation.positionOverrides?.[id];if(revised){x=revised.position[0];z=revised.position[1];}
+    const y=terrain.groundHeight(x,z),stem=p.vegetation.minimumClearStem;
     trees.push({id,x,z,ground:y,radius:r,height:h,drooping,evidence:'P row/landmark context; H individual coordinate, species and metric'});
     rod(id+'-trunk','tree-trunk',[x,y,z],[x+.12,y+h*.60,z-.08],.24,11);
     for(let k=0;k<4;k++){const a=k*Math.PI/2+.45,xx=x+Math.cos(a)*r*.53,zz=z+Math.sin(a)*r*.53;rod(id+'-branch'+k,'tree-trunk',[x,y+stem+.35,z],[xx,y+h*.70,zz],.090,11);add(id+'-crown'+k,'crown','leaf',{center:[xx,y+h*.72+(k%2)*.22,zz],size:[r*.69,h*.25,r*.69]},k%2?1:13);}

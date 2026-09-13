@@ -10,7 +10,7 @@ const result=await build({entryPoints:[path.join(root,'apps/campus/src/main.ts')
 const js=result.outputFiles.find(f=>f.path.endsWith('.js')).text.replace(/<\/script/gi,'<\\/script'),css=result.outputFiles.find(f=>f.path.endsWith('.css')).text;
 const template=await fs.readFile(path.join(root,'apps/campus/index.html'),'utf8');
 const html=template.replace('</head>',`<style>${css}</style></head>`).replace('<script type="module" src="/src/main.ts"></script>',()=>`<script>${js}</script>`);
-const name='Yali_B05_R1_Viewer.html',sha256=createHash('sha256').update(html).digest('hex');
+const name='Yali_B05_R1_1_Viewer.html',sha256=createHash('sha256').update(html).digest('hex');
 await fs.writeFile(path.join(out,name),html);
 const sourceFiles=[...new Set([...Object.keys(result.metafile.inputs).filter(f=>!f.includes('node_modules')).map(f=>path.relative(root,path.resolve(root,f))), 'apps/campus/index.html','apps/campus/package-lock.json'])].sort();
 const sources={};for(const f of sourceFiles)sources[f]=createHash('sha256').update(await fs.readFile(path.join(root,f))).digest('hex');

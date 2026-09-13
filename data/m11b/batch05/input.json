@@ -1,5 +1,5 @@
 {
-  "version": "M1.1-B.B05.R1",
+  "version": "M1.1-B.B05.R1.1",
   "status": "IMPLEMENTED / REVIEW_PENDING",
   "standard": "1.0",
   "baseCommit": "9e28225532718e3d60cc518aaac36ccc65f3fc2c",
@@ -15,6 +15,6 @@
   "field": {"laneCount":6,"goalWidth":7.32,"goalHeight":2.44,"goalDepth":1.6,"netPitch":0.24,"basis":"C01/C02 (2006) establish orange perimeter track, green infield, white goals and tree-lined edges. Inherited stadium envelope and pitch centreline retained; goal sizes, six lane divisions and line details H. Later S03-025 multiple small goals/renovated striping not copied to 2006–2010."},
   "rostrum": {"deckY":3.04,"mainRoofY":8.2,"sideRoofY":6.4,"stairCount":8,"tread":0.3,"basis":"S03-027 upper-right shows central higher rectangular canopy, warm columns, lower side cover and light podium. Position10 and P03 upper access deck retained; concealed faces, exact height/spacing/side stairs H."},
   "residential": {"floorCounts":[6,7,6,7,5,6],"styles":["recess","stair-band","flat","recess","flat","stair-band"],"basis":"Six existing 20-B1…B6 masses and envelopes retained, including prior global shift. Facades/upper roof/parapets and public entries are H; no independent identification as a particular dormitory or family apartment, no private room layouts."},
-  "vegetation": {"minimumClearStem":3.3,"crownDetail":4,"basis":"C01/C02 show significant border tree cover, drooping crown beside flag area, planted low borders. S03-013/022/027 show gate/court/stage tree context. Rows/landmark relationships P; individual coordinates, count, species, crown and trunk metrics H. No random campus-wide scatter."},
+  "vegetation": {"minimumClearStem":3.3,"positionOverrides":{"avenue-1-3":{"previous":[7,74],"position":[7,66],"evidence":"H only; screenshot-led clearance of inherited B02 five-ring/entry sightlines; retained row and tree count"},"avenue--1-2":{"previous":[-7,58],"position":[-7,52],"evidence":"H only; keeps new crown out of the photographed gym frontage without moving the building or camera"}},"crownDetail":4,"basis":"C01/C02 show significant border tree cover, drooping crown beside flag area, planted low borders. S03-013/022/027 show gate/court/stage tree context. Rows/landmark relationships P; individual coordinates, count, species, crown and trunk metrics H. No random campus-wide scatter."},
   "unlocated": {"22":"Identity/location remain U; do not place a new standalone shop to make up 28 buildings."}
 }

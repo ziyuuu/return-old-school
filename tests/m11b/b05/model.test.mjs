@@ -70,3 +70,18 @@ test('New reflector ownership extends rather than moves the seven inherited prob
  const src=fs.readFileSync(new URL('apps/campus/src/render/reflections.ts',root),'utf8');
  for(const item of['teaching: [73, 8, 194]','gym: [-15, 7, 48]','library: [73, 8, 239]','garden: [73, 7, 274]','eastTeaching: [139, 8, 212]','longya: [129, 9, 242]','westTeaching: [-23, 7, 188]','entrance: [0, 5, 7]','courts: [-38, 7, 120]','field: [73, 6, 114]','residential: [171, 8, 74]'])assert.ok(src.includes(item),item);
 });
+test('Running surface is an annulus with no near-coplanar track triangles under the turf',()=>{
+ const p=model.parts.find(p=>p.id==='B05-08-stadium'),t=model.parts.find(p=>p.id==='B05-08-infield');
+ assert.deepEqual(p.innerScale,t.scale);const m=new THREE.Mesh(b05Geometry(p),new THREE.MeshBasicMaterial({side:THREE.DoubleSide}));m.updateMatrixWorld(true);
+ const ray=(x,z)=>new THREE.Raycaster(new THREE.Vector3(x,20,z),new THREE.Vector3(0,-1,0),0,40).intersectObject(m);
+ assert.equal(ray(73,114).length,0);assert.equal(ray(73,80).length,0);assert.ok(ray(73+44,114).length>0);
+ m.geometry.dispose();m.material.dispose();
+});
+test('H tree corrections preserve count and keep the accepted B02 ring and doorway sightlines clear',()=>{
+ assert.deepEqual(model.trees.find(t=>t.id==='avenue-1-3').z,66);assert.equal(model.trees.find(t=>t.id==='avenue--1-2').z,52);assert.equal(model.trees.length,57);
+ const camera=new THREE.Vector3(16,5.35,82),floor=terrain.anchors['03'].floor;
+ const points=[...[[ -4.3,14.2],[0,14.2],[4.3,14.2],[-2.15,12.65],[2.15,12.65]].flatMap(([u,y])=>[[0,0],[1.3,0],[-1.3,0],[0,1.3],[0,-1.3]].map(([a,b])=>[-27.47,floor+y+b,45-u+a])),[-26.8,floor+1.5,45],[-26.8,floor+1.5,42],[-26.8,floor+1.5,48]];
+ const meshes=model.parts.filter(p=>p.owner==='09'&&(p.role==='crown'||p.role==='tree-trunk')).map(p=>{const m=new THREE.Mesh(b05Geometry(p),new THREE.MeshBasicMaterial({side:THREE.DoubleSide}));m.name=p.id;m.updateMatrixWorld(true);return m});
+ for(const target of points){const d=new THREE.Vector3(...target).sub(camera);assert.equal(new THREE.Raycaster(camera,d.clone().normalize(),.002,d.length()-.002).intersectObjects(meshes).length,0,'B05 vegetation obscures ring/entry at '+target);}
+ meshes.forEach(m=>{m.geometry.dispose();m.material.dispose();});
+});

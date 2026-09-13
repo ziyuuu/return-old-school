@@ -17,7 +17,7 @@ assert.ok(['b05-gate-close','b05-hoop','b05-overview'].includes(view));
 const phase=process.env.B05_PHASE||'completion',viewport={width:1280,height:840};
 const out=path.join(root,'qa/m11b-b05',phase,'performance-resume',view);
 await fs.mkdir(out,{recursive:true});
-const viewer='artifacts/m11b-b05/Yali_B05_R1_Viewer.html';
+const viewer='artifacts/m11b-b05/Yali_B05_R1_1_Viewer.html';
 const hash=b=>createHash('sha256').update(b).digest('hex');
 const viewerSHA256=hash(await fs.readFile(path.join(root,viewer)));
 const manifest=JSON.parse(await fs.readFile(path.join(root,'artifacts/m11b-b05/viewer-manifest.json'),'utf8'));
@@ -28,14 +28,20 @@ const save=()=>fs.writeFile(path.join(out,'report.json'),JSON.stringify(report,n
 const stage=async s=>{report.stage=s;console.log(new Date().toISOString(),view,s);await save();};
 let browser;
 try{
- browser=await chromium.launch({headless:true,timeout:120000,args:['--no-sandbox','--disable-dev-shm-usage','--use-angle=swiftshader','--enable-unsafe-swiftshader','--disable-background-timer-throttling','--disable-renderer-backgrounding']});
+ browser=await chromium.launch({headless:true,timeout:120000,...(process.env.CHROMIUM_PATH?{executablePath:process.env.CHROMIUM_PATH}:{}),args:['--no-sandbox','--disable-dev-shm-usage','--use-angle=swiftshader','--enable-unsafe-swiftshader','--disable-background-timer-throttling','--disable-renderer-backgrounding']});
  report.environment={browser:browser.version(),node:process.version,platform:process.platform,runner:process.env.GITHUB_ACTIONS?'GitHub Actions hosted Linux':'local',rendering:'ANGLE SwiftShader software renderer, not user hardware',method:'One fresh browser per view; 2 warm-up frames; 60 separately awaited renderFrame + synchronous 1-pixel readPixels samples. In-page wall time includes CPU submission, synchronization and readback, NOT GPU-only time or interactive FPS.'};
  const context=await browser.newContext({viewport,deviceScaleFactor:1}),page=await context.newPage();
  page.on('pageerror',e=>report.errors.push(String(e)));
  page.on('console',e=>{if(e.type()==='error')report.errors.push(e.text());else if(e.type()==='warning'&&report.warnings.length<30)report.warnings.push(e.text());});
- page.on('request',r=>{if(/^https?:/.test(r.url()))report.externalRequests.push(r.url());});
+ page.on('request',r=>{if(/^https?:/.test(r.url())){if(r.isNavigationRequest()&&process.env.B05_VIEWER_ORIGIN&&r.url().startsWith(process.env.B05_VIEWER_ORIGIN+'/'))report.documentRequest=r.url();else report.externalRequests.push(r.url());}});
  await stage('opening exact offline Viewer');const start=Date.now();
- await page.goto(pathToFileURL(path.join(root,viewer)).href+'?diagnostics=1&clean=1&view='+view,{waitUntil:'load',timeout:600000});
+ if(process.env.B05_LOAD_MODE==='memory'){
+  report.viewerLoading='Exact exported HTML bytes loaded through Playwright setContent; local browser navigation policy unchanged';
+  await page.evaluate(q=>history.replaceState({},'', 'about:blank'+q),'?diagnostics=1&clean=1&view='+view);
+  await page.setContent(await fs.readFile(path.join(root,viewer),'utf8'),{waitUntil:'load',timeout:600000});
+ }else{report.viewerLoading=process.env.B05_VIEWER_ORIGIN?'Local HTTP document; no external dependencies':'Direct offline file URL';
+ await page.goto((process.env.B05_VIEWER_ORIGIN?process.env.B05_VIEWER_ORIGIN+'/'+viewer:pathToFileURL(path.join(root,viewer)).href)+'?diagnostics=1&clean=1&view='+view,{waitUntil:'load',timeout:600000});
+ }
  await page.waitForFunction(()=>window.__YALI_B05__?.ready&&window.__YALI_RENDER_RAW__,null,{timeout:600000});
  await page.evaluate(()=>window.__YALI_RENDER_RAW__.renderer.setAnimationLoop(null));
  report.initializationMs=Date.now()-start;

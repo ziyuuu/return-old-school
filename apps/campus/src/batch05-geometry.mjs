@@ -22,7 +22,11 @@ export function b05Geometry(p){
   const profile=[[0,0],[1,0],[1,.05],[.70,.12],[.66,.28],[1.28,.43],[1.12,.57],[.60,.71],[.68,.90],[1,.96],[1,1],[0,1]].map(([r,h])=>new THREE.Vector2(r*p.radius,h*p.height));
   g=new THREE.LatheGeometry(profile,48);g.translate(...p.center);
  }else if(p.shape==='stadium'){
-  const shape=new THREE.Shape(stadiumPoints(p.width,p.length,192).map(([x,z])=>new THREE.Vector2(x*p.scale[0],-z*p.scale[1])));g=new THREE.ShapeGeometry(shape,96);g.rotateX(-Math.PI/2);g.translate(...p.center);
+  const shape=new THREE.Shape(stadiumPoints(p.width,p.length,192).map(([x,z])=>new THREE.Vector2(x*p.scale[0],-z*p.scale[1])));
+  // The running track is a real annulus, never a full disk almost coplanar below turf.
+  // Same inherited contours/heights; no artificial field lift or shader depth bias.
+  if(p.innerScale)shape.holes.push(new THREE.Path(stadiumPoints(p.width,p.length,192).map(([x,z])=>new THREE.Vector2(x*p.innerScale[0],-z*p.innerScale[1]))));
+  g=new THREE.ShapeGeometry(shape,96);g.rotateX(-Math.PI/2);g.translate(...p.center);
  }else if(p.shape==='ribbon'){
   const pos=[],indices=[],uv=[];
   for(let i=1;i<p.points.length;i++){
