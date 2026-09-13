@@ -1,0 +1,52 @@
+{
+  "batch": "B04",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "standard": "1.0",
+  "primaryTestedViewer": {
+    "path": "artifacts/m11b-b04/Yali_B04_R1_Viewer.html",
+    "sha256": "d8e2b969802cfefcaba9d27da496f26ef8e9d1d85eb2a8bc7681d243f3002eda",
+    "bytes": 934655,
+    "browserPassed": true,
+    "session": "GitHub Actions run 34733567926 / artifact B04-real-browser-iteration"
+  },
+  "buildAndTests": {
+    "productionBuild": "PASS",
+    "targetedTests": "16/16 PASS on current evidence-bound source"
+  },
+  "browser": {
+    "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "gpu": "ANGLE SwiftShader software renderer",
+    "errors": [],
+    "externalRequests": [],
+    "views": 11,
+    "accessPassed": true,
+    "routes": 7,
+    "portals": 6,
+    "mobile": {"noOverflow": true, "innerWidth": 390, "scrollWidth": 390, "initialShadowResolution": 2048}
+  },
+  "modelStats": {
+    "visibleModelTriangles": 4823310,
+    "geometryBytes": 141739340,
+    "meshes": 1796,
+    "geometries": 1796,
+    "materials": 76,
+    "bvhIndexedGeometries": 889,
+    "reflectionProbes": 7
+  },
+  "performanceSupplement": {
+    "viewerSHA256": "de1f663bc54a07ea84fe1d97a7543f2221968b756fc1a232dfb3a84fd90e45ab",
+    "relationship": "Evidence-text/JSON-format re-export only; numeric B04 geometry parameters and batch04 runtime source hashes are unchanged from the primary tested Viewer.",
+    "scienceClose60": {"samples": 60, "medianMs": 5774.8, "p95Ms": 10882.9},
+    "longya60": {"samples": 60, "medianMs": 7266.4, "p95Ms": 11916.2},
+    "environment": "GitHub Actions Linux / Chromium / ANGLE SwiftShader software GPU; not user hardware",
+    "sessionResult": "Six current-hash screenshots completed with glError=0; the next Playwright compositor screenshot timed out after 300 s. The harness failure is preserved rather than presented as green."
+  },
+  "evidenceBoundary": {
+    "13": "P facade/entry cues; dimensions, floors and hidden faces H",
+    "17": "P facade/entry cues; five-floor envelope/steps/rise and hidden faces H",
+    "07": "identity/use including infirmary U; conservative shell H",
+    "16": "visible low gable/arch P; historic function U/H",
+    "21": "working name U; no independent photo; shell H"
+  },
+  "acceptanceCreated": false
+}
