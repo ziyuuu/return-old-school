@@ -1,0 +1,43 @@
+diff --git a/apps/campus/src/main.ts b/apps/campus/src/main.ts
+index 7b366f4..cb04e66 100644
+--- a/apps/campus/src/main.ts
++++ b/apps/campus/src/main.ts
+@@ -222,7 +222,7 @@ Object.assign(cameraPresets,{
+  'b05-court-entry':{label:'主路 → 原坡道 → 围网真实缺口',position:[2.5,5.4,127],target:[-16,4.9,120],fov:60},
+  'b05-track':{label:'风雨直跑道 · 双侧柱列 / 中部横路',position:[-69,5.1,83],target:[-68.5,5.0,119],fov:64},
+  'b05-auxiliary':{label:'单层体育辅助用房28 · 屋盖H / 真实门厅',position:[-73,5.2,116],target:[-80,4.6,118],fov:62},
+- 'b05-pool':{label:'泳池 / 池畔厕所26 · 原位置 / 公共入口',position:[-66,22,62],target:[-39,3.5,77],fov:60},
++ 'b05-pool':{label:'泳池 / 池畔厕所26 · 原位置 / 公共入口',position:[-13,18,101],target:[-38,3.5,76],fov:60},
+  'b05-field':{label:'操场 · 两端球门 / 主席台 / 场边树阵',position:[124,33,191],target:[69,3,112],fov:60},
+  'b05-goal':{label:'2006白色球门结构 · 同源细杆网',position:[85,4.9,146],target:[73,3.1,158.8],fov:55},
+  'b05-rostrum':{label:'主席台 · 中部高棚 / 两翼 / 上下接入',position:[41,8,136],target:[19,5.1,110],fov:62},
+diff --git a/tools/m11b-b05/capture.mjs b/tools/m11b-b05/capture.mjs
+index 4755e6c..4c312b4 100644
+--- a/tools/m11b-b05/capture.mjs
++++ b/tools/m11b-b05/capture.mjs
+@@ -52,8 +52,23 @@ try{
+     for(let i=0;i<60;i++){const t=performance.now();r.renderFrame();gl.finish();values.push(performance.now()-t);}const s=[...values].sort((a,b)=>a-b);return {samples:60,warmupFrames:2,medianMs:(s[29]+s[30])/2,p95Ms:s[56],minMs:s[0],maxMs:s[59],valuesMs:values,method:'Wall-clock CPU+GPU frame duration: same render function then gl.finish(); animation loop paused, no frame-rate claim'};});
+   }
+   const state=await getState(),file=(name??'mobile-initial')+'.png';
+-  await page.screenshot({path:path.join(out,file),timeout:180000});
+-  report.views.push({file,sha256:sha(await fs.readFile(path.join(out,file))),requestedView:name??'fresh default',...state,performance});
++  // The pixels always come from the running browser, never a proxy scene.
++  // Headless SwiftShader can stall the compositor despite a completed GL frame.
++  // Keep UI captures strict; clean views can fall back to same-frame WebGL readback.
++  let screenshotMethod='Playwright full-page viewport';
++  try { await page.screenshot({path:path.join(out,file),timeout:45000}); }
++  catch (e) {
++   report.warnings.push({view:name,compositorAttempt:String(e),recoveredBy:mobile?'CDP viewport':'same-frame WebGL canvas'});
++   if(mobile){
++    const cdp=await context.newCDPSession(page);
++    const image=await cdp.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false,fromSurface:true});
++    await fs.writeFile(path.join(out,file),Buffer.from(image.data,'base64'));await cdp.detach();screenshotMethod='CDP full-page viewport';
++   } else {
++    const data=await page.evaluate(()=>{const r=window.__YALI_RENDER_RAW__;if(r.renderFrame)r.renderFrame();else r.renderer.render(r.scene,r.camera());r.renderer.getContext().finish();return r.renderer.domElement.toDataURL('image/png');});
++    await fs.writeFile(path.join(out,file),Buffer.from(data.split(',')[1],'base64'));screenshotMethod='Actual same-frame WebGL canvas readback / clean viewport';
++   }
++  }
++  report.views.push({file,sha256:sha(await fs.readFile(path.join(out,file))),screenshotMethod,requestedView:name??'fresh default',...state,performance});
+   stage('saved '+file+'; GL '+state.glError);await checkpoint();
+  }
+  if(group==='checks'){
