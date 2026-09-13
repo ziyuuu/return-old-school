@@ -1,0 +1,79 @@
+name: C1 R1.1 evidence publication retry
+on:
+  push:
+    branches: [codex/c1-player-controller]
+    paths: [.github/workflows/c1-r11-publish2.yml]
+permissions:
+  contents: write
+  actions: read
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/c1-player-controller
+          fetch-depth: 0
+      - name: Download exact successful R1.1 browser artifacts by group
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          run=34790704333
+          for g in fix input terrain mobile fallback review; do
+            mkdir -p "incoming/$g"
+            gh run download "$run" --repo ziyuuu/return-old-school --name "C1-R11-$g" --dir "incoming/$g"
+          done
+      - name: Verify hashes, publish reports and documentation
+        run: |
+          set -euo pipefail
+          viewer_sha=$(node -p "JSON.parse(require('fs').readFileSync('artifacts/m11c-c1/viewer-manifest.json')).sha256")
+          test "$viewer_sha" = b2cd412be14a8ab3589c75c7e573312f3d0f5a24061766e15de0284a591847d6
+          mkdir -p qa/m11c-c1/r1.1
+          for g in fix input terrain mobile fallback review; do
+            mkdir -p "qa/m11c-c1/r1.1/$g"
+            cp -a "incoming/$g/." "qa/m11c-c1/r1.1/$g/"
+          done
+          python - <<'PY'
+          import json,pathlib
+          root=pathlib.Path('.')
+          sha='b2cd412be14a8ab3589c75c7e573312f3d0f5a24061766e15de0284a591847d6'
+          groups=['fix','input','terrain','mobile','fallback','review']
+          reports=[]
+          for g in groups:
+              p=root/'qa/m11c-c1/r1.1'/g/'report.json'
+              d=json.loads(p.read_text())
+              assert d['passed'] is True,(g,d.get('errors'))
+              assert d['viewerSHA256']==sha,(g,d['viewerSHA256'])
+              reports.append(d)
+          summary={'stage':'M1.1-C','batch':'C1','version':'R1.1','status':'IMPLEMENTED / REVIEW_PENDING','viewer':'artifacts/m11c-c1/Yali_C1_R1_1_Viewer.html','viewerSHA256':sha,'sourceCommit':'ea7d630d00c807a894f86a3b7c66bba6934d6785','qaRun':'34790704333','groups':groups,'checks':sum(len(d['checks']) for d in reports),'screenshots':sum(len(d['screenshots']) for d in reports),'fixes':['A/D and touch horizontal input are camera-relative and no longer mirrored','Ground-contact normal drives directional slope speed: uphill slower, cross-slope neutral, downhill mildly faster with 1.12 cap'],'acceptanceCreated':False}
+          (root/'qa/m11c-c1/r1.1/summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n')
+          doc=f'''# C1 R1.1｜方向与坡速修复\n\n**IMPLEMENTED / REVIEW_PENDING**。用户指出 R1 的左右控制反向、不同坡度速度无差异；本修订直接修复这两项，不登记 acceptance，不进入 C2。\n\n- A/D 与触屏横向输入统一按当前相机屏幕左右解释；四个基准 yaw 有节点测试。\n- 实际接触坡面法线与当前移动方向共同计算坡向角：2°内保持平地速度；上坡连续减速，42°附近最低为平地45%；下坡温和提速并封顶112%；横切坡面基本不变。台阶继续使用 Rapier autostep。\n- B01—B05 已认可几何、共享材质/色板/日光/反射与 C1 人形美术不变。\n- 构建与25项定向测试通过；真实 Chromium 的 fix/input/terrain/mobile/fallback/review 全部通过，共 {summary['checks']} 项检查、{summary['screenshots']} 张截图。\n- 实际主门坡面复测记录了约2.29°局部坡向样本：上坡 multiplier≈0.996，下坡≈1.002；更陡坡度按同一连续曲线产生更明显差异，不按地块写死速度。\n\nViewer：`artifacts/m11c-c1/Yali_C1_R1_1_Viewer.html`；SHA256 `{sha}`。C1 R1 历史产物保留。\n'''
+          (root/'docs/m11c/c1/r11-fix.md').write_text(doc)
+          delivery=root/'docs/m11c/c1/delivery.md';text=delivery.read_text()
+          note='> 当前修订：**C1 R1.1 / IMPLEMENTED / REVIEW_PENDING**。已修复相机相对左右控制与方向性坡面速度；详见 [R1.1 修复](r11-fix.md)。R1 Viewer/QA 保留为历史。\n\n'
+          if not text.startswith('> 当前修订：**C1 R1.1'):
+              delivery.write_text(note+text)
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add qa/m11c-c1/r1.1 docs/m11c/c1/r11-fix.md docs/m11c/c1/delivery.md
+          git commit -m 'qa(c1): publish R1.1 direction and slope-speed evidence [skip ci]'
+          git push origin HEAD:codex/c1-player-controller
+          git ls-remote origin refs/heads/main refs/heads/codex/c1-player-controller
+      - name: Package review files
+        run: |
+          mkdir -p review/artifacts/m11c-c1 review/docs/m11c/c1 review/qa/m11c-c1
+          cp artifacts/m11c-c1/Yali_C1_R1_1_Viewer.html review/artifacts/m11c-c1/
+          cp docs/m11c/c1/r11-fix.md review/docs/m11c/c1/
+          cp -a qa/m11c-c1/r1.1 review/qa/m11c-c1/
+          tar -czf C1_R1_1_Review.tar.gz -C review .
+          sha256sum C1_R1_1_Review.tar.gz artifacts/m11c-c1/Yali_C1_R1_1_Viewer.html > SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C1-R11-published-review
+          path: |
+            C1_R1_1_Review.tar.gz
+            SHA256SUMS.txt
+          retention-days: 30
