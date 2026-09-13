@@ -1,0 +1,107 @@
+name: B05 actual offline model review
+on:
+  push:
+    branches: [codex/b05-development]
+    paths: [.github/workflows/b05-review.yml]
+permissions:
+  contents: write
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      revision: ${{ steps.build.outputs.revision }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/b05-development
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - id: build
+        name: Verify, materialize, build and normally push source
+        run: |
+          set -euo pipefail
+          git fetch origin
+          git merge-base --is-ancestor 9e28225532718e3d60cc518aaac36ccc65f3fc2c HEAD
+          git merge-base --is-ancestor origin/main HEAD
+          test -z "$(git status --short)"
+          if [ ! -f apps/campus/src/batch05-core.mjs ]; then
+            python - <<'PY'
+          import pathlib,base64,lzma,hashlib,subprocess
+          patch=lzma.decompress(base64.b64decode(''.join(f.read_text().strip() for f in sorted(pathlib.Path('.github/b05-source-01').glob('*.txt')))))
+          assert hashlib.sha256(patch).hexdigest()=='9e33530744fbfbc0a0113051ef941966600d094278328c3e326fce13710d1caf'
+          subprocess.run(['git','apply','--check','-'],input=patch,check=True)
+          subprocess.run(['git','apply','-'],input=patch,check=True)
+          PY
+          fi
+          npm ci --prefix apps/campus
+          mkdir -p qa/m11b-b05/iteration-01/build
+          git diff --check
+          npm run build --prefix apps/campus 2>&1 | tee qa/m11b-b05/iteration-01/build/build.log
+          node --test tests/m11b/b05/model.test.mjs tests/render-upgrade/*.test.mjs 2>&1 | tee qa/m11b-b05/iteration-01/build/tests.tap
+          git diff --exit-code 9e28225532718e3d60cc518aaac36ccc65f3fc2c -- apps/campus/src/batch02-core.mjs apps/campus/src/batch03-core.mjs apps/campus/src/batch04-core.mjs data/m11b/batch01/acceptance.json data/m11b/batch02/acceptance.json data/m11b/batch03/acceptance.json data/m11b/batch04/acceptance.json
+          test ! -f data/m11b/batch05/acceptance.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .gitattributes apps/campus/index.html apps/campus/src data/m11b/batch05/input.json tests/m11b/b05 tools/m11b-b05
+          if ! git diff --cached --quiet; then
+            git diff --cached --stat
+            git commit -m 'feat(b05): restore gates stone sports fixtures stage flag rails and major trees; review pending [skip ci]'
+            git push origin HEAD:codex/b05-development
+          fi
+          test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/codex/b05-development | cut -f1)"
+          echo "revision=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          node tools/m11b-b05/export.mjs
+          git bundle create /tmp/b05-source.bundle HEAD ^9e28225532718e3d60cc518aaac36ccc65f3fc2c
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: B05-build-source
+          path: |
+            qa/m11b-b05/iteration-01/build
+            artifacts/m11b-b05
+            /tmp/b05-source.bundle
+          retention-days: 7
+  browser:
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        group: [gate, courts, field, residential, checks, regression, mobile, fallback, performance, baseline]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.prepare.outputs.revision }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Locked source and browser dependencies
+        run: |
+          npm ci --prefix apps/campus
+          npm install --prefix "$RUNNER_TEMP/b05-browser" playwright@1.62.0
+          "$RUNNER_TEMP/b05-browser/node_modules/.bin/playwright" install --with-deps chromium
+          sudo apt-get install -y fonts-noto-cjk
+          echo "PLAYWRIGHT_MODULE=$RUNNER_TEMP/b05-browser/node_modules/playwright" >> "$GITHUB_ENV"
+          node tools/m11b-b05/export.mjs
+      - name: Exact Viewer real WebGL screenshots and diagnostics
+        env:
+          B05_GROUP: ${{ matrix.group }}
+          B05_PHASE: iteration-01
+        run: |
+          set -o pipefail
+          mkdir -p qa/m11b-b05/iteration-01/${{ matrix.group }}
+          node tools/m11b-b05/capture.mjs 2>&1 | tee qa/m11b-b05/iteration-01/${{ matrix.group }}/capture.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: B05-iteration-${{ matrix.group }}
+          path: |
+            qa/m11b-b05/iteration-01/${{ matrix.group }}
+            artifacts/m11b-b05
+          retention-days: 7
