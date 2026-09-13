@@ -1,0 +1,42 @@
+name: C1 verified workspace acquisition
+on:
+  push:
+    branches: [codex/c1-player-controller]
+    paths: [.github/workflows/c1-acquire.yml]
+permissions:
+  contents: read
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Fresh clone and approved ancestry
+        run: |
+          set -euo pipefail
+          git clone https://github.com/ziyuuu/return-old-school.git campus
+          cd campus
+          git fetch origin
+          git switch main
+          git pull --ff-only origin main
+          git merge-base --is-ancestor 51a337c389b801317a2ef0fd11976a2aeb49550f HEAD
+          git switch --track origin/codex/c1-player-controller
+          git merge-base --is-ancestor origin/main HEAD
+          test -z "$(git status --short)"
+          mkdir -p ../receipt
+          git rev-parse HEAD > ../receipt/head.txt
+          git ls-remote origin refs/heads/main refs/heads/codex/c1-player-controller > ../receipt/remote-refs.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Locked application and C1 physics dependencies
+        run: |
+          set -euo pipefail
+          npm ci --prefix campus/apps/campus
+          npm install --prefix campus/apps/campus --save-exact @dimforge/rapier3d-compat@0.20.0
+          npm install --prefix browser-tools --save-exact playwright@1.62.0
+          tar -czf c1-workspace.tar.gz campus browser-tools receipt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C1-verified-workspace
+          path: c1-workspace.tar.gz
+          retention-days: 7
