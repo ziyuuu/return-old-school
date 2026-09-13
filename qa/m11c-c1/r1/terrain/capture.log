@@ -1,0 +1,18 @@
+open terrain 96d2404bd56a9cf766a452f586bb4b6141957605c8266a710af9e9513e0737dc
+2026-09-13T16:52:32.796Z capture 01-stone-ramp-platform
+2026-09-13T16:54:30.126Z capture 02-stone-stairs
+2026-09-13T16:54:52.490Z capture 03-court-entry
+2026-09-13T16:54:57.930Z capture 04-gym-entry
+C1 RESULT terrain true [
+  [ 'Runtime ready and correct default mode', true ],
+  [ 'Stone ramp joins raised platform', true ],
+  [ '01-stone-ramp-platform WebGL', true ],
+  [ 'Four real steps climbed with same capsule', true ],
+  [ '02-stone-stairs WebGL', true ],
+  [ 'Basketball fence opening and original slope', true ],
+  [ '03-court-entry WebGL', true ],
+  [ 'Gym threshold and real portal', true ],
+  [ '04-gym-entry WebGL', true ],
+  [ 'No JavaScript or GL console errors', true ],
+  [ 'Single offline Viewer, no network assets', true ]
+]

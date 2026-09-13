@@ -1,0 +1,21 @@
+{
+  "viewerSHA256": "96d2404bd56a9cf766a452f586bb4b6141957605c8266a710af9e9513e0737dc",
+  "method": "Inspected all 26 actual captured frames using contact sheets and mobile detail",
+  "groups": {
+    "input": "Visible articulated neutral mannequin, clear playfield, pause panel and first-person view.",
+    "lane": "Body stays within walls; camera retracts. Very close follow view intentionally crops body.",
+    "terrain": "Stone ramp/steps reach platform, court gap and gym portal remain open.",
+    "mobile": "Fresh390x844 controls and help fit, low-saturation palette retained.",
+    "review": "Six inherited views plus top/axis; campus silhouettes/materials unchanged. Enter-player UI is an overlay.",
+    "fallback": "Logarithmic fallback and orthographic views are visible.",
+    "performance": "Idle scene captured after60 intervals; software GPU very slow, no smoothness claim."
+  },
+  "deviations": [
+    "Procedural contact-only avatar shadow; static campus sun shadow retained."
+  ],
+  "remaining": [
+    "C2 final character/rig/foot placement/uniforms",
+    "C3 whole-campus traversal",
+    "Physical GPU/phone performance acceptance"
+  ]
+}

@@ -1,0 +1,13 @@
+open fallback 96d2404bd56a9cf766a452f586bb4b6141957605c8266a710af9e9513e0737dc
+2026-09-13T16:52:29.047Z capture 01-log-depth-player
+2026-09-13T16:54:57.929Z capture top
+2026-09-13T16:55:28.118Z capture r3-axis
+C1 RESULT fallback true [
+  [ 'Runtime ready and correct default mode', true ],
+  [ '01-log-depth-player WebGL', true ],
+  [ 'Actual log-depth fallback active', true ],
+  [ 'top WebGL', true ],
+  [ 'r3-axis WebGL', true ],
+  [ 'No JavaScript or GL console errors', true ],
+  [ 'Single offline Viewer, no network assets', true ]
+]

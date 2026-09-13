@@ -1,0 +1,23 @@
+open review 96d2404bd56a9cf766a452f586bb4b6141957605c8266a710af9e9513e0737dc
+2026-09-13T16:52:23.376Z capture overview
+2026-09-13T16:55:33.496Z capture r3-overview
+2026-09-13T16:55:55.749Z capture b02-photo-front
+2026-09-13T16:56:00.714Z capture b03-photo-library
+2026-09-13T16:56:06.641Z capture b03-garden
+2026-09-13T16:56:26.579Z capture b03-canteen
+2026-09-13T16:56:33.484Z capture top
+2026-09-13T16:57:03.406Z capture r3-axis
+C1 RESULT review true [
+  [ 'Runtime ready and correct default mode', true ],
+  [ 'overview WebGL', true ],
+  [ 'r3-overview WebGL', true ],
+  [ 'b02-photo-front WebGL', true ],
+  [ 'b03-photo-library WebGL', true ],
+  [ 'b03-garden WebGL', true ],
+  [ 'b03-canteen WebGL', true ],
+  [ 'top WebGL', true ],
+  [ 'r3-axis WebGL', true ],
+  [ 'Review mode remains separate with no player', true ],
+  [ 'No JavaScript or GL console errors', true ],
+  [ 'Single offline Viewer, no network assets', true ]
+]

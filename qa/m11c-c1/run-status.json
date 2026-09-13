@@ -1,0 +1,11 @@
+{
+  "originalRun": {
+    "id": 34769723661,
+    "conclusion": "failure"
+  },
+  "mobileRecheck": {
+    "id": 34770237456,
+    "conclusion": "success"
+  },
+  "note": "Original run failure preserved; valid groups and corrected real-touch recheck share exact Viewer bytes. Publication does not rerun browser or invent measurements."
+}

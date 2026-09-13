@@ -1,0 +1,10 @@
+open performance 96d2404bd56a9cf766a452f586bb4b6141957605c8266a710af9e9513e0737dc
+2026-09-13T16:52:24.466Z sampling 8 warmup + 60 ordinary rendered frame intervals
+2026-09-13T17:09:55.944Z capture 01-performance-third-person
+C1 RESULT performance true [
+  [ 'Runtime ready and correct default mode', true ],
+  [ 'Sixty finite actual frame intervals after warmup', true ],
+  [ '01-performance-third-person WebGL', true ],
+  [ 'No JavaScript or GL console errors', true ],
+  [ 'Single offline Viewer, no network assets', true ]
+]

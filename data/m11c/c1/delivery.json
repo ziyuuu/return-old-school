@@ -1,0 +1,10 @@
+{
+  "version": "R1",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "viewer": "artifacts/m11c-c1/Yali_C1_R1_Viewer.html",
+  "viewerSHA256": "96d2404bd56a9cf766a452f586bb4b6141957605c8266a710af9e9513e0737dc",
+  "sourceCommit": "65284ef8aece3d191b967dd7dbfa87715789a369",
+  "qa": "qa/m11c-c1/final-summary.json",
+  "next": "C2 after explicit C1 review",
+  "acceptanceCreated": false
+}

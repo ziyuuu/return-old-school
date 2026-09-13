@@ -1,0 +1,25 @@
+open mobile 96d2404bd56a9cf766a452f586bb4b6141957605c8266a710af9e9513e0737dc
+2026-09-13T16:52:01.037Z capture 01-mobile-initial
+2026-09-13T16:52:52.846Z capture 02-mobile-help
+2026-09-13T16:53:00.624Z capture 03-mobile-lane
+AssertionError [ERR_ASSERTION]: No JavaScript or GL console errors ["NotFoundError: Failed to execute 'setPointerCapture' on 'Element': No active pointer with the given id is found."]
+    at check (file:///home/runner/work/return-old-school/return-old-school/tools/m11c-c1/capture.mjs:18:100)
+    at file:///home/runner/work/return-old-school/return-old-school/tools/m11c-c1/capture.mjs:97:29 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+C1 RESULT mobile false [
+  [ 'Runtime ready and correct default mode', true ],
+  [ '01-mobile-initial WebGL', true ],
+  [ 'Actual touch joystick moves and releases', true ],
+  [ 'Touch run toggle', true ],
+  [ '02-mobile-help WebGL', true ],
+  [ '03-mobile-lane WebGL', true ],
+  [ 'Pointer cancellation cannot leave motion stuck', true ],
+  [ 'Fresh 390x844 branch and no overflow', true ],
+  [ 'No JavaScript or GL console errors', false ]
+]

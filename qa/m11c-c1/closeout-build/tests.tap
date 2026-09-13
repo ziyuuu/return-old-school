@@ -1,0 +1,148 @@
+TAP version 13
+# Subtest: Uniform capsule, slope, stepping and clock configuration is not a surveyed metric
+ok 1 - Uniform capsule, slope, stepping and clock configuration is not a surveyed metric
+  ---
+  duration_ms: 1.418212
+  type: 'test'
+  ...
+# Subtest: Fixed-step walk is consistent at 30 / 60 / 144 display Hz and diagonals are normalized
+ok 2 - Fixed-step walk is consistent at 30 / 60 / 144 display Hz and diagonals are normalized
+  ---
+  duration_ms: 252.144701
+  type: 'test'
+  ...
+# Subtest: Capsule stops at a thin wall and slides laterally, never ray-teleporting through it
+ok 3 - Capsule stops at a thin wall and slides laterally, never ray-teleporting through it
+  ---
+  duration_ms: 106.73675
+  type: 'test'
+  ...
+# Subtest: Autostep climbs real 0.16 m risers and descends with ground contact
+ok 4 - Autostep climbs real 0.16 m risers and descends with ground contact
+  ---
+  duration_ms: 34.74499
+  type: 'test'
+  ...
+# Subtest: High obstacles and low lintels are blocked under the same body rules
+ok 5 - High obstacles and low lintels are blocked under the same body rules
+  ---
+  duration_ms: 54.666401
+  type: 'test'
+  ...
+# Subtest: True door opening passes a 0.72m aperture but not a 0.44m aperture
+ok 6 - True door opening passes a 0.72m aperture but not a 0.44m aperture
+  ---
+  duration_ms: 77.505417
+  type: 'test'
+  ...
+# Subtest: Walkable slope follows real triangles and steep slope refuses upward climbing
+ok 7 - Walkable slope follows real triangles and steep slope refuses upward climbing
+  ---
+  duration_ms: 34.475203
+  type: 'test'
+  ...
+# Subtest: Stepping off a ledge enters a fall, rather than snapping through large drops
+ok 8 - Stepping off a ledge enters a fall, rather than snapping through large drops
+  ---
+  duration_ms: 10.77146
+  type: 'test'
+  ...
+# Subtest: Paused or stalled frames cannot make the body leap across obstacles
+ok 9 - Paused or stalled frames cannot make the body leap across obstacles
+  ---
+  duration_ms: 3.187334
+  type: 'test'
+  ...
+# Subtest: Unsafe checkpoint inside a wall is rejected without claiming safe spawn
+ok 10 - Unsafe checkpoint inside a wall is rejected without claiming safe spawn
+  ---
+  duration_ms: 6.189769
+  type: 'test'
+  ...
+# Subtest: Camera uses sphere sweep and cannot ease beyond a blocking wall
+ok 11 - Camera uses sphere sweep and cannot ease beyond a blocking wall
+  ---
+  duration_ms: 6.150199
+  type: 'test'
+  ...
+# Subtest: Physics residency switches retain exact floor and wall triangles
+ok 12 - Physics residency switches retain exact floor and wall triangles
+  ---
+  duration_ms: 68.043016
+  type: 'test'
+  ...
+# Subtest: Leaves and annotations do not block; glass and wire stay physical
+ok 13 - Leaves and annotations do not block; glass and wire stay physical
+  ---
+  duration_ms: 15.764551
+  type: 'test'
+  ...
+# Subtest: B01–B05 model files, renderer detail and acceptance are inherited byte-for-byte
+ok 14 - B01–B05 model files, renderer detail and acceptance are inherited byte-for-byte
+  ---
+  duration_ms: 598.702418
+  type: 'test'
+  ...
+# Subtest: detailed frame and column geometry adds actual faces within the original envelope
+ok 15 - detailed frame and column geometry adds actual faces within the original envelope
+  ---
+  duration_ms: 30.62017
+  type: 'test'
+  ...
+# Subtest: walking surfaces and wall partitions stay exact and do not get artificial seams
+ok 16 - walking surfaces and wall partitions stay exact and do not get artificial seams
+  ---
+  duration_ms: 3.395198
+  type: 'test'
+  ...
+# Subtest: dimension-aware instances preserve placement and physical radius without stretching
+ok 17 - dimension-aware instances preserve placement and physical radius without stretching
+  ---
+  duration_ms: 13.382844
+  type: 'test'
+  ...
+# Subtest: raycasting uses the real refined surface and preserves an open doorway
+ok 18 - raycasting uses the real refined surface and preserves an open doorway
+  ---
+  duration_ms: 4.459095
+  type: 'test'
+  ...
+# Subtest: shared palette rows distinguish leaves from soil, water from glass and floors from metal
+ok 19 - shared palette rows distinguish leaves from soil, water from glass and floors from metal
+  ---
+  duration_ms: 2.125891
+  type: 'test'
+  ...
+# Subtest: surface maps are reproducible and families have distinct albedo and relief patterns
+ok 20 - surface maps are reproducible and families have distinct albedo and relief patterns
+  ---
+  duration_ms: 989.752116
+  type: 'test'
+  ...
+# Subtest: brushing has a direction while fabric has two crossing thread directions
+ok 21 - brushing has a direction while fabric has two crossing thread directions
+  ---
+  duration_ms: 35.818903
+  type: 'test'
+  ...
+# Subtest: ivy has a thin lobed mesh with leaf UVs inside its inherited coverage envelope
+ok 22 - ivy has a thin lobed mesh with leaf UVs inside its inherited coverage envelope
+  ---
+  duration_ms: 13.554073
+  type: 'test'
+  ...
+# Subtest: BVH keeps actual high-detail intersections, transforms and triangle order
+ok 23 - BVH keeps actual high-detail intersections, transforms and triangle order
+  ---
+  duration_ms: 122.444447
+  type: 'test'
+  ...
+1..23
+# tests 23
+# suites 0
+# pass 23
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1580.349351

@@ -1,0 +1,15 @@
+open lane 96d2404bd56a9cf766a452f586bb4b6141957605c8266a710af9e9513e0737dc
+2026-09-13T16:52:19.705Z capture 01-lane-start
+2026-09-13T16:54:46.198Z capture 02-camera-wall-retraction
+2026-09-13T16:54:57.224Z capture 03-residential-fork
+C1 RESULT lane true [
+  [ 'Runtime ready and correct default mode', true ],
+  [ '01-lane-start WebGL', true ],
+  [ 'Continuous side-wall stops a moving capsule', true ],
+  [ 'Camera sphere retracts at lane wall', true ],
+  [ '02-camera-wall-retraction WebGL', true ],
+  [ 'Walled lane to residential fork with region transitions', true ],
+  [ '03-residential-fork WebGL', true ],
+  [ 'No JavaScript or GL console errors', true ],
+  [ 'Single offline Viewer, no network assets', true ]
+]

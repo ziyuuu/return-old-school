@@ -1,0 +1,17 @@
+open mobile 96d2404bd56a9cf766a452f586bb4b6141957605c8266a710af9e9513e0737dc
+2026-09-13T17:02:09.931Z capture 01-mobile-initial
+2026-09-13T17:02:58.035Z capture 02-mobile-help
+2026-09-13T17:03:05.334Z capture 03-mobile-lane
+C1 RESULT mobile true [
+  [ 'Runtime ready and correct default mode', true ],
+  [ '01-mobile-initial WebGL', true ],
+  [ 'Actual touch joystick moves and releases', true ],
+  [ 'Touch run toggle', true ],
+  [ '02-mobile-help WebGL', true ],
+  [ '03-mobile-lane WebGL', true ],
+  [ 'Cancellation test starts from active touch motion', true ],
+  [ 'Real pointer cancellation cannot leave motion stuck', true ],
+  [ 'Fresh 390x844 branch and no overflow', true ],
+  [ 'No JavaScript or GL console errors', true ],
+  [ 'Single offline Viewer, no network assets', true ]
+]

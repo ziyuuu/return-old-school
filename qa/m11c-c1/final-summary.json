@@ -1,0 +1,628 @@
+{
+  "stage": "M1.1-C.C1",
+  "version": "R1",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "standard": "1.0",
+  "viewer": "artifacts/m11c-c1/Yali_C1_R1_Viewer.html",
+  "viewerSHA256": "96d2404bd56a9cf766a452f586bb4b6141957605c8266a710af9e9513e0737dc",
+  "viewerBytes": 3872519,
+  "runtimeSourceCommit": "65284ef8aece3d191b967dd7dbfa87715789a369",
+  "qaHarnessCorrectionCommit": "946fd76c27d9157bfa1f6d68fcbdb46bcc0e1017",
+  "build": "PASS",
+  "directedTests": {
+    "passed": 23,
+    "failed": 0,
+    "log": "qa/m11c-c1/iteration-01/build/tests.tap"
+  },
+  "browserChecks": 69,
+  "browserGroups": [
+    "input",
+    "lane",
+    "terrain",
+    "review",
+    "fallback",
+    "performance",
+    "mobile"
+  ],
+  "screenshots": 26,
+  "errors": [],
+  "externalRequests": [],
+  "routes": [
+    {
+      "case": "mainRoute",
+      "group": "input",
+      "reason": "complete",
+      "ticks": 735,
+      "end": {
+        "feet": [
+          -2.0456754623043166e-05,
+          3.055100174133695,
+          44.14040249765344
+        ],
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "grounded": true,
+        "heading": -0.0003196818306123781,
+        "actualSpeed": 1.7109482983212583e-07,
+        "blocked": false,
+        "travel": 47.64041084382437,
+        "ticks": 1021,
+        "paused": false,
+        "droppedSeconds": 123.30922199999999,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      "timing": "Fixed simulation ticks of the same motor, not a wall-clock device speed benchmark"
+    },
+    {
+      "case": "laneRoute",
+      "group": "lane",
+      "reason": "complete",
+      "ticks": 2242,
+      "end": {
+        "feet": [
+          129.15591617440649,
+          2.4664215551520465,
+          31.999922898052226
+        ],
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "grounded": true,
+        "heading": 1.5695866047755689,
+        "actualSpeed": 0.0005674475328701546,
+        "blocked": false,
+        "travel": 127.93712371110702,
+        "ticks": 2456,
+        "paused": false,
+        "droppedSeconds": 250.78110133333334,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      "timing": "Fixed simulation ticks of the same motor, not a wall-clock device speed benchmark"
+    },
+    {
+      "case": "stoneRamp",
+      "group": "terrain",
+      "reason": "complete",
+      "ticks": 279,
+      "end": {
+        "feet": [
+          -10.313310701963172,
+          0.6648873653430202,
+          -6.400333455881896
+        ],
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "grounded": true,
+        "heading": -1.5670420518565549,
+        "actualSpeed": 9.355006991817013e-06,
+        "blocked": false,
+        "travel": 7.393840813404352,
+        "ticks": 357,
+        "paused": false,
+        "droppedSeconds": 114.495374,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      "timing": "Fixed simulation ticks of the same motor, not a wall-clock device speed benchmark"
+    },
+    {
+      "case": "stoneSteps",
+      "group": "terrain",
+      "reason": "complete",
+      "ticks": 126,
+      "end": {
+        "feet": [
+          -12.800015630317223,
+          0.6649751693854341,
+          -6.4909282382698
+        ],
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "grounded": true,
+        "heading": -0.000214590160967347,
+        "actualSpeed": 2.5244025536608206e-07,
+        "blocked": false,
+        "travel": 10.402918453409946,
+        "ticks": 536,
+        "paused": false,
+        "droppedSeconds": 114.90604066666667,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      "timing": "Fixed simulation ticks of the same motor, not a wall-clock device speed benchmark"
+    },
+    {
+      "case": "courtRoute",
+      "group": "terrain",
+      "reason": "complete",
+      "ticks": 442,
+      "end": {
+        "feet": [
+          -16.925242729699328,
+          3.3551003850059353,
+          120.00004338111533
+        ],
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "grounded": true,
+        "heading": -1.571037011870408,
+        "actualSpeed": 2.0296199720881702e-08,
+        "blocked": false,
+        "travel": 22.32816573386887,
+        "ticks": 1031,
+        "paused": false,
+        "droppedSeconds": 232.10030733333338,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      "timing": "Fixed simulation ticks of the same motor, not a wall-clock device speed benchmark"
+    },
+    {
+      "case": "gymEntry",
+      "group": "terrain",
+      "reason": "complete",
+      "ticks": 315,
+      "end": {
+        "feet": [
+          -27.90335175585465,
+          3.6550589623636918,
+          44.99999992627359
+        ],
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "grounded": true,
+        "heading": -1.5707946381048354,
+        "actualSpeed": 2.0083867651605287e-06,
+        "blocked": false,
+        "travel": 30.231518780296273,
+        "ticks": 1399,
+        "paused": false,
+        "droppedSeconds": 254.32977400000004,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      "timing": "Fixed simulation ticks of the same motor, not a wall-clock device speed benchmark"
+    }
+  ],
+  "mobile": {
+    "width": 390,
+    "scrollWidth": 390,
+    "shadow": 2048
+  },
+  "rendering": {
+    "withMannequin": {
+      "modelTriangles": 8180590,
+      "meshes": 2001,
+      "geometryBytes": 258442292,
+      "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 28,
+        "shadowRevision": 14,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 5093,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 2006,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        }
+      }
+    },
+    "reviewWithoutMannequin": {
+      "modelTriangles": 8144396,
+      "meshes": 1983,
+      "geometryBytes": 257597864,
+      "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 250,
+        "shadowRevision": 8,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 5197,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 2282,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        }
+      }
+    },
+    "addedVisibleTriangles": 36194,
+    "dynamicShadow": "Procedural contact-only avatar shadow, not full dynamic sun shadow"
+  },
+  "performance": {
+    "view": "third-person gate idle",
+    "samples": 60,
+    "warmup": 8,
+    "valuesMs": [
+      33.30000000000291,
+      16.60000000000582,
+      33.30000000000291,
+      33.39999999999418,
+      16.60000000000582,
+      33.39999999999418,
+      16.69999999999709,
+      33.19999999999709,
+      16.80000000000291,
+      33.30000000000291,
+      33.30000000000291,
+      16.59999999999127,
+      20715.899999999994,
+      33.30000000001746,
+      50,
+      21032.5,
+      21015.899999999994,
+      21049.100000000006,
+      41931.600000000006,
+      20865.79999999999,
+      166.79999999998836,
+      41981.600000000035,
+      41948.399999999965,
+      20965.79999999999,
+      21015.70000000001,
+      21016,
+      21015.79999999999,
+      20982.400000000023,
+      20999.20000000001,
+      20965.79999999999,
+      20982.5,
+      20982.5,
+      20999.199999999953,
+      21015.800000000047,
+      41965,
+      20999.199999999953,
+      199.90000000002328,
+      41748.30000000005,
+      20915.900000000023,
+      150,
+      20982.5,
+      41931.69999999995,
+      20965.800000000047,
+      16.599999999976717,
+      21015.900000000023,
+      41964.89999999991,
+      20982.5,
+      21015.900000000023,
+      42031.59999999998,
+      21065.900000000023,
+      20965.70000000007,
+      21015.899999999907,
+      21065.800000000047,
+      21099.199999999953,
+      1866.6000000000931,
+      40315,
+      21099.09999999986,
+      1850,
+      40365.10000000009,
+      21082.399999999907
+    ],
+    "physicsCpuMs": [
+      0.8000000000465661,
+      0,
+      0.5,
+      0.40000000002328306,
+      0.19999999995343387,
+      0.39999999990686774,
+      0.39999999990686774,
+      0.2000000000698492,
+      0.5,
+      0.2999999999301508,
+      0.40000000002328306,
+      0.40000000002328306,
+      1.2000000000698492,
+      0.40000000002328306,
+      1.2000000000698492,
+      1.8000000000465661,
+      0.9000000000232831,
+      8.900000000023283,
+      0.8999999999068677,
+      0.7000000000698492,
+      0.8999999999068677,
+      1.6999999999534339,
+      0.9000000000232831,
+      0.8999999999068677,
+      2,
+      0.9000000000232831,
+      0.8999999999068677,
+      1.599999999976717,
+      2,
+      2.299999999930151,
+      0.7999999999301508,
+      1.8000000000465661,
+      1.3999999999068677,
+      0.7000000001862645,
+      0.8999999999068677,
+      2.1000000000931323,
+      0.8999999999068677,
+      1,
+      1,
+      0.8000000000465661,
+      0.8999999999068677,
+      3,
+      0.6000000000931323,
+      0,
+      0.8999999999068677,
+      3.2999999998137355,
+      0.8999999999068677,
+      0.8999999999068677,
+      0.6999999999534339,
+      0.6999999999534339,
+      0.6000000000931323,
+      0.8999999999068677,
+      0.6999999999534339,
+      1.7999999998137355,
+      0.8000000000465661,
+      0.6999999999534339,
+      0.8000000000465661,
+      0.8999999999068677,
+      0.6999999999534339,
+      0.6999999999534339
+    ],
+    "medianMs": 20982.5,
+    "p95Ms": 41964.89999999991,
+    "minimumMs": 16.599999999976717,
+    "maximumMs": 42031.59999999998,
+    "method": "Ordinary renderer animation loop and C1 update; idle third-person gate; frame intervals include software GPU and scheduling. No per-frame readPixels/gl.finish. Not user hardware FPS.",
+    "motor": {
+      "feet": [
+        -5.665383869674079e-07,
+        0.05488432656464293,
+        -3.500000237274579
+      ],
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "grounded": true,
+      "heading": 0,
+      "actualSpeed": 1.5239069739436673e-06,
+      "blocked": false,
+      "travel": 6.691583944054892e-06,
+      "ticks": 465,
+      "paused": false,
+      "droppedSeconds": 1149.070364666666,
+      "respawns": 0,
+      "collisionCount": 1
+    }
+  },
+  "performanceAcceptance": "NOT_VALIDATED_ON_USER_GPU_OR_PHYSICAL_PHONE",
+  "browserEnvironment": {
+    "browser": "151.0.7922.34",
+    "node": "v22.23.2",
+    "runner": "GitHub Actions Linux",
+    "rendering": "SwiftShader software GPU; not user hardware"
+  },
+  "provenance": [
+    {
+      "group": "input",
+      "artifact": "C1-iteration01-input",
+      "artifactId": 10321567368,
+      "run": 34769723661,
+      "reportSHA256": "a1d15d5ff0c0d4e5ba7c3234abd3c3cd436e55813966da9a61d6b3219e4676a0",
+      "path": "qa/m11c-c1/r1/input/report.json"
+    },
+    {
+      "group": "lane",
+      "artifact": "C1-iteration01-lane",
+      "artifactId": 10321333099,
+      "run": 34769723661,
+      "reportSHA256": "9b33f7b2939aa70ab70dd81af79d80e560dd0f3c594d361a7c3cce1319061ae0",
+      "path": "qa/m11c-c1/r1/lane/report.json"
+    },
+    {
+      "group": "terrain",
+      "artifact": "C1-iteration01-terrain",
+      "artifactId": 10322250330,
+      "run": 34769723661,
+      "reportSHA256": "adaf079cbacc0176a5c6732f0f1ee6d59f02b514ecd4b9093c70b3412a53fb43",
+      "path": "qa/m11c-c1/r1/terrain/report.json"
+    },
+    {
+      "group": "review",
+      "artifact": "C1-iteration01-review",
+      "artifactId": 10322250449,
+      "run": 34769723661,
+      "reportSHA256": "5b325a39b465e08ee12bebaa6d1ebd7fb0dfc907b5f3c2493d14ef7829661aac",
+      "path": "qa/m11c-c1/r1/review/report.json"
+    },
+    {
+      "group": "fallback",
+      "artifact": "C1-iteration01-fallback",
+      "artifactId": 10322285374,
+      "run": 34769723661,
+      "reportSHA256": "b9eda28b8292b3cc9607219a81b477f1f2786dc650743a3050c7d6d8a71ef114",
+      "path": "qa/m11c-c1/r1/fallback/report.json"
+    },
+    {
+      "group": "performance",
+      "artifact": "C1-iteration01-performance",
+      "artifactId": 10321723764,
+      "run": 34769723661,
+      "reportSHA256": "9adee6136d10e8feba189bb08e6ee2fcbd8d24d3d3e874637595bca5e26a9ca0",
+      "path": "qa/m11c-c1/r1/performance/report.json"
+    },
+    {
+      "group": "mobile",
+      "artifact": "C1-mobile-recheck",
+      "artifactId": 10322261386,
+      "run": 34770237456,
+      "reportSHA256": "0d4092fd4ebb4a933f59fc4664b216ed9ee922913992a611f502e9ed2a8985e9",
+      "path": "qa/m11c-c1/r1/mobile/report.json"
+    }
+  ],
+  "preservation": "qa/m11c-c1/r1/preservation.json",
+  "visualReview": "docs/m11c/c1/visual-review.json",
+  "acceptanceCreated": false,
+  "limits": [
+    "Provisional scale mannequin, not a historic uniform or C2 student.",
+    "Six representative traversals, not C3 whole-campus acceptance.",
+    "No jumping, swimming, NPCs, full interiors or narrative.",
+    "Actual hardware frame rate and walking region-rebuild cost remain to be measured.",
+    "Fixture tests and scripted campus simulation are distinguished from real-time device performance."
+  ]
+}

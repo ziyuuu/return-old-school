@@ -1,0 +1,21 @@
+open input 96d2404bd56a9cf766a452f586bb4b6141957605c8266a710af9e9513e0737dc
+2026-09-13T16:52:41.294Z capture 01-third-person-start
+2026-09-13T16:54:46.188Z capture 02-main-slope-crest
+2026-09-13T16:55:05.123Z capture 03-pause-help
+2026-09-13T16:55:23.923Z capture 04-first-person
+C1 RESULT input true [
+  [ 'Runtime ready and correct default mode', true ],
+  [ '01-third-person-start WebGL', true ],
+  [ 'Actual W input moves visible capsule through the gate', true ],
+  [ 'Shift run reaches configured speed', true ],
+  [ 'Main approach and rise by actual motor', true ],
+  [ '02-main-slope-crest WebGL', true ],
+  [ 'Escape pauses physics without drift', true ],
+  [ '03-pause-help WebGL', true ],
+  [ 'First person hides mannequin', true ],
+  [ '04-first-person WebGL', true ],
+  [ 'R resets to selected checkpoint', true ],
+  [ 'Focus loss clears input and pauses', true ],
+  [ 'No JavaScript or GL console errors', true ],
+  [ 'Single offline Viewer, no network assets', true ]
+]
