@@ -23,7 +23,7 @@ const viewerSHA256=hash(await fs.readFile(path.join(root,viewer)));
 const manifest=JSON.parse(await fs.readFile(path.join(root,'artifacts/m11b-b05/viewer-manifest.json'),'utf8'));
 assert.equal(viewerSHA256,manifest.sha256);
 for(const [file,digest] of Object.entries(manifest.sources))assert.equal(hash(await fs.readFile(path.join(root,file))),digest,'Runtime drift: '+file);
-const report={batch:'B05',phase,group:'performance',status:'IMPLEMENTED / REVIEW_PENDING',standard:'1.0',viewer,viewerSHA256,sourceCommit:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),runtimeSourceCommit:'330f2afd5f12c5552573dd53e3d6d2eb02442ade',run:process.env.GITHUB_RUN_ID??null,startedAt:new Date().toISOString(),viewport,deviceScaleFactor:1,baseline:false,fallback:false,errors:[],warnings:[],externalRequests:[],views:[],samples:[],passed:false};
+const report={batch:'B05',phase,group:'performance',status:'IMPLEMENTED / REVIEW_PENDING',standard:'1.0',viewer,viewerSHA256,sourceCommit:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),runtimeSourceCommit:manifest.gitHead,run:process.env.GITHUB_RUN_ID??null,startedAt:new Date().toISOString(),viewport,deviceScaleFactor:1,baseline:false,fallback:false,errors:[],warnings:[],externalRequests:[],views:[],samples:[],passed:false};
 const save=()=>fs.writeFile(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');
 const stage=async s=>{report.stage=s;console.log(new Date().toISOString(),view,s);await save();};
 let browser;
