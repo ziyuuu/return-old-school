@@ -52,8 +52,23 @@ try{
     for(let i=0;i<60;i++){const t=performance.now();r.renderFrame();gl.finish();values.push(performance.now()-t);}const s=[...values].sort((a,b)=>a-b);return {samples:60,warmupFrames:2,medianMs:(s[29]+s[30])/2,p95Ms:s[56],minMs:s[0],maxMs:s[59],valuesMs:values,method:'Wall-clock CPU+GPU frame duration: same render function then gl.finish(); animation loop paused, no frame-rate claim'};});
   }
   const state=await getState(),file=(name??'mobile-initial')+'.png';
-  await page.screenshot({path:path.join(out,file),timeout:180000});
-  report.views.push({file,sha256:sha(await fs.readFile(path.join(out,file))),requestedView:name??'fresh default',...state,performance});
+  // The pixels always come from the running browser, never a proxy scene.
+  // Headless SwiftShader can stall the compositor despite a completed GL frame.
+  // Keep UI captures strict; clean views can fall back to same-frame WebGL readback.
+  let screenshotMethod='Playwright full-page viewport';
+  try { await page.screenshot({path:path.join(out,file),timeout:45000}); }
+  catch (e) {
+   report.warnings.push({view:name,compositorAttempt:String(e),recoveredBy:mobile?'CDP viewport':'same-frame WebGL canvas'});
+   if(mobile){
+    const cdp=await context.newCDPSession(page);
+    const image=await cdp.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false,fromSurface:true});
+    await fs.writeFile(path.join(out,file),Buffer.from(image.data,'base64'));await cdp.detach();screenshotMethod='CDP full-page viewport';
+   } else {
+    const data=await page.evaluate(()=>{const r=window.__YALI_RENDER_RAW__;if(r.renderFrame)r.renderFrame();else r.renderer.render(r.scene,r.camera());r.renderer.getContext().finish();return r.renderer.domElement.toDataURL('image/png');});
+    await fs.writeFile(path.join(out,file),Buffer.from(data.split(',')[1],'base64'));screenshotMethod='Actual same-frame WebGL canvas readback / clean viewport';
+   }
+  }
+  report.views.push({file,sha256:sha(await fs.readFile(path.join(out,file))),screenshotMethod,requestedView:name??'fresh default',...state,performance});
   stage('saved '+file+'; GL '+state.glError);await checkpoint();
  }
  if(group==='checks'){

@@ -222,7 +222,7 @@ Object.assign(cameraPresets,{
  'b05-court-entry':{label:'主路 → 原坡道 → 围网真实缺口',position:[2.5,5.4,127],target:[-16,4.9,120],fov:60},
  'b05-track':{label:'风雨直跑道 · 双侧柱列 / 中部横路',position:[-69,5.1,83],target:[-68.5,5.0,119],fov:64},
  'b05-auxiliary':{label:'单层体育辅助用房28 · 屋盖H / 真实门厅',position:[-73,5.2,116],target:[-80,4.6,118],fov:62},
- 'b05-pool':{label:'泳池 / 池畔厕所26 · 原位置 / 公共入口',position:[-66,22,62],target:[-39,3.5,77],fov:60},
+ 'b05-pool':{label:'泳池 / 池畔厕所26 · 原位置 / 公共入口',position:[-13,18,101],target:[-38,3.5,76],fov:60},
  'b05-field':{label:'操场 · 两端球门 / 主席台 / 场边树阵',position:[124,33,191],target:[69,3,112],fov:60},
  'b05-goal':{label:'2006白色球门结构 · 同源细杆网',position:[85,4.9,146],target:[73,3.1,158.8],fov:55},
  'b05-rostrum':{label:'主席台 · 中部高棚 / 两翼 / 上下接入',position:[41,8,136],target:[19,5.1,110],fov:62},
