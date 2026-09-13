@@ -1,0 +1,687 @@
+{
+  "batch": "B05",
+  "phase": "final-r1.1",
+  "group": "checks",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "standard": "1.0",
+  "viewer": "artifacts/m11b-b05/Yali_B05_R1_1_Viewer.html",
+  "viewerSHA256": "d9e91cad8a2cf49af997da14e4a4ba97066f6115c01517473c049c22815b5e4e",
+  "sourceCommit": "6d19950e1eea1422621b92394b2553e90c889f84",
+  "startedAt": "2026-09-13T11:54:29.459Z",
+  "viewport": {
+    "width": 1280,
+    "height": 840
+  },
+  "deviceScaleFactor": 1,
+  "baseline": false,
+  "fallback": false,
+  "errors": [],
+  "warnings": [
+    "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+  ],
+  "externalRequests": [],
+  "views": [],
+  "passed": true,
+  "environment": {
+    "browser": "151.0.7922.34",
+    "node": "v22.23.2",
+    "platform": "linux",
+    "runner": "GitHub Actions hosted Linux",
+    "rendering": "ANGLE SwiftShader software GPU; not user hardware",
+    "capture": "Actual browser pixels: Playwright/CDP viewport or recorded same-frame canvas readback for clean views; full geometry/materials/shadow resolution; ordinary render function"
+  },
+  "stage": "complete",
+  "viewerLoading": "Direct offline file URL",
+  "initializationMs": 22576,
+  "annotationState": {
+    "visibleGuides": [],
+    "checkbox": false
+  },
+  "scene": {
+    "triangles": 7715728,
+    "geometryBytes": 216452648,
+    "meshes": 1975,
+    "geometries": 1975,
+    "materials": 101,
+    "trianglesByOwner": {
+      "10": 74172,
+      "11": 198000,
+      "12": 4020,
+      "13": 291086,
+      "14": 101856,
+      "15": 1544316,
+      "16": 67356,
+      "17": 538796,
+      "18": 548652,
+      "19": 83128,
+      "20": 2020656,
+      "21": 369420,
+      "23": 60,
+      "24": 155736,
+      "25": 103584,
+      "26": 9948,
+      "27": 6682,
+      "28": 39132,
+      "environment": 318216,
+      "04": 7996,
+      "05": 20590,
+      "06": 382320,
+      "08": 9394,
+      "09": 234792,
+      "01": 31456,
+      "02": 5628,
+      "03": 139008,
+      "07": 259200,
+      "bridge": 150528
+    },
+    "reflectionOwnership": {
+      "10": [
+        "field"
+      ],
+      "11": [
+        "teaching"
+      ],
+      "12": [
+        "teaching"
+      ],
+      "13": [
+        "eastTeaching"
+      ],
+      "14": [
+        "teaching"
+      ],
+      "15": [
+        "teaching"
+      ],
+      "16": [
+        "westTeaching"
+      ],
+      "17": [
+        "longya"
+      ],
+      "18": [
+        "library"
+      ],
+      "19": [
+        "garden"
+      ],
+      "20": [
+        "residential"
+      ],
+      "21": [
+        "eastTeaching"
+      ],
+      "24": [
+        "gym"
+      ],
+      "25": [
+        "teaching"
+      ],
+      "26": [
+        "teaching"
+      ],
+      "28": [
+        "courts"
+      ],
+      "04": [
+        "gym"
+      ],
+      "05": [
+        "courts"
+      ],
+      "06": [
+        "courts"
+      ],
+      "08": [
+        "field"
+      ],
+      "01": [
+        "entrance"
+      ],
+      "02": [
+        "entrance"
+      ],
+      "03": [
+        "gym"
+      ],
+      "07": [
+        "westTeaching"
+      ],
+      "environment": [
+        "teaching"
+      ],
+      "bridge": [
+        "teaching"
+      ]
+    },
+    "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+  },
+  "access": {
+    "routes": [
+      {
+        "id": "main-gate",
+        "label": "门外 → 正门净空 → 已认可长坡",
+        "supports": 720,
+        "clearances": 1800,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "gate-duty",
+        "label": "主门内 → 侧置值班小门厅H",
+        "supports": 42,
+        "clearances": 60,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "side-gate",
+        "label": "独立侧门 → 独立侧路，不内并主门",
+        "supports": 306,
+        "clearances": 765,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "stone-front",
+        "label": "门外铺面 → 校园石正面阅读区（位置H受A左右关系约束）",
+        "supports": 111,
+        "clearances": 129,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "stone-side",
+        "label": "校名石侧面绕行空间",
+        "supports": 54,
+        "clearances": 72,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "court-east",
+        "label": "主路 → 原东坡 → 围网4m缺口 → 六场中央横向间隔",
+        "supports": 570,
+        "clearances": 1425,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "court-track",
+        "label": "篮球场 → 原两级台阶 → 风雨直跑道",
+        "supports": 177,
+        "clearances": 222,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "covered-track",
+        "label": "风雨直跑道纵向净空，柱列不截断中间横路",
+        "supports": 318,
+        "clearances": 327,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "field-infield",
+        "label": "现有内场中线通行，不跨球门网",
+        "supports": 204,
+        "clearances": 213,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "rostrum-upper",
+        "label": "主路 → 原P03上层接入台 → 主席台",
+        "supports": 219,
+        "clearances": 498,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "rostrum-lower",
+        "label": "操场下层 → 八级H侧梯 → 主席台",
+        "supports": 108,
+        "clearances": 198,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "flag-platform",
+        "label": "前坪 → 保留三阶 → 三旗杆基座（数量/主轴不变）",
+        "supports": 30,
+        "clearances": 66,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "sports-auxiliary",
+        "label": "风雨跑道横向开口 → 单层体育辅助用房门厅",
+        "supports": 129,
+        "clearances": 273,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "pool-toilet",
+        "label": "泳池西侧现有空隙 → 单层26公共入口",
+        "supports": 87,
+        "clearances": 204,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "public-20-B1",
+        "label": "生活区H公共过道 → 20-B1外壳门厅",
+        "supports": 99,
+        "clearances": 234,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "public-20-B2",
+        "label": "生活区H公共过道 → 20-B2外壳门厅",
+        "supports": 69,
+        "clearances": 159,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "public-20-B3",
+        "label": "生活区H公共过道 → 20-B3外壳门厅",
+        "supports": 81,
+        "clearances": 189,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "public-20-B4",
+        "label": "生活区H公共过道 → 20-B4外壳门厅",
+        "supports": 99,
+        "clearances": 234,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "public-20-B5",
+        "label": "生活区H公共过道 → 20-B5外壳门厅",
+        "supports": 51,
+        "clearances": 114,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "public-20-B6",
+        "label": "生活区H公共过道 → 20-B6外壳门厅",
+        "supports": 81,
+        "clearances": 189,
+        "failures": 0,
+        "bad": []
+      },
+      {
+        "id": "residential-spine",
+        "label": "既有东侧路 → 六体量间的H公共过道",
+        "supports": 2178,
+        "clearances": 5445,
+        "failures": 0,
+        "bad": []
+      }
+    ],
+    "doors": [
+      {
+        "id": "main-gate",
+        "bad": []
+      },
+      {
+        "id": "gate-duty",
+        "bad": []
+      },
+      {
+        "id": "side-gate",
+        "bad": []
+      },
+      {
+        "id": "court-east",
+        "bad": []
+      },
+      {
+        "id": "court-track",
+        "bad": []
+      },
+      {
+        "id": "track-crossing",
+        "bad": []
+      },
+      {
+        "id": "aux-entry",
+        "bad": []
+      },
+      {
+        "id": "pool-wc-entry",
+        "bad": []
+      },
+      {
+        "id": "20-B1-entry",
+        "bad": []
+      },
+      {
+        "id": "20-B2-entry",
+        "bad": []
+      },
+      {
+        "id": "20-B3-entry",
+        "bad": []
+      },
+      {
+        "id": "20-B4-entry",
+        "bad": []
+      },
+      {
+        "id": "20-B5-entry",
+        "bad": []
+      },
+      {
+        "id": "20-B6-entry",
+        "bad": []
+      }
+    ],
+    "passed": true,
+    "meshCount": 1975
+  },
+  "inherited": {
+    "b03": {
+      "routes": [
+        {
+          "id": "main-library",
+          "label": "主楼后门—上坡—图书馆门厅",
+          "supports": 237,
+          "clearances": 552,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "gap-library",
+          "label": "15/25桥下—后路—图书馆",
+          "supports": 1353,
+          "clearances": 3342,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "library-garden",
+          "label": "图书馆短门厅—后门—后花园",
+          "supports": 192,
+          "clearances": 399,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "garden-around",
+          "label": "图书馆西侧绕行至后花园（绕开双梯）",
+          "supports": 1464,
+          "clearances": 3660,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "garden-spiral",
+          "label": "花园右起步—右弧梯—圆台—中央上梯—真门洞",
+          "supports": 498,
+          "clearances": 1137,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "garden-spiral-left",
+          "label": "花园左起步—左弧梯—圆台—中央上梯—真门洞",
+          "supports": 456,
+          "clearances": 1032,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "canteen",
+          "label": "已有道路—正面中部楼梯—餐厅门厅",
+          "supports": 225,
+          "clearances": 513,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "shop",
+          "label": "已有道路—正面右侧下层小卖部",
+          "supports": 261,
+          "clearances": 621,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "printing",
+          "label": "已有道路—正面左侧打印门面",
+          "supports": 261,
+          "clearances": 621,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "canteen-perimeter",
+          "label": "食堂外围通行／H局部外缘步道",
+          "supports": 1860,
+          "clearances": 4650,
+          "failures": 0,
+          "bad": []
+        }
+      ],
+      "doors": [
+        {
+          "id": "library-main",
+          "bad": []
+        },
+        {
+          "id": "library-garden",
+          "bad": []
+        },
+        {
+          "id": "spiral-upper",
+          "bad": []
+        },
+        {
+          "id": "canteen-main",
+          "bad": []
+        },
+        {
+          "id": "print-main",
+          "bad": []
+        },
+        {
+          "id": "shop-main",
+          "bad": []
+        }
+      ],
+      "passed": true,
+      "meshCount": 1975
+    },
+    "b04": {
+      "routes": [
+        {
+          "id": "science-main",
+          "label": "既有东前路—三低阶—科学馆内退门洞—门厅",
+          "supports": 339,
+          "clearances": 816,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "science-bay",
+          "label": "门前低阶—玻璃侧厅开口—楼梯起步",
+          "supports": 135,
+          "clearances": 315,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "science-stair",
+          "label": "玻璃侧厅—首段楼梯—首层上方落脚面",
+          "supports": 138,
+          "clearances": 345,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "longya-direct",
+          "label": "保留直达道路—六级外展台阶—正门—最小门厅",
+          "supports": 171,
+          "clearances": 414,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "office-entry",
+          "label": "既有办公楼支路—内退门洞—门厅（医务室位置U）",
+          "supports": 645,
+          "clearances": 1572,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "museum-east",
+          "label": "既有博物馆方向路—短坡—拱口—最小门厅",
+          "supports": 399,
+          "clearances": 966,
+          "failures": 0,
+          "bad": []
+        },
+        {
+          "id": "information-entry",
+          "label": "既有东西横路—西侧真门洞—工作名21落脚面",
+          "supports": 225,
+          "clearances": 531,
+          "failures": 0,
+          "bad": []
+        }
+      ],
+      "doors": [
+        {
+          "id": "science-main",
+          "bad": []
+        },
+        {
+          "id": "science-glass-bay",
+          "bad": []
+        },
+        {
+          "id": "longya-main",
+          "bad": []
+        },
+        {
+          "id": "office-main",
+          "bad": []
+        },
+        {
+          "id": "museum-east",
+          "bad": []
+        },
+        {
+          "id": "information-west",
+          "bad": []
+        }
+      ],
+      "passed": true,
+      "meshCount": 1975
+    },
+    "b02": {
+      "routes": [
+        {
+          "id": "gym-main",
+          "label": "主路→低台阶→真门洞→门厅",
+          "supports": 180,
+          "clearances": 270,
+          "maxWaypointRise": 0.15000000000000036,
+          "bad": [],
+          "failures": 0
+        },
+        {
+          "id": "spectator",
+          "label": "前坪→左外梯→上层侧门→短观赛廊",
+          "supports": 381,
+          "clearances": 741,
+          "maxWaypointRise": 0.15000000000000036,
+          "bad": [],
+          "failures": 0
+        },
+        {
+          "id": "front-platform",
+          "label": "观赛层→前平台真正门洞",
+          "supports": 102,
+          "clearances": 129,
+          "maxWaypointRise": 0,
+          "bad": [],
+          "failures": 0
+        },
+        {
+          "id": "music",
+          "label": "绕馆路→既有门前台阶→音乐楼门厅",
+          "supports": 72,
+          "clearances": 144,
+          "maxWaypointRise": 0.15000000000000036,
+          "bad": [],
+          "failures": 0
+        },
+        {
+          "id": "loop",
+          "label": "组团外缘连续绕馆路；不穿共享墙",
+          "supports": 3354,
+          "clearances": 8385,
+          "maxWaypointRise": 0.047844953809926594,
+          "bad": [],
+          "failures": 0
+        }
+      ],
+      "doors": [
+        {
+          "id": "gym-main",
+          "probes": 9,
+          "bad": []
+        },
+        {
+          "id": "spectator",
+          "probes": 9,
+          "bad": []
+        },
+        {
+          "id": "front-platform",
+          "probes": 9,
+          "bad": []
+        },
+        {
+          "id": "music",
+          "probes": 9,
+          "bad": []
+        }
+      ],
+      "sharedWallBlocked": true,
+      "legacyGymCount": 0,
+      "retainedSiteNames": [
+        "P02-GYM-FORECOURT"
+      ]
+    }
+  },
+  "invariants": {
+    "axis": [
+      73,
+      73,
+      73
+    ],
+    "mainFloor": 3.45,
+    "flagCount": 3,
+    "stone": [
+      -17,
+      0,
+      1
+    ],
+    "unlocated22": null,
+    "shutters": true
+  },
+  "completedAt": "2026-09-13T11:56:24.750Z"
+}

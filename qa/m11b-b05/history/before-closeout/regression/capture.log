@@ -1,0 +1,19 @@
+2026-09-13T09:08:57.132Z open overview
+2026-09-13T09:09:25.267Z ready 27963ms; 7715532 model triangles
+2026-09-13T09:09:25.271Z view overview
+2026-09-13T09:13:31.987Z saved overview.png; GL 0
+2026-09-13T09:13:31.988Z view r3-overview
+2026-09-13T09:14:13.866Z saved r3-overview.png; GL 0
+2026-09-13T09:14:13.867Z view b02-photo-front
+2026-09-13T09:14:23.217Z saved b02-photo-front.png; GL 0
+2026-09-13T09:14:23.217Z view b03-photo-library
+2026-09-13T09:14:34.005Z saved b03-photo-library.png; GL 0
+2026-09-13T09:14:34.005Z view b03-garden
+2026-09-13T09:15:11.777Z saved b03-garden.png; GL 0
+2026-09-13T09:15:11.778Z view b03-canteen
+2026-09-13T09:15:24.286Z saved b03-canteen.png; GL 0
+2026-09-13T09:15:24.287Z view top
+2026-09-13T09:16:47.987Z saved top.png; GL 0
+2026-09-13T09:16:47.988Z view r3-axis
+2026-09-13T09:18:17.188Z saved r3-axis.png; GL 0
+RESULT {"group":"regression","passed":true,"views":8,"errors":[]}

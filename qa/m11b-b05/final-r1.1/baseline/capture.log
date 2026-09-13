@@ -1,0 +1,19 @@
+2026-09-13T11:54:32.653Z open overview
+2026-09-13T11:54:49.911Z ready 17079ms; 4823310 model triangles
+2026-09-13T11:54:49.915Z view overview
+2026-09-13T11:57:22.304Z saved overview.png; GL 0
+2026-09-13T11:57:22.304Z view r3-overview
+2026-09-13T11:58:02.298Z saved r3-overview.png; GL 0
+2026-09-13T11:58:02.298Z view b02-photo-front
+2026-09-13T11:58:09.620Z saved b02-photo-front.png; GL 0
+2026-09-13T11:58:09.621Z view b03-photo-library
+2026-09-13T11:58:20.459Z saved b03-photo-library.png; GL 0
+2026-09-13T11:58:20.459Z view b03-garden
+2026-09-13T11:58:50.683Z saved b03-garden.png; GL 0
+2026-09-13T11:58:50.684Z view b03-canteen
+2026-09-13T11:58:58.711Z saved b03-canteen.png; GL 0
+2026-09-13T11:58:58.712Z view top
+2026-09-13T11:59:38.371Z saved top.png; GL 0
+2026-09-13T11:59:38.372Z view r3-axis
+2026-09-13T12:00:20.794Z saved r3-axis.png; GL 0
+RESULT {"group":"baseline","passed":true,"views":8,"errors":[]}

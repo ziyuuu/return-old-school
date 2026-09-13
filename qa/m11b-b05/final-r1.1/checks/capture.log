@@ -1,0 +1,5 @@
+2026-09-13T11:54:29.812Z open b05-gate-close
+2026-09-13T11:54:52.421Z ready 22576ms; 7715728 model triangles
+2026-09-13T11:54:52.423Z full visible B05 mesh/BVH route and portal test
+2026-09-13T11:55:28.932Z full visible B02/B03/B04 inherited access
+RESULT {"group":"checks","passed":true,"views":0,"errors":[],"access":[{"id":"main-gate","failures":0},{"id":"gate-duty","failures":0},{"id":"side-gate","failures":0},{"id":"stone-front","failures":0},{"id":"stone-side","failures":0},{"id":"court-east","failures":0},{"id":"court-track","failures":0},{"id":"covered-track","failures":0},{"id":"field-infield","failures":0},{"id":"rostrum-upper","failures":0},{"id":"rostrum-lower","failures":0},{"id":"flag-platform","failures":0},{"id":"sports-auxiliary","failures":0},{"id":"pool-toilet","failures":0},{"id":"public-20-B1","failures":0},{"id":"public-20-B2","failures":0},{"id":"public-20-B3","failures":0},{"id":"public-20-B4","failures":0},{"id":"public-20-B5","failures":0},{"id":"public-20-B6","failures":0},{"id":"residential-spine","failures":0}],"doors":[]}

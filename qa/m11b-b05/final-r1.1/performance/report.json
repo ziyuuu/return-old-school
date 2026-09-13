@@ -1,0 +1,637 @@
+{
+  "batch": "B05",
+  "phase": "final-r1.1",
+  "group": "performance",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "standard": "1.0",
+  "viewer": "artifacts/m11b-b05/Yali_B05_R1_1_Viewer.html",
+  "viewerSHA256": "d9e91cad8a2cf49af997da14e4a4ba97066f6115c01517473c049c22815b5e4e",
+  "sourceCommit": "6d19950e1eea1422621b92394b2553e90c889f84",
+  "runtimeSourceCommit": "6d19950e1eea1422621b92394b2553e90c889f84",
+  "run": "34755586253",
+  "startedAt": "2026-09-13T11:54:30.221Z",
+  "viewport": {
+    "width": 1280,
+    "height": 840
+  },
+  "deviceScaleFactor": 1,
+  "baseline": false,
+  "fallback": false,
+  "errors": [],
+  "warnings": [
+    "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+    "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+    "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+  ],
+  "externalRequests": [],
+  "views": [
+    {
+      "file": "b05-gate-close.png",
+      "sha256": "6c90e0220838e082555ca31061f06faa51ebca40006160e428dbe0b1e7487f5d",
+      "screenshotMethod": "Actual same-frame WebGL canvas readback after frame-pacing session",
+      "requestedView": "b05-gate-close",
+      "view": "b05-gate-close",
+      "verticalScheme": "patch04",
+      "camera": [
+        -3.000000000000003,
+        4.300000000000002,
+        -23.999999999999996
+      ],
+      "target": [
+        -1,
+        3.4,
+        0
+      ],
+      "fov": 60,
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 1931,
+      "triangles": 7607326,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 36,
+        "shadowRevision": 9,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1074,
+          "buildMs": 4292,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 1918,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        }
+      },
+      "performance": {
+        "samples": 60,
+        "warmupFrames": 8,
+        "medianMs": 23758.949999999837,
+        "p95Ms": 46889.19999999995,
+        "minMs": 22.699999999953434,
+        "maxMs": 58023.80000000005,
+        "valuesMs": [
+          34.800000000046566,
+          26.900000000023283,
+          24.29999999993015,
+          23.5,
+          50.10000000009313,
+          40.199999999953434,
+          23.300000000046566,
+          23.599999999976717,
+          25.5,
+          24,
+          23.5,
+          22.699999999953434,
+          25.099999999976717,
+          24.900000000023283,
+          58023.80000000005,
+          25512.400000000023,
+          23748.899999999907,
+          171.80000000004657,
+          23762.099999999977,
+          47519.40000000002,
+          23799.099999999977,
+          23731.599999999977,
+          23783.300000000047,
+          23733.900000000023,
+          23762.5,
+          23774.5,
+          23786.599999999977,
+          23761,
+          23749.5,
+          23792.099999999977,
+          23747.599999999977,
+          23736.699999999953,
+          23783.700000000186,
+          23760.299999999814,
+          23778.300000000047,
+          23772.90000000014,
+          23763.199999999953,
+          2337.0999999998603,
+          23876.700000000186,
+          23.5999999998603,
+          45064.30000000005,
+          23732,
+          695.5,
+          46889.19999999995,
+          23764.90000000014,
+          23770.59999999986,
+          23772.300000000047,
+          23725.399999999907,
+          23897.100000000093,
+          23795,
+          23711.600000000093,
+          23798.799999999814,
+          23771.600000000093,
+          23797,
+          23781.899999999907,
+          23736.5,
+          23750.90000000014,
+          23780,
+          23757.59999999986,
+          47510.80000000005
+        ],
+        "method": "8 warm-up rendered frames; 60 requestAnimationFrame intervals using the unchanged continuous renderFrame callback. Full geometry/materials, original desktop shadow resolution. Includes browser scheduling and software GPU; not GPU-only timings, not comparable to serialized readPixels history."
+      }
+    },
+    {
+      "file": "b05-hoop.png",
+      "sha256": "a3418dd58887c2d8a08a0064957fc11d8924737b46a7955dbeab4d258a98b4b4",
+      "screenshotMethod": "Actual same-frame WebGL canvas readback after frame-pacing session",
+      "requestedView": "b05-hoop",
+      "view": "b05-hoop",
+      "verticalScheme": "patch04",
+      "camera": [
+        -18.999999999999996,
+        6.599999999999999,
+        140
+      ],
+      "target": [
+        -20.499999999999996,
+        5.699999999999999,
+        147
+      ],
+      "fov": 62,
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 469,
+      "triangles": 2904474,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 26,
+        "shadowRevision": 9,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1074,
+          "buildMs": 3833,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 1607,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        }
+      },
+      "performance": {
+        "samples": 60,
+        "warmupFrames": 8,
+        "medianMs": 6109.899999999994,
+        "p95Ms": 12271.099999999977,
+        "minMs": 11.200000000011642,
+        "maxMs": 23022.5,
+        "valuesMs": [
+          15.89999999999418,
+          20.29999999998836,
+          13.5,
+          17,
+          19.800000000017462,
+          17.199999999982538,
+          11.200000000011642,
+          16.10000000000582,
+          18.5,
+          14.199999999982538,
+          17,
+          17.20000000001164,
+          22.39999999999418,
+          14.89999999999418,
+          16328.700000000012,
+          23022.5,
+          7264.600000000006,
+          6238.100000000006,
+          3770.2999999999884,
+          8483.900000000023,
+          6135.599999999977,
+          6134.700000000012,
+          6128.599999999977,
+          6148,
+          6122.700000000012,
+          7205.400000000023,
+          5072.599999999977,
+          6161.599999999977,
+          6149.400000000023,
+          6148.799999999988,
+          6108.799999999988,
+          6144.400000000023,
+          6129.299999999988,
+          6111.600000000035,
+          16191.699999999953,
+          2131.100000000035,
+          6117.599999999977,
+          6102.600000000035,
+          1562.5999999999767,
+          9151.700000000012,
+          7617.799999999988,
+          1128.2999999999884,
+          11126.299999999988,
+          12199,
+          6102.300000000047,
+          6111,
+          12242.49999999997,
+          6100.199999999953,
+          6094.5,
+          12196.600000000093,
+          6101.399999999907,
+          6104.5,
+          6099.800000000047,
+          6147.300000000047,
+          12271.099999999977,
+          6100,
+          7276.5,
+          6038,
+          11158.899999999907,
+          1156.4000000000233
+        ],
+        "method": "8 warm-up rendered frames; 60 requestAnimationFrame intervals using the unchanged continuous renderFrame callback. Full geometry/materials, original desktop shadow resolution. Includes browser scheduling and software GPU; not GPU-only timings, not comparable to serialized readPixels history."
+      }
+    },
+    {
+      "file": "b05-overview.png",
+      "sha256": "167f927feeae2a95781018f90e59fbfb3b8fbbe63e264e6acd39b4fe77dff810",
+      "screenshotMethod": "Actual same-frame WebGL canvas readback after frame-pacing session",
+      "requestedView": "b05-overview",
+      "view": "b05-overview",
+      "verticalScheme": "patch04",
+      "camera": [
+        287.00000000000006,
+        205.99999999999997,
+        -148.99999999999994
+      ],
+      "target": [
+        58,
+        6,
+        133
+      ],
+      "fov": 52,
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 1981,
+      "triangles": 7715740,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 250,
+        "shadowRevision": 9,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1074,
+          "buildMs": 4273,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 2228,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        }
+      },
+      "performance": {
+        "samples": 60,
+        "warmupFrames": 8,
+        "medianMs": 26727.150000000023,
+        "p95Ms": 53536.39999999991,
+        "minMs": 24.89999999999418,
+        "maxMs": 53597.29999999996,
+        "valuesMs": [
+          25.10000000000582,
+          33.80000000000291,
+          28.29999999998836,
+          26.60000000000582,
+          24.89999999999418,
+          39.20000000001164,
+          58.69999999999709,
+          38.39999999999418,
+          44.10000000000582,
+          29.5,
+          37.19999999999709,
+          31.69999999999709,
+          36.90000000000873,
+          31,
+          23650,
+          34560.4,
+          29808.79999999999,
+          53495.5,
+          72.70000000001164,
+          53543.40000000002,
+          26798.29999999999,
+          53597.29999999996,
+          26793,
+          26735.900000000023,
+          53484.19999999995,
+          26811.900000000023,
+          53443.5,
+          26759.199999999953,
+          42.5,
+          53549.90000000002,
+          26741.70000000007,
+          26746.79999999993,
+          26781.800000000047,
+          26758.79999999993,
+          26732.300000000047,
+          1800.0999999999767,
+          51699.90000000002,
+          47.699999999953434,
+          27684.400000000023,
+          52623,
+          1239.9000000000233,
+          52331.69999999995,
+          26722,
+          82.90000000002328,
+          26784.900000000023,
+          26705,
+          83.19999999995343,
+          26758.699999999953,
+          53498.400000000256,
+          1245.3999999999069,
+          52237.19999999995,
+          26775.40000000014,
+          26754.09999999986,
+          26679.40000000014,
+          95.19999999995343,
+          53536.39999999991,
+          549.6000000000931,
+          26230.100000000093,
+          28518.199999999953,
+          25658.699999999953
+        ],
+        "method": "8 warm-up rendered frames; 60 requestAnimationFrame intervals using the unchanged continuous renderFrame callback. Full geometry/materials, original desktop shadow resolution. Includes browser scheduling and software GPU; not GPU-only timings, not comparable to serialized readPixels history."
+      }
+    }
+  ],
+  "passed": true,
+  "environment": {
+    "browser": "151.0.7922.34",
+    "node": "v22.23.2",
+    "platform": "linux",
+    "runner": "GitHub Actions hosted Linux",
+    "method": "8 warm-up rendered frames; 60 requestAnimationFrame intervals using the unchanged continuous renderFrame callback. Full geometry/materials, original desktop shadow resolution. Includes browser scheduling and software GPU; not GPU-only timings, not comparable to serialized readPixels history.",
+    "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "separateBrowserSessions": 3
+  },
+  "viewerLoading": "Direct offline file URL",
+  "initializationMs": 25199,
+  "stage": "complete",
+  "completedAt": "2026-09-13T12:27:40.360Z",
+  "aggregation": {
+    "method": "Three separately completed actual browser sessions; no invented or rescaled measurements",
+    "sessions": [
+      {
+        "view": "b05-gate-close",
+        "run": "34755586253",
+        "startedAt": "2026-09-13T11:54:31.522Z",
+        "completedAt": "2026-09-13T12:24:05.352Z",
+        "environment": {
+          "browser": "151.0.7922.34",
+          "node": "v22.23.2",
+          "platform": "linux",
+          "runner": "GitHub Actions hosted Linux",
+          "method": "8 warm-up rendered frames; 60 requestAnimationFrame intervals using the unchanged continuous renderFrame callback. Full geometry/materials, original desktop shadow resolution. Includes browser scheduling and software GPU; not GPU-only timings, not comparable to serialized readPixels history.",
+          "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+        },
+        "report": "../performance-resume/b05-gate-close/report.json"
+      },
+      {
+        "view": "b05-hoop",
+        "run": "34755586253",
+        "startedAt": "2026-09-13T11:54:30.221Z",
+        "completedAt": "2026-09-13T12:02:44.836Z",
+        "environment": {
+          "browser": "151.0.7922.34",
+          "node": "v22.23.2",
+          "platform": "linux",
+          "runner": "GitHub Actions hosted Linux",
+          "method": "8 warm-up rendered frames; 60 requestAnimationFrame intervals using the unchanged continuous renderFrame callback. Full geometry/materials, original desktop shadow resolution. Includes browser scheduling and software GPU; not GPU-only timings, not comparable to serialized readPixels history.",
+          "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+        },
+        "report": "../performance-resume/b05-hoop/report.json"
+      },
+      {
+        "view": "b05-overview",
+        "run": "34755586253",
+        "startedAt": "2026-09-13T11:54:30.340Z",
+        "completedAt": "2026-09-13T12:27:40.360Z",
+        "environment": {
+          "browser": "151.0.7922.34",
+          "node": "v22.23.2",
+          "platform": "linux",
+          "runner": "GitHub Actions hosted Linux",
+          "method": "8 warm-up rendered frames; 60 requestAnimationFrame intervals using the unchanged continuous renderFrame callback. Full geometry/materials, original desktop shadow resolution. Includes browser scheduling and software GPU; not GPU-only timings, not comparable to serialized readPixels history.",
+          "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+        },
+        "report": "../performance-resume/b05-overview/report.json"
+      }
+    ]
+  }
+}

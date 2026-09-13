@@ -1,0 +1,868 @@
+{
+  "batch": "B05",
+  "phase": "final-r1.1",
+  "group": "baseline",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "standard": "1.0",
+  "viewer": "artifacts/m11b-b04/Yali_B04_R1_Viewer.html",
+  "viewerSHA256": "d8e2b969802cfefcaba9d27da496f26ef8e9d1d85eb2a8bc7681d243f3002eda",
+  "sourceCommit": "6d19950e1eea1422621b92394b2553e90c889f84",
+  "startedAt": "2026-09-13T11:54:32.315Z",
+  "viewport": {
+    "width": 1280,
+    "height": 840
+  },
+  "deviceScaleFactor": 1,
+  "baseline": true,
+  "fallback": false,
+  "errors": [],
+  "warnings": [
+    "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+    {
+      "view": "overview",
+      "compositorAttempt": "TimeoutError: page.screenshot: Timeout 45000ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n",
+      "recoveredBy": "same-frame WebGL canvas"
+    }
+  ],
+  "externalRequests": [],
+  "views": [
+    {
+      "file": "overview.png",
+      "sha256": "f27ac6b14bd74abb0a9ee414c6b7f69c5d6047767e916179d0c831c172fa62fa",
+      "screenshotMethod": "Actual same-frame WebGL canvas readback / clean viewport",
+      "requestedView": "overview",
+      "view": "overview",
+      "verticalScheme": "patch04",
+      "camera": [
+        339.99999999999994,
+        387.2,
+        485
+      ],
+      "target": [
+        50.00000000000001,
+        2.2,
+        133
+      ],
+      "fov": 43,
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 1855,
+      "triangles": 4823322,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 250,
+        "shadowRevision": 9,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 889,
+          "buildMs": 3033,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1217,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 7,
+          "resolution": 256,
+          "reflectiveMeshes": 596,
+          "buildMs": 1890,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ]
+          }
+        }
+      },
+      "programs": 39,
+      "performance": null
+    },
+    {
+      "file": "r3-overview.png",
+      "sha256": "85c23db282140c7852308ffedcd30b2c4e9fa6a334e7f18532fecc7de4c894c8",
+      "screenshotMethod": "Playwright full-page viewport",
+      "requestedView": "r3-overview",
+      "view": "r3-overview",
+      "verticalScheme": "patch04",
+      "camera": [
+        -14.000000000000014,
+        44.000000000000014,
+        144
+      ],
+      "target": [
+        66,
+        11,
+        219
+      ],
+      "fov": 43,
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 775,
+      "triangles": 3717252,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 100,
+        "shadowRevision": 12,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 889,
+          "buildMs": 3033,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1217,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 7,
+          "resolution": 256,
+          "reflectiveMeshes": 596,
+          "buildMs": 1890,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ]
+          }
+        }
+      },
+      "programs": 39,
+      "performance": null
+    },
+    {
+      "file": "b02-photo-front.png",
+      "sha256": "288ab46c84a06a3dcb51f10ca20269b6dcd12bdc1996a89f323e66bd10fec99c",
+      "screenshotMethod": "Playwright full-page viewport",
+      "requestedView": "b02-photo-front",
+      "view": "b02-photo-front",
+      "verticalScheme": "patch04",
+      "camera": [
+        15.999999999999993,
+        5.349999999999999,
+        82
+      ],
+      "target": [
+        -39,
+        12.500000000000002,
+        44
+      ],
+      "fov": 38,
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 268,
+      "triangles": 371448,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 68,
+        "shadowRevision": 15,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 889,
+          "buildMs": 3033,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1217,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 7,
+          "resolution": 256,
+          "reflectiveMeshes": 596,
+          "buildMs": 1890,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ]
+          }
+        }
+      },
+      "programs": 39,
+      "performance": null
+    },
+    {
+      "file": "b03-photo-library.png",
+      "sha256": "8624f31dd1891e569bae5c977a35023b0450944510628e41ee00282fa5edbd01",
+      "screenshotMethod": "Playwright full-page viewport",
+      "requestedView": "b03-photo-library",
+      "view": "b03-photo-library",
+      "verticalScheme": "patch04",
+      "camera": [
+        72.3,
+        7.1,
+        237.5
+      ],
+      "target": [
+        72.3,
+        7.6,
+        247.2
+      ],
+      "fov": 59,
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 229,
+      "triangles": 2162690,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 28,
+        "shadowRevision": 18,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 889,
+          "buildMs": 3033,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1217,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 7,
+          "resolution": 256,
+          "reflectiveMeshes": 596,
+          "buildMs": 1890,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ]
+          }
+        }
+      },
+      "programs": 39,
+      "performance": null
+    },
+    {
+      "file": "b03-garden.png",
+      "sha256": "0cd5f0f7c6479aa6c30475842b2e60547059ca60c86f8042cfa8e16ff478bd09",
+      "screenshotMethod": "Playwright full-page viewport",
+      "requestedView": "b03-garden",
+      "view": "b03-garden",
+      "verticalScheme": "patch04",
+      "camera": [
+        89,
+        13.000000000000002,
+        288
+      ],
+      "target": [
+        59.5,
+        7,
+        268
+      ],
+      "fov": 58,
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 1343,
+      "triangles": 3274362,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 44,
+        "shadowRevision": 21,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 889,
+          "buildMs": 3033,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1217,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 7,
+          "resolution": 256,
+          "reflectiveMeshes": 596,
+          "buildMs": 1890,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ]
+          }
+        }
+      },
+      "programs": 39,
+      "performance": null
+    },
+    {
+      "file": "b03-canteen.png",
+      "sha256": "7db2ae62e0363c960591cfd6de68c66ffce837c8c76dddcdf9e3284b059f5847",
+      "screenshotMethod": "Playwright full-page viewport",
+      "requestedView": "b03-canteen",
+      "view": "b03-canteen",
+      "verticalScheme": "patch04",
+      "camera": [
+        127.99999999999997,
+        8,
+        152
+      ],
+      "target": [
+        153.99999999999997,
+        6.799999999999999,
+        152
+      ],
+      "fov": 60,
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 107,
+      "triangles": 518280,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 40,
+        "shadowRevision": 24,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 889,
+          "buildMs": 3033,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1217,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 7,
+          "resolution": 256,
+          "reflectiveMeshes": 596,
+          "buildMs": 1890,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ]
+          }
+        }
+      },
+      "programs": 39,
+      "performance": null
+    },
+    {
+      "file": "top.png",
+      "sha256": "008e7fcf75db1ebc32de14fb6305c428778fcd875ff835342ff99e7ed9440400",
+      "screenshotMethod": "Playwright full-page viewport",
+      "requestedView": "top",
+      "view": "top",
+      "verticalScheme": "patch04",
+      "camera": [
+        51,
+        472.1999999999997,
+        133.00100000000003
+      ],
+      "target": [
+        51,
+        2.2,
+        133
+      ],
+      "fov": null,
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 1855,
+      "triangles": 4823322,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 250,
+        "shadowRevision": 26,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 889,
+          "buildMs": 3033,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1217,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 7,
+          "resolution": 256,
+          "reflectiveMeshes": 596,
+          "buildMs": 1890,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ]
+          }
+        }
+      },
+      "programs": 39,
+      "performance": null
+    },
+    {
+      "file": "r3-axis.png",
+      "sha256": "a08be950b5ea2a49bb39ce3c7f74913bdbd187604c2ab58d4f946a52494690d0",
+      "screenshotMethod": "Playwright full-page viewport",
+      "requestedView": "r3-axis",
+      "view": "r3-axis",
+      "verticalScheme": "patch04",
+      "camera": [
+        73,
+        359.9999999999999,
+        154.00000000000006
+      ],
+      "target": [
+        73,
+        0,
+        154
+      ],
+      "fov": null,
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 1829,
+      "triangles": 4820548,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 250,
+        "shadowRevision": 29,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 889,
+          "buildMs": 3033,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1217,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 7,
+          "resolution": 256,
+          "reflectiveMeshes": 596,
+          "buildMs": 1890,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ]
+          }
+        }
+      },
+      "programs": 40,
+      "performance": null
+    }
+  ],
+  "passed": true,
+  "environment": {
+    "browser": "151.0.7922.34",
+    "node": "v22.23.2",
+    "platform": "linux",
+    "runner": "GitHub Actions hosted Linux",
+    "rendering": "ANGLE SwiftShader software GPU; not user hardware",
+    "capture": "Actual browser pixels: Playwright/CDP viewport or recorded same-frame canvas readback for clean views; full geometry/materials/shadow resolution; ordinary render function"
+  },
+  "stage": "complete",
+  "viewerLoading": "Direct offline file URL",
+  "initializationMs": 17079,
+  "annotationState": {
+    "visibleGuides": [
+      "AxesHelper"
+    ],
+    "checkbox": false
+  },
+  "scene": {
+    "triangles": 4823310,
+    "geometryBytes": 141739340,
+    "meshes": 1796,
+    "geometries": 1796,
+    "materials": 76,
+    "trianglesByOwner": {
+      "10": 12,
+      "11": 198000,
+      "12": 4020,
+      "13": 291086,
+      "15": 1544316,
+      "16": 67356,
+      "17": 538796,
+      "18": 548652,
+      "19": 83128,
+      "20": 72,
+      "21": 369420,
+      "23": 12,
+      "24": 155736,
+      "25": 103584,
+      "26": 24,
+      "27": 20,
+      "28": 24,
+      "environment": 369228,
+      "04": 12,
+      "05": 348,
+      "06": 36,
+      "08": 620,
+      "01": 36,
+      "02": 36,
+      "03": 139008,
+      "07": 259200,
+      "bridge": 150528
+    },
+    "reflectionOwnership": {
+      "11": [
+        "teaching"
+      ],
+      "12": [
+        "teaching"
+      ],
+      "13": [
+        "eastTeaching"
+      ],
+      "15": [
+        "teaching"
+      ],
+      "16": [
+        "westTeaching"
+      ],
+      "17": [
+        "longya"
+      ],
+      "18": [
+        "library"
+      ],
+      "19": [
+        "garden"
+      ],
+      "20": [
+        "teaching"
+      ],
+      "21": [
+        "eastTeaching"
+      ],
+      "24": [
+        "gym"
+      ],
+      "25": [
+        "teaching"
+      ],
+      "04": [
+        "gym"
+      ],
+      "03": [
+        "gym"
+      ],
+      "07": [
+        "westTeaching"
+      ],
+      "environment": [
+        "teaching"
+      ],
+      "bridge": [
+        "teaching"
+      ]
+    },
+    "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+  },
+  "completedAt": "2026-09-13T12:00:20.795Z"
+}

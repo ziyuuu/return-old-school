@@ -1,0 +1,9 @@
+2026-09-13T11:54:31.233Z open fresh default
+2026-09-13T11:54:56.701Z ready 25252ms; 7715728 model triangles
+2026-09-13T11:54:56.704Z view mobile-initial
+2026-09-13T11:56:59.390Z saved mobile-initial.png; GL 0
+2026-09-13T11:56:59.390Z view b05-court-entry
+2026-09-13T11:57:04.855Z saved b05-court-entry.png; GL 0
+2026-09-13T11:57:04.856Z view b05-flags
+2026-09-13T11:57:11.444Z saved b05-flags.png; GL 0
+RESULT {"group":"mobile","passed":true,"views":3,"errors":[]}

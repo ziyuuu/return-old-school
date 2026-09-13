@@ -1,0 +1,46 @@
+{
+  "note": "Pre-R1.1 authentic historical reports; never used as final green evidence.",
+  "items": [
+    {
+      "group": "mobile",
+      "viewerSHA256": "d351d434c2196a85645cc6a05a0d32671dd33938b1504f07d257456a9c6c550e",
+      "passed": true,
+      "files": {
+        "report.json": "d79b2977d67ff74091fb144594b3894b90f7ed103b5189ad5e5b14c72305c7bf",
+        "capture.log": "cf314161d5421b4d403c1714c5646207759bea88cb7274611928b291f00760ed",
+        "mobile-initial.png": "6a55157d699f09e6745b61b5bd257401bd985878918a0dedf0ad3c62d48f6c18",
+        "b05-flags.png": "b81af16c8a8a238c5636e6c4136b6c67ab57de0f00eff0e2dbecc5fb3f34c6d5"
+      }
+    },
+    {
+      "group": "field",
+      "viewerSHA256": "d351d434c2196a85645cc6a05a0d32671dd33938b1504f07d257456a9c6c550e",
+      "passed": true,
+      "files": {
+        "report.json": "06efb297df1f3c285328f7b923c741b1f8c194d554b91a239ff7adeb49ebc119",
+        "capture.log": "789753cebd2c9cbb3d95fb3f002a415bf850dc58d8942da74979641dc86b1bd2",
+        "b05-field.png": "d44e0086d9b2d97e7b256502a89d6a63d932263b4493e99842de2e51534d7f91",
+        "b05-goal.png": "c20a30be600540614eb0f6422632c0980dbe29a6ee031942fd03209759b284e3"
+      }
+    },
+    {
+      "group": "regression",
+      "viewerSHA256": "d351d434c2196a85645cc6a05a0d32671dd33938b1504f07d257456a9c6c550e",
+      "passed": true,
+      "files": {
+        "report.json": "5e205016b8bdc923d19c7f77ae1eaaad37b32bb8353aa518fa778de9c46724bd",
+        "capture.log": "8698156e115a831851c97537c4bc520006433bfd15f0716307ce5ee3ecfc1122",
+        "b02-photo-front.png": "d58d1149cd9e560972bca41be2cc296899baa07bf6d82ac9ee1d4a355a0b043d"
+      }
+    },
+    {
+      "group": "performance",
+      "viewerSHA256": "d351d434c2196a85645cc6a05a0d32671dd33938b1504f07d257456a9c6c550e",
+      "passed": false,
+      "files": {
+        "report.json": "6faec596cdd8cee39340ccd9259c79d04a39771dea60d4de32c9b22894ba940d",
+        "capture.log": "c823a796af4b434ee03bb9005e36475259a84ecb7c0b8b816f7d9440a39fd7e0"
+      }
+    }
+  ]
+}

@@ -1,0 +1,523 @@
+{
+  "batch": "B05",
+  "phase": "final-r1.1",
+  "group": "performance",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "standard": "1.0",
+  "viewer": "artifacts/m11b-b05/Yali_B05_R1_1_Viewer.html",
+  "viewerSHA256": "d9e91cad8a2cf49af997da14e4a4ba97066f6115c01517473c049c22815b5e4e",
+  "sourceCommit": "6d19950e1eea1422621b92394b2553e90c889f84",
+  "runtimeSourceCommit": "6d19950e1eea1422621b92394b2553e90c889f84",
+  "run": "34755586253",
+  "startedAt": "2026-09-13T11:54:30.340Z",
+  "viewport": {
+    "width": 1280,
+    "height": 840
+  },
+  "deviceScaleFactor": 1,
+  "baseline": false,
+  "fallback": false,
+  "errors": [],
+  "warnings": [
+    "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+  ],
+  "externalRequests": [],
+  "samples": [
+    {
+      "ms": 25.10000000000582,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 33.80000000000291,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 28.29999999998836,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 26.60000000000582,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 24.89999999999418,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 39.20000000001164,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 58.69999999999709,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 38.39999999999418,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 44.10000000000582,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 29.5,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 37.19999999999709,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 31.69999999999709,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 36.90000000000873,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 31,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 23650,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 34560.4,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 29808.79999999999,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 53495.5,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 72.70000000001164,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 53543.40000000002,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 26798.29999999999,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 53597.29999999996,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 26793,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 26735.900000000023,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 53484.19999999995,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 26811.900000000023,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 53443.5,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 26759.199999999953,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 42.5,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 53549.90000000002,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 26741.70000000007,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 26746.79999999993,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 26781.800000000047,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 26758.79999999993,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 26732.300000000047,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 1800.0999999999767,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 51699.90000000002,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 47.699999999953434,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 27684.400000000023,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 52623,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 1239.9000000000233,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 52331.69999999995,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 26722,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 82.90000000002328,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 26784.900000000023,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 26705,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 83.19999999995343,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 26758.699999999953,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 53498.400000000256,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 1245.3999999999069,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 52237.19999999995,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 26775.40000000014,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 26754.09999999986,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 26679.40000000014,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 95.19999999995343,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 53536.39999999991,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 549.6000000000931,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 26230.100000000093,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 28518.199999999953,
+      "calls": 1981,
+      "triangles": 7715740
+    },
+    {
+      "ms": 25658.699999999953,
+      "calls": 1981,
+      "triangles": 7715740
+    }
+  ],
+  "views": [
+    {
+      "file": "b05-overview.png",
+      "sha256": "167f927feeae2a95781018f90e59fbfb3b8fbbe63e264e6acd39b4fe77dff810",
+      "screenshotMethod": "Actual same-frame WebGL canvas readback after frame-pacing session",
+      "requestedView": "b05-overview",
+      "view": "b05-overview",
+      "verticalScheme": "patch04",
+      "camera": [
+        287.00000000000006,
+        205.99999999999997,
+        -148.99999999999994
+      ],
+      "target": [
+        58,
+        6,
+        133
+      ],
+      "fov": 52,
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 1981,
+      "triangles": 7715740,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 250,
+        "shadowRevision": 9,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1074,
+          "buildMs": 4273,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 2228,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        }
+      },
+      "performance": {
+        "samples": 60,
+        "warmupFrames": 8,
+        "medianMs": 26727.150000000023,
+        "p95Ms": 53536.39999999991,
+        "minMs": 24.89999999999418,
+        "maxMs": 53597.29999999996,
+        "valuesMs": [
+          25.10000000000582,
+          33.80000000000291,
+          28.29999999998836,
+          26.60000000000582,
+          24.89999999999418,
+          39.20000000001164,
+          58.69999999999709,
+          38.39999999999418,
+          44.10000000000582,
+          29.5,
+          37.19999999999709,
+          31.69999999999709,
+          36.90000000000873,
+          31,
+          23650,
+          34560.4,
+          29808.79999999999,
+          53495.5,
+          72.70000000001164,
+          53543.40000000002,
+          26798.29999999999,
+          53597.29999999996,
+          26793,
+          26735.900000000023,
+          53484.19999999995,
+          26811.900000000023,
+          53443.5,
+          26759.199999999953,
+          42.5,
+          53549.90000000002,
+          26741.70000000007,
+          26746.79999999993,
+          26781.800000000047,
+          26758.79999999993,
+          26732.300000000047,
+          1800.0999999999767,
+          51699.90000000002,
+          47.699999999953434,
+          27684.400000000023,
+          52623,
+          1239.9000000000233,
+          52331.69999999995,
+          26722,
+          82.90000000002328,
+          26784.900000000023,
+          26705,
+          83.19999999995343,
+          26758.699999999953,
+          53498.400000000256,
+          1245.3999999999069,
+          52237.19999999995,
+          26775.40000000014,
+          26754.09999999986,
+          26679.40000000014,
+          95.19999999995343,
+          53536.39999999991,
+          549.6000000000931,
+          26230.100000000093,
+          28518.199999999953,
+          25658.699999999953
+        ],
+        "method": "8 warm-up rendered frames; 60 requestAnimationFrame intervals using the unchanged continuous renderFrame callback. Full geometry/materials, original desktop shadow resolution. Includes browser scheduling and software GPU; not GPU-only timings, not comparable to serialized readPixels history."
+      }
+    }
+  ],
+  "passed": true,
+  "environment": {
+    "browser": "151.0.7922.34",
+    "node": "v22.23.2",
+    "platform": "linux",
+    "runner": "GitHub Actions hosted Linux",
+    "method": "8 warm-up rendered frames; 60 requestAnimationFrame intervals using the unchanged continuous renderFrame callback. Full geometry/materials, original desktop shadow resolution. Includes browser scheduling and software GPU; not GPU-only timings, not comparable to serialized readPixels history.",
+    "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+  },
+  "viewerLoading": "Direct offline file URL",
+  "initializationMs": 27077,
+  "stage": "complete",
+  "completedAt": "2026-09-13T12:27:40.360Z"
+}

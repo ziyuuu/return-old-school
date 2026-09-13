@@ -1,0 +1,306 @@
+{
+  "viewerSHA256": "d9e91cad8a2cf49af997da14e4a4ba97066f6115c01517473c049c22815b5e4e",
+  "files": [
+    {
+      "file": "qa/m11b-b05/final-r1.1/gate/b05-gate.png",
+      "sha256": "97b73b47b0777df5b0697ad0301950d294d5100d969dc683f53a59e17ffac1ff",
+      "group": "gate",
+      "view": "b05-gate",
+      "method": "Actual same-frame WebGL canvas readback / clean viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/gate/b05-gate-close.png",
+      "sha256": "b6930e0d4ae43e7efeca6a1c011026b0d00c1d90044d77d7650aec8df951ef0b",
+      "group": "gate",
+      "view": "b05-gate-close",
+      "method": "Actual same-frame WebGL canvas readback / clean viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/gate/b05-stone.png",
+      "sha256": "990c7459f6ad560c39de38d95cb8ee1df699015c3355def151dc4d3afc67d93e",
+      "group": "gate",
+      "view": "b05-stone",
+      "method": "Actual same-frame WebGL canvas readback / clean viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/gate/b05-side-gate.png",
+      "sha256": "835d7bfbc4e585cb65c26bf78c3bc351d85684ea0faadd4eb9881d7eb036fcbb",
+      "group": "gate",
+      "view": "b05-side-gate",
+      "method": "Playwright full-page viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/courts/b05-courts.png",
+      "sha256": "2acf16870764aae9e1595562172b63c9a21b4b178e8ac43765883715675892a0",
+      "group": "courts",
+      "view": "b05-courts",
+      "method": "Actual same-frame WebGL canvas readback / clean viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/courts/b05-hoop.png",
+      "sha256": "5d0b7329242f0ffd75ef33c4b0c7496749a1e481e8cb111f21ee8c739bea1edc",
+      "group": "courts",
+      "view": "b05-hoop",
+      "method": "Playwright full-page viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/courts/b05-court-entry.png",
+      "sha256": "69ac026aac9019cad4f2dc1dfea3960d41695ddaa0551d4f55673360c9d8d7de",
+      "group": "courts",
+      "view": "b05-court-entry",
+      "method": "Playwright full-page viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/courts/b05-track.png",
+      "sha256": "c21a53eed70a3b4cb11203188bb44a473c7103d67f92c97d6c5378655fac3e07",
+      "group": "courts",
+      "view": "b05-track",
+      "method": "Playwright full-page viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/courts/b05-auxiliary.png",
+      "sha256": "ad19d1750f441d7099955344784dcb02d197499cfdc5837bf39c441caacb4efd",
+      "group": "courts",
+      "view": "b05-auxiliary",
+      "method": "Playwright full-page viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/courts/b05-pool.png",
+      "sha256": "916f279ce76e5242d3c59c6b113fd2f3c1efc0babbd9eb33cafed327a7c6eff2",
+      "group": "courts",
+      "view": "b05-pool",
+      "method": "Playwright full-page viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/field/b05-field.png",
+      "sha256": "b9cd543e546be380e1b4ad3f69dc694d2cb187aa9853066311afe1b47d7ee3fc",
+      "group": "field",
+      "view": "b05-field",
+      "method": "Actual same-frame WebGL canvas readback / clean viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/field/b05-goal.png",
+      "sha256": "abd668e42cf1512c81191ba752d352a8b5abd0849b087f9bf2c528aafdb5ee27",
+      "group": "field",
+      "view": "b05-goal",
+      "method": "Playwright full-page viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/field/b05-rostrum.png",
+      "sha256": "2c19cbb071fb86a024ca07c6e6feb7fb4e9e08008033ab96fae951fe8f547b06",
+      "group": "field",
+      "view": "b05-rostrum",
+      "method": "Playwright full-page viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/field/b05-flags.png",
+      "sha256": "848ff794d18cb35f5e46e174d2961612440c37c686848e38824bbfd30db2761b",
+      "group": "field",
+      "view": "b05-flags",
+      "method": "Playwright full-page viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/field/b05-planted-axis.png",
+      "sha256": "9f902336a0211899d677f6a5ac833b7c57877266f1e44d2425e88da09d482249",
+      "group": "field",
+      "view": "b05-planted-axis",
+      "method": "Playwright full-page viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/residential/b05-residential.png",
+      "sha256": "a33a9cbbdcb5cce600c462dff83ff59c1204f403146d80ca3ea8cd5f574dbaa0",
+      "group": "residential",
+      "view": "b05-residential",
+      "method": "Actual same-frame WebGL canvas readback / clean viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/residential/b05-residential-entry.png",
+      "sha256": "1d53812d856076154f446a26950cf7bb2430cd93cb46f7e7b0f20e06f7788112",
+      "group": "residential",
+      "view": "b05-residential-entry",
+      "method": "Actual same-frame WebGL canvas readback / clean viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/residential/b05-overview.png",
+      "sha256": "ad2a054c1bb238eaaed140366000b480f2b69556dfbf676decddc0d49468ba1a",
+      "group": "residential",
+      "view": "b05-overview",
+      "method": "Actual same-frame WebGL canvas readback / clean viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/regression/overview.png",
+      "sha256": "1f065d3d0d065f4f31ef5c1e7504c797a6a281f713789e47a705696373790680",
+      "group": "regression",
+      "view": "overview",
+      "method": "Actual same-frame WebGL canvas readback / clean viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/regression/r3-overview.png",
+      "sha256": "b7904267cea733733c95e7e4396010aa91856644b96939e2066d0159aaf167e1",
+      "group": "regression",
+      "view": "r3-overview",
+      "method": "Playwright full-page viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/regression/b02-photo-front.png",
+      "sha256": "4b4b5018d981dde37444b46751f6937b2937058a1f8984a67b1befad62bd422c",
+      "group": "regression",
+      "view": "b02-photo-front",
+      "method": "Playwright full-page viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/regression/b03-photo-library.png",
+      "sha256": "a89d26b654d1ce453f6ea6854d65cb4895470a3d886722e26643419b89441d15",
+      "group": "regression",
+      "view": "b03-photo-library",
+      "method": "Playwright full-page viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/regression/b03-garden.png",
+      "sha256": "21d69948d011bb8f4496ca75ce5f6c6de2fa23d4247d487bd8966b5426b0171a",
+      "group": "regression",
+      "view": "b03-garden",
+      "method": "Playwright full-page viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/regression/b03-canteen.png",
+      "sha256": "7dc7129813f11aaf6e864b535415ce479b91a476fbf676d8636ef8a8e3ddc794",
+      "group": "regression",
+      "view": "b03-canteen",
+      "method": "Playwright full-page viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/regression/top.png",
+      "sha256": "7f969243c7076b0489e92ed46152b3475c9800ac283cd67c30723300cbda119e",
+      "group": "regression",
+      "view": "top",
+      "method": "Actual same-frame WebGL canvas readback / clean viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/regression/r3-axis.png",
+      "sha256": "c3da2325067135e1f5aec5b945c28e5e7b5639c99845e92e7d6425d018a98e2c",
+      "group": "regression",
+      "view": "r3-axis",
+      "method": "Actual same-frame WebGL canvas readback / clean viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/mobile/mobile-initial.png",
+      "sha256": "607913eada54be16855228847858c7099d4ce895cb5b977bd91e237bd249374f",
+      "group": "mobile",
+      "view": "b05-gate-close",
+      "method": "CDP full-page viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/mobile/b05-court-entry.png",
+      "sha256": "71145b3e314003a9bebb05e6930297062d23886ff9ee43e7fb92c729350b8523",
+      "group": "mobile",
+      "view": "b05-court-entry",
+      "method": "Playwright full-page viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/mobile/b05-flags.png",
+      "sha256": "ce8a2c04a28bbaf01c2a4db920c6ac1be865fd65801cec19a4c53069e6491cbe",
+      "group": "mobile",
+      "view": "b05-flags",
+      "method": "Playwright full-page viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/fallback/b05-hoop.png",
+      "sha256": "3f6755739c3e89c2facfd49eefc0a5aebf8e5741e1c0e6dfa1274606249d6cb6",
+      "group": "fallback",
+      "view": "b05-hoop",
+      "method": "Actual same-frame WebGL canvas readback / clean viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/fallback/top.png",
+      "sha256": "14ff878d32f1ff30c612d266e9d69fb5638931a95260a11983b3f3a0185f4bda",
+      "group": "fallback",
+      "view": "top",
+      "method": "Playwright full-page viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/fallback/r3-axis.png",
+      "sha256": "57d28e11493bd5b2bd85e7efec1f6ec34b9171a883af557f05da95cf28711de5",
+      "group": "fallback",
+      "view": "r3-axis",
+      "method": "Playwright full-page viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/performance/b05-gate-close.png",
+      "sha256": "6c90e0220838e082555ca31061f06faa51ebca40006160e428dbe0b1e7487f5d",
+      "group": "performance",
+      "view": "b05-gate-close",
+      "method": "Actual same-frame WebGL canvas readback after frame-pacing session"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/performance/b05-hoop.png",
+      "sha256": "a3418dd58887c2d8a08a0064957fc11d8924737b46a7955dbeab4d258a98b4b4",
+      "group": "performance",
+      "view": "b05-hoop",
+      "method": "Actual same-frame WebGL canvas readback after frame-pacing session"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/performance/b05-overview.png",
+      "sha256": "167f927feeae2a95781018f90e59fbfb3b8fbbe63e264e6acd39b4fe77dff810",
+      "group": "performance",
+      "view": "b05-overview",
+      "method": "Actual same-frame WebGL canvas readback after frame-pacing session"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/baseline/overview.png",
+      "sha256": "f27ac6b14bd74abb0a9ee414c6b7f69c5d6047767e916179d0c831c172fa62fa",
+      "group": "baseline",
+      "view": "overview",
+      "method": "Actual same-frame WebGL canvas readback / clean viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/baseline/r3-overview.png",
+      "sha256": "85c23db282140c7852308ffedcd30b2c4e9fa6a334e7f18532fecc7de4c894c8",
+      "group": "baseline",
+      "view": "r3-overview",
+      "method": "Playwright full-page viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/baseline/b02-photo-front.png",
+      "sha256": "288ab46c84a06a3dcb51f10ca20269b6dcd12bdc1996a89f323e66bd10fec99c",
+      "group": "baseline",
+      "view": "b02-photo-front",
+      "method": "Playwright full-page viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/baseline/b03-photo-library.png",
+      "sha256": "8624f31dd1891e569bae5c977a35023b0450944510628e41ee00282fa5edbd01",
+      "group": "baseline",
+      "view": "b03-photo-library",
+      "method": "Playwright full-page viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/baseline/b03-garden.png",
+      "sha256": "0cd5f0f7c6479aa6c30475842b2e60547059ca60c86f8042cfa8e16ff478bd09",
+      "group": "baseline",
+      "view": "b03-garden",
+      "method": "Playwright full-page viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/baseline/b03-canteen.png",
+      "sha256": "7db2ae62e0363c960591cfd6de68c66ffce837c8c76dddcdf9e3284b059f5847",
+      "group": "baseline",
+      "view": "b03-canteen",
+      "method": "Playwright full-page viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/baseline/top.png",
+      "sha256": "008e7fcf75db1ebc32de14fb6305c428778fcd875ff835342ff99e7ed9440400",
+      "group": "baseline",
+      "view": "top",
+      "method": "Playwright full-page viewport"
+    },
+    {
+      "file": "qa/m11b-b05/final-r1.1/baseline/r3-axis.png",
+      "sha256": "a08be950b5ea2a49bb39ce3c7f74913bdbd187604c2ab58d4f946a52494690d0",
+      "group": "baseline",
+      "view": "r3-axis",
+      "method": "Playwright full-page viewport"
+    }
+  ]
+}

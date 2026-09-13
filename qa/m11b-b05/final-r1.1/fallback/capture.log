@@ -1,0 +1,9 @@
+2026-09-13T11:54:45.917Z open b05-hoop
+2026-09-13T11:55:02.025Z ready 16037ms; 7715728 model triangles
+2026-09-13T11:55:02.028Z view b05-hoop
+2026-09-13T11:56:13.072Z saved b05-hoop.png; GL 0
+2026-09-13T11:56:13.073Z view top
+2026-09-13T11:56:48.041Z saved top.png; GL 0
+2026-09-13T11:56:48.041Z view r3-axis
+2026-09-13T11:57:24.099Z saved r3-axis.png; GL 0
+RESULT {"group":"fallback","passed":true,"views":3,"errors":[]}

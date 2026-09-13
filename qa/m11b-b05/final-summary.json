@@ -1,0 +1,1111 @@
+{
+  "batch": "B05",
+  "version": "R1.1",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "modelRenderingStandard": "1.0",
+  "viewer": "artifacts/m11b-b05/Yali_B05_R1_1_Viewer.html",
+  "viewerSHA256": "d9e91cad8a2cf49af997da14e4a4ba97066f6115c01517473c049c22815b5e4e",
+  "viewerBytes": 979803,
+  "testedSourceCommit": "6d19950e1eea1422621b92394b2553e90c889f84",
+  "run": "34755586253",
+  "completedAt": "2026-09-13T13:39:08.343Z",
+  "build": "PASS",
+  "tests": {
+    "passed": 19,
+    "failed": 0,
+    "log": "qa/m11b-b05/final-r1.1/build/tests.tap"
+  },
+  "browserGroups": [
+    "gate",
+    "courts",
+    "field",
+    "residential",
+    "checks",
+    "regression",
+    "mobile",
+    "fallback",
+    "performance",
+    "baseline"
+  ],
+  "screenshots": {
+    "b05": 35,
+    "inheritedBaseline": 8,
+    "files": [
+      {
+        "file": "qa/m11b-b05/final-r1.1/gate/b05-gate.png",
+        "sha256": "97b73b47b0777df5b0697ad0301950d294d5100d969dc683f53a59e17ffac1ff",
+        "group": "gate",
+        "view": "b05-gate",
+        "method": "Actual same-frame WebGL canvas readback / clean viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/gate/b05-gate-close.png",
+        "sha256": "b6930e0d4ae43e7efeca6a1c011026b0d00c1d90044d77d7650aec8df951ef0b",
+        "group": "gate",
+        "view": "b05-gate-close",
+        "method": "Actual same-frame WebGL canvas readback / clean viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/gate/b05-stone.png",
+        "sha256": "990c7459f6ad560c39de38d95cb8ee1df699015c3355def151dc4d3afc67d93e",
+        "group": "gate",
+        "view": "b05-stone",
+        "method": "Actual same-frame WebGL canvas readback / clean viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/gate/b05-side-gate.png",
+        "sha256": "835d7bfbc4e585cb65c26bf78c3bc351d85684ea0faadd4eb9881d7eb036fcbb",
+        "group": "gate",
+        "view": "b05-side-gate",
+        "method": "Playwright full-page viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/courts/b05-courts.png",
+        "sha256": "2acf16870764aae9e1595562172b63c9a21b4b178e8ac43765883715675892a0",
+        "group": "courts",
+        "view": "b05-courts",
+        "method": "Actual same-frame WebGL canvas readback / clean viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/courts/b05-hoop.png",
+        "sha256": "5d0b7329242f0ffd75ef33c4b0c7496749a1e481e8cb111f21ee8c739bea1edc",
+        "group": "courts",
+        "view": "b05-hoop",
+        "method": "Playwright full-page viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/courts/b05-court-entry.png",
+        "sha256": "69ac026aac9019cad4f2dc1dfea3960d41695ddaa0551d4f55673360c9d8d7de",
+        "group": "courts",
+        "view": "b05-court-entry",
+        "method": "Playwright full-page viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/courts/b05-track.png",
+        "sha256": "c21a53eed70a3b4cb11203188bb44a473c7103d67f92c97d6c5378655fac3e07",
+        "group": "courts",
+        "view": "b05-track",
+        "method": "Playwright full-page viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/courts/b05-auxiliary.png",
+        "sha256": "ad19d1750f441d7099955344784dcb02d197499cfdc5837bf39c441caacb4efd",
+        "group": "courts",
+        "view": "b05-auxiliary",
+        "method": "Playwright full-page viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/courts/b05-pool.png",
+        "sha256": "916f279ce76e5242d3c59c6b113fd2f3c1efc0babbd9eb33cafed327a7c6eff2",
+        "group": "courts",
+        "view": "b05-pool",
+        "method": "Playwright full-page viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/field/b05-field.png",
+        "sha256": "b9cd543e546be380e1b4ad3f69dc694d2cb187aa9853066311afe1b47d7ee3fc",
+        "group": "field",
+        "view": "b05-field",
+        "method": "Actual same-frame WebGL canvas readback / clean viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/field/b05-goal.png",
+        "sha256": "abd668e42cf1512c81191ba752d352a8b5abd0849b087f9bf2c528aafdb5ee27",
+        "group": "field",
+        "view": "b05-goal",
+        "method": "Playwright full-page viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/field/b05-rostrum.png",
+        "sha256": "2c19cbb071fb86a024ca07c6e6feb7fb4e9e08008033ab96fae951fe8f547b06",
+        "group": "field",
+        "view": "b05-rostrum",
+        "method": "Playwright full-page viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/field/b05-flags.png",
+        "sha256": "848ff794d18cb35f5e46e174d2961612440c37c686848e38824bbfd30db2761b",
+        "group": "field",
+        "view": "b05-flags",
+        "method": "Playwright full-page viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/field/b05-planted-axis.png",
+        "sha256": "9f902336a0211899d677f6a5ac833b7c57877266f1e44d2425e88da09d482249",
+        "group": "field",
+        "view": "b05-planted-axis",
+        "method": "Playwright full-page viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/residential/b05-residential.png",
+        "sha256": "a33a9cbbdcb5cce600c462dff83ff59c1204f403146d80ca3ea8cd5f574dbaa0",
+        "group": "residential",
+        "view": "b05-residential",
+        "method": "Actual same-frame WebGL canvas readback / clean viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/residential/b05-residential-entry.png",
+        "sha256": "1d53812d856076154f446a26950cf7bb2430cd93cb46f7e7b0f20e06f7788112",
+        "group": "residential",
+        "view": "b05-residential-entry",
+        "method": "Actual same-frame WebGL canvas readback / clean viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/residential/b05-overview.png",
+        "sha256": "ad2a054c1bb238eaaed140366000b480f2b69556dfbf676decddc0d49468ba1a",
+        "group": "residential",
+        "view": "b05-overview",
+        "method": "Actual same-frame WebGL canvas readback / clean viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/regression/overview.png",
+        "sha256": "1f065d3d0d065f4f31ef5c1e7504c797a6a281f713789e47a705696373790680",
+        "group": "regression",
+        "view": "overview",
+        "method": "Actual same-frame WebGL canvas readback / clean viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/regression/r3-overview.png",
+        "sha256": "b7904267cea733733c95e7e4396010aa91856644b96939e2066d0159aaf167e1",
+        "group": "regression",
+        "view": "r3-overview",
+        "method": "Playwright full-page viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/regression/b02-photo-front.png",
+        "sha256": "4b4b5018d981dde37444b46751f6937b2937058a1f8984a67b1befad62bd422c",
+        "group": "regression",
+        "view": "b02-photo-front",
+        "method": "Playwright full-page viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/regression/b03-photo-library.png",
+        "sha256": "a89d26b654d1ce453f6ea6854d65cb4895470a3d886722e26643419b89441d15",
+        "group": "regression",
+        "view": "b03-photo-library",
+        "method": "Playwright full-page viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/regression/b03-garden.png",
+        "sha256": "21d69948d011bb8f4496ca75ce5f6c6de2fa23d4247d487bd8966b5426b0171a",
+        "group": "regression",
+        "view": "b03-garden",
+        "method": "Playwright full-page viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/regression/b03-canteen.png",
+        "sha256": "7dc7129813f11aaf6e864b535415ce479b91a476fbf676d8636ef8a8e3ddc794",
+        "group": "regression",
+        "view": "b03-canteen",
+        "method": "Playwright full-page viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/regression/top.png",
+        "sha256": "7f969243c7076b0489e92ed46152b3475c9800ac283cd67c30723300cbda119e",
+        "group": "regression",
+        "view": "top",
+        "method": "Actual same-frame WebGL canvas readback / clean viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/regression/r3-axis.png",
+        "sha256": "c3da2325067135e1f5aec5b945c28e5e7b5639c99845e92e7d6425d018a98e2c",
+        "group": "regression",
+        "view": "r3-axis",
+        "method": "Actual same-frame WebGL canvas readback / clean viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/mobile/mobile-initial.png",
+        "sha256": "607913eada54be16855228847858c7099d4ce895cb5b977bd91e237bd249374f",
+        "group": "mobile",
+        "view": "b05-gate-close",
+        "method": "CDP full-page viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/mobile/b05-court-entry.png",
+        "sha256": "71145b3e314003a9bebb05e6930297062d23886ff9ee43e7fb92c729350b8523",
+        "group": "mobile",
+        "view": "b05-court-entry",
+        "method": "Playwright full-page viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/mobile/b05-flags.png",
+        "sha256": "ce8a2c04a28bbaf01c2a4db920c6ac1be865fd65801cec19a4c53069e6491cbe",
+        "group": "mobile",
+        "view": "b05-flags",
+        "method": "Playwright full-page viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/fallback/b05-hoop.png",
+        "sha256": "3f6755739c3e89c2facfd49eefc0a5aebf8e5741e1c0e6dfa1274606249d6cb6",
+        "group": "fallback",
+        "view": "b05-hoop",
+        "method": "Actual same-frame WebGL canvas readback / clean viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/fallback/top.png",
+        "sha256": "14ff878d32f1ff30c612d266e9d69fb5638931a95260a11983b3f3a0185f4bda",
+        "group": "fallback",
+        "view": "top",
+        "method": "Playwright full-page viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/fallback/r3-axis.png",
+        "sha256": "57d28e11493bd5b2bd85e7efec1f6ec34b9171a883af557f05da95cf28711de5",
+        "group": "fallback",
+        "view": "r3-axis",
+        "method": "Playwright full-page viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/performance/b05-gate-close.png",
+        "sha256": "6c90e0220838e082555ca31061f06faa51ebca40006160e428dbe0b1e7487f5d",
+        "group": "performance",
+        "view": "b05-gate-close",
+        "method": "Actual same-frame WebGL canvas readback after frame-pacing session"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/performance/b05-hoop.png",
+        "sha256": "a3418dd58887c2d8a08a0064957fc11d8924737b46a7955dbeab4d258a98b4b4",
+        "group": "performance",
+        "view": "b05-hoop",
+        "method": "Actual same-frame WebGL canvas readback after frame-pacing session"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/performance/b05-overview.png",
+        "sha256": "167f927feeae2a95781018f90e59fbfb3b8fbbe63e264e6acd39b4fe77dff810",
+        "group": "performance",
+        "view": "b05-overview",
+        "method": "Actual same-frame WebGL canvas readback after frame-pacing session"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/baseline/overview.png",
+        "sha256": "f27ac6b14bd74abb0a9ee414c6b7f69c5d6047767e916179d0c831c172fa62fa",
+        "group": "baseline",
+        "view": "overview",
+        "method": "Actual same-frame WebGL canvas readback / clean viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/baseline/r3-overview.png",
+        "sha256": "85c23db282140c7852308ffedcd30b2c4e9fa6a334e7f18532fecc7de4c894c8",
+        "group": "baseline",
+        "view": "r3-overview",
+        "method": "Playwright full-page viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/baseline/b02-photo-front.png",
+        "sha256": "288ab46c84a06a3dcb51f10ca20269b6dcd12bdc1996a89f323e66bd10fec99c",
+        "group": "baseline",
+        "view": "b02-photo-front",
+        "method": "Playwright full-page viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/baseline/b03-photo-library.png",
+        "sha256": "8624f31dd1891e569bae5c977a35023b0450944510628e41ee00282fa5edbd01",
+        "group": "baseline",
+        "view": "b03-photo-library",
+        "method": "Playwright full-page viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/baseline/b03-garden.png",
+        "sha256": "0cd5f0f7c6479aa6c30475842b2e60547059ca60c86f8042cfa8e16ff478bd09",
+        "group": "baseline",
+        "view": "b03-garden",
+        "method": "Playwright full-page viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/baseline/b03-canteen.png",
+        "sha256": "7db2ae62e0363c960591cfd6de68c66ffce837c8c76dddcdf9e3284b059f5847",
+        "group": "baseline",
+        "view": "b03-canteen",
+        "method": "Playwright full-page viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/baseline/top.png",
+        "sha256": "008e7fcf75db1ebc32de14fb6305c428778fcd875ff835342ff99e7ed9440400",
+        "group": "baseline",
+        "view": "top",
+        "method": "Playwright full-page viewport"
+      },
+      {
+        "file": "qa/m11b-b05/final-r1.1/baseline/r3-axis.png",
+        "sha256": "a08be950b5ea2a49bb39ce3c7f74913bdbd187604c2ab58d4f946a52494690d0",
+        "group": "baseline",
+        "view": "r3-axis",
+        "method": "Playwright full-page viewport"
+      }
+    ]
+  },
+  "errors": [],
+  "externalRequests": [],
+  "warnings": {
+    "gate": [
+      "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+      {
+        "view": "b05-gate",
+        "compositorAttempt": "TimeoutError: page.screenshot: Timeout 45000ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n",
+        "recoveredBy": "same-frame WebGL canvas"
+      },
+      {
+        "view": "b05-gate-close",
+        "compositorAttempt": "TimeoutError: page.screenshot: Timeout 45000ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n",
+        "recoveredBy": "same-frame WebGL canvas"
+      },
+      {
+        "view": "b05-stone",
+        "compositorAttempt": "TimeoutError: page.screenshot: Timeout 45000ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n",
+        "recoveredBy": "same-frame WebGL canvas"
+      }
+    ],
+    "courts": [
+      "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+      {
+        "view": "b05-courts",
+        "compositorAttempt": "TimeoutError: page.screenshot: Timeout 45000ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n",
+        "recoveredBy": "same-frame WebGL canvas"
+      }
+    ],
+    "field": [
+      "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+      {
+        "view": "b05-field",
+        "compositorAttempt": "TimeoutError: page.screenshot: Timeout 45000ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n",
+        "recoveredBy": "same-frame WebGL canvas"
+      }
+    ],
+    "residential": [
+      "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+      {
+        "view": "b05-residential",
+        "compositorAttempt": "TimeoutError: page.screenshot: Timeout 45000ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n",
+        "recoveredBy": "same-frame WebGL canvas"
+      },
+      {
+        "view": "b05-residential-entry",
+        "compositorAttempt": "TimeoutError: page.screenshot: Timeout 45000ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n",
+        "recoveredBy": "same-frame WebGL canvas"
+      },
+      {
+        "view": "b05-overview",
+        "compositorAttempt": "TimeoutError: page.screenshot: Timeout 45000ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n",
+        "recoveredBy": "same-frame WebGL canvas"
+      }
+    ],
+    "checks": [
+      "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    ],
+    "regression": [
+      "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+      {
+        "view": "overview",
+        "compositorAttempt": "TimeoutError: page.screenshot: Timeout 45000ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n",
+        "recoveredBy": "same-frame WebGL canvas"
+      },
+      {
+        "view": "top",
+        "compositorAttempt": "TimeoutError: page.screenshot: Timeout 45000ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n",
+        "recoveredBy": "same-frame WebGL canvas"
+      },
+      {
+        "view": "r3-axis",
+        "compositorAttempt": "TimeoutError: page.screenshot: Timeout 45000ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n",
+        "recoveredBy": "same-frame WebGL canvas"
+      }
+    ],
+    "mobile": [
+      "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+      {
+        "view": null,
+        "compositorAttempt": "TimeoutError: page.screenshot: Timeout 45000ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n",
+        "recoveredBy": "CDP viewport"
+      }
+    ],
+    "fallback": [
+      "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+      {
+        "view": "b05-hoop",
+        "compositorAttempt": "TimeoutError: page.screenshot: Timeout 45000ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n",
+        "recoveredBy": "same-frame WebGL canvas"
+      }
+    ],
+    "performance": [
+      "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+      "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+      "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    ],
+    "baseline": [
+      "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+      {
+        "view": "overview",
+        "compositorAttempt": "TimeoutError: page.screenshot: Timeout 45000ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n",
+        "recoveredBy": "same-frame WebGL canvas"
+      }
+    ]
+  },
+  "scene": {
+    "triangles": 7715728,
+    "geometryBytes": 216452648,
+    "meshes": 1975,
+    "geometries": 1975,
+    "materials": 101,
+    "trianglesByOwner": {
+      "10": 74172,
+      "11": 198000,
+      "12": 4020,
+      "13": 291086,
+      "14": 101856,
+      "15": 1544316,
+      "16": 67356,
+      "17": 538796,
+      "18": 548652,
+      "19": 83128,
+      "20": 2020656,
+      "21": 369420,
+      "23": 60,
+      "24": 155736,
+      "25": 103584,
+      "26": 9948,
+      "27": 6682,
+      "28": 39132,
+      "environment": 318216,
+      "04": 7996,
+      "05": 20590,
+      "06": 382320,
+      "08": 9394,
+      "09": 234792,
+      "01": 31456,
+      "02": 5628,
+      "03": 139008,
+      "07": 259200,
+      "bridge": 150528
+    },
+    "reflectionOwnership": {
+      "10": [
+        "field"
+      ],
+      "11": [
+        "teaching"
+      ],
+      "12": [
+        "teaching"
+      ],
+      "13": [
+        "eastTeaching"
+      ],
+      "14": [
+        "teaching"
+      ],
+      "15": [
+        "teaching"
+      ],
+      "16": [
+        "westTeaching"
+      ],
+      "17": [
+        "longya"
+      ],
+      "18": [
+        "library"
+      ],
+      "19": [
+        "garden"
+      ],
+      "20": [
+        "residential"
+      ],
+      "21": [
+        "eastTeaching"
+      ],
+      "24": [
+        "gym"
+      ],
+      "25": [
+        "teaching"
+      ],
+      "26": [
+        "teaching"
+      ],
+      "28": [
+        "courts"
+      ],
+      "04": [
+        "gym"
+      ],
+      "05": [
+        "courts"
+      ],
+      "06": [
+        "courts"
+      ],
+      "08": [
+        "field"
+      ],
+      "01": [
+        "entrance"
+      ],
+      "02": [
+        "entrance"
+      ],
+      "03": [
+        "gym"
+      ],
+      "07": [
+        "westTeaching"
+      ],
+      "environment": [
+        "teaching"
+      ],
+      "bridge": [
+        "teaching"
+      ]
+    },
+    "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+  },
+  "baselineScene": {
+    "triangles": 4823310,
+    "geometryBytes": 141739340,
+    "meshes": 1796,
+    "geometries": 1796,
+    "materials": 76,
+    "trianglesByOwner": {
+      "10": 12,
+      "11": 198000,
+      "12": 4020,
+      "13": 291086,
+      "15": 1544316,
+      "16": 67356,
+      "17": 538796,
+      "18": 548652,
+      "19": 83128,
+      "20": 72,
+      "21": 369420,
+      "23": 12,
+      "24": 155736,
+      "25": 103584,
+      "26": 24,
+      "27": 20,
+      "28": 24,
+      "environment": 369228,
+      "04": 12,
+      "05": 348,
+      "06": 36,
+      "08": 620,
+      "01": 36,
+      "02": 36,
+      "03": 139008,
+      "07": 259200,
+      "bridge": 150528
+    },
+    "reflectionOwnership": {
+      "11": [
+        "teaching"
+      ],
+      "12": [
+        "teaching"
+      ],
+      "13": [
+        "eastTeaching"
+      ],
+      "15": [
+        "teaching"
+      ],
+      "16": [
+        "westTeaching"
+      ],
+      "17": [
+        "longya"
+      ],
+      "18": [
+        "library"
+      ],
+      "19": [
+        "garden"
+      ],
+      "20": [
+        "teaching"
+      ],
+      "21": [
+        "eastTeaching"
+      ],
+      "24": [
+        "gym"
+      ],
+      "25": [
+        "teaching"
+      ],
+      "04": [
+        "gym"
+      ],
+      "03": [
+        "gym"
+      ],
+      "07": [
+        "westTeaching"
+      ],
+      "environment": [
+        "teaching"
+      ],
+      "bridge": [
+        "teaching"
+      ]
+    },
+    "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+  },
+  "sceneIncrease": {
+    "triangles": 2892418,
+    "geometryBytes": 74713308
+  },
+  "catalogue": {
+    "parts": 9698,
+    "trees": 57,
+    "hoops": 12,
+    "goals": 2,
+    "housingBlocks": 6
+  },
+  "access": {
+    "passed": true,
+    "routes": 21,
+    "portals": 14,
+    "bodyOffsets": [
+      -0.34,
+      0,
+      0.34
+    ],
+    "bodyHeights": [
+      0.26,
+      1.1,
+      1.9
+    ],
+    "maximumSupportSpacing": 0.6,
+    "supportTolerance": 0.225,
+    "minimumHeadroom": 1.9,
+    "portalGrid": "3 widths × 3 heights; rendered triangles/BVH including inherited scene",
+    "report": "qa/m11b-b05/final-r1.1/checks/report.json"
+  },
+  "inherited": {
+    "b02": {
+      "routes": [
+        {
+          "id": "gym-main",
+          "label": "主路→低台阶→真门洞→门厅",
+          "supports": 180,
+          "clearances": 270,
+          "maxWaypointRise": 0.15000000000000036,
+          "bad": [],
+          "failures": 0
+        },
+        {
+          "id": "spectator",
+          "label": "前坪→左外梯→上层侧门→短观赛廊",
+          "supports": 381,
+          "clearances": 741,
+          "maxWaypointRise": 0.15000000000000036,
+          "bad": [],
+          "failures": 0
+        },
+        {
+          "id": "front-platform",
+          "label": "观赛层→前平台真正门洞",
+          "supports": 102,
+          "clearances": 129,
+          "maxWaypointRise": 0,
+          "bad": [],
+          "failures": 0
+        },
+        {
+          "id": "music",
+          "label": "绕馆路→既有门前台阶→音乐楼门厅",
+          "supports": 72,
+          "clearances": 144,
+          "maxWaypointRise": 0.15000000000000036,
+          "bad": [],
+          "failures": 0
+        },
+        {
+          "id": "loop",
+          "label": "组团外缘连续绕馆路；不穿共享墙",
+          "supports": 3354,
+          "clearances": 8385,
+          "maxWaypointRise": 0.047844953809926594,
+          "bad": [],
+          "failures": 0
+        }
+      ],
+      "doors": [
+        {
+          "id": "gym-main",
+          "probes": 9,
+          "bad": []
+        },
+        {
+          "id": "spectator",
+          "probes": 9,
+          "bad": []
+        },
+        {
+          "id": "front-platform",
+          "probes": 9,
+          "bad": []
+        },
+        {
+          "id": "music",
+          "probes": 9,
+          "bad": []
+        }
+      ],
+      "sharedWallBlocked": true,
+      "legacyGymCount": 0,
+      "retainedSiteNames": [
+        "P02-GYM-FORECOURT"
+      ]
+    },
+    "b03": true,
+    "b04": true,
+    "invariants": {
+      "axis": [
+        73,
+        73,
+        73
+      ],
+      "mainFloor": 3.45,
+      "flagCount": 3,
+      "stone": [
+        -17,
+        0,
+        1
+      ],
+      "unlocated22": null,
+      "shutters": true
+    },
+    "preservation": "qa/m11b-b05/final-r1.1/preservation.json"
+  },
+  "performance": [
+    {
+      "view": "b05-gate-close",
+      "viewport": {
+        "width": 1280,
+        "height": 840
+      },
+      "calls": 1931,
+      "submittedTriangles": 7607326,
+      "samples": 60,
+      "warmupFrames": 8,
+      "medianMs": 23758.949999999837,
+      "p95Ms": 46889.19999999995,
+      "minMs": 22.699999999953434,
+      "maxMs": 58023.80000000005,
+      "valuesMs": [
+        34.800000000046566,
+        26.900000000023283,
+        24.29999999993015,
+        23.5,
+        50.10000000009313,
+        40.199999999953434,
+        23.300000000046566,
+        23.599999999976717,
+        25.5,
+        24,
+        23.5,
+        22.699999999953434,
+        25.099999999976717,
+        24.900000000023283,
+        58023.80000000005,
+        25512.400000000023,
+        23748.899999999907,
+        171.80000000004657,
+        23762.099999999977,
+        47519.40000000002,
+        23799.099999999977,
+        23731.599999999977,
+        23783.300000000047,
+        23733.900000000023,
+        23762.5,
+        23774.5,
+        23786.599999999977,
+        23761,
+        23749.5,
+        23792.099999999977,
+        23747.599999999977,
+        23736.699999999953,
+        23783.700000000186,
+        23760.299999999814,
+        23778.300000000047,
+        23772.90000000014,
+        23763.199999999953,
+        2337.0999999998603,
+        23876.700000000186,
+        23.5999999998603,
+        45064.30000000005,
+        23732,
+        695.5,
+        46889.19999999995,
+        23764.90000000014,
+        23770.59999999986,
+        23772.300000000047,
+        23725.399999999907,
+        23897.100000000093,
+        23795,
+        23711.600000000093,
+        23798.799999999814,
+        23771.600000000093,
+        23797,
+        23781.899999999907,
+        23736.5,
+        23750.90000000014,
+        23780,
+        23757.59999999986,
+        47510.80000000005
+      ],
+      "method": "8 warm-up rendered frames; 60 requestAnimationFrame intervals using the unchanged continuous renderFrame callback. Full geometry/materials, original desktop shadow resolution. Includes browser scheduling and software GPU; not GPU-only timings, not comparable to serialized readPixels history."
+    },
+    {
+      "view": "b05-hoop",
+      "viewport": {
+        "width": 1280,
+        "height": 840
+      },
+      "calls": 469,
+      "submittedTriangles": 2904474,
+      "samples": 60,
+      "warmupFrames": 8,
+      "medianMs": 6109.899999999994,
+      "p95Ms": 12271.099999999977,
+      "minMs": 11.200000000011642,
+      "maxMs": 23022.5,
+      "valuesMs": [
+        15.89999999999418,
+        20.29999999998836,
+        13.5,
+        17,
+        19.800000000017462,
+        17.199999999982538,
+        11.200000000011642,
+        16.10000000000582,
+        18.5,
+        14.199999999982538,
+        17,
+        17.20000000001164,
+        22.39999999999418,
+        14.89999999999418,
+        16328.700000000012,
+        23022.5,
+        7264.600000000006,
+        6238.100000000006,
+        3770.2999999999884,
+        8483.900000000023,
+        6135.599999999977,
+        6134.700000000012,
+        6128.599999999977,
+        6148,
+        6122.700000000012,
+        7205.400000000023,
+        5072.599999999977,
+        6161.599999999977,
+        6149.400000000023,
+        6148.799999999988,
+        6108.799999999988,
+        6144.400000000023,
+        6129.299999999988,
+        6111.600000000035,
+        16191.699999999953,
+        2131.100000000035,
+        6117.599999999977,
+        6102.600000000035,
+        1562.5999999999767,
+        9151.700000000012,
+        7617.799999999988,
+        1128.2999999999884,
+        11126.299999999988,
+        12199,
+        6102.300000000047,
+        6111,
+        12242.49999999997,
+        6100.199999999953,
+        6094.5,
+        12196.600000000093,
+        6101.399999999907,
+        6104.5,
+        6099.800000000047,
+        6147.300000000047,
+        12271.099999999977,
+        6100,
+        7276.5,
+        6038,
+        11158.899999999907,
+        1156.4000000000233
+      ],
+      "method": "8 warm-up rendered frames; 60 requestAnimationFrame intervals using the unchanged continuous renderFrame callback. Full geometry/materials, original desktop shadow resolution. Includes browser scheduling and software GPU; not GPU-only timings, not comparable to serialized readPixels history."
+    },
+    {
+      "view": "b05-overview",
+      "viewport": {
+        "width": 1280,
+        "height": 840
+      },
+      "calls": 1981,
+      "submittedTriangles": 7715740,
+      "samples": 60,
+      "warmupFrames": 8,
+      "medianMs": 26727.150000000023,
+      "p95Ms": 53536.39999999991,
+      "minMs": 24.89999999999418,
+      "maxMs": 53597.29999999996,
+      "valuesMs": [
+        25.10000000000582,
+        33.80000000000291,
+        28.29999999998836,
+        26.60000000000582,
+        24.89999999999418,
+        39.20000000001164,
+        58.69999999999709,
+        38.39999999999418,
+        44.10000000000582,
+        29.5,
+        37.19999999999709,
+        31.69999999999709,
+        36.90000000000873,
+        31,
+        23650,
+        34560.4,
+        29808.79999999999,
+        53495.5,
+        72.70000000001164,
+        53543.40000000002,
+        26798.29999999999,
+        53597.29999999996,
+        26793,
+        26735.900000000023,
+        53484.19999999995,
+        26811.900000000023,
+        53443.5,
+        26759.199999999953,
+        42.5,
+        53549.90000000002,
+        26741.70000000007,
+        26746.79999999993,
+        26781.800000000047,
+        26758.79999999993,
+        26732.300000000047,
+        1800.0999999999767,
+        51699.90000000002,
+        47.699999999953434,
+        27684.400000000023,
+        52623,
+        1239.9000000000233,
+        52331.69999999995,
+        26722,
+        82.90000000002328,
+        26784.900000000023,
+        26705,
+        83.19999999995343,
+        26758.699999999953,
+        53498.400000000256,
+        1245.3999999999069,
+        52237.19999999995,
+        26775.40000000014,
+        26754.09999999986,
+        26679.40000000014,
+        95.19999999995343,
+        53536.39999999991,
+        549.6000000000931,
+        26230.100000000093,
+        28518.199999999953,
+        25658.699999999953
+      ],
+      "method": "8 warm-up rendered frames; 60 requestAnimationFrame intervals using the unchanged continuous renderFrame callback. Full geometry/materials, original desktop shadow resolution. Includes browser scheduling and software GPU; not GPU-only timings, not comparable to serialized readPixels history."
+    }
+  ],
+  "environment": {
+    "browser": "151.0.7922.34",
+    "node": "v22.23.2",
+    "platform": "linux",
+    "runner": "GitHub Actions hosted Linux",
+    "method": "8 warm-up rendered frames; 60 requestAnimationFrame intervals using the unchanged continuous renderFrame callback. Full geometry/materials, original desktop shadow resolution. Includes browser scheduling and software GPU; not GPU-only timings, not comparable to serialized readPixels history.",
+    "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "separateBrowserSessions": 3
+  },
+  "mobile": {
+    "noOverflow": true,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "title": "复原雅礼 · M1.1-B B05 校园固定设施与主要植被 · R1.1",
+    "shadowResolution": 2048
+  },
+  "reflectionProbes": {
+    "probes": 11,
+    "resolution": 256,
+    "reflectiveMeshes": 636,
+    "buildMs": 2035,
+    "method": "static local campus cubemaps",
+    "locations": {
+      "teaching": [
+        73,
+        8,
+        194
+      ],
+      "gym": [
+        -15,
+        7,
+        48
+      ],
+      "library": [
+        73,
+        8,
+        239
+      ],
+      "garden": [
+        73,
+        7,
+        274
+      ],
+      "eastTeaching": [
+        139,
+        8,
+        212
+      ],
+      "longya": [
+        129,
+        9,
+        242
+      ],
+      "westTeaching": [
+        -23,
+        7,
+        188
+      ],
+      "entrance": [
+        0,
+        5,
+        7
+      ],
+      "courts": [
+        -38,
+        7,
+        120
+      ],
+      "field": [
+        73,
+        6,
+        114
+      ],
+      "residential": [
+        171,
+        8,
+        74
+      ]
+    }
+  },
+  "visualReview": "docs/m11b/batch05/visual-review.json",
+  "limitations": [
+    "All unmeasured placement/shape metrics and plant species/count remain H.",
+    "Rostrum cover chronology is H/U; photo is not proof of a 2006 cover.",
+    "Stone map-left side is inherited A; exact coordinates/orientation are unmeasured H.",
+    "22 remains unlocated; no invented shop.",
+    "Software GPU performance is not a device benchmark or frame-rate guarantee.",
+    "No physical first-person controller, full private interiors or dense small-plant landscaping in B05."
+  ],
+  "historicalFailures": "qa/m11b-b05/history/before-closeout/README.md",
+  "artifactProvenance": "qa/m11b-b05/artifact-provenance.json",
+  "acceptanceCreated": false
+}

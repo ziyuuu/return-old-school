@@ -1,0 +1,523 @@
+{
+  "batch": "B05",
+  "phase": "final-r1.1",
+  "group": "performance",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "standard": "1.0",
+  "viewer": "artifacts/m11b-b05/Yali_B05_R1_1_Viewer.html",
+  "viewerSHA256": "d9e91cad8a2cf49af997da14e4a4ba97066f6115c01517473c049c22815b5e4e",
+  "sourceCommit": "6d19950e1eea1422621b92394b2553e90c889f84",
+  "runtimeSourceCommit": "6d19950e1eea1422621b92394b2553e90c889f84",
+  "run": "34755586253",
+  "startedAt": "2026-09-13T11:54:30.221Z",
+  "viewport": {
+    "width": 1280,
+    "height": 840
+  },
+  "deviceScaleFactor": 1,
+  "baseline": false,
+  "fallback": false,
+  "errors": [],
+  "warnings": [
+    "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+  ],
+  "externalRequests": [],
+  "samples": [
+    {
+      "ms": 15.89999999999418,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 20.29999999998836,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 13.5,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 17,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 19.800000000017462,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 17.199999999982538,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 11.200000000011642,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 16.10000000000582,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 18.5,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 14.199999999982538,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 17,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 17.20000000001164,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 22.39999999999418,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 14.89999999999418,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 16328.700000000012,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 23022.5,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 7264.600000000006,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 6238.100000000006,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 3770.2999999999884,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 8483.900000000023,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 6135.599999999977,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 6134.700000000012,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 6128.599999999977,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 6148,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 6122.700000000012,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 7205.400000000023,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 5072.599999999977,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 6161.599999999977,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 6149.400000000023,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 6148.799999999988,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 6108.799999999988,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 6144.400000000023,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 6129.299999999988,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 6111.600000000035,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 16191.699999999953,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 2131.100000000035,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 6117.599999999977,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 6102.600000000035,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 1562.5999999999767,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 9151.700000000012,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 7617.799999999988,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 1128.2999999999884,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 11126.299999999988,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 12199,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 6102.300000000047,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 6111,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 12242.49999999997,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 6100.199999999953,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 6094.5,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 12196.600000000093,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 6101.399999999907,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 6104.5,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 6099.800000000047,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 6147.300000000047,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 12271.099999999977,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 6100,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 7276.5,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 6038,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 11158.899999999907,
+      "calls": 469,
+      "triangles": 2904474
+    },
+    {
+      "ms": 1156.4000000000233,
+      "calls": 469,
+      "triangles": 2904474
+    }
+  ],
+  "views": [
+    {
+      "file": "b05-hoop.png",
+      "sha256": "a3418dd58887c2d8a08a0064957fc11d8924737b46a7955dbeab4d258a98b4b4",
+      "screenshotMethod": "Actual same-frame WebGL canvas readback after frame-pacing session",
+      "requestedView": "b05-hoop",
+      "view": "b05-hoop",
+      "verticalScheme": "patch04",
+      "camera": [
+        -18.999999999999996,
+        6.599999999999999,
+        140
+      ],
+      "target": [
+        -20.499999999999996,
+        5.699999999999999,
+        147
+      ],
+      "fov": 62,
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 469,
+      "triangles": 2904474,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 26,
+        "shadowRevision": 9,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1074,
+          "buildMs": 3833,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 1607,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        }
+      },
+      "performance": {
+        "samples": 60,
+        "warmupFrames": 8,
+        "medianMs": 6109.899999999994,
+        "p95Ms": 12271.099999999977,
+        "minMs": 11.200000000011642,
+        "maxMs": 23022.5,
+        "valuesMs": [
+          15.89999999999418,
+          20.29999999998836,
+          13.5,
+          17,
+          19.800000000017462,
+          17.199999999982538,
+          11.200000000011642,
+          16.10000000000582,
+          18.5,
+          14.199999999982538,
+          17,
+          17.20000000001164,
+          22.39999999999418,
+          14.89999999999418,
+          16328.700000000012,
+          23022.5,
+          7264.600000000006,
+          6238.100000000006,
+          3770.2999999999884,
+          8483.900000000023,
+          6135.599999999977,
+          6134.700000000012,
+          6128.599999999977,
+          6148,
+          6122.700000000012,
+          7205.400000000023,
+          5072.599999999977,
+          6161.599999999977,
+          6149.400000000023,
+          6148.799999999988,
+          6108.799999999988,
+          6144.400000000023,
+          6129.299999999988,
+          6111.600000000035,
+          16191.699999999953,
+          2131.100000000035,
+          6117.599999999977,
+          6102.600000000035,
+          1562.5999999999767,
+          9151.700000000012,
+          7617.799999999988,
+          1128.2999999999884,
+          11126.299999999988,
+          12199,
+          6102.300000000047,
+          6111,
+          12242.49999999997,
+          6100.199999999953,
+          6094.5,
+          12196.600000000093,
+          6101.399999999907,
+          6104.5,
+          6099.800000000047,
+          6147.300000000047,
+          12271.099999999977,
+          6100,
+          7276.5,
+          6038,
+          11158.899999999907,
+          1156.4000000000233
+        ],
+        "method": "8 warm-up rendered frames; 60 requestAnimationFrame intervals using the unchanged continuous renderFrame callback. Full geometry/materials, original desktop shadow resolution. Includes browser scheduling and software GPU; not GPU-only timings, not comparable to serialized readPixels history."
+      }
+    }
+  ],
+  "passed": true,
+  "environment": {
+    "browser": "151.0.7922.34",
+    "node": "v22.23.2",
+    "platform": "linux",
+    "runner": "GitHub Actions hosted Linux",
+    "method": "8 warm-up rendered frames; 60 requestAnimationFrame intervals using the unchanged continuous renderFrame callback. Full geometry/materials, original desktop shadow resolution. Includes browser scheduling and software GPU; not GPU-only timings, not comparable to serialized readPixels history.",
+    "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+  },
+  "viewerLoading": "Direct offline file URL",
+  "initializationMs": 18535,
+  "stage": "complete",
+  "completedAt": "2026-09-13T12:02:44.836Z"
+}

@@ -1,0 +1,523 @@
+{
+  "batch": "B05",
+  "phase": "final-r1.1",
+  "group": "performance",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "standard": "1.0",
+  "viewer": "artifacts/m11b-b05/Yali_B05_R1_1_Viewer.html",
+  "viewerSHA256": "d9e91cad8a2cf49af997da14e4a4ba97066f6115c01517473c049c22815b5e4e",
+  "sourceCommit": "6d19950e1eea1422621b92394b2553e90c889f84",
+  "runtimeSourceCommit": "6d19950e1eea1422621b92394b2553e90c889f84",
+  "run": "34755586253",
+  "startedAt": "2026-09-13T11:54:31.522Z",
+  "viewport": {
+    "width": 1280,
+    "height": 840
+  },
+  "deviceScaleFactor": 1,
+  "baseline": false,
+  "fallback": false,
+  "errors": [],
+  "warnings": [
+    "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+  ],
+  "externalRequests": [],
+  "samples": [
+    {
+      "ms": 34.800000000046566,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 26.900000000023283,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 24.29999999993015,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23.5,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 50.10000000009313,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 40.199999999953434,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23.300000000046566,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23.599999999976717,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 25.5,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 24,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23.5,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 22.699999999953434,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 25.099999999976717,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 24.900000000023283,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 58023.80000000005,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 25512.400000000023,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23748.899999999907,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 171.80000000004657,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23762.099999999977,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 47519.40000000002,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23799.099999999977,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23731.599999999977,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23783.300000000047,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23733.900000000023,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23762.5,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23774.5,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23786.599999999977,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23761,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23749.5,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23792.099999999977,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23747.599999999977,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23736.699999999953,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23783.700000000186,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23760.299999999814,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23778.300000000047,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23772.90000000014,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23763.199999999953,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 2337.0999999998603,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23876.700000000186,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23.5999999998603,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 45064.30000000005,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23732,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 695.5,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 46889.19999999995,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23764.90000000014,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23770.59999999986,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23772.300000000047,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23725.399999999907,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23897.100000000093,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23795,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23711.600000000093,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23798.799999999814,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23771.600000000093,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23797,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23781.899999999907,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23736.5,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23750.90000000014,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23780,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 23757.59999999986,
+      "calls": 1931,
+      "triangles": 7607326
+    },
+    {
+      "ms": 47510.80000000005,
+      "calls": 1931,
+      "triangles": 7607326
+    }
+  ],
+  "views": [
+    {
+      "file": "b05-gate-close.png",
+      "sha256": "6c90e0220838e082555ca31061f06faa51ebca40006160e428dbe0b1e7487f5d",
+      "screenshotMethod": "Actual same-frame WebGL canvas readback after frame-pacing session",
+      "requestedView": "b05-gate-close",
+      "view": "b05-gate-close",
+      "verticalScheme": "patch04",
+      "camera": [
+        -3.000000000000003,
+        4.300000000000002,
+        -23.999999999999996
+      ],
+      "target": [
+        -1,
+        3.4,
+        0
+      ],
+      "fov": 60,
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 1931,
+      "triangles": 7607326,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 36,
+        "shadowRevision": 9,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1074,
+          "buildMs": 4292,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 1918,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        }
+      },
+      "performance": {
+        "samples": 60,
+        "warmupFrames": 8,
+        "medianMs": 23758.949999999837,
+        "p95Ms": 46889.19999999995,
+        "minMs": 22.699999999953434,
+        "maxMs": 58023.80000000005,
+        "valuesMs": [
+          34.800000000046566,
+          26.900000000023283,
+          24.29999999993015,
+          23.5,
+          50.10000000009313,
+          40.199999999953434,
+          23.300000000046566,
+          23.599999999976717,
+          25.5,
+          24,
+          23.5,
+          22.699999999953434,
+          25.099999999976717,
+          24.900000000023283,
+          58023.80000000005,
+          25512.400000000023,
+          23748.899999999907,
+          171.80000000004657,
+          23762.099999999977,
+          47519.40000000002,
+          23799.099999999977,
+          23731.599999999977,
+          23783.300000000047,
+          23733.900000000023,
+          23762.5,
+          23774.5,
+          23786.599999999977,
+          23761,
+          23749.5,
+          23792.099999999977,
+          23747.599999999977,
+          23736.699999999953,
+          23783.700000000186,
+          23760.299999999814,
+          23778.300000000047,
+          23772.90000000014,
+          23763.199999999953,
+          2337.0999999998603,
+          23876.700000000186,
+          23.5999999998603,
+          45064.30000000005,
+          23732,
+          695.5,
+          46889.19999999995,
+          23764.90000000014,
+          23770.59999999986,
+          23772.300000000047,
+          23725.399999999907,
+          23897.100000000093,
+          23795,
+          23711.600000000093,
+          23798.799999999814,
+          23771.600000000093,
+          23797,
+          23781.899999999907,
+          23736.5,
+          23750.90000000014,
+          23780,
+          23757.59999999986,
+          47510.80000000005
+        ],
+        "method": "8 warm-up rendered frames; 60 requestAnimationFrame intervals using the unchanged continuous renderFrame callback. Full geometry/materials, original desktop shadow resolution. Includes browser scheduling and software GPU; not GPU-only timings, not comparable to serialized readPixels history."
+      }
+    }
+  ],
+  "passed": true,
+  "environment": {
+    "browser": "151.0.7922.34",
+    "node": "v22.23.2",
+    "platform": "linux",
+    "runner": "GitHub Actions hosted Linux",
+    "method": "8 warm-up rendered frames; 60 requestAnimationFrame intervals using the unchanged continuous renderFrame callback. Full geometry/materials, original desktop shadow resolution. Includes browser scheduling and software GPU; not GPU-only timings, not comparable to serialized readPixels history.",
+    "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+  },
+  "viewerLoading": "Direct offline file URL",
+  "initializationMs": 25199,
+  "stage": "complete",
+  "completedAt": "2026-09-13T12:24:05.352Z"
+}

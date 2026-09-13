@@ -1,0 +1,9 @@
+2026-09-13T11:54:33.748Z open b05-residential
+2026-09-13T11:54:59.679Z ready 25802ms; 7715728 model triangles
+2026-09-13T11:54:59.680Z view b05-residential
+2026-09-13T11:57:40.167Z saved b05-residential.png; GL 0
+2026-09-13T11:57:40.167Z view b05-residential-entry
+2026-09-13T11:58:49.835Z saved b05-residential-entry.png; GL 0
+2026-09-13T11:58:49.835Z view b05-overview
+2026-09-13T12:00:11.932Z saved b05-overview.png; GL 0
+RESULT {"group":"residential","passed":true,"views":3,"errors":[]}

@@ -1,16 +1,14 @@
-## R3.1 侧墙卷帘门修复
-
-两端凹口侧墙扩大开口，卷帘默认收起；雨棚与柱列扩大、外移。继承R3五层、后坪、轻弧与中轴。本轮仅10项定向检查及局部浏览器验证，不重开全校园基线。IMPLEMENTED / REVIEW_PENDING；工程结果见 `docs/m11b/shutter-fix/delivery.md` 和 `qa/m11b-shutter-fix/browser-report.json`（没有通过报告前不宣称已验收）。
-
-以下为前序阶段记录：
-
 # 复原雅礼 · Return Old School
 
 长沙雅礼中学东塘校区，2006—2010 年历史校园复原；面向校庆与校友回忆的非商业项目。独立校友创作，不代表学校官方。
 
 2026-09-12 本地模型与渲染精化第二轮：**193.5 万 → 329.8 万三角面**，进一步加密曲面、倒角与叶片，建立 17 类独立材质、校园局部反射，并在原色板内优化色彩。[最新交付与对比](docs/render-refinement-r2-2026-09-12.md) · [首轮记录](docs/render-upgrade-2026-09-12.md)。工程检查已通过，效果待用户审阅。
 
-## 当前状态：B01—B04 已认可，下一批 B05
+## B05 当前交付（2026-09-13）
+
+**IMPLEMENTED / REVIEW_PENDING**。校门/校园石、六片球场篮架与围网、球门、主席台/三旗台、主要植被和生活附属体量已实施；不移动B01—B04已认可几何。校园石精确位置、主席台上盖年代、个体植被与隐蔽面继续H/U。 [B05交付](docs/m11b/batch05/delivery.md) · [QA/真实截图](qa/m11b-b05/README.md) · [Viewer](artifacts/m11b-b05/Yali_B05_R1_1_Viewer.html)。尚未登记B05认可；M1.1-C等待此批审阅。
+
+## 当前状态：B01—B04 已认可，B05 已实现待审
 
 后续模型统一遵循 [模型、材质与渲染标准 v1.0](docs/model-rendering-standard.md)，包括几何精度、17 类材质、色板、日光与深度、共享模块接入及验收清单。实施入口见 [AGENTS.md](AGENTS.md)。
 
@@ -44,7 +42,7 @@ Viewer SHA256：`715bdcc2e9c50e680c1d0d1bd4011a29ba95d041fd5cb2a21b5e7b6c6d9c38f
 
 工程记录为 10 项定向测试、6 组实际 WebGL 检查和 8 张截图，见 [QA](qa/m11b-shutter-fix/browser-report.json)。QA 中的 REVIEW_PENDING 是截图生成时状态；后续认可由 acceptance.json 单独记录，不篡改历史报告、不把认可登记冒充重新测试。
 
-M1.1-B共五批：B01/B02/B03/B04已认可；只剩B05校门及体育生活附属建筑。B05获认可后，建筑批次结束并进入M1.1-C通行整合。
+M1.1-B共五批：B01/B02/B03/B04已认可；B05外壳与主要固定校园构件已实现待审。B05获认可后，建筑批次结束并进入M1.1-C通行整合。
 
 ## 运行与定向验证
 

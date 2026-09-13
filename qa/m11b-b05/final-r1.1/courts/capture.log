@@ -1,0 +1,15 @@
+2026-09-13T11:54:29.052Z open b05-courts
+2026-09-13T11:54:52.489Z ready 23326ms; 7715728 model triangles
+2026-09-13T11:54:52.491Z view b05-courts
+2026-09-13T11:56:46.419Z saved b05-courts.png; GL 0
+2026-09-13T11:56:46.420Z view b05-hoop
+2026-09-13T11:57:03.038Z saved b05-hoop.png; GL 0
+2026-09-13T11:57:03.038Z view b05-court-entry
+2026-09-13T11:57:15.456Z saved b05-court-entry.png; GL 0
+2026-09-13T11:57:15.456Z view b05-track
+2026-09-13T11:57:38.342Z saved b05-track.png; GL 0
+2026-09-13T11:57:38.343Z view b05-auxiliary
+2026-09-13T11:57:42.809Z saved b05-auxiliary.png; GL 0
+2026-09-13T11:57:42.809Z view b05-pool
+2026-09-13T11:57:54.621Z saved b05-pool.png; GL 0
+RESULT {"group":"courts","passed":true,"views":6,"errors":[]}

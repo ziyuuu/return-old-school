@@ -1,5 +1,5 @@
 /** Assemble archived evidence without regenerating the tested Viewer or its pixels.
- * Input: gh run download 34752358220 -p 'B05-R11-*' --dir <B05_ARTIFACT_ROOT>.
+ * Input: gh run download 34755586253 -p 'B05-R11-*' --dir <B05_ARTIFACT_ROOT>.
  * Each original report and all per-frame measurements remain available.
  */
 import fs from 'node:fs';

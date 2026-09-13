@@ -1,0 +1,11 @@
+2026-09-13T11:54:33.224Z open b05-gate
+2026-09-13T11:54:59.167Z ready 25786ms; 7715728 model triangles
+2026-09-13T11:54:59.169Z view b05-gate
+2026-09-13T11:59:14.228Z saved b05-gate.png; GL 0
+2026-09-13T11:59:14.228Z view b05-gate-close
+2026-09-13T12:00:26.586Z saved b05-gate-close.png; GL 0
+2026-09-13T12:00:26.586Z view b05-stone
+2026-09-13T12:01:41.392Z saved b05-stone.png; GL 0
+2026-09-13T12:01:41.393Z view b05-side-gate
+2026-09-13T12:02:08.195Z saved b05-side-gate.png; GL 0
+RESULT {"group":"gate","passed":true,"views":4,"errors":[]}

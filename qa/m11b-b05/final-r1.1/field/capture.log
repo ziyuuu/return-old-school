@@ -1,0 +1,13 @@
+2026-09-13T11:54:41.785Z open b05-field
+2026-09-13T11:55:02.592Z ready 20692ms; 7715728 model triangles
+2026-09-13T11:55:02.595Z view b05-field
+2026-09-13T11:56:38.236Z saved b05-field.png; GL 0
+2026-09-13T11:56:38.236Z view b05-goal
+2026-09-13T11:56:59.626Z saved b05-goal.png; GL 0
+2026-09-13T11:56:59.626Z view b05-rostrum
+2026-09-13T11:57:10.327Z saved b05-rostrum.png; GL 0
+2026-09-13T11:57:10.327Z view b05-flags
+2026-09-13T11:57:26.513Z saved b05-flags.png; GL 0
+2026-09-13T11:57:26.513Z view b05-planted-axis
+2026-09-13T11:57:55.705Z saved b05-planted-axis.png; GL 0
+RESULT {"group":"field","passed":true,"views":5,"errors":[]}

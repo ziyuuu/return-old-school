@@ -1,0 +1,68 @@
+{
+  "run": "34755586253",
+  "runtimeSourceCommit": "6d19950e1eea1422621b92394b2553e90c889f84",
+  "viewerSHA256": "d9e91cad8a2cf49af997da14e4a4ba97066f6115c01517473c049c22815b5e4e",
+  "method": "Unmodified GitHub Actions artifacts from this exact run; validated source, Viewer and screenshot digests",
+  "artifacts": [
+    {
+      "name": "B05-R11-gate",
+      "reportSHA256": "06c5785edda785cce9f1ce0c20bbe8b56af26f684c21c522e31bd5597eafa082",
+      "destination": "final-r1.1/gate/report.json"
+    },
+    {
+      "name": "B05-R11-courts",
+      "reportSHA256": "18fa79dd33c5949a9dba62faccf0dc443e7695215a671de98715b1239d307080",
+      "destination": "final-r1.1/courts/report.json"
+    },
+    {
+      "name": "B05-R11-field",
+      "reportSHA256": "288cb87c649af36ced24707a75c3f9f621991c9c034a54bf17f9614ece816d69",
+      "destination": "final-r1.1/field/report.json"
+    },
+    {
+      "name": "B05-R11-residential",
+      "reportSHA256": "74b03ce2b6edeafa51e912748ad9540c5f0e618eb75c5dc0cfa716cb42bbcfd3",
+      "destination": "final-r1.1/residential/report.json"
+    },
+    {
+      "name": "B05-R11-checks",
+      "reportSHA256": "aa4eefffe524516d3838a370cae1ba16f4cd3044384f85aebc3d27138844603d",
+      "destination": "final-r1.1/checks/report.json"
+    },
+    {
+      "name": "B05-R11-regression",
+      "reportSHA256": "1aafe200f7062f05a4dde0609768f02a53e742d7ee863afc6255a84e03604ace",
+      "destination": "final-r1.1/regression/report.json"
+    },
+    {
+      "name": "B05-R11-mobile",
+      "reportSHA256": "949d434d07970b8222934fb549517a40b394bc9fb6c00dddacd6e624bd3fc24b",
+      "destination": "final-r1.1/mobile/report.json"
+    },
+    {
+      "name": "B05-R11-fallback",
+      "reportSHA256": "82dcd8e10cf46363511f780d3e5221b8ce946e7832ec3e488736d48dba5c8137",
+      "destination": "final-r1.1/fallback/report.json"
+    },
+    {
+      "name": "B05-R11-baseline",
+      "reportSHA256": "a18619f40ead5678c334362fe1be7ba94e01216873ed5a71411f29c6751ce320",
+      "destination": "final-r1.1/baseline/report.json"
+    },
+    {
+      "name": "B05-R11-measure-b05-gate-close",
+      "reportSHA256": "e142c331dc87a153e73ed92f3de0ebc493c282fcc041d734251cfe2d552cdbb6",
+      "destination": "final-r1.1/performance-resume/b05-gate-close/report.json"
+    },
+    {
+      "name": "B05-R11-measure-b05-hoop",
+      "reportSHA256": "e55494aa1c00e8ddd83c55091d4b43c683a938b39c67a2ce6a18e35da021cc9e",
+      "destination": "final-r1.1/performance-resume/b05-hoop/report.json"
+    },
+    {
+      "name": "B05-R11-measure-b05-overview",
+      "reportSHA256": "210c165cf732ce529d3e70bce35bbbf2b23506738ad764f731475973a41a0414",
+      "destination": "final-r1.1/performance-resume/b05-overview/report.json"
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+TAP version 13
+# Subtest: B05 uses cumulative B04 layout/terrain without mutating approved models, roads, grades or axis
+ok 1 - B05 uses cumulative B04 layout/terrain without mutating approved models, roads, grades or axis
+  ---
+  duration_ms: 60.428198
+  type: 'test'
+  ...
+# Subtest: B01–B04 acceptance remains explicit; B05 never invents an acceptance or surveyed metric
+ok 2 - B01–B04 acceptance remains explicit; B05 never invents an acceptance or surveyed metric
+  ---
+  duration_ms: 0.906437
+  type: 'test'
+  ...
+# Subtest: Finite real geometry, stable IDs, correct owners and defined evidence on every part
+ok 3 - Finite real geometry, stable IDs, correct owners and defined evidence on every part
+  ---
+  duration_ms: 3297.547454
+  type: 'test'
+  ...
+# Subtest: Six inherited court rectangles, twelve H hoops, two goals and open perimeter gaps are explicit
+ok 4 - Six inherited court rectangles, twelve H hoops, two goals and open perimeter gaps are explicit
+  ---
+  duration_ms: 0.526029
+  type: 'test'
+  ...
+# Subtest: Shared materials distinguish stone rails, thin fabric nets, glass and frames without a photo texture
+ok 5 - Shared materials distinguish stone rails, thin fabric nets, glass and frames without a photo texture
+  ---
+  duration_ms: 6.232136
+  type: 'test'
+  ...
+# Subtest: All fourteen portal grids remain open through real parts before and after BVH
+ok 6 - All fourteen portal grids remain open through real parts before and after BVH
+  ---
+  duration_ms: 33646.327816
+  type: 'test'
+  ...
+# Subtest: Major vegetation is deterministic and trunks do not enter the main road or the P03 rear opening
+ok 7 - Major vegetation is deterministic and trunks do not enter the main road or the P03 rear opening
+  ---
+  duration_ms: 16.361529
+  type: 'test'
+  ...
+# Subtest: New reflector ownership extends rather than moves the seven inherited probes
+ok 8 - New reflector ownership extends rather than moves the seven inherited probes
+  ---
+  duration_ms: 0.4299
+  type: 'test'
+  ...
+# Subtest: Running surface is an annulus with no near-coplanar track triangles under the turf
+ok 9 - Running surface is an annulus with no near-coplanar track triangles under the turf
+  ---
+  duration_ms: 4.261102
+  type: 'test'
+  ...
+# Subtest: H tree corrections preserve count and keep the accepted B02 ring and doorway sightlines clear
+ok 10 - H tree corrections preserve count and keep the accepted B02 ring and doorway sightlines clear
+  ---
+  duration_ms: 182.373576
+  type: 'test'
+  ...
+# Subtest: detailed frame and column geometry adds actual faces within the original envelope
+ok 11 - detailed frame and column geometry adds actual faces within the original envelope
+  ---
+  duration_ms: 46.389944
+  type: 'test'
+  ...
+# Subtest: walking surfaces and wall partitions stay exact and do not get artificial seams
+ok 12 - walking surfaces and wall partitions stay exact and do not get artificial seams
+  ---
+  duration_ms: 1.156773
+  type: 'test'
+  ...
+# Subtest: dimension-aware instances preserve placement and physical radius without stretching
+ok 13 - dimension-aware instances preserve placement and physical radius without stretching
+  ---
+  duration_ms: 13.927596
+  type: 'test'
+  ...
+# Subtest: raycasting uses the real refined surface and preserves an open doorway
+ok 14 - raycasting uses the real refined surface and preserves an open doorway
+  ---
+  duration_ms: 7.942168
+  type: 'test'
+  ...
+# Subtest: shared palette rows distinguish leaves from soil, water from glass and floors from metal
+ok 15 - shared palette rows distinguish leaves from soil, water from glass and floors from metal
+  ---
+  duration_ms: 5.578627
+  type: 'test'
+  ...
+# Subtest: surface maps are reproducible and families have distinct albedo and relief patterns
+ok 16 - surface maps are reproducible and families have distinct albedo and relief patterns
+  ---
+  duration_ms: 883.076982
+  type: 'test'
+  ...
+# Subtest: brushing has a direction while fabric has two crossing thread directions
+ok 17 - brushing has a direction while fabric has two crossing thread directions
+  ---
+  duration_ms: 24.690158
+  type: 'test'
+  ...
+# Subtest: ivy has a thin lobed mesh with leaf UVs inside its inherited coverage envelope
+ok 18 - ivy has a thin lobed mesh with leaf UVs inside its inherited coverage envelope
+  ---
+  duration_ms: 10.098836
+  type: 'test'
+  ...
+# Subtest: BVH keeps actual high-detail intersections, transforms and triangle order
+ok 19 - BVH keeps actual high-detail intersections, transforms and triangle order
+  ---
+  duration_ms: 94.845706
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 37752.92549

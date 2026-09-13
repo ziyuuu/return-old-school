@@ -1,0 +1,346 @@
+{
+  "batch": "B05",
+  "phase": "final",
+  "group": "performance",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "standard": "1.0",
+  "viewer": "artifacts/m11b-b05/Yali_B05_R1_Viewer.html",
+  "viewerSHA256": "d351d434c2196a85645cc6a05a0d32671dd33938b1504f07d257456a9c6c550e",
+  "sourceCommit": "330f2afd5f12c5552573dd53e3d6d2eb02442ade",
+  "startedAt": "2026-09-13T09:08:58.195Z",
+  "viewport": {
+    "width": 1280,
+    "height": 840
+  },
+  "deviceScaleFactor": 1,
+  "baseline": false,
+  "fallback": false,
+  "errors": [],
+  "warnings": [
+    "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+    {
+      "view": "b05-gate-close",
+      "compositorAttempt": "TimeoutError: page.screenshot: Timeout 45000ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n",
+      "recoveredBy": "same-frame WebGL canvas"
+    }
+  ],
+  "externalRequests": [],
+  "views": [
+    {
+      "file": "b05-gate-close.png",
+      "sha256": "4c1bd792983de69c6ec8802d1663c9cbbf165f3c0fe23075ebd243c9fc27aeab",
+      "screenshotMethod": "Actual same-frame WebGL canvas readback / clean viewport",
+      "requestedView": "b05-gate-close",
+      "view": "b05-gate-close",
+      "verticalScheme": "patch04",
+      "camera": [
+        -3.000000000000003,
+        4.300000000000002,
+        -23.999999999999996
+      ],
+      "target": [
+        -1,
+        3.4,
+        0
+      ],
+      "fov": 60,
+      "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "glError": 0,
+      "contextLost": false,
+      "calls": 1931,
+      "triangles": 7607130,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 36,
+        "shadowRevision": 12,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1074,
+          "buildMs": 4284,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 2018,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        }
+      },
+      "programs": 40,
+      "performance": {
+        "samples": 60,
+        "warmupFrames": 2,
+        "medianMs": 26.599999999976717,
+        "p95Ms": 38.5,
+        "minMs": 21.5,
+        "maxMs": 224.89999999999418,
+        "valuesMs": [
+          36.60000000000582,
+          26.599999999976717,
+          26.800000000017462,
+          26.699999999982538,
+          26.20000000001164,
+          24,
+          25.29999999998836,
+          35.90000000002328,
+          37.09999999997672,
+          24.800000000017462,
+          24.199999999982538,
+          25.300000000017462,
+          24.89999999999418,
+          22.89999999999418,
+          26.300000000017462,
+          26.599999999976717,
+          27.60000000000582,
+          25.300000000017462,
+          26,
+          27,
+          26.39999999999418,
+          28.60000000000582,
+          28.599999999976717,
+          21.900000000023283,
+          21.5,
+          224.89999999999418,
+          29.89999999999418,
+          28.39999999999418,
+          37.30000000001746,
+          31.199999999982538,
+          27.5,
+          27,
+          26.79999999998836,
+          26.10000000000582,
+          27.10000000000582,
+          26.89999999999418,
+          30.89999999999418,
+          51.80000000001746,
+          29.79999999998836,
+          26.70000000001164,
+          27.89999999999418,
+          24.699999999982538,
+          27.5,
+          28.70000000001164,
+          26.199999999982538,
+          24.400000000023283,
+          23.79999999998836,
+          23.29999999998836,
+          25,
+          23.10000000000582,
+          24,
+          23.70000000001164,
+          21.5,
+          23,
+          24,
+          38.89999999999418,
+          38.5,
+          29.79999999998836,
+          21.70000000001164,
+          22.20000000001164
+        ],
+        "method": "Wall-clock CPU+GPU frame duration: same render function then gl.finish(); animation loop paused, no frame-rate claim"
+      }
+    }
+  ],
+  "passed": false,
+  "environment": {
+    "browser": "151.0.7922.34",
+    "node": "v22.23.2",
+    "platform": "linux",
+    "runner": "GitHub Actions hosted Linux",
+    "rendering": "ANGLE SwiftShader software GPU; not user hardware",
+    "capture": "Actual browser pixels: Playwright/CDP viewport or recorded same-frame canvas readback for clean views; full geometry/materials/shadow resolution; ordinary render function"
+  },
+  "stage": "saved b05-gate-close.png; GL 0",
+  "initializationMs": 109612,
+  "annotationState": {
+    "visibleGuides": [],
+    "checkbox": false
+  },
+  "scene": {
+    "triangles": 7715532,
+    "geometryBytes": 216433832,
+    "meshes": 1975,
+    "geometries": 1975,
+    "materials": 101,
+    "trianglesByOwner": {
+      "10": 74172,
+      "11": 198000,
+      "12": 4020,
+      "13": 291086,
+      "14": 101856,
+      "15": 1544316,
+      "16": 67356,
+      "17": 538796,
+      "18": 548652,
+      "19": 83128,
+      "20": 2020656,
+      "21": 369420,
+      "23": 60,
+      "24": 155736,
+      "25": 103584,
+      "26": 9948,
+      "27": 6682,
+      "28": 39132,
+      "environment": 318216,
+      "04": 7996,
+      "05": 20590,
+      "06": 382320,
+      "08": 9198,
+      "09": 234792,
+      "01": 31456,
+      "02": 5628,
+      "03": 139008,
+      "07": 259200,
+      "bridge": 150528
+    },
+    "reflectionOwnership": {
+      "10": [
+        "field"
+      ],
+      "11": [
+        "teaching"
+      ],
+      "12": [
+        "teaching"
+      ],
+      "13": [
+        "eastTeaching"
+      ],
+      "14": [
+        "teaching"
+      ],
+      "15": [
+        "teaching"
+      ],
+      "16": [
+        "westTeaching"
+      ],
+      "17": [
+        "longya"
+      ],
+      "18": [
+        "library"
+      ],
+      "19": [
+        "garden"
+      ],
+      "20": [
+        "residential"
+      ],
+      "21": [
+        "eastTeaching"
+      ],
+      "24": [
+        "gym"
+      ],
+      "25": [
+        "teaching"
+      ],
+      "26": [
+        "teaching"
+      ],
+      "28": [
+        "courts"
+      ],
+      "04": [
+        "gym"
+      ],
+      "05": [
+        "courts"
+      ],
+      "06": [
+        "courts"
+      ],
+      "08": [
+        "field"
+      ],
+      "01": [
+        "entrance"
+      ],
+      "02": [
+        "entrance"
+      ],
+      "03": [
+        "gym"
+      ],
+      "07": [
+        "westTeaching"
+      ],
+      "environment": [
+        "teaching"
+      ],
+      "bridge": [
+        "teaching"
+      ]
+    },
+    "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+  }
+}
