@@ -1,0 +1,19 @@
+diff --git a/tools/m11c-c1/capture.mjs b/tools/m11c-c1/capture.mjs
+index d817708..e57d0b9 100644
+--- a/tools/m11c-c1/capture.mjs
++++ b/tools/m11c-c1/capture.mjs
+@@ -74,7 +74,13 @@ try{
+   await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[touch(x,y)]});await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[touch(x,y-36)]});await tick(100);await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await zero();let s=await state();check('Actual touch joystick moves and releases',s.motor.feet[2]>before[2]+1.7&&Math.hypot(s.input.x,s.input.z)===0,{before,after:s.motor.feet,input:s.input});
+   await page.locator('#c1-run').click();s=await state();check('Touch run toggle',s.input.run);
+   await page.locator('#c1-menu').click();await capture('02-mobile-help');await page.locator('#c1-spawn').selectOption('lane');await page.locator('#c1-reset').click();await zero();await capture('03-mobile-lane');
+-  await page.dispatchEvent('#c1-stick','pointerdown',{pointerId:15,clientX:x,clientY:y-35,pointerType:'touch'}).catch(()=>{});await page.dispatchEvent('#c1-stick','pointercancel',{pointerId:15,pointerType:'touch'});s=await state();check('Pointer cancellation cannot leave motion stuck',Math.hypot(s.input.x,s.input.z)===0);
++  // Use a real active browser pointer: synthetic dispatchEvent(pointerdown) cannot
++  // legally acquire pointer capture and was itself the iteration-01 JS error.
++  await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[touch(x,y)]});
++  await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[touch(x,y-35)]});
++  s=await state();check('Cancellation test starts from active touch motion',Math.hypot(s.input.x,s.input.z)>.5,s.input);
++  await cdp.send('Input.dispatchTouchEvent',{type:'touchCancel',touchPoints:[]});
++  s=await state();check('Real pointer cancellation cannot leave motion stuck',Math.hypot(s.input.x,s.input.z)===0,s.input);
+   report.mobile=await page.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,shadow:window.__YALI_RENDER__.state().shadowResolution}));check('Fresh 390x844 branch and no overflow',report.mobile.width===390&&report.mobile.scrollWidth===390&&report.mobile.shadow===2048,report.mobile);await cdp.detach();
+  }
+  if(group==='performance'){
