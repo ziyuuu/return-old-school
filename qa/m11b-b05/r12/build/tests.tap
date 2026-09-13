@@ -1,0 +1,142 @@
+TAP version 13
+# Subtest: B05 uses cumulative B04 layout/terrain without mutating approved models, roads, grades or axis
+ok 1 - B05 uses cumulative B04 layout/terrain without mutating approved models, roads, grades or axis
+  ---
+  duration_ms: 87.313842
+  type: 'test'
+  ...
+# Subtest: B01–B04 acceptance remains explicit; B05 never invents an acceptance or surveyed metric
+ok 2 - B01–B04 acceptance remains explicit; B05 never invents an acceptance or surveyed metric
+  ---
+  duration_ms: 1.123713
+  type: 'test'
+  ...
+# Subtest: Finite real geometry, stable IDs, correct owners and defined evidence on every part
+ok 3 - Finite real geometry, stable IDs, correct owners and defined evidence on every part
+  ---
+  duration_ms: 3985.047009
+  type: 'test'
+  ...
+# Subtest: Six inherited court rectangles, twelve H hoops, two goals and open perimeter gaps are explicit
+ok 4 - Six inherited court rectangles, twelve H hoops, two goals and open perimeter gaps are explicit
+  ---
+  duration_ms: 0.550003
+  type: 'test'
+  ...
+# Subtest: Shared materials distinguish stone rails, thin fabric nets, glass and frames without a photo texture
+ok 5 - Shared materials distinguish stone rails, thin fabric nets, glass and frames without a photo texture
+  ---
+  duration_ms: 6.091499
+  type: 'test'
+  ...
+# Subtest: All fourteen portal grids remain open through real parts before and after BVH
+ok 6 - All fourteen portal grids remain open through real parts before and after BVH
+  ---
+  duration_ms: 43882.915992
+  type: 'test'
+  ...
+# Subtest: Major vegetation is deterministic and trunks do not enter the main road or the P03 rear opening
+ok 7 - Major vegetation is deterministic and trunks do not enter the main road or the P03 rear opening
+  ---
+  duration_ms: 22.558162
+  type: 'test'
+  ...
+# Subtest: New reflector ownership extends rather than moves the seven inherited probes
+ok 8 - New reflector ownership extends rather than moves the seven inherited probes
+  ---
+  duration_ms: 0.361
+  type: 'test'
+  ...
+# Subtest: Running surface is an annulus with no near-coplanar track triangles under the turf
+ok 9 - Running surface is an annulus with no near-coplanar track triangles under the turf
+  ---
+  duration_ms: 3.076043
+  type: 'test'
+  ...
+# Subtest: H tree corrections preserve count and keep the accepted B02 ring and doorway sightlines clear
+ok 10 - H tree corrections preserve count and keep the accepted B02 ring and doorway sightlines clear
+  ---
+  duration_ms: 856.624852
+  type: 'test'
+  ...
+# Subtest: R1.2 stone is on the platform in front of, not alongside or behind the right gate tower
+ok 11 - R1.2 stone is on the platform in front of, not alongside or behind the right gate tower
+  ---
+  duration_ms: 3.302536
+  type: 'test'
+  ...
+# Subtest: Side enclosure uses continuous shared miter vertices and leaves the residential fork open
+ok 12 - Side enclosure uses continuous shared miter vertices and leaves the residential fork open
+  ---
+  duration_ms: 1.136131
+  type: 'test'
+  ...
+# Subtest: B05 crown tufts retain detail=4 and previous tree count; no unrequested shared decimation
+ok 13 - B05 crown tufts retain detail=4 and previous tree count; no unrequested shared decimation
+  ---
+  duration_ms: 20.314831
+  type: 'test'
+  ...
+# Subtest: detailed frame and column geometry adds actual faces within the original envelope
+ok 14 - detailed frame and column geometry adds actual faces within the original envelope
+  ---
+  duration_ms: 32.90222
+  type: 'test'
+  ...
+# Subtest: walking surfaces and wall partitions stay exact and do not get artificial seams
+ok 15 - walking surfaces and wall partitions stay exact and do not get artificial seams
+  ---
+  duration_ms: 0.905356
+  type: 'test'
+  ...
+# Subtest: dimension-aware instances preserve placement and physical radius without stretching
+ok 16 - dimension-aware instances preserve placement and physical radius without stretching
+  ---
+  duration_ms: 11.375104
+  type: 'test'
+  ...
+# Subtest: raycasting uses the real refined surface and preserves an open doorway
+ok 17 - raycasting uses the real refined surface and preserves an open doorway
+  ---
+  duration_ms: 4.788661
+  type: 'test'
+  ...
+# Subtest: shared palette rows distinguish leaves from soil, water from glass and floors from metal
+ok 18 - shared palette rows distinguish leaves from soil, water from glass and floors from metal
+  ---
+  duration_ms: 1.887156
+  type: 'test'
+  ...
+# Subtest: surface maps are reproducible and families have distinct albedo and relief patterns
+ok 19 - surface maps are reproducible and families have distinct albedo and relief patterns
+  ---
+  duration_ms: 825.9943
+  type: 'test'
+  ...
+# Subtest: brushing has a direction while fabric has two crossing thread directions
+ok 20 - brushing has a direction while fabric has two crossing thread directions
+  ---
+  duration_ms: 20.906998
+  type: 'test'
+  ...
+# Subtest: ivy has a thin lobed mesh with leaf UVs inside its inherited coverage envelope
+ok 21 - ivy has a thin lobed mesh with leaf UVs inside its inherited coverage envelope
+  ---
+  duration_ms: 9.470933
+  type: 'test'
+  ...
+# Subtest: BVH keeps actual high-detail intersections, transforms and triangle order
+ok 22 - BVH keeps actual high-detail intersections, transforms and triangle order
+  ---
+  duration_ms: 111.320742
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 49366.46792
