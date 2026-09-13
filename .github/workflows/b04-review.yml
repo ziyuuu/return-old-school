@@ -1,0 +1,93 @@
+name: B04 actual model and browser review
+on:
+  push:
+    branches: [codex/b04-development]
+    paths: [.github/workflows/b04-review.yml]
+permissions:
+  contents: write
+concurrency:
+  group: b04-review-development
+  cancel-in-progress: false
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/b04-development
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify inherited history and materialize only the inspected B04 patch
+        run: |
+          set -euo pipefail
+          git status --short
+          git merge-base --is-ancestor f8ece5fcade5c64332cc7fb34ac707b1d3aad8fc HEAD
+          git merge-base --is-ancestor 332b0c30a0371df676bccd798fd4d37ad53cedc4 HEAD
+          if [ ! -f apps/campus/src/batch04-core.mjs ]; then
+            python - <<'PY'
+          import pathlib,base64,lzma,hashlib,subprocess
+          raw=lzma.decompress(base64.b64decode(''.join(p.read_text().strip() for p in sorted(pathlib.Path('.github/b04-transfer').glob('*.txt')))))
+          assert hashlib.sha256(raw).hexdigest()=='dfd20ce03347c1af4e4e53c5c733858366542fe76e951df8409e8b237040527c'
+          subprocess.run(['git','apply','--check','-'],input=raw,check=True)
+          subprocess.run(['git','apply','-'],input=raw,check=True)
+          PY
+          fi
+          npm ci --prefix apps/campus
+          mkdir -p qa/m11b-b04/ci-iteration
+          npm run build --prefix apps/campus 2>&1 | tee qa/m11b-b04/ci-iteration/build.log
+          node --test tests/m11b/b04/model.test.mjs tests/render-upgrade/*.test.mjs 2>&1 | tee qa/m11b-b04/ci-iteration/tests.tap
+          node tools/m11b-b04/export.mjs
+          git diff --check
+          git add apps/campus/index.html apps/campus/src/main.ts apps/campus/src/render/reflections.ts apps/campus/src/batch04-core.mjs apps/campus/src/batch04-geometry.mjs apps/campus/src/batch04-scene.ts data/m11b/batch04/input.json tests/m11b/b04/model.test.mjs tools/m11b-b04/context.mjs tools/m11b-b04/export.mjs tools/m11b-b04/capture.mjs artifacts/m11b-b04
+          if ! git diff --cached --quiet; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git diff --cached --stat
+            git commit -m 'feat(b04): implement five evidence-bounded buildings and offline Viewer; review pending'
+            git push origin HEAD:codex/b04-development
+          fi
+          git rev-parse HEAD | tee qa/m11b-b04/ci-iteration/source-commit.txt
+          git ls-remote origin refs/heads/codex/b04-development | tee qa/m11b-b04/ci-iteration/remote-ref.txt
+          test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/codex/b04-development | cut -f1)"
+      - name: Fetch research references outside Git working tree
+        run: |
+          python - <<'PY'
+          import os,pathlib,urllib.request,hashlib,json,concurrent.futures
+          out=pathlib.Path(os.environ['RUNNER_TEMP'])/'b04-references';out.mkdir()
+          rows={'S03-024':'w1080h721/20180312/ce5f-fyscsmu8207202','S03-033':'w1080h722/20180312/f0b0-fyscsmu8207617','S03-035':'w1000h667/20180312/cb0b-fyscsmu8207706','S03-047':'w1000h667/20180312/2d58-fyscsmu8208584','S03-048':'w1000h667/20180312/eed0-fyscsmu8208649','S03-051':'w1080h721/20180312/07de-fyscsmu8208846'}
+          def fetch(item):
+            k,v=item;url='https://k.sinaimg.cn/n/sinacn/'+v+'.jpg/w700d1q75cms.jpg'
+            try:
+              r=urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0','Referer':'https://k.sina.com.cn/'}),timeout=25)
+              b=r.read();assert b[:2]==b'\xff\xd8';(out/(k+'.jpg')).write_bytes(b)
+              return {'id':k,'url':url,'sha256':hashlib.sha256(b).hexdigest(),'bytes':len(b),'status':'fetched'}
+            except Exception as e:return {'id':k,'url':url,'status':'unavailable','error':str(e)}
+          with concurrent.futures.ThreadPoolExecutor(max_workers=6) as ex:result=list(ex.map(fetch,rows.items()))
+          (out/'manifest.json').write_text(json.dumps(result,indent=2));print(json.dumps(result,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: B04-temporary-research-references-not-for-public-commit
+          path: ${{ runner.temp }}/b04-references
+          retention-days: 1
+      - name: Install locked browser runner and CJK fonts
+        run: |
+          npm install --prefix "$RUNNER_TEMP/b04-playwright" playwright@1.62.0
+          "$RUNNER_TEMP/b04-playwright/node_modules/.bin/playwright" install --with-deps chromium
+          sudo apt-get install -y fonts-noto-cjk
+          echo "PLAYWRIGHT_MODULE=$RUNNER_TEMP/b04-playwright/node_modules/playwright" >> "$GITHUB_ENV"
+      - name: Actual offline browser iteration (not final delivery QA)
+        env:
+          B04_QA_PHASE: ci-iteration
+        run: node tools/m11b-b04/capture.mjs --draft 2>&1 | tee qa/m11b-b04/ci-iteration/capture.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: B04-real-browser-iteration
+          path: |
+            qa/m11b-b04/ci-iteration
+            artifacts/m11b-b04
+          retention-days: 7
