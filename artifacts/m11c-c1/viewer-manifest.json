@@ -1,12 +1,12 @@
 {
-  "file": "Yali_C1_R1_Viewer.html",
-  "sha256": "96d2404bd56a9cf766a452f586bb4b6141957605c8266a710af9e9513e0737dc",
-  "bytes": 3872519,
-  "version": "C1.R1",
+  "file": "Yali_C1_R1_1_Viewer.html",
+  "sha256": "b2cd412be14a8ab3589c75c7e573312f3d0f5a24061766e15de0284a591847d6",
+  "bytes": 3874002,
+  "version": "C1.R1.1",
   "status": "IMPLEMENTED / REVIEW_PENDING",
   "standard": "1.0",
-  "generatedAt": "2026-09-13T16:49:36.613Z",
-  "gitHead": "65284ef8aece3d191b967dd7dbfa87715789a369",
+  "generatedAt": "2026-09-13T23:47:41.458Z",
+  "gitHead": "ea7d630d00c807a894f86a3b7c66bba6934d6785",
   "source": "Per-file digests identify exact runtime including an uncommitted worktree",
   "sources": {
     "apps/campus/index.html": "8a252d98ba8054abd0bafcd063f354b9e621ad85ff63cb93946fe1fb3b22113d",
@@ -38,7 +38,7 @@
     "apps/campus/src/patch04-core.mjs": "b63cf8eb1cfc1845eb1882613a7f421b1ff26eba40d4b71ea94120787866f150",
     "apps/campus/src/patch04-scene.ts": "7375fbdd4e89b124704257dd27aeaf846db26e5ffa96ff0c0519f99cc116ffbc",
     "apps/campus/src/player/collision-world.mjs": "3c918633fa23d720fe65af34017e693bb0928561cd33008f9f3c1aefbf5505be",
-    "apps/campus/src/player/motor.mjs": "c024c12c12e1ee337e516d4b445c1befc6547af7b414142723c50a23c4e3b2c0",
+    "apps/campus/src/player/motor.mjs": "e0dc783a6f9bbc27e879277d984af86e8a7d4459c3c510fa414c777525f4c8c7",
     "apps/campus/src/player/player-mode.ts": "29a474ba41071dc158b53c031da1e8da1f2dc0c9b40de7cff2a8d76d32d54b1f",
     "apps/campus/src/player/player.css": "4e5c990a2377a23bddd49df1d335852dbd9d2eb5941ad88a934a945ee358b7a2",
     "apps/campus/src/player/scale-avatar.ts": "781554de4cd9a42b799029474746cfc9ff9d5ce84bf274e9b732a75dd3e30d4c",
@@ -70,6 +70,6 @@
     "data/m11b/batch03/input.json": "5fe46cea1e5aa99e2ebb28ecda1561b84881b2b4f9e101cba97103952191cfc2",
     "data/m11b/batch04/input.json": "e24624184d4ef08fabac196ea1e60e766214d198ba6e9fe13117eeba509dd7d9",
     "data/m11b/batch05/input.json": "ab98bb7eeaef06ce9fa5f2c3e770db456949b4f53ae3a963e109234d2d6db1de",
-    "data/m11c/c1/config.json": "e9c9686641168529f2f4f8df3b68b7e53db671fd13df6ecde1857fe8974e6921"
+    "data/m11c/c1/config.json": "877ff20922aaf16542b74ade61b1defe41898be2b11dcca9f76bdfa72bb53c50"
   }
 }
