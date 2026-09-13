@@ -1,0 +1,141 @@
+{
+  "batch": "B05",
+  "standard": "1.0",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "base_commit": "9e28225532718e3d60cc518aaac36ccc65f3fc2c",
+  "research_date": "2026-09-13",
+  "survey_verified": false,
+  "measured": null,
+  "public_originals_included": false,
+  "sources": [
+    {
+      "id": "S03-013",
+      "scope": [
+        "01",
+        "02"
+      ],
+      "source": "https://k.sina.cn/article_6430641585_17f4bcdb1001003x9v.html",
+      "imageURL": "http://k.sinaimg.cn/n/sinacn/w1000h667/20180312/6a3a-fyscsmu8206556.jpg/w700d1q75cms.jpg",
+      "published_on": "2018-03-13",
+      "capture_date": null,
+      "inspection": "actual full image inspected; research original kept outside public Git",
+      "sha256": "d68917486d5120995595de6802fbfb5df5b41177e532d6999059dc198433ec02",
+      "bytes": 331736,
+      "observed": "横梁、非对称门柱、暖色窄条、值班玻璃体量与伸缩门。",
+      "limit": "摄影日期未核；不复制后来横幅、牌匾和现代改建。",
+      "grade": "P visible form / H chronology and metrics"
+    },
+    {
+      "id": "S03-015",
+      "scope": [
+        "27",
+        "01"
+      ],
+      "source": "https://k.sina.cn/article_6430641585_17f4bcdb1001003x9v.html",
+      "imageURL": "http://k.sinaimg.cn/n/sinacn/w1000h667/20180312/389d-fyscsmu8206687.jpg/w700d1q75cms.jpg",
+      "published_on": "2018-03-13",
+      "capture_date": null,
+      "inspection": "actual full image inspected; research original kept outside public Git",
+      "sha256": "dedfe6146d1b111a8031ccf6e507c2cd9a50aabf5f95ce9a499ec84ff9e8118e",
+      "bytes": 331728,
+      "observed": "不规则立石、可辨英文 YALI / MIDDLE / SCHOOL / 1906；与校门及低绿植相邻。",
+      "limit": "P外形和可辨英文，不证明米制坐标。总图-X侧来自既有校友确认；照相左右不等于总图左右。未辨中文不编造。",
+      "grade": "P visible form / H chronology and metrics"
+    },
+    {
+      "id": "S03-022",
+      "scope": [
+        "06",
+        "05",
+        "09"
+      ],
+      "source": "https://k.sina.cn/article_6430641585_17f4bcdb1001003x9v.html",
+      "imageURL": "http://k.sinaimg.cn/n/sinacn/w1080h800/20180312/4907-fyscsmu8207078.jpg/w700d1q75cms.jpg",
+      "published_on": "2018-03-13",
+      "capture_date": null,
+      "inspection": "actual full image inspected; research original kept outside public Git",
+      "sha256": "85f26f6c41a1c8275df8acdbd10651fd5de0b310f22564c8206e4373d168e2b9",
+      "bytes": 340081,
+      "observed": "蓝色网格围栏、边界开口、篮架支撑和场边树冠。",
+      "limit": "拼图及校友届别不是拍摄日期；不能推出有顶跑道完整屋架、12架实测总数。",
+      "grade": "P visible form / H chronology and metrics"
+    },
+    {
+      "id": "S03-023",
+      "scope": [
+        "06"
+      ],
+      "source": "https://k.sina.cn/article_6430641585_17f4bcdb1001003x9v.html",
+      "imageURL": "http://k.sinaimg.cn/n/sinacn/w1000h667/20180312/22a1-fyscsmu8207155.jpg/w700d1q75cms.jpg",
+      "published_on": "2018-03-13",
+      "capture_date": null,
+      "inspection": "actual full image inspected; research original kept outside public Git",
+      "sha256": "2cbe044434137e795a8d39cff0d4b4fedaa419f6aef22b8deb87905e43b1def9",
+      "bytes": 291587,
+      "observed": "矩形板/篮筐、低底座与悬臂式篮架、蓝色高围网。",
+      "limit": "杆件间距、网格节距、精确落位H；球场3×2布局继承A而不是据该单图重排。",
+      "grade": "P visible form / H chronology and metrics"
+    },
+    {
+      "id": "S03-027",
+      "scope": [
+        "10",
+        "08",
+        "14",
+        "09"
+      ],
+      "source": "https://k.sina.cn/article_6430641585_17f4bcdb1001003x9v.html",
+      "imageURL": "http://k.sinaimg.cn/n/sinacn/w1000h667/20180312/4ec3-fyscsmu8207330.jpg/w700d1q75cms.jpg",
+      "published_on": "2018-03-13",
+      "capture_date": null,
+      "inspection": "actual full image inspected; research original kept outside public Git",
+      "sha256": "9b7662a93b2989ef2cd2f940bd6c47dbf01698059ce5f20b1f53f85ecac3d4f1",
+      "bytes": 389409,
+      "observed": "操场及主席台局部：中部较高平檐、柱列和低侧翼。",
+      "limit": "拼图出现较晚校园状态。2006—2010年主席台上盖年代仍H/U；当前仅可替换的轮廓参照，不能写成同期实证。",
+      "grade": "P visible form / H chronology and metrics"
+    },
+    {
+      "id": "C01",
+      "scope": [
+        "08",
+        "09",
+        "14"
+      ],
+      "source": "https://commons.wikimedia.org/wiki/File:Yali_High_School_sports_field_2006.jpg",
+      "imageURL": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Yali_High_School_sports_field_2006.jpg",
+      "author": "X. Zhou",
+      "exif_data_generation": "2006-06-02 02:48",
+      "first_upload": "2006-06-15",
+      "date_caveat": "EXIF clock is metadata, not a survey certificate",
+      "sha256": "ece9c3b1ac6d22dd4fe0f154a8422b2c95183c2ab9a71e639235cd6e79eca8a3",
+      "bytes": 566500,
+      "inspection": "actual full 1024×630 image inspected",
+      "observed": "橘红跑道、绿内场、三旗台与浅色栏杆、场边树列及下垂树冠。",
+      "limit": "提供相对关系，不能量取周长、树种、树龄或精确距离。"
+    },
+    {
+      "id": "C02",
+      "scope": [
+        "08",
+        "09",
+        "14"
+      ],
+      "source": "https://commons.wikimedia.org/wiki/File:Yali_High_School_sports_ground_football_practice.jpg",
+      "imageURL": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Yali_High_School_sports_ground_football_practice.jpg",
+      "author": "X. Zhou",
+      "exif_data_generation": "2006-06-02 05:10",
+      "first_upload": "2006-06-15",
+      "inspection": "actual original 1024×376 image opened using web image viewer",
+      "observed": "白色球门及斜后撑、后缘树冠与矮栏/挡墙、老主楼同框。",
+      "limit": "门尺寸/球门两端精确坐标与树木个体仍H；未将施工吊车或后期建筑加入模型。"
+    }
+  ],
+  "priority": "A existing user-approved relations > dated P views > undated visible form > replaceable H",
+  "notes": [
+    "P03旧清单的采用/排除标签属于当时任务；本批重新打开015/022/023后仅采用与B05有关的可见特征，不覆盖旧manifest。",
+    "几何补全及认可均不能把H/U升级为实测或证实年代。",
+    "未得到校园石米制实测位置。保留[-17,0,1]累计锚点及A左右关系；朝向/偏距仍H。",
+    "没有单独定位22小店：不凑成28栋建筑。"
+  ]
+}

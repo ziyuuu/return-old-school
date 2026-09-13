@@ -45,10 +45,23 @@ export function finishB05Integration({scene,roots,mats,pickables}:any,model:any)
    group.add(mesh);
   }
   for(const fixture of model.fixtures.filter((q:any)=>q.owner===owner)){
-   const canvas=document.createElement('canvas');canvas.width=1024;canvas.height=512;const ctx=canvas.getContext('2d')!;
-   const lines=fixture.text.split('\n');ctx.clearRect(0,0,1024,512);ctx.fillStyle='white';ctx.textAlign='center';ctx.textBaseline='middle';
-   const font=Math.min(210,400/lines.length);ctx.font=`600 ${font}px sans-serif`;
-   lines.forEach((s:string,i:number)=>ctx.fillText(s,512,256+(i-(lines.length-1)/2)*font*1.10,980));
+   const canvas=document.createElement('canvas');
+   // Canvas pixels share the physical plaque aspect ratio; do not stretch glyphs.
+   const ratio=fixture.width/fixture.height;
+   canvas.width=ratio>=1?2048:Math.max(256,Math.round(1024*ratio));
+   canvas.height=Math.max(128,Math.round(canvas.width/ratio));
+   const ctx=canvas.getContext('2d')!,lines=fixture.text.split('\n');
+   const W=canvas.width,H=canvas.height;ctx.clearRect(0,0,W,H);
+   ctx.fillStyle='white';ctx.textAlign='center';ctx.textBaseline='middle';
+   let font=H*.76/(lines.length*1.06);ctx.font=`600 ${font}px sans-serif`;
+   const widest=Math.max(...lines.map((s:string)=>ctx.measureText(s).width));
+   if(widest>W*.88){font*=W*.88/widest;ctx.font=`600 ${font}px sans-serif`;}
+   lines.forEach((s:string,i:number)=>{
+    const y=H/2+(i-(lines.length-1)/2)*font*1.15,tokens=s.split(/\s{2,}/);
+    // Broad gate inscription: spread character centres, not each character's width.
+    if(tokens.length>1)tokens.forEach((t:string,j:number)=>ctx.fillText(t,W*(.12+.76*j/(tokens.length-1)),y));
+    else ctx.fillText(s,W/2,y);
+   });
    const material=cloneSurfaceMaterial(surfaceMaterial(mats[fixture.row],'name-mark'));
    material.map=new THREE.CanvasTexture(canvas);material.transparent=true;material.alphaTest=.30;material.depthWrite=false;
    material.onBeforeCompile=()=>{};material.customProgramCacheKey=()=> 'b05-local-type-native-uv';

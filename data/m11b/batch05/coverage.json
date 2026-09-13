@@ -1,0 +1,259 @@
+{
+  "batch": "B05",
+  "facility_count": 28,
+  "independent_building_count_claimed": false,
+  "items": [
+    {
+      "id": "01",
+      "name": "主校门",
+      "coverage": "B05_IMPLEMENTED_REVIEW_PENDING",
+      "batch": "B05",
+      "treatment": "非对称校门/伸缩门/侧置值班小厅；开放主入口",
+      "registry_evidence": "S03-013/015",
+      "remaining_boundary": "门内反向与历史牌匾；缺失尺寸允许H推定"
+    },
+    {
+      "id": "02",
+      "name": "侧门／独立侧路入口",
+      "coverage": "B05_IMPLEMENTED_REVIEW_PENDING",
+      "batch": "B05",
+      "treatment": "独立侧门及既有独立道路",
+      "registry_evidence": "U-R2-03批注；U-R3校友确认",
+      "remaining_boundary": "主门图面右侧原石位附近，侧路入口不接主路；工作坐标H"
+    },
+    {
+      "id": "03",
+      "name": "旧体育馆",
+      "coverage": "INHERITED_ALUMNI_APPROVED",
+      "batch": "B02",
+      "treatment": "保持该批已认可形体、入口和累计适配。",
+      "registry_evidence": "U-R2-04；S03-017/020",
+      "remaining_boundary": "A更大且接音乐楼；42×42包络H，隐藏面仍H"
+    },
+    {
+      "id": "04",
+      "name": "游泳池",
+      "coverage": "B05_IMPLEMENTED_REVIEW_PENDING",
+      "batch": "B05",
+      "treatment": "原池位水面、池缘、梯和H泳道绳",
+      "registry_evidence": "S05-005；U12",
+      "remaining_boundary": "池规格H11；位置不随方案任意移动"
+    },
+    {
+      "id": "05",
+      "name": "风雨跑道／有顶棚直跑道",
+      "coverage": "B05_IMPLEMENTED_REVIEW_PENDING",
+      "batch": "B05",
+      "treatment": "有顶直跑道、屋架/柱列、中央横向通口",
+      "registry_evidence": "U-R2-02；S03-022",
+      "remaining_boundary": "棚构造、高度、柱距H；不能仍写露天"
+    },
+    {
+      "id": "06",
+      "name": "六片篮球场",
+      "coverage": "B05_IMPLEMENTED_REVIEW_PENDING",
+      "batch": "B05",
+      "treatment": "原六场标线、12个H篮架、蓝色网格围栏及东西缺口",
+      "registry_evidence": "S03-022/023；U12",
+      "remaining_boundary": "3×2且与05紧贴平行；05夹在06与28之间；尺寸H09"
+    },
+    {
+      "id": "07",
+      "name": "办公楼／医务室线索",
+      "coverage": "INHERITED_ALUMNI_APPROVED",
+      "batch": "B04",
+      "treatment": "保持该批已认可形体、入口和累计适配。",
+      "registry_evidence": "S03-024",
+      "remaining_boundary": "楼名与医务室入口仍待核；不编造房号"
+    },
+    {
+      "id": "08",
+      "name": "田径场／足球坪",
+      "coverage": "B05_IMPLEMENTED_REVIEW_PENDING",
+      "batch": "B05",
+      "treatment": "原运动面/两球门/草坪与标线，六跑道分道H",
+      "registry_evidence": "C01/C02；S03-025/026/027",
+      "remaining_boundary": "规格与周长不能从示意符号量取"
+    },
+    {
+      "id": "09",
+      "name": "林荫道／主路",
+      "coverage": "B05_IMPLEMENTED_REVIEW_PENDING",
+      "batch": "B05",
+      "treatment": "57棵主要树木、特征下垂冠与低种植边界；个体落位H",
+      "registry_evidence": "C01；S03-043/045",
+      "remaining_boundary": "可见树列保留；树种与缺失冠幅分开标记"
+    },
+    {
+      "id": "10",
+      "name": "主席台",
+      "coverage": "B05_IMPLEMENTED_REVIEW_PENDING",
+      "batch": "B05",
+      "treatment": "原台座位置、主/侧棚H、上下落脚与侧台阶",
+      "registry_evidence": "S01；S03-027",
+      "remaining_boundary": "图面左侧；历史上盖与尺度H"
+    },
+    {
+      "id": "11",
+      "name": "食堂",
+      "coverage": "INHERITED_ALUMNI_APPROVED",
+      "batch": "B03 R2",
+      "treatment": "保持该批已认可形体、入口和累计适配。",
+      "registry_evidence": "S03-031/032",
+      "remaining_boundary": "外观各面与柱网缺尺寸；采用可替换H"
+    },
+    {
+      "id": "12",
+      "name": "食堂下层小卖部",
+      "coverage": "INHERITED_ALUMNI_APPROVED",
+      "batch": "B03 R2",
+      "treatment": "保持该批已认可形体、入口和累计适配。",
+      "registry_evidence": "S03文字",
+      "remaining_boundary": "不拿食堂大厅充当小卖部室内"
+    },
+    {
+      "id": "13",
+      "name": "科学馆",
+      "coverage": "INHERITED_ALUMNI_APPROVED",
+      "batch": "B04",
+      "treatment": "保持该批已认可形体、入口和累计适配。",
+      "registry_evidence": "S03-033/035",
+      "remaining_boundary": "其他立面与实验室分间允许H但不冒称实测"
+    },
+    {
+      "id": "14",
+      "name": "前坪／国旗区",
+      "coverage": "B05_IMPLEMENTED_REVIEW_PENDING",
+      "batch": "B05",
+      "treatment": "保留原三旗台/阶/杆；新增浅色栏杆和柱头",
+      "registry_evidence": "C01；S01",
+      "remaining_boundary": "旗台台阶与种植池关系优先"
+    },
+    {
+      "id": "15",
+      "name": "旧主教学楼／教室",
+      "coverage": "INHERITED_ALUMNI_APPROVED",
+      "batch": "B01 R3.1",
+      "treatment": "保持该批已认可形体、入口和累计适配。",
+      "registry_evidence": "C02；S03-038/040/041/043；U12",
+      "remaining_boundary": "左厕逐层相连已确认；旧楼平面不借用新楼"
+    },
+    {
+      "id": "16",
+      "name": "校史馆／旧用途线索",
+      "coverage": "INHERITED_ALUMNI_APPROVED",
+      "batch": "B04",
+      "treatment": "保持该批已认可形体、入口和累计适配。",
+      "registry_evidence": "S03-051",
+      "remaining_boundary": "历史用途未定；不是24音乐楼"
+    },
+    {
+      "id": "17",
+      "name": "长雅楼",
+      "coverage": "INHERITED_ALUMNI_APPROVED",
+      "batch": "B04",
+      "treatment": "保持该批已认可形体、入口和累计适配。",
+      "registry_evidence": "S03-047/048；U-R3校友确认",
+      "remaining_boundary": "R3向图面左移且道路正对入口；门向及尺寸H"
+    },
+    {
+      "id": "18",
+      "name": "旧图书馆",
+      "coverage": "INHERITED_ALUMNI_APPROVED",
+      "batch": "B03 R2",
+      "treatment": "保持该批已认可形体、入口和累计适配。",
+      "registry_evidence": "S03-049",
+      "remaining_boundary": "缺失背侧H；入口照片不是完整楼层图"
+    },
+    {
+      "id": "19",
+      "name": "后花园／旋转楼梯",
+      "coverage": "INHERITED_ALUMNI_APPROVED",
+      "batch": "B03 R2",
+      "treatment": "保持该批已认可形体、入口和累计适配。",
+      "registry_evidence": "S03-050",
+      "remaining_boundary": "楼梯起终点和尺寸H；保留照片曲线特征"
+    },
+    {
+      "id": "20",
+      "name": "居住／家属区建筑群",
+      "coverage": "B05_IMPLEMENTED_REVIEW_PENDING",
+      "batch": "B05",
+      "treatment": "原六体量外壳差异化、公共小门厅、可见H步行接续带",
+      "registry_evidence": "S03-013/020；U-R3校友确认",
+      "remaining_boundary": "R4整体右上移动已确认；精确位移、楼栋数、尺寸和年代仍H。"
+    },
+    {
+      "id": "21",
+      "name": "信息楼（工作名）",
+      "coverage": "INHERITED_ALUMNI_APPROVED",
+      "batch": "B04",
+      "treatment": "保持该批已认可形体、入口和累计适配。",
+      "registry_evidence": "原图占位",
+      "remaining_boundary": "正式名称与身份不靠推定填充"
+    },
+    {
+      "id": "22",
+      "name": "小店线索",
+      "coverage": "UNLOCATED_U_NOT_FABRICATED",
+      "batch": null,
+      "treatment": "身份/位置仍U，不虚构独立商铺。",
+      "registry_evidence": "旧文／原图未落位",
+      "remaining_boundary": "不为补齐编号自造商户身份"
+    },
+    {
+      "id": "23",
+      "name": "沙坑／操场后缘右端",
+      "coverage": "B05_IMPLEMENTED_REVIEW_PENDING",
+      "batch": "B05",
+      "treatment": "保留后缘沙坑，补边框，不移动",
+      "registry_evidence": "U-R2-03批注",
+      "remaining_boundary": "准确长宽H；原前坪右侧坐标已废弃"
+    },
+    {
+      "id": "24",
+      "name": "音乐楼／四层贴体独立体块",
+      "coverage": "INHERITED_ALUMNI_APPROVED",
+      "batch": "B02",
+      "treatment": "保持该批已认可形体、入口和累计适配。",
+      "registry_evidence": "U-R2-04；校友草图；U-R3校友确认",
+      "remaining_boundary": "R3本体紧贴体育馆，不是外加楼梯连廊；具体贴合边及门洞H"
+    },
+    {
+      "id": "25",
+      "name": "主楼左侧相连独栋厕所",
+      "coverage": "INHERITED_ALUMNI_APPROVED",
+      "batch": "B01 R3.1",
+      "treatment": "保持该批已认可形体、入口和累计适配。",
+      "registry_evidence": "U-R2-01；校友草图",
+      "remaining_boundary": "R4已确认连续楼体、逐层完整楼板、两端门和桥侧开口护栏；未知尺寸、男女两端对应、器具与隐藏面。"
+    },
+    {
+      "id": "26",
+      "name": "池畔旧厕所／小体量",
+      "coverage": "B05_IMPLEMENTED_REVIEW_PENDING",
+      "batch": "B05",
+      "treatment": "原小厕所体量、真门洞、门厅和短路径",
+      "registry_evidence": "U-R2-04圈注",
+      "remaining_boundary": "4.2×3工作占地H；不是圈内整栋玻璃建筑"
+    },
+    {
+      "id": "27",
+      "name": "校门图面左侧校名石",
+      "coverage": "B05_IMPLEMENTED_REVIEW_PENDING",
+      "batch": "B05",
+      "treatment": "原-X石位、不规则立石与可辨英文；米制位置H",
+      "registry_evidence": "S03-015；用户照片；U-R3校友确认",
+      "remaining_boundary": "左右按总图-X；照片观察者左右不当成总图坐标"
+    },
+    {
+      "id": "28",
+      "name": "体育辅助用房组（工作名）",
+      "coverage": "B05_IMPLEMENTED_REVIEW_PENDING",
+      "batch": "B05",
+      "treatment": "单层辅助用房、H单坡屋盖、门厅及运动侧入口",
+      "registry_evidence": "U12文字草图；R01后期资料",
+      "remaining_boundary": "低矮单层已确认；健身／体育办公室／器材；分间H05不固定三栋"
+    }
+  ]
+}

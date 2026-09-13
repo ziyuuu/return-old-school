@@ -22,7 +22,7 @@ const report={batch:'B05',phase,group,status:'IMPLEMENTED / REVIEW_PENDING',stan
 const checkpoint=async()=>fs.writeFile(path.join(out,'report.json'),JSON.stringify(report,null,2));
 function stage(s){report.stage=s;console.log(new Date().toISOString(),s);}
 const browser=await chromium.launch({headless:true,timeout:120000,args:['--no-sandbox','--disable-dev-shm-usage','--use-angle=swiftshader','--enable-unsafe-swiftshader','--disable-background-timer-throttling','--disable-renderer-backgrounding']});
-report.environment={browser:browser.version(),node:process.version,platform:process.platform,runner:process.env.GITHUB_ACTIONS?'GitHub Actions hosted Linux':'local',rendering:'ANGLE SwiftShader software GPU; not user hardware',capture:'Actual Playwright page screenshot; full geometry/materials/shadow resolution; paused animation loop with ordinary render function'};
+report.environment={browser:browser.version(),node:process.version,platform:process.platform,runner:process.env.GITHUB_ACTIONS?'GitHub Actions hosted Linux':'local',rendering:'ANGLE SwiftShader software GPU; not user hardware',capture:'Actual browser pixels: Playwright/CDP viewport or recorded same-frame canvas readback for clean views; full geometry/materials/shadow resolution; ordinary render function'};
 const context=await browser.newContext({viewport,deviceScaleFactor:1}),page=await context.newPage();page.setDefaultTimeout(240000);
 page.on('pageerror',e=>report.errors.push(String(e)));page.on('console',e=>{if(e.type()==='error')report.errors.push(e.text());else if(e.type()==='warning'&&report.warnings.length<30)report.warnings.push(e.text());});page.on('request',r=>{if(/^https?:/.test(r.url()))report.externalRequests.push(r.url());});
 if(fallback)await page.addInitScript(()=>{const original=WebGL2RenderingContext.prototype.getExtension;WebGL2RenderingContext.prototype.getExtension=function(name){return name==='EXT_clip_control'?null:original.call(this,name);};});
@@ -34,6 +34,7 @@ try{
  await page.waitForFunction(()=>window.__YALI_RENDER_RAW__&&(window.__YALI_B05__?.ready||window.__YALI_B04__?.ready),null,{timeout:600000});
  await page.evaluate(()=>window.__YALI_RENDER_RAW__.renderer.setAnimationLoop(null));await renderOnce();await renderOnce();
  report.initializationMs=Date.now()-started;
+ report.annotationState=await page.evaluate(()=>{const visible=[];window.__YALI_RENDER_RAW__.scene.traverseVisible(o=>{if(o.type==='AxesHelper'||o.type==='GridHelper')visible.push(o.type);});return {visibleGuides:visible,checkbox:document.getElementById('grid-check').checked};});
  report.scene=await page.evaluate(()=>{
   const {scene,renderer}=window.__YALI_RENDER_RAW__,gs=new Set(),ms=new Set(),owners={},probes={};let triangles=0,bytes=0,meshes=0;
   scene.traverseVisible(o=>{if(!o.isMesh)return;meshes++;const g=o.geometry,n=(g.index?.count??g.attributes.position.count)/3*(o.isInstancedMesh?o.count:1),owner=o.userData.facility||o.userData.owner||'environment';triangles+=n;owners[owner]=(owners[owner]||0)+n;
@@ -80,6 +81,7 @@ try{
  if(mobile){report.mobile=await page.evaluate(()=>({noOverflow:document.documentElement.scrollWidth<=innerWidth,scrollWidth:document.documentElement.scrollWidth,innerWidth,title:document.title,shadowResolution:window.__YALI_RENDER__.state().shadowResolution}));}
  report.passed=report.errors.length===0&&report.externalRequests.length===0&&report.views.every(v=>!v.glError&&!v.contextLost&&v.triangles>0&&(v.requestedView==='fresh default'||v.view===v.requestedView));
  if(group==='checks')report.passed=report.passed&&report.access.passed&&report.inherited.b03.passed&&report.inherited.b04.passed&&report.inherited.b02.routes.every(r=>r.failures===0)&&report.inherited.b02.doors.every(d=>d.bad.length===0)&&report.inherited.b02.sharedWallBlocked&&report.invariants.axis.every(x=>x===73)&&report.invariants.mainFloor===3.45&&report.invariants.flagCount===3&&report.invariants.shutters&&report.invariants.unlocated22===null;
+ if(!baseline)report.passed=report.passed&&report.annotationState.visibleGuides.length===0&&!report.annotationState.checkbox;
  if(mobile)report.passed=report.passed&&report.mobile.noOverflow&&report.mobile.shadowResolution===2048;
  if(fallback)report.passed=report.passed&&report.views.every(v=>v.lighting.logarithmicDepthBuffer&&!v.lighting.reversedDepthBuffer);
 }catch(e){report.errors.push({message:String(e),stack:e.stack});console.error(e);}finally{

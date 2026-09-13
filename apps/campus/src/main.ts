@@ -282,6 +282,8 @@ const ramps=[
 const mats=createCampusMaterials(ramps,renderer);
 const volumes=new THREE.Group(), surfaces=new THREE.Group(), outlines=new THREE.Group(), routeOverlay=new THREE.Group();
 scene.add(surfaces,volumes,outlines,routeOverlay);routeOverlay.visible=false;
+// Non-physical survey guides are opt-in, never a pole or marking in the historical model.
+const showGuides=new URLSearchParams(location.search).get('guides')==='1';outlines.visible=showGuides;
 const roots=new Map<string,THREE.Group>(), pickables:THREE.Object3D[]=[], labels=new Map<string,{node:HTMLDivElement,point:THREE.Vector3}>();
 const keyLabels=new Set(['01','02','03','06','08','10','11','13','15','17','18','20','23','24','25','26','27']);
 const solidKinds=new Set(['building','music','auxiliary','context','toilet-pool','canteen']);
@@ -317,8 +319,8 @@ for(const [a,b] of layout.navigation.edges){
  for(const o of surfaces.children.slice(before)){o.name=`road-${a}--${b}`;o.userData.route=[a,b];o.userData.width=edgeWidth(layout,a,b);}
  line([[pa[0],.3,pa[2]],[pb[0],.3,pb[2]]],routeOverlay,'#b2793f',true);
 }
-const grid=new THREE.GridHelper(360,36,'#6a8f85','#a7b9a9');grid.position.set(51,-.005,139);grid.visible=false;scene.add(grid);
-const axes=new THREE.AxesHelper(16);axes.position.y=.2;scene.add(axes);
+const grid=new THREE.GridHelper(360,36,'#6a8f85','#a7b9a9');grid.position.set(51,-.005,139);grid.visible=showGuides;scene.add(grid);
+const axes=new THREE.AxesHelper(16);axes.position.y=.2;axes.visible=showGuides;scene.add(axes);
 rect(outlines,-2,-2,2,2,.18,'#b38146');
 const shortLabels:Record<string,string>={'10':'主席台','23':'沙坑','02':'侧门','20':'家属区','24':'音乐楼 · 4F','25':'主楼厕所','26':'池畔厕所','27':'校名石'};
 function addLabel(f:Facility){if(!f.position)return;
@@ -446,7 +448,8 @@ for(const btn of document.querySelectorAll<HTMLButtonElement>('[data-view]'))btn
 el<HTMLSelectElement>('toilet-level').onchange=e=>setToiletLevel(Number((e.target as HTMLSelectElement).value),true);
 el<HTMLInputElement>('labels-check').onchange=e=>labelsOn=(e.target as HTMLInputElement).checked;
 el<HTMLInputElement>('roofs-check').onchange=e=>roofs.visible=(e.target as HTMLInputElement).checked;
-el<HTMLInputElement>('grid-check').onchange=e=>grid.visible=(e.target as HTMLInputElement).checked;
+el<HTMLInputElement>('grid-check').checked=showGuides;
+el<HTMLInputElement>('grid-check').onchange=e=>{const visible=(e.target as HTMLInputElement).checked;grid.visible=visible;outlines.visible=visible;axes.visible=visible;};
 el<HTMLInputElement>('routes-check').onchange=e=>routeOverlay.visible=(e.target as HTMLInputElement).checked;
 el<HTMLInputElement>('footprints-check').onchange=e=>{planOnly=(e.target as HTMLInputElement).checked;volumes.visible=!planOnly;roots.get('12')!.visible=!planOnly;if(planOnly)setView('top');};
 function download(name:string,data:Blob|string){const u=typeof data==='string'?data:URL.createObjectURL(data),a=document.createElement('a');a.href=u;a.download=name;a.click();if(typeof data!=='string')setTimeout(()=>URL.revokeObjectURL(u),1000);}
