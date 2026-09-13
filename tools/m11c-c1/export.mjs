@@ -10,11 +10,11 @@ const r=await build({entryPoints:[path.join(root,'apps/campus/src/main.ts')],bun
 const js=r.outputFiles.find(f=>f.path.endsWith('.js')).text.replace(/<\/script/gi,'<\\/script'),css=r.outputFiles.find(f=>f.path.endsWith('.css')).text;
 const template=await fs.readFile(path.join(root,'apps/campus/index.html'),'utf8');
 const html=template.replace('</head>',`<style>${css}</style></head>`).replace('<script type="module" src="/src/main.ts"></script>',()=>`<script>${js}</script>`);
-const name='Yali_C1_R1_Viewer.html',digest=b=>createHash('sha256').update(b).digest('hex'),sha256=digest(html);
+const name='Yali_C1_R1_1_Viewer.html',digest=b=>createHash('sha256').update(b).digest('hex'),sha256=digest(html);
 await fs.writeFile(path.join(out,name),html);
 const files=[...new Set([...Object.keys(r.metafile.inputs).filter(f=>!f.includes('node_modules')).map(f=>path.relative(root,path.resolve(root,f))),'apps/campus/index.html','apps/campus/package.json','apps/campus/package-lock.json'])].sort();
 const sources={};for(const f of files)sources[f]=digest(await fs.readFile(path.join(root,f)));
-await fs.writeFile(path.join(out,'viewer-manifest.json'),JSON.stringify({file:name,sha256,bytes:Buffer.byteLength(html),version:'C1.R1',status:'IMPLEMENTED / REVIEW_PENDING',standard:'1.0',generatedAt:new Date().toISOString(),gitHead:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),source:'Per-file digests identify exact runtime including an uncommitted worktree',sources},null,2)+'\n');
+await fs.writeFile(path.join(out,'viewer-manifest.json'),JSON.stringify({file:name,sha256,bytes:Buffer.byteLength(html),version:'C1.R1.1',status:'IMPLEMENTED / REVIEW_PENDING',standard:'1.0',generatedAt:new Date().toISOString(),gitHead:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),source:'Per-file digests identify exact runtime including an uncommitted worktree',sources},null,2)+'\n');
 const notices=await Promise.all(['three/LICENSE','three-mesh-bvh/LICENSE'].map(async f=>f+'\n'+await fs.readFile(path.join(root,'apps/campus/node_modules',f),'utf8')));
 notices.push('@dimforge/rapier3d-compat 0.20.0 — Apache-2.0\nOfficial repository: https://github.com/dimforge/rapier.js\nCopyright Dimforge / Rapier contributors. WASM embedded in offline Viewer.\nSee APACHE-2.0.txt.');
 await fs.writeFile(path.join(out,'THIRD_PARTY_NOTICES.txt'),notices.join('\n\n'));

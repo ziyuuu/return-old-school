@@ -7,6 +7,23 @@ const identity = {x:0,y:0,z:0,w:1};
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const approach=(a,b,d)=>a<b?Math.min(a+d,b):Math.max(a-d,b);
 
+export function directionalSlopeSpeed(normal={x:0,y:1,z:0}, direction={x:0,z:0}, movement={}) {
+  const mag=Math.hypot(direction.x||0,direction.z||0);
+  if(mag<1e-7||!Number.isFinite(normal?.y)||normal.y<=1e-4)return {multiplier:1,degrees:0};
+  const ux=(direction.x||0)/mag,uz=(direction.z||0)/mag;
+  const grade=-((normal.x||0)*ux+(normal.z||0)*uz)/normal.y;
+  const degrees=Math.atan(grade)*180/Math.PI,dead=movement.slopeSpeedDeadbandDegrees??2;
+  if(degrees>dead){
+    const limit=Math.max(dead+.01,movement.climbDegrees??42),t=clamp((degrees-dead)/(limit-dead),0,1),minimum=movement.uphillSpeedMinMultiplier??.45;
+    return {multiplier:1-(1-minimum)*t,degrees};
+  }
+  if(degrees<-dead){
+    const full=Math.max(dead+.01,movement.downhillFullEffectDegrees??18),t=clamp((-degrees-dead)/(full-dead),0,1),maximum=movement.downhillSpeedMaxMultiplier??1.12;
+    return {multiplier:1+(maximum-1)*t,degrees};
+  }
+  return {multiplier:1,degrees};
+}
+
 /** Simulation state is independent of the scene graph. One capsule and one set of
  * kinematic rules are used at every doorway, ramp, stair and frame rate. */
 export class PlayerMotor {
@@ -25,6 +42,7 @@ export class PlayerMotor {
     this.position={x:0,y:1,z:0}; this.previous={...this.position};
     this.velocity={x:0,y:0,z:0}; this.grounded=false; this.heading=0;
     this.travel=0;this.actualSpeed=0;this.ticks=0;this.droppedSeconds=0;this.accumulator=0;
+    this.groundNormal={x:0,y:1,z:0};this.slopeDegrees=0;this.slopeSpeedMultiplier=1;
     this.paused=true;this.blocked=false;this.collisions=[];this.lastSafe=null;this.respawns=0;
   }
   /** Reset only to an explicit checkpoint, rejecting a capsule overlapping solids.
@@ -37,6 +55,7 @@ export class PlayerMotor {
     if(this.validateSpawn(target)||this.world.intersectionWithShape(target,identity,shape,undefined,undefined,this.collider,this.body))throw Error('Checkpoint intersects solid geometry');
     this.position=target; this.previous={...target}; this.body.setTranslation(target,true);this.body.setNextKinematicTranslation(target);
     this.velocity={x:0,y:0,z:0};this.grounded=false;this.actualSpeed=0;this.heading=heading;this.accumulator=0;this.collisions=[];this.blocked=false;
+    this.groundNormal={x:0,y:1,z:0};this.slopeDegrees=0;this.slopeSpeedMultiplier=1;
     this.world.step();this.lastSafe={feet:[...feet],heading};
   }
   setPaused(value) { this.paused=Boolean(value);this.accumulator=0;this.velocity.x=0;this.velocity.z=0;this.actualSpeed=0; }
@@ -50,11 +69,19 @@ export class PlayerMotor {
     if(this.accumulator>=dt){this.droppedSeconds+=this.accumulator;this.accumulator=0;}
     return steps;
   }
+  sampleGroundNormal() {
+    if(!this.grounded)return {x:0,y:1,z:0};
+    const feet=this.feet(),ray=new RAPIER.Ray({x:feet[0],y:feet[1]+.42,z:feet[2]},{x:0,y:-1,z:0});
+    const hit=this.world.castRayAndGetNormal(ray,.90,true,undefined,undefined,this.collider,this.body);
+    return hit&&hit.normal&&hit.normal.y>.05?{x:hit.normal.x,y:hit.normal.y,z:hit.normal.z}:{x:0,y:1,z:0};
+  }
   /** Public for deterministic QA; ordinary input and tests execute this same motor. */
   step(input={x:0,z:0,run:false}, dt=1/this.config.simulation.hz) {
     this.ensureRegion(this.position);
-    const m=this.config.movement,mag=Math.hypot(input.x||0,input.z||0),scale=mag>1?1/mag:1;
-    const speed=input.run?m.runSpeed:m.walkSpeed,tx=(input.x||0)*scale*speed,tz=(input.z||0)*scale*speed;
+    const m=this.config.movement,mag=Math.hypot(input.x||0,input.z||0),scale=mag>1?1/mag:1,dir={x:(input.x||0)*scale,z:(input.z||0)*scale};
+    this.groundNormal=this.sampleGroundNormal();
+    const slope=directionalSlopeSpeed(this.groundNormal,dir,m);this.slopeDegrees=slope.degrees;this.slopeSpeedMultiplier=slope.multiplier;
+    const speed=(input.run?m.runSpeed:m.walkSpeed)*slope.multiplier,tx=dir.x*speed,tz=dir.z*speed;
     const rate=mag>0?m.acceleration:m.braking;
     const dx=tx-this.velocity.x,dz=tz-this.velocity.z,d=Math.hypot(dx,dz),a=Math.min(1,rate*dt/(d||1));
     this.velocity.x+=dx*a;this.velocity.z+=dz*a;
@@ -76,7 +103,7 @@ export class PlayerMotor {
   }
   feet() { return [this.position.x,this.position.y-this.half,this.position.z]; }
   reset() { if(this.lastSafe){this.respawns++;this.spawn(this.lastSafe.feet,this.lastSafe.heading);} }
-  state() { return {feet:this.feet(),velocity:{...this.velocity},grounded:this.grounded,heading:this.heading,actualSpeed:this.actualSpeed,blocked:this.blocked,travel:this.travel,ticks:this.ticks,paused:this.paused,droppedSeconds:this.droppedSeconds,respawns:this.respawns,collisionCount:this.collisions.length}; }
+  state() { return {feet:this.feet(),velocity:{...this.velocity},grounded:this.grounded,groundNormal:{...this.groundNormal},slopeDegrees:this.slopeDegrees,slopeSpeedMultiplier:this.slopeSpeedMultiplier,heading:this.heading,actualSpeed:this.actualSpeed,blocked:this.blocked,travel:this.travel,ticks:this.ticks,paused:this.paused,droppedSeconds:this.droppedSeconds,respawns:this.respawns,collisionCount:this.collisions.length}; }
   dispose() {this.world.removeCharacterController(this.controller);this.world.removeRigidBody(this.body);}
 }
 
@@ -98,5 +125,5 @@ export class FollowCamera {
     const look=this.firstPerson?{x:this.target.x-dir.x,y:this.target.y-dir.y,z:this.target.z-dir.z}:this.target;
     return {position:this.position,target:look,distance:d,allowedDistance:allowed,obstructed:this.hit,firstPerson:this.firstPerson,hideAvatar:this.firstPerson||d<.55};
   }
-  moveVector(side,forward){return {x:Math.cos(this.yaw)*side+Math.sin(this.yaw)*forward,z:-Math.sin(this.yaw)*side+Math.cos(this.yaw)*forward};}
+  moveVector(side,forward){return {x:-Math.cos(this.yaw)*side+Math.sin(this.yaw)*forward,z:Math.sin(this.yaw)*side+Math.cos(this.yaw)*forward};}
 }

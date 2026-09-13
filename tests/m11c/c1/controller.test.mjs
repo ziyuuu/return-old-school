@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import * as THREE from '../../../apps/campus/node_modules/three/build/three.module.js';
-import {initPhysics,PlayerMotor,FollowCamera} from '../../../apps/campus/src/player/motor.mjs';
+import {initPhysics,PlayerMotor,FollowCamera,directionalSlopeSpeed} from '../../../apps/campus/src/player/motor.mjs';
 import {CampusCollisionWorld,collisionDisposition} from '../../../apps/campus/src/player/collision-world.mjs';
 import {installSpatialIndex} from '../../../apps/campus/src/render/spatial-index.mjs';
 const cfg=JSON.parse(fs.readFileSync(new URL('../../../data/m11c/c1/config.json',import.meta.url)));
@@ -24,6 +24,18 @@ function drive(m,x,z,n=180,run=false){for(let i=0;i<n;i++)m.step({x,z,run});}
 test('Uniform capsule, slope, stepping and clock configuration is not a surveyed metric',()=>{
  assert.equal(cfg.body.height,1.72);assert.equal(cfg.body.radius,.28);assert.equal(cfg.movement.maxStep,.28);assert.equal(cfg.simulation.hz,60);
  assert.match(cfg.purpose,/not historical/);assert.equal(cfg.avatar.historicalUniform,false);
+});
+test('Camera-relative A/D maps to screen left/right at all cardinal yaws',()=>{
+ const q=fixture().build(),camera=new FollowCamera(q.adapter.world,q.motor,cfg),eps=1e-9;
+ const cases=[[0,[-1,0],[0,1]],[Math.PI/2,[0,1],[1,0]],[Math.PI,[1,0],[0,-1]],[-Math.PI/2,[0,-1],[-1,0]]];
+ for(const[yaw,right,forward]of cases){camera.yaw=yaw;const d=camera.moveVector(1,0),w=camera.moveVector(0,1);assert.ok(Math.abs(d.x-right[0])<eps&&Math.abs(d.z-right[1])<eps,`D/right yaw ${yaw}: ${JSON.stringify(d)}`);assert.ok(Math.abs(w.x-forward[0])<eps&&Math.abs(w.z-forward[1])<eps,`W/forward yaw ${yaw}: ${JSON.stringify(w)}`);}
+ q.free();
+});
+test('Directional slope speed is slower uphill, neutral cross-slope and mildly faster downhill',()=>{
+ const a=12*Math.PI/180,normal={x:0,y:Math.cos(a),z:-Math.sin(a)};
+ const up=directionalSlopeSpeed(normal,{x:0,z:1},cfg.movement),down=directionalSlopeSpeed(normal,{x:0,z:-1},cfg.movement),cross=directionalSlopeSpeed(normal,{x:1,z:0},cfg.movement);
+ assert.ok(up.degrees>11.9&&up.multiplier<.9&&up.multiplier>.45,JSON.stringify(up));assert.ok(down.degrees<-11.9&&down.multiplier>1&&down.multiplier<=1.12,JSON.stringify(down));assert.equal(cross.multiplier,1);
+ const f1=fixture().build(),f2=fixture().build();settle(f1.motor);settle(f2.motor);f1.motor.sampleGroundNormal=()=>normal;f2.motor.sampleGroundNormal=()=>normal;drive(f1.motor,0,1,120);drive(f2.motor,0,-1,120);assert.ok(f1.motor.travel<f2.motor.travel*.86,{up:f1.motor.travel,down:f2.motor.travel});f1.free();f2.free();
 });
 test('Fixed-step walk is consistent at 30 / 60 / 144 display Hz and diagonals are normalized',()=>{
  const results=[];for(const hz of[30,60,144]){const f=fixture().build();f.motor.setPaused(false);for(let i=0;i<hz*2;i++)f.motor.advance(1/hz,{x:0,z:1,run:false});results.push(f.motor.feet()[2]);f.free();}
