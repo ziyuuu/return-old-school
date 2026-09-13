@@ -1,0 +1,92 @@
+diff --git a/apps/campus/src/main.ts b/apps/campus/src/main.ts
+--- a/apps/campus/src/main.ts
++++ b/apps/campus/src/main.ts
+@@ -282,6 +282,8 @@
+ const mats=createCampusMaterials(ramps,renderer);
+ const volumes=new THREE.Group(), surfaces=new THREE.Group(), outlines=new THREE.Group(), routeOverlay=new THREE.Group();
+ scene.add(surfaces,volumes,outlines,routeOverlay);routeOverlay.visible=false;
++// Non-physical survey guides are opt-in, never a pole or marking in the historical model.
++const showGuides=new URLSearchParams(location.search).get('guides')==='1';outlines.visible=showGuides;
+ const roots=new Map<string,THREE.Group>(), pickables:THREE.Object3D[]=[], labels=new Map<string,{node:HTMLDivElement,point:THREE.Vector3}>();
+ const keyLabels=new Set(['01','02','03','06','08','10','11','13','15','17','18','20','23','24','25','26','27']);
+ const solidKinds=new Set(['building','music','auxiliary','context','toilet-pool','canteen']);
+@@ -317,8 +319,8 @@
+  for(const o of surfaces.children.slice(before)){o.name=`road-${a}--${b}`;o.userData.route=[a,b];o.userData.width=edgeWidth(layout,a,b);}
+  line([[pa[0],.3,pa[2]],[pb[0],.3,pb[2]]],routeOverlay,'#b2793f',true);
+ }
+-const grid=new THREE.GridHelper(360,36,'#6a8f85','#a7b9a9');grid.position.set(51,-.005,139);grid.visible=false;scene.add(grid);
+-const axes=new THREE.AxesHelper(16);axes.position.y=.2;scene.add(axes);
++const grid=new THREE.GridHelper(360,36,'#6a8f85','#a7b9a9');grid.position.set(51,-.005,139);grid.visible=showGuides;scene.add(grid);
++const axes=new THREE.AxesHelper(16);axes.position.y=.2;axes.visible=showGuides;scene.add(axes);
+ rect(outlines,-2,-2,2,2,.18,'#b38146');
+ const shortLabels:Record<string,string>={'10':'主席台','23':'沙坑','02':'侧门','20':'家属区','24':'音乐楼 · 4F','25':'主楼厕所','26':'池畔厕所','27':'校名石'};
+ function addLabel(f:Facility){if(!f.position)return;
+@@ -446,7 +448,8 @@
+ el<HTMLSelectElement>('toilet-level').onchange=e=>setToiletLevel(Number((e.target as HTMLSelectElement).value),true);
+ el<HTMLInputElement>('labels-check').onchange=e=>labelsOn=(e.target as HTMLInputElement).checked;
+ el<HTMLInputElement>('roofs-check').onchange=e=>roofs.visible=(e.target as HTMLInputElement).checked;
+-el<HTMLInputElement>('grid-check').onchange=e=>grid.visible=(e.target as HTMLInputElement).checked;
++el<HTMLInputElement>('grid-check').checked=showGuides;
++el<HTMLInputElement>('grid-check').onchange=e=>{const visible=(e.target as HTMLInputElement).checked;grid.visible=visible;outlines.visible=visible;axes.visible=visible;};
+ el<HTMLInputElement>('routes-check').onchange=e=>routeOverlay.visible=(e.target as HTMLInputElement).checked;
+ el<HTMLInputElement>('footprints-check').onchange=e=>{planOnly=(e.target as HTMLInputElement).checked;volumes.visible=!planOnly;roots.get('12')!.visible=!planOnly;if(planOnly)setView('top');};
+ function download(name:string,data:Blob|string){const u=typeof data==='string'?data:URL.createObjectURL(data),a=document.createElement('a');a.href=u;a.download=name;a.click();if(typeof data!=='string')setTimeout(()=>URL.revokeObjectURL(u),1000);}
+ diff --git a/apps/campus/src/batch05-scene.ts b/apps/campus/src/batch05-scene.ts
+--- a/apps/campus/src/batch05-scene.ts
++++ b/apps/campus/src/batch05-scene.ts
+@@ -45,10 +45,23 @@
+    group.add(mesh);
+   }
+   for(const fixture of model.fixtures.filter((q:any)=>q.owner===owner)){
+-   const canvas=document.createElement('canvas');canvas.width=1024;canvas.height=512;const ctx=canvas.getContext('2d')!;
+-   const lines=fixture.text.split('\n');ctx.clearRect(0,0,1024,512);ctx.fillStyle='white';ctx.textAlign='center';ctx.textBaseline='middle';
+-   const font=Math.min(210,400/lines.length);ctx.font=`600 ${font}px sans-serif`;
+-   lines.forEach((s:string,i:number)=>ctx.fillText(s,512,256+(i-(lines.length-1)/2)*font*1.10,980));
++   const canvas=document.createElement('canvas');
++   // Canvas pixels share the physical plaque aspect ratio; do not stretch glyphs.
++   const ratio=fixture.width/fixture.height;
++   canvas.width=ratio>=1?2048:Math.max(256,Math.round(1024*ratio));
++   canvas.height=Math.max(128,Math.round(canvas.width/ratio));
++   const ctx=canvas.getContext('2d')!,lines=fixture.text.split('\n');
++   const W=canvas.width,H=canvas.height;ctx.clearRect(0,0,W,H);
++   ctx.fillStyle='white';ctx.textAlign='center';ctx.textBaseline='middle';
++   let font=H*.76/(lines.length*1.06);ctx.font=`600 ${font}px sans-serif`;
++   const widest=Math.max(...lines.map((s:string)=>ctx.measureText(s).width));
++   if(widest>W*.88){font*=W*.88/widest;ctx.font=`600 ${font}px sans-serif`;}
++   lines.forEach((s:string,i:number)=>{
++    const y=H/2+(i-(lines.length-1)/2)*font*1.15,tokens=s.split(/\s{2,}/);
++    // Broad gate inscription: spread character centres, not each character's width.
++    if(tokens.length>1)tokens.forEach((t:string,j:number)=>ctx.fillText(t,W*(.12+.76*j/(tokens.length-1)),y));
++    else ctx.fillText(s,W/2,y);
++   });
+    const material=cloneSurfaceMaterial(surfaceMaterial(mats[fixture.row],'name-mark'));
+    material.map=new THREE.CanvasTexture(canvas);material.transparent=true;material.alphaTest=.30;material.depthWrite=false;
+    material.onBeforeCompile=()=>{};material.customProgramCacheKey=()=> 'b05-local-type-native-uv';
+diff --git a/tools/m11b-b05/capture.mjs b/tools/m11b-b05/capture.mjs
+--- a/tools/m11b-b05/capture.mjs
++++ b/tools/m11b-b05/capture.mjs
+@@ -22,7 +22,7 @@
+ const checkpoint=async()=>fs.writeFile(path.join(out,'report.json'),JSON.stringify(report,null,2));
+ function stage(s){report.stage=s;console.log(new Date().toISOString(),s);}
+ const browser=await chromium.launch({headless:true,timeout:120000,args:['--no-sandbox','--disable-dev-shm-usage','--use-angle=swiftshader','--enable-unsafe-swiftshader','--disable-background-timer-throttling','--disable-renderer-backgrounding']});
+-report.environment={browser:browser.version(),node:process.version,platform:process.platform,runner:process.env.GITHUB_ACTIONS?'GitHub Actions hosted Linux':'local',rendering:'ANGLE SwiftShader software GPU; not user hardware',capture:'Actual Playwright page screenshot; full geometry/materials/shadow resolution; paused animation loop with ordinary render function'};
++report.environment={browser:browser.version(),node:process.version,platform:process.platform,runner:process.env.GITHUB_ACTIONS?'GitHub Actions hosted Linux':'local',rendering:'ANGLE SwiftShader software GPU; not user hardware',capture:'Actual browser pixels: Playwright/CDP viewport or recorded same-frame canvas readback for clean views; full geometry/materials/shadow resolution; ordinary render function'};
+ const context=await browser.newContext({viewport,deviceScaleFactor:1}),page=await context.newPage();page.setDefaultTimeout(240000);
+ page.on('pageerror',e=>report.errors.push(String(e)));page.on('console',e=>{if(e.type()==='error')report.errors.push(e.text());else if(e.type()==='warning'&&report.warnings.length<30)report.warnings.push(e.text());});page.on('request',r=>{if(/^https?:/.test(r.url()))report.externalRequests.push(r.url());});
+ if(fallback)await page.addInitScript(()=>{const original=WebGL2RenderingContext.prototype.getExtension;WebGL2RenderingContext.prototype.getExtension=function(name){return name==='EXT_clip_control'?null:original.call(this,name);};});
+@@ -34,6 +34,7 @@
+  await page.waitForFunction(()=>window.__YALI_RENDER_RAW__&&(window.__YALI_B05__?.ready||window.__YALI_B04__?.ready),null,{timeout:600000});
+  await page.evaluate(()=>window.__YALI_RENDER_RAW__.renderer.setAnimationLoop(null));await renderOnce();await renderOnce();
+  report.initializationMs=Date.now()-started;
++ report.annotationState=await page.evaluate(()=>{const visible=[];window.__YALI_RENDER_RAW__.scene.traverseVisible(o=>{if(o.type==='AxesHelper'||o.type==='GridHelper')visible.push(o.type);});return {visibleGuides:visible,checkbox:document.getElementById('grid-check').checked};});
+  report.scene=await page.evaluate(()=>{
+   const {scene,renderer}=window.__YALI_RENDER_RAW__,gs=new Set(),ms=new Set(),owners={},probes={};let triangles=0,bytes=0,meshes=0;
+   scene.traverseVisible(o=>{if(!o.isMesh)return;meshes++;const g=o.geometry,n=(g.index?.count??g.attributes.position.count)/3*(o.isInstancedMesh?o.count:1),owner=o.userData.facility||o.userData.owner||'environment';triangles+=n;owners[owner]=(owners[owner]||0)+n;
+@@ -80,6 +81,7 @@
+  if(mobile){report.mobile=await page.evaluate(()=>({noOverflow:document.documentElement.scrollWidth<=innerWidth,scrollWidth:document.documentElement.scrollWidth,innerWidth,title:document.title,shadowResolution:window.__YALI_RENDER__.state().shadowResolution}));}
+  report.passed=report.errors.length===0&&report.externalRequests.length===0&&report.views.every(v=>!v.glError&&!v.contextLost&&v.triangles>0&&(v.requestedView==='fresh default'||v.view===v.requestedView));
+  if(group==='checks')report.passed=report.passed&&report.access.passed&&report.inherited.b03.passed&&report.inherited.b04.passed&&report.inherited.b02.routes.every(r=>r.failures===0)&&report.inherited.b02.doors.every(d=>d.bad.length===0)&&report.inherited.b02.sharedWallBlocked&&report.invariants.axis.every(x=>x===73)&&report.invariants.mainFloor===3.45&&report.invariants.flagCount===3&&report.invariants.shutters&&report.invariants.unlocated22===null;
++ if(!baseline)report.passed=report.passed&&report.annotationState.visibleGuides.length===0&&!report.annotationState.checkbox;
+  if(mobile)report.passed=report.passed&&report.mobile.noOverflow&&report.mobile.shadowResolution===2048;
+  if(fallback)report.passed=report.passed&&report.views.every(v=>v.lighting.logarithmicDepthBuffer&&!v.lighting.reversedDepthBuffer);
+ }catch(e){report.errors.push({message:String(e),stack:e.stack});console.error(e);}finally{
