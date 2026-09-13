@@ -1,0 +1,25 @@
+{
+  "stage": "M1.1-C",
+  "batch": "C1",
+  "version": "R1.1",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "viewer": "artifacts/m11c-c1/Yali_C1_R1_1_Viewer.html",
+  "viewerSHA256": "b2cd412be14a8ab3589c75c7e573312f3d0f5a24061766e15de0284a591847d6",
+  "sourceCommit": "ea7d630d00c807a894f86a3b7c66bba6934d6785",
+  "qaRun": "34790704333",
+  "groups": [
+    "fix",
+    "input",
+    "terrain",
+    "mobile",
+    "fallback",
+    "review"
+  ],
+  "checks": 65,
+  "screenshots": 25,
+  "fixes": [
+    "A/D and touch horizontal input are camera-relative and no longer mirrored",
+    "Ground-contact normal drives directional slope speed: uphill slower, cross-slope neutral, downhill mildly faster with 1.12 cap"
+  ],
+  "acceptanceCreated": false
+}

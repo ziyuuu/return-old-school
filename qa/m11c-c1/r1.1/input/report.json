@@ -1,0 +1,4177 @@
+{
+  "stage": "C1",
+  "version": "R1.1",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "phase": "r1.1",
+  "group": "input",
+  "viewer": "artifacts/m11c-c1/Yali_C1_R1_1_Viewer.html",
+  "viewerSHA256": "b2cd412be14a8ab3589c75c7e573312f3d0f5a24061766e15de0284a591847d6",
+  "sourceCommit": "ea7d630d00c807a894f86a3b7c66bba6934d6785",
+  "viewport": {
+    "width": 1280,
+    "height": 840
+  },
+  "startedAt": "2026-09-13T23:48:34.705Z",
+  "errors": [],
+  "warnings": [
+    "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+    {
+      "name": "01-third-person-start",
+      "message": "TimeoutError: page.screenshot: Timeout 20000ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n",
+      "fallback": "CDP viewport"
+    }
+  ],
+  "externalRequests": [],
+  "screenshots": [
+    {
+      "file": "01-third-person-start.png",
+      "sha256": "0f9a97b23922881b90a505a17816bc848da10b821b4a2c1739a92e4d0907f113",
+      "method": "CDP viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 1816,
+      "triangles": 5636584,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 28,
+        "shadowRevision": 14,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 3919,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 1480,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        }
+      }
+    },
+    {
+      "file": "02-main-slope-crest.png",
+      "sha256": "639cbb63f34f2a9dbedbfede558b99f50e3d41027304c32e0d9df9e7f624d7fe",
+      "method": "Playwright viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 1306,
+      "triangles": 4864412,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 28,
+        "shadowRevision": 15,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 3919,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 1480,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        }
+      }
+    },
+    {
+      "file": "03-pause-help.png",
+      "sha256": "e7c5ab99b4e97d527db209a4f3d713354aad2d9b53e1a5edfd5b7427ac7b0a93",
+      "method": "Playwright viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 1306,
+      "triangles": 4864412,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 28,
+        "shadowRevision": 15,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 3919,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 1480,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        }
+      }
+    },
+    {
+      "file": "04-first-person.png",
+      "sha256": "e581f576cb868accbe8beea67fed3e004fc71bb9ea21e386ff873be1c12df0db",
+      "method": "Playwright viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 1249,
+      "triangles": 4674614,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 28,
+        "shadowRevision": 15,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 3919,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 1480,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "Runtime ready and correct default mode",
+      "passed": true
+    },
+    {
+      "name": "01-third-person-start WebGL",
+      "passed": true
+    },
+    {
+      "name": "Actual W input moves visible capsule through the gate",
+      "passed": true,
+      "details": {
+        "before": [
+          -3.4339734528154864e-9,
+          0.05510000336696985,
+          -3.4999998018855023
+        ],
+        "after": [
+          0.000014025389660230164,
+          0.05699994092763527,
+          -0.34573369359405337
+        ]
+      }
+    },
+    {
+      "name": "Shift run reaches configured speed",
+      "passed": true,
+      "details": {
+        "feet": [
+          0.000035257941460137515,
+          0.07922346249732082,
+          2.597049033010438
+        ],
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 3.3864139809054685
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 0.9992009997367859,
+          "z": -0.039968039840459824
+        },
+        "slopeDegrees": 2.2906100341076154,
+        "slopeSpeedMultiplier": 0.9960041120310202,
+        "heading": -0.000027090900318696124,
+        "actualSpeed": 3.3762080222381496,
+        "blocked": false,
+        "travel": 6.097051343664655,
+        "ticks": 258,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 1
+      }
+    },
+    {
+      "name": "Main approach and rise by actual motor",
+      "passed": true,
+      "details": {
+        "feet": [
+          -0.00007683220187474325,
+          3.0550002276217856,
+          44.15738821507169
+        ],
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "slopeDegrees": 0,
+        "slopeSpeedMultiplier": 1,
+        "heading": -0.0003861657167659399,
+        "actualSpeed": 0.000023366679323219957,
+        "blocked": false,
+        "travel": 47.65739714219436,
+        "ticks": 1035,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 1
+      }
+    },
+    {
+      "name": "02-main-slope-crest WebGL",
+      "passed": true
+    },
+    {
+      "name": "Escape pauses physics without drift",
+      "passed": true
+    },
+    {
+      "name": "03-pause-help WebGL",
+      "passed": true
+    },
+    {
+      "name": "First person hides mannequin",
+      "passed": true
+    },
+    {
+      "name": "04-first-person WebGL",
+      "passed": true
+    },
+    {
+      "name": "R resets to selected checkpoint",
+      "passed": true,
+      "details": [
+        6.178695244329901e-8,
+        0.05505856814896115,
+        -3.4999998401472827
+      ]
+    },
+    {
+      "name": "Focus loss clears input and pauses",
+      "passed": true
+    },
+    {
+      "name": "No JavaScript or GL console errors",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "Single offline Viewer, no network assets",
+      "passed": true,
+      "details": []
+    }
+  ],
+  "passed": true,
+  "environment": {
+    "browser": "151.0.7922.34",
+    "node": "v22.23.2",
+    "runner": "GitHub Actions Linux",
+    "rendering": "SwiftShader software GPU; not user hardware"
+  },
+  "initial": {
+    "ready": true,
+    "enabled": true,
+    "version": "M1.1-C.C1.R1.1",
+    "config": {
+      "version": "M1.1-C.C1.R1.1",
+      "status": "IMPLEMENTED / REVIEW_PENDING",
+      "standard": "1.0",
+      "baseCommit": "c6dcf6ed2bc7a976cd7994402305b80ef0fb6127",
+      "purpose": "C1 controller parameters, not historical measurements or a final student avatar",
+      "body": {
+        "height": 1.72,
+        "radius": 0.28,
+        "skin": 0.015
+      },
+      "movement": {
+        "walkSpeed": 1.65,
+        "runSpeed": 3.4,
+        "acceleration": 12,
+        "braking": 18,
+        "gravity": 18,
+        "terminalSpeed": 30,
+        "maxStep": 0.28,
+        "stepWidth": 0.16,
+        "snapDistance": 0.32,
+        "climbDegrees": 42,
+        "slideDegrees": 48,
+        "groundStickSpeed": 0.12,
+        "slopeSpeedDeadbandDegrees": 2,
+        "uphillSpeedMinMultiplier": 0.45,
+        "downhillFullEffectDegrees": 18,
+        "downhillSpeedMaxMultiplier": 1.12
+      },
+      "simulation": {
+        "hz": 60,
+        "maxCatchupSteps": 8,
+        "maxFrameSeconds": 0.15
+      },
+      "camera": {
+        "distance": 3.6,
+        "minimumDistance": 0.75,
+        "maximumDistance": 7,
+        "radius": 0.18,
+        "eyeHeight": 1.59,
+        "targetHeight": 1.28,
+        "fov": 55,
+        "pitch": 0.25,
+        "minimumPitch": -0.25,
+        "maximumPitch": 1.05,
+        "sensitivity": 0.004,
+        "recoveryRate": 6
+      },
+      "collision": {
+        "regionRadius": 26,
+        "refreshDistance": 9,
+        "verticalMin": -30,
+        "verticalMax": 100,
+        "geometry": "Exact rendered triangle subset selected by BVH; coplanar conditioning splits long triangles to <=12m edges without changing the surface or visible mesh",
+        "nonBlocking": [
+          "foliage",
+          "turf paint",
+          "name marks",
+          "water surface",
+          "survey guides",
+          "player visualization"
+        ],
+        "glassBlocking": true,
+        "solidNetBlocking": true
+      },
+      "spawns": {
+        "gate": {
+          "label": "主校门",
+          "feet": [
+            0,
+            0.12,
+            -3.5
+          ],
+          "yaw": 0
+        },
+        "lane": {
+          "label": "侧门围墙小路",
+          "feet": [
+            17,
+            0.18,
+            4.4
+          ],
+          "yaw": 0
+        },
+        "courts": {
+          "label": "篮球场东入口",
+          "feet": [
+            -5,
+            3.15,
+            120
+          ],
+          "yaw": -1.5707963267948966
+        },
+        "stone": {
+          "label": "校名石坡脚",
+          "feet": [
+            -8.1,
+            0.14,
+            -11.65
+          ],
+          "yaw": 0
+        },
+        "gym": {
+          "label": "体育馆前坪",
+          "feet": [
+            -20,
+            3.15,
+            45
+          ],
+          "yaw": -1.5707963267948966
+        }
+      },
+      "avatar": {
+        "type": "articulated scale mannequin",
+        "historicalUniform": false,
+        "label": "C1 比例人形；C2 再制作有依据的学生形象",
+        "shadow": "procedural contact shadow; static campus daylight unchanged"
+      },
+      "scopeBoundary": "C1 validates controller and representative routes only. C2 final avatar and C3 whole-campus traversal acceptance remain planned. No jump, swimming, interactions, NPCs or narrative mechanics."
+    },
+    "motor": {
+      "feet": [
+        6.178695244329901e-8,
+        0.055058556638396206,
+        -3.4999998401472827
+      ],
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "grounded": true,
+      "groundNormal": {
+        "x": 0,
+        "y": 1,
+        "z": 0
+      },
+      "slopeDegrees": 0,
+      "slopeSpeedMultiplier": 1,
+      "heading": 0,
+      "actualSpeed": 0,
+      "blocked": false,
+      "travel": 3.834629497604341e-7,
+      "ticks": 23,
+      "paused": false,
+      "droppedSeconds": 54.69783333333333,
+      "respawns": 0,
+      "collisionCount": 1
+    },
+    "camera": {
+      "position": {
+        "x": 6.178695244329901e-8,
+        "y": 2.225712809954679,
+        "z": -6.988084558305603
+      },
+      "target": {
+        "x": 6.178695244329901e-8,
+        "y": 1.3350585566383963,
+        "z": -3.4999998401472827
+      },
+      "distance": 3.6,
+      "allowedDistance": 3.6,
+      "obstructed": false,
+      "firstPerson": false,
+      "hideAvatar": false
+    },
+    "collision": {
+      "method": "Rapier capsule against exact visible solid triangles selected by shared BVH",
+      "solidInstances": 19720,
+      "excluded": {
+        "water-no-swimming": 2,
+        "annotation-or-paint": 9,
+        "leaves": 70
+      },
+      "residentTriangles": 51415,
+      "regionRevisions": 2,
+      "regionCentre": {
+        "x": 0,
+        "z": -3.5
+      },
+      "regionRadius": 26,
+      "lastBuildMs": 120.60000000000582,
+      "totalBuildMs": 366.6000000000058,
+      "sources": [
+        {
+          "name": "",
+          "owner": "environment",
+          "role": "",
+          "instance": 0,
+          "triangles": 356
+        },
+        {
+          "name": "",
+          "owner": "environment",
+          "role": "",
+          "instance": 0,
+          "triangles": 484
+        },
+        {
+          "name": "B05-09-tree-trunk|11|rod|-1,0",
+          "owner": "09",
+          "role": "tree-trunk",
+          "instance": 0,
+          "triangles": 1920
+        },
+        {
+          "name": "B05-09-tree-trunk|11|rod|0,0",
+          "owner": "09",
+          "role": "tree-trunk",
+          "instance": 0,
+          "triangles": 960
+        },
+        {
+          "name": "P03-ground-upper-11",
+          "owner": "environment",
+          "role": "turf",
+          "instance": 0,
+          "triangles": 1394
+        },
+        {
+          "name": "P03-ground-upper-22",
+          "owner": "environment",
+          "role": "turf",
+          "instance": 0,
+          "triangles": 410
+        },
+        {
+          "name": "P03-ground-upper-33",
+          "owner": "environment",
+          "role": "turf",
+          "instance": 0,
+          "triangles": 1640
+        },
+        {
+          "name": "P03-ground-upper-44",
+          "owner": "environment",
+          "role": "turf",
+          "instance": 0,
+          "triangles": 902
+        },
+        {
+          "name": "P03-ground-upper-55",
+          "owner": "environment",
+          "role": "turf",
+          "instance": 0,
+          "triangles": 163
+        },
+        {
+          "name": "M11A-site-thickness-0",
+          "owner": "environment",
+          "role": "",
+          "instance": 0,
+          "triangles": 108
+        },
+        {
+          "name": "M11A-road-gate--junction-gym",
+          "owner": "environment",
+          "role": "road",
+          "instance": 0,
+          "triangles": 1232
+        },
+        {
+          "name": "M11A-road-side-branch--side-front-turn",
+          "owner": "environment",
+          "role": "road",
+          "instance": 0,
+          "triangles": 49
+        },
+        {
+          "name": "M11A-road-side-gate--side-entry",
+          "owner": "environment",
+          "role": "road",
+          "instance": 0,
+          "triangles": 300
+        },
+        {
+          "name": "M11A-road-side-entry--side-branch",
+          "owner": "environment",
+          "role": "road",
+          "instance": 0,
+          "triangles": 170
+        },
+        {
+          "name": "M11A-road-junction-gym--gym-loop-north",
+          "owner": "environment",
+          "role": "road",
+          "instance": 0,
+          "triangles": 529
+        },
+        {
+          "name": "M11A-road-junction-gym--gym-main-junction",
+          "owner": "environment",
+          "role": "road",
+          "instance": 0,
+          "triangles": 56
+        },
+        {
+          "name": "M11A-joint-gate",
+          "owner": "environment",
+          "role": "road",
+          "instance": 0,
+          "triangles": 8
+        },
+        {
+          "name": "M11A-joint-junction-gym",
+          "owner": "environment",
+          "role": "road",
+          "instance": 0,
+          "triangles": 12
+        },
+        {
+          "name": "M11A-joint-side-branch",
+          "owner": "environment",
+          "role": "road",
+          "instance": 0,
+          "triangles": 18
+        },
+        {
+          "name": "M11A-joint-side-gate",
+          "owner": "environment",
+          "role": "road",
+          "instance": 0,
+          "triangles": 18
+        },
+        {
+          "name": "M11A-joint-side-entry",
+          "owner": "environment",
+          "role": "road",
+          "instance": 0,
+          "triangles": 18
+        },
+        {
+          "name": "M11A-road-edge-gate--1",
+          "owner": "environment",
+          "role": "edge",
+          "instance": 0,
+          "triangles": 74
+        },
+        {
+          "name": "M11A-road-edge-gate-1",
+          "owner": "environment",
+          "role": "edge",
+          "instance": 0,
+          "triangles": 74
+        },
+        {
+          "name": "B05-01-wall-detail-0",
+          "owner": "01",
+          "role": "wall",
+          "instance": 0,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-wall-detail-0",
+          "owner": "01",
+          "role": "wall",
+          "instance": 1,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-wall-detail-0",
+          "owner": "01",
+          "role": "wall",
+          "instance": 2,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-wall-detail-0",
+          "owner": "01",
+          "role": "wall",
+          "instance": 3,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-wall-detail-0",
+          "owner": "01",
+          "role": "wall",
+          "instance": 4,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-wall-detail-0",
+          "owner": "01",
+          "role": "wall",
+          "instance": 5,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-column-detail-1",
+          "owner": "01",
+          "role": "column",
+          "instance": 0,
+          "triangles": 972
+        },
+        {
+          "name": "B05-01-beam-detail-2",
+          "owner": "01",
+          "role": "beam",
+          "instance": 0,
+          "triangles": 1548
+        },
+        {
+          "name": "B05-01-paint-trim-detail-3",
+          "owner": "01",
+          "role": "paint-trim",
+          "instance": 0,
+          "triangles": 700
+        },
+        {
+          "name": "B05-01-cornice-detail-4",
+          "owner": "01",
+          "role": "cornice",
+          "instance": 0,
+          "triangles": 972
+        },
+        {
+          "name": "B05-01-paint-trim-detail-5",
+          "owner": "01",
+          "role": "paint-trim",
+          "instance": 0,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-paint-trim-detail-5",
+          "owner": "01",
+          "role": "paint-trim",
+          "instance": 1,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 0,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 1,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 2,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 3,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 4,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 5,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 6,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 7,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 8,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 9,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 10,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 11,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 12,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 13,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 14,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 15,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-floor-detail-7",
+          "owner": "01",
+          "role": "floor",
+          "instance": 0,
+          "triangles": 76
+        },
+        {
+          "name": "B05-01-floor-detail-7",
+          "owner": "01",
+          "role": "floor",
+          "instance": 1,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-floor-detail-8",
+          "owner": "01",
+          "role": "floor",
+          "instance": 0,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-canopy-detail-9",
+          "owner": "01",
+          "role": "canopy",
+          "instance": 0,
+          "triangles": 972
+        },
+        {
+          "name": "B05-01-window-detail-10",
+          "owner": "01",
+          "role": "window",
+          "instance": 0,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-window-detail-10",
+          "owner": "01",
+          "role": "window",
+          "instance": 1,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-window-detail-10",
+          "owner": "01",
+          "role": "window",
+          "instance": 2,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-window-detail-10",
+          "owner": "01",
+          "role": "window",
+          "instance": 3,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-window-frame-detail-11",
+          "owner": "01",
+          "role": "window-frame",
+          "instance": 0,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-window-frame-detail-11",
+          "owner": "01",
+          "role": "window-frame",
+          "instance": 1,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-window-frame-detail-11",
+          "owner": "01",
+          "role": "window-frame",
+          "instance": 2,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-window-frame-detail-11",
+          "owner": "01",
+          "role": "window-frame",
+          "instance": 3,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-window-frame-detail-11",
+          "owner": "01",
+          "role": "window-frame",
+          "instance": 4,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-window-frame-detail-11",
+          "owner": "01",
+          "role": "window-frame",
+          "instance": 5,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-window-frame-detail-11",
+          "owner": "01",
+          "role": "window-frame",
+          "instance": 6,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-window-frame-detail-11",
+          "owner": "01",
+          "role": "window-frame",
+          "instance": 7,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-window-frame-detail-11",
+          "owner": "01",
+          "role": "window-frame",
+          "instance": 8,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-window-frame-detail-11",
+          "owner": "01",
+          "role": "window-frame",
+          "instance": 9,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-door-frame-detail-12",
+          "owner": "01",
+          "role": "door-frame",
+          "instance": 0,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-door-frame-detail-13",
+          "owner": "01",
+          "role": "door-frame",
+          "instance": 0,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-door-frame-detail-13",
+          "owner": "01",
+          "role": "door-frame",
+          "instance": 1,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-medallion|12|ring|",
+          "owner": "01",
+          "role": "medallion",
+          "instance": 0,
+          "triangles": 12288
+        },
+        {
+          "name": "B05-01-gate-rail|15|rod|",
+          "owner": "01",
+          "role": "gate-rail",
+          "instance": 0,
+          "triangles": 5376
+        },
+        {
+          "name": "B05-01-paving|2|prism|",
+          "owner": "01",
+          "role": "paving",
+          "instance": 0,
+          "triangles": 144
+        },
+        {
+          "name": "B05-02-column-detail-0",
+          "owner": "02",
+          "role": "column",
+          "instance": 0,
+          "triangles": 972
+        },
+        {
+          "name": "B05-02-column-detail-0",
+          "owner": "02",
+          "role": "column",
+          "instance": 1,
+          "triangles": 972
+        },
+        {
+          "name": "B05-02-wall-detail-1",
+          "owner": "02",
+          "role": "wall",
+          "instance": 0,
+          "triangles": 12
+        },
+        {
+          "name": "B05-02-wall-detail-1",
+          "owner": "02",
+          "role": "wall",
+          "instance": 1,
+          "triangles": 12
+        },
+        {
+          "name": "B05-02-beam-detail-2",
+          "owner": "02",
+          "role": "beam",
+          "instance": 0,
+          "triangles": 972
+        },
+        {
+          "name": "B05-02-gate-rail|5|rod|",
+          "owner": "02",
+          "role": "gate-rail",
+          "instance": 0,
+          "triangles": 2688
+        },
+        {
+          "name": "B05-02-wall|6|prism|",
+          "owner": "02",
+          "role": "wall",
+          "instance": 0,
+          "triangles": 462
+        },
+        {
+          "name": "B05-02-stone-plaque|8|prism|",
+          "owner": "02",
+          "role": "stone-plaque",
+          "instance": 0,
+          "triangles": 308
+        },
+        {
+          "name": "B05-02-wall|14|prism|",
+          "owner": "02",
+          "role": "wall",
+          "instance": 0,
+          "triangles": 154
+        },
+        {
+          "name": "B05-27-floor-detail-0",
+          "owner": "27",
+          "role": "floor",
+          "instance": 0,
+          "triangles": 12
+        },
+        {
+          "name": "B05-27-floor-detail-0",
+          "owner": "27",
+          "role": "floor",
+          "instance": 1,
+          "triangles": 12
+        },
+        {
+          "name": "B05-27-floor-detail-0",
+          "owner": "27",
+          "role": "floor",
+          "instance": 2,
+          "triangles": 12
+        },
+        {
+          "name": "B05-27-floor-detail-0",
+          "owner": "27",
+          "role": "floor",
+          "instance": 3,
+          "triangles": 12
+        },
+        {
+          "name": "B05-27-floor-detail-0",
+          "owner": "27",
+          "role": "floor",
+          "instance": 4,
+          "triangles": 12
+        },
+        {
+          "name": "B05-27-stone-plaque-detail-1",
+          "owner": "27",
+          "role": "stone-plaque",
+          "instance": 0,
+          "triangles": 12
+        },
+        {
+          "name": "B05-27-planter-soil-detail-2",
+          "owner": "27",
+          "role": "planter-soil",
+          "instance": 0,
+          "triangles": 12
+        },
+        {
+          "name": "B05-27-planter-soil-detail-2",
+          "owner": "27",
+          "role": "planter-soil",
+          "instance": 1,
+          "triangles": 12
+        },
+        {
+          "name": "B05-27-stone-plaque-detail-3",
+          "owner": "27",
+          "role": "stone-plaque",
+          "instance": 0,
+          "triangles": 12
+        },
+        {
+          "name": "B05-27-stone-plaque-detail-3",
+          "owner": "27",
+          "role": "stone-plaque",
+          "instance": 1,
+          "triangles": 12
+        },
+        {
+          "name": "B05-27-floor|2|prism|",
+          "owner": "27",
+          "role": "floor",
+          "instance": 0,
+          "triangles": 12
+        },
+        {
+          "name": "B05-27-boulder|7|rock|",
+          "owner": "27",
+          "role": "boulder",
+          "instance": 0,
+          "triangles": 1632
+        }
+      ]
+    },
+    "input": {
+      "x": 0,
+      "z": 0,
+      "run": false
+    },
+    "avatar": {
+      "visible": true,
+      "finalStudent": false,
+      "footPosition": [
+        6.178695244329901e-8,
+        0.055058556638396206,
+        -3.4999998401472827
+      ]
+    },
+    "physicsMs": 0.7000000000116415
+  },
+  "initialization": {
+    "modelTriangles": 8180590,
+    "meshes": 2001,
+    "geometryBytes": 258442292,
+    "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "lighting": {
+      "pipeline": "PBR / AgX / procedural sky PMREM",
+      "reversedDepthBuffer": true,
+      "logarithmicDepthBuffer": false,
+      "shadowResolution": 4096,
+      "shadowExtent": 28,
+      "shadowRevision": 14,
+      "shadowAutoUpdate": false,
+      "sunIntensity": 4.2,
+      "environmentIntensity": 0.2,
+      "exposure": 1.07,
+      "spatialIndex": {
+        "indexedGeometries": 1080,
+        "buildMs": 3919,
+        "method": "BVH over rendered triangles"
+      },
+      "surfaceFinishes": {
+        "assigned": 1213,
+        "families": 17
+      },
+      "reflectionProbes": {
+        "probes": 11,
+        "resolution": 256,
+        "reflectiveMeshes": 636,
+        "buildMs": 1480,
+        "method": "static local campus cubemaps",
+        "locations": {
+          "teaching": [
+            73,
+            8,
+            194
+          ],
+          "gym": [
+            -15,
+            7,
+            48
+          ],
+          "library": [
+            73,
+            8,
+            239
+          ],
+          "garden": [
+            73,
+            7,
+            274
+          ],
+          "eastTeaching": [
+            139,
+            8,
+            212
+          ],
+          "longya": [
+            129,
+            9,
+            242
+          ],
+          "westTeaching": [
+            -23,
+            7,
+            188
+          ],
+          "entrance": [
+            0,
+            5,
+            7
+          ],
+          "courts": [
+            -38,
+            7,
+            120
+          ],
+          "field": [
+            73,
+            6,
+            114
+          ],
+          "residential": [
+            171,
+            8,
+            74
+          ]
+        }
+      }
+    }
+  },
+  "mainRoute": {
+    "reason": "complete",
+    "ticks": 757,
+    "trace": [
+      {
+        "feet": [
+          0.000181547227481921,
+          0.14674324623818402,
+          4.285160084927514
+        ],
+        "velocity": {
+          "x": -0.0000796626767406354,
+          "y": 0,
+          "z": 3.3864139600570553
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 0.9992009997367859,
+          "z": -0.03996804729104042
+        },
+        "slopeDegrees": 2.290610460020198,
+        "slopeSpeedMultiplier": 0.9960041061747222,
+        "heading": 0.000015596098072588473,
+        "actualSpeed": 3.3762931832220597,
+        "blocked": false,
+        "travel": 7.785162456565512,
+        "ticks": 288,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      {
+        "feet": [
+          0.00024007093452865249,
+          0.21430495660795723,
+          5.973244657481149
+        ],
+        "velocity": {
+          "x": -0.00013492527999140017,
+          "y": 0,
+          "z": 3.3864139982434667
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 0.9992009997367859,
+          "z": -0.03996803238987923
+        },
+        "slopeDegrees": 2.290609605745705,
+        "slopeSpeedMultiplier": 0.9960041179209965,
+        "heading": 0.00003098407934114425,
+        "actualSpeed": 3.3761445460999857,
+        "blocked": false,
+        "travel": 9.473247055595769,
+        "ticks": 318,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      {
+        "feet": [
+          0.00034095609999467726,
+          0.28181352105501,
+          7.661340599620774
+        ],
+        "velocity": {
+          "x": -0.0002505568916085172,
+          "y": 0,
+          "z": 3.386413912106026
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 0.9992009997367859,
+          "z": -0.039968062192201614
+        },
+        "slopeDegrees": 2.2906113074816044,
+        "slopeSpeedMultiplier": 0.9960040945221279,
+        "heading": 0.00009412147200027392,
+        "actualSpeed": 3.37612970038971,
+        "blocked": false,
+        "travel": 11.16134305776432,
+        "ticks": 348,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      {
+        "feet": [
+          0.0003842222820415411,
+          0.349339809036319,
+          9.34943203415914
+        ],
+        "velocity": {
+          "x": -0.0004909222345641162,
+          "y": 0,
+          "z": 3.386413886622434
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 0.9992009997367859,
+          "z": -0.039968062192201614
+        },
+        "slopeDegrees": 2.290611289700888,
+        "slopeSpeedMultiplier": 0.9960040947666128,
+        "heading": -0.00004942881217842034,
+        "actualSpeed": 3.3762223630525408,
+        "blocked": false,
+        "travel": 12.849434526691391,
+        "ticks": 378,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      {
+        "feet": [
+          0.00022174577293781496,
+          0.4699355915658817,
+          10.984297843391136
+        ],
+        "velocity": {
+          "x": -0.0007076757888598053,
+          "y": 0,
+          "z": 3.239796373690113
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 0.995517909526825,
+          "z": -0.0945742279291153
+        },
+        "slopeDegrees": 5.426813882787263,
+        "slopeSpeedMultiplier": 0.9528813091116751,
+        "heading": -0.00020755657694860908,
+        "actualSpeed": 3.1995973769609103,
+        "blocked": false,
+        "travel": 14.484300397497586,
+        "ticks": 408,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      {
+        "feet": [
+          0.0000737999002899339,
+          0.621925484622334,
+          12.584051759654717
+        ],
+        "velocity": {
+          "x": -0.000011654291010376084,
+          "y": 0,
+          "z": 3.239796762824172
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 0.995517909526825,
+          "z": -0.09457410871982574
+        },
+        "slopeDegrees": 5.426807211868802,
+        "slopeSpeedMultiplier": 0.952881400836804,
+        "heading": 0.00007082196474094206,
+        "actualSpeed": 3.1994167645928004,
+        "blocked": false,
+        "travel": 16.08405441710747,
+        "ticks": 438,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      {
+        "feet": [
+          -0.00003541393356038512,
+          0.7739291375041649,
+          14.183809162790016
+        ],
+        "velocity": {
+          "x": 0.000007255646616235679,
+          "y": 0,
+          "z": 3.239796444955906
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 0.995517909526825,
+          "z": -0.0945742279291153
+        },
+        "slopeDegrees": 5.426814011464584,
+        "slopeSpeedMultiplier": 0.952881307342362,
+        "heading": 0.0000016743719468724813,
+        "actualSpeed": 3.1993020325989066,
+        "blocked": false,
+        "travel": 17.683811905819194,
+        "ticks": 468,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      {
+        "feet": [
+          -0.00001841576511957797,
+          0.9258813399360225,
+          15.78357983913465
+        ],
+        "velocity": {
+          "x": 0.000004196617788014174,
+          "y": 0,
+          "z": 3.239796444960892
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 0.995517909526825,
+          "z": -0.0945742279291153
+        },
+        "slopeDegrees": 5.426814011473588,
+        "slopeSpeedMultiplier": 0.9528813073422382,
+        "heading": 0.000004575130806935331,
+        "actualSpeed": 3.199590817096475,
+        "blocked": false,
+        "travel": 19.28358260327024,
+        "ticks": 498,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      {
+        "feet": [
+          0.00021110556551867134,
+          1.077855513664399,
+          17.383333289736942
+        ],
+        "velocity": {
+          "x": -0.000054172250055943795,
+          "y": 0,
+          "z": 3.239796444545749
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 0.995517909526825,
+          "z": -0.0945742279291153
+        },
+        "slopeDegrees": 5.426814010724007,
+        "slopeSpeedMultiplier": 0.952881307352545,
+        "heading": 0.00006297505078517213,
+        "actualSpeed": 3.199614957289647,
+        "blocked": false,
+        "travel": 20.883336177129575,
+        "ticks": 528,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      {
+        "feet": [
+          0.00046261505929783865,
+          1.2307002141610428,
+          18.98298243593617
+        ],
+        "velocity": {
+          "x": -0.0001337429662103942,
+          "y": 0,
+          "z": 3.2397964424177412
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 0.995517909526825,
+          "z": -0.0945742279291153
+        },
+        "slopeDegrees": 5.42681400688168,
+        "slopeSpeedMultiplier": 0.9528813074053769,
+        "heading": 0.0001245076634425313,
+        "actualSpeed": 3.1936931043130117,
+        "blocked": false,
+        "travel": 22.48298545482599,
+        "ticks": 558,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 2
+      },
+      {
+        "feet": [
+          0.0007965580711650158,
+          1.3818090783902153,
+          20.582831671202616
+        ],
+        "velocity": {
+          "x": -0.00025452329623448783,
+          "y": 0,
+          "z": 3.239796087586441
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 3.7509397543544765e-7,
+          "y": 0.9955177903175354,
+          "z": -0.09457434713840485
+        },
+        "slopeDegrees": 5.426821442046858,
+        "slopeSpeedMultiplier": 0.9528812051718557,
+        "heading": 0.0002043174308605739,
+        "actualSpeed": 3.1994882110841436,
+        "blocked": false,
+        "travel": 24.082834931034075,
+        "ticks": 588,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      {
+        "feet": [
+          0.001138061556907594,
+          1.5356621780669957,
+          22.181266987437443
+        ],
+        "velocity": {
+          "x": -0.0004716118435042565,
+          "y": 0,
+          "z": 3.2397974114530816
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 0.9955178499221802,
+          "z": -0.09457384794950485
+        },
+        "slopeDegrees": 5.426792603658788,
+        "slopeSpeedMultiplier": 0.9528816016996917,
+        "heading": -0.000033401199064206194,
+        "actualSpeed": 3.199314360808112,
+        "blocked": false,
+        "travel": 25.681270665276287,
+        "ticks": 618,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      {
+        "feet": [
+          0.0016043938853224585,
+          1.6856817583325028,
+          23.78120149459882
+        ],
+        "velocity": {
+          "x": -0.0007765180437583618,
+          "y": 0,
+          "z": 3.2397963591487935
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 0.995517909526825,
+          "z": -0.0945742279291153
+        },
+        "slopeDegrees": 5.426813856531497,
+        "slopeSpeedMultiplier": 0.9528813094726919,
+        "heading": 0.0008349027882013187,
+        "actualSpeed": 3.199336168216485,
+        "blocked": false,
+        "travel": 27.281205603695977,
+        "ticks": 648,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      {
+        "feet": [
+          0.0020501274188470756,
+          1.8376312678451359,
+          25.380968415850834
+        ],
+        "velocity": {
+          "x": -0.0014373774683950956,
+          "y": 0,
+          "z": 3.2397961509278894
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 0.995517909526825,
+          "z": -0.0945742279291153
+        },
+        "slopeDegrees": 5.426813480568405,
+        "slopeSpeedMultiplier": 0.9528813146421844,
+        "heading": 0.00023017106715920253,
+        "actualSpeed": 3.199545736134584,
+        "blocked": false,
+        "travel": 28.880973206203524,
+        "ticks": 678,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      {
+        "feet": [
+          0.0014662772973745245,
+          1.9895995667907118,
+          26.980744434261755
+        ],
+        "velocity": {
+          "x": -0.0015761241528816402,
+          "y": 0,
+          "z": 3.2397960914230652
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 0.995517909526825,
+          "z": -0.0945742279291153
+        },
+        "slopeDegrees": 5.426813373126659,
+        "slopeSpeedMultiplier": 0.9528813161195084,
+        "heading": -0.00031877758016185374,
+        "actualSpeed": 3.199555511223918,
+        "blocked": false,
+        "travel": 30.48074943513264,
+        "ticks": 708,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      {
+        "feet": [
+          0.0008584826964645412,
+          2.1415841042766988,
+          28.58050703790231
+        ],
+        "velocity": {
+          "x": -0.0018215452543197679,
+          "y": 0,
+          "z": 3.2397966085104715
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 0.995517909526825,
+          "z": -0.0945739895105362
+        },
+        "slopeDegrees": 5.426799559704859,
+        "slopeSpeedMultiplier": 0.9528815060540582,
+        "heading": -0.00019493914609364202,
+        "actualSpeed": 3.199494554133743,
+        "blocked": false,
+        "travel": 32.080512251061464,
+        "ticks": 738,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      {
+        "feet": [
+          0.00012057043571849814,
+          2.2935657681668817,
+          30.180269090199904
+        ],
+        "velocity": {
+          "x": -0.000028267869768358043,
+          "y": 0,
+          "z": 3.2397970806098915
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 0.995517909526825,
+          "z": -0.0945739895105362
+        },
+        "slopeDegrees": 5.4268004121238045,
+        "slopeSpeedMultiplier": 0.9528814943332977,
+        "heading": -0.00014606607716644962,
+        "actualSpeed": 3.1995420904235305,
+        "blocked": false,
+        "travel": 33.68027455150592,
+        "ticks": 768,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      {
+        "feet": [
+          0.0003162093130621383,
+          2.445557883358997,
+          31.78002658274217
+        ],
+        "velocity": {
+          "x": -0.00008384069723897311,
+          "y": 0,
+          "z": 3.239795797871637
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 0.9955177903175354,
+          "z": -0.0945744588971138
+        },
+        "slopeDegrees": 5.426827829808165,
+        "slopeSpeedMultiplier": 0.9528811173401377,
+        "heading": 0.00012799907656579738,
+        "actualSpeed": 3.199527115738551,
+        "blocked": false,
+        "travel": 35.28003215418843,
+        "ticks": 798,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      {
+        "feet": [
+          0.0007254735635550628,
+          2.5975196560616314,
+          33.379790218288136
+        ],
+        "velocity": {
+          "x": -0.00022150727669103935,
+          "y": 0,
+          "z": 3.2397970737407404
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 0.995517909526825,
+          "z": -0.0945739895105362
+        },
+        "slopeDegrees": 5.426800399720921,
+        "slopeSpeedMultiplier": 0.9528814945038373,
+        "heading": 0.00034630383694091784,
+        "actualSpeed": 3.1995447828296584,
+        "blocked": false,
+        "travel": 36.879796086498416,
+        "ticks": 828,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      {
+        "feet": [
+          0.0008010773326740332,
+          2.696638988331397,
+          35.03265054684324
+        ],
+        "velocity": {
+          "x": -0.0003025222418986894,
+          "y": 0,
+          "z": 3.3864140675246017
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 0.9992009997367859,
+          "z": -0.03996800258755684
+        },
+        "slopeDegrees": 2.290607892248631,
+        "slopeSpeedMultiplier": 0.9960041414815813,
+        "heading": 0.00003585041742396544,
+        "actualSpeed": 3.376237987111318,
+        "blocked": false,
+        "travel": 38.53265654297585,
+        "ticks": 858,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      {
+        "feet": [
+          0.0008206297241239394,
+          2.7643782600066333,
+          36.72073692988796
+        ],
+        "velocity": {
+          "x": -0.00038170535072250446,
+          "y": 0,
+          "z": 3.386414059777789
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 0.9992009997367859,
+          "z": -0.03996800258755684
+        },
+        "slopeDegrees": 2.290607886843441,
+        "slopeSpeedMultiplier": 0.9960041415559027,
+        "heading": 0.00000775622351911817,
+        "actualSpeed": 3.3756979760277193,
+        "blocked": false,
+        "travel": 40.2207430317106,
+        "ticks": 888,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 2
+      },
+      {
+        "feet": [
+          0.0008743076162071543,
+          2.8316912291343033,
+          38.40884361576481
+        ],
+        "velocity": {
+          "x": -0.0005294811923429066,
+          "y": 0,
+          "z": 3.386414040524691
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 0.9992009997367859,
+          "z": -0.03996800258755684
+        },
+        "slopeDegrees": 2.290607873409961,
+        "slopeSpeedMultiplier": 0.996004141740613,
+        "heading": 0.00007792255362936536,
+        "actualSpeed": 3.376245389935926,
+        "blocked": false,
+        "travel": 41.90884979283519,
+        "ticks": 918,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      {
+        "feet": [
+          0.0008131505280383703,
+          2.899227421614778,
+          40.09692339014454
+        ],
+        "velocity": {
+          "x": -0.000705546800714719,
+          "y": 0,
+          "z": 3.3864140094332256
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 0.9992009997367859,
+          "z": -0.03996800258755684
+        },
+        "slopeDegrees": 2.2906078517164863,
+        "slopeSpeedMultiplier": 0.9960041420388983,
+        "heading": -0.00012841743158451718,
+        "actualSpeed": 3.376663848052894,
+        "blocked": false,
+        "travel": 43.59692962640037,
+        "ticks": 948,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      {
+        "feet": [
+          0.0006705728196644781,
+          2.9667631717170297,
+          41.78503065344138
+        ],
+        "velocity": {
+          "x": -0.001025305492729991,
+          "y": 0,
+          "z": 3.3864139302975618
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 0.9992009997367859,
+          "z": -0.03996800258755684
+        },
+        "slopeDegrees": 2.2906077965010936,
+        "slopeSpeedMultiplier": 0.99600414279811,
+        "heading": -0.00014359731604025392,
+        "actualSpeed": 3.3761397816358185,
+        "blocked": false,
+        "travel": 45.28503693322586,
+        "ticks": 978,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      {
+        "feet": [
+          0.00021583867452739693,
+          3.034303773544234,
+          43.47312197622104
+        ],
+        "velocity": {
+          "x": -0.0013877229765941828,
+          "y": 0,
+          "z": 3.3864138052539587
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 0.9992009997367859,
+          "z": -0.03996800258755684
+        },
+        "slopeDegrees": 2.2906077092543162,
+        "slopeSpeedMultiplier": 0.9960041439977532,
+        "heading": -0.0003081642284752285,
+        "actualSpeed": 3.3761130890476867,
+        "blocked": false,
+        "travel": 46.973128341675334,
+        "ticks": 1008,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 1
+      }
+    ],
+    "end": {
+      "ready": true,
+      "enabled": true,
+      "version": "M1.1-C.C1.R1.1",
+      "config": {
+        "version": "M1.1-C.C1.R1.1",
+        "status": "IMPLEMENTED / REVIEW_PENDING",
+        "standard": "1.0",
+        "baseCommit": "c6dcf6ed2bc7a976cd7994402305b80ef0fb6127",
+        "purpose": "C1 controller parameters, not historical measurements or a final student avatar",
+        "body": {
+          "height": 1.72,
+          "radius": 0.28,
+          "skin": 0.015
+        },
+        "movement": {
+          "walkSpeed": 1.65,
+          "runSpeed": 3.4,
+          "acceleration": 12,
+          "braking": 18,
+          "gravity": 18,
+          "terminalSpeed": 30,
+          "maxStep": 0.28,
+          "stepWidth": 0.16,
+          "snapDistance": 0.32,
+          "climbDegrees": 42,
+          "slideDegrees": 48,
+          "groundStickSpeed": 0.12,
+          "slopeSpeedDeadbandDegrees": 2,
+          "uphillSpeedMinMultiplier": 0.45,
+          "downhillFullEffectDegrees": 18,
+          "downhillSpeedMaxMultiplier": 1.12
+        },
+        "simulation": {
+          "hz": 60,
+          "maxCatchupSteps": 8,
+          "maxFrameSeconds": 0.15
+        },
+        "camera": {
+          "distance": 3.6,
+          "minimumDistance": 0.75,
+          "maximumDistance": 7,
+          "radius": 0.18,
+          "eyeHeight": 1.59,
+          "targetHeight": 1.28,
+          "fov": 55,
+          "pitch": 0.25,
+          "minimumPitch": -0.25,
+          "maximumPitch": 1.05,
+          "sensitivity": 0.004,
+          "recoveryRate": 6
+        },
+        "collision": {
+          "regionRadius": 26,
+          "refreshDistance": 9,
+          "verticalMin": -30,
+          "verticalMax": 100,
+          "geometry": "Exact rendered triangle subset selected by BVH; coplanar conditioning splits long triangles to <=12m edges without changing the surface or visible mesh",
+          "nonBlocking": [
+            "foliage",
+            "turf paint",
+            "name marks",
+            "water surface",
+            "survey guides",
+            "player visualization"
+          ],
+          "glassBlocking": true,
+          "solidNetBlocking": true
+        },
+        "spawns": {
+          "gate": {
+            "label": "主校门",
+            "feet": [
+              0,
+              0.12,
+              -3.5
+            ],
+            "yaw": 0
+          },
+          "lane": {
+            "label": "侧门围墙小路",
+            "feet": [
+              17,
+              0.18,
+              4.4
+            ],
+            "yaw": 0
+          },
+          "courts": {
+            "label": "篮球场东入口",
+            "feet": [
+              -5,
+              3.15,
+              120
+            ],
+            "yaw": -1.5707963267948966
+          },
+          "stone": {
+            "label": "校名石坡脚",
+            "feet": [
+              -8.1,
+              0.14,
+              -11.65
+            ],
+            "yaw": 0
+          },
+          "gym": {
+            "label": "体育馆前坪",
+            "feet": [
+              -20,
+              3.15,
+              45
+            ],
+            "yaw": -1.5707963267948966
+          }
+        },
+        "avatar": {
+          "type": "articulated scale mannequin",
+          "historicalUniform": false,
+          "label": "C1 比例人形；C2 再制作有依据的学生形象",
+          "shadow": "procedural contact shadow; static campus daylight unchanged"
+        },
+        "scopeBoundary": "C1 validates controller and representative routes only. C2 final avatar and C3 whole-campus traversal acceptance remain planned. No jump, swimming, interactions, NPCs or narrative mechanics."
+      },
+      "motor": {
+        "feet": [
+          -0.00007683220187474325,
+          3.0550002276217856,
+          44.15738821507169
+        ],
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "grounded": true,
+        "groundNormal": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "slopeDegrees": 0,
+        "slopeSpeedMultiplier": 1,
+        "heading": -0.0003861657167659399,
+        "actualSpeed": 0.000023366679323219957,
+        "blocked": false,
+        "travel": 47.65739714219436,
+        "ticks": 1035,
+        "paused": false,
+        "droppedSeconds": 54.69783333333333,
+        "respawns": 0,
+        "collisionCount": 1
+      },
+      "camera": {
+        "position": {
+          "x": -0.00007683220187474325,
+          "y": 5.225654480938068,
+          "z": 40.66930349691337
+        },
+        "target": {
+          "x": -0.00007683220187474325,
+          "y": 4.335000227621785,
+          "z": 44.15738821507169
+        },
+        "distance": 3.6,
+        "allowedDistance": 3.6,
+        "obstructed": false,
+        "firstPerson": false,
+        "hideAvatar": false
+      },
+      "collision": {
+        "method": "Rapier capsule against exact visible solid triangles selected by shared BVH",
+        "solidInstances": 19720,
+        "excluded": {
+          "water-no-swimming": 2,
+          "annotation-or-paint": 9,
+          "leaves": 70
+        },
+        "residentTriangles": 40030,
+        "regionRevisions": 7,
+        "regionCentre": {
+          "x": 0.0007030762263790461,
+          "z": 41.61622063230915
+        },
+        "regionRadius": 26,
+        "lastBuildMs": 74.20000000001164,
+        "totalBuildMs": 761.5000000000582,
+        "sources": [
+          {
+            "name": "",
+            "owner": "environment",
+            "role": "",
+            "instance": 0,
+            "triangles": 400
+          },
+          {
+            "name": "B05-09-tree-trunk|11|rod|-1,0",
+            "owner": "09",
+            "role": "tree-trunk",
+            "instance": 0,
+            "triangles": 960
+          },
+          {
+            "name": "B05-09-tree-trunk|11|rod|-1,1",
+            "owner": "09",
+            "role": "tree-trunk",
+            "instance": 0,
+            "triangles": 1920
+          },
+          {
+            "name": "B05-09-tree-trunk|11|rod|0,0",
+            "owner": "09",
+            "role": "tree-trunk",
+            "instance": 0,
+            "triangles": 960
+          },
+          {
+            "name": "B05-09-tree-trunk|11|rod|0,1",
+            "owner": "09",
+            "role": "tree-trunk",
+            "instance": 0,
+            "triangles": 2880
+          },
+          {
+            "name": "B05-09-tree-trunk|11|rod|0,2",
+            "owner": "09",
+            "role": "tree-trunk",
+            "instance": 0,
+            "triangles": 1078
+          },
+          {
+            "name": "P03-ground-upper-11",
+            "owner": "environment",
+            "role": "turf",
+            "instance": 0,
+            "triangles": 864
+          },
+          {
+            "name": "P03-ground-upper-12",
+            "owner": "environment",
+            "role": "turf",
+            "instance": 0,
+            "triangles": 832
+          },
+          {
+            "name": "P03-ground-upper-22",
+            "owner": "environment",
+            "role": "turf",
+            "instance": 0,
+            "triangles": 270
+          },
+          {
+            "name": "P03-ground-upper-23",
+            "owner": "environment",
+            "role": "turf",
+            "instance": 0,
+            "triangles": 260
+          },
+          {
+            "name": "P03-ground-upper-33",
+            "owner": "environment",
+            "role": "turf",
+            "instance": 0,
+            "triangles": 1080
+          },
+          {
+            "name": "P03-ground-upper-34",
+            "owner": "environment",
+            "role": "turf",
+            "instance": 0,
+            "triangles": 1040
+          },
+          {
+            "name": "P03-ground-upper-44",
+            "owner": "environment",
+            "role": "turf",
+            "instance": 0,
+            "triangles": 594
+          },
+          {
+            "name": "P03-ground-upper-45",
+            "owner": "environment",
+            "role": "turf",
+            "instance": 0,
+            "triangles": 572
+          },
+          {
+            "name": "P03-ground-upper-55",
+            "owner": "environment",
+            "role": "turf",
+            "instance": 0,
+            "triangles": 108
+          },
+          {
+            "name": "P03-ground-pit-56",
+            "owner": "environment",
+            "role": "turf",
+            "instance": 0,
+            "triangles": 103
+          },
+          {
+            "name": "P02-GYM-FORECOURT",
+            "owner": "environment",
+            "role": "forecourt-surface",
+            "instance": 0,
+            "triangles": 6560
+          },
+          {
+            "name": "M11A-road-gate--junction-gym",
+            "owner": "environment",
+            "role": "road",
+            "instance": 0,
+            "triangles": 364
+          },
+          {
+            "name": "M11A-road-side-branch--side-front-turn",
+            "owner": "environment",
+            "role": "road",
+            "instance": 0,
+            "triangles": 65
+          },
+          {
+            "name": "M11A-road-side-gate--side-entry",
+            "owner": "environment",
+            "role": "road",
+            "instance": 0,
+            "triangles": 10
+          },
+          {
+            "name": "M11A-road-side-entry--side-branch",
+            "owner": "environment",
+            "role": "road",
+            "instance": 0,
+            "triangles": 170
+          },
+          {
+            "name": "M11A-road-junction-gym--gym-loop-north",
+            "owner": "environment",
+            "role": "road",
+            "instance": 0,
+            "triangles": 636
+          },
+          {
+            "name": "M11A-road-junction-gym--gym-main-junction",
+            "owner": "environment",
+            "role": "road",
+            "instance": 0,
+            "triangles": 1288
+          },
+          {
+            "name": "M11A-road-gym-main-junction--junction-sports",
+            "owner": "environment",
+            "role": "road",
+            "instance": 0,
+            "triangles": 1288
+          },
+          {
+            "name": "M11A-road-gym-main-junction--gym-forecourt",
+            "owner": "environment",
+            "role": "road",
+            "instance": 0,
+            "triangles": 352
+          },
+          {
+            "name": "M11A-road-gym-forecourt--gym-entry",
+            "owner": "environment",
+            "role": "road",
+            "instance": 0,
+            "triangles": 304
+          },
+          {
+            "name": "M11A-joint-junction-gym",
+            "owner": "environment",
+            "role": "road",
+            "instance": 0,
+            "triangles": 12
+          },
+          {
+            "name": "M11A-joint-gym-entry",
+            "owner": "environment",
+            "role": "road",
+            "instance": 0,
+            "triangles": 18
+          },
+          {
+            "name": "M11A-joint-side-branch",
+            "owner": "environment",
+            "role": "road",
+            "instance": 0,
+            "triangles": 18
+          },
+          {
+            "name": "M11A-joint-side-entry",
+            "owner": "environment",
+            "role": "road",
+            "instance": 0,
+            "triangles": 18
+          },
+          {
+            "name": "M11A-joint-gym-main-junction",
+            "owner": "environment",
+            "role": "road",
+            "instance": 0,
+            "triangles": 12
+          },
+          {
+            "name": "M11A-joint-gym-forecourt",
+            "owner": "environment",
+            "role": "road",
+            "instance": 0,
+            "triangles": 12
+          },
+          {
+            "name": "M11A-road-edge-gate--1",
+            "owner": "environment",
+            "role": "edge",
+            "instance": 0,
+            "triangles": 20
+          },
+          {
+            "name": "M11A-road-edge-gate-1",
+            "owner": "environment",
+            "role": "edge",
+            "instance": 0,
+            "triangles": 20
+          },
+          {
+            "name": "M11A-road-edge-junction-gym--1",
+            "owner": "environment",
+            "role": "edge",
+            "instance": 0,
+            "triangles": 78
+          },
+          {
+            "name": "M11A-road-edge-junction-gym-1",
+            "owner": "environment",
+            "role": "edge",
+            "instance": 0,
+            "triangles": 78
+          },
+          {
+            "name": "M11A-road-edge-gym-main-junction--1",
+            "owner": "environment",
+            "role": "edge",
+            "instance": 0,
+            "triangles": 84
+          },
+          {
+            "name": "M11A-road-edge-gym-main-junction-1",
+            "owner": "environment",
+            "role": "edge",
+            "instance": 0,
+            "triangles": 84
+          },
+          {
+            "name": "P03-WEST-approach",
+            "owner": "environment",
+            "role": "access",
+            "instance": 0,
+            "triangles": 108
+          },
+          {
+            "name": "B05-02-wall|6|prism|",
+            "owner": "02",
+            "role": "wall",
+            "instance": 0,
+            "triangles": 252
+          },
+          {
+            "name": "B05-02-stone-plaque|8|prism|",
+            "owner": "02",
+            "role": "stone-plaque",
+            "instance": 0,
+            "triangles": 160
+          },
+          {
+            "name": "B05-02-wall|14|prism|",
+            "owner": "02",
+            "role": "wall",
+            "instance": 0,
+            "triangles": 68
+          },
+          {
+            "name": "B02-03-stairwell-inner-top",
+            "owner": "03",
+            "role": "railing",
+            "instance": 0,
+            "triangles": 144
+          },
+          {
+            "name": "B02-03-stairwell-inner-mid",
+            "owner": "03",
+            "role": "railing",
+            "instance": 0,
+            "triangles": 144
+          },
+          {
+            "name": "B02-03-stairwell-inner-post0",
+            "owner": "03",
+            "role": "railing",
+            "instance": 0,
+            "triangles": 192
+          },
+          {
+            "name": "B02-03-stairwell-inner-post1",
+            "owner": "03",
+            "role": "railing",
+            "instance": 0,
+            "triangles": 192
+          },
+          {
+            "name": "B02-03-stairwell-front-top",
+            "owner": "03",
+            "role": "railing",
+            "instance": 0,
+            "triangles": 192
+          },
+          {
+            "name": "B02-03-stairwell-front-mid",
+            "owner": "03",
+            "role": "railing",
+            "instance": 0,
+            "triangles": 192
+          },
+          {
+            "name": "B02-03-stairwell-front-post0",
+            "owner": "03",
+            "role": "railing",
+            "instance": 0,
+            "triangles": 192
+          },
+          {
+            "name": "B02-03-stairwell-front-post1",
+            "owner": "03",
+            "role": "railing",
+            "instance": 0,
+            "triangles": 192
+          },
+          {
+            "name": "B02-03-stairwell-front-post2",
+            "owner": "03",
+            "role": "railing",
+            "instance": 0,
+            "triangles": 192
+          },
+          {
+            "name": "B02-03-stairwell-front-post3",
+            "owner": "03",
+            "role": "railing",
+            "instance": 0,
+            "triangles": 192
+          },
+          {
+            "name": "B02-03-stairwell-front-post4",
+            "owner": "03",
+            "role": "railing",
+            "instance": 0,
+            "triangles": 192
+          },
+          {
+            "name": "B02-03-fold--1",
+            "owner": "03",
+            "role": "upper-shell",
+            "instance": 0,
+            "triangles": 20
+          },
+          {
+            "name": "B02-03-fold-1",
+            "owner": "03",
+            "role": "upper-shell",
+            "instance": 0,
+            "triangles": 20
+          },
+          {
+            "name": "B02-03-roof-0",
+            "owner": "03",
+            "role": "upper-shell",
+            "instance": 0,
+            "triangles": 10
+          },
+          {
+            "name": "B02-03-roof-2",
+            "owner": "03",
+            "role": "upper-shell",
+            "instance": 0,
+            "triangles": 8
+          },
+          {
+            "name": "B02-03-stair-rail-19.57",
+            "owner": "03",
+            "role": "railing",
+            "instance": 0,
+            "triangles": 144
+          },
+          {
+            "name": "B02-03-stair-mid-19.57",
+            "owner": "03",
+            "role": "railing",
+            "instance": 0,
+            "triangles": 144
+          },
+          {
+            "name": "B02-03-stair-post-19.57-0",
+            "owner": "03",
+            "role": "railing",
+            "instance": 0,
+            "triangles": 192
+          },
+          {
+            "name": "B02-03-stair-rail-16.43",
+            "owner": "03",
+            "role": "railing",
+            "instance": 0,
+            "triangles": 144
+          },
+          {
+            "name": "B02-03-stair-mid-16.43",
+            "owner": "03",
+            "role": "railing",
+            "instance": 0,
+            "triangles": 144
+          },
+          {
+            "name": "B02-03-stair-post-16.43-0",
+            "owner": "03",
+            "role": "railing",
+            "instance": 0,
+            "triangles": 192
+          },
+          {
+            "name": "B02-03-gallery-floor-detail-31",
+            "owner": "03",
+            "role": "gallery-floor",
+            "instance": 1,
+            "triangles": 76
+          },
+          {
+            "name": "B02-03-gallery-floor-detail-31",
+            "owner": "03",
+            "role": "gallery-floor",
+            "instance": 2,
+            "triangles": 46
+          },
+          {
+            "name": "B02-03-fascia-detail-32",
+            "owner": "03",
+            "role": "fascia",
+            "instance": 0,
+            "triangles": 76
+          },
+          {
+            "name": "B02-03-parapet-detail-33",
+            "owner": "03",
+            "role": "parapet",
+            "instance": 0,
+            "triangles": 1548
+          },
+          {
+            "name": "B02-03-parapet-detail-34",
+            "owner": "03",
+            "role": "parapet",
+            "instance": 0,
+            "triangles": 558
+          },
+          {
+            "name": "B02-03-fascia-detail-35",
+            "owner": "03",
+            "role": "fascia",
+            "instance": 0,
+            "triangles": 76
+          },
+          {
+            "name": "B02-03-fascia-detail-35",
+            "owner": "03",
+            "role": "fascia",
+            "instance": 1,
+            "triangles": 14
+          },
+          {
+            "name": "B02-03-parapet-detail-36",
+            "owner": "03",
+            "role": "parapet",
+            "instance": 0,
+            "triangles": 1548
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 0,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 1,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 2,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 3,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 4,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 5,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 6,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 7,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 8,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 9,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 10,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 11,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 12,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 13,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 14,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 15,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 16,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 17,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 18,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 19,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 20,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 21,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 22,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 23,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 24,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 25,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 26,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 27,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 28,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 29,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-joint-detail-37",
+            "owner": "03",
+            "role": "joint",
+            "instance": 30,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-column-detail-38",
+            "owner": "03",
+            "role": "column",
+            "instance": 0,
+            "triangles": 972
+          },
+          {
+            "name": "B02-03-column-detail-38",
+            "owner": "03",
+            "role": "column",
+            "instance": 1,
+            "triangles": 972
+          },
+          {
+            "name": "B02-03-column-detail-38",
+            "owner": "03",
+            "role": "column",
+            "instance": 2,
+            "triangles": 972
+          },
+          {
+            "name": "B02-03-column-detail-38",
+            "owner": "03",
+            "role": "column",
+            "instance": 3,
+            "triangles": 972
+          },
+          {
+            "name": "B02-03-spectator-step-detail-48",
+            "owner": "03",
+            "role": "spectator-step",
+            "instance": 0,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-spectator-step-detail-48",
+            "owner": "03",
+            "role": "spectator-step",
+            "instance": 1,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-spectator-step-detail-48",
+            "owner": "03",
+            "role": "spectator-step",
+            "instance": 2,
+            "triangles": 12
+          },
+          {
+            "name": "B02-03-spectator-step-detail-48",
+            "owner": "03",
+            "role": "spectator-step",
+            "instance": 3,
+            "triangles": 10
+          },
+          {
+            "name": "ST-GYM-step-1",
+            "owner": "03",
+            "role": "entrance-step",
+            "instance": 0,
+            "triangles": 76
+          },
+          {
+            "name": "ST-GYM-step-2",
+            "owner": "03",
+            "role": "entrance-step",
+            "instance": 0,
+            "triangles": 76
+          },
+          {
+            "name": "ST-GYM-step-3",
+            "owner": "03",
+            "role": "entrance-step",
+            "instance": 0,
+            "triangles": 76
+          },
+          {
+            "name": "ST-GYM-step-4",
+            "owner": "03",
+            "role": "entrance-step",
+            "instance": 0,
+            "triangles": 76
+          },
+          {
+            "name": "P03-WEST-step-6",
+            "owner": "08",
+            "role": "entrance-step",
+            "instance": 0,
+            "triangles": 10
+          },
+          {
+            "name": "P03-WEST-step-7",
+            "owner": "08",
+            "role": "entrance-step",
+            "instance": 0,
+            "triangles": 12
+          },
+          {
+            "name": "P03-WEST-step-8",
+            "owner": "08",
+            "role": "entrance-step",
+            "instance": 0,
+            "triangles": 12
+          },
+          {
+            "name": "M11A-foundation-03",
+            "owner": "03",
+            "role": "podium",
+            "instance": 0,
+            "triangles": 50
+          },
+          {
+            "name": "P03-wall",
+            "owner": "environment",
+            "role": "P03-wall",
+            "instance": 0,
+            "triangles": 560
+          },
+          {
+            "name": "P03-edge",
+            "owner": "environment",
+            "role": "P03-edge",
+            "instance": 0,
+            "triangles": 560
+          },
+          {
+            "name": "P03-railing",
+            "owner": "environment",
+            "role": "P03-railing",
+            "instance": 0,
+            "triangles": 1240
+          }
+        ]
+      },
+      "input": {
+        "x": 0,
+        "z": 0,
+        "run": false
+      },
+      "avatar": {
+        "visible": true,
+        "finalStudent": false,
+        "footPosition": [
+          -0.00007683220187474325,
+          3.0550002276217856,
+          44.15738821507169
+        ]
+      },
+      "physicsMs": 0
+    }
+  },
+  "final": {
+    "ready": true,
+    "enabled": true,
+    "version": "M1.1-C.C1.R1.1",
+    "config": {
+      "version": "M1.1-C.C1.R1.1",
+      "status": "IMPLEMENTED / REVIEW_PENDING",
+      "standard": "1.0",
+      "baseCommit": "c6dcf6ed2bc7a976cd7994402305b80ef0fb6127",
+      "purpose": "C1 controller parameters, not historical measurements or a final student avatar",
+      "body": {
+        "height": 1.72,
+        "radius": 0.28,
+        "skin": 0.015
+      },
+      "movement": {
+        "walkSpeed": 1.65,
+        "runSpeed": 3.4,
+        "acceleration": 12,
+        "braking": 18,
+        "gravity": 18,
+        "terminalSpeed": 30,
+        "maxStep": 0.28,
+        "stepWidth": 0.16,
+        "snapDistance": 0.32,
+        "climbDegrees": 42,
+        "slideDegrees": 48,
+        "groundStickSpeed": 0.12,
+        "slopeSpeedDeadbandDegrees": 2,
+        "uphillSpeedMinMultiplier": 0.45,
+        "downhillFullEffectDegrees": 18,
+        "downhillSpeedMaxMultiplier": 1.12
+      },
+      "simulation": {
+        "hz": 60,
+        "maxCatchupSteps": 8,
+        "maxFrameSeconds": 0.15
+      },
+      "camera": {
+        "distance": 3.6,
+        "minimumDistance": 0.75,
+        "maximumDistance": 7,
+        "radius": 0.18,
+        "eyeHeight": 1.59,
+        "targetHeight": 1.28,
+        "fov": 55,
+        "pitch": 0.25,
+        "minimumPitch": -0.25,
+        "maximumPitch": 1.05,
+        "sensitivity": 0.004,
+        "recoveryRate": 6
+      },
+      "collision": {
+        "regionRadius": 26,
+        "refreshDistance": 9,
+        "verticalMin": -30,
+        "verticalMax": 100,
+        "geometry": "Exact rendered triangle subset selected by BVH; coplanar conditioning splits long triangles to <=12m edges without changing the surface or visible mesh",
+        "nonBlocking": [
+          "foliage",
+          "turf paint",
+          "name marks",
+          "water surface",
+          "survey guides",
+          "player visualization"
+        ],
+        "glassBlocking": true,
+        "solidNetBlocking": true
+      },
+      "spawns": {
+        "gate": {
+          "label": "主校门",
+          "feet": [
+            0,
+            0.12,
+            -3.5
+          ],
+          "yaw": 0
+        },
+        "lane": {
+          "label": "侧门围墙小路",
+          "feet": [
+            17,
+            0.18,
+            4.4
+          ],
+          "yaw": 0
+        },
+        "courts": {
+          "label": "篮球场东入口",
+          "feet": [
+            -5,
+            3.15,
+            120
+          ],
+          "yaw": -1.5707963267948966
+        },
+        "stone": {
+          "label": "校名石坡脚",
+          "feet": [
+            -8.1,
+            0.14,
+            -11.65
+          ],
+          "yaw": 0
+        },
+        "gym": {
+          "label": "体育馆前坪",
+          "feet": [
+            -20,
+            3.15,
+            45
+          ],
+          "yaw": -1.5707963267948966
+        }
+      },
+      "avatar": {
+        "type": "articulated scale mannequin",
+        "historicalUniform": false,
+        "label": "C1 比例人形；C2 再制作有依据的学生形象",
+        "shadow": "procedural contact shadow; static campus daylight unchanged"
+      },
+      "scopeBoundary": "C1 validates controller and representative routes only. C2 final avatar and C3 whole-campus traversal acceptance remain planned. No jump, swimming, interactions, NPCs or narrative mechanics."
+    },
+    "motor": {
+      "feet": [
+        6.178695244329901e-8,
+        0.05505856814896115,
+        -3.4999998401472827
+      ],
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "grounded": true,
+      "groundNormal": {
+        "x": 0,
+        "y": 1,
+        "z": 0
+      },
+      "slopeDegrees": 0,
+      "slopeSpeedMultiplier": 1,
+      "heading": 0,
+      "actualSpeed": 0,
+      "blocked": false,
+      "travel": 47.65739903597711,
+      "ticks": 1077,
+      "paused": true,
+      "droppedSeconds": 159.2228666666667,
+      "respawns": 0,
+      "collisionCount": 1
+    },
+    "camera": {
+      "position": {
+        "x": 6.178695244329901e-8,
+        "y": 2.225712821465244,
+        "z": -6.988084558305603
+      },
+      "target": {
+        "x": 6.178695244329901e-8,
+        "y": 1.3350585681489613,
+        "z": -3.4999998401472827
+      },
+      "distance": 3.6,
+      "allowedDistance": 3.6,
+      "obstructed": false,
+      "firstPerson": false,
+      "hideAvatar": false
+    },
+    "collision": {
+      "method": "Rapier capsule against exact visible solid triangles selected by shared BVH",
+      "solidInstances": 19720,
+      "excluded": {
+        "water-no-swimming": 2,
+        "annotation-or-paint": 9,
+        "leaves": 70
+      },
+      "residentTriangles": 51415,
+      "regionRevisions": 9,
+      "regionCentre": {
+        "x": 0,
+        "z": -3.5
+      },
+      "regionRadius": 26,
+      "lastBuildMs": 66.59999999997672,
+      "totalBuildMs": 901.5000000000582,
+      "sources": [
+        {
+          "name": "",
+          "owner": "environment",
+          "role": "",
+          "instance": 0,
+          "triangles": 356
+        },
+        {
+          "name": "",
+          "owner": "environment",
+          "role": "",
+          "instance": 0,
+          "triangles": 484
+        },
+        {
+          "name": "B05-09-tree-trunk|11|rod|-1,0",
+          "owner": "09",
+          "role": "tree-trunk",
+          "instance": 0,
+          "triangles": 1920
+        },
+        {
+          "name": "B05-09-tree-trunk|11|rod|0,0",
+          "owner": "09",
+          "role": "tree-trunk",
+          "instance": 0,
+          "triangles": 960
+        },
+        {
+          "name": "P03-ground-upper-11",
+          "owner": "environment",
+          "role": "turf",
+          "instance": 0,
+          "triangles": 1394
+        },
+        {
+          "name": "P03-ground-upper-22",
+          "owner": "environment",
+          "role": "turf",
+          "instance": 0,
+          "triangles": 410
+        },
+        {
+          "name": "P03-ground-upper-33",
+          "owner": "environment",
+          "role": "turf",
+          "instance": 0,
+          "triangles": 1640
+        },
+        {
+          "name": "P03-ground-upper-44",
+          "owner": "environment",
+          "role": "turf",
+          "instance": 0,
+          "triangles": 902
+        },
+        {
+          "name": "P03-ground-upper-55",
+          "owner": "environment",
+          "role": "turf",
+          "instance": 0,
+          "triangles": 163
+        },
+        {
+          "name": "M11A-site-thickness-0",
+          "owner": "environment",
+          "role": "",
+          "instance": 0,
+          "triangles": 108
+        },
+        {
+          "name": "M11A-road-gate--junction-gym",
+          "owner": "environment",
+          "role": "road",
+          "instance": 0,
+          "triangles": 1232
+        },
+        {
+          "name": "M11A-road-side-branch--side-front-turn",
+          "owner": "environment",
+          "role": "road",
+          "instance": 0,
+          "triangles": 49
+        },
+        {
+          "name": "M11A-road-side-gate--side-entry",
+          "owner": "environment",
+          "role": "road",
+          "instance": 0,
+          "triangles": 300
+        },
+        {
+          "name": "M11A-road-side-entry--side-branch",
+          "owner": "environment",
+          "role": "road",
+          "instance": 0,
+          "triangles": 170
+        },
+        {
+          "name": "M11A-road-junction-gym--gym-loop-north",
+          "owner": "environment",
+          "role": "road",
+          "instance": 0,
+          "triangles": 529
+        },
+        {
+          "name": "M11A-road-junction-gym--gym-main-junction",
+          "owner": "environment",
+          "role": "road",
+          "instance": 0,
+          "triangles": 56
+        },
+        {
+          "name": "M11A-joint-gate",
+          "owner": "environment",
+          "role": "road",
+          "instance": 0,
+          "triangles": 8
+        },
+        {
+          "name": "M11A-joint-junction-gym",
+          "owner": "environment",
+          "role": "road",
+          "instance": 0,
+          "triangles": 12
+        },
+        {
+          "name": "M11A-joint-side-branch",
+          "owner": "environment",
+          "role": "road",
+          "instance": 0,
+          "triangles": 18
+        },
+        {
+          "name": "M11A-joint-side-gate",
+          "owner": "environment",
+          "role": "road",
+          "instance": 0,
+          "triangles": 18
+        },
+        {
+          "name": "M11A-joint-side-entry",
+          "owner": "environment",
+          "role": "road",
+          "instance": 0,
+          "triangles": 18
+        },
+        {
+          "name": "M11A-road-edge-gate--1",
+          "owner": "environment",
+          "role": "edge",
+          "instance": 0,
+          "triangles": 74
+        },
+        {
+          "name": "M11A-road-edge-gate-1",
+          "owner": "environment",
+          "role": "edge",
+          "instance": 0,
+          "triangles": 74
+        },
+        {
+          "name": "B05-01-wall-detail-0",
+          "owner": "01",
+          "role": "wall",
+          "instance": 0,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-wall-detail-0",
+          "owner": "01",
+          "role": "wall",
+          "instance": 1,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-wall-detail-0",
+          "owner": "01",
+          "role": "wall",
+          "instance": 2,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-wall-detail-0",
+          "owner": "01",
+          "role": "wall",
+          "instance": 3,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-wall-detail-0",
+          "owner": "01",
+          "role": "wall",
+          "instance": 4,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-wall-detail-0",
+          "owner": "01",
+          "role": "wall",
+          "instance": 5,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-column-detail-1",
+          "owner": "01",
+          "role": "column",
+          "instance": 0,
+          "triangles": 972
+        },
+        {
+          "name": "B05-01-beam-detail-2",
+          "owner": "01",
+          "role": "beam",
+          "instance": 0,
+          "triangles": 1548
+        },
+        {
+          "name": "B05-01-paint-trim-detail-3",
+          "owner": "01",
+          "role": "paint-trim",
+          "instance": 0,
+          "triangles": 700
+        },
+        {
+          "name": "B05-01-cornice-detail-4",
+          "owner": "01",
+          "role": "cornice",
+          "instance": 0,
+          "triangles": 972
+        },
+        {
+          "name": "B05-01-paint-trim-detail-5",
+          "owner": "01",
+          "role": "paint-trim",
+          "instance": 0,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-paint-trim-detail-5",
+          "owner": "01",
+          "role": "paint-trim",
+          "instance": 1,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 0,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 1,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 2,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 3,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 4,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 5,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 6,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 7,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 8,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 9,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 10,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 11,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 12,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 13,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 14,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-joint-detail-6",
+          "owner": "01",
+          "role": "joint",
+          "instance": 15,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-floor-detail-7",
+          "owner": "01",
+          "role": "floor",
+          "instance": 0,
+          "triangles": 76
+        },
+        {
+          "name": "B05-01-floor-detail-7",
+          "owner": "01",
+          "role": "floor",
+          "instance": 1,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-floor-detail-8",
+          "owner": "01",
+          "role": "floor",
+          "instance": 0,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-canopy-detail-9",
+          "owner": "01",
+          "role": "canopy",
+          "instance": 0,
+          "triangles": 972
+        },
+        {
+          "name": "B05-01-window-detail-10",
+          "owner": "01",
+          "role": "window",
+          "instance": 0,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-window-detail-10",
+          "owner": "01",
+          "role": "window",
+          "instance": 1,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-window-detail-10",
+          "owner": "01",
+          "role": "window",
+          "instance": 2,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-window-detail-10",
+          "owner": "01",
+          "role": "window",
+          "instance": 3,
+          "triangles": 12
+        },
+        {
+          "name": "B05-01-window-frame-detail-11",
+          "owner": "01",
+          "role": "window-frame",
+          "instance": 0,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-window-frame-detail-11",
+          "owner": "01",
+          "role": "window-frame",
+          "instance": 1,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-window-frame-detail-11",
+          "owner": "01",
+          "role": "window-frame",
+          "instance": 2,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-window-frame-detail-11",
+          "owner": "01",
+          "role": "window-frame",
+          "instance": 3,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-window-frame-detail-11",
+          "owner": "01",
+          "role": "window-frame",
+          "instance": 4,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-window-frame-detail-11",
+          "owner": "01",
+          "role": "window-frame",
+          "instance": 5,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-window-frame-detail-11",
+          "owner": "01",
+          "role": "window-frame",
+          "instance": 6,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-window-frame-detail-11",
+          "owner": "01",
+          "role": "window-frame",
+          "instance": 7,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-window-frame-detail-11",
+          "owner": "01",
+          "role": "window-frame",
+          "instance": 8,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-window-frame-detail-11",
+          "owner": "01",
+          "role": "window-frame",
+          "instance": 9,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-door-frame-detail-12",
+          "owner": "01",
+          "role": "door-frame",
+          "instance": 0,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-door-frame-detail-13",
+          "owner": "01",
+          "role": "door-frame",
+          "instance": 0,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-door-frame-detail-13",
+          "owner": "01",
+          "role": "door-frame",
+          "instance": 1,
+          "triangles": 588
+        },
+        {
+          "name": "B05-01-medallion|12|ring|",
+          "owner": "01",
+          "role": "medallion",
+          "instance": 0,
+          "triangles": 12288
+        },
+        {
+          "name": "B05-01-gate-rail|15|rod|",
+          "owner": "01",
+          "role": "gate-rail",
+          "instance": 0,
+          "triangles": 5376
+        },
+        {
+          "name": "B05-01-paving|2|prism|",
+          "owner": "01",
+          "role": "paving",
+          "instance": 0,
+          "triangles": 144
+        },
+        {
+          "name": "B05-02-column-detail-0",
+          "owner": "02",
+          "role": "column",
+          "instance": 0,
+          "triangles": 972
+        },
+        {
+          "name": "B05-02-column-detail-0",
+          "owner": "02",
+          "role": "column",
+          "instance": 1,
+          "triangles": 972
+        },
+        {
+          "name": "B05-02-wall-detail-1",
+          "owner": "02",
+          "role": "wall",
+          "instance": 0,
+          "triangles": 12
+        },
+        {
+          "name": "B05-02-wall-detail-1",
+          "owner": "02",
+          "role": "wall",
+          "instance": 1,
+          "triangles": 12
+        },
+        {
+          "name": "B05-02-beam-detail-2",
+          "owner": "02",
+          "role": "beam",
+          "instance": 0,
+          "triangles": 972
+        },
+        {
+          "name": "B05-02-gate-rail|5|rod|",
+          "owner": "02",
+          "role": "gate-rail",
+          "instance": 0,
+          "triangles": 2688
+        },
+        {
+          "name": "B05-02-wall|6|prism|",
+          "owner": "02",
+          "role": "wall",
+          "instance": 0,
+          "triangles": 462
+        },
+        {
+          "name": "B05-02-stone-plaque|8|prism|",
+          "owner": "02",
+          "role": "stone-plaque",
+          "instance": 0,
+          "triangles": 308
+        },
+        {
+          "name": "B05-02-wall|14|prism|",
+          "owner": "02",
+          "role": "wall",
+          "instance": 0,
+          "triangles": 154
+        },
+        {
+          "name": "B05-27-floor-detail-0",
+          "owner": "27",
+          "role": "floor",
+          "instance": 0,
+          "triangles": 12
+        },
+        {
+          "name": "B05-27-floor-detail-0",
+          "owner": "27",
+          "role": "floor",
+          "instance": 1,
+          "triangles": 12
+        },
+        {
+          "name": "B05-27-floor-detail-0",
+          "owner": "27",
+          "role": "floor",
+          "instance": 2,
+          "triangles": 12
+        },
+        {
+          "name": "B05-27-floor-detail-0",
+          "owner": "27",
+          "role": "floor",
+          "instance": 3,
+          "triangles": 12
+        },
+        {
+          "name": "B05-27-floor-detail-0",
+          "owner": "27",
+          "role": "floor",
+          "instance": 4,
+          "triangles": 12
+        },
+        {
+          "name": "B05-27-stone-plaque-detail-1",
+          "owner": "27",
+          "role": "stone-plaque",
+          "instance": 0,
+          "triangles": 12
+        },
+        {
+          "name": "B05-27-planter-soil-detail-2",
+          "owner": "27",
+          "role": "planter-soil",
+          "instance": 0,
+          "triangles": 12
+        },
+        {
+          "name": "B05-27-planter-soil-detail-2",
+          "owner": "27",
+          "role": "planter-soil",
+          "instance": 1,
+          "triangles": 12
+        },
+        {
+          "name": "B05-27-stone-plaque-detail-3",
+          "owner": "27",
+          "role": "stone-plaque",
+          "instance": 0,
+          "triangles": 12
+        },
+        {
+          "name": "B05-27-stone-plaque-detail-3",
+          "owner": "27",
+          "role": "stone-plaque",
+          "instance": 1,
+          "triangles": 12
+        },
+        {
+          "name": "B05-27-floor|2|prism|",
+          "owner": "27",
+          "role": "floor",
+          "instance": 0,
+          "triangles": 12
+        },
+        {
+          "name": "B05-27-boulder|7|rock|",
+          "owner": "27",
+          "role": "boulder",
+          "instance": 0,
+          "triangles": 1632
+        }
+      ]
+    },
+    "input": {
+      "x": 0,
+      "z": 0,
+      "run": false
+    },
+    "avatar": {
+      "visible": true,
+      "finalStudent": false,
+      "footPosition": [
+        6.178695244329901e-8,
+        0.05505856814896115,
+        -3.4999998401472827
+      ]
+    },
+    "physicsMs": 0
+  },
+  "completedAt": "2026-09-13T23:51:50.796Z"
+}

@@ -1,3 +1,5 @@
+> 当前修订：**C1 R1.1 / IMPLEMENTED / REVIEW_PENDING**。已修复相机相对左右控制与方向性坡面速度；详见 [R1.1 修复](r11-fix.md)。R1 Viewer/QA 保留为历史。
+
 # C1 R1｜可控校园漫游交付
 
 **IMPLEMENTED / REVIEW_PENDING**。B01—B05已认可，B05为R1.2；不自动登记C1认可或合并main。
