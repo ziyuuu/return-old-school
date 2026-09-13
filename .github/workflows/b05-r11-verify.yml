@@ -1,0 +1,146 @@
+name: B05 R1.1 exact offline verification
+on:
+  push:
+    branches: [codex/b05-development]
+    paths: [.github/workflows/b05-r11-verify.yml]
+permissions:
+  contents: write
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      revision: ${{ steps.build.outputs.revision }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/b05-development
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - id: build
+        name: Apply inspected source, build and normally push exact tested revision
+        run: |
+          set -euo pipefail
+          git fetch origin
+          git merge-base --is-ancestor 9e28225532718e3d60cc518aaac36ccc65f3fc2c HEAD
+          git merge-base --is-ancestor origin/main HEAD
+          test -z "$(git status --short)"
+          python - <<'PY'
+          import pathlib,base64,lzma,hashlib,subprocess
+          p=lzma.decompress(base64.b64decode(''.join(f.read_text().strip() for f in sorted(pathlib.Path('.github/b05-r11-final-source').glob('*.txt')))))
+          assert hashlib.sha256(p).hexdigest()=='ca48f154af5aaaf94634c91157a1bf6611d46bd689a5f3d25b3941697869fb85'
+          subprocess.run(['git','apply','--check','-'],input=p,check=True)
+          subprocess.run(['git','apply','-'],input=p,check=True)
+          PY
+          git diff --check
+          npm ci --prefix apps/campus
+          mkdir -p qa/m11b-b05/final-r1.1/build
+          npm run build --prefix apps/campus 2>&1 | tee qa/m11b-b05/final-r1.1/build/build.log
+          node --test tests/m11b/b05/model.test.mjs tests/render-upgrade/*.test.mjs 2>&1 | tee qa/m11b-b05/final-r1.1/build/tests.tap
+          node --check tools/m11b-b05/assemble.mjs
+          node --check tools/m11b-b05/finalize.mjs
+          node --check tools/m11b-b05/measure-frame-pacing.mjs
+          test ! -f data/m11b/batch05/acceptance.json
+          git diff --exit-code 9e28225532718e3d60cc518aaac36ccc65f3fc2c -- apps/campus/src/batch02-core.mjs apps/campus/src/batch03-core.mjs apps/campus/src/batch04-core.mjs data/m11b/batch01/acceptance.json data/m11b/batch02/acceptance.json data/m11b/batch03/acceptance.json data/m11b/batch04/acceptance.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add apps/campus/index.html apps/campus/src/batch05-core.mjs apps/campus/src/batch05-geometry.mjs data/m11b/batch05/input.json docs/m11b/batch05/evidence.md tests/m11b/b05/model.test.mjs tools/m11b-b05
+          git diff --cached --stat
+          git commit -m 'fix(b05): separate track from infield, clear H tree sightlines and retain mobile flag camera; R1.1 review pending [skip ci]'
+          git push origin HEAD:codex/b05-development
+          echo "revision=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          git ls-remote origin refs/heads/main refs/heads/codex/b05-development | tee qa/m11b-b05/final-r1.1/build/remote-refs.txt
+          test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/codex/b05-development | cut -f1)"
+          node tools/m11b-b05/export.mjs
+          echo 'd9e91cad8a2cf49af997da14e4a4ba97066f6115c01517473c049c22815b5e4e  artifacts/m11b-b05/Yali_B05_R1_1_Viewer.html' | sha256sum -c -
+          git bundle create /tmp/b05-r11-source.bundle HEAD ^5e40ff53d0cfdffcd5924655f797ec4db1ca25e7
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: B05-R11-build
+          path: |
+            qa/m11b-b05/final-r1.1/build
+            artifacts/m11b-b05
+            /tmp/b05-r11-source.bundle
+          retention-days: 7
+  browser:
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      max-parallel: 9
+      matrix:
+        group: [gate, courts, field, residential, checks, regression, mobile, fallback, baseline]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.prepare.outputs.revision }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Locked runtime and actual Chromium
+        run: |
+          npm ci --prefix apps/campus
+          npm install --prefix "$RUNNER_TEMP/b05-browser" playwright@1.62.0
+          "$RUNNER_TEMP/b05-browser/node_modules/.bin/playwright" install --with-deps chromium
+          sudo apt-get install -y fonts-noto-cjk
+          echo "PLAYWRIGHT_MODULE=$RUNNER_TEMP/b05-browser/node_modules/playwright" >> "$GITHUB_ENV"
+          node tools/m11b-b05/export.mjs
+          echo 'd9e91cad8a2cf49af997da14e4a4ba97066f6115c01517473c049c22815b5e4e  artifacts/m11b-b05/Yali_B05_R1_1_Viewer.html' | sha256sum -c -
+      - name: Real offline Viewer screenshots and actual-geometry access
+        env:
+          B05_GROUP: ${{ matrix.group }}
+          B05_PHASE: final-r1.1
+        run: |
+          set -o pipefail
+          mkdir -p qa/m11b-b05/final-r1.1/${{ matrix.group }}
+          node tools/m11b-b05/capture.mjs 2>&1 | tee qa/m11b-b05/final-r1.1/${{ matrix.group }}/capture.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: B05-R11-${{ matrix.group }}
+          path: qa/m11b-b05/final-r1.1/${{ matrix.group }}
+          retention-days: 7
+  performance:
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        view: [b05-gate-close, b05-hoop, b05-overview]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.prepare.outputs.revision }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Locked runtime and actual Chromium
+        run: |
+          npm ci --prefix apps/campus
+          npm install --prefix "$RUNNER_TEMP/b05-browser" playwright@1.62.0
+          "$RUNNER_TEMP/b05-browser/node_modules/.bin/playwright" install --with-deps chromium
+          sudo apt-get install -y fonts-noto-cjk
+          echo "PLAYWRIGHT_MODULE=$RUNNER_TEMP/b05-browser/node_modules/playwright" >> "$GITHUB_ENV"
+          node tools/m11b-b05/export.mjs
+          echo 'd9e91cad8a2cf49af997da14e4a4ba97066f6115c01517473c049c22815b5e4e  artifacts/m11b-b05/Yali_B05_R1_1_Viewer.html' | sha256sum -c -
+      - name: Eight warm-up and sixty original full-quality animation frames
+        env:
+          B05_MEASURE_VIEW: ${{ matrix.view }}
+          B05_PHASE: final-r1.1
+        run: |
+          set -o pipefail
+          mkdir -p qa/m11b-b05/final-r1.1/performance-resume/${{ matrix.view }}
+          node tools/m11b-b05/measure-frame-pacing.mjs 2>&1 | tee qa/m11b-b05/final-r1.1/performance-resume/${{ matrix.view }}/capture.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: B05-R11-measure-${{ matrix.view }}
+          path: qa/m11b-b05/final-r1.1/performance-resume/${{ matrix.view }}
+          retention-days: 7
