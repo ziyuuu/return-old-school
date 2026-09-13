@@ -1,0 +1,26 @@
+{
+  "stage": "M1.1-B",
+  "batch": "B04",
+  "version": "R1",
+  "status": "COMPLETE / ALUMNI_APPROVED",
+  "accepted_on": "2026-09-13",
+  "accepted_by": "user/alumni",
+  "user_confirmation": "我这里可以通过了。请提交记录",
+  "source_sha": "4893e0953c2f0e18df2c6b20b28a2edccf9d8774",
+  "viewer_path": "artifacts/m11b-b04/Yali_B04_R1_Viewer.html",
+  "viewer_sha256": "d8e2b969802cfefcaba9d27da496f26ef8e9d1d85eb2a8bc7681d243f3002eda",
+  "qa_path": "qa/m11b-b04/final-summary.json",
+  "scope": [
+    "13科学馆",
+    "17长雅楼",
+    "07办公楼/医务室线索外壳",
+    "16校史馆/旧用途线索外壳",
+    "21信息楼工作名外壳",
+    "主要入口、最小门厅/落脚面及本批入口通行检查"
+  ],
+  "model_rendering_standard": "1.0",
+  "historical_qa_status_preserved": true,
+  "remaining_hypotheses": "See docs/m11b/batch04/evidence.md. Approval does not convert H/U dimensions, identities, historic functions or hidden-face reconstructions into surveyed facts.",
+  "new_frozen_baseline": false,
+  "next_batch": "B05"
+}
