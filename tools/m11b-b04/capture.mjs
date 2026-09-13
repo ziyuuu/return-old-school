@@ -6,6 +6,7 @@ import path from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {createRequire} from 'node:module';
 import {createHash} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
 const require=createRequire(import.meta.url),{chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const draft=process.argv.includes('--draft'),phase=process.env.B04_QA_PHASE||(draft?'iteration-01':'final');
@@ -16,7 +17,19 @@ const report={batch:'B04',phase,mode:draft?'iteration-only / not final QA':'full
 const browser=await chromium.launch({headless:true, ...(process.env.CHROMIUM_PATH?{executablePath:process.env.CHROMIUM_PATH}:{}),timeout:120000,
  args:['--no-sandbox','--no-first-run','--disable-dev-shm-usage','--use-angle=swiftshader','--enable-unsafe-swiftshader','--disable-background-timer-throttling','--disable-renderer-backgrounding']});
 report.environment.browser=browser.version();
+report.sourceCommit=execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim();
+report.viewerManifest=JSON.parse(await fs.readFile(path.join(root,'artifacts/m11b-b04/viewer-manifest.json'),'utf8'));
+if(report.viewerManifest.sha256!==viewerSHA256)throw Error('Viewer/manifest hash mismatch');
+report.accessMethod={scene:'full visible render scene including inherited buildings and actual BVH',widthOffsets:[-.34,0,.34],bodyHeights:[.26,1.1,1.9],supportSampleMaxSpacing:.6,supportTolerance:.225,headroom:1.9,doorGrid:'3 widths × 3 heights per portal; not only centre ray'};
 const contexts=[];
+// Persist checkpoints while Chromium/software-GPU work runs. A stalled view must not
+// conceal all prior measurements until a job-level timeout.
+report.stage='launch';
+const checkpoint=()=>fs.writeFile(path.join(out,'progress.json'),JSON.stringify({...report,checkpointAt:new Date().toISOString()},null,2));
+await checkpoint();
+const checkpointTimer=setInterval(()=>{checkpoint().catch(e=>console.error('CHECKPOINT',String(e)));},15000);
+function stage(value){report.stage=value;console.log('STAGE',value);}
+
 async function openPage(viewport,view,clean=true,fallback=false){
  const context=await browser.newContext({viewport,deviceScaleFactor:1});contexts.push(context);
  const page=await context.newPage();page.setDefaultTimeout(300000);
@@ -24,15 +37,16 @@ async function openPage(viewport,view,clean=true,fallback=false){
  page.on('console',e=>{if(e.type()==='error')report.errors.push({context:{viewport,fallback},message:e.text()});else if(e.type()==='warning'&&report.warnings.length<30)report.warnings.push(e.text());});
  page.on('request',req=>{if(/^https?:/.test(req.url()))report.externalRequests.push(req.url());});
  if(fallback)await page.addInitScript(()=>{const original=WebGL2RenderingContext.prototype.getExtension;WebGL2RenderingContext.prototype.getExtension=function(name){return name==='EXT_clip_control'?null:original.call(this,name);};});
+ stage(`open ${viewport.width}x${viewport.height} ${fallback?'log-depth':'normal'} ${view||'default'}`);
  const began=Date.now();await page.goto(pathToFileURL(viewer).href+'?diagnostics=1'+(clean?'&clean=1':'')+(view?'&view='+view:''),{timeout:600000,waitUntil:'load'});
  await page.waitForFunction(()=>window.__YALI_B04__?.ready&&window.__YALI_RENDER_RAW__,null,{timeout:600000});
- const initializationMs=Date.now()-began;await settle(page,4);
+ const initializationMs=Date.now()-began;stage('ready / '+initializationMs+'ms');await settle(page,4);
  return {page,context,viewport,initializationMs,fallback};
 }
 async function settle(page,frames=6){await page.evaluate(async n=>{for(let i=0;i<n;i++)await new Promise(requestAnimationFrame);},frames);}
 async function state(page){return page.evaluate(()=>({...window.__YALI_B04__.getState(),lighting:window.__YALI_RENDER__.state(),programs:window.__YALI_RENDER_RAW__.renderer.info.programs.length}));}
 async function capture(session,view,filename=view,performanceSample=false){
- const {page,viewport}=session;
+ const {page,viewport}=session;stage('capture '+filename+(performanceSample?' / 60 frames':''));
  if(view)await page.evaluate(v=>window.__YALI_B04__.setView(v),view);
  await settle(page,8);
  let timing=null;
@@ -57,13 +71,13 @@ try{
  const newViews=draft?['b04-science','b04-science-close','b04-science-bay','b04-longya','b04-longya-close','b04-museum','b04-office','b04-information','b04-neighbours']:
  ['b04-science','b04-science-close','b04-science-lobby','b04-science-bay','b04-longya','b04-longya-close','b04-longya-side','b04-office','b04-museum','b04-information','b04-neighbours','b04-west-group','b04-overview'];
  for(const v of newViews)await capture(desktop,v,v,!draft&&['b04-science-close','b04-longya','b04-overview'].includes(v));
- const accessStart=Date.now();report.access=await desktop.page.evaluate(()=>window.__YALI_B04__.checkAccess());report.accessDurationMs=Date.now()-accessStart;
+ stage('full-scene B04 access');const accessStart=Date.now();report.access=await desktop.page.evaluate(()=>window.__YALI_B04__.checkAccess());report.accessDurationMs=Date.now()-accessStart;
  console.log('ACCESS',JSON.stringify(report.access));
  report.invariants=await desktop.page.evaluate(()=>{const roots=window.__YALI_M11A__.getRoots(),a=window.__YALI_R3__;return {axis:[roots['08'][0],roots['15'][0],roots['18'][0]],mainFloor:roots['15'][1],flags:window.__YALI_B01__.countFlags(),shutters:a.model.access.every((d,i)=>{const s=i?1:-1,[x,y,z]=d.door;return a.probe([x+s*.5,y+1.5,z],[x-s*.5,y+1.5,z]).length===0;})};});
  if(!draft){
   // Shared probe assignment and initial camera integration trigger section 7 regression.
   for(const v of ['overview','r3-overview','b02-photo-front','b03-photo-library','b03-garden','b03-canteen','top','r3-axis'])await capture(desktop,v,'regression-'+v,v==='overview');
-  report.inheritedAccess=await desktop.page.evaluate(()=>({b02:window.__YALI_B02__.checkAccess(),b03:window.__YALI_B03__.checkAccess()}));
+  stage('full-scene inherited B02 B03 access');report.inheritedAccess=await desktop.page.evaluate(()=>({b02:window.__YALI_B02__.checkAccess(),b03:window.__YALI_B03__.checkAccess()}));
  }
  await desktop.context.close();
  const mobile=await openPage({width:390,height:844},null,false);report.mobile={freshContext:true,initializationMs:mobile.initializationMs,...await state(mobile.page)};
@@ -78,6 +92,6 @@ try{
  report.passed=report.errors.length===0&&report.externalRequests.length===0&&report.access.passed&&report.views.every(v=>v.triangles>0&&!v.glError&&!v.contextLost&&(v.requestedView==='(default fresh load)'||v.view===v.requestedView))&&report.mobile.ui.noOverflow&&report.mobile.ui.initialShadowResolution===2048&&report.invariants.axis.every(x=>x===73)&&report.invariants.mainFloor===3.45&&report.invariants.flags===3&&report.invariants.shutters;
  if(!draft)report.passed=report.passed&&report.inheritedAccess.b03.passed&&report.inheritedAccess.b02.routes.every(r=>r.failures===0)&&report.inheritedAccess.b02.doors.every(d=>d.bad.length===0)&&report.inheritedAccess.b02.sharedWallBlocked&&report.fallback.lighting.logarithmicDepthBuffer&&!report.fallback.lighting.reversedDepthBuffer;
 }catch(e){report.errors.push({message:String(e),stack:e.stack});console.error(e);}finally{
- report.completedAt=new Date().toISOString();await fs.writeFile(path.join(out,'report.json'),JSON.stringify(report,null,2));await browser.close();
+ clearInterval(checkpointTimer);report.stage=report.passed?'complete':'failed';report.completedAt=new Date().toISOString();await fs.writeFile(path.join(out,'report.json'),JSON.stringify(report,null,2));await browser.close();
 }
 if(!report.passed)process.exitCode=1;

@@ -1,0 +1,112 @@
+{
+  "batch": "B04",
+  "date": "2026-09-13",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "standardVersion": "1.0",
+  "sourcePage": "https://k.sina.com.cn/article_6430641585_17f4bcdb1001003x9v.html",
+  "articleTitle": "100张旧照片，专属雅礼人的独家记忆",
+  "sourceIndependence": "同源转载不算独立证据；发表日期不是照片拍摄日期。",
+  "surveyVerified": false,
+  "measured": null,
+  "photos": [
+    {
+      "id": "S03-024",
+      "url": "https://k.sinaimg.cn/n/sinacn/w1080h721/20180312/ce5f-fyscsmu8207202.jpg/w700d1q75cms.jpg",
+      "sha256": "8c83e4b82a2e133c7c04952be5e3f3438a14976f75b9b1bed166b5912938fbe4",
+      "bytes": 349416,
+      "status": "fetched",
+      "facility": "07",
+      "evidence": "R/P weak",
+      "viewed": true,
+      "observed": "实楼模糊、树木遮挡；手持明信片为二次描绘，不用于反推完整楼高与门位。",
+      "boundary": "身份精确对应、历史楼名/医务室所在房间、各立面H/U",
+      "captureDate": null,
+      "publicationDate": "2018-03-13",
+      "rights": "research-only; original image bytes are NOT committed or embedded in public Viewer"
+    },
+    {
+      "id": "S03-033",
+      "url": "https://k.sinaimg.cn/n/sinacn/w1080h722/20180312/f0b0-fyscsmu8207617.jpg/w700d1q75cms.jpg",
+      "sha256": "91b929a2741a91ceecda89e927d554f31d6d3214f26ebacc119b936894ab3fd9",
+      "bytes": 358205,
+      "status": "fetched",
+      "facility": "13",
+      "evidence": "P",
+      "viewed": true,
+      "observed": "已直接查看入口内退、低台阶、暖色横雨篷、白墙铭牌区和右侧竖向玻璃体。",
+      "boundary": "四层、背面窗序、首段楼梯位置、全部米制尺寸H",
+      "captureDate": null,
+      "publicationDate": "2018-03-13",
+      "rights": "research-only; original image bytes are NOT committed or embedded in public Viewer"
+    },
+    {
+      "id": "S03-035",
+      "url": "https://k.sinaimg.cn/n/sinacn/w1000h667/20180312/cb0b-fyscsmu8207706.jpg/w700d1q75cms.jpg",
+      "sha256": "4bebe30e8855ee735e2ae6b6452af5fb551035fdc8aff50bb4902e720d26ac90",
+      "bytes": 246681,
+      "status": "fetched",
+      "facility": "13",
+      "evidence": "P interior only",
+      "viewed": true,
+      "observed": "已直接查看室内梯侧、柜体、门口；不是独立外立面，不能定位到033右玻璃体。",
+      "boundary": "不复刻柜体、人物、门内装修；内部对应H",
+      "captureDate": null,
+      "publicationDate": "2018-03-13",
+      "rights": "research-only; original image bytes are NOT committed or embedded in public Viewer"
+    },
+    {
+      "id": "S03-047",
+      "url": "https://k.sinaimg.cn/n/sinacn/w1000h667/20180312/2d58-fyscsmu8208584.jpg/w700d1q75cms.jpg",
+      "sha256": "8183b0f1afe3656870d5a0c2ec7bb5bd3d4a00a87b5e6ce0ef69d1dea0b719fd",
+      "bytes": 338439,
+      "status": "fetched",
+      "facility": "17",
+      "evidence": "P",
+      "viewed": true,
+      "observed": "已直接查看中央折面玻璃、不同高度翼部、双柱弧形雨篷、外展台阶和面对入口右侧藤蔓。",
+      "boundary": "层高、翼部后退、入口精确尺寸及隐藏面H",
+      "captureDate": null,
+      "publicationDate": "2018-03-13",
+      "rights": "research-only; original image bytes are NOT committed or embedded in public Viewer"
+    },
+    {
+      "id": "S03-048",
+      "url": "https://k.sinaimg.cn/n/sinacn/w1000h667/20180312/eed0-fyscsmu8208649.jpg/w700d1q75cms.jpg",
+      "sha256": "f7bdb9d3c3f7307b00a559ab0f433b56823cbd8f5e2483f13cffb73e4f160234",
+      "bytes": 310645,
+      "status": "fetched",
+      "facility": "17",
+      "evidence": "P",
+      "viewed": true,
+      "observed": "从楼间道路朝长雅正面拍摄，核对直达空间及中央玻璃/雨篷关系。",
+      "boundary": "右侧红白楼改造年代未核定，不覆盖已认可B01",
+      "captureDate": null,
+      "publicationDate": "2018-03-13",
+      "rights": "research-only; original image bytes are NOT committed or embedded in public Viewer"
+    },
+    {
+      "id": "S03-051",
+      "url": "https://k.sinaimg.cn/n/sinacn/w1080h721/20180312/07de-fyscsmu8208846.jpg/w700d1q75cms.jpg",
+      "sha256": "9bcc03fecc8dc1b6a633454f913378a4fbced705d74ef9767cadfdaa6c5918b1",
+      "bytes": 448785,
+      "status": "fetched",
+      "facility": "16",
+      "evidence": "P / R use label",
+      "viewed": true,
+      "observed": "已直接查看低层山墙、中央真拱口、两侧大窗、壁柱与檐口；文章来源标签校史馆。",
+      "boundary": "旧用途与2006—2010外观一致性未确定；背面、精确装饰、屋深及尺度H；不等同24音乐楼",
+      "captureDate": null,
+      "publicationDate": "2018-03-13",
+      "rights": "research-only; original image bytes are NOT committed or embedded in public Viewer"
+    }
+  ],
+  "unresolved": [
+    {
+      "facility": "21",
+      "status": "U identity / H shell",
+      "reason": "无明确独立实拍；信息楼仅工作名；不把现有占位图当身份依据。"
+    }
+  ],
+  "photoIndexCorrections": "B04以当前原文图序和实际图像核对：035为室内梯侧，051为低矮拱口建筑；历史research-review.csv的泛化/错配标签不用于本批建模。",
+  "hashNote": "本次实际下载为图床当前返回字节，哈希与旧缓存记录不同；不据此断言建筑照片内容改动。"
+}
