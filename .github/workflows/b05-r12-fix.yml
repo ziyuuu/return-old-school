@@ -1,0 +1,120 @@
+name: B05 R1.2 correction and scoped QA
+on:
+  push:
+    branches: [codex/b05-development]
+    paths: [.github/workflows/b05-r12-fix.yml]
+permissions:
+  contents: write
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      revision: ${{ steps.publish.outputs.revision }}
+      viewer_sha: ${{ steps.publish.outputs.viewer_sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/b05-development
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - id: publish
+        name: Apply exact source patch, test and publish with non-forced Git
+        run: |
+          set -euo pipefail
+          git fetch origin
+          git merge-base --is-ancestor 5fab062e6aafe5b083ef9df231956b66ac1c55b2 HEAD
+          test -z "$(git status --short)"
+          python - <<'PY'
+          import pathlib,lzma,base64,hashlib,subprocess
+          patch=lzma.decompress(base64.b64decode(pathlib.Path('.github/b05-r12.patch.xz.b64').read_text()))
+          assert hashlib.sha256(patch).hexdigest()=='d4be485f3b59f1e3b050a3eb9cb8496a27f2b623d69d26c35ff70a7defcba845'
+          subprocess.run(['git','apply','--check','-'],input=patch,check=True)
+          subprocess.run(['git','apply','-'],input=patch,check=True)
+          PY
+          git diff --check
+          npm ci --prefix apps/campus
+          mkdir -p qa/m11b-b05/r12/build
+          npm run build --prefix apps/campus 2>&1 | tee qa/m11b-b05/r12/build/build.log
+          node --test tests/m11b/b05/*.test.mjs tests/render-upgrade/*.test.mjs 2>&1 | tee qa/m11b-b05/r12/build/tests.tap
+          git diff --exit-code 5fab062e6aafe5b083ef9df231956b66ac1c55b2 -- apps/campus/src/batch02-core.mjs apps/campus/src/batch03-core.mjs apps/campus/src/batch04-core.mjs data/m11b/batch01/acceptance.json data/m11b/batch02/acceptance.json data/m11b/batch03/acceptance.json data/m11b/batch04/acceptance.json
+          test ! -f data/m11b/batch05/acceptance.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md docs/development-plan.md docs/m11b/batch05/delivery.md docs/m11b/batch05/r12-correction.md apps/campus/src/batch05-core.mjs apps/campus/src/batch05-r12.mjs apps/campus/src/batch05-geometry.mjs apps/campus/src/main.ts apps/campus/src/render/foliage-geometry.mjs data/m11b/batch05/input.json tests/m11b/b05 tools/m11b-b05
+          git commit -m 'fix(b05): put stone platform in front of right gate building, enclose side lane and refine crowns without decimation [skip ci]'
+          git push origin HEAD:codex/b05-development
+          echo "revision=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          node tools/m11b-b05/export-r12.mjs
+          echo 'c8ae60282d04f079e0669f453925529d536c4f186869209e122403cf5a118d77  artifacts/m11b-b05/Yali_B05_R1_2_Viewer.html' | sha256sum -c -
+          echo 'viewer_sha=c8ae60282d04f079e0669f453925529d536c4f186869209e122403cf5a118d77' >> "$GITHUB_OUTPUT"
+          git add artifacts/m11b-b05/Yali_B05_R1_2_Viewer.html artifacts/m11b-b05/viewer-manifest-r12.json qa/m11b-b05/r12/build/build.log qa/m11b-b05/r12/build/tests.tap
+          git commit -m 'build(b05): publish independent R1.2 Viewer and build evidence; browser review pending [skip ci]'
+          git push origin HEAD:codex/b05-development
+          git ls-remote origin refs/heads/main refs/heads/codex/b05-development | tee qa/m11b-b05/r12/build/remote-refs.txt
+          test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/codex/b05-development | cut -f1)"
+          git rev-parse HEAD > qa/m11b-b05/r12/build/delivery-commit.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: B05-R12-build-viewer
+          path: |
+            artifacts/m11b-b05/Yali_B05_R1_2_Viewer.html
+            artifacts/m11b-b05/viewer-manifest-r12.json
+            qa/m11b-b05/r12/build
+          retention-days: 14
+  browser:
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - group: entrance
+            views: b05-stone,b05-gate-close,b05-lane,b05-fork
+          - group: landscape
+            views: b05-tree,b02-photo-front,b05-overview,top,r3-axis
+          - group: checks
+            views: ''
+          - group: mobile
+            views: b05-gate-close,b05-stone,b05-court-entry,b05-flags
+          - group: fallback
+            views: b05-stone,top,r3-axis
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.prepare.outputs.revision }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/download-artifact@v4
+        with:
+          name: B05-R12-build-viewer
+          path: .
+      - name: Locked dependencies and real Chromium
+        run: |
+          npm ci --prefix apps/campus
+          npm install --prefix "$RUNNER_TEMP/b05-browser" playwright@1.62.0
+          "$RUNNER_TEMP/b05-browser/node_modules/.bin/playwright" install --with-deps chromium
+          sudo apt-get install -y fonts-noto-cjk
+          echo "PLAYWRIGHT_MODULE=$RUNNER_TEMP/b05-browser/node_modules/playwright" >> "$GITHUB_ENV"
+      - name: Scoped actual Viewer verification
+        env:
+          B05_GROUP: ${{ matrix.group }}
+          B05_VIEWS: ${{ matrix.views }}
+          B05_PHASE: r12
+          B05_VIEWER_FILE: artifacts/m11b-b05/Yali_B05_R1_2_Viewer.html
+        run: |
+          set -o pipefail
+          mkdir -p qa/m11b-b05/r12/${{ matrix.group }}
+          node tools/m11b-b05/capture.mjs 2>&1 | tee qa/m11b-b05/r12/${{ matrix.group }}/capture.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: B05-R12-${{ matrix.group }}
+          path: qa/m11b-b05/r12/${{ matrix.group }}
+          retention-days: 14
