@@ -29,7 +29,7 @@ jobs:
           PY
           git switch --track origin/codex/b05-development
           git merge-base --is-ancestor origin/main HEAD
-          git bundle create ../b05-current.bundle main codex/b05-development ^f8ece5fcade5c64332cc7fb34ac707b1d3aad8fc
+          git bundle create ../b05-current.bundle --all
           git ls-remote origin refs/heads/main refs/heads/codex/b05-development | tee ../remote-refs.txt
           sha256sum ../b05-current.bundle | tee ../bundle-sha256.txt
       - uses: actions/upload-artifact@v4
