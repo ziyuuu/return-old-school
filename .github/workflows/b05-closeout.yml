@@ -1,0 +1,148 @@
+name: B05 R1 final hash-bound verification
+on:
+  push:
+    branches: [codex/b05-development]
+    paths: [.github/workflows/b05-closeout.yml]
+permissions:
+  contents: write
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      revision: ${{ steps.build.outputs.revision }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/b05-development
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - id: build
+        name: Apply inspected correction, build, test and normally push source
+        run: |
+          set -euo pipefail
+          git fetch origin
+          git merge-base --is-ancestor 9e28225532718e3d60cc518aaac36ccc65f3fc2c HEAD
+          git merge-base --is-ancestor origin/main HEAD
+          test -z "$(git status --short)"
+          if ! grep -q 'const b05NarrowFlags=' apps/campus/src/main.ts; then
+            git apply --check .github/b05-mobile-flags.patch
+            git apply .github/b05-mobile-flags.patch
+          fi
+          python - <<'PY'
+          import pathlib
+          p=pathlib.Path('tools/m11b-b05/measure.mjs')
+          text=p.read_text().replace("runtimeSourceCommit:'330f2afd5f12c5552573dd53e3d6d2eb02442ade'",'runtimeSourceCommit:manifest.gitHead')
+          p.write_text(text)
+          PY
+          git diff --check
+          npm ci --prefix apps/campus
+          mkdir -p qa/m11b-b05/final-r1/build
+          npm run build --prefix apps/campus 2>&1 | tee qa/m11b-b05/final-r1/build/build.log
+          node --test tests/m11b/b05/model.test.mjs tests/render-upgrade/*.test.mjs 2>&1 | tee qa/m11b-b05/final-r1/build/tests.tap
+          node --check tools/m11b-b05/measure.mjs
+          git diff --exit-code 9e28225532718e3d60cc518aaac36ccc65f3fc2c -- apps/campus/src/batch02-core.mjs apps/campus/src/batch03-core.mjs apps/campus/src/batch04-core.mjs data/m11b/batch01/acceptance.json data/m11b/batch02/acceptance.json data/m11b/batch03/acceptance.json data/m11b/batch04/acceptance.json
+          test ! -f data/m11b/batch05/acceptance.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add apps/campus/src/main.ts tools/m11b-b05/measure.mjs
+          if ! git diff --cached --quiet; then
+            git commit -m 'fix(b05): keep mobile flag view outside teaching block and serialize performance readback [skip ci]'
+            git push origin HEAD:codex/b05-development
+          fi
+          echo "revision=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          git ls-remote origin refs/heads/main refs/heads/codex/b05-development | tee qa/m11b-b05/final-r1/build/remote-refs.txt
+          test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/codex/b05-development | cut -f1)"
+          node tools/m11b-b05/export.mjs
+          echo 'aab3a1d1e150b5ed952664619730bc1bb68c30e154cad22157217b7a6a9552e0  artifacts/m11b-b05/Yali_B05_R1_Viewer.html' | sha256sum -c -
+          git bundle create /tmp/b05-r1-source.bundle HEAD ^9e28225532718e3d60cc518aaac36ccc65f3fc2c
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: B05-R1-build
+          path: |
+            qa/m11b-b05/final-r1/build
+            artifacts/m11b-b05
+            /tmp/b05-r1-source.bundle
+          retention-days: 7
+  browser:
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      max-parallel: 9
+      matrix:
+        group: [gate, courts, field, residential, checks, regression, mobile, fallback, baseline]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.prepare.outputs.revision }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Locked runtime and browser
+        run: |
+          npm ci --prefix apps/campus
+          npm install --prefix "$RUNNER_TEMP/b05-browser" playwright@1.62.0
+          "$RUNNER_TEMP/b05-browser/node_modules/.bin/playwright" install --with-deps chromium
+          sudo apt-get install -y fonts-noto-cjk
+          echo "PLAYWRIGHT_MODULE=$RUNNER_TEMP/b05-browser/node_modules/playwright" >> "$GITHUB_ENV"
+          node tools/m11b-b05/export.mjs
+          echo 'aab3a1d1e150b5ed952664619730bc1bb68c30e154cad22157217b7a6a9552e0  artifacts/m11b-b05/Yali_B05_R1_Viewer.html' | sha256sum -c -
+      - name: Actual full Viewer screenshots and access
+        env:
+          B05_GROUP: ${{ matrix.group }}
+          B05_PHASE: final-r1
+        run: |
+          set -o pipefail
+          mkdir -p qa/m11b-b05/final-r1/${{ matrix.group }}
+          node tools/m11b-b05/capture.mjs 2>&1 | tee qa/m11b-b05/final-r1/${{ matrix.group }}/capture.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: B05-R1-${{ matrix.group }}
+          path: qa/m11b-b05/final-r1/${{ matrix.group }}
+          retention-days: 7
+  performance:
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        view: [b05-gate-close, b05-hoop, b05-overview]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.prepare.outputs.revision }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Locked runtime and browser
+        run: |
+          npm ci --prefix apps/campus
+          npm install --prefix "$RUNNER_TEMP/b05-browser" playwright@1.62.0
+          "$RUNNER_TEMP/b05-browser/node_modules/.bin/playwright" install --with-deps chromium
+          sudo apt-get install -y fonts-noto-cjk
+          echo "PLAYWRIGHT_MODULE=$RUNNER_TEMP/b05-browser/node_modules/playwright" >> "$GITHUB_ENV"
+          node tools/m11b-b05/export.mjs
+          echo 'aab3a1d1e150b5ed952664619730bc1bb68c30e154cad22157217b7a6a9552e0  artifacts/m11b-b05/Yali_B05_R1_Viewer.html' | sha256sum -c -
+      - name: Sixty actual frames, read back individually
+        env:
+          B05_MEASURE_VIEW: ${{ matrix.view }}
+          B05_PHASE: final-r1
+        run: |
+          set -o pipefail
+          mkdir -p qa/m11b-b05/final-r1/performance-resume/${{ matrix.view }}
+          node tools/m11b-b05/measure.mjs 2>&1 | tee qa/m11b-b05/final-r1/performance-resume/${{ matrix.view }}/capture.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: B05-R1-measure-${{ matrix.view }}
+          path: qa/m11b-b05/final-r1/performance-resume/${{ matrix.view }}
+          retention-days: 7
