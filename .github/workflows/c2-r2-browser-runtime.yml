@@ -1,0 +1,25 @@
+name: C2 R2 browser runtime
+on:
+  push:
+    branches: [codex/c2-student-avatar]
+    paths: [.github/workflows/c2-r2-browser-runtime.yml]
+permissions:
+  contents: read
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: |
+          set -euo pipefail
+          mkdir -p /tmp/c2-browser
+          npm install --prefix /tmp/c2-browser --save-exact playwright@1.62.0
+          PLAYWRIGHT_BROWSERS_PATH=/tmp/c2-browser/browsers /tmp/c2-browser/node_modules/.bin/playwright install chromium --only-shell
+          tar -C /tmp -czf /tmp/c2-browser-runtime.tar.gz c2-browser
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C2-R2-browser-runtime
+          path: /tmp/c2-browser-runtime.tar.gz
+          retention-days: 7
