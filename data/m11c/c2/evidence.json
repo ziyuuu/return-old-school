@@ -1,0 +1,10 @@
+{
+  "version":"C2.R1",
+  "status":"IMPLEMENTED / REVIEW_PENDING",
+  "target":"2006-2010 Yali Dongtang student avatar",
+  "sources":[
+    {"id":"U01","url":"https://www.sohu.com/a/162618801_391114","evidence":"09届校友资料：秋季校服常故意买大尺码，裤脚盖鞋面；整理页引用09届校友徐韵琴照片。","grade":"P/text+published-photo-context"},
+    {"id":"U02","url":"https://k.sina.com.cn/article_6430641585_17f4bcdb1001003x9v.html","evidence":"08级校友资料：藏蓝logo文化衫后来逐渐成为夏季上衣；本版不把它硬套为整个2006-2010统一夏装。","grade":"P/text+published-photo-context"}
+  ],
+  "reconstruction":{"default":"autumn oversized tracksuit working reconstruction","verified":"oversized silhouette / long trouser break / red-white cola-like family description","hypothesis":"exact panel proportions, exact red-white-navy values, body proportions, haircut","omitted":"school emblem, class mark, individual face identity, handwritten graffiti"}
+}
