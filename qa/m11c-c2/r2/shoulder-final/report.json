@@ -5,11 +5,7 @@
   "unitTests": 44,
   "browserChecks": 19,
   "screenshots": 15,
-  "groups": [
-    "studio",
-    "campus",
-    "mobile"
-  ],
+  "groups": ["studio", "campus", "mobile"],
   "viewers": [
     {
       "file": "Yali_C2_R2_Character.html",
@@ -29,15 +25,15 @@
     "sha256": "288a34d5ff88062e742b2a6b4b3bb20a7f615f67598c64a488457737acdb6b69",
     "bytes": 4064432,
     "skins": 5,
-    "animations": [
-      "Idle",
-      "Walk",
-      "Run"
-    ]
+    "animations": ["Idle", "Walk", "Run"]
   },
   "standard": "1.0 + mobile-r12; character UV and colour deviations in design.md",
-  "visualInspection": "PENDING_IMAGE_INSPECTION",
+  "visualInspection": "COMPLETED_FOR_USER_REVIEW_WITH_DOCUMENTED_ART_LIMITATIONS",
+  "inspectionRecord": "inspection.md",
+  "inspectedScreenshots": 15,
+  "userModelAcceptance": "PENDING",
   "realPhonePerformance": "NOT VERIFIED",
   "run": "34825479955",
-  "passed": true
+  "passed": true,
+  "passedMeaning": "Engineering checks passed; not alumni art approval or real-device FPS acceptance"
 }
