@@ -1,0 +1,37 @@
+{
+  "error": "Error: page.evaluate: TypeError: Failed to execute 'drawImage' on 'CanvasRenderingContext2D': The provided value is not of type '(CSSImageValue or HTMLCanvasElement or HTMLImageElement or HTMLVideoElement or ImageBitmap or OffscreenCanvas or SVGImageElement or VideoFrame)'.\n    at Yc.buildMetalRoughTextureAsync (file:///home/runner/work/return-old-school/return-old-school/artifacts/m11c-c2/r2/Yali_C2_R2_Character.html?diagnostics=1&quality=balanced:3840:77386)\n    at Yc.processMaterialAsync (file:///home/runner/work/return-old-school/return-old-school/artifacts/m11c-c2/r2/Yali_C2_R2_Character.html?diagnostics=1&quality=balanced:3840:83589)\n    at Yc.processMeshAsync (file:///home/runner/work/return-old-school/return-old-school/artifacts/m11c-c2/r2/Yali_C2_R2_Character.html?diagnostics=1&quality=balanced:3840:88530)\n    at Yc.processNodeAsync (file:///home/runner/work/return-old-school/return-old-school/artifacts/m11c-c2/r2/Yali_C2_R2_Character.html?diagnostics=1&quality=balanced:3840:91617)\n    at Yc.processNodeAsync (file:///home/runner/work/return-old-school/return-old-school/artifacts/m11c-c2/r2/Yali_C2_R2_Character.html?diagnostics=1&quality=balanced:3840:91924)\n    at async Yc.processSceneAsync (file:///home/runner/work/return-old-school/return-old-school/artifacts/m11c-c2/r2/Yali_C2_R2_Character.html?diagnostics=1&quality=balanced:3840:92329)\n    at async Yc.processObjectsAsync (file:///home/runner/work/return-old-school/return-old-school/artifacts/m11c-c2/r2/Yali_C2_R2_Character.html?diagnostics=1&quality=balanced:3840:92542)\n    at async Yc.processInputAsync (file:///home/runner/work/return-old-school/return-old-school/artifacts/m11c-c2/r2/Yali_C2_R2_Character.html?diagnostics=1&quality=balanced:3840:92834)\n    at async Yc.writeAsync (file:///home/runner/work/return-old-school/return-old-school/artifacts/m11c-c2/r2/Yali_C2_R2_Character.html?diagnostics=1&quality=balanced:3840:74010)",
+  "errors": [],
+  "screenshots": [
+    {
+      "file": "studio-front.png",
+      "sha256": "7f4faafcc23dc8483973e285b28dbdc8f984a4e92fa98079119d103885dd2854",
+      "method": "Same-frame WebGL canvas readback of exact exported Viewer; no scene replacement or compositing"
+    },
+    {
+      "file": "studio-side.png",
+      "sha256": "eaf93b06a576d60c64a91d351ec749e47854e1b3674066e653ab8aed980249a1",
+      "method": "Same-frame WebGL canvas readback of exact exported Viewer; no scene replacement or compositing"
+    },
+    {
+      "file": "studio-back.png",
+      "sha256": "810d0ba01cd9d34ff272983dd54561c4e237eab203dbe7b31d7d8bf35b266e8e",
+      "method": "Same-frame WebGL canvas readback of exact exported Viewer; no scene replacement or compositing"
+    },
+    {
+      "file": "studio-face.png",
+      "sha256": "7c08e72cf6ddc60634ec386bc4e075f8cf1124d666a220bf39f5adf720b757e9",
+      "method": "Same-frame WebGL canvas readback of exact exported Viewer; no scene replacement or compositing"
+    },
+    {
+      "file": "studio-walk.png",
+      "sha256": "531d0e9371eebaea9ce54c27144a96e96e42280762a9742d2bd53418522cd55c",
+      "method": "Same-frame WebGL canvas readback of exact exported Viewer; no scene replacement or compositing"
+    },
+    {
+      "file": "studio-run.png",
+      "sha256": "c87ccee743477a901ea07d95871d4ab7098a3aa6dfaabc754a26945de66a6430",
+      "method": "Same-frame WebGL canvas readback of exact exported Viewer; no scene replacement or compositing"
+    }
+  ],
+  "viewerSHA256": "0e52b70f55918baa75c56d880a8990d63d244b5ff4a845c56170090496be0e05"
+}

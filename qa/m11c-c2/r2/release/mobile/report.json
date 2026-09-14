@@ -1,0 +1,554 @@
+{
+  "version": "C2.R2",
+  "group": "mobile",
+  "viewer": "Yali_C2_R2_Viewer.html",
+  "viewerSHA256": "c662495d23a448ae28cdefee97f5649b0bdf8976707cd69e55be31c7829bfa1e",
+  "runtimeSource": "64dbd58636509ecb6109be602dd92278b68f7f4e",
+  "browser": "151.0.7922.34",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "gl": {
+    "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+    "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "depthMode": "reversed",
+    "glError": 0,
+    "contextLost": false,
+    "visibleModelTriangles": 8224718,
+    "geometryBytes": 138393972,
+    "submittedTriangles": 3837760,
+    "drawCalls": 799,
+    "buffer": [
+      390,
+      844
+    ]
+  },
+  "checks": [
+    {
+      "name": "approved-direction R2 rig is installed in real campus",
+      "pass": true,
+      "data": {
+        "avatar": {
+          "visible": true,
+          "footPosition": [
+            6.178695244329901e-8,
+            0.0550585796595261,
+            -3.4999998401472827
+          ],
+          "animationDriveSpeed": 0,
+          "finalStudent": true,
+          "artVersion": "C2.R2",
+          "animation": "idle",
+          "phase": 0.0000015246543937626687,
+          "evidence": "A: 用户确认白领、蓝色主体、上白下红横带、YL胸标及最终设定图；H: 精确色值、尺寸、背部横带延续、拉链长度、脸型与发型。09届大尺码回忆仅作宽松穿着参考。",
+          "uniform": {
+            "season": "autumn-working-reconstruction",
+            "logo": "YL",
+            "logoLocation": "wearer-left-chest",
+            "backLogo": false,
+            "collar": "white-folded",
+            "fit": "oversized",
+            "stripeOrderTopToBottom": [
+              "blue",
+              "white",
+              "red",
+              "blue"
+            ],
+            "palette": "campus-derived blue / warm white / muted red",
+            "trouserSideStripe": false
+          },
+          "geometry": {
+            "triangles": 80320,
+            "vertices": 45470,
+            "geometryBytes": 3573880,
+            "drawMeshes": 5,
+            "bones": 15
+          }
+        },
+        "motor": {
+          "feet": [
+            6.178695244329901e-8,
+            0.0550585796595261,
+            -3.4999998401472827
+          ],
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "grounded": true,
+          "groundNormal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "slopeDegrees": 0,
+          "slopeSpeedMultiplier": 1,
+          "heading": 0,
+          "actualSpeed": 0,
+          "blocked": false,
+          "travel": 3.834629497604341e-7,
+          "ticks": 27,
+          "paused": false,
+          "droppedSeconds": 70.16384799999999,
+          "respawns": 0,
+          "collisionCount": 1
+        },
+        "camera": {
+          "position": {
+            "x": 6.178695244329901e-8,
+            "y": 2.225712832975809,
+            "z": -6.988084558305603
+          },
+          "target": {
+            "x": 6.178695244329901e-8,
+            "y": 1.3350585796595262,
+            "z": -3.4999998401472827
+          },
+          "distance": 3.6,
+          "allowedDistance": 3.6,
+          "obstructed": false,
+          "firstPerson": false,
+          "hideAvatar": false
+        },
+        "graphics": {
+          "mobile": true,
+          "mode": "balanced",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 0.75,
+          "shadowResolution": 1024,
+          "adaptive": true,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            390,
+            844
+          ],
+          "staticWorldMatrices": true
+        },
+        "physicsMs": 0
+      }
+    },
+    {
+      "name": "balanced raster with original C1 collision",
+      "pass": true,
+      "data": {
+        "mobile": true,
+        "mode": "balanced",
+        "pixelRatio": 1,
+        "minimumPixelRatio": 0.75,
+        "shadowResolution": 1024,
+        "adaptive": true,
+        "preserveDrawingBuffer": false,
+        "walkShadowDistance": 6,
+        "walkShadowHeight": 3,
+        "actualPixelRatio": 1,
+        "rasterChanges": 0,
+        "drawingBuffer": [
+          390,
+          844
+        ],
+        "staticWorldMatrices": true
+      }
+    },
+    {
+      "name": "real browser touch moves visible skinned student",
+      "pass": true,
+      "data": {
+        "avatar": {
+          "visible": true,
+          "footPosition": [
+            0.000005020645262115986,
+            0.055126338586415025,
+            -1.2328978370497485
+          ],
+          "animationDriveSpeed": 1.5714285714285712,
+          "finalStudent": true,
+          "artVersion": "C2.R2",
+          "animation": "walk",
+          "phase": 0.8095327303421522,
+          "evidence": "A: 用户确认白领、蓝色主体、上白下红横带、YL胸标及最终设定图；H: 精确色值、尺寸、背部横带延续、拉链长度、脸型与发型。09届大尺码回忆仅作宽松穿着参考。",
+          "uniform": {
+            "season": "autumn-working-reconstruction",
+            "logo": "YL",
+            "logoLocation": "wearer-left-chest",
+            "backLogo": false,
+            "collar": "white-folded",
+            "fit": "oversized",
+            "stripeOrderTopToBottom": [
+              "blue",
+              "white",
+              "red",
+              "blue"
+            ],
+            "palette": "campus-derived blue / warm white / muted red",
+            "trouserSideStripe": false
+          },
+          "geometry": {
+            "triangles": 80320,
+            "vertices": 45470,
+            "geometryBytes": 3573880,
+            "drawMeshes": 5,
+            "bones": 15
+          }
+        },
+        "motor": {
+          "feet": [
+            0.000005020645262115986,
+            0.055126338586415025,
+            -1.2328978370497485
+          ],
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 1.5714285714285712
+          },
+          "grounded": true,
+          "groundNormal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "slopeDegrees": 0,
+          "slopeSpeedMultiplier": 1,
+          "heading": 3.7875079087866855e-7,
+          "actualSpeed": 1.5714164078235626,
+          "blocked": false,
+          "travel": 2.267102386860735,
+          "ticks": 117,
+          "paused": false,
+          "droppedSeconds": 70.16384799999999,
+          "respawns": 0,
+          "collisionCount": 1
+        },
+        "camera": {
+          "position": {
+            "x": 0.000005020645262115986,
+            "y": 2.225780591902698,
+            "z": -4.720982555208069
+          },
+          "target": {
+            "x": 0.000005020645262115986,
+            "y": 1.3351263385864152,
+            "z": -1.2328978370497485
+          },
+          "distance": 3.6,
+          "allowedDistance": 3.6,
+          "obstructed": false,
+          "firstPerson": false,
+          "hideAvatar": false
+        },
+        "graphics": {
+          "mobile": true,
+          "mode": "balanced",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 0.75,
+          "shadowResolution": 1024,
+          "adaptive": true,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            390,
+            844
+          ],
+          "staticWorldMatrices": true
+        },
+        "physicsMs": 0.09999999997671694
+      }
+    },
+    {
+      "name": "390x844 without horizontal overflow",
+      "pass": true,
+      "data": {
+        "width": 390,
+        "scrollWidth": 390
+      }
+    },
+    {
+      "name": "pause releases movement and does not travel",
+      "pass": true,
+      "data": {
+        "avatar": {
+          "visible": true,
+          "footPosition": [
+            0.000005020645262115986,
+            0.055126338586415025,
+            -1.2328978370497485
+          ],
+          "animationDriveSpeed": 0,
+          "finalStudent": true,
+          "artVersion": "C2.R2",
+          "animation": "idle",
+          "phase": 0.8095327303421522,
+          "evidence": "A: 用户确认白领、蓝色主体、上白下红横带、YL胸标及最终设定图；H: 精确色值、尺寸、背部横带延续、拉链长度、脸型与发型。09届大尺码回忆仅作宽松穿着参考。",
+          "uniform": {
+            "season": "autumn-working-reconstruction",
+            "logo": "YL",
+            "logoLocation": "wearer-left-chest",
+            "backLogo": false,
+            "collar": "white-folded",
+            "fit": "oversized",
+            "stripeOrderTopToBottom": [
+              "blue",
+              "white",
+              "red",
+              "blue"
+            ],
+            "palette": "campus-derived blue / warm white / muted red",
+            "trouserSideStripe": false
+          },
+          "geometry": {
+            "triangles": 80320,
+            "vertices": 45470,
+            "geometryBytes": 3573880,
+            "drawMeshes": 5,
+            "bones": 15
+          }
+        },
+        "motor": {
+          "feet": [
+            0.000005020645262115986,
+            0.055126338586415025,
+            -1.2328978370497485
+          ],
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "grounded": true,
+          "groundNormal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "slopeDegrees": 0,
+          "slopeSpeedMultiplier": 1,
+          "heading": 3.7875079087866855e-7,
+          "actualSpeed": 0,
+          "blocked": false,
+          "travel": 2.267102386860735,
+          "ticks": 117,
+          "paused": true,
+          "droppedSeconds": 70.16384799999999,
+          "respawns": 0,
+          "collisionCount": 1
+        },
+        "camera": {
+          "position": {
+            "x": 0.000005020645262115986,
+            "y": 2.225780591902698,
+            "z": -4.720982555208069
+          },
+          "target": {
+            "x": 0.000005020645262115986,
+            "y": 1.3351263385864152,
+            "z": -1.2328978370497485
+          },
+          "distance": 3.6,
+          "allowedDistance": 3.6,
+          "obstructed": false,
+          "firstPerson": false,
+          "hideAvatar": false
+        },
+        "graphics": {
+          "mobile": true,
+          "mode": "balanced",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 0.75,
+          "shadowResolution": 1024,
+          "adaptive": true,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            390,
+            844
+          ],
+          "staticWorldMatrices": true
+        },
+        "physicsMs": 0
+      }
+    },
+    {
+      "name": "reversible detail mode retains identical rig geometry",
+      "pass": true,
+      "data": {
+        "mobile": true,
+        "mode": "detail",
+        "pixelRatio": 1,
+        "minimumPixelRatio": 1,
+        "shadowResolution": 2048,
+        "adaptive": false,
+        "preserveDrawingBuffer": false,
+        "walkShadowDistance": 6,
+        "walkShadowHeight": 3,
+        "actualPixelRatio": 1,
+        "rasterChanges": 0,
+        "drawingBuffer": [
+          390,
+          844
+        ],
+        "staticWorldMatrices": true
+      }
+    },
+    {
+      "name": "WebGL context remains healthy",
+      "pass": true,
+      "data": {
+        "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+        "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "depthMode": "reversed",
+        "glError": 0,
+        "contextLost": false,
+        "visibleModelTriangles": 8224718,
+        "geometryBytes": 138393972,
+        "submittedTriangles": 3837760,
+        "drawCalls": 799,
+        "buffer": [
+          390,
+          844
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [
+    "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+  ],
+  "externalRequests": [],
+  "screenshots": [
+    {
+      "file": "campus-gate-back.png",
+      "sha256": "fecdf3e4353444314f7ae92d4a4f6c62cefbbaf603b75cdc8c7f06f5aa223ee2",
+      "method": "Same-frame WebGL canvas readback of exact exported Viewer; no scene replacement or compositing"
+    },
+    {
+      "file": "mobile-touch-walk.png",
+      "sha256": "c5a63ac4864d24df38415d32e1e563c210c2e224fbb318def4b038d4f10cc1e1",
+      "method": "Same-frame WebGL canvas readback of exact exported Viewer; no scene replacement or compositing"
+    },
+    {
+      "file": "mobile-ui.png",
+      "sha256": "ec36de67c4213e82a6afab01ad532de0976e30dbabf109d1256877970571c04f",
+      "method": "Chromium page screenshot with actual DOM controls"
+    }
+  ],
+  "measurements": {
+    "scope": "CPU player update only at a stationary checkpoint; NOT GPU FPS",
+    "samples": 60,
+    "warmup": 8,
+    "milliseconds": [
+      0.09999999997671694,
+      0.1000000000349246,
+      0.20000000001164153,
+      0.09999999997671694,
+      0.09999999997671694,
+      0.30000000004656613,
+      0.19999999995343387,
+      0.30000000004656613,
+      0.29999999998835847,
+      0.20000000001164153,
+      0.29999999998835847,
+      0.09999999997671694,
+      0.29999999998835847,
+      0.20000000001164153,
+      0.20000000001164153,
+      0.20000000001164153,
+      0.29999999998835847,
+      0.20000000001164153,
+      0.20000000001164153,
+      0.19999999995343387,
+      0.30000000004656613,
+      0.09999999997671694,
+      0.29999999998835847,
+      0.20000000001164153,
+      0.20000000001164153,
+      0.20000000001164153,
+      0.19999999995343387,
+      0.20000000001164153,
+      0.20000000001164153,
+      0.20000000001164153,
+      0.09999999997671694,
+      0.20000000001164153,
+      0.20000000001164153,
+      0.09999999997671694,
+      0.1000000000349246,
+      0.09999999997671694,
+      0.20000000001164153,
+      0.09999999997671694,
+      0.1000000000349246,
+      0.19999999995343387,
+      0.1000000000349246,
+      0.09999999997671694,
+      0.1000000000349246,
+      0.09999999997671694,
+      0.20000000001164153,
+      0.09999999997671694,
+      0.20000000001164153,
+      0.20000000001164153,
+      0,
+      0.20000000001164153,
+      0.09999999997671694,
+      0.09999999997671694,
+      0.20000000001164153,
+      0,
+      0.20000000001164153,
+      0.09999999997671694,
+      0.20000000001164153,
+      0,
+      0.20000000001164153,
+      0.09999999997671694
+    ],
+    "medianMs": 0.20000000001164153,
+    "p95Ms": 0.29999999998835847,
+    "avatar": {
+      "visible": true,
+      "footPosition": [
+        0.000005342445022843423,
+        0.054959338740882324,
+        -1.2328978619140831
+      ],
+      "animationDriveSpeed": 0,
+      "finalStudent": true,
+      "artVersion": "C2.R2",
+      "animation": "idle",
+      "phase": 0.8095395125122852,
+      "evidence": "A: 用户确认白领、蓝色主体、上白下红横带、YL胸标及最终设定图；H: 精确色值、尺寸、背部横带延续、拉链长度、脸型与发型。09届大尺码回忆仅作宽松穿着参考。",
+      "uniform": {
+        "season": "autumn-working-reconstruction",
+        "logo": "YL",
+        "logoLocation": "wearer-left-chest",
+        "backLogo": false,
+        "collar": "white-folded",
+        "fit": "oversized",
+        "stripeOrderTopToBottom": [
+          "blue",
+          "white",
+          "red",
+          "blue"
+        ],
+        "palette": "campus-derived blue / warm white / muted red",
+        "trouserSideStripe": false
+      },
+      "geometry": {
+        "triangles": 80320,
+        "vertices": 45470,
+        "geometryBytes": 3573880,
+        "drawMeshes": 5,
+        "bones": 15
+      }
+    }
+  },
+  "glb": null,
+  "passed": true
+}

@@ -1,0 +1,47 @@
+{
+  "version": "C2.R2",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "standard": "1.0 + mobile-r12; local character UV and palette deviation documented",
+  "unitTests": 43,
+  "browserChecks": 19,
+  "screenshots": 15,
+  "groups": [
+    "studio",
+    "campus",
+    "mobile"
+  ],
+  "viewers": [
+    {
+      "file": "Yali_C2_R2_Character.html",
+      "sha256": "3659af70db42d0558cff476552b49b332dc941a8e03fac1e71a1f80091605040",
+      "bytes": 624862,
+      "gitHead": "9e1621606a8d24df724667f9903ee47d7c3e46f6"
+    },
+    {
+      "file": "Yali_C2_R2_Viewer.html",
+      "sha256": "c662495d23a448ae28cdefee97f5649b0bdf8976707cd69e55be31c7829bfa1e",
+      "bytes": 3904040,
+      "gitHead": "64dbd58636509ecb6109be602dd92278b68f7f4e"
+    }
+  ],
+  "glb": {
+    "file": "Yali_Student_C2_R2.glb",
+    "sha256": "2a0bbc6292233bdf0d39642c56469525b6b47f29fa23b2d0f13d3b3dce660634",
+    "bytes": 4063832,
+    "skins": 5,
+    "animations": [
+      "Idle",
+      "Walk",
+      "Run"
+    ]
+  },
+  "visualInspection": "AWAITING_SCREENSHOT_REVIEW; automated success does not assert art approval",
+  "realPhonePerformance": "NOT VERIFIED",
+  "passed": true,
+  "provenance": {
+    "campusAndMobileRun": 34820454140,
+    "studioRecoveryRun": "34822124969",
+    "reuseReason": "Campus Viewer bytes are identical; old source digests, screenshot hashes and reports retained. Only character GLB export changed.",
+    "initialStudioFailure": "initial-studio-export-failure/failure.json"
+  }
+}
