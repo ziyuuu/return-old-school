@@ -5,8 +5,8 @@
   "version": "C2.R1",
   "status": "IMPLEMENTED / REVIEW_PENDING",
   "standard": "1.0 + mobile-r12 + c2-avatar",
-  "generatedAt": "2026-09-14T01:52:39.347Z",
-  "gitHead": "217049bbc94e96c4aa9e26fdecface080126b624",
+  "generatedAt": "2026-09-14T01:53:40.692Z",
+  "gitHead": "c0aa3b427dfe23a5c419b5d2ad7d170c3095bf08",
   "source": "Per-file digests identify exact runtime including an uncommitted worktree",
   "sources": {
     "apps/campus/index.html": "8a252d98ba8054abd0bafcd063f354b9e621ad85ff63cb93946fe1fb3b22113d",
