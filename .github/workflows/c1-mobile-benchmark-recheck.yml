@@ -1,0 +1,55 @@
+name: C1 mobile comparison recheck
+on:
+  push:
+    branches: [codex/c1-player-controller]
+    paths: [.github/workflows/c1-mobile-benchmark-recheck.yml]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/c1-player-controller
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify exact artifacts and install pinned browser
+        run: |
+          set -euo pipefail
+          echo 'def040892c538ef00ddb006f8de1dcabfbead3658822800ec14c6723f09d2477  artifacts/m11c-c1/Yali_C1_R1_2_Viewer.html' | sha256sum -c -
+          echo 'b2cd412be14a8ab3589c75c7e573312f3d0f5a24061766e15de0284a591847d6  artifacts/m11c-c1/Yali_C1_R1_1_Viewer.html' | sha256sum -c -
+          npm ci --prefix apps/campus
+          npm install --prefix "$RUNNER_TEMP/c1-browser" --save-exact playwright@1.62.0
+          "$RUNNER_TEMP/c1-browser/node_modules/.bin/playwright" install --with-deps chromium
+          sudo apt-get install -y fonts-noto-cjk
+          echo "PLAYWRIGHT_MODULE=$RUNNER_TEMP/c1-browser/node_modules/playwright" >> "$GITHUB_ENV"
+      - name: Complete both 60-sample sessions and identical route
+        run: |
+          set -o pipefail
+          mkdir -p qa/m11c-c1/mobile-r12/benchmark
+          node tools/m11c-c1/benchmark-mobile.mjs 2>&1 | tee qa/m11c-c1/mobile-r12/benchmark/capture.log
+      - name: Collect previously passed exact-hash screenshots without rerendering
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/mobile-review
+          for group in mobile input lane terrain review fallback fix; do
+            gh run download 34793277031 -R ziyuuu/return-old-school -n "C1-mobile-r12-$group" -D "/tmp/mobile-review/$group"
+          done
+          cp -a qa/m11c-c1/mobile-r12/benchmark /tmp/mobile-review/benchmark
+          gh run download 34793277031 -R ziyuuu/return-old-school -n C1-mobile-r12-benchmark -D /tmp/mobile-review/history-compositor-failure
+          cp artifacts/m11c-c1/viewer-manifest-r12.json /tmp/mobile-review/
+          cp artifacts/m11c-c1/Yali_C1_R1_2_Viewer.html /tmp/mobile-review/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: C1-mobile-comparison-and-inspection
+          path: /tmp/mobile-review
+          retention-days: 30
