@@ -1,4 +1,4 @@
-# 开发计划｜C1 R1.2手机优化 / C2接续
+# 开发计划｜C1 R1.2手机优化 / C2 R2实装待审
 
 ## 当前接续点
 
@@ -11,7 +11,7 @@ B01—B05均已认可；B03为建筑R2，B05为R1.2。遵循[统一标准v1.0](m
 | M1.1-A P3/P4 | COMPLETE / ALUMNI_APPROVED | 累计布局、道路、高差 |
 | M1.1-B B01—B05 | COMPLETE / ALUMNI_APPROVED | 建筑外壳、主要固定设施和植被 |
 | M1.1-C / C1 R1.2 | IMPLEMENTED / REVIEW_PENDING | 可控比例人形、胶囊移动、跟随相机、键鼠/触屏 |
-| M1.1-C / C2 | AUTHORIZED / NEXT | 有依据的学生形象、校服、正式动画 |
+| M1.1-C / C2 R2 | IMPLEMENTED / REVIEW_PENDING | 已确认白领蓝白红YL设定的实际蒙皮角色，待实装审阅 |
 | M1.1-C / C3 | PLANNED / NOT STARTED | 全校园连续通行与必要接合修正 |
 | M1.1-D | PLANNED | 连续视角、比例、遮挡与空间体验复核 |
 | M1.2+ | PLANNED | 必要室内、生活物件、灯具和密集小型绿化 |

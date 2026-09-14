@@ -1,5 +1,12 @@
 # 复原雅礼 · Return Old School
 
+## C2 R2 · 学生角色实装（待审）
+
+[交付与操作](docs/m11c/c2/delivery.md) · [校园Viewer](artifacts/m11c-c2/r2/Yali_C2_R2_Viewer.html) · [人物工坊](artifacts/m11c-c2/r2/Yali_C2_R2_Character.html) · [本轮QA](qa/m11c-c2/r2/release/report.json)
+
+白领、蓝身、上白下红横带、左胸YL；15关节/5蒙皮批次。继承C1 R1.2手机优化及已认可校园。R1造型被否定，R2为IMPLEMENTED / REVIEW_PENDING；设定图不是历史照片。
+
+
 长沙雅礼中学东塘校区，主要时代2006—2010年。独立校友非商业复原，不代表学校官方。
 
 ## 当前状态

@@ -65,7 +65,12 @@ function sampleProfiles(profiles, step=.016, extra=[]) {
   return [...ys].sort((a,b)=>a-b).map(y=>{
     let k=0;while(k<profiles.length-2&&profiles[k+1][0]<y)k++;
     const a=profiles[k],b=profiles[k+1],t=clamp((y-a[0])/(b[0]-a[0]));
-    return [y,...[1,2,3,4].map(i=>(a[i]??0)+((b[i]??0)-(a[i]??0))*t)];
+    return [y,...[1,2,3,4].map(i=>{
+      const pa=profiles[Math.max(0,k-1)],pb=profiles[Math.min(profiles.length-1,k+2)],av=a[i]??0,bv=b[i]??0,h=b[0]-a[0];
+      const d=(bv-av)/h, m0=(bv-(pa[i]??0))/(b[0]-pa[0]),m1=((pb[i]??0)-av)/(pb[0]-a[0]);
+      const limit=m=>d===0||m*d<=0?0:Math.sign(d)*Math.min(Math.abs(m),Math.abs(d)*2);
+      return (2*t*t*t-3*t*t+1)*av+(t*t*t-2*t*t+t)*h*limit(m0)+(-2*t*t*t+3*t*t)*bv+(t*t*t-t*t)*h*limit(m1);
+    })];
   });
 }
 function banded(g, palette, top=1.224, bottom=1.153, seam=1.189) {
@@ -96,29 +101,32 @@ function eyePatch(cx, y, z, width, height) {
 /** Continuous skin + deliberately sewn garment sections, merged into five surfaces. */
 export function createStudentRig(materials, C) {
   const root=new THREE.Group();root.name='C2-student-avatar';root.userData={player:true,artVersion:'C2.R2'};
+  const widthScale=.89; // H art-proportion correction; never changes the C1 capsule.
+  const restJoints=JOINTS.map(([name,parent,p])=>[name,parent,[p[0]*widthScale,p[1],p[2]]]);
   const bones=JOINTS.map(([name])=>{const b=new THREE.Bone();b.name='C2-'+name;return b;});
-  JOINTS.forEach(([,parent,p],i)=>{bones[i].position.copy(V(p));if(parent>=0){bones[i].position.sub(V(JOINTS[parent][2]));bones[parent].add(bones[i]);}else root.add(bones[i]);});
+  JOINTS.forEach(([,parent,p],i)=>{bones[i].position.copy(V(restJoints[i][2]));if(parent>=0){bones[i].position.sub(V(restJoints[parent][2]));bones[parent].add(bones[i]);}else root.add(bones[i]);});
   root.updateMatrixWorld(true);const skeleton=new THREE.Skeleton(bones);
   const bags={cloth:[],skin:[],hair:[],detail:[],shoe:[]}, parts=[];
   function add(name,g,material,color,bone=1,weightFn=null) {
     if(color)paint(g,color); weights(g,weightFn??(()=>[bone,1]));
+    g.scale(bone===2?1:widthScale,1,1); // Face remains designed, clothing retains loose ease.
     // Attribute-complete and indexed, with no auxiliary flat boxes inside garments.
     if(!g.attributes.uv)g.setAttribute('uv',new THREE.Float32BufferAttribute(new Float32Array(g.attributes.position.count*2),2));
     if(g.index===null) {const packed=mergeVertices(g,1e-6);g.dispose();g=packed;}
     bags[material].push(g);parts.push({name,material,triangles:g.index.count/3,bone});
   }
   const bands=[1.153,1.189,1.224];
-  const torsoProfiles=[ [.861,.161,.105],[.882,.185,.114],[.925,.207,.132],[1.02,.207,.131],
+  const torsoProfiles=[ [.850,.197,.112],[.875,.203,.116],[.925,.207,.132],[1.02,.207,.131],
     [1.12,.219,.137],[1.224,.224,.137],[1.285,.219,.122],[1.334,.191,.100],[1.368,.131,.074],[1.382,.062,.053] ];
   const torso=banded(ringsGeometry(sampleProfiles(torsoProfiles,.013,bands),48,.0018),C);
   add('blue-jacket-with-white-over-red-sewn-bands',torso,'cloth',null,1,(_x,y)=>{const t=smooth(.89,1.07,y);return[0,1-t,1,t];});
-  add('blue-ribbed-waist',ringsGeometry(sampleProfiles([[.851,.163,.106],[.864,.164,.108],[.882,.185,.113]],.007),48,.0005),'cloth',C.blueFold,0);
+  add('blue-ribbed-waist',ringsGeometry(sampleProfiles([[.842,.195,.110],[.857,.200,.114],[.877,.203,.116]],.007),48,.0005),'cloth',C.blueFold,0);
   add('neck',ellipsoid([0,1.416,.003],[.044,.069,.043]),'skin',C.skin,2);
   // Folded white collar: open at the throat, wraps back, with separate tipped leaves.
   const collarR=[];for(let i=0;i<=8;i++){const y=1.371+i*.005;collarR.push([y,.071-i*.0018,.059-i*.0007,0,0]);}
   const coll=ringsGeometry(collarR,48);add('white-back-collar',coll,'cloth',C.white,1);
   for(const s of[-1,1]){
-    const pts=[[s*.010,1.393,.057],[s*.055,1.415,.042],[s*.116,1.363,.075],[s*.074,1.318,.128],[s*.020,1.364,.081]];
+    const pts=[[s*.010,1.393,.057],[s*.055,1.415,.042],[s*.103,1.363,.082],[s*.068,1.326,.126],[s*.020,1.364,.081]];
     const g=patch(s>0?pts:[...pts].reverse(),.004);
     // Soft edge geometry follows the folded collar, not a white cube at the neck.
     add('white-folded-collar-'+s,g,'cloth',C.white,1);
@@ -156,13 +164,13 @@ export function createStudentRig(materials, C) {
     const pr=[[.081,.075,.073,s*.105,.024],[.105,.088,.085,s*.105,.009],[.130,.099,.090,s*.105,.001],
       [.175,.090,.083,s*.106,-.003],[.30,.089,.082,s*.106,-.002],[.43,.091,.088,s*.105,.002],
       [.49,.094,.094,s*.105,.005],[.58,.100,.098,s*.105,.001],[.72,.108,.108,s*.105,0],
-      [.83,.113,.108,s*.103,0],[.907,.101,.089,s*.096,0],[.927,.089,.081,s*.093,0]];
+      [.83,.104,.102,s*.101,0],[.907,.101,.089,s*.096,0],[.927,.089,.081,s*.093,0]];
     add('continuous-loose-trouser-'+s,ringsGeometry(sampleProfiles(pr,.016),40,.0021),'cloth',C.blue,hip,(_x,y)=>{
       const t=smooth(.43,.54,y);return[knee,1-t,hip,t];});
     // Sculpted low sneakers with separate sole, toe cap, tongue and laces.
-    add('sneaker-upper-'+s,ellipsoid([s*.105,.065,.064],[.076,.053,.146],40),'shoe',C.sole,ankle);
-    add('sneaker-sole-'+s,ellipsoid([s*.105,.025,.063],[.079,.024,.149],40),'shoe',C.white,ankle);
-    add('sneaker-toe-'+s,ellipsoid([s*.105,.056,.155],[.069,.024,.048],32),'shoe','#e8e7e0',ankle);
+    add('sneaker-upper-'+s,ellipsoid([s*.105,.065,.064],[.073,.046,.132],40),'shoe',C.sole,ankle);
+    add('sneaker-sole-'+s,ellipsoid([s*.105,.025,.063],[.077,.022,.137],40),'shoe',C.white,ankle);
+    add('sneaker-toe-'+s,ellipsoid([s*.105,.054,.148],[.065,.022,.043],32),'shoe','#e8e7e0',ankle);
     add('sneaker-tongue-'+s,ellipsoid([s*.105,.112,.076],[.039,.010,.057],28),'shoe',C.shoe,ankle);
     for(const q of[-1,1])add('sneaker-side-'+s+'-'+q,ellipsoid([s*.105+q*.068,.059,.038],[.012,.021,.081],28),'shoe',C.shoe,ankle);
     for(let l=0;l<4;l++)add('shoelace-'+s+'-'+l,curve([[s*.105-.026,.117,.041+l*.02],[s*.105,.119,.049+l*.02],[s*.105+.026,.117,.041+l*.02]],.002,12,6),'detail',C.white,ankle);
@@ -197,7 +205,7 @@ export function createStudentRig(materials, C) {
   function lock(a,start,end,width,lift,seed){
     const verts=[],tex=[],idx=[],rings=16,sides=8;
     for(let i=0;i<=rings;i++){
-      const t=i/rings,ph=start+(end-start)*t,th=a+.28*Math.sin(t*Math.PI/2)+.04*Math.sin(seed),
+      const t=i/rings,ph=start+(end-start)*t,th=a+.22*Math.sin(t*Math.PI/2)+.04*Math.sin(seed),
         centre=hairPoint(th,ph,lift*Math.sin(Math.PI*t));
       const normal=centre.clone().sub(V([0,1.597,-.009])).normalize(),side=new THREE.Vector3(Math.cos(th),0,-Math.sin(th));
       const w=Math.max(.00055,width*Math.pow(Math.sin(Math.PI*(t*.92+.04)),.7));
@@ -209,9 +217,9 @@ export function createStudentRig(materials, C) {
     }
     const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(verts,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(tex,2));g.setIndex(idx);g.computeVertexNormals();return g;
   }
-  for(let layer=0;layer<3;layer++)for(let j=0;j<18;j++){
-    const a=j/18*TAU+layer*.17,st=.08+layer*.34,en=endPhi(a)+.14*Math.sin(j*3.1)+.12;
-    add('swept-hair-'+layer+'-'+j,lock(a,st,en,.018-layer*.001,.006+layer*.001,j),'hair',j%5===0?C.hairLight:C.hair,2);
+  for(let layer=0;layer<3;layer++)for(let j=0;j<14;j++){
+    const a=j/14*TAU+layer*.29,st=.08+layer*.34,en=endPhi(a)+.14*Math.sin(j*3.1)+.12;
+    add('swept-hair-'+layer+'-'+j,lock(a,st,en,.027-layer*.001,.010+layer*.002,j),'hair',j%5===0?C.hairLight:C.hair,2);
   }
   const meshes=[];
   for(const [key,geoms] of Object.entries(bags)) {
@@ -252,6 +260,7 @@ export function createStudentRig(materials, C) {
   }
   pose(0,0);
   function animationClips() {
+    const saved=bones.map(b=>({q:b.quaternion.clone(),p:b.position.clone()}));
     const clips=[];
     for(const [name,speed,duration] of [['Idle',0,3],['Walk',1.65,1.0],['Run',3.4,.72]]) {
       const times=[],qs=bones.map(()=>[]),ps=bones.map(()=>[]),N=60;
@@ -262,7 +271,7 @@ export function createStudentRig(materials, C) {
       const tracks=bones.flatMap((b,j)=>[new THREE.QuaternionKeyframeTrack(b.name+'.quaternion',times,qs[j]),new THREE.VectorKeyframeTrack(b.name+'.position',times,ps[j])]);
       clips.push(new THREE.AnimationClip(name,duration,tracks));
     }
-    pose(0,0);return clips;
+    bones.forEach((b,i)=>{b.quaternion.copy(saved[i].q);b.position.copy(saved[i].p);});root.updateMatrixWorld(true);skeleton.update();return clips;
   }
   return {root,bones,skeleton,meshes,stats,pose,animationClips,
     dispose(){meshes.forEach(m=>m.geometry.dispose());skeleton.dispose();root.removeFromParent();}};

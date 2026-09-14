@@ -23,3 +23,7 @@ for(const item of [
  await fs.writeFile(path.join(out,item.name.replace('.html','.manifest.json')),JSON.stringify(manifest,null,2)+'\n');files.push({file:item.name,sha256:manifest.sha256,bytes:manifest.bytes});console.log(files.at(-1));
 }
 await fs.writeFile(path.join(out,'files.json'),JSON.stringify(files,null,2)+'\n');
+
+// Notices travel with every offline distribution; no external font/photo files.
+await fs.copyFile(path.join(root,'artifacts/m11c-c2/THIRD_PARTY_NOTICES.txt'),path.join(out,'THIRD_PARTY_NOTICES.txt'));
+await fs.copyFile(path.join(root,'artifacts/m11c-c1/APACHE-2.0.txt'),path.join(out,'APACHE-2.0.txt'));

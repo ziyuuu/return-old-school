@@ -7,7 +7,7 @@ import hashlib
 p=Path('apps/campus/src/player/student-rig.mjs')
 s=p.read_text()
 if 'const widthScale=.89;' not in s:
-    assert hashlib.sha256(s.encode()).hexdigest() == 'PLACEHOLDER_RIG_SHA', 'Unexpected rig source; stop rather than overwrite concurrent work'
+    assert hashlib.sha256(s.encode()).hexdigest() == '567a036374e23803925c8cefea858b9468e73027afef2413647d339a415329dc', 'Unexpected rig source; stop rather than overwrite concurrent work'
     s=s.replace("const root=new THREE.Group();root.name='C2-student-avatar';root.userData={player:true,artVersion:'C2.R2'};", "const root=new THREE.Group();root.name='C2-student-avatar';root.userData={player:true,artVersion:'C2.R2'};\n  const widthScale=.89; // H art-proportion correction; never changes the C1 capsule.\n  const restJoints=JOINTS.map(([name,parent,p])=>[name,parent,[p[0]*widthScale,p[1],p[2]]]);")
     s=s.replace("bones[i].position.copy(V(p));if(parent>=0){bones[i].position.sub(V(JOINTS[parent][2]));", "bones[i].position.copy(V(restJoints[i][2]));if(parent>=0){bones[i].position.sub(V(restJoints[parent][2]));")
     s=s.replace("if(color)paint(g,color); weights(g,weightFn??(()=>[bone,1]));", "if(color)paint(g,color); weights(g,weightFn??(()=>[bone,1]));\n    g.scale(bone===2?1:widthScale,1,1); // Face remains designed, clothing retains loose ease.")
