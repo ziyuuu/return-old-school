@@ -1,0 +1,34 @@
+name: C1 mobile performance continuation
+on:
+  push:
+    branches: [codex/c1-player-controller]
+    paths: [.github/workflows/c1-mobile-acquire.yml]
+permissions:
+  contents: read
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Clone current source without replacing existing work
+        run: |
+          set -euo pipefail
+          git clone https://github.com/ziyuuu/return-old-school.git campus
+          cd campus
+          git fetch origin
+          git switch main
+          git pull --ff-only origin main
+          git switch --track origin/codex/c1-player-controller
+          git merge-base --is-ancestor 68aaee560e11f3c8fbd4584baa16c7bf64862114 HEAD
+          git merge-base --is-ancestor origin/main HEAD
+          test -z "$(git status --short)"
+          mkdir -p ../receipt
+          git rev-parse HEAD > ../receipt/head.txt
+          git ls-remote origin refs/heads/main refs/heads/codex/c1-player-controller > ../receipt/refs.txt
+          git bundle create ../receipt/current.bundle HEAD ^c6dcf6ed2bc7a976cd7994402305b80ef0fb6127
+          git archive HEAD apps data docs tests tools AGENTS.md README.md .gitattributes .gitignore .github > ../receipt/source.tar
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C1-mobile-current-source
+          path: receipt
+          retention-days: 14
