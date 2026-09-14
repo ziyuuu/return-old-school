@@ -1,6 +1,6 @@
 {
   "version": "C2.R1",
-  "viewerSHA256": "fe6c65aff7c796af3cd646a2d8f54ed8f909c44f531921af0773f0622be6a5c0",
+  "viewerSHA256": "403ed24f0fa433dbd63f10718edc79a050f5b4b6d2824ced551e76818430266b",
   "viewportPolicy": "720x480 balanced desktop QA + 390x844 balanced mobile; exact full campus geometry unchanged",
   "checks": [
     {
@@ -10,7 +10,7 @@
         "visible": true,
         "footPosition": [
           6.178695244329901e-8,
-          0.05505858541480857,
+          0.05505856814896115,
           -3.4999998401472827
         ],
         "animationDriveSpeed": 0,
@@ -180,22 +180,22 @@
   "screenshots": [
     {
       "file": "01-gate-idle.png",
-      "sha256": "0f58a3cbb8d3a5bf32e91125e424c2d283bb991e46fb64bdfd5505a00165bf3f",
+      "sha256": "a231962b7239483bf28d8c34fea19acd2a1a52e164ff7df9102bab565b474c90",
       "method": "same-frame WebGL canvas readback from exact Viewer"
     },
     {
       "file": "02-walk.png",
-      "sha256": "91295f31a1d1c284f9d26f787245c1ccb8c920cfa1c541285302cede6f1f9c03",
+      "sha256": "b43ad1cc4ff6907c8bc2c48a1e2e68d723f31190230b8059ad85cffffebf37c1",
       "method": "same-frame WebGL canvas readback from exact Viewer"
     },
     {
       "file": "03-run.png",
-      "sha256": "a9d915f8b78c0f69c2ba11250868659357b5103a8baae26176b69e86a2cd9f3e",
+      "sha256": "184ef5a76b8c1c629c8ab1d3f3fa98e8ada64a47e08df9beedaf67190db968dd",
       "method": "same-frame WebGL canvas readback from exact Viewer"
     },
     {
       "file": "04-mobile.png",
-      "sha256": "f9b82eef90088b0233976982265f05289ebb6c3c657605f6c2ec4805b81717b7",
+      "sha256": "2d60be9ccd871cb7de2e6369a0fcce17abfef072a8b7ad37fa1f5ca586e2b569",
       "method": "same-frame WebGL canvas readback from exact Viewer"
     }
   ],
