@@ -16,8 +16,9 @@ jobs:
           set -euo pipefail
           sha256sum artifacts/m11c-c2/Yali_C2_R1_Viewer.html | tee artifacts/m11c-c2/SHA256.txt
           test -f artifacts/m11c-c2/viewer-manifest.json
+          echo 'palette-readable C2 exact Viewer package'
       - uses: actions/upload-artifact@v4
         with:
-          name: C2-exact-Viewer
+          name: C2-exact-Viewer-palette
           path: artifacts/m11c-c2
           retention-days: 30
