@@ -1,0 +1,35 @@
+name: C2 R2 exact workspace
+on:
+  push:
+    branches: [codex/c2-student-avatar]
+    paths: [.github/workflows/c2-r2-workspace.yml]
+permissions:
+  contents: read
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/c2-student-avatar
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Acquire repository and locked dependencies
+        run: |
+          set -euo pipefail
+          npm ci --prefix apps/campus
+          git bundle create /tmp/c2-r2-source.bundle --all
+          tar -czf /tmp/c2-r2-dependencies.tar.gz apps/campus/node_modules
+          git rev-parse HEAD > /tmp/c2-r2-refs.txt
+          git ls-remote origin refs/heads/main refs/heads/codex/c2-student-avatar refs/heads/codex/c1-player-controller >> /tmp/c2-r2-refs.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C2-R2-exact-workspace
+          path: |
+            /tmp/c2-r2-source.bundle
+            /tmp/c2-r2-dependencies.tar.gz
+            /tmp/c2-r2-refs.txt
+          retention-days: 7
