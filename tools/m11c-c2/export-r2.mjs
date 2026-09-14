@@ -4,7 +4,7 @@ import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {build} from '../../apps/campus/node_modules/esbuild/lib/main.js';
-const root=fileURLToPath(new URL('../../',import.meta.url)),out=path.join(root,'artifacts/m11c-c2/r2');
+const root=fileURLToPath(new URL('../../',import.meta.url)),out=path.resolve(root,process.env.C2_ARTIFACT_DIR||'artifacts/m11c-c2/r2');
 await fs.mkdir(out,{recursive:true});
 const digest=b=>createHash('sha256').update(b).digest('hex');
 const files=[];

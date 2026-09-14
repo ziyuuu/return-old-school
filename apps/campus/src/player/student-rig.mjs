@@ -36,7 +36,7 @@ function ellipsoid(pos,radii,segments=32) { return transform(new THREE.SphereGeo
 function curve(points, radius, seg=24, radial=8) {
   return new THREE.TubeGeometry(new THREE.CatmullRomCurve3(points.map(V)),seg,radius,radial,false);
 }
-function ringsGeometry(rings, segments=48, folds=0, head=false) {
+function ringsGeometry(rings, segments=48, folds=0, head=false, capTop=false) {
   const p=[], uv=[], ix=[];
   for(let i=0;i<rings.length;i++) {
     const [y,rx,rz,cx=0,cz=0]=rings[i];
@@ -54,6 +54,11 @@ function ringsGeometry(rings, segments=48, folds=0, head=false) {
         ix.push(a,a+1,b,a+1,b+1,b);
       }
     }
+  }
+  if(capTop){
+    const [y,,,cx=0,cz=0]=rings.at(-1),centre=p.length/3,start=(rings.length-1)*(segments+1);
+    p.push(cx,y,cz);uv.push(2,(y-rings[0][0])*6);
+    for(let j=0;j<segments;j++)ix.push(centre,start+j,start+j+1);
   }
   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(p,3));
   g.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));g.setIndex(ix);g.computeVertexNormals();return g;
@@ -149,7 +154,7 @@ export function createStudentRig(materials, C) {
       [.907,.077,.071,s*.298,0],[1.00,.082,.076,s*.288,0],[1.07,.087,.080,s*.277,-.004],
       [1.16,.092,.084,s*.263,-.005],[1.224,.094,.084,s*.252,0],[1.285,.086,.081,s*.241,0],
       [1.335,.064,.061,s*.230,0],[1.356,.018,.018,s*.225,0]];
-    add('continuous-sleeve-'+s,banded(ringsGeometry(sampleProfiles(profiles,.012,bands),40,.0016),C),'cloth',null,upper,(_x,y)=>{
+    add('continuous-sleeve-'+s,banded(ringsGeometry(sampleProfiles(profiles,.012,bands),40,.0016,false,true),C),'cloth',null,upper,(_x,y)=>{
       const t=smooth(1.004,1.077,y);return[elbow,1-t,upper,t];});
     add('cuff-'+s,ringsGeometry(sampleProfiles([[.774,.040,.041,s*.3,.012],[.798,.046,.044,s*.3,.012],[.807,.054,.05,s*.3,.008]],.006),40,.0006),'cloth',C.blueFold,elbow);
     add('palm-'+s,ellipsoid([s*.302,.737,.020],[.031,.047,.019]),'skin',C.skin,hand);
