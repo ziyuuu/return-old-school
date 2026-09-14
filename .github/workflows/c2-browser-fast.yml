@@ -28,7 +28,7 @@ jobs:
           import json,pathlib
           r=pathlib.Path('.');q=json.loads((r/'qa/m11c-c2/browser/report.json').read_text());m=json.loads((r/'artifacts/m11c-c2/viewer-manifest.json').read_text());assert q['passed'] and q['viewerSHA256']==m['sha256'];assert len(q['screenshots'])==4
           (r/'docs/m11c/c2/delivery.md').write_text(f'''# C2 R1｜学生形象与基础动画交付\n\n**IMPLEMENTED / REVIEW_PENDING**。继承C1 R1.2手机优化和全部已认可校园模型；不登记acceptance、不合并main。\n\nViewer：`artifacts/m11c-c2/Yali_C2_R1_Viewer.html`，SHA256 `{m['sha256']}`。\n\n实现：证据有界的偏大尺码秋季校服学生工作重建；idle / walk / run / air 四态；第三/第一人称、坡速、碰撞、相机与手机流畅档沿用C1 R1.2。无校徽、班级、个人脸或外部人物纹理。\n\n节点测试34/34；实际Chromium {len(q['checks'])}项检查、{len(q['screenshots'])}张实际WebGL截图通过。桌面视觉QA使用720×480可逆流畅档、手机390×844流畅档，均为完整校园几何；精确剪裁、色值、发型和体型仍为H；C3尚未开始。\n''')
-          (r/'qa/m11c-c2/README.md').write_text(f'''# C2 R1 QA\n\nViewer SHA256 `{m['sha256']}`。节点测试34/34；实际 Chromium 报告见 `browser/report.json`。四张画面均来自受测Viewer的同帧WebGL画布读取；桌面QA为720×480流畅档，手机为390×844流畅档，不减校园三角面。C2只替换可见学生形象和动画，不改变C1胶囊、道路、建筑或手机性能策略。\n''')
+          (r/'qa/m11c-c2/README.md').write_text(f'''# C2 R1 QA\n\nViewer SHA256 `{m['sha256']}`。节点测试34/34；实际 Chromium 报告见 `browser/report.json`。四张画面均来自受测Viewer的同帧WebGL画布读取；桌面QA为720×480流畅档，手机为390×844流畅档，不减校园三角面。walk/run状态在角色实际移动中采样。C2只替换可见学生形象和动画，不改变C1胶囊、道路、建筑或手机性能策略。\n''')
           PY
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -44,3 +44,4 @@ jobs:
             qa/m11c-c2
             docs/m11c/c2
           retention-days: 30
+# locomotion-state QA samples while moving rather than at route endpoint
