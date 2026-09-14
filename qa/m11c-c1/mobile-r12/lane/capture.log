@@ -1,0 +1,18 @@
+open lane def040892c538ef00ddb006f8de1dcabfbead3658822800ec14c6723f09d2477
+2026-09-14T00:40:11.430Z capture 01-lane-start
+2026-09-14T00:42:36.745Z capture 02-camera-wall-retraction
+2026-09-14T00:42:47.402Z capture 03-residential-fork
+C1 RESULT lane true [
+  [ 'Runtime ready and correct default mode', true ],
+  [ 'Lossless packing leaves triangle count unchanged', true ],
+  [ 'Lossless packing lowers geometry buffer bytes', true ],
+  [ '01-lane-start WebGL', true ],
+  [ 'Continuous side-wall stops a moving capsule', true ],
+  [ 'Camera sphere retracts at lane wall', true ],
+  [ '02-camera-wall-retraction WebGL', true ],
+  [ 'Walled lane to residential fork with region transitions', true ],
+  [ '03-residential-fork WebGL', true ],
+  [ 'Physics transitions reused exact resident meshes', true ],
+  [ 'No JavaScript or GL console errors', true ],
+  [ 'Single offline Viewer, no network assets', true ]
+]

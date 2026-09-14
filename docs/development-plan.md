@@ -1,4 +1,4 @@
-# 开发计划｜C1 R1已实现待审
+# 开发计划｜C1 R1.2手机优化 / C2接续
 
 ## 当前接续点
 
@@ -10,14 +10,16 @@ B01—B05均已认可；B03为建筑R2，B05为R1.2。遵循[统一标准v1.0](m
 | M1.0 R4 | COMPLETE / FROZEN | 原冻结版本保留 |
 | M1.1-A P3/P4 | COMPLETE / ALUMNI_APPROVED | 累计布局、道路、高差 |
 | M1.1-B B01—B05 | COMPLETE / ALUMNI_APPROVED | 建筑外壳、主要固定设施和植被 |
-| M1.1-C / C1 R1 | IMPLEMENTED / REVIEW_PENDING | 可控比例人形、胶囊移动、跟随相机、键鼠/触屏 |
-| M1.1-C / C2 | PLANNED / NOT STARTED | 有依据的学生形象、校服、正式动画 |
+| M1.1-C / C1 R1.2 | IMPLEMENTED / REVIEW_PENDING | 可控比例人形、胶囊移动、跟随相机、键鼠/触屏 |
+| M1.1-C / C2 | AUTHORIZED / NEXT | 有依据的学生形象、校服、正式动画 |
 | M1.1-C / C3 | PLANNED / NOT STARTED | 全校园连续通行与必要接合修正 |
 | M1.1-D | PLANNED | 连续视角、比例、遮挡与空间体验复核 |
 | M1.2+ | PLANNED | 必要室内、生活物件、灯具和密集小型绿化 |
 | M2 | LATER | 不改历史几何的可逆夜间覆盖层 |
 
 ## C1：当前交付
+
+R1.2手机优化已实施：30项定向测试、7组浏览器、92项检查、28图，同机成本比较完成但不是实体手机性能验收。[本轮QA](../qa/m11c-c1/mobile-r12/README.md)。R1.1方向/坡速用户反馈基本无问题；手机流畅度仍需复核，功能反馈与完整acceptance分开。以下R1描述保留为历史。
 
 [交付/操作](m11c/c1/delivery.md) · [设计](m11c/c1/design.md) · [真实QA](../qa/m11c-c1/README.md)。可见比例人形、统一胶囊、固定60Hz步进、重力/坡道/台阶/阻挡、相机球体扫掠、暂停/失焦清键和五个起点已实施。23项定向测试、7组浏览器、26图和六条代表性路线完成。原合成触摸事件测试失败保留，真实触摸复测绑定同一Viewer。
 

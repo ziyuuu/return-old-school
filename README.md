@@ -4,17 +4,21 @@
 
 ## 当前状态
 
-**B01—B05：COMPLETE / ALUMNI_APPROVED。** B03为建筑R2，B05为R1.2。旧Viewer/QA的待审文字是历史状态，认可以各批acceptance为准。**C1 R1：IMPLEMENTED / REVIEW_PENDING**，可见比例人形已能操控漫游，等待审阅；不是C2最终学生形象，也不是C3全校园通行验收。
+**B01—B05：COMPLETE / ALUMNI_APPROVED。** B03为建筑R2，B05为R1.2。旧Viewer/QA的待审文字是历史状态，认可以各批acceptance为准。**C1 R1.2：IMPLEMENTED / REVIEW_PENDING**，可见比例人形已能操控漫游，等待审阅；不是C2最终学生形象，也不是C3全校园通行验收。
 
-[C1离线漫游](artifacts/m11c-c1/Yali_C1_R1_Viewer.html) · [交付/操作](docs/m11c/c1/delivery.md) · [真实截图](qa/m11c-c1/review.html) · [QA](qa/m11c-c1/README.md) · [开发计划](docs/development-plan.md)
+[C1离线漫游](artifacts/m11c-c1/Yali_C1_R1_2_Viewer.html) · [交付/操作](docs/m11c/c1/delivery.md) · [真实截图](qa/m11c-c1/mobile-r12/review.html) · [QA](qa/m11c-c1/mobile-r12/README.md) · [开发计划](docs/development-plan.md)
 
-Viewer SHA256：`96d2404bd56a9cf766a452f586bb4b6141957605c8266a710af9e9513e0737dc`。
+Viewer SHA256：`def040892c538ef00ddb006f8de1dcabfbead3658822800ec14c6723f09d2477`。
 
 ## 已认可校园
 
 [B01 R3.1](docs/m11b/batch01/acceptance.md)：主楼/卷帘侧门/厕所连桥；[B02](docs/m11b/batch02/acceptance.md)：体育馆/贴体音乐楼；[B03 R2](docs/m11b/batch03/acceptance.md)：图书馆/后花园双弧梯/圆台/上坡及食堂左打印/中楼梯/右小卖部；[B04 R1](docs/m11b/batch04/acceptance.md)：科学馆/长雅楼及07/16/21；[B05 R1.2](docs/m11b/batch05/acceptance.md)：校门石前置坡台、侧路围墙、运动设施、生活外壳和主要植被。
 
 H/U位置、尺寸、身份、树种和年代未因认可变成测绘事实。C1不重排上述建筑、路网、高差或植物。
+
+## 手机端性能修订
+
+手机默认“流畅”档，可在暂停/帮助切回“完整清晰”。保持全部校园三角面、共享美术与碰撞；无损索引减少重复顶点，缓存静态矩阵/阴影和碰撞体。R1.1功能反馈已单独记录，但手机实际帧率仍待设备复核。 [实现](docs/m11c/c1/mobile-performance.md)。用户已授权随后进入C2，C2不在此Viewer中冒充完成。
 
 ## 操作
 
@@ -29,7 +33,7 @@ npm ci --prefix apps/campus
 npm run dev --prefix apps/campus
 npm run build --prefix apps/campus
 node --test tests/m11c/c1/controller.test.mjs tests/render-upgrade/*.test.mjs
-node tools/m11c-c1/export.mjs
+node tools/m11c-c1/export-r12.mjs
 ```
 
 [统一标准v1.0](docs/model-rendering-standard.md) · [AGENTS.md](AGENTS.md)。Three.js/TypeScript/Vite及共享色板/材质/天空/日光/反射/BVH继续沿用。Rapier兼容包/WASM嵌入离线文件。无照片贴图、bloom、暗角、景深，不擅自减面。

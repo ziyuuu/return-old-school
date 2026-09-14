@@ -1,0 +1,25 @@
+open review def040892c538ef00ddb006f8de1dcabfbead3658822800ec14c6723f09d2477
+2026-09-14T00:39:38.279Z capture overview
+2026-09-14T00:41:58.659Z capture r3-overview
+2026-09-14T00:42:14.886Z capture b02-photo-front
+2026-09-14T00:42:18.651Z capture b03-photo-library
+2026-09-14T00:42:22.905Z capture b03-garden
+2026-09-14T00:42:37.653Z capture b03-canteen
+2026-09-14T00:42:42.565Z capture top
+2026-09-14T00:43:04.599Z capture r3-axis
+C1 RESULT review true [
+  [ 'Runtime ready and correct default mode', true ],
+  [ 'Lossless packing leaves triangle count unchanged', true ],
+  [ 'Lossless packing lowers geometry buffer bytes', true ],
+  [ 'overview WebGL', true ],
+  [ 'r3-overview WebGL', true ],
+  [ 'b02-photo-front WebGL', true ],
+  [ 'b03-photo-library WebGL', true ],
+  [ 'b03-garden WebGL', true ],
+  [ 'b03-canteen WebGL', true ],
+  [ 'top WebGL', true ],
+  [ 'r3-axis WebGL', true ],
+  [ 'Review mode remains separate with no player', true ],
+  [ 'No JavaScript or GL console errors', true ],
+  [ 'Single offline Viewer, no network assets', true ]
+]

@@ -1,0 +1,3533 @@
+{
+  "viewerSHA256": "def040892c538ef00ddb006f8de1dcabfbead3658822800ec14c6723f09d2477",
+  "screenshots": [
+    {
+      "group": "mobile",
+      "file": "01-mobile-initial.png",
+      "sha256": "f8db73454171f848f3a9f4abe9c3a5ec4fe091a040b37d0195f0df4ef51451b1",
+      "method": "CDP viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 816,
+      "triangles": 3796092,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 1024,
+        "shadowExtent": 28,
+        "shadowRevision": 15,
+        "shadowFocusMode": "walk",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 5487,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 2354,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 877.1000000000058
+        },
+        "graphics": {
+          "mobile": true,
+          "mode": "balanced",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 0.75,
+          "shadowResolution": 1024,
+          "adaptive": true,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            390,
+            844
+          ],
+          "staticWorldMatrices": true
+        }
+      }
+    },
+    {
+      "group": "mobile",
+      "file": "02-mobile-help.png",
+      "sha256": "4574fa8d256f00749d45816033a5bacb21c2a96c124f083ba8cba054d66ef9cb",
+      "method": "Playwright viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 811,
+      "triangles": 3793632,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 1024,
+        "shadowExtent": 28,
+        "shadowRevision": 15,
+        "shadowFocusMode": "walk",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 5487,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 2354,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 877.1000000000058
+        },
+        "graphics": {
+          "mobile": true,
+          "mode": "balanced",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 0.75,
+          "shadowResolution": 1024,
+          "adaptive": true,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            390,
+            844
+          ],
+          "staticWorldMatrices": true
+        }
+      }
+    },
+    {
+      "group": "mobile",
+      "file": "03-mobile-lane.png",
+      "sha256": "0d2782b564a1a4a6fa5c1fed9667cd26265cee91df75e2a574b07d8765a291ae",
+      "method": "Playwright viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 644,
+      "triangles": 3577330,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 1024,
+        "shadowExtent": 28,
+        "shadowRevision": 23,
+        "shadowFocusMode": "walk",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 5487,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 2354,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 877.1000000000058
+        },
+        "graphics": {
+          "mobile": true,
+          "mode": "balanced",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 0.75,
+          "shadowResolution": 1024,
+          "adaptive": true,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            390,
+            844
+          ],
+          "staticWorldMatrices": true
+        }
+      }
+    },
+    {
+      "group": "input",
+      "file": "01-third-person-start.png",
+      "sha256": "9544b329a213700711fee63609ed4f66af63619349e9935dc0adba1f45226126",
+      "method": "CDP viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 1816,
+      "triangles": 5636584,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 28,
+        "shadowRevision": 14,
+        "shadowFocusMode": "walk",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 5020,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 2150,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 831.5
+        },
+        "graphics": {
+          "mobile": false,
+          "mode": "detail",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 1,
+          "shadowResolution": 4096,
+          "adaptive": false,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            1280,
+            840
+          ],
+          "staticWorldMatrices": true
+        }
+      }
+    },
+    {
+      "group": "input",
+      "file": "02-main-slope-crest.png",
+      "sha256": "f689661329f74dd2bcb5ffb10392f81e8b83bfa82bb14d3f1d3378fca41ae29a",
+      "method": "Playwright viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 1306,
+      "triangles": 4864412,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 28,
+        "shadowRevision": 15,
+        "shadowFocusMode": "walk",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 5020,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 2150,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 831.5
+        },
+        "graphics": {
+          "mobile": false,
+          "mode": "detail",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 1,
+          "shadowResolution": 4096,
+          "adaptive": false,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            1280,
+            840
+          ],
+          "staticWorldMatrices": true
+        }
+      }
+    },
+    {
+      "group": "input",
+      "file": "03-pause-help.png",
+      "sha256": "3a0bbd3454606dccae325240ee5d4f69a5ed44e9e124603994d2e0fbf0f515e1",
+      "method": "Playwright viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 1306,
+      "triangles": 4864412,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 28,
+        "shadowRevision": 15,
+        "shadowFocusMode": "walk",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 5020,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 2150,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 831.5
+        },
+        "graphics": {
+          "mobile": false,
+          "mode": "detail",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 1,
+          "shadowResolution": 4096,
+          "adaptive": false,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            1280,
+            840
+          ],
+          "staticWorldMatrices": true
+        }
+      }
+    },
+    {
+      "group": "input",
+      "file": "04-first-person.png",
+      "sha256": "49bc88c07fe24ae62f580e34dc6913a165b33b1440eaacc3096b23d2546a4518",
+      "method": "Playwright viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 1249,
+      "triangles": 4674614,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 28,
+        "shadowRevision": 15,
+        "shadowFocusMode": "walk",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 5020,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 2150,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 831.5
+        },
+        "graphics": {
+          "mobile": false,
+          "mode": "detail",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 1,
+          "shadowResolution": 4096,
+          "adaptive": false,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            1280,
+            840
+          ],
+          "staticWorldMatrices": true
+        }
+      }
+    },
+    {
+      "group": "lane",
+      "file": "01-lane-start.png",
+      "sha256": "035cd0380657f7a9ba16b815a80867cc3ddccfb1c5d1753b88d241d77801c95b",
+      "method": "CDP viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 1599,
+      "triangles": 5447668,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 28,
+        "shadowRevision": 15,
+        "shadowFocusMode": "walk",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 5033,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 2235,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 788.8999999999942
+        },
+        "graphics": {
+          "mobile": false,
+          "mode": "detail",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 1,
+          "shadowResolution": 4096,
+          "adaptive": false,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            1280,
+            840
+          ],
+          "staticWorldMatrices": true
+        }
+      }
+    },
+    {
+      "group": "lane",
+      "file": "02-camera-wall-retraction.png",
+      "sha256": "98ad3a28c53a19ffce6242d4a3e3e8ecfe76acace66b4f4d77450c9bbc33e4cf",
+      "method": "Playwright viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 117,
+      "triangles": 2309544,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 28,
+        "shadowRevision": 15,
+        "shadowFocusMode": "walk",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 5033,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 2235,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 788.8999999999942
+        },
+        "graphics": {
+          "mobile": false,
+          "mode": "detail",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 1,
+          "shadowResolution": 4096,
+          "adaptive": false,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            1280,
+            840
+          ],
+          "staticWorldMatrices": true
+        }
+      }
+    },
+    {
+      "group": "lane",
+      "file": "03-residential-fork.png",
+      "sha256": "b89730949a85cffd230ce8ac3a420ba1b0ba7573409379db38d53491ebcfb1b3",
+      "method": "CDP viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 944,
+      "triangles": 6493758,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 28,
+        "shadowRevision": 16,
+        "shadowFocusMode": "walk",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 5033,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 2235,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 788.8999999999942
+        },
+        "graphics": {
+          "mobile": false,
+          "mode": "detail",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 1,
+          "shadowResolution": 4096,
+          "adaptive": false,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            1280,
+            840
+          ],
+          "staticWorldMatrices": true
+        }
+      }
+    },
+    {
+      "group": "terrain",
+      "file": "01-stone-ramp-platform.png",
+      "sha256": "06d620bba259acaf41110e7d48c45fbd040fcad78a52d32e27604619a70eec06",
+      "method": "CDP viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 1811,
+      "triangles": 5595320,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 28,
+        "shadowRevision": 15,
+        "shadowFocusMode": "walk",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 3891,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 1483,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 595.8000000000466
+        },
+        "graphics": {
+          "mobile": false,
+          "mode": "detail",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 1,
+          "shadowResolution": 4096,
+          "adaptive": false,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            1280,
+            840
+          ],
+          "staticWorldMatrices": true
+        }
+      }
+    },
+    {
+      "group": "terrain",
+      "file": "02-stone-stairs.png",
+      "sha256": "cb8da11048249b90afe2114ea22f5257c5224a9ee92f2e180243bf6a9542bb38",
+      "method": "Playwright viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 1799,
+      "triangles": 5524304,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 28,
+        "shadowRevision": 15,
+        "shadowFocusMode": "walk",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 3891,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 1483,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 595.8000000000466
+        },
+        "graphics": {
+          "mobile": false,
+          "mode": "detail",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 1,
+          "shadowResolution": 4096,
+          "adaptive": false,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            1280,
+            840
+          ],
+          "staticWorldMatrices": true
+        }
+      }
+    },
+    {
+      "group": "terrain",
+      "file": "03-court-entry.png",
+      "sha256": "e7ae10689e0a0798ec73e135ae26148229da27ec9672d6eaedc8a067172367e2",
+      "method": "Playwright viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 353,
+      "triangles": 915012,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 28,
+        "shadowRevision": 16,
+        "shadowFocusMode": "walk",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 3891,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 1483,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 595.8000000000466
+        },
+        "graphics": {
+          "mobile": false,
+          "mode": "detail",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 1,
+          "shadowResolution": 4096,
+          "adaptive": false,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            1280,
+            840
+          ],
+          "staticWorldMatrices": true
+        }
+      }
+    },
+    {
+      "group": "terrain",
+      "file": "04-gym-entry.png",
+      "sha256": "64a8bab77d7439946ab20a9e9bbae63fc4eb382be13c45dd3139194aafabf56c",
+      "method": "Playwright viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 174,
+      "triangles": 296226,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 28,
+        "shadowRevision": 17,
+        "shadowFocusMode": "walk",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 3891,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 1483,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 595.8000000000466
+        },
+        "graphics": {
+          "mobile": false,
+          "mode": "detail",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 1,
+          "shadowResolution": 4096,
+          "adaptive": false,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            1280,
+            840
+          ],
+          "staticWorldMatrices": true
+        }
+      }
+    },
+    {
+      "group": "review",
+      "file": "overview.png",
+      "sha256": "bfe6e9a257ced9774cf41cd0627f00a760279a1c6dfef5e6fea52a339191d17d",
+      "method": "CDP viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 1989,
+      "triangles": 8144408,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 250,
+        "shadowRevision": 9,
+        "shadowFocusMode": "review",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 4416,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 1821,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 638.2999999999884
+        },
+        "graphics": {
+          "mobile": false,
+          "mode": "detail",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 1,
+          "shadowResolution": 4096,
+          "adaptive": false,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            1280,
+            840
+          ],
+          "staticWorldMatrices": false
+        }
+      }
+    },
+    {
+      "group": "review",
+      "file": "r3-overview.png",
+      "sha256": "4ad948beb2ceada82665fc1a515c2692955b650a2ae9ca7ce8124e1007b76899",
+      "method": "Playwright viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 800,
+      "triangles": 4024574,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 100,
+        "shadowRevision": 12,
+        "shadowFocusMode": "review",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 4416,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 1821,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 638.2999999999884
+        },
+        "graphics": {
+          "mobile": false,
+          "mode": "detail",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 1,
+          "shadowResolution": 4096,
+          "adaptive": false,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            1280,
+            840
+          ],
+          "staticWorldMatrices": false
+        }
+      }
+    },
+    {
+      "group": "review",
+      "file": "b02-photo-front.png",
+      "sha256": "fe3a64555f51a527631c33aff20eefdeb7e44c94ebd33e7502725cf808458de6",
+      "method": "Playwright viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 285,
+      "triangles": 611018,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 68,
+        "shadowRevision": 15,
+        "shadowFocusMode": "review",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 4416,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 1821,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 638.2999999999884
+        },
+        "graphics": {
+          "mobile": false,
+          "mode": "detail",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 1,
+          "shadowResolution": 4096,
+          "adaptive": false,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            1280,
+            840
+          ],
+          "staticWorldMatrices": false
+        }
+      }
+    },
+    {
+      "group": "review",
+      "file": "b03-photo-library.png",
+      "sha256": "8244dde48bb823318a78f06d11e50328cf4d2bf6e566757cb72b96f8c3a41626",
+      "method": "Playwright viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 226,
+      "triangles": 2162762,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 28,
+        "shadowRevision": 18,
+        "shadowFocusMode": "review",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 4416,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 1821,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 638.2999999999884
+        },
+        "graphics": {
+          "mobile": false,
+          "mode": "detail",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 1,
+          "shadowResolution": 4096,
+          "adaptive": false,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            1280,
+            840
+          ],
+          "staticWorldMatrices": false
+        }
+      }
+    },
+    {
+      "group": "review",
+      "file": "b03-garden.png",
+      "sha256": "69d1d2d1852f0c890be0e086d1433a0a9f86ef5fb66d1b4e348d6f275e254e3b",
+      "method": "Playwright viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 1412,
+      "triangles": 4256944,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 44,
+        "shadowRevision": 21,
+        "shadowFocusMode": "review",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 4416,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 1821,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 638.2999999999884
+        },
+        "graphics": {
+          "mobile": false,
+          "mode": "detail",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 1,
+          "shadowResolution": 4096,
+          "adaptive": false,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            1280,
+            840
+          ],
+          "staticWorldMatrices": false
+        }
+      }
+    },
+    {
+      "group": "review",
+      "file": "b03-canteen.png",
+      "sha256": "8cb47ac6b97571fc29dd02331c370b4a5f282be67a111c63f59e45d6271c1fa3",
+      "method": "Playwright viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 120,
+      "triangles": 2529026,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 40,
+        "shadowRevision": 24,
+        "shadowFocusMode": "review",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 4416,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 1821,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 638.2999999999884
+        },
+        "graphics": {
+          "mobile": false,
+          "mode": "detail",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 1,
+          "shadowResolution": 4096,
+          "adaptive": false,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            1280,
+            840
+          ],
+          "staticWorldMatrices": false
+        }
+      }
+    },
+    {
+      "group": "review",
+      "file": "top.png",
+      "sha256": "fcb697c0d9b3542167f3769b6c2eb43de926a79bbfffbbf07e08afce12905388",
+      "method": "CDP viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 1989,
+      "triangles": 8144408,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 250,
+        "shadowRevision": 26,
+        "shadowFocusMode": "review",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 4416,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 1821,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 638.2999999999884
+        },
+        "graphics": {
+          "mobile": false,
+          "mode": "detail",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 1,
+          "shadowResolution": 4096,
+          "adaptive": false,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            1280,
+            840
+          ],
+          "staticWorldMatrices": false
+        }
+      }
+    },
+    {
+      "group": "review",
+      "file": "r3-axis.png",
+      "sha256": "45852a3e91bbbfa6ca927147793436e064af4e05b59c2405a62333c1da139b4a",
+      "method": "CDP viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 1945,
+      "triangles": 8093900,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 250,
+        "shadowRevision": 29,
+        "shadowFocusMode": "review",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 4416,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 1821,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 638.2999999999884
+        },
+        "graphics": {
+          "mobile": false,
+          "mode": "detail",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 1,
+          "shadowResolution": 4096,
+          "adaptive": false,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            1280,
+            840
+          ],
+          "staticWorldMatrices": false
+        }
+      }
+    },
+    {
+      "group": "fallback",
+      "file": "01-log-depth-player.png",
+      "sha256": "fb4024fb1c340a0038d094cff8291b39656a169ec9924cc46ed9d8fed64adb8e",
+      "method": "CDP viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 1816,
+      "triangles": 5636584,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": false,
+        "logarithmicDepthBuffer": true,
+        "shadowResolution": 4096,
+        "shadowExtent": 28,
+        "shadowRevision": 14,
+        "shadowFocusMode": "walk",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 5048,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 2252,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 843.3999999999651
+        },
+        "graphics": {
+          "mobile": false,
+          "mode": "detail",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 1,
+          "shadowResolution": 4096,
+          "adaptive": false,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            1280,
+            840
+          ],
+          "staticWorldMatrices": true
+        }
+      }
+    },
+    {
+      "group": "fallback",
+      "file": "top.png",
+      "sha256": "4ef6db0704d9d1f4201c57120568d646f836b829b32c0d74df63b18b1d034632",
+      "method": "CDP viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 1989,
+      "triangles": 8144408,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": false,
+        "logarithmicDepthBuffer": true,
+        "shadowResolution": 4096,
+        "shadowExtent": 250,
+        "shadowRevision": 18,
+        "shadowFocusMode": "review",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 5048,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 2252,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 843.3999999999651
+        },
+        "graphics": {
+          "mobile": false,
+          "mode": "detail",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 1,
+          "shadowResolution": 4096,
+          "adaptive": false,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            1280,
+            840
+          ],
+          "staticWorldMatrices": false
+        }
+      }
+    },
+    {
+      "group": "fallback",
+      "file": "r3-axis.png",
+      "sha256": "82e97c36ccf853859c29fc6b133c20e4ba18c6974b1e3d3a631a21fff70330f7",
+      "method": "CDP viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 1945,
+      "triangles": 8093900,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": false,
+        "logarithmicDepthBuffer": true,
+        "shadowResolution": 4096,
+        "shadowExtent": 250,
+        "shadowRevision": 21,
+        "shadowFocusMode": "review",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 5048,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 2252,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 843.3999999999651
+        },
+        "graphics": {
+          "mobile": false,
+          "mode": "detail",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 1,
+          "shadowResolution": 4096,
+          "adaptive": false,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            1280,
+            840
+          ],
+          "staticWorldMatrices": false
+        }
+      }
+    },
+    {
+      "group": "fix",
+      "file": "01-right-control.png",
+      "sha256": "eeea3bd4bffefa5ba7436433e8d410cfbff8158c92869ec6fc0241bfcc301dea",
+      "method": "CDP viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 1809,
+      "triangles": 5604012,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 28,
+        "shadowRevision": 14,
+        "shadowFocusMode": "walk",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 4436,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 1638,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 679.8000000000175
+        },
+        "graphics": {
+          "mobile": false,
+          "mode": "detail",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 1,
+          "shadowResolution": 4096,
+          "adaptive": false,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            1280,
+            840
+          ],
+          "staticWorldMatrices": true
+        }
+      }
+    },
+    {
+      "group": "fix",
+      "file": "02-uphill-speed.png",
+      "sha256": "7b045b96d9e3b5b321be964e2e9da230c40d2f5b74da6e4fa09d85bb647a89e3",
+      "method": "Playwright viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 1307,
+      "triangles": 4864424,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 28,
+        "shadowRevision": 15,
+        "shadowFocusMode": "walk",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 4436,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 1638,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 679.8000000000175
+        },
+        "graphics": {
+          "mobile": false,
+          "mode": "detail",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 1,
+          "shadowResolution": 4096,
+          "adaptive": false,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            1280,
+            840
+          ],
+          "staticWorldMatrices": true
+        }
+      }
+    },
+    {
+      "group": "fix",
+      "file": "03-downhill-speed.png",
+      "sha256": "2a6275b82bd40875adb618ea84424e01149da91ef73243b1f83dad54b5efce87",
+      "method": "Playwright viewport",
+      "error": 0,
+      "lost": false,
+      "calls": 1756,
+      "triangles": 5520492,
+      "lighting": {
+        "pipeline": "PBR / AgX / procedural sky PMREM",
+        "reversedDepthBuffer": true,
+        "logarithmicDepthBuffer": false,
+        "shadowResolution": 4096,
+        "shadowExtent": 28,
+        "shadowRevision": 16,
+        "shadowFocusMode": "walk",
+        "walkShadowHysteresis": 6,
+        "shadowAutoUpdate": false,
+        "sunIntensity": 4.2,
+        "environmentIntensity": 0.2,
+        "exposure": 1.07,
+        "spatialIndex": {
+          "indexedGeometries": 1080,
+          "buildMs": 4436,
+          "method": "BVH over rendered triangles"
+        },
+        "surfaceFinishes": {
+          "assigned": 1213,
+          "families": 17
+        },
+        "reflectionProbes": {
+          "probes": 11,
+          "resolution": 256,
+          "reflectiveMeshes": 636,
+          "buildMs": 1638,
+          "method": "static local campus cubemaps",
+          "locations": {
+            "teaching": [
+              73,
+              8,
+              194
+            ],
+            "gym": [
+              -15,
+              7,
+              48
+            ],
+            "library": [
+              73,
+              8,
+              239
+            ],
+            "garden": [
+              73,
+              7,
+              274
+            ],
+            "eastTeaching": [
+              139,
+              8,
+              212
+            ],
+            "longya": [
+              129,
+              9,
+              242
+            ],
+            "westTeaching": [
+              -23,
+              7,
+              188
+            ],
+            "entrance": [
+              0,
+              5,
+              7
+            ],
+            "courts": [
+              -38,
+              7,
+              120
+            ],
+            "field": [
+              73,
+              6,
+              114
+            ],
+            "residential": [
+              171,
+              8,
+              74
+            ]
+          }
+        },
+        "vertexPacking": {
+          "method": "Bit-exact index reuse across every attribute; all faces and winding retained",
+          "changed": 782,
+          "verticesBefore": 8033964,
+          "verticesAfter": 3450047,
+          "bytesBefore": 257660944,
+          "bytesAfter": 134883032,
+          "trianglesBefore": 2985680,
+          "trianglesAfter": 2985680,
+          "initializationMs": 679.8000000000175
+        },
+        "graphics": {
+          "mobile": false,
+          "mode": "detail",
+          "pixelRatio": 1,
+          "minimumPixelRatio": 1,
+          "shadowResolution": 4096,
+          "adaptive": false,
+          "preserveDrawingBuffer": false,
+          "walkShadowDistance": 6,
+          "walkShadowHeight": 3,
+          "actualPixelRatio": 1,
+          "rasterChanges": 0,
+          "drawingBuffer": [
+            1280,
+            840
+          ],
+          "staticWorldMatrices": true
+        }
+      }
+    }
+  ]
+}

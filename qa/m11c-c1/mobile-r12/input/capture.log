@@ -1,0 +1,23 @@
+open input def040892c538ef00ddb006f8de1dcabfbead3658822800ec14c6723f09d2477
+2026-09-14T00:40:16.984Z capture 01-third-person-start
+2026-09-14T00:42:01.555Z capture 02-main-slope-crest
+2026-09-14T00:42:20.601Z capture 03-pause-help
+2026-09-14T00:42:39.459Z capture 04-first-person
+C1 RESULT input true [
+  [ 'Runtime ready and correct default mode', true ],
+  [ 'Lossless packing leaves triangle count unchanged', true ],
+  [ 'Lossless packing lowers geometry buffer bytes', true ],
+  [ '01-third-person-start WebGL', true ],
+  [ 'Actual W input moves visible capsule through the gate', true ],
+  [ 'Shift run reaches configured speed', true ],
+  [ 'Main approach and rise by actual motor', true ],
+  [ '02-main-slope-crest WebGL', true ],
+  [ 'Escape pauses physics without drift', true ],
+  [ '03-pause-help WebGL', true ],
+  [ 'First person hides mannequin', true ],
+  [ '04-first-person WebGL', true ],
+  [ 'R resets to selected checkpoint', true ],
+  [ 'Focus loss clears input and pauses', true ],
+  [ 'No JavaScript or GL console errors', true ],
+  [ 'Single offline Viewer, no network assets', true ]
+]

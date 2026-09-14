@@ -1,3 +1,5 @@
+> 最新： [C1 R1.2手机优化QA](mobile-r12/README.md) / [截图](mobile-r12/review.html)。下文为R1历史数据，不代表R1.2性能。
+
 # C1 R1｜真实浏览器与控制器QA
 
 **IMPLEMENTED / REVIEW_PENDING**。受测源码`65284ef8aece3d191b967dd7dbfa87715789a369`；Viewer `artifacts/m11c-c1/Yali_C1_R1_Viewer.html`，3,872,519字节，SHA256 `96d2404bd56a9cf766a452f586bb4b6141957605c8266a710af9e9513e0737dc`。本页是已完成证据归档，不是一次新浏览器测试；原报告/截图逐字节复制，摘要验证哈希。

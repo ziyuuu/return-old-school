@@ -1,0 +1,20 @@
+open terrain def040892c538ef00ddb006f8de1dcabfbead3658822800ec14c6723f09d2477
+2026-09-14T00:40:11.447Z capture 01-stone-ramp-platform
+2026-09-14T00:41:43.195Z capture 02-stone-stairs
+2026-09-14T00:41:56.552Z capture 03-court-entry
+2026-09-14T00:41:59.832Z capture 04-gym-entry
+C1 RESULT terrain true [
+  [ 'Runtime ready and correct default mode', true ],
+  [ 'Lossless packing leaves triangle count unchanged', true ],
+  [ 'Lossless packing lowers geometry buffer bytes', true ],
+  [ 'Stone ramp joins raised platform', true ],
+  [ '01-stone-ramp-platform WebGL', true ],
+  [ 'Four real steps climbed with same capsule', true ],
+  [ '02-stone-stairs WebGL', true ],
+  [ 'Basketball fence opening and original slope', true ],
+  [ '03-court-entry WebGL', true ],
+  [ 'Gym threshold and real portal', true ],
+  [ '04-gym-entry WebGL', true ],
+  [ 'No JavaScript or GL console errors', true ],
+  [ 'Single offline Viewer, no network assets', true ]
+]

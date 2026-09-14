@@ -1,0 +1,22 @@
+open mobile def040892c538ef00ddb006f8de1dcabfbead3658822800ec14c6723f09d2477
+2026-09-14T00:39:46.060Z capture 01-mobile-initial
+2026-09-14T00:40:32.724Z capture 02-mobile-help
+2026-09-14T00:40:39.681Z capture 03-mobile-lane
+C1 RESULT mobile true [
+  [ 'Runtime ready and correct default mode', true ],
+  [ 'Lossless packing leaves triangle count unchanged', true ],
+  [ 'Lossless packing lowers geometry buffer bytes', true ],
+  [ '01-mobile-initial WebGL', true ],
+  [ 'Actual touch joystick moves and releases', true ],
+  [ 'Touch run toggle', true ],
+  [ '02-mobile-help WebGL', true ],
+  [ 'Phone starts balanced at DPR at most one', true ],
+  [ 'Full-quality raster option restores original DPR', true ],
+  [ 'Balanced raster restored without reload', true ],
+  [ '03-mobile-lane WebGL', true ],
+  [ 'Cancellation test starts from active touch motion', true ],
+  [ 'Real pointer cancellation cannot leave motion stuck', true ],
+  [ 'Fresh 390x844 branch and no overflow', true ],
+  [ 'No JavaScript or GL console errors', true ],
+  [ 'Single offline Viewer, no network assets', true ]
+]

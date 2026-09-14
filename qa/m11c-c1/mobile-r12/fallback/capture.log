@@ -1,0 +1,15 @@
+open fallback def040892c538ef00ddb006f8de1dcabfbead3658822800ec14c6723f09d2477
+2026-09-14T00:40:17.066Z capture 01-log-depth-player
+2026-09-14T00:42:44.029Z capture top
+2026-09-14T00:43:13.608Z capture r3-axis
+C1 RESULT fallback true [
+  [ 'Runtime ready and correct default mode', true ],
+  [ 'Lossless packing leaves triangle count unchanged', true ],
+  [ 'Lossless packing lowers geometry buffer bytes', true ],
+  [ '01-log-depth-player WebGL', true ],
+  [ 'Actual log-depth fallback active', true ],
+  [ 'top WebGL', true ],
+  [ 'r3-axis WebGL', true ],
+  [ 'No JavaScript or GL console errors', true ],
+  [ 'Single offline Viewer, no network assets', true ]
+]

@@ -18,3 +18,7 @@
 新文件 `Yali_C1_R1_2_Viewer.html` 与 `viewer-manifest-r12.json`；旧R1/R1.1保持原样。QA在 `qa/m11c-c1/mobile-r12`。最终数字由实际浏览器报告填写；开发机器或SwiftShader数据不是用户手机帧率。
 
 技术参考：Three.js WebGLRenderer / LightShadow / Object3D 官方文档。当前依赖版本仍按package-lock固定，未更新图形库。
+
+## 本轮已归档结果
+
+30项节点测试、7组浏览器、92项检查、28张截图通过。可见三角面不变；校园几何缓冲减少47.65%。完整同机新旧样本与限制见 [QA](../../../qa/m11c-c1/mobile-r12/README.md)。Viewer SHA256 `def040892c538ef00ddb006f8de1dcabfbead3658822800ec14c6723f09d2477`。实体手机的流畅度不因这些测试自动获认可。
