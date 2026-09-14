@@ -1,0 +1,66 @@
+name: C2 R1 palette-readable final review
+on:
+  push:
+    branches: [codex/c2-student-avatar]
+    paths: [.github/workflows/c2-art-review.yml]
+permissions:
+  contents: write
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: codex/c2-student-avatar, fetch-depth: 0}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Build, test and export exact C2 Viewer
+        run: |
+          set -euo pipefail
+          npm ci --prefix apps/campus
+          npm run build --prefix apps/campus
+          mkdir -p qa/m11c-c2/build
+          node --test tests/m11c/c1/*.test.mjs tests/m11c/c2/*.test.mjs tests/render-upgrade/*.test.mjs | tee qa/m11c-c2/build/tests.tap
+          git diff --check
+          node tools/m11c-c2/export.mjs
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add artifacts/m11c-c2 qa/m11c-c2/build
+          git commit -m 'build(c2): re-export palette-readable R1 Viewer [skip ci]'
+          git push origin HEAD:codex/c2-student-avatar
+      - name: Install Chromium
+        run: |
+          npm install --prefix "$RUNNER_TEMP/c2-browser" --save-exact playwright@1.62.0
+          "$RUNNER_TEMP/c2-browser/node_modules/.bin/playwright" install --with-deps chromium
+          echo "PLAYWRIGHT_MODULE=$RUNNER_TEMP/c2-browser/node_modules/playwright" >> "$GITHUB_ENV"
+      - name: Direct WebGL visual QA and publish
+        run: |
+          set -euo pipefail
+          rm -rf qa/m11c-c2/browser
+          node tools/m11c-c2/capture.mjs
+          python - <<'PY'
+          import json,pathlib
+          r=pathlib.Path('.')
+          q=json.loads((r/'qa/m11c-c2/browser/report.json').read_text())
+          m=json.loads((r/'artifacts/m11c-c2/viewer-manifest.json').read_text())
+          assert q['passed'] and q['viewerSHA256']==m['sha256']
+          tap=(r/'qa/m11c-c2/build/tests.tap').read_text()
+          assert '# fail 0' in tap and '# pass 35' in tap
+          (r/'qa/m11c-c2/README.md').write_text(f'''# C2 R1 QA\n\n**IMPLEMENTED / REVIEW_PENDING**。Viewer SHA256 `{m['sha256']}`。节点测试35/35；实际 Chromium {len(q['checks'])}项检查、{len(q['screenshots'])}张同帧WebGL画布图通过。桌面QA为720×480可逆流畅档，手机为390×844流畅档，不减校园三角面。walk/run用36个固定物理tick的实际位移均速和动画驱动速度共同验证。第三人称背面校服已使用共享色板中的深红/暖米白/深藏蓝分区；精确染色、剪裁、体型和发型仍为H。\n''')
+          p=r/'docs/m11c/c2/delivery.md'
+          t=p.read_text().replace('最终 SHA256 以本轮重新导出的 `viewer-manifest.json` 为准。',f'SHA256 `{m["sha256"]}`。')
+          t=t.replace('最终测试和 Chromium WebGL 结果由本轮 C2 art-review 流水线重新绑定同一 Viewer 后写入 QA；C3尚未开始。',f'节点测试35/35；实际 Chromium {len(q["checks"])}项检查、{len(q["screenshots"])}张同帧WebGL画布图通过。C3尚未开始。')
+          p.write_text(t)
+          PY
+          git add docs/m11c/c2 qa/m11c-c2
+          git commit -m 'qa(c2): deliver palette-readable student avatar review [skip ci]'
+          git push origin HEAD:codex/c2-student-avatar
+          git ls-remote origin refs/heads/codex/c2-student-avatar refs/heads/codex/c1-player-controller refs/heads/main
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C2-R1-palette-review
+          path: |
+            artifacts/m11c-c2
+            qa/m11c-c2
+            docs/m11c/c2
+          retention-days: 30
