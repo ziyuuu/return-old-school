@@ -1,3 +1,5 @@
+import {packCampusGeometry} from './render/exact-index.mjs';
+import {performanceProfile,RasterBudget} from './render/performance-policy.mjs';
 import {createPlayerMode,type PlayerMode} from './player/player-mode';
 import batch05Input from '../../../data/m11b/batch05/input.json';
 import {buildB05Model} from './batch05-core.mjs';
@@ -238,17 +240,20 @@ Object.assign(cameraPresets,{
 });
 const viewport=el<HTMLDivElement>('viewport');
 let renderer: THREE.WebGLRenderer;
+let graphics=performanceProfile({width:innerWidth,coarse:matchMedia('(pointer:coarse)').matches,dpr:devicePixelRatio,
+ mode:new URLSearchParams(location.search).get('quality')??'auto'});
+const rasterBudget=new RasterBudget(graphics);
 // Reverse depth preserves fine surface separation and hardware MSAA at shared edges.
 // Older WebGL2 drivers retain the logarithmic fallback for distant site surfaces.
 try {
  const canvas=document.createElement('canvas');
- const context=canvas.getContext('webgl2',{antialias:true,preserveDrawingBuffer:true,alpha:false});
+ const context=canvas.getContext('webgl2',{antialias:true,preserveDrawingBuffer:false,alpha:false});
  if(!context)throw new Error('WebGL2 unavailable');
  const reversedDepthBuffer=Boolean(context.getExtension('EXT_clip_control'));
- renderer=new THREE.WebGLRenderer({canvas,context,antialias:true,preserveDrawingBuffer:true,alpha:false,reversedDepthBuffer,logarithmicDepthBuffer:!reversedDepthBuffer});
+ renderer=new THREE.WebGLRenderer({canvas,context,antialias:true,preserveDrawingBuffer:false,alpha:false,reversedDepthBuffer,logarithmicDepthBuffer:!reversedDepthBuffer});
 }
 catch {el('error').hidden=false;el('error').textContent='此浏览器无法建立 WebGL2 场景。请在支持硬件加速的桌面浏览器中打开；本文件不是静态图片。';throw new Error('WebGL2 unavailable');}
-renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.setSize(innerWidth,innerHeight);
+renderer.setPixelRatio(graphics.pixelRatio);renderer.setSize(innerWidth,innerHeight);
 viewport.append(renderer.domElement);
 renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();el('error').hidden=false;el('error').textContent='WebGL 上下文已丢失。当前只有校核视角，无游戏进度；恢复后刷新即可重新加载。';});
 renderer.domElement.addEventListener('webglcontextrestored',()=>location.reload());
@@ -264,6 +269,14 @@ controls.enableDamping=true;controls.dampingFactor=.1;controls.minDistance=1.2;c
 const topControls=new OrbitControls(topCamera,renderer.domElement);
 topControls.enableRotate=false;topControls.enableDamping=true;topControls.enabled=false;topControls.minZoom=.45;topControls.maxZoom=8;
 const daylight=installDaylight(renderer,scene);
+daylight.setResolution(graphics.shadowResolution);
+function setGraphics(mode:string){
+ graphics=performanceProfile({width:innerWidth,coarse:matchMedia('(pointer:coarse)').matches,dpr:devicePixelRatio,mode});
+ rasterBudget.reset(graphics);renderer.setPixelRatio(graphics.pixelRatio);renderer.setSize(innerWidth,innerHeight);
+ daylight.setResolution(graphics.shadowResolution);daylight.invalidate();
+}
+const graphicsState=()=>({...graphics,actualPixelRatio:renderer.getPixelRatio(),rasterChanges:rasterBudget.changes,
+ drawingBuffer:[renderer.domElement.width,renderer.domElement.height],staticWorldMatrices:!scene.matrixWorldAutoUpdate});
 function setReviewShadow(target:number[],detail=false,distance=80){
  daylight.focus(new THREE.Vector3(...target as Vec3),detail?distance:Infinity);
 }
@@ -487,6 +500,7 @@ function resize(){
  topCamera.left=-half*aspect;topCamera.right=half*aspect;topCamera.top=half;topCamera.bottom=-half;topCamera.updateProjectionMatrix();
 }window.addEventListener('resize',resize);resize();
 const projected=new THREE.Vector3();
+let matricesFrozen=false;
 function render(time:number){
  const rawDt=Math.max(0,(time-last)/1000||0),dt=Math.min(rawDt,.05);last=time;
  if(playerMode?.enabled){playerMode.update(rawDt);active=camera;}
@@ -501,10 +515,16 @@ function render(time:number){
   if(tourT>=1){tourT=0;tourEdge++;if(tourEdge>=tourPath.length-1){setView('overview');return;}}
   const tx=THREE.MathUtils.lerp(a[0],b[0],tourT),tz=THREE.MathUtils.lerp(a[2],b[2],tourT);camera.position.set(tx,groundEye(tx,tz),tz);const lt=Math.min(1,tourT+3/Math.max(len,1)),lx=THREE.MathUtils.lerp(a[0],b[0],lt),lz=THREE.MathUtils.lerp(a[2],b[2],lt);camera.lookAt(lx,groundEye(lx,lz),lz);
  }else {if(controls.enabled)controls.update();if(topControls.enabled)topControls.update();}
- if(playerMode?.enabled)daylight.focus(playerMode.target(),12);
+ // Freeze only the campus render graph while walking. Avatar/camera/light matrices
+ // are explicitly updated; leaving walk mode restores ordinary review transforms.
+ if(Boolean(playerMode?.enabled)!==matricesFrozen){scene.matrixWorldAutoUpdate=true;scene.updateMatrixWorld(true);
+  matricesFrozen=Boolean(playerMode?.enabled);scene.matrixWorldAutoUpdate=!matricesFrozen;}
+ if(playerMode?.enabled)daylight.focus(playerMode.target(),12,'walk');
  else if(!fly&&!tour)daylight.focus(active===topCamera?topControls.target:controls.target,active===topCamera?Infinity:active.position.distanceTo(controls.target));
+ const ratio=rasterBudget.sample(rawDt*1000,Boolean(playerMode?.enabled)&&!document.hidden&&Boolean(document.getElementById('c1-pause')?.hidden));
+ if(ratio!==null){renderer.setPixelRatio(ratio);renderer.setSize(innerWidth,innerHeight);}
  renderer.render(scene,active);
- for(const [id,label] of labels){
+ if(!playerMode?.enabled)for(const [id,label] of labels){
   projected.copy(label.point).project(active);const visible=!playerMode?.enabled&&labelsOn&&(keyLabels.has(id)||selected===id||view==='sports'&&['04','05','24','26','28'].includes(id)||view==='teaching'&&id==='25')&&projected.z<1&&projected.z>-1;
   label.node.style.display=visible?'block':'none';const ox=view==='top'?(id==='27'?-35:id==='02'?35:0):0,oy=view==='top'?(id==='01'?-18:['02','27'].includes(id)?8:0):0;label.node.style.left=`${(projected.x*.5+.5)*innerWidth+ox}px`;label.node.style.top=`${(-projected.y*.5+.5)*innerHeight+oy}px`;label.node.classList.toggle('selected',selected===id);
  }
@@ -636,11 +656,12 @@ Object.assign(window,{__YALI_B03__:{...((window as any).__YALI_B02__),ready:true
 
 // Opt-in render inspection for reproducible browser measurements.
 const surfaceFinishes=finishCampusSurfaces(scene,layout);
+const vertexPacking=packCampusGeometry(scene);
 const spatialIndex=installSpatialIndex(scene);
 const reflectionProbes=installCampusReflections(renderer,scene);
 daylight.invalidate();
 if(params.get('diagnostics')==='1')Object.assign(window,{__YALI_RENDER_RAW__:{scene,renderer,camera:()=>active,pause:()=>renderer.setAnimationLoop(null),resume:()=>renderer.setAnimationLoop(render),renderFrame:()=>render(performance.now())}});
-Object.assign(window,{__YALI_RENDER__:{state:()=>({...daylight.state(),spatialIndex,surfaceFinishes,reflectionProbes}),invalidateShadows:daylight.invalidate}});
+Object.assign(window,{__YALI_RENDER__:{state:()=>({...daylight.state(),spatialIndex,surfaceFinishes,reflectionProbes,vertexPacking,graphics:graphicsState()}),invalidateShadows:daylight.invalidate}});
 
 Object.assign(window,{__YALI_B04__:{ready:true,input:batch04Input,model:b04Model,layout,terrain:currentModel,integration:b04Integration,setView,
  checkAccess:()=>{const meshes:THREE.Object3D[]=[];scene.traverseVisible((o:any)=>{if(o.isMesh)meshes.push(o);});return checkB03Access(scene,meshes,b04Model);},
@@ -656,7 +677,7 @@ Object.assign(window,{__YALI_B05__:{...((window as any).__YALI_B04__),ready:true
 // C1 is an opt-in mode for old ?view= review URLs and the default on a fresh load.
 // Initialize after the immutable accepted scene, BVH and static reflection capture.
 const poolPart=b05Model.parts.find((p:any)=>p.id==='B05-04-water')!;
-void createPlayerMode({scene,camera,canvas:renderer.domElement,mats,
+void createPlayerMode({scene,camera,canvas:renderer.domElement,mats,graphics:{state:graphicsState,set:setGraphics},
  prepare:()=>{setView('b05-gate-close');stopModes();active=camera;controls.enabled=false;topControls.enabled=false;
   planOnly=false;volumes.visible=true;roots.get('12')!.visible=true;roofs.visible=true;
   el<HTMLInputElement>('footprints-check').checked=false;el<HTMLInputElement>('roofs-check').checked=true;

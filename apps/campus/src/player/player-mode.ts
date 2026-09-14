@@ -5,16 +5,18 @@ import {CampusCollisionWorld} from './collision-world.mjs';
 import {createScaleAvatar} from './scale-avatar';
 import './player.css';
 
-type Host={scene:THREE.Scene;camera:THREE.PerspectiveCamera;canvas:HTMLCanvasElement;mats:THREE.MeshPhysicalMaterial[];prepare:()=>void;review:()=>void;pool:{x:number;z:number;width:number;depth:number;surface:number}};
+type Host={graphics?:{state:()=>any;set:(mode:string)=>void};scene:THREE.Scene;camera:THREE.PerspectiveCamera;canvas:HTMLCanvasElement;mats:THREE.MeshPhysicalMaterial[];prepare:()=>void;review:()=>void;pool:{x:number;z:number;width:number;depth:number;surface:number}};
 export async function createPlayerMode(host:Host) {
   const ui=document.createElement('section');ui.id='c1-ui';ui.setAttribute('aria-label','C1 校园漫游');
   ui.innerHTML=`<header class="c1-header"><div class="c1-brand"><span aria-hidden="true">雅</span><div><b>复原雅礼</b><small>C1 · 可控漫游 / 比例人形</small></div></div><div class="c1-tools"><button id="c1-perspective" type="button" title="V 切换视角">第三人称</button><button id="c1-menu" type="button" aria-expanded="false">暂停 / 帮助</button></div></header>
   <p class="c1-hint" id="c1-hint">WASD 行走 · Shift 跑步 · 拖动视角 · 滚轮远近 · V 视角 · Esc 暂停</p><div class="c1-status" id="c1-status" role="status" aria-live="polite">正在准备地面与碰撞…</div>
   <div class="c1-touch"><div id="c1-stick" role="group" aria-label="移动摇杆"><span></span><small>移动</small></div><button id="c1-run" type="button" aria-pressed="false">跑步</button></div>
-  <div id="c1-pause" class="c1-pause" hidden><section role="dialog" aria-modal="true" aria-labelledby="c1-dialog-title" tabindex="-1"><small>RETURN OLD SCHOOL / C1</small><h2 id="c1-dialog-title">暂停漫游</h2><p>WASD / 方向键行走，Shift 跑步。拖动观察，滚轮调节远近，V 切换第一／第三人称，R 返回本次起点。触屏左侧摇杆移动，右侧拖动观察。</p><p class="c1-boundary">当前为比例人形，不代表历史校服。C1 验证移动与代表性入口；C2 制作学生形象，C3 再做全校园连续走测。</p><label for="c1-spawn">测试起点</label><select id="c1-spawn">${Object.entries(config.spawns).map(([k,s])=>`<option value="${k}">${s.label}</option>`).join('')}</select><div class="c1-dialog-actions"><button id="c1-resume" type="button">继续漫游</button><button id="c1-reset" type="button">回到所选起点</button><button id="c1-review" type="button">审阅建筑模型</button></div></section></div>`;
+  <div id="c1-pause" class="c1-pause" hidden><section role="dialog" aria-modal="true" aria-labelledby="c1-dialog-title" tabindex="-1"><small>RETURN OLD SCHOOL / C1</small><h2 id="c1-dialog-title">暂停漫游</h2><p>WASD / 方向键行走，Shift 跑步。拖动观察，滚轮调节远近，V 切换第一／第三人称，R 返回本次起点。触屏左侧摇杆移动，右侧拖动观察。</p><p class="c1-boundary">当前为比例人形，不代表历史校服。C1 验证移动与代表性入口；C2 制作学生形象，C3 再做全校园连续走测。</p><label for="c1-quality">画质与手机负载</label><select id="c1-quality"><option value="balanced">手机流畅 · 自适应分辨率</option><option value="detail">完整清晰 · 原画质</option></select><p class="c1-boundary">两档保留相同模型、材质与碰撞。流畅档只降低画布和阴影分辨率，界面文字保持清晰。</p><label for="c1-spawn">测试起点</label><select id="c1-spawn">${Object.entries(config.spawns).map(([k,s])=>`<option value="${k}">${s.label}</option>`).join('')}</select><div class="c1-dialog-actions"><button id="c1-resume" type="button">继续漫游</button><button id="c1-reset" type="button">回到所选起点</button><button id="c1-review" type="button">审阅建筑模型</button></div></section></div>`;
   document.getElementById('app')!.append(ui);
   const get=<T extends HTMLElement>(id:string)=>document.getElementById(id) as T;
   const status=get('c1-status'),dialog=get('c1-pause'),dialogPanel=dialog.querySelector('section')!,stick=get('c1-stick'),stickKnob=stick.querySelector('span')!;
+  get<HTMLSelectElement>('c1-quality').value=host.graphics?.state().mode??'detail';
+  get<HTMLSelectElement>('c1-quality').onchange=()=>host.graphics?.set(get<HTMLSelectElement>('c1-quality').value);
   const enterButton=document.createElement('button');enterButton.id='c1-enter';enterButton.textContent='进入角色漫游';enterButton.type='button';document.getElementById('app')!.append(enterButton);
   if(innerWidth<700||matchMedia('(pointer:coarse)').matches)get('c1-hint').textContent='左摇杆移动 · 右侧拖动观察 · 跑步按钮切换';
   const shouldStart=!new URLSearchParams(location.search).has('view')&&new URLSearchParams(location.search).get('mode')!=='review';
@@ -85,10 +87,11 @@ export async function createPlayerMode(host:Host) {
     if(Math.abs(feet[0]-p.x)<p.width/2&&Math.abs(feet[2]-p.z)<p.depth/2&&feet[1]<p.surface+.05){spawn(currentSpawn);notice('C1 不包含游泳，已返回起点。');}
     lastFrame=follow.update(Math.min(dt,.1));host.camera.position.set(lastFrame.position.x,lastFrame.position.y,lastFrame.position.z);host.camera.up.set(0,1,0);host.camera.lookAt(lastFrame.target.x,lastFrame.target.y,lastFrame.target.z);
     avatar.update(motor.feet(),motor.heading,motor.actualSpeed,motor.travel,motor.grounded,lastFrame.hideAvatar,Math.min(dt,.1));
+    avatar.root.updateMatrixWorld(true);host.camera.updateMatrixWorld(true);
     if(!motor.paused&&performance.now()-lastNoticeAt>4000)notice(motor.blocked?'前方有实体阻挡 · 可沿墙转向':`${currentSpawn in config.spawns?'校园漫游':''} · ${motor.grounded?(motor.actualSpeed>.1?'行走中':'已接地'):'下落中'}`);
     if(dt>0&&!motor.paused){frameSamples.push(dt*1000);tickSamples.push(physicsMs);if(frameSamples.length>600){frameSamples.shift();tickSamples.shift();}}
   }
-  function state(){return {ready,enabled,version:config.version,config,motor:motor.state(),camera:lastFrame,collision:collision.state(),input:input(),avatar:{visible:avatar.root.visible,finalStudent:false,footPosition:avatar.root.position.toArray()},physicsMs};}
+  function state(){return {ready,enabled,version:config.version,config,motor:motor.state(),camera:lastFrame,collision:collision.state(),input:input(),graphics:host.graphics?.state(),avatar:{visible:avatar.root.visible,finalStudent:false,footPosition:avatar.root.position.toArray()},physicsMs};}
   const diag={state,config,activate,deactivate,pause,spawn,reset:()=>spawn(currentSpawn),setFirstPerson:(v:boolean)=>{if(follow.firstPerson!==v)viewToggle();},orbit:(dx:number,dy:number)=>follow.orbit(dx,dy),zoom:(v:number)=>follow.zoom=v,
     drive:(direction:{x:number;z:number;run:boolean},ticks:number)=>{const trace:any[]=[];for(let i=0;i<ticks;i++){motor.step(direction);if(i%15===0)trace.push(motor.state());}update(0);return {trace,end:state()};},
     walkTo:(points:number[][],run=true,maxTicks=7200)=>{

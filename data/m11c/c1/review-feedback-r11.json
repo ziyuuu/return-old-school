@@ -1,0 +1,10 @@
+{
+  "version": "C1 R1.1",
+  "date": "2026-09-14",
+  "userStatement": "这部分基本没有问题了。但我手机端游玩有明显卡顿。试图优化这一个部分，然后进入C2。",
+  "functionalFeedback": "BASICALLY_ACCEPTABLE",
+  "mobilePerformance": "USER_REPORTED_STUTTER / REVISION_REQUIRED",
+  "nextStageAuthorized": "C2 after mobile optimization",
+  "blanketAcceptance": false,
+  "acceptedHistoricalGeometryChanged": false
+}

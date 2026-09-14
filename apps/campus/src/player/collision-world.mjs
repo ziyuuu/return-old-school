@@ -18,6 +18,7 @@ export function collisionDisposition(mesh) {
 export class CampusCollisionWorld {
   constructor(scene, config) {
     this.config=config;this.world=new RAPIER.World({x:0,y:0,z:0});this.records=[];this.excluded={};this.colliders=[];
+    this.resident=new Map();this.createdColliders=0;this.reusedColliders=0;this.removedColliders=0;this.lastReuse=0;
     this.centre=null;this.revisions=0;this.triangles=0;this.lastBuildMs=0;this.totalBuildMs=0;this.lastSources=[];
     scene.updateMatrixWorld(true);
     const instance=new THREE.Matrix4();
@@ -36,12 +37,21 @@ export class CampusCollisionWorld {
   }
   ensure(position, force=false) {
     const cfg=this.config.collision;
+    // Force chooses a checkpoint region, not a licence to rebuild identical static
+    // geometry twice during spawn. The adapter is recreated if the campus changes.
+    if(force&&this.centre&&Math.hypot(position.x-this.centre.x,position.z-this.centre.z)<1e-6)return false;
     if(!force&&this.centre&&Math.hypot(position.x-this.centre.x,position.z-this.centre.z)<cfg.refreshDistance)return false;
     const begin=performance.now();
     const r=cfg.regionRadius,region=new THREE.Box3(new THREE.Vector3(position.x-r,cfg.verticalMin,position.z-r),new THREE.Vector3(position.x+r,cfg.verticalMax,position.z+r));
-    const nextColliders=[],sources=[],triangle=new THREE.Triangle(),v=[new THREE.Vector3(),new THREE.Vector3(),new THREE.Vector3()];
+    const nextColliders=[],nextResident=new Map(),sources=[],triangle=new THREE.Triangle(),v=[new THREE.Vector3(),new THREE.Vector3(),new THREE.Vector3()];
+    this.lastReuse=0;
     for(const rec of this.records){
       if(!region.intersectsBox(rec.bounds))continue;
+      const cached=this.resident.get(rec),required=region.clone().intersect(rec.bounds);
+      if(cached&&cached.coverage.containsBox(required)){
+        nextResident.set(rec,cached);nextColliders.push(cached.collider);sources.push(cached.source);
+        this.lastReuse++;this.reusedColliders++;continue;
+      }
       const local=region.clone().applyMatrix4(rec.inverse),geo=rec.geometry,vertices=[];let count=0;
       const push=t=>{
         // AABB/BVH broad phase is conservative. Keep only intersecting triangles,
@@ -64,13 +74,19 @@ export class CampusCollisionWorld {
         const p=geo.attributes.position,index=geo.index,n=index?.count??p.count;
         for(let i=0;i<n;i+=3){triangle.a.fromBufferAttribute(p,index?index.getX(i):i);triangle.b.fromBufferAttribute(p,index?index.getX(i+1):i+1);triangle.c.fromBufferAttribute(p,index?index.getX(i+2):i+2);push(triangle);}
       }
-      if(count){const data=new Float32Array(vertices),ix=Uint32Array.from({length:data.length/3},(_,i)=>i);nextColliders.push(this.world.createCollider(RAPIER.ColliderDesc.trimesh(data,ix,RAPIER.TriMeshFlags.FIX_INTERNAL_EDGES | RAPIER.TriMeshFlags.ORIENTED)));}
-      if(count)sources.push({name:rec.mesh.name,owner:rec.mesh.userData.facility||rec.mesh.userData.owner||'environment',role:rec.mesh.userData.role||rec.mesh.userData.surfaceRole||'',instance:rec.instance,triangles:count});
+      if(count){
+        const data=new Float32Array(vertices),ix=Uint32Array.from({length:data.length/3},(_,i)=>i);
+        const collider=this.world.createCollider(RAPIER.ColliderDesc.trimesh(data,ix,RAPIER.TriMeshFlags.FIX_INTERNAL_EDGES | RAPIER.TriMeshFlags.ORIENTED));
+        const source={name:rec.mesh.name,owner:rec.mesh.userData.facility||rec.mesh.userData.owner||'environment',role:rec.mesh.userData.role||rec.mesh.userData.surfaceRole||'',instance:rec.instance,triangles:count};
+        nextColliders.push(collider);sources.push(source);nextResident.set(rec,{collider,source,coverage:region.clone()});this.createdColliders++;
+      }
     }
     if(!nextColliders.length)throw Error('No physical ground at requested region');
     // Do not weld independent mesh solids to each other: coincident floor/stair
     // faces must not produce a non-manifold combined collider or false normals.
-    this.colliders.forEach(c=>this.world.removeCollider(c,true));this.colliders=nextColliders;
+    const retained=new Set(nextColliders);
+    this.colliders.forEach(c=>{if(!retained.has(c)){this.world.removeCollider(c,true);this.removedColliders++;}});
+    this.colliders=nextColliders;this.resident=nextResident;
     this.world.step();this.centre={x:position.x,z:position.z};this.revisions++;
     this.triangles=sources.reduce((n,s)=>n+s.triangles,0);this.lastSources=sources;this.lastBuildMs=performance.now()-begin;this.totalBuildMs+=this.lastBuildMs;
     return true;
@@ -88,6 +104,6 @@ export class CampusCollisionWorld {
     }
     return false;
   }
-  state(){return {method:'Rapier capsule against exact visible solid triangles selected by shared BVH',solidInstances:this.records.length,excluded:{...this.excluded},residentTriangles:this.triangles,regionRevisions:this.revisions,regionCentre:this.centre,regionRadius:this.config.collision.regionRadius,lastBuildMs:this.lastBuildMs,totalBuildMs:this.totalBuildMs,sources:this.lastSources};}
+  state(){return {method:'Rapier capsule against exact visible solid triangles selected by shared BVH',solidInstances:this.records.length,excluded:{...this.excluded},residentTriangles:this.triangles,regionRevisions:this.revisions,cache:{created:this.createdColliders,reused:this.reusedColliders,removed:this.removedColliders,lastReuse:this.lastReuse,resident:this.resident.size},regionCentre:this.centre,regionRadius:this.config.collision.regionRadius,lastBuildMs:this.lastBuildMs,totalBuildMs:this.totalBuildMs,sources:this.lastSources};}
   dispose(){this.world.free();}
 }

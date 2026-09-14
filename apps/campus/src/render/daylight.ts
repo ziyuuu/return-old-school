@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {needsWalkShadowFocus} from './performance-policy.mjs';
 import { Sky } from 'three/addons/objects/Sky.js';
 
 /** One physical sun plus a procedural HDR sky. Environment light is an
@@ -11,7 +12,7 @@ export function installDaylight(renderer: THREE.WebGLRenderer, scene: THREE.Scen
   renderer.shadowMap.autoUpdate = false;
   const direction = new THREE.Vector3(145, 260, -215).normalize();
   const sun = new THREE.DirectionalLight('#fff0d9', 4.2); sun.name = 'campus-sun'; sun.castShadow = true;
-  const resolution = Math.min(innerWidth < 700 ? 2048 : 4096, renderer.capabilities.maxTextureSize);
+  let resolution = Math.min(innerWidth < 700 ? 2048 : 4096, renderer.capabilities.maxTextureSize);
   sun.shadow.mapSize.set(resolution, resolution);
   sun.shadow.camera.near = 30; sun.shadow.camera.far = 720;
   scene.add(sun, sun.target);
@@ -29,8 +30,14 @@ export function installDaylight(renderer: THREE.WebGLRenderer, scene: THREE.Scen
   sky.geometry.dispose(); sky.material.dispose(); generator.dispose();
 
   let revision = 0, previous = '', extent = 250;
+  let walkCentre: THREE.Vector3|null=null,previousMode='review';
   function invalidate() { revision++; sun.shadow.needsUpdate = true; renderer.shadowMap.needsUpdate = true; }
-  function focus(target: THREE.Vector3, distance: number) {
+  function focus(target: THREE.Vector3, distance: number, mode='review') {
+    if(mode==='walk') {
+      if(previousMode==='walk'&&!needsWalkShadowFocus(walkCentre,target))return;
+      walkCentre=target.clone();
+    } else walkCentre=null;
+    previousMode=mode;
     // Large campus views and flight use full coverage. Close views concentrate texels.
     const wide = !Number.isFinite(distance) || distance > 230;
     extent = wide ? 250 : Math.max(26, Math.min(180, Math.ceil((distance * .7 + 18) / 4) * 4));
@@ -51,9 +58,14 @@ export function installDaylight(renderer: THREE.WebGLRenderer, scene: THREE.Scen
     sun.shadow.camera.updateProjectionMatrix(); sun.target.updateMatrixWorld(); sun.updateMatrixWorld(); invalidate();
   }
   focus(new THREE.Vector3(45, 0, 135), Infinity);
-  return { sun, focus, invalidate,
+  function setResolution(requested:number) {
+    const next=Math.min(requested,renderer.capabilities.maxTextureSize);
+    if(resolution===next)return;resolution=next;sun.shadow.mapSize.set(next,next);
+    sun.shadow.map?.dispose();sun.shadow.map=null;previous='';walkCentre=null;invalidate();
+  }
+  return { sun, focus, invalidate, setResolution,
     state: () => ({ pipeline: 'PBR / AgX / procedural sky PMREM', reversedDepthBuffer: renderer.capabilities.reversedDepthBuffer, logarithmicDepthBuffer: renderer.capabilities.logarithmicDepthBuffer, shadowResolution: resolution, shadowExtent: extent,
-      shadowRevision: revision, shadowAutoUpdate: renderer.shadowMap.autoUpdate, sunIntensity: sun.intensity,
+      shadowRevision: revision, shadowFocusMode:previousMode, walkShadowHysteresis:6, shadowAutoUpdate: renderer.shadowMap.autoUpdate, sunIntensity: sun.intensity,
       environmentIntensity: scene.environmentIntensity, exposure: renderer.toneMappingExposure }),
     dispose: () => { environment.dispose(); sun.shadow.dispose(); sun.removeFromParent(); sun.target.removeFromParent(); },
   };
