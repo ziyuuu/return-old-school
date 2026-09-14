@@ -1,0 +1,126 @@
+name: C2 R2 export recovery and delivery
+on:
+  push:
+    branches: [codex/c2-student-avatar]
+    paths: [.github/workflows/c2-r2-export-recovery.yml]
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: c2-r2-delivery
+  cancel-in-progress: false
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: codex/c2-student-avatar, fetch-depth: 0}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Connect export-only conversion without changing the playable runtime
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 64dbd58636509ecb6109be602dd92278b68f7f4e HEAD
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('apps/campus/src/player/avatar-studio.ts');s=p.read_text()
+          old="import {GLTFExporter} from 'three/addons/exporters/GLTFExporter.js';"
+          assert old in s
+          s=s.replace(old,"import {exportAvatarGLB} from './avatar-export.mjs';")
+          a=s.index('async function exportGLB()');b=s.index('\ndocument.querySelectorAll',a)
+          s=s[:a]+'async function exportGLB(){return await exportAvatarGLB(avatar) as ArrayBuffer;}'+s[b:]
+          p.write_text(s)
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add apps/campus/src/player/avatar-studio.ts
+          git commit -m 'fix(c2): restore GLB export without mutating the live student or shared surfaces [skip ci]'
+          git push origin HEAD:codex/c2-student-avatar
+          git bundle create c2-r2-recovery-source.bundle HEAD ^9db228df1a3878aa406b75ef0ac8f028051475de
+      - uses: actions/download-artifact@v4
+        with: {name: C2-R2-built, run-id: 34820454140, github-token: '${{ github.token }}', path: prior-built}
+      - uses: actions/download-artifact@v4
+        with: {name: C2-R2-QA-campus, run-id: 34820454140, github-token: '${{ github.token }}', path: qa/m11c-c2/r2/release/campus}
+      - uses: actions/download-artifact@v4
+        with: {name: C2-R2-QA-mobile, run-id: 34820454140, github-token: '${{ github.token }}', path: qa/m11c-c2/r2/release/mobile}
+      - uses: actions/download-artifact@v4
+        with: {name: C2-R2-QA-studio, run-id: 34820454140, github-token: '${{ github.token }}', path: qa/m11c-c2/r2/release/initial-studio-export-failure}
+      - name: Build and bind the repaired character export
+        run: |
+          set -euo pipefail
+          npm ci --prefix apps/campus
+          mkdir -p qa/m11c-c2/r2/release
+          npm run build --prefix apps/campus 2>&1 | tee qa/m11c-c2/r2/release/build.log
+          node --test tests/m11c/c1/*.test.mjs tests/m11c/c2/*.test.mjs tests/render-upgrade/*.test.mjs | tee qa/m11c-c2/r2/release/tests.tap
+          node tools/m11c-c2/export-r2.mjs
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          r=Path('artifacts/m11c-c2/r2');old=Path('prior-built/artifacts/m11c-c2/r2')
+          viewer='Yali_C2_R2_Viewer.html'
+          assert (r/viewer).read_bytes()==(old/viewer).read_bytes(),'Campus changed; do not reuse its QA'
+          assert hashlib.sha256((r/viewer).read_bytes()).hexdigest()=='c662495d23a448ae28cdefee97f5649b0bdf8976707cd69e55be31c7829bfa1e'
+          # Keep the original manifest's precise source commit for unchanged campus bytes.
+          name=viewer.replace('.html','.manifest.json');(r/name).write_bytes((old/name).read_bytes())
+          for group in ['campus','mobile']:
+              q=json.loads(Path(f'qa/m11c-c2/r2/release/{group}/report.json').read_text());assert q['passed'] and q['viewerSHA256']==hashlib.sha256((r/viewer).read_bytes()).hexdigest()
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C2-R2-recovery-built
+          path: |
+            c2-r2-recovery-source.bundle
+            artifacts/m11c-c2/r2
+            qa/m11c-c2/r2/release/build.log
+            qa/m11c-c2/r2/release/tests.tap
+          retention-days: 14
+      - name: Install pinned Chromium
+        run: |
+          npm install --prefix "$RUNNER_TEMP/browser" --save-exact playwright@1.62.0
+          "$RUNNER_TEMP/browser/node_modules/.bin/playwright" install --with-deps chromium --only-shell
+          echo "PLAYWRIGHT_MODULE=$RUNNER_TEMP/browser/node_modules/playwright" >> "$GITHUB_ENV"
+      - name: Verify exact repaired character Viewer
+        env: {GROUP: studio}
+        run: node tools/m11c-c2/release-capture.mjs
+      - name: Aggregate and publish review-pending delivery
+        run: |
+          set -euo pipefail
+          python tools/m11c-c2/release-docs.py --aggregate
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          p=Path('qa/m11c-c2/r2/release/report.json');q=json.loads(p.read_text())
+          q['provenance']={'campusAndMobileRun':34820454140,'studioRecoveryRun':'${{ github.run_id }}','reuseReason':'Campus Viewer bytes are identical; old source digests, screenshot hashes and reports retained. Only character GLB export changed.','initialStudioFailure':'initial-studio-export-failure/failure.json'}
+          p.write_text(json.dumps(q,ensure_ascii=False,indent=2)+'\n')
+          p=Path('docs/m11c/c2/delivery.md');p.write_text(p.read_text()+'\n## GLB导出修复与受测来源\n\n初次人物工坊检查在GLB程序纹理转换处失败，原失败记录保留。修复仅作用于导出副本，保留运行材质、贴图数据、骨骼与姿势；校园Viewer逐字节不变。校园/手机报告来自34820454140，人物工坊来自本次恢复运行。实际图像人工复核与用户认可以独立记录为准。\n')
+          PY
+          git diff --check
+          git add artifacts/m11c-c2/r2 qa/m11c-c2/r2/release docs/m11c/c2/delivery.md
+          git commit -m 'deliver(c2): publish R2 viewers, animated GLB and SHA-bound browser evidence; review pending [skip ci]'
+          git pull --rebase origin codex/c2-student-avatar
+          python - <<'PY'
+          from pathlib import Path
+          import json,hashlib
+          for f in Path('artifacts/m11c-c2/r2').glob('*.manifest.json'):
+              m=json.loads(f.read_text())
+              for p,h in m['sources'].items():assert hashlib.sha256(Path(p).read_bytes()).hexdigest()==h,p
+          PY
+          git push origin HEAD:codex/c2-student-avatar
+          test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/codex/c2-student-avatar | cut -f1)"
+          git ls-remote origin refs/heads/codex/c2-student-avatar refs/heads/codex/c1-player-controller refs/heads/main | tee c2-r2-remote-refs.txt
+          git bundle create c2-r2-recovery-final.bundle HEAD ^9db228df1a3878aa406b75ef0ac8f028051475de
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: C2-R2-recovered-review
+          path: |
+            artifacts/m11c-c2/r2
+            qa/m11c-c2/r2/release
+            docs/m11c/c2
+            data/m11c/c2
+            README.md
+            docs/development-plan.md
+            c2-r2-recovery-final.bundle
+            c2-r2-remote-refs.txt
+          retention-days: 30
