@@ -1,0 +1,184 @@
+name: C2 student avatar implementation and QA
+on:
+  push:
+    branches: [codex/c2-student-avatar]
+    paths: [.github/workflows/c2-student-avatar.yml]
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    outputs:
+      revision: ${{ steps.impl.outputs.revision }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/c2-student-avatar
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - id: impl
+        name: Implement evidence-bounded C2 student avatar
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('apps/campus/src/player/student-avatar-profile.mjs')
+          p.write_text(r'''export const STUDENT_PROFILE={
+            version:'C2.R1',height:1.67,evidence:'P: 09届校友照片/文字说明显示偏大尺码秋季校服；H: 精确剪裁、配色比例、体型与发型。',
+            uniform:{season:'autumn-working-reconstruction',logo:false,fit:'oversized',palette:'muted cola-like red / warm off-white / dark navy'},
+            animation:{idleBreath:0.008,walkStride:0.46,runStride:0.72,walkCadence:5.9,runCadence:7.6}
+          };
+          export function locomotionState(speed,grounded=true){if(!grounded)return 'air';if(speed<.12)return 'idle';return speed<2.35?'walk':'run';}
+          export function locomotionParams(speed,grounded=true){const state=locomotionState(speed,grounded),a=STUDENT_PROFILE.animation;return {state,stride:state==='run'?a.runStride:state==='walk'?a.walkStride:0,cadence:state==='run'?a.runCadence:a.walkCadence};}
+          ''')
+          Path('apps/campus/src/player/student-avatar.ts').write_text(r'''import * as THREE from 'three';
+          import {surfaceMaterial} from '../render/materials';
+          import {STUDENT_PROFILE,locomotionParams} from './student-avatar-profile.mjs';
+          export function createStudentAvatar(mats:THREE.MeshPhysicalMaterial[]){
+            const root=new THREE.Group();root.name='C2-student-avatar';root.userData={player:true,evidence:STUDENT_PROFILE.evidence,uniform:STUDENT_PROFILE.uniform};
+            const mat=(row:number,role='avatar-cloth')=>surfaceMaterial(mats[row],role,'capsule');
+            const offWhite=mat(14),red=mat(17),navy=mat(6),skin=mat(14,'avatar-neutral'),hair=mat(6,'avatar-neutral'),shoe=mat(6);
+            const part=(name:string,g:THREE.BufferGeometry,m:THREE.Material,parent:THREE.Object3D,x=0,y=0,z=0)=>{const mesh=new THREE.Mesh(g,m);mesh.name='C2-'+name;mesh.position.set(x,y,z);mesh.castShadow=false;mesh.receiveShadow=true;mesh.userData={player:true,role:'student-avatar',surfaceResolved:true,evidence:'H geometry within C2 evidence boundary'};parent.add(mesh);return mesh;};
+            const capsule=(r:number,l:number)=>new THREE.CapsuleGeometry(r,Math.max(0,l-2*r),12,48);
+            const hips=part('hips',capsule(.16,.30),navy,root,0,.83,0);hips.scale.z=.76;
+            const torso=new THREE.Group();torso.position.set(0,.88,0);root.add(torso);
+            const profile=[[0,0],[.16,0],[.185,.055],[.205,.28],[.215,.43],[.165,.50],[0,.51]].map(([x,y])=>new THREE.Vector2(x,y));
+            const jacket=part('oversized-jacket',new THREE.LatheGeometry(profile,48),offWhite,torso,0,0,0);jacket.scale.z=.70;
+            for(const s of[-1,1]){const panel=part('jacket-side-'+s,new THREE.BoxGeometry(.045,.37,.018),red,torso,s*.176,.245,.126);panel.rotation.z=-s*.055;}
+            part('collar',new THREE.TorusGeometry(.075,.018,16,48,Math.PI),red,torso,0,.49,.02).rotation.x=Math.PI/2;
+            part('neck',new THREE.CylinderGeometry(.047,.052,.095,48),skin,root,0,1.405,0);
+            const head=part('head',capsule(.108,.275),skin,root,0,1.59,0);head.scale.z=.93;
+            const hairCap=part('hair',new THREE.SphereGeometry(.112,48,24,0,Math.PI*2,0,Math.PI*.58),hair,root,0,1.625,-.002);hairCap.scale.set(1.03,1,.96);
+            const face=part('face-direction',new THREE.SphereGeometry(.072,32,16),skin,head,0,-.012,.058);face.scale.set(1,1.10,.32);
+            const arms:THREE.Group[]=[],legs:THREE.Group[]=[],knees:THREE.Group[]=[];
+            for(const s of[-1,1]){
+              const arm=new THREE.Group();arm.position.set(s*.238,1.30,0);root.add(arm);arms.push(arm);
+              part('upper-arm-'+s,capsule(.068,.32),offWhite,arm,0,-.13,0);part('sleeve-stripe-'+s,new THREE.BoxGeometry(.025,.27,.018),red,arm,s*.048,-.13,.058);
+              part('forearm-'+s,capsule(.052,.275),offWhite,arm,0,-.385,.018);part('hand-'+s,capsule(.043,.115),skin,arm,0,-.565,.028);
+              const leg=new THREE.Group();leg.position.set(s*.101,.82,0);root.add(leg);legs.push(leg);
+              part('thigh-'+s,capsule(.082,.40),navy,leg,0,-.18,0);const knee=new THREE.Group();knee.position.set(0,-.38,0);leg.add(knee);knees.push(knee);
+              part('shin-'+s,capsule(.062,.37),navy,knee,0,-.17,0);part('trouser-stripe-'+s,new THREE.BoxGeometry(.018,.31,.018),red,knee,s*.054,-.17,.03);
+              const foot=part('shoe-'+s,new THREE.SphereGeometry(1,32,16),shoe,knee,0,-.414,.055);foot.scale.set(.071,.061,.14);
+            }
+            const n=64,pix=new Uint8Array(n*n*4);for(let y=0;y<n;y++)for(let x=0;x<n;x++){const d=Math.hypot((x+.5)/n*2-1,(y+.5)/n*2-1),i=(y*n+x)*4;pix[i+3]=Math.round(Math.pow(Math.max(0,1-d),1.7)*80);}
+            const tex=new THREE.DataTexture(pix,n,n);tex.needsUpdate=true;const sm=new THREE.MeshBasicMaterial({map:tex,transparent:true,depthWrite:false,opacity:.82});const shadow=new THREE.Mesh(new THREE.PlaneGeometry(.86,.64),sm);shadow.rotation.x=-Math.PI/2;shadow.position.y=.018;root.add(shadow);
+            let blend=0,time=0,state='idle';
+            return {root,profile:STUDENT_PROFILE,
+              update(feet:number[],heading:number,speed:number,travel:number,grounded:boolean,hide:boolean,dt:number){root.position.fromArray(feet);root.rotation.y=heading;root.visible=!hide;time+=dt;const p=locomotionParams(speed,grounded);state=p.state;blend=THREE.MathUtils.damp(blend,state==='idle'?0:1,10,dt);const phase=travel*p.cadence,amp=p.stride*blend;legs[0].rotation.x=Math.sin(phase)*amp;legs[1].rotation.x=-Math.sin(phase)*amp;arms[0].rotation.x=-Math.sin(phase)*amp*.76;arms[1].rotation.x=Math.sin(phase)*amp*.76;knees[0].rotation.x=Math.max(0,-Math.sin(phase))*.42*blend;knees[1].rotation.x=Math.max(0,Math.sin(phase))*.42*blend;torso.position.y=.88+(state==='idle'?Math.sin(time*2.1)*STUDENT_PROFILE.animation.idleBreath:Math.abs(Math.sin(phase))*-.012*blend);torso.rotation.x=state==='run'?.07:0;shadow.visible=grounded;},
+              state(){return {finalStudent:true,animation:state,evidence:STUDENT_PROFILE.evidence,uniform:STUDENT_PROFILE.uniform};},
+              dispose(){root.traverse((o:any)=>{if(o.isMesh)o.geometry.dispose();});tex.dispose();sm.dispose();root.removeFromParent();}
+            };
+          }
+          ''')
+          pm=Path('apps/campus/src/player/player-mode.ts');s=pm.read_text();s=s.replace("import {createScaleAvatar} from './scale-avatar';","import {createStudentAvatar} from './student-avatar';");s=s.replace('avatar=createScaleAvatar(host.mats)','avatar=createStudentAvatar(host.mats)');s=s.replace('C1 · 可控漫游 / 比例人形','C2 · 学生漫游 / 2006–2010工作重建');s=s.replace('当前为比例人形，不代表历史校服。C1 验证移动与代表性入口；C2 制作学生形象，C3 再做全校园连续走测。','当前学生形象依据08/09届校友资料做证据有界工作重建：偏大尺码秋季校服轮廓可信，精确剪裁/配色比例/发型为H；不虚构校徽或个人身份。C3再做全校园连续走测。');s=s.replace("avatar:{visible:avatar.root.visible,finalStudent:false,footPosition:avatar.root.position.toArray()}","avatar:{visible:avatar.root.visible,footPosition:avatar.root.position.toArray(),...avatar.state()}");pm.write_text(s)
+          Path('data/m11c/c2').mkdir(parents=True,exist_ok=True);Path('data/m11c/c2/evidence.json').write_text(r'''{
+            "version":"C2.R1","status":"IMPLEMENTED / REVIEW_PENDING","target":"2006-2010 Yali Dongtang student avatar",
+            "sources":[
+              {"id":"U01","url":"https://www.sohu.com/a/162618801_391114","evidence":"09届校友资料：秋季校服常故意买大尺码，裤脚盖鞋面；2017整理页引用09届校友徐韵琴照片。","grade":"P/text+published-photo-context"},
+              {"id":"U02","url":"https://k.sina.com.cn/article_6430641585_17f4bcdb1001003x9v.html","evidence":"08级校友资料：藏蓝logo文化衫后来逐渐成为夏季上衣；本版不把它硬套为整个2006-2010统一夏装。","grade":"P/text+published-photo-context"}
+            ],
+            "reconstruction":{"default":"autumn oversized tracksuit working reconstruction","verified":"oversized silhouette / long trouser break / red-white cola-like family description","hypothesis":"exact panel proportions, exact red/white/navy values, body proportions, haircut","omitted":"school emblem, class mark, individual face identity, handwritten graffiti"}
+          }\n''')
+          Path('docs/m11c/c2').mkdir(parents=True,exist_ok=True);Path('docs/m11c/c2/design.md').write_text(r'''# C2 R1｜学生形象与基础动画
+
+状态：**IMPLEMENTED / REVIEW_PENDING**。继承C1 R1.2手机优化、碰撞、坡速、相机与已认可校园几何。
+
+## 证据与美术
+
+公开“100张老照片”整理页明确引用09届校友资料：当时秋季校服常故意买大尺码，裤脚盖住鞋面；同组资料称藏蓝logo文化衫是“后来逐渐”成为夏季上衣。因此C2默认采用**偏大尺码秋季运动校服工作重建**，不把后来文化衫强行推广到整个2006—2010，也不虚构校徽、班级、姓名或涂鸦。精确分色、剪裁、体型、发型继续H。
+
+程序化模型继续使用共享材质工厂、48段主要圆弧、低饱和校园色系；没有外部人物照片纹理、bloom、暗角或额外人物灯光。人物不参与静态建筑阴影重烘焙，保留接地影近似。
+
+## 动画
+
+同一关节模型提供 idle / walk / run / air 四态；状态由真实胶囊速度和接地状态驱动。walk/run使用实际旅行距离推进相位，避免低帧率下脚步与位移完全脱节。C2不引入跳跃、交互动作或剧情。
+''')
+          Path('tests/m11c/c2').mkdir(parents=True,exist_ok=True);Path('tests/m11c/c2/avatar.test.mjs').write_text(r'''import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import {STUDENT_PROFILE,locomotionState,locomotionParams} from '../../../apps/campus/src/player/student-avatar-profile.mjs';
+          test('C2 profile stays evidence-bounded and never invents a logo',()=>{assert.equal(STUDENT_PROFILE.uniform.logo,false);assert.match(STUDENT_PROFILE.evidence,/09届/);assert.ok(STUDENT_PROFILE.height>1.5&&STUDENT_PROFILE.height<1.85)});
+          test('locomotion states are driven by actual speed and grounding',()=>{assert.equal(locomotionState(0,true),'idle');assert.equal(locomotionState(1.4,true),'walk');assert.equal(locomotionState(3,true),'run');assert.equal(locomotionState(1,false),'air');assert.ok(locomotionParams(3,true).stride>locomotionParams(1,true).stride)});
+          test('student avatar uses shared materials and no external texture or school emblem asset',()=>{const s=fs.readFileSync(new URL('../../../apps/campus/src/player/student-avatar.ts',import.meta.url),'utf8');assert.ok(s.includes("surfaceMaterial"));assert.ok(!/TextureLoader|GLTFLoader|https?:\/\//.test(s));assert.ok(!/校徽|logo\.png|emblem/i.test(s));});
+          test('player mode exposes final C2 student state while retaining C1 controller',()=>{const s=fs.readFileSync(new URL('../../../apps/campus/src/player/player-mode.ts',import.meta.url),'utf8');assert.ok(s.includes('createStudentAvatar'));assert.ok(s.includes('avatar.state()'));assert.ok(s.includes('CampusCollisionWorld'));});
+          ''')
+          Path('tools/m11c-c2').mkdir(parents=True,exist_ok=True);src=Path('tools/m11c-c1/export-r12.mjs').read_text();src=src.replace("artifacts/m11c-c1","artifacts/m11c-c2").replace("Yali_C1_R1_2_Viewer.html","Yali_C2_R1_Viewer.html").replace("viewer-manifest-r12.json","viewer-manifest.json").replace("version:'C1.R1.2'","version:'C2.R1'").replace("standard:'1.0 + mobile-r12'","standard:'1.0 + mobile-r12 + c2-avatar'");Path('tools/m11c-c2/export.mjs').write_text(src)
+          PY
+          npm ci --prefix apps/campus
+          npm run build --prefix apps/campus
+          node --test tests/m11c/c1/*.test.mjs tests/m11c/c2/*.test.mjs tests/render-upgrade/*.test.mjs | tee /tmp/c2-tests.tap
+          git diff --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add apps/campus/src/player/student-avatar-profile.mjs apps/campus/src/player/student-avatar.ts apps/campus/src/player/player-mode.ts data/m11c/c2 docs/m11c/c2 tests/m11c/c2 tools/m11c-c2
+          git commit -m 'feat(c2): add evidence-bounded Yali student avatar with idle walk and run animation [skip ci]'
+          git push origin HEAD:codex/c2-student-avatar
+          node tools/m11c-c2/export.mjs
+          mkdir -p qa/m11c-c2/build
+          cp /tmp/c2-tests.tap qa/m11c-c2/build/tests.tap
+          git add artifacts/m11c-c2 qa/m11c-c2/build
+          git commit -m 'build(c2): export offline student-avatar Viewer and directed tests [skip ci]'
+          git push origin HEAD:codex/c2-student-avatar
+          echo "revision=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C2-build
+          path: |
+            artifacts/m11c-c2
+            qa/m11c-c2/build
+          retention-days: 30
+  browser:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.build.outputs.revision }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Browser dependencies
+        run: |
+          npm ci --prefix apps/campus
+          npm install --prefix "$RUNNER_TEMP/c2-browser" --save-exact playwright@1.62.0
+          "$RUNNER_TEMP/c2-browser/node_modules/.bin/playwright" install --with-deps chromium
+          echo "PLAYWRIGHT_MODULE=$RUNNER_TEMP/c2-browser/node_modules/playwright" >> "$GITHUB_ENV"
+      - name: Actual student avatar QA
+        run: |
+          cat > /tmp/c2-capture.mjs <<'JS'
+          import fs from 'node:fs';import path from 'node:path';import {pathToFileURL} from 'node:url';import {createRequire} from 'node:module';import {createHash} from 'node:crypto';
+          const require=createRequire(import.meta.url),{chromium}=require(process.env.PLAYWRIGHT_MODULE),viewer=path.resolve('artifacts/m11c-c2/Yali_C2_R1_Viewer.html'),out=path.resolve('qa/m11c-c2/browser');fs.mkdirSync(out,{recursive:true});const sha=b=>createHash('sha256').update(b).digest('hex');
+          const browser=await chromium.launch({headless:true,args:['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader']});const ctx=await browser.newContext({viewport:{width:1280,height:840}}),page=await ctx.newPage();const errors=[];page.on('pageerror',e=>errors.push(String(e)));await page.goto(pathToFileURL(viewer).href+'?diagnostics=1',{waitUntil:'load',timeout:600000});await page.waitForFunction(()=>window.__YALI_C1__?.state().ready,null,{timeout:600000});
+          const checks=[];const check=(name,pass,data)=>checks.push({name,pass:Boolean(pass),data});let st=await page.evaluate(()=>window.__YALI_C1__.state());check('C2 final student is active',st.avatar.finalStudent===true,st.avatar);check('C1 R1.2 mobile graphics policy inherited',Boolean(st.graphics),st.graphics);
+          const shot=async name=>{await page.screenshot({path:path.join(out,name+'.png'),timeout:60000});};await shot('01-gate-idle');
+          await page.evaluate(()=>window.__YALI_C1__.drive({x:0,z:1,run:false},120));st=await page.evaluate(()=>window.__YALI_C1__.state());check('walk animation reached',st.avatar.animation==='walk',st.avatar);await shot('02-walk');
+          await page.evaluate(()=>window.__YALI_C1__.drive({x:0,z:1,run:true},120));st=await page.evaluate(()=>window.__YALI_C1__.state());check('run animation reached',st.avatar.animation==='run',st.avatar);await shot('03-run');
+          await page.evaluate(()=>{window.__YALI_C1__.spawn('lane');window.__YALI_C1__.tick(.016)});await shot('04-side-lane');
+          const mctx=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:3,isMobile:true,hasTouch:true});const mp=await mctx.newPage();await mp.goto(pathToFileURL(viewer).href+'?diagnostics=1',{waitUntil:'load',timeout:600000});await mp.waitForFunction(()=>window.__YALI_C1__?.state().ready,null,{timeout:600000});const ms=await mp.evaluate(()=>window.__YALI_C1__.state());check('mobile defaults to balanced raster policy',ms.graphics?.mode==='balanced',ms.graphics);check('mobile student remains final C2',ms.avatar.finalStudent===true,ms.avatar);await mp.screenshot({path:path.join(out,'05-mobile.png'),timeout:60000});await mctx.close();
+          const files=fs.readdirSync(out).filter(f=>f.endsWith('.png')).map(f=>({file:f,sha256:sha(fs.readFileSync(path.join(out,f)))}));const report={version:'C2.R1',viewerSHA256:sha(fs.readFileSync(viewer)),checks,errors,screenshots:files,passed:errors.length===0&&checks.every(c=>c.pass)};fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');await browser.close();if(!report.passed)process.exit(1);
+          JS
+          node /tmp/c2-capture.mjs
+      - name: Publish inspected C2 delivery
+        run: |
+          python - <<'PY'
+          import json,pathlib,hashlib
+          root=pathlib.Path('.');r=json.loads((root/'qa/m11c-c2/browser/report.json').read_text());assert r['passed'];m=json.loads((root/'artifacts/m11c-c2/viewer-manifest.json').read_text());assert r['viewerSHA256']==m['sha256']
+          (root/'docs/m11c/c2/delivery.md').write_text(f'''# C2 R1｜学生形象与基础动画交付\n\n**IMPLEMENTED / REVIEW_PENDING**。继承C1 R1.2手机优化和全部已认可校园模型；不登记acceptance、不合并main。\n\nViewer：`artifacts/m11c-c2/Yali_C2_R1_Viewer.html`，SHA256 `{m['sha256']}`。\n\n实现：证据有界的偏大尺码秋季校服学生工作重建；idle / walk / run / air 四态；第三/第一人称、坡速、碰撞、相机与手机流畅档沿用C1 R1.2。无校徽、班级、个人脸或外部人物纹理。\n\n浏览器QA：{len(r['checks'])}项检查、{len(r['screenshots'])}张实际截图通过。精确剪裁、色值、发型和体型仍为H；C3全校园连续走测尚未开始。\n''')
+          (root/'qa/m11c-c2/README.md').write_text(f'''# C2 R1 QA\n\nViewer SHA256 `{m['sha256']}`。节点测试见build/tests.tap；实际Chromium报告见browser/report.json。C2只替换可见学生形象和动画，不改变C1胶囊、道路、建筑或手机性能策略。\n''')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/m11c/c2 qa/m11c-c2/browser qa/m11c-c2/README.md
+          git commit -m 'qa(c2): publish actual student-avatar browser review [skip ci]'
+          git push origin HEAD:codex/c2-student-avatar
+          git ls-remote origin refs/heads/codex/c2-student-avatar refs/heads/codex/c1-player-controller refs/heads/main
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C2-R1-review
+          path: |
+            artifacts/m11c-c2
+            qa/m11c-c2
+            docs/m11c/c2
+          retention-days: 30
