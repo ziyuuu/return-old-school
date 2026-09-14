@@ -1,0 +1,35 @@
+name: C2 R2 implementation workspace
+on:
+  push:
+    branches: [codex/c2-student-avatar]
+    paths: [.github/workflows/c2-workspace-r2.yml]
+permissions:
+  contents: read
+jobs:
+  workspace:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/c2-student-avatar
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Acquire exact Git source and dependencies
+        run: |
+          set -euo pipefail
+          git rev-parse HEAD
+          git status --short
+          git merge-base --is-ancestor 6fb290608bb16a4b8b3f3523a9689a5b95335914 HEAD
+          git ls-remote origin refs/heads/main refs/heads/codex/c1-player-controller refs/heads/codex/c2-student-avatar > "$RUNNER_TEMP/c2-remote-refs.txt"
+          npm ci --prefix apps/campus
+          tar -czf "$RUNNER_TEMP/c2-r2-workspace.tar.gz" .git .github AGENTS.md README.md apps data docs tests tools artifacts/m11c-c2 qa/m11c-c2 .gitignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C2-R2-current-workspace
+          path: |
+            ${{ runner.temp }}/c2-r2-workspace.tar.gz
+            ${{ runner.temp }}/c2-remote-refs.txt
+          retention-days: 7
