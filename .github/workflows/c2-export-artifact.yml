@@ -1,0 +1,23 @@
+name: C2 export exact Viewer artifact
+on:
+  push:
+    branches: [codex/c2-student-avatar]
+    paths: [.github/workflows/c2-export-artifact.yml]
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: codex/c2-student-avatar, fetch-depth: 1}
+      - run: |
+          set -euo pipefail
+          sha256sum artifacts/m11c-c2/Yali_C2_R1_Viewer.html | tee artifacts/m11c-c2/SHA256.txt
+          test -f artifacts/m11c-c2/viewer-manifest.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C2-exact-Viewer
+          path: artifacts/m11c-c2
+          retention-days: 30
