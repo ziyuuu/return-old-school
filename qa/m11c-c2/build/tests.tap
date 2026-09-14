@@ -2,211 +2,211 @@ TAP version 13
 # Subtest: Uniform capsule, slope, stepping and clock configuration is not a surveyed metric
 ok 1 - Uniform capsule, slope, stepping and clock configuration is not a surveyed metric
   ---
-  duration_ms: 4.976857
+  duration_ms: 1.781439
   type: 'test'
   ...
 # Subtest: Camera-relative A/D maps to screen left/right at all cardinal yaws
 ok 2 - Camera-relative A/D maps to screen left/right at all cardinal yaws
   ---
-  duration_ms: 131.709168
+  duration_ms: 94.430143
   type: 'test'
   ...
 # Subtest: Directional slope speed is slower uphill, neutral cross-slope and mildly faster downhill
 ok 3 - Directional slope speed is slower uphill, neutral cross-slope and mildly faster downhill
   ---
-  duration_ms: 221.187491
+  duration_ms: 180.960731
   type: 'test'
   ...
 # Subtest: Fixed-step walk is consistent at 30 / 60 / 144 display Hz and diagonals are normalized
 ok 4 - Fixed-step walk is consistent at 30 / 60 / 144 display Hz and diagonals are normalized
   ---
-  duration_ms: 274.971788
+  duration_ms: 164.324132
   type: 'test'
   ...
 # Subtest: Capsule stops at a thin wall and slides laterally, never ray-teleporting through it
 ok 5 - Capsule stops at a thin wall and slides laterally, never ray-teleporting through it
   ---
-  duration_ms: 107.052654
+  duration_ms: 108.917284
   type: 'test'
   ...
 # Subtest: Autostep climbs real 0.16 m risers and descends with ground contact
 ok 6 - Autostep climbs real 0.16 m risers and descends with ground contact
   ---
-  duration_ms: 59.906698
+  duration_ms: 65.150135
   type: 'test'
   ...
 # Subtest: High obstacles and low lintels are blocked under the same body rules
 ok 7 - High obstacles and low lintels are blocked under the same body rules
   ---
-  duration_ms: 75.837988
+  duration_ms: 80.082506
   type: 'test'
   ...
 # Subtest: True door opening passes a 0.72m aperture but not a 0.44m aperture
 ok 8 - True door opening passes a 0.72m aperture but not a 0.44m aperture
   ---
-  duration_ms: 110.184432
+  duration_ms: 99.949027
   type: 'test'
   ...
 # Subtest: Walkable slope follows real triangles and steep slope refuses upward climbing
 ok 9 - Walkable slope follows real triangles and steep slope refuses upward climbing
   ---
-  duration_ms: 47.46047
+  duration_ms: 41.774497
   type: 'test'
   ...
 # Subtest: Stepping off a ledge enters a fall, rather than snapping through large drops
 ok 10 - Stepping off a ledge enters a fall, rather than snapping through large drops
   ---
-  duration_ms: 41.375663
+  duration_ms: 36.628341
   type: 'test'
   ...
 # Subtest: Paused or stalled frames cannot make the body leap across obstacles
 ok 11 - Paused or stalled frames cannot make the body leap across obstacles
   ---
-  duration_ms: 6.754812
+  duration_ms: 5.482031
   type: 'test'
   ...
 # Subtest: Unsafe checkpoint inside a wall is rejected without claiming safe spawn
 ok 12 - Unsafe checkpoint inside a wall is rejected without claiming safe spawn
   ---
-  duration_ms: 7.469089
+  duration_ms: 7.611578
   type: 'test'
   ...
 # Subtest: Camera uses sphere sweep and cannot ease beyond a blocking wall
 ok 13 - Camera uses sphere sweep and cannot ease beyond a blocking wall
   ---
-  duration_ms: 7.078984
+  duration_ms: 6.259659
   type: 'test'
   ...
 # Subtest: Physics residency switches retain exact floor and wall triangles
 ok 14 - Physics residency switches retain exact floor and wall triangles
   ---
-  duration_ms: 101.989906
+  duration_ms: 97.627686
   type: 'test'
   ...
 # Subtest: Leaves and annotations do not block; glass and wire stay physical
 ok 15 - Leaves and annotations do not block; glass and wire stay physical
   ---
-  duration_ms: 21.821398
+  duration_ms: 19.720796
   type: 'test'
   ...
 # Subtest: B01–B05 model files, renderer detail and acceptance are inherited byte-for-byte
 ok 16 - B01–B05 model files, renderer detail and acceptance are inherited byte-for-byte
   ---
-  duration_ms: 641.99243
+  duration_ms: 552.402652
   type: 'test'
   ...
 # Subtest: Mobile starts with a bounded raster budget and full-quality is reversible
 ok 17 - Mobile starts with a bounded raster budget and full-quality is reversible
   ---
-  duration_ms: 1.353225
+  duration_ms: 1.401855
   type: 'test'
   ...
 # Subtest: Raster adaptation is bounded, hysteretic and inactive when paused
 ok 18 - Raster adaptation is bounded, hysteretic and inactive when paused
   ---
-  duration_ms: 1.08153
+  duration_ms: 0.987404
   type: 'test'
   ...
 # Subtest: Walking sun cache spans minor movement but refreshes before local coverage ends
 ok 19 - Walking sun cache spans minor movement but refreshes before local coverage ends
   ---
-  duration_ms: 0.242801
+  duration_ms: 0.233554
   type: 'test'
   ...
 # Subtest: Exact indexing retains every attribute bit, triangle, winding, UV seam and normal
 ok 20 - Exact indexing retains every attribute bit, triangle, winding, UV seam and normal
   ---
-  duration_ms: 49.160039
+  duration_ms: 69.504299
   type: 'test'
   ...
 # Subtest: Resident physics meshes are reused without gaps or new colliders at the same checkpoint
 ok 21 - Resident physics meshes are reused without gaps or new colliders at the same checkpoint
   ---
-  duration_ms: 609.899107
+  duration_ms: 463.734097
   type: 'test'
   ...
 # Subtest: C2 profile stays evidence-bounded and never invents a logo
 ok 22 - C2 profile stays evidence-bounded and never invents a logo
   ---
-  duration_ms: 1.521097
+  duration_ms: 1.325312
   type: 'test'
   ...
 # Subtest: locomotion states are driven by actual speed and grounding
 ok 23 - locomotion states are driven by actual speed and grounding
   ---
-  duration_ms: 0.288777
+  duration_ms: 0.298104
   type: 'test'
   ...
 # Subtest: student avatar uses shared materials and no external image/model asset
 ok 24 - student avatar uses shared materials and no external image/model asset
   ---
-  duration_ms: 0.771814
+  duration_ms: 0.632726
   type: 'test'
   ...
 # Subtest: third-person uniform colour blocking uses shared historic palette rows and remains visible from rear view
 ok 25 - third-person uniform colour blocking uses shared historic palette rows and remains visible from rear view
   ---
-  duration_ms: 0.40904
+  duration_ms: 0.278467
   type: 'test'
   ...
 # Subtest: player mode is wired to the C2 avatar while retaining C1 collision runtime
 ok 26 - player mode is wired to the C2 avatar while retaining C1 collision runtime
   ---
-  duration_ms: 0.376089
+  duration_ms: 0.3553
   type: 'test'
   ...
 # Subtest: detailed frame and column geometry adds actual faces within the original envelope
 ok 27 - detailed frame and column geometry adds actual faces within the original envelope
   ---
-  duration_ms: 66.455817
+  duration_ms: 49.259651
   type: 'test'
   ...
 # Subtest: walking surfaces and wall partitions stay exact and do not get artificial seams
 ok 28 - walking surfaces and wall partitions stay exact and do not get artificial seams
   ---
-  duration_ms: 1.185373
+  duration_ms: 1.042858
   type: 'test'
   ...
 # Subtest: dimension-aware instances preserve placement and physical radius without stretching
 ok 29 - dimension-aware instances preserve placement and physical radius without stretching
   ---
-  duration_ms: 11.781372
+  duration_ms: 22.055593
   type: 'test'
   ...
 # Subtest: raycasting uses the real refined surface and preserves an open doorway
 ok 30 - raycasting uses the real refined surface and preserves an open doorway
   ---
-  duration_ms: 8.531543
+  duration_ms: 4.815676
   type: 'test'
   ...
 # Subtest: shared palette rows distinguish leaves from soil, water from glass and floors from metal
 ok 31 - shared palette rows distinguish leaves from soil, water from glass and floors from metal
   ---
-  duration_ms: 8.75603
+  duration_ms: 2.198401
   type: 'test'
   ...
 # Subtest: surface maps are reproducible and families have distinct albedo and relief patterns
 ok 32 - surface maps are reproducible and families have distinct albedo and relief patterns
   ---
-  duration_ms: 1255.429941
+  duration_ms: 1367.274197
   type: 'test'
   ...
 # Subtest: brushing has a direction while fabric has two crossing thread directions
 ok 33 - brushing has a direction while fabric has two crossing thread directions
   ---
-  duration_ms: 49.46869
+  duration_ms: 30.969894
   type: 'test'
   ...
 # Subtest: ivy has a thin lobed mesh with leaf UVs inside its inherited coverage envelope
 ok 34 - ivy has a thin lobed mesh with leaf UVs inside its inherited coverage envelope
   ---
-  duration_ms: 23.63692
+  duration_ms: 10.559688
   type: 'test'
   ...
 # Subtest: BVH keeps actual high-detail intersections, transforms and triangle order
 ok 35 - BVH keeps actual high-detail intersections, transforms and triangle order
   ---
-  duration_ms: 114.825088
+  duration_ms: 102.790323
   type: 'test'
   ...
 1..35
@@ -217,4 +217,4 @@ ok 35 - BVH keeps actual high-detail intersections, transforms and triangle orde
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 2236.102933
+# duration_ms 1887.085025
