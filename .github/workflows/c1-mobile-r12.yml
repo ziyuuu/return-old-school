@@ -1,0 +1,139 @@
+name: C1 R1.2 mobile performance and controls
+on:
+  push:
+    branches: [codex/c1-player-controller]
+    paths: [.github/workflows/c1-mobile-r12.yml]
+permissions:
+  contents: write
+  actions: read
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      revision: ${{ steps.build.outputs.revision }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/c1-player-controller
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - id: build
+        name: Apply exact patch, build, test, export and normally push
+        run: |
+          set -euo pipefail
+          git fetch origin
+          git merge-base --is-ancestor ef5e0d3a64abf3a76800757284064c4728486941 HEAD
+          git merge-base --is-ancestor origin/main HEAD
+          test -z "$(git status --short)"
+          python - <<'PY'
+          import pathlib,base64,lzma,hashlib,subprocess
+          patch=lzma.decompress(base64.b64decode(''.join(f.read_text().strip() for f in sorted(pathlib.Path('.github/c1-mobile-r12').glob('*.txt')))))
+          assert hashlib.sha256(patch).hexdigest()=='8ee3e455ec12153b69cf87ef6e32189f7f461bcb378354b78671aab777abed67'
+          subprocess.run(['git','apply','--check','-'],input=patch,check=True)
+          subprocess.run(['git','apply','-'],input=patch,check=True)
+          # The new QA tool must bind its own revision-specific manifest, not R1.1.
+          p=pathlib.Path('tools/m11c-c1/capture-r12.mjs');s=p.read_text()
+          assert s.count('artifacts/m11c-c1/viewer-manifest.json')==1
+          p.write_text(s.replace('artifacts/m11c-c1/viewer-manifest.json','artifacts/m11c-c1/viewer-manifest-r12.json'))
+          PY
+          npm ci --prefix apps/campus
+          mkdir -p qa/m11c-c1/mobile-r12/build
+          git diff --check
+          npm run build --prefix apps/campus 2>&1 | tee qa/m11c-c1/mobile-r12/build/build.log
+          node --test tests/m11c/c1/*.test.mjs tests/render-upgrade/*.test.mjs 2>&1 | tee qa/m11c-c1/mobile-r12/build/tests.tap
+          git diff --exit-code 68aaee560e11f3c8fbd4584baa16c7bf64862114 -- data/m11b apps/campus/src/batch02-core.mjs apps/campus/src/batch03-core.mjs apps/campus/src/batch04-core.mjs apps/campus/src/batch05-core.mjs apps/campus/src/batch05-r12.mjs apps/campus/src/player/motor.mjs apps/campus/src/player/scale-avatar.ts
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add apps/campus/src/main.ts apps/campus/src/player/collision-world.mjs apps/campus/src/player/player-mode.ts apps/campus/src/render/daylight.ts apps/campus/src/render/exact-index.mjs apps/campus/src/render/performance-policy.mjs data/m11c/c1 docs/m11c/c1/mobile-performance.md docs/model-rendering-standard.md tests/m11c/c1/mobile.test.mjs tools/m11c-c1/benchmark-mobile.mjs tools/m11c-c1/capture-r12.mjs tools/m11c-c1/export-r12.mjs
+          git commit -m 'perf(c1): reuse exact vertices and collision regions, cache static transforms and expose reversible mobile raster budget [skip ci]'
+          git push origin HEAD:codex/c1-player-controller
+          node tools/m11c-c1/export-r12.mjs
+          git add artifacts/m11c-c1/Yali_C1_R1_2_Viewer.html artifacts/m11c-c1/viewer-manifest-r12.json qa/m11c-c1/mobile-r12/build
+          git commit -m 'build(c1): export R1.2 mobile Viewer and record 30 tests; device performance review pending [skip ci]'
+          git push origin HEAD:codex/c1-player-controller
+          echo "revision=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          mkdir -p /tmp/c1-r12-receipt
+          git ls-remote origin refs/heads/main refs/heads/codex/c1-player-controller | tee /tmp/c1-r12-receipt/refs.txt
+          test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/codex/c1-player-controller | cut -f1)"
+          git bundle create /tmp/c1-r12-receipt/source.bundle HEAD ^ef5e0d3a64abf3a76800757284064c4728486941
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: C1-mobile-r12-build
+          path: |
+            artifacts/m11c-c1/Yali_C1_R1_2_Viewer.html
+            artifacts/m11c-c1/viewer-manifest-r12.json
+            qa/m11c-c1/mobile-r12/build
+            /tmp/c1-r12-receipt
+          retention-days: 30
+  browser:
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 7
+      matrix:
+        group: [mobile, input, lane, terrain, review, fallback, fix]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.prepare.outputs.revision }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Pinned source and real Chromium
+        run: |
+          npm ci --prefix apps/campus
+          npm install --prefix "$RUNNER_TEMP/c1-browser" --save-exact playwright@1.62.0
+          "$RUNNER_TEMP/c1-browser/node_modules/.bin/playwright" install --with-deps chromium
+          sudo apt-get install -y fonts-noto-cjk
+          echo "PLAYWRIGHT_MODULE=$RUNNER_TEMP/c1-browser/node_modules/playwright" >> "$GITHUB_ENV"
+      - name: Exact full Viewer and player checks
+        env:
+          C1_GROUP: ${{ matrix.group }}
+          C1_PHASE: mobile-r12
+        run: |
+          set -o pipefail
+          mkdir -p qa/m11c-c1/mobile-r12/${{ matrix.group }}
+          node tools/m11c-c1/capture-r12.mjs 2>&1 | tee qa/m11c-c1/mobile-r12/${{ matrix.group }}/capture.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: C1-mobile-r12-${{ matrix.group }}
+          path: qa/m11c-c1/mobile-r12/${{ matrix.group }}
+          retention-days: 30
+  benchmark:
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.prepare.outputs.revision }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Same runner and browser for both revisions
+        run: |
+          npm ci --prefix apps/campus
+          npm install --prefix "$RUNNER_TEMP/c1-browser" --save-exact playwright@1.62.0
+          "$RUNNER_TEMP/c1-browser/node_modules/.bin/playwright" install --with-deps chromium
+          sudo apt-get install -y fonts-noto-cjk
+          echo "PLAYWRIGHT_MODULE=$RUNNER_TEMP/c1-browser/node_modules/playwright" >> "$GITHUB_ENV"
+      - name: Compare exact R1.1 and R1.2 with 60 samples each
+        run: |
+          set -o pipefail
+          mkdir -p qa/m11c-c1/mobile-r12/benchmark
+          node tools/m11c-c1/benchmark-mobile.mjs 2>&1 | tee qa/m11c-c1/mobile-r12/benchmark/capture.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: C1-mobile-r12-benchmark
+          path: qa/m11c-c1/mobile-r12/benchmark
+          retention-days: 30
