@@ -1,0 +1,142 @@
+name: C2 R2 shoulder repair and review closeout
+on:
+  push:
+    branches: [codex/c2-student-avatar]
+    paths: [.github/workflows/c2-r2-shoulder-closeout.yml]
+permissions:
+  contents: write
+concurrency:
+  group: c2-r2-delivery
+  cancel-in-progress: false
+env:
+  C2_ARTIFACT_DIR: artifacts/m11c-c2/r2-final
+  C2_QA_ROOT: qa/m11c-c2/r2/shoulder-final
+jobs:
+  closeout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: codex/c2-student-avatar, fetch-depth: 0}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Apply pending geometry repair and retain old deliverables
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 6282a5c7b8c8ab6138d071016066eaa5b255d5d6 HEAD
+          test -z "$(git status --porcelain)"
+          python tools/m11c-c2/close-sleeve-caps.py
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('tools/m11c-c2/export-r2.mjs');s=p.read_text()
+          a="out=path.join(root,'artifacts/m11c-c2/r2')"
+          b="out=path.resolve(root,process.env.C2_ARTIFACT_DIR||'artifacts/m11c-c2/r2')"
+          assert a in s or b in s
+          p.write_text(s.replace(a,b,1))
+          p=Path('tools/m11c-c2/release-capture.mjs');s=p.read_text()
+          a="path.resolve('qa/m11c-c2/r2/release',group)"
+          b="path.resolve(process.env.C2_QA_ROOT||'qa/m11c-c2/r2/release',group)"
+          assert a in s or b in s
+          s=s.replace(a,b,1).replace("path.resolve('artifacts/m11c-c2/r2',name)","path.resolve(process.env.C2_ARTIFACT_DIR||'artifacts/m11c-c2/r2',name)")
+          p.write_text(s)
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add apps/campus/src/player/student-rig.mjs tools/m11c-c2/export-r2.mjs tools/m11c-c2/release-capture.mjs
+          git diff --cached --check
+          if ! git diff --cached --quiet; then git commit -m 'fix(c2): apply real sleeve crown closure; preserve previous R2 viewers and QA [skip ci]'; fi
+          git push origin HEAD:codex/c2-student-avatar
+          git rev-parse HEAD > c2-tested-source.txt
+      - name: Build test and export the exact repaired model
+        run: |
+          set -euo pipefail
+          npm ci --prefix apps/campus
+          mkdir -p "$C2_QA_ROOT"
+          npm run build --prefix apps/campus 2>&1 | tee "$C2_QA_ROOT/build.log"
+          node --test tests/m11c/c1/*.test.mjs tests/m11c/c2/*.test.mjs tests/render-upgrade/*.test.mjs | tee "$C2_QA_ROOT/tests.tap"
+          node tools/m11c-c2/export-r2.mjs
+          git archive HEAD apps data docs tools tests AGENTS.md README.md .github/workflows | gzip > C2_R2_Source.tar.gz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C2-R2-shoulder-built
+          path: |
+            artifacts/m11c-c2/r2-final
+            qa/m11c-c2/r2/shoulder-final
+            C2_R2_Source.tar.gz
+            c2-tested-source.txt
+          retention-days: 30
+      - name: Install pinned browser
+        run: |
+          npm install --prefix "$RUNNER_TEMP/browser" --save-exact playwright@1.62.0
+          "$RUNNER_TEMP/browser/node_modules/.bin/playwright" install --with-deps chromium --only-shell
+          echo "PLAYWRIGHT_MODULE=$RUNNER_TEMP/browser/node_modules/playwright" >> "$GITHUB_ENV"
+      - name: Actual character campus and mobile browser verification
+        run: |
+          set -euo pipefail
+          GROUP=studio node tools/m11c-c2/release-capture.mjs
+          GROUP=campus node tools/m11c-c2/release-capture.mjs
+          GROUP=mobile node tools/m11c-c2/release-capture.mjs
+      - name: Bind files reports and pending visual review
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import json,hashlib,os,re,shutil,subprocess
+          out=Path(os.environ['C2_QA_ROOT']);art=Path(os.environ['C2_ARTIFACT_DIR'])
+          digest=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+          manifests=[json.loads(p.read_text()) for p in art.glob('*.manifest.json')];valid={m['file']:m for m in manifests}
+          reports=[]
+          for group in ['studio','campus','mobile']:
+              q=json.loads((out/group/'report.json').read_text());m=valid[q['viewer']]
+              assert q['passed'] and q['viewerSHA256']==m['sha256']==digest(art/m['file'])
+              for p,h in m['sources'].items():assert digest(p)==h,p
+              for shot in q['screenshots']:assert digest(out/group/shot['file'])==shot['sha256']
+              reports.append(q)
+          model=reports[0]['glb'];shutil.copy2(out/'studio'/model['file'],art/model['file']);assert digest(art/model['file'])==model['sha256']
+          tap=(out/'tests.tap').read_text();assert '# fail 0' in tap
+          tests=int(re.search(r'# pass (\d+)',tap)[1]);checks=sum(len(q['checks']) for q in reports);shots=sum(len(q['screenshots']) for q in reports)
+          result={'version':'C2.R2','revision':'shoulder-closure-final','status':'IMPLEMENTED / REVIEW_PENDING','unitTests':tests,'browserChecks':checks,'screenshots':shots,'groups':[q['group'] for q in reports],'viewers':[{k:m[k] for k in ['file','sha256','bytes','gitHead']} for m in manifests],'glb':model,'standard':'1.0 + mobile-r12; character UV and colour deviations in design.md','visualInspection':'PENDING_IMAGE_INSPECTION','realPhonePerformance':'NOT VERIFIED','run':os.environ['GITHUB_RUN_ID'],'passed':True}
+          (out/'report.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
+          files=[{k:m[k] for k in ['file','sha256','bytes']} for m in manifests]+[model]
+          (art/'files.json').write_text(json.dumps(files,ensure_ascii=False,indent=2)+'\n')
+          (out/'README.md').write_text(f'# C2 R2 sleeve-closure QA\n\n{tests}/{tests} unit tests; {checks} browser checks; {shots} actual Chromium/WebGL screenshots. All groups freshly tested against the repaired viewers; no earlier screenshot substituted. See report.json and group reports. Visual inspection is a separate closeout, not automatic alumni approval. Real-phone FPS remains unverified.\n')
+          p=Path('docs/m11c/c2/delivery.md');s=p.read_text();s=s.split('\n## 受测产物')[0]
+          s=s.replace('artifacts/m11c-c2/r2/','artifacts/m11c-c2/r2-final/').replace('qa/m11c-c2/r2/release/report.json','qa/m11c-c2/r2/shoulder-final/report.json').replace('../../../data/m11c/c2/evidence.json','../../../../data/m11c/c2/evidence.json')
+          s=s.replace('node tools/m11c-c2/export-r2.mjs','export C2_ARTIFACT_DIR=artifacts/m11c-c2/r2-final\nexport C2_QA_ROOT=qa/m11c-c2/r2/shoulder-final\nnode tools/m11c-c2/export-r2.mjs')
+          s+='\n## 最终袖肩接缝修复\n\n已实际应用80个朝外封口三角面，不改轮廓、5蒙皮批次、控制器、校园几何或共享日光。旧R2文件及旧QA原路径保留。以下是重新构建、重新浏览器测试的产物，不是补丁脚本或概念图。\n\n'
+          s+=f'构建通过；单元测试{tests}/{tests}；浏览器{checks}项检查，{shots}张截图。人工视觉检查单独记录，用户认可尚未登记。\n\n'
+          s+='\n'.join(f"- `{m['file']}` SHA256 `{m['sha256']}`" for m in manifests)+f"\n- GLB SHA256 `{model['sha256']}`\n"
+          p.write_text(s)
+          p=Path('README.md');s=p.read_text().replace('artifacts/m11c-c2/r2/','artifacts/m11c-c2/r2-final/').replace('qa/m11c-c2/r2/release/report.json','qa/m11c-c2/r2/shoulder-final/report.json');p.write_text(s)
+          p=Path('docs/development-plan.md');s=p.read_text();s+='\n## C2 R2 袖肩接合收尾\n\n袖肩真实封口修复已应用，最终产物在 `artifacts/m11c-c2/r2-final/`，QA在 `qa/m11c-c2/r2/shoulder-final/`。原R2和历史QA保留；C1真机性能与C2用户认可仍分开，不进入C3，不合并main。\n';p.write_text(s)
+          PY
+          git diff --check
+          git add artifacts/m11c-c2/r2-final qa/m11c-c2/r2/shoulder-final docs/m11c/c2/delivery.md README.md docs/development-plan.md
+          git commit -m 'deliver(c2): publish repaired R2 viewers GLB and fresh browser QA; art review pending [skip ci]'
+          git pull --rebase origin codex/c2-student-avatar
+          python - <<'PY'
+          from pathlib import Path
+          import json,hashlib,os
+          for p in Path(os.environ['C2_ARTIFACT_DIR']).glob('*.manifest.json'):
+              m=json.loads(p.read_text())
+              for f,h in m['sources'].items():assert hashlib.sha256(Path(f).read_bytes()).hexdigest()==h,f
+          PY
+          git push origin HEAD:codex/c2-student-avatar
+          test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/codex/c2-student-avatar | cut -f1)"
+          git ls-remote origin refs/heads/codex/c2-student-avatar refs/heads/codex/c1-player-controller refs/heads/main | tee c2-final-remote-refs.txt
+          git archive HEAD apps data docs tools tests AGENTS.md README.md .github/workflows | gzip > C2_R2_Source.tar.gz
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: C2-R2-shoulder-final-review
+          path: |
+            artifacts/m11c-c2/r2-final
+            qa/m11c-c2/r2/shoulder-final
+            docs/m11c/c2
+            data/m11c/c2
+            docs/development-plan.md
+            README.md
+            C2_R2_Source.tar.gz
+            c2-tested-source.txt
+            c2-final-remote-refs.txt
+          retention-days: 30
