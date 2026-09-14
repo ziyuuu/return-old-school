@@ -1,0 +1,43 @@
+{
+  "version": "C2.R2",
+  "revision": "shoulder-closure-final",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "unitTests": 44,
+  "browserChecks": 19,
+  "screenshots": 15,
+  "groups": [
+    "studio",
+    "campus",
+    "mobile"
+  ],
+  "viewers": [
+    {
+      "file": "Yali_C2_R2_Character.html",
+      "sha256": "bbb4283ae8692b3510ddb6b0389dde99c6c8c236859d3a49b98e0f8679625c3e",
+      "bytes": 625017,
+      "gitHead": "16bf4cabc9e1f90a116d11f653bd25575a158be0"
+    },
+    {
+      "file": "Yali_C2_R2_Viewer.html",
+      "sha256": "2a7838dbf174c588a5b0d019a8fc56a49fb2dc7cc6ffda48d404f389f497150b",
+      "bytes": 3904195,
+      "gitHead": "16bf4cabc9e1f90a116d11f653bd25575a158be0"
+    }
+  ],
+  "glb": {
+    "file": "Yali_Student_C2_R2.glb",
+    "sha256": "288a34d5ff88062e742b2a6b4b3bb20a7f615f67598c64a488457737acdb6b69",
+    "bytes": 4064432,
+    "skins": 5,
+    "animations": [
+      "Idle",
+      "Walk",
+      "Run"
+    ]
+  },
+  "standard": "1.0 + mobile-r12; character UV and colour deviations in design.md",
+  "visualInspection": "PENDING_IMAGE_INSPECTION",
+  "realPhonePerformance": "NOT VERIFIED",
+  "run": "34825479955",
+  "passed": true
+}

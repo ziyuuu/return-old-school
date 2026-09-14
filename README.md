@@ -2,7 +2,7 @@
 
 ## C2 R2 · 学生角色实装（待审）
 
-[交付与操作](docs/m11c/c2/delivery.md) · [校园Viewer](artifacts/m11c-c2/r2/Yali_C2_R2_Viewer.html) · [人物工坊](artifacts/m11c-c2/r2/Yali_C2_R2_Character.html) · [本轮QA](qa/m11c-c2/r2/release/report.json)
+[交付与操作](docs/m11c/c2/delivery.md) · [校园Viewer](artifacts/m11c-c2/r2-final/Yali_C2_R2_Viewer.html) · [人物工坊](artifacts/m11c-c2/r2-final/Yali_C2_R2_Character.html) · [本轮QA](qa/m11c-c2/r2/shoulder-final/report.json)
 
 白领、蓝身、上白下红横带、左胸YL；15关节/5蒙皮批次。继承C1 R1.2手机优化及已认可校园。R1造型被否定，R2为IMPLEMENTED / REVIEW_PENDING；设定图不是历史照片。
 

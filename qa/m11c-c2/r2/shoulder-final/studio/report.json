@@ -1,0 +1,284 @@
+{
+  "version": "C2.R2",
+  "group": "studio",
+  "viewer": "Yali_C2_R2_Character.html",
+  "viewerSHA256": "bbb4283ae8692b3510ddb6b0389dde99c6c8c236859d3a49b98e0f8679625c3e",
+  "runtimeSource": "16bf4cabc9e1f90a116d11f653bd25575a158be0",
+  "browser": "151.0.7922.34",
+  "viewport": {
+    "width": 1000,
+    "height": 900
+  },
+  "gl": {
+    "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+    "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "depthMode": "standard-studio",
+    "glError": 0,
+    "contextLost": false,
+    "visibleModelTriangles": 80404,
+    "geometryBytes": 3574776,
+    "submittedTriangles": 80416,
+    "drawCalls": 8,
+    "buffer": [
+      1000,
+      900
+    ]
+  },
+  "checks": [
+    {
+      "name": "walk actual rig state",
+      "pass": true,
+      "data": {
+        "finalStudent": true,
+        "artVersion": "C2.R2",
+        "animation": "walk",
+        "phase": 2.4779999999999993,
+        "evidence": "A: 用户确认白领、蓝色主体、上白下红横带、YL胸标及最终设定图；H: 精确色值、尺寸、背部横带延续、拉链长度、脸型与发型。09届大尺码回忆仅作宽松穿着参考。",
+        "uniform": {
+          "season": "autumn-working-reconstruction",
+          "logo": "YL",
+          "logoLocation": "wearer-left-chest",
+          "backLogo": false,
+          "collar": "white-folded",
+          "fit": "oversized",
+          "stripeOrderTopToBottom": [
+            "blue",
+            "white",
+            "red",
+            "blue"
+          ],
+          "palette": "campus-derived blue / warm white / muted red",
+          "trouserSideStripe": false
+        },
+        "geometry": {
+          "triangles": 80400,
+          "vertices": 45472,
+          "geometryBytes": 3574496,
+          "drawMeshes": 5,
+          "bones": 15
+        }
+      }
+    },
+    {
+      "name": "run actual rig state",
+      "pass": true,
+      "data": {
+        "finalStudent": true,
+        "artVersion": "C2.R2",
+        "animation": "run",
+        "phase": 5.670000000000002,
+        "evidence": "A: 用户确认白领、蓝色主体、上白下红横带、YL胸标及最终设定图；H: 精确色值、尺寸、背部横带延续、拉链长度、脸型与发型。09届大尺码回忆仅作宽松穿着参考。",
+        "uniform": {
+          "season": "autumn-working-reconstruction",
+          "logo": "YL",
+          "logoLocation": "wearer-left-chest",
+          "backLogo": false,
+          "collar": "white-folded",
+          "fit": "oversized",
+          "stripeOrderTopToBottom": [
+            "blue",
+            "white",
+            "red",
+            "blue"
+          ],
+          "palette": "campus-derived blue / warm white / muted red",
+          "trouserSideStripe": false
+        },
+        "geometry": {
+          "triangles": 80400,
+          "vertices": 45472,
+          "geometryBytes": 3574496,
+          "drawMeshes": 5,
+          "bones": 15
+        }
+      }
+    },
+    {
+      "name": "export is real GLB with skin and Idle Walk Run tracks",
+      "pass": true,
+      "data": {
+        "file": "Yali_Student_C2_R2.glb",
+        "sha256": "288a34d5ff88062e742b2a6b4b3bb20a7f615f67598c64a488457737acdb6b69",
+        "bytes": 4064432,
+        "skins": 5,
+        "animations": [
+          "Idle",
+          "Walk",
+          "Run"
+        ]
+      }
+    },
+    {
+      "name": "WebGL context remains healthy",
+      "pass": true,
+      "data": {
+        "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+        "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "depthMode": "standard-studio",
+        "glError": 0,
+        "contextLost": false,
+        "visibleModelTriangles": 80404,
+        "geometryBytes": 3574776,
+        "submittedTriangles": 80416,
+        "drawCalls": 8,
+        "buffer": [
+          1000,
+          900
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [
+    "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+    "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures.",
+    "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures.",
+    "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures.",
+    "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures.",
+    "THREE.GLTFExporter: Merged metalnessMap and roughnessMap textures."
+  ],
+  "externalRequests": [],
+  "screenshots": [
+    {
+      "file": "studio-front.png",
+      "sha256": "5ed2a2583cc57c2066fc577b9500f00696daf75dcfad2be6f8213553f505b084",
+      "method": "Same-frame WebGL canvas readback of exact exported Viewer; no scene replacement or compositing"
+    },
+    {
+      "file": "studio-side.png",
+      "sha256": "f670b969aad95756c7d77b3a07d3ba695ed5024ce332e3b1fdc3ae02a5ecdcdb",
+      "method": "Same-frame WebGL canvas readback of exact exported Viewer; no scene replacement or compositing"
+    },
+    {
+      "file": "studio-back.png",
+      "sha256": "38625a1309eee3ef46ef5285ff15d36262df0dadebb35b0bb7be0499e55ac836",
+      "method": "Same-frame WebGL canvas readback of exact exported Viewer; no scene replacement or compositing"
+    },
+    {
+      "file": "studio-face.png",
+      "sha256": "236da0b951d7963367f12484e599f7992ba08f5fb9923a8f5a11410f91d41790",
+      "method": "Same-frame WebGL canvas readback of exact exported Viewer; no scene replacement or compositing"
+    },
+    {
+      "file": "studio-walk.png",
+      "sha256": "9ca6945724a34c850ba734a82e271597d5fa25835c39564fd51c0738b2889a42",
+      "method": "Same-frame WebGL canvas readback of exact exported Viewer; no scene replacement or compositing"
+    },
+    {
+      "file": "studio-run.png",
+      "sha256": "2d1caabb8c13125fb1ab731518534b02ed201de371ed101b6b6bd31e25c6680f",
+      "method": "Same-frame WebGL canvas readback of exact exported Viewer; no scene replacement or compositing"
+    }
+  ],
+  "measurements": {
+    "scope": "Installed character, shared daylight and studio floor ONLY; not campus or real-phone FPS",
+    "warmup": 8,
+    "samples": 60,
+    "milliseconds": [
+      0.39999999999417923,
+      0.8000000000029104,
+      0.19999999999708962,
+      1.1000000000058208,
+      0.6000000000058208,
+      0.39999999999417923,
+      0.29999999998835847,
+      0.20000000001164153,
+      0.29999999998835847,
+      0.3000000000029104,
+      0.19999999999708962,
+      0.5,
+      0.40000000000873115,
+      0.3000000000029104,
+      0.19999999999708962,
+      0.3000000000029104,
+      0.29999999998835847,
+      0.20000000001164153,
+      0.29999999998835847,
+      0.20000000001164153,
+      0.29999999998835847,
+      0.3000000000029104,
+      0.3000000000029104,
+      0.3000000000029104,
+      0.39999999999417923,
+      0.40000000000873115,
+      0.29999999998835847,
+      0.3000000000029104,
+      0.3000000000029104,
+      0.3000000000029104,
+      0.3000000000029104,
+      0.39999999999417923,
+      0.3000000000029104,
+      0.19999999999708962,
+      0.39999999999417923,
+      0.20000000001164153,
+      0.39999999999417923,
+      0.3000000000029104,
+      0.19999999999708962,
+      0.3000000000029104,
+      0.19999999999708962,
+      0.3000000000029104,
+      0.19999999999708962,
+      0.3000000000029104,
+      0.3000000000029104,
+      0.29999999998835847,
+      0.20000000001164153,
+      1.0999999999912689,
+      0.3000000000029104,
+      0.19999999999708962,
+      0.19999999999708962,
+      0.20000000001164153,
+      0.09999999999126885,
+      0.19999999999708962,
+      0.10000000000582077,
+      0.10000000000582077,
+      0.09999999999126885,
+      0.10000000000582077,
+      0.09999999999126885,
+      0
+    ],
+    "medianMs": 0.29999999998835847,
+    "p95Ms": 0.6000000000058208,
+    "avatar": {
+      "finalStudent": true,
+      "artVersion": "C2.R2",
+      "animation": "walk",
+      "phase": 4.136629385640828,
+      "evidence": "A: 用户确认白领、蓝色主体、上白下红横带、YL胸标及最终设定图；H: 精确色值、尺寸、背部横带延续、拉链长度、脸型与发型。09届大尺码回忆仅作宽松穿着参考。",
+      "uniform": {
+        "season": "autumn-working-reconstruction",
+        "logo": "YL",
+        "logoLocation": "wearer-left-chest",
+        "backLogo": false,
+        "collar": "white-folded",
+        "fit": "oversized",
+        "stripeOrderTopToBottom": [
+          "blue",
+          "white",
+          "red",
+          "blue"
+        ],
+        "palette": "campus-derived blue / warm white / muted red",
+        "trouserSideStripe": false
+      },
+      "geometry": {
+        "triangles": 80400,
+        "vertices": 45472,
+        "geometryBytes": 3574496,
+        "drawMeshes": 5,
+        "bones": 15
+      }
+    }
+  },
+  "glb": {
+    "file": "Yali_Student_C2_R2.glb",
+    "sha256": "288a34d5ff88062e742b2a6b4b3bb20a7f615f67598c64a488457737acdb6b69",
+    "bytes": 4064432,
+    "skins": 5,
+    "animations": [
+      "Idle",
+      "Walk",
+      "Run"
+    ]
+  },
+  "passed": true
+}
