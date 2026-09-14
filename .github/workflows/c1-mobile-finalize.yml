@@ -1,0 +1,46 @@
+name: C1 R1.2 mobile archive finalize
+on:
+  push:
+    branches: [codex/c1-player-controller]
+    paths: [.github/workflows/c1-mobile-finalize.yml]
+permissions:
+  contents: write
+  actions: read
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/c1-player-controller
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          name: C1-mobile-comparison-and-inspection
+          path: incoming
+          github-token: ${{ github.token }}
+          repository: ziyuuu/return-old-school
+          run-id: 34793741100
+      - name: Verify exact archived Viewer and publish C1 R1.2 evidence
+        env:
+          MOBILE_INCOMING: incoming
+          COMPARISON_RUN: '34793741100'
+        run: |
+          set -euo pipefail
+          python tools/m11c-c1/finalize-mobile.py
+          git diff --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md docs/development-plan.md docs/m11c/c1 qa/m11c-c1
+          git commit -m 'qa(c1): archive R1.2 mobile optimization evidence and limits [skip ci]'
+          git push origin HEAD:codex/c1-player-controller
+          git ls-remote origin refs/heads/codex/c1-player-controller refs/heads/main
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C1-R12-final-mobile-review
+          path: |
+            artifacts/m11c-c1/Yali_C1_R1_2_Viewer.html
+            qa/m11c-c1/mobile-r12
+            docs/m11c/c1/mobile-performance.md
+          retention-days: 30
