@@ -1,0 +1,46 @@
+name: C2 R1 direct WebGL visual QA
+on:
+  push:
+    branches: [codex/c2-student-avatar]
+    paths: [.github/workflows/c2-browser-fast.yml]
+permissions:
+  contents: write
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: codex/c2-student-avatar, fetch-depth: 0}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Install runtime and Chromium
+        run: |
+          npm ci --prefix apps/campus
+          npm install --prefix "$RUNNER_TEMP/c2-browser" --save-exact playwright@1.62.0
+          "$RUNNER_TEMP/c2-browser/node_modules/.bin/playwright" install --with-deps chromium
+          echo "PLAYWRIGHT_MODULE=$RUNNER_TEMP/c2-browser/node_modules/playwright" >> "$GITHUB_ENV"
+      - name: Capture exact C2 Viewer and publish review
+        run: |
+          set -euo pipefail
+          node tools/m11c-c2/capture.mjs
+          python - <<'PY'
+          import json,pathlib
+          r=pathlib.Path('.');q=json.loads((r/'qa/m11c-c2/browser/report.json').read_text());m=json.loads((r/'artifacts/m11c-c2/viewer-manifest.json').read_text());assert q['passed'] and q['viewerSHA256']==m['sha256'];assert len(q['screenshots'])==5
+          (r/'docs/m11c/c2/delivery.md').write_text(f'''# C2 R1｜学生形象与基础动画交付\n\n**IMPLEMENTED / REVIEW_PENDING**。继承C1 R1.2手机优化和全部已认可校园模型；不登记acceptance、不合并main。\n\nViewer：`artifacts/m11c-c2/Yali_C2_R1_Viewer.html`，SHA256 `{m['sha256']}`。\n\n实现：证据有界的偏大尺码秋季校服学生工作重建；idle / walk / run / air 四态；第三/第一人称、坡速、碰撞、相机与手机流畅档沿用C1 R1.2。无校徽、班级、个人脸或外部人物纹理。\n\n节点测试34/34；实际Chromium {len(q['checks'])}项检查、{len(q['screenshots'])}张实际WebGL截图通过。精确剪裁、色值、发型和体型仍为H；C3尚未开始。\n''')
+          (r/'qa/m11c-c2/README.md').write_text(f'''# C2 R1 QA\n\nViewer SHA256 `{m['sha256']}`。节点测试34/34；实际 Chromium 报告见 `browser/report.json`。五张画面均来自受测Viewer的同帧WebGL画布读取；C2只替换可见学生形象和动画，不改变C1胶囊、道路、建筑或手机性能策略。\n''')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/m11c/c2 qa/m11c-c2
+          git commit -m 'qa(c2): publish direct WebGL student-avatar review [skip ci]'
+          git push origin HEAD:codex/c2-student-avatar
+          git ls-remote origin refs/heads/codex/c2-student-avatar refs/heads/codex/c1-player-controller refs/heads/main
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C2-R1-review
+          path: |
+            artifacts/m11c-c2
+            qa/m11c-c2
+            docs/m11c/c2
+          retention-days: 30
