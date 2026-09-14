@@ -26,7 +26,7 @@ export async function createPlayerMode(host:Host) {
   const motor=new PlayerMotor(collision.world,config,(position:any,force=false)=>collision.ensure(position,force),(position:any)=>collision.containsPointInSolid(position));
   const follow=new FollowCamera(collision.world,motor,config),avatar=createStudentAvatar(host.mats);host.scene.add(avatar.root);avatar.root.visible=false;
   let enabled=false,ready=false,currentSpawn='gate',touchRun=false,lookPointer:number|null=null,stickPointer:number|null=null,lookX=0,lookY=0;
-  let joy={x:0,z:0},lastNotice='',lastNoticeAt=0,lastFrame:any=null,physicsMs=0,frameSamples:number[]=[],tickSamples:number[]=[];
+  let joy={x:0,z:0},lastNotice='',lastNoticeAt=0,lastFrame:any=null,physicsMs=0,avatarMotionSpeed=0,frameSamples:number[]=[],tickSamples:number[]=[];
   const keys=new Set<string>(),cleanup:Array<()=>void>=[];
   function listen(target:EventTarget,event:string,fn:EventListener,options?:AddEventListenerOptions){target.addEventListener(event,fn,options);cleanup.push(()=>target.removeEventListener(event,fn,options));}
   function notice(text:string){if(lastNotice!==text){status.textContent=text;lastNotice=text;lastNoticeAt=performance.now();}}
@@ -86,12 +86,13 @@ export async function createPlayerMode(host:Host) {
     const p=host.pool,feet=motor.feet();
     if(Math.abs(feet[0]-p.x)<p.width/2&&Math.abs(feet[2]-p.z)<p.depth/2&&feet[1]<p.surface+.05){spawn(currentSpawn);notice('C1 不包含游泳，已返回起点。');}
     lastFrame=follow.update(Math.min(dt,.1));host.camera.position.set(lastFrame.position.x,lastFrame.position.y,lastFrame.position.z);host.camera.up.set(0,1,0);host.camera.lookAt(lastFrame.target.x,lastFrame.target.y,lastFrame.target.z);
-    avatar.update(motor.feet(),motor.heading,motor.actualSpeed,motor.travel,motor.grounded,lastFrame.hideAvatar,Math.min(dt,.1));
+    avatarMotionSpeed=motor.blocked?motor.actualSpeed:Math.hypot(motor.velocity.x,motor.velocity.z);
+    avatar.update(motor.feet(),motor.heading,avatarMotionSpeed,motor.travel,motor.grounded,lastFrame.hideAvatar,Math.min(dt,.1));
     avatar.root.updateMatrixWorld(true);host.camera.updateMatrixWorld(true);
     if(!motor.paused&&performance.now()-lastNoticeAt>4000)notice(motor.blocked?'前方有实体阻挡 · 可沿墙转向':`${currentSpawn in config.spawns?'校园漫游':''} · ${motor.grounded?(motor.actualSpeed>.1?'行走中':'已接地'):'下落中'}`);
     if(dt>0&&!motor.paused){frameSamples.push(dt*1000);tickSamples.push(physicsMs);if(frameSamples.length>600){frameSamples.shift();tickSamples.shift();}}
   }
-  function state(){return {ready,enabled,version:config.version,config,motor:motor.state(),camera:lastFrame,collision:collision.state(),input:input(),graphics:host.graphics?.state(),avatar:{visible:avatar.root.visible,footPosition:avatar.root.position.toArray(),...avatar.state()},physicsMs};}
+  function state(){return {ready,enabled,version:config.version,config,motor:motor.state(),camera:lastFrame,collision:collision.state(),input:input(),graphics:host.graphics?.state(),avatar:{visible:avatar.root.visible,footPosition:avatar.root.position.toArray(),animationDriveSpeed:avatarMotionSpeed,...avatar.state()},physicsMs};}
   const diag={state,config,activate,deactivate,pause,spawn,reset:()=>spawn(currentSpawn),setFirstPerson:(v:boolean)=>{if(follow.firstPerson!==v)viewToggle();},orbit:(dx:number,dy:number)=>follow.orbit(dx,dy),zoom:(v:number)=>follow.zoom=v,
     drive:(direction:{x:number;z:number;run:boolean},ticks:number)=>{const trace:any[]=[];for(let i=0;i<ticks;i++){motor.step(direction);if(i%15===0)trace.push(motor.state());}update(0);return {trace,end:state()};},
     walkTo:(points:number[][],run=true,maxTicks=7200)=>{
