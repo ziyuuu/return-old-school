@@ -1,0 +1,131 @@
+name: C2 R2 actual model delivery
+on:
+  push:
+    branches: [codex/c2-student-avatar]
+    paths: [.github/workflows/c2-r2-release.yml]
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: c2-r2-delivery
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    outputs:
+      source: ${{ steps.build.outputs.source }}
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: codex/c2-student-avatar, fetch-depth: 0}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Apply source correction, compile and export
+        id: build
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor b6f293c114f61392b0cbd6c0c3339c325b995250 HEAD
+          sed -i 's/PLACEHOLDER_RIG_SHA/567a036374e23803925c8cefea858b9468e73027afef2413647d339a415329dc/' tools/m11c-c2/finish-r2.py
+          python tools/m11c-c2/finish-r2.py
+          python tools/m11c-c2/release-docs.py
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          expected={'apps/campus/src/player/student-rig.mjs':'ea58790371177d4b996df6305972e64f632e7596c162ef25fec650110fe9e76f','apps/campus/src/player/player-mode.ts':'5b633989b4513e3448f4e79a86afb1563e82ad9ff065d9257f27f0aa90665b96','tools/m11c-c2/export-r2.mjs':'7a92e0c17482b8dae0213342936b52fe2d849083b9f18f6ae536c645cd9f9ec2'}
+          for f,h in expected.items():assert hashlib.sha256(Path(f).read_bytes()).hexdigest()==h,f
+          PY
+          git diff --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add apps/campus/src/player/student-rig.mjs apps/campus/src/player/player-mode.ts tools/m11c-c2/export-r2.mjs tools/m11c-c2/finish-r2.py data/m11c/c2/evidence.json docs/m11c/c2 README.md docs/development-plan.md
+          if ! git diff --cached --quiet; then git commit -m 'feat(c2): finalize continuous blue white red YL student rig, preserve C1 mobile runtime [skip ci]'; fi
+          git push origin HEAD:codex/c2-student-avatar
+          echo "source=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          npm ci --prefix apps/campus
+          mkdir -p qa/m11c-c2/r2/release
+          npm run build --prefix apps/campus 2>&1 | tee qa/m11c-c2/r2/release/build.log
+          node --test tests/m11c/c1/*.test.mjs tests/m11c/c2/*.test.mjs tests/render-upgrade/*.test.mjs | tee qa/m11c-c2/r2/release/tests.tap
+          node tools/m11c-c2/export-r2.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C2-R2-built
+          path: |
+            artifacts/m11c-c2/r2
+            qa/m11c-c2/r2/release
+          retention-days: 14
+  browser:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix: {group: [studio, campus, mobile]}
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: '${{ needs.build.outputs.source }}', fetch-depth: 1}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - uses: actions/download-artifact@v4
+        with: {name: C2-R2-built, path: .}
+      - name: Install pinned browser
+        run: |
+          npm install --prefix "$RUNNER_TEMP/browser" --save-exact playwright@1.62.0
+          "$RUNNER_TEMP/browser/node_modules/.bin/playwright" install --with-deps chromium --only-shell
+          echo "PLAYWRIGHT_MODULE=$RUNNER_TEMP/browser/node_modules/playwright" >> "$GITHUB_ENV"
+      - name: Actual exported Viewer verification
+        env:
+          GROUP: ${{ matrix.group }}
+        run: node tools/m11c-c2/release-capture.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: C2-R2-QA-${{ matrix.group }}
+          path: qa/m11c-c2/r2/release/${{ matrix.group }}
+          retention-days: 14
+  publish:
+    needs: [build, browser]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: codex/c2-student-avatar, fetch-depth: 0}
+      - uses: actions/download-artifact@v4
+        with: {name: C2-R2-built, path: .}
+      - uses: actions/download-artifact@v4
+        with: {name: C2-R2-QA-studio, path: qa/m11c-c2/r2/release/studio}
+      - uses: actions/download-artifact@v4
+        with: {name: C2-R2-QA-campus, path: qa/m11c-c2/r2/release/campus}
+      - uses: actions/download-artifact@v4
+        with: {name: C2-R2-QA-mobile, path: qa/m11c-c2/r2/release/mobile}
+      - name: Verify SHA links and publish review pending
+        run: |
+          set -euo pipefail
+          python tools/m11c-c2/release-docs.py --aggregate
+          git diff --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add artifacts/m11c-c2/r2 qa/m11c-c2/r2/release docs/m11c/c2/delivery.md
+          git commit -m 'deliver(c2): R2 campus and character viewers, skinned GLB and exact browser QA; review pending [skip ci]'
+          git pull --rebase origin codex/c2-student-avatar
+          python - <<'PY'
+          import json,hashlib,pathlib
+          for f in pathlib.Path('artifacts/m11c-c2/r2').glob('*.manifest.json'):
+              m=json.loads(f.read_text())
+              for p,h in m['sources'].items():assert hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()==h,p
+          PY
+          git push origin HEAD:codex/c2-student-avatar
+          test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/codex/c2-student-avatar | cut -f1)"
+          git ls-remote origin refs/heads/codex/c2-student-avatar refs/heads/codex/c1-player-controller refs/heads/main | tee c2-r2-remote-refs.txt
+          git bundle create c2-r2-final.bundle HEAD ^b6f293c114f61392b0cbd6c0c3339c325b995250
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C2-R2-complete-review
+          path: |
+            artifacts/m11c-c2/r2
+            qa/m11c-c2/r2/release
+            docs/m11c/c2
+            docs/development-plan.md
+            README.md
+            c2-r2-final.bundle
+            c2-r2-remote-refs.txt
+          retention-days: 30
