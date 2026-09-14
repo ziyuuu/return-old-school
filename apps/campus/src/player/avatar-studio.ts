@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
-import {GLTFExporter} from 'three/addons/exporters/GLTFExporter.js';
+import {exportAvatarGLB} from './avatar-export.mjs';
 import {createCampusMaterials} from '../render/materials';
 import {installDaylight} from '../render/daylight';
 import {createStudentAvatar} from './student-avatar';
@@ -18,7 +18,7 @@ let pose='idle',travel=0,last=0,frozen=false;
 function frame(t:number){const dt=Math.min(.05,(t-last)/1000||0);last=t;if(!frozen){const speed=pose==='walk'?1.65:pose==='run'?3.4:0;travel+=speed*dt;avatar.update([0,0,0],0,speed,travel,true,false,dt);}controls.update();renderer.render(scene,camera);}
 function view(v:string){const settings:any={front:[[0,1.03,3.5],[0,.85,0]],back:[[0,1.03,-3.5],[0,.85,0]],side:[[3.5,1.03,0],[0,.85,0]],face:[[.28,1.61,.78],[0,1.56,0]],oblique:[[2.1,1.65,3.5],[0,.87,0]]};camera.position.fromArray(settings[v][0]);controls.target.fromArray(settings[v][1]);controls.update();}
 function setPose(v:string){pose=v;document.querySelectorAll('[data-pose]').forEach(b=>b.classList.toggle('active',(b as HTMLElement).dataset.pose===v));}
-async function exportGLB(){const shadow=avatar.root.getObjectByName('C2-contact-shadow')!;shadow.visible=false;const out=await new GLTFExporter().parseAsync(avatar.root,{binary:true,onlyVisible:true,animations:avatar.animationClips()});shadow.visible=true;return out as ArrayBuffer;}
+async function exportGLB(){return await exportAvatarGLB(avatar) as ArrayBuffer;}
 document.querySelectorAll<HTMLButtonElement>('[data-view]').forEach(b=>b.onclick=()=>view(b.dataset.view!));document.querySelectorAll<HTMLButtonElement>('[data-pose]').forEach(b=>b.onclick=()=>setPose(b.dataset.pose!));
 document.getElementById('export')!.onclick=async()=>{const data=await exportGLB(),url=URL.createObjectURL(new Blob([data],{type:'model/gltf-binary'})),a=document.createElement('a');a.href=url;a.download='Yali_Student_C2_R2.glb';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
 window.addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
