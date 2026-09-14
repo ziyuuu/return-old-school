@@ -1,0 +1,203 @@
+{
+  "version": "C2.R1",
+  "viewerSHA256": "fe6c65aff7c796af3cd646a2d8f54ed8f909c44f531921af0773f0622be6a5c0",
+  "viewportPolicy": "720x480 balanced desktop QA + 390x844 balanced mobile; exact full campus geometry unchanged",
+  "checks": [
+    {
+      "name": "C2 final student is active",
+      "pass": true,
+      "data": {
+        "visible": true,
+        "footPosition": [
+          6.178695244329901e-8,
+          0.05505858541480857,
+          -3.4999998401472827
+        ],
+        "animationDriveSpeed": 0,
+        "finalStudent": true,
+        "animation": "idle",
+        "evidence": "P: 09届校友资料显示偏大尺码秋季校服、长裤脚；H: 精确剪裁、配色比例、体型与发型。",
+        "uniform": {
+          "season": "autumn-working-reconstruction",
+          "logo": false,
+          "fit": "oversized",
+          "palette": "muted red / warm off-white / dark navy"
+        }
+      }
+    },
+    {
+      "name": "C1 R1.2 graphics policy inherited",
+      "pass": true,
+      "data": {
+        "mobile": false,
+        "mode": "balanced",
+        "pixelRatio": 1,
+        "minimumPixelRatio": 0.75,
+        "shadowResolution": 1024,
+        "adaptive": true,
+        "preserveDrawingBuffer": false,
+        "walkShadowDistance": 6,
+        "walkShadowHeight": 3,
+        "actualPixelRatio": 1,
+        "rasterChanges": 0,
+        "drawingBuffer": [
+          720,
+          480
+        ],
+        "staticWorldMatrices": true
+      }
+    },
+    {
+      "name": "desktop QA uses reversible balanced raster budget",
+      "pass": true,
+      "data": {
+        "mobile": false,
+        "mode": "balanced",
+        "pixelRatio": 1,
+        "minimumPixelRatio": 0.75,
+        "shadowResolution": 1024,
+        "adaptive": true,
+        "preserveDrawingBuffer": false,
+        "walkShadowDistance": 6,
+        "walkShadowHeight": 3,
+        "actualPixelRatio": 1,
+        "rasterChanges": 0,
+        "drawingBuffer": [
+          720,
+          480
+        ],
+        "staticWorldMatrices": true
+      }
+    },
+    {
+      "name": "walk animation follows sustained movement",
+      "pass": true,
+      "data": {
+        "avatar": {
+          "visible": true,
+          "footPosition": [
+            -0.0000049331570231014865,
+            0.05511422370953378,
+            -2.6100102332420647
+          ],
+          "animationDriveSpeed": 1.65,
+          "finalStudent": true,
+          "animation": "walk",
+          "evidence": "P: 09届校友资料显示偏大尺码秋季校服、长裤脚；H: 精确剪裁、配色比例、体型与发型。",
+          "uniform": {
+            "season": "autumn-working-reconstruction",
+            "logo": false,
+            "fit": "oversized",
+            "palette": "muted red / warm off-white / dark navy"
+          }
+        },
+        "averageSpeed": 1.4833162779526787,
+        "instantActualSpeed": 1.6497865319664367,
+        "feet": [
+          -0.0000049331570231014865,
+          0.05511422370953378,
+          -2.6100102332420647
+        ]
+      }
+    },
+    {
+      "name": "run animation follows sustained movement",
+      "pass": true,
+      "data": {
+        "avatar": {
+          "visible": true,
+          "footPosition": [
+            0.000005391959793099588,
+            0.055100022026163153,
+            -1.967168418923393
+          ],
+          "animationDriveSpeed": 3.4,
+          "finalStudent": true,
+          "animation": "run",
+          "evidence": "P: 09届校友资料显示偏大尺码秋季校服、长裤脚；H: 精确剪裁、配色比例、体型与发型。",
+          "uniform": {
+            "season": "autumn-working-reconstruction",
+            "logo": false,
+            "fit": "oversized",
+            "palette": "muted red / warm off-white / dark navy"
+          }
+        },
+        "averageSpeed": 2.5547193018101506,
+        "instantActualSpeed": 3.400000110268593,
+        "feet": [
+          0.000005391959793099588,
+          0.055100022026163153,
+          -1.967168418923393
+        ]
+      }
+    },
+    {
+      "name": "mobile defaults to balanced raster policy",
+      "pass": true,
+      "data": {
+        "mobile": true,
+        "mode": "balanced",
+        "pixelRatio": 1,
+        "minimumPixelRatio": 0.75,
+        "shadowResolution": 1024,
+        "adaptive": true,
+        "preserveDrawingBuffer": false,
+        "walkShadowDistance": 6,
+        "walkShadowHeight": 3,
+        "actualPixelRatio": 1,
+        "rasterChanges": 0,
+        "drawingBuffer": [
+          390,
+          844
+        ],
+        "staticWorldMatrices": true
+      }
+    },
+    {
+      "name": "mobile student remains final C2",
+      "pass": true,
+      "data": {
+        "visible": true,
+        "footPosition": [
+          6.178695244329901e-8,
+          0.05505858541480857,
+          -3.4999998401472827
+        ],
+        "animationDriveSpeed": 0,
+        "finalStudent": true,
+        "animation": "idle",
+        "evidence": "P: 09届校友资料显示偏大尺码秋季校服、长裤脚；H: 精确剪裁、配色比例、体型与发型。",
+        "uniform": {
+          "season": "autumn-working-reconstruction",
+          "logo": false,
+          "fit": "oversized",
+          "palette": "muted red / warm off-white / dark navy"
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "screenshots": [
+    {
+      "file": "01-gate-idle.png",
+      "sha256": "0f58a3cbb8d3a5bf32e91125e424c2d283bb991e46fb64bdfd5505a00165bf3f",
+      "method": "same-frame WebGL canvas readback from exact Viewer"
+    },
+    {
+      "file": "02-walk.png",
+      "sha256": "91295f31a1d1c284f9d26f787245c1ccb8c920cfa1c541285302cede6f1f9c03",
+      "method": "same-frame WebGL canvas readback from exact Viewer"
+    },
+    {
+      "file": "03-run.png",
+      "sha256": "a9d915f8b78c0f69c2ba11250868659357b5103a8baae26176b69e86a2cd9f3e",
+      "method": "same-frame WebGL canvas readback from exact Viewer"
+    },
+    {
+      "file": "04-mobile.png",
+      "sha256": "f9b82eef90088b0233976982265f05289ebb6c3c657605f6c2ec4805b81717b7",
+      "method": "same-frame WebGL canvas readback from exact Viewer"
+    }
+  ],
+  "passed": true
+}
