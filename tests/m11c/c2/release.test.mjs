@@ -39,3 +39,16 @@ test('R3 matte surfaces remove character specular and procedural micro-noise onl
  assert.match(s,/specularIntensity = 0/);assert.match(s,/m\.map = null/);assert.match(s,/m\.bumpMap = null/);
  assert.match(s,/cloneSurfaceMaterial/);assert.match(s,/m\.roughness = 1/);
 });
+test('fringe covers both planar forehead corners without scalp clipping',async()=>{
+ const {createPlanarStudentParts}=await import('../../../apps/campus/src/player/student-planar-geometry.mjs');
+ const parts=createPlanarStudentParts(C), material=new THREE.MeshBasicMaterial();
+ const hair=new THREE.Mesh(parts.find(p=>p.name==='connected-angular-hair-and-fringe').geometry,material);
+ const head=new THREE.Mesh(parts.find(p=>p.name==='planar-head-with-tapered-jaw').geometry,material);
+ hair.updateMatrixWorld(true);head.updateMatrixWorld(true);
+ for(const x of [-.08,-.06,-.03,0,.03,.06,.08]){
+  const ray=new THREE.Raycaster(new THREE.Vector3(x,1.615,.5),new THREE.Vector3(0,0,-1));
+  const h=ray.intersectObject(hair)[0], face=ray.intersectObject(head)[0];
+  assert.ok(h&&face,`forehead sample ${x}`);assert.ok(h.point.z>face.point.z+.003,`hair in front at ${x}`);
+ }
+ material.dispose();parts.forEach(p=>p.geometry.dispose());
+});

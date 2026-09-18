@@ -5,9 +5,9 @@ import { surfaceMaterial, cloneSurfaceMaterial } from './materials';
  * Exact dyes remain H. Campus material bank, lighting, exposure and maps are untouched.
  */
 export const CHARACTER_PALETTE = {
-  blue: '#426789', blueFold: '#385976', white: '#dfdcd2', red: '#a35855',
-  skin: '#bea78f', skinShade: '#a99179', hair: '#2e2c29', hairLight: '#38352f',
-  eye: '#302d28', eyeWhite: '#dfdcd2', lip: '#a18b76', sole: '#cfcec5', shoe: '#8b918f', zip: '#98a4ab',
+  blue: '#527598', blueFold: '#466582', white: '#e5dfd4', red: '#ad615d',
+  skin: '#cfb298', skinShade: '#a99179', hair: '#38332e', hairLight: '#38352f',
+  eye: '#302d28', eyeWhite: '#e5dfd4', lip: '#a18b76', sole: '#cfcec5', shoe: '#8b918f', zip: '#98a4ab',
 };
 export function createCharacterMaterials(mats: THREE.MeshPhysicalMaterial[]) {
   const owned: THREE.MeshPhysicalMaterial[] = [];

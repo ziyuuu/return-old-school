@@ -45,6 +45,7 @@ function loft(rows, segments = 12, options = {}) {
       let z = cz + rz * Math.sign(b) * Math.pow(Math.abs(b), power);
       if (options.face && b > .45) z = cz + rz; // broad, flat facial plane
       let yy = y;
+      if (options.folds) yy += (options.folds[i] ?? 0) * Math.sin(t + .65);
       if (options.shoulder && i === rows.length - 1) yy -= options.shoulder * .57 * (x - cx);
       vertices.push([x, yy, z]);
       if (i) {
@@ -151,11 +152,11 @@ export function createPlanarStudentParts(C) {
     const trouser = [
       [.095, .077, .074, s * .106, .023], [.130, .092, .083, s * .106, .004],
       [.184, .083, .076, s * .112, -.005], [.343, .084, .078, s * .106, -.002],
-      [.442, .090, .088, s * .105, .006], [.485, .091, .092, s * .104, .014],
-      [.542, .093, .091, s * .103, .004], [.718, .107, .102, s * .107, 0],
+      [.442, .088, .083, s * .105, .002], [.485, .090, .085, s * .104, .003],
+      [.542, .094, .089, s * .103, .003], [.718, .107, .102, s * .107, 0],
       [.826, .114, .104, s * .100, 0], [.915, .102, .089, s * .096, 0],
     ];
-    add('continuous-loose-trouser-' + s, loft(trouser, 10, { power: .76 }), 'cloth', C.blue, hip,
+    add('continuous-loose-trouser-' + s, loft(trouser, 10, { power: .76, folds: [0, .012, -.016, .006, -.017, .011, .012, -.008, 0, 0] }), 'cloth', C.blue, hip,
       (_x, y) => { const t = smooth(.43, .54, y); return [knee, 1 - t, hip, t]; });
     // Proper closed shoe lasts: a flat grounded sole and a single sloping upper.
     const outline = [[-.047, -.080], [.047, -.080], [.069, -.053], [.073, .132], [.049, .187], [-.049, .187], [-.073, .132], [-.069, -.053]];
@@ -202,19 +203,22 @@ export function createPlanarStudentParts(C) {
   add('quiet-mouth-mark', patch([[-.011, 1.4885, .0785], [.011, 1.4885, .0785], [.011, 1.4875, .0785], [-.011, 1.4875, .0785]], .0005), 'detail', C.lip, 2);
 
   // One joined angular cap with integrated fringe. No rounded tubes or glossy locks.
-  const vertices = [], faces = [], n = 16;
+  const vertices = [], faces = [], n = 24;
   for (let level = 0; level < 4; level++) {
     for (let j = 0; j < n; j++) {
       const theta = TAU * j / n, co = Math.cos(theta), si = Math.sin(theta);
       let y, rx, rz;
       if (level === 0) {
-        const front = co > .38;
-        y = front ? 1.588 + [.007, -.011, .004, -.007][j % 4] : 1.548 + .017 * co;
+        const front = co > .24;
+        y = front ? 1.589 + [.007, -.007, .010, -.011, .005, -.004][j % 6] : 1.552 + .017 * co;
         rx = .103; rz = .100;
       } else if (level === 1) { y = 1.641 + .009 * Math.sin(theta * 2 + .4); rx = .111; rz = .104; }
       else if (level === 2) { y = 1.696 + .007 * Math.cos(theta + .6); rx = .073; rz = .071; }
       else { y = 1.716 + .003 * Math.sin(theta); rx = .016; rz = .015; }
-      vertices.push([rx * si + (level > 1 ? -.008 : 0), y, -.008 + rz * co]);
+      // The face is planar: the fringe must also cover its temple corners.
+      // An elliptical fringe would cut into the head and leave a central black V.
+      const frontZ = level < 2 && co > .24 ? .097 + .008 * co : -.008 + rz * co;
+      vertices.push([rx * si + (level > 1 ? -.008 : 0), y, frontZ]);
       if (level) {
         const a = (level - 1) * n + j, b = (level - 1) * n + (j + 1) % n;
         const c = level * n + (j + 1) % n, d = level * n + j;
