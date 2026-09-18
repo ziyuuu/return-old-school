@@ -1,0 +1,28 @@
+{
+  "version": "C2.R3",
+  "revision": "planar-fringe-final",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "branch": "codex/c2-r3-planar-style",
+  "runtimeSource": "c3ddd8d0aad7093b9340da0e035bc6bc7473880e",
+  "artifactCommit": "d085887f05b1d206f4cfd62ef3880349207c257a",
+  "run": "35350581854",
+  "date": "2026-09-18",
+  "engineeringPassed": true,
+  "unitTests": 17,
+  "browserChecks": 19,
+  "screenshots": 15,
+  "visualInspection": "COMPLETED_FOR_USER_REVIEW",
+  "inspectionRecord": "qa/m11c-c2/r3/final/inspection.md",
+  "automatedReport": "qa/m11c-c2/r3/final/report.json",
+  "userModelAcceptance": "PENDING",
+  "realPhonePerformance": "NOT VERIFIED",
+  "mergedToMain": false,
+  "geometry": {"triangles": 2404, "bones": 15, "skinnedMeshes": 5, "geometryBytes": 325456},
+  "scope": "Character-only authored planar geometry, simplified facial features and matte material amendment. Existing campus, controls, collision and camera algorithms unchanged.",
+  "files": [
+    {"path": "artifacts/m11c-c2/r3/Yali_C2_R3_Viewer.html", "bytes": 3903113, "sha256": "bb6b35b1494ebd034e4efba91638f3a6bf9587c08887f5a6e83de8d72c755508"},
+    {"path": "artifacts/m11c-c2/r3/Yali_C2_R3_Character.html", "bytes": 609668, "sha256": "e2da7d988b0ae59a0f441cfe7cc921a93bd700ebd345d2a550bf4d2b49147fe1"},
+    {"path": "artifacts/m11c-c2/r3/Yali_Student_C2_R3.glb", "bytes": 486496, "sha256": "f569edd0c10b13fdc6f97044032eb0bd459b7263143cfaa9f38560bfa0861aca"}
+  ],
+  "limits": ["No user art acceptance recorded", "No real phone FPS acceptance", "C3 whole-campus traversal not covered", "Existing approximate contact shadow retained", "Generated reference board is not an archival photograph"]
+}
