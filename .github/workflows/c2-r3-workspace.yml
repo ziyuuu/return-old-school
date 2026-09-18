@@ -1,0 +1,32 @@
+name: C2 R3 pinned workspace
+on:
+  push:
+    branches: [codex/c2-r3-planar-style]
+    paths: [.github/workflows/c2-r3-workspace.yml]
+permissions:
+  contents: read
+jobs:
+  workspace:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci --prefix apps/campus
+      - name: Package pinned source and installed dependencies
+        run: |
+          git rev-parse HEAD > workspace-source.txt
+          tar --exclude='./.git' --exclude='./artifacts' --exclude='./qa' --exclude='./workspace.tar.gz' -czf workspace.tar.gz .
+          git bundle create history.bundle --all
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C2-R3-pinned-workspace
+          path: |
+            workspace.tar.gz
+            history.bundle
+            workspace-source.txt
+          retention-days: 7
