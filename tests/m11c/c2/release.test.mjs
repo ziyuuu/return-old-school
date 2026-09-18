@@ -8,18 +8,34 @@ const mats=Object.fromEntries(['cloth','skin','hair','detail','shoe'].map(k=>[k,
 const rig=createStudentRig(mats,C);
 test('clip export preserves current visible pose',()=>{rig.pose(1.1,3.4,true,.8,1);const a=rig.bones.map(b=>[...b.position.toArray(),...b.quaternion.toArray()]);rig.animationClips();rig.bones.forEach((b,i)=>assert.deepEqual([...b.position.toArray(),...b.quaternion.toArray()],a[i]));rig.pose(0,0);});
 test('approved design sheet is never relabelled as an archival photo',()=>{const e=JSON.parse(fs.readFileSync('data/m11c/c2/evidence.json','utf8'));assert.equal(e.confirmedByUser.grade,'A');assert.match(e.designReference.kind,/NOT an archival photo/);assert.ok(e.superseded.some(x=>x.includes('synthetic')));});
-test('actual R2 rig stays within additive five-mesh and 8MB geometry budget',()=>{assert.equal(rig.stats.drawMeshes,5);assert.ok(rig.stats.geometryBytes<8000000);assert.ok(rig.stats.triangles<100000);});
+test('actual R3 rig stays within additive five-mesh and 8MB geometry budget',()=>{assert.equal(rig.stats.drawMeshes,5);assert.ok(rig.stats.geometryBytes<8000000);assert.ok(rig.stats.triangles<100000);});
 
-test('both sleeve crowns have actual outward-facing closure triangles',()=>{
- const geometry=rig.meshes.find(m=>m.material===mats.cloth).geometry;
- const p=geometry.attributes.position,index=geometry.index,counts={left:0,right:0};
- const a=new THREE.Vector3(),b=new THREE.Vector3(),c=new THREE.Vector3();
- for(let i=0;i<index.count;i+=3){
-  a.fromBufferAttribute(p,index.getX(i));b.fromBufferAttribute(p,index.getX(i+1));c.fromBufferAttribute(p,index.getX(i+2));
-  if([a,b,c].every(v=>Math.abs(v.y-1.356)<1e-6&&Math.abs(v.x)>.175&&Math.abs(v.x)<.23)){
-   const side=a.x+b.x+c.x>0?'left':'right';counts[side]++;
-   assert.ok(b.sub(a).cross(c.sub(a)).normalize().y>.99,'Crown cap must face outward, not down into sleeve');
+// The old 40-segment horizontal cap was intentionally replaced by a sloping
+// ten-sided sewn shoulder. Verify outward winding, not obsolete R2 coordinates.
+test('both revised shoulder closures are real, closed and outward-facing',async()=>{
+ const {createPlanarStudentParts}=await import('../../../apps/campus/src/player/student-planar-geometry.mjs');
+ const parts=createPlanarStudentParts(C);
+ for(const side of [-1,1]){
+  const p=parts.find(x=>x.name==='continuous-sleeve-'+side).geometry.attributes.position;
+  let count=0;const a=new THREE.Vector3(),b=new THREE.Vector3(),c=new THREE.Vector3();
+  for(let i=0;i<p.count;i+=3){
+   a.fromBufferAttribute(p,i);b.fromBufferAttribute(p,i+1);c.fromBufferAttribute(p,i+2);
+   if([a,b,c].every(v=>Math.abs(v.y+.57*side*(v.x-side*.207)-1.324)<1e-6)){
+    assert.ok(b.sub(a).cross(c.sub(a)).normalize().y>.8);count++;
+   }
   }
+  assert.equal(count,8);
  }
- assert.deepEqual(counts,{left:40,right:40});
+ parts.forEach(p=>p.geometry.dispose());
+});
+test('R3 uses minimal square eyes, wedge nose and connected angular hair',()=>{
+ const names=rig.stats.parts.map(p=>p.name);
+ assert.equal(names.filter(n=>n.startsWith('small-rectangular-eye')).length,2);
+ assert.ok(names.includes('small-wedge-nose'));assert.ok(names.includes('connected-angular-hair-and-fringe'));
+ assert.ok(!names.some(n=>/iris|pupil|glint|eyelid|swept-hair/.test(n)));
+});
+test('R3 matte surfaces remove character specular and procedural micro-noise only',()=>{
+ const s=fs.readFileSync('apps/campus/src/render/character-materials.ts','utf8');
+ assert.match(s,/specularIntensity = 0/);assert.match(s,/m\.map = null/);assert.match(s,/m\.bumpMap = null/);
+ assert.match(s,/cloneSurfaceMaterial/);assert.match(s,/m\.roughness = 1/);
 });

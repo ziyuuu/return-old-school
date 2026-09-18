@@ -8,7 +8,7 @@ import {createStudentRig} from '../../../apps/campus/src/player/student-rig.mjs'
 const C={blue:'#315fa2',blueFold:'#2b548e',white:'#eeeae0',red:'#b84646',skin:'#d6a47c',skinShade:'#be865f',hair:'#302e2c',hairLight:'#45413e',eye:'#382a24',eyeWhite:'#f2e9dc',lip:'#a56454',sole:'#d5d4cc',shoe:'#797e80'};
 const mats=Object.fromEntries(['cloth','skin','hair','detail','shoe'].map(k=>[k,new THREE.MeshPhysicalMaterial()]));
 const rig=createStudentRig(mats,C);
-test('R2 follows user-confirmed white collar, blue body, white over red bands and left-chest YL',()=>{
+test('R3 preserves user-confirmed white collar, blue body, white over red bands and left-chest YL',()=>{
  const u=STUDENT_PROFILE.uniform;assert.equal(u.logo,'YL');assert.equal(u.collar,'white-folded');assert.equal(u.backLogo,false);assert.equal(u.trouserSideStripe,false);
  assert.deepEqual(u.stripeOrderTopToBottom,['blue','white','red','blue']);assert.match(STUDENT_PROFILE.evidence,/A:.*用户确认/);
  assert.ok(rig.stats.parts.some(p=>p.name==='YL-left-chest-Y'));assert.ok(rig.stats.parts.some(p=>p.name==='YL-left-chest-L'));
@@ -16,7 +16,7 @@ test('R2 follows user-confirmed white collar, blue body, white over red bands an
 });
 test('locomotion states remain speed and ground driven',()=>{assert.equal(locomotionState(0,true),'idle');assert.equal(locomotionState(1.4,true),'walk');assert.equal(locomotionState(3,true),'run');assert.equal(locomotionState(1,false),'air');assert.ok(locomotionParams(3,true).stride>locomotionParams(1,true).stride);});
 test('continuous skinned silhouette has 15 joints, five material draws, finite normalized weights',()=>{
- assert.equal(rig.bones.length,15);assert.equal(rig.meshes.length,5);assert.ok(rig.stats.triangles>15000&&rig.stats.triangles<100000);
+ assert.equal(rig.bones.length,15);assert.equal(rig.meshes.length,5);assert.ok(rig.stats.triangles>1000&&rig.stats.triangles<12000);
  for(const m of rig.meshes){assert.ok(m.isSkinnedMesh);const a=m.geometry.attributes;for(const value of a.position.array)assert.ok(Number.isFinite(value));
  for(let i=0;i<a.skinWeight.count;i++){const sum=a.skinWeight.getX(i)+a.skinWeight.getY(i)+a.skinWeight.getZ(i)+a.skinWeight.getW(i);assert.ok(Math.abs(sum-1)<1e-6);assert.ok(a.skinIndex.getX(i)<15);}}
 });

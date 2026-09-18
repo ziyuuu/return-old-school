@@ -1,3 +1,13 @@
+# C2 R3 · 人物块面风格修复（待审）
+
+按用户明确提供的低多边形游戏参考重建实际学生几何与哑光材质。校园、C1 控制器和相机逻辑保持不变。**IMPLEMENTED / REVIEW_PENDING**，不合并 main，不将参考方向认可冒充实装认可。
+
+[校园 HTML](artifacts/m11c-c2/r3/Yali_C2_R3_Viewer.html) · [同源人物工坊](artifacts/m11c-c2/r3/Yali_C2_R3_Character.html) · [范围与复现](docs/m11c/c2/r3-planar-style.md)
+
+以下为保留的 R2 历史交付说明；最新版本以 R3 文件与检查记录为准。
+
+---
+
 # 复原雅礼 · Return Old School
 
 ## C2 R2 · 学生角色实装（待审）

@@ -29,7 +29,7 @@ export function createStudentAvatar(mats: THREE.MeshPhysicalMaterial[]) {
       if(dt===0&&delta>0)blend=state==='idle'?0:1;
       rig.pose(phase,speed,grounded,time,blend);shadow.visible=grounded;
     },
-    state(){return {finalStudent:true,artVersion:'C2.R2',animation:state,phase,
+    state(){return {finalStudent:true,artVersion:'C2.R3',animation:state,phase,
       evidence:STUDENT_PROFILE.evidence,uniform:STUDENT_PROFILE.uniform,
       geometry:{triangles:rig.stats.triangles,vertices:rig.stats.vertices,geometryBytes:rig.stats.geometryBytes,
         drawMeshes:rig.stats.drawMeshes,bones:rig.stats.bones}};},
