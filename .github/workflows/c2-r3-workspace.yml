@@ -20,7 +20,8 @@ jobs:
       - name: Package pinned source and installed dependencies
         run: |
           git rev-parse HEAD > workspace-source.txt
-          tar --exclude='./.git' --exclude='./artifacts' --exclude='./qa' --exclude='./workspace.tar.gz' -czf workspace.tar.gz .
+          tar --exclude='./.git' --exclude='./artifacts' --exclude='./qa' -czf "$RUNNER_TEMP/workspace.tar.gz" .
+          mv "$RUNNER_TEMP/workspace.tar.gz" workspace.tar.gz
           git bundle create history.bundle --all
       - uses: actions/upload-artifact@v4
         with:
