@@ -1,0 +1,111 @@
+name: C2 R3 final planar model review
+on:
+  push:
+    branches: [codex/c2-r3-planar-style]
+    paths: [.github/workflows/c2-r3-closeout.yml]
+permissions:
+  contents: write
+jobs:
+  final-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      C2_ARTIFACT_DIR: artifacts/m11c-c2/r3
+      C2_QA_ROOT: qa/m11c-c2/r3/final
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/c2-r3-planar-style
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Apply verified screenshot corrections as normal source
+        run: |
+          python - <<'PY'
+          import pathlib,json,hashlib,subprocess
+          patch=pathlib.Path('tools/m11c-c2/r3-refinement.json')
+          if patch.exists():
+            paths=[]
+            for f in json.loads(patch.read_text()):
+              p=pathlib.Path(f['path']);assert not p.is_absolute() and '..' not in p.parts
+              assert str(p).startswith(('apps/campus/src/','tests/m11c/c2/'))
+              data=p.read_bytes();assert hashlib.sha256(data).hexdigest()==f['before'],str(p)
+              s=data.decode()
+              for a,b,t in reversed(f['edits']):s=s[:a]+t+s[b:]
+              data=s.encode();assert hashlib.sha256(data).hexdigest()==f['after'],str(p)+' output'
+              p.write_bytes(data);paths.append(str(p))
+            subprocess.run(['git','add','--',*paths],check=True)
+            subprocess.run(['git','rm',str(patch)],check=True)
+            subprocess.run(['git','config','user.name','github-actions[bot]'],check=True)
+            subprocess.run(['git','config','user.email','41898282+github-actions[bot]@users.noreply.github.com'],check=True)
+            subprocess.run(['git','commit','-m','fix(c2-r3): cover planar forehead with joined fringe and remove tubular knee bands [skip ci]'],check=True)
+            subprocess.run(['git','push','origin','HEAD:codex/c2-r3-planar-style'],check=True)
+          PY
+          git rev-parse HEAD > c2-r3-tested-source.txt
+      - run: npm ci --prefix apps/campus
+      - name: Build and seventeen scoped character checks
+        run: |
+          mkdir -p "$C2_QA_ROOT"
+          npm run build --prefix apps/campus 2>&1 | tee "$C2_QA_ROOT/build.log"
+          node --test tests/m11c/c2/*.test.mjs 2>&1 | tee "$C2_QA_ROOT/tests.tap"
+          node tools/m11c-c2/export-r3.mjs
+          git archive --format=tar.gz -o Yali_C2_R3_Runtime_Source.tar.gz HEAD apps data docs tests tools README.md AGENTS.md .gitattributes .gitignore .github
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C2-R3-final-built
+          path: |
+            artifacts/m11c-c2/r3
+            qa/m11c-c2/r3/final
+            c2-r3-tested-source.txt
+            Yali_C2_R3_Runtime_Source.tar.gz
+          retention-days: 30
+      - name: Install pinned Chromium
+        run: |
+          npm install --prefix "$RUNNER_TEMP/browser" --save-exact playwright@1.62.0
+          "$RUNNER_TEMP/browser/node_modules/.bin/playwright" install --with-deps chromium --only-shell
+          echo "PLAYWRIGHT_MODULE=$RUNNER_TEMP/browser/node_modules/playwright" >> "$GITHUB_ENV"
+      - name: Studio final actual rendered forms and exported GLB
+        run: GROUP=studio node tools/m11c-c2/capture-r3.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: C2-R3-final-studio
+          path: qa/m11c-c2/r3/final/studio
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Campus actual movement, camera, side lane and screenshots
+        run: GROUP=campus node tools/m11c-c2/capture-r3.mjs
+      - name: Mobile actual touch and viewport checks
+        run: GROUP=mobile node tools/m11c-c2/capture-r3.mjs
+      - name: Aggregate exact deliverables without claiming alumni art or phone FPS approval
+        run: |
+          python - <<'PY'
+          import json,pathlib,hashlib,shutil,os
+          root=pathlib.Path('qa/m11c-c2/r3/final');art=pathlib.Path('artifacts/m11c-c2/r3')
+          reports=[json.loads((root/g/'report.json').read_text()) for g in ['studio','campus','mobile']]
+          assert all(r['passed'] for r in reports)
+          shutil.copy2(root/'studio/Yali_Student_C2_R3.glb',art/'Yali_Student_C2_R3.glb')
+          report={'version':'C2.R3','revision':'planar-fringe-final','status':'IMPLEMENTED / REVIEW_PENDING','source':pathlib.Path('c2-r3-tested-source.txt').read_text().strip(),'run':os.environ['GITHUB_RUN_ID'],'unitTests':17,'browserChecks':sum(len(r['checks']) for r in reports),'screenshots':sum(len(r['screenshots']) for r in reports),'passed':True,'passedMeaning':'Scoped engineering and actual Chromium checks, NOT user art approval or real phone FPS acceptance','visualInspection':'PENDING','realPhonePerformance':'NOT VERIFIED','files':[]}
+          for p in sorted(art.glob('*')):
+            if p.suffix in ['.html','.glb']:report['files'].append({'file':p.name,'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
+          (root/'report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add artifacts/m11c-c2/r3 qa/m11c-c2/r3/final
+          git commit -m 'build(c2-r3): publish actual standalone viewers GLB and scoped browser evidence; art review pending [skip ci]'
+          git push origin HEAD:codex/c2-r3-planar-style
+          git ls-remote origin refs/heads/codex/c2-r3-planar-style > c2-r3-remote-refs.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: C2-R3-final-review
+          path: |
+            artifacts/m11c-c2/r3
+            qa/m11c-c2/r3/final
+            c2-r3-tested-source.txt
+            c2-r3-remote-refs.txt
+            Yali_C2_R3_Runtime_Source.tar.gz
+          retention-days: 30
+          if-no-files-found: ignore
