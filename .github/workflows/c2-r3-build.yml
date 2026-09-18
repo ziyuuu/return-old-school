@@ -1,0 +1,121 @@
+name: C2 R3 planar character build and review
+on:
+  push:
+    branches: [codex/c2-r3-planar-style]
+    paths:
+      - .github/workflows/c2-r3-build.yml
+      - tools/m11c-c2/r3-transfer/**
+      - tools/m11c-c2/r3-transport-repair.json
+permissions:
+  contents: write
+concurrency:
+  group: c2-r3-planar-review
+  cancel-in-progress: false
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      C2_ARTIFACT_DIR: artifacts/m11c-c2/r3
+      C2_QA_ROOT: qa/m11c-c2/r3/planar-review
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/c2-r3-planar-style
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C2-R3-source-transfer
+          path: tools/m11c-c2/r3-transfer/
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Materialize exact locally tested edits and commit normal source
+        shell: bash
+        run: |
+          python - <<'PY'
+          import base64, gzip, hashlib, json, pathlib, subprocess
+          root=pathlib.Path('.')
+          transfer=root/'tools/m11c-c2/r3-transfer'
+          if transfer.exists():
+            raw=''.join(p.read_text().strip() for p in sorted(transfer.glob('*.b64')))
+            repair=root/'tools/m11c-c2/r3-transport-repair.json'
+            if repair.exists():
+              changes=json.loads(repair.read_text())
+              for a,b,t in reversed(changes): raw=raw[:a]+t+raw[b:]
+            else:
+              raw=raw.replace('Zbie3W3at','Zbie3at').replace('7/2292','7/2L792').replace('/sVH/lfu/','/sVH/1Vv/')
+            blob=base64.b64decode(raw,validate=True)
+            sha=lambda b:hashlib.sha256(b).hexdigest()
+            assert sha(blob)=='d740df694c39174a26fde84260d255b4239b6367c13f9b054a0a8d3f4ddfabac',sha(blob)
+            data=gzip.decompress(blob)
+            assert sha(data)=='59c4b693cb7a83010eb9ab7abea54a1c0b0542c71f9105130907f51814ad0b9d'
+            batch=json.loads(data); assert batch['base']=='b7e1253c8cb532f60164167526e203cbc995881c'
+            paths=[]
+            for f in batch['files']:
+              p=pathlib.Path(f['path'])
+              assert not p.is_absolute() and '..' not in p.parts
+              assert str(p).startswith(('apps/campus/','docs/','tests/m11c/c2/','tools/m11c-c2/')) or str(p)=='README.md'
+              old=subprocess.check_output(['git','show',batch['base']+':'+f['source']]) if f['source'] else b''
+              assert sha(old)==f['before'],str(p)+' input'
+              s=old.decode('utf-8')
+              for a,b,text in reversed(f['edits']): s=s[:a]+text+s[b:]
+              encoded=s.encode('utf-8'); assert sha(encoded)==f['after'],str(p)+' output'
+              p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(encoded);paths.append(str(p))
+            subprocess.run(['git','add','--',*paths],check=True)
+            subprocess.run(['git','rm','-r','--',str(transfer)],check=True)
+            if repair.exists():subprocess.run(['git','rm','--',str(repair)],check=True)
+            subprocess.run(['git','config','user.name','github-actions[bot]'],check=True)
+            subprocess.run(['git','config','user.email','41898282+github-actions[bot]@users.noreply.github.com'],check=True)
+            subprocess.run(['git','commit','-m','feat(c2-r3): implement authored planar student rig and matte campus materials [skip ci]'],check=True)
+            subprocess.run(['git','push','origin','HEAD:codex/c2-r3-planar-style'],check=True)
+          PY
+          git rev-parse HEAD > c2-r3-tested-source.txt
+          git archive --format=tar.gz -o "$RUNNER_TEMP/Yali_C2_R3_Source.tar.gz" HEAD
+      - run: npm ci --prefix apps/campus
+      - name: Production build and scoped character tests
+        run: |
+          mkdir -p "$C2_QA_ROOT"
+          npm run build --prefix apps/campus 2>&1 | tee "$C2_QA_ROOT/build.log"
+          node --test tests/m11c/c2/*.test.mjs 2>&1 | tee "$C2_QA_ROOT/tests.tap"
+          node tools/m11c-c2/export-r3.mjs
+          cp "$RUNNER_TEMP/Yali_C2_R3_Source.tar.gz" .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C2-R3-built
+          path: |
+            artifacts/m11c-c2/r3
+            qa/m11c-c2/r3/planar-review
+            c2-r3-tested-source.txt
+            Yali_C2_R3_Source.tar.gz
+          retention-days: 30
+      - name: Install pinned browser
+        run: |
+          npm install --prefix "$RUNNER_TEMP/browser" --save-exact playwright@1.62.0
+          "$RUNNER_TEMP/browser/node_modules/.bin/playwright" install --with-deps chromium --only-shell
+          echo "PLAYWRIGHT_MODULE=$RUNNER_TEMP/browser/node_modules/playwright" >> "$GITHUB_ENV"
+      - name: Actual character studio screenshots and GLB
+        run: GROUP=studio node tools/m11c-c2/capture-r3.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: C2-R3-studio
+          path: qa/m11c-c2/r3/planar-review/studio
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Actual campus controls and character screenshots
+        run: GROUP=campus node tools/m11c-c2/capture-r3.mjs
+      - name: Actual touch and mobile viewport
+        run: GROUP=mobile node tools/m11c-c2/capture-r3.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: C2-R3-full-review
+          path: |
+            artifacts/m11c-c2/r3
+            qa/m11c-c2/r3/planar-review
+            c2-r3-tested-source.txt
+          retention-days: 30
+          if-no-files-found: ignore
