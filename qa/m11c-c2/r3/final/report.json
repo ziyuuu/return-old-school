@@ -1,0 +1,31 @@
+{
+  "version": "C2.R3",
+  "revision": "planar-fringe-final",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "source": "c3ddd8d0aad7093b9340da0e035bc6bc7473880e",
+  "run": "35350581854",
+  "unitTests": 17,
+  "browserChecks": 19,
+  "screenshots": 15,
+  "passed": true,
+  "passedMeaning": "Scoped engineering and actual Chromium checks, NOT user art approval or real phone FPS acceptance",
+  "visualInspection": "PENDING",
+  "realPhonePerformance": "NOT VERIFIED",
+  "files": [
+    {
+      "file": "Yali_C2_R3_Character.html",
+      "bytes": 609668,
+      "sha256": "e2da7d988b0ae59a0f441cfe7cc921a93bd700ebd345d2a550bf4d2b49147fe1"
+    },
+    {
+      "file": "Yali_C2_R3_Viewer.html",
+      "bytes": 3903113,
+      "sha256": "bb6b35b1494ebd034e4efba91638f3a6bf9587c08887f5a6e83de8d72c755508"
+    },
+    {
+      "file": "Yali_Student_C2_R3.glb",
+      "bytes": 486496,
+      "sha256": "f569edd0c10b13fdc6f97044032eb0bd459b7263143cfaa9f38560bfa0861aca"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "file": "Yali_C2_R3_Character.html",
+  "sha256": "e2da7d988b0ae59a0f441cfe7cc921a93bd700ebd345d2a550bf4d2b49147fe1",
+  "bytes": 609668,
+  "version": "C2.R3",
+  "status": "IMPLEMENTED / REVIEW_PENDING",
+  "standard": "1.0 + mobile-r12; R3 user-directed planar character amendment",
+  "gitHead": "c3ddd8d0aad7093b9340da0e035bc6bc7473880e",
+  "sources": {
+    "apps/campus/avatar-r3.html": "7cb74d114e66a77566adb520e4fd43ee483fd3cdcba262c78fe3eac990fe17e9",
+    "apps/campus/package-lock.json": "187588ec8f5b2bc72a82b08c4abed85dcbfc318ec9c68d70d3f4d2bca6154090",
+    "apps/campus/src/player/avatar-export.mjs": "60ef28ecf63445d8e22667495b5284d7255eb934982a89819ff714ee460e168b",
+    "apps/campus/src/player/avatar-studio.ts": "fb0f42e4e7c6590fb9803913327fd2d2a44923d65d4293e77993d70f385a853b",
+    "apps/campus/src/player/student-avatar-profile.mjs": "7a60a9086c9e74b10bf9ad6f9ec6cdb177424a565f903e0ebc81bffd5f0f3ddf",
+    "apps/campus/src/player/student-avatar.ts": "b6407975a783a706d8be004526c26df6a63695b07979eb5d45c1e4f6e279079c",
+    "apps/campus/src/player/student-planar-geometry.mjs": "019d5b0c1405c0948f7829f94d0cc8d92f875b91954bfda5407530403e71016c",
+    "apps/campus/src/player/student-rig.mjs": "6bbb91da04d71efb50ad17bf3d5edbef28c741abc0f1ba66a9862853db108a4c",
+    "apps/campus/src/render/character-materials.ts": "919b3261f395ac10923cd0e72cc6af92fe87720c992454878c29d1f58c22798d",
+    "apps/campus/src/render/daylight.ts": "43358f58e7d849deb75f941f33bc9977ae0abe7417178272bec8b3896e131310",
+    "apps/campus/src/render/materials.ts": "dbdf639ec52da04755d5cabf45928c6bfdd60b30f4374b63de217b14718676d7",
+    "apps/campus/src/render/performance-policy.mjs": "a62d7f9714e0040141fe0c5af01f1909fe3a4a6b8edb826812025e360f0db504",
+    "apps/campus/src/render/surface-profiles.mjs": "4db948c8b414c45f40980485fea859ef1bd3b8892627b2a28f761e1151c5b62e"
+  }
+}

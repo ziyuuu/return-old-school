@@ -1,0 +1,112 @@
+TAP version 13
+# Subtest: R3 preserves user-confirmed white collar, blue body, white over red bands and left-chest YL
+ok 1 - R3 preserves user-confirmed white collar, blue body, white over red bands and left-chest YL
+  ---
+  duration_ms: 2.528073
+  type: 'test'
+  ...
+# Subtest: locomotion states remain speed and ground driven
+ok 2 - locomotion states remain speed and ground driven
+  ---
+  duration_ms: 0.187417
+  type: 'test'
+  ...
+# Subtest: continuous skinned silhouette has 15 joints, five material draws, finite normalized weights
+ok 3 - continuous skinned silhouette has 15 joints, five material draws, finite normalized weights
+  ---
+  duration_ms: 2.816128
+  type: 'test'
+  ...
+# Subtest: student dimensions fit the inherited 1.72 m scale instead of the discarded 2.4 m box puppet
+ok 4 - student dimensions fit the inherited 1.72 m scale instead of the discarded 2.4 m box puppet
+  ---
+  duration_ms: 14.804259
+  type: 'test'
+  ...
+# Subtest: sleeve and trouser positions deform at knee/elbow without detached limb pieces
+ok 5 - sleeve and trouser positions deform at knee/elbow without detached limb pieces
+  ---
+  duration_ms: 1.058442
+  type: 'test'
+  ...
+# Subtest: export supplies real idle walk run skeletal clips
+ok 6 - export supplies real idle walk run skeletal clips
+  ---
+  duration_ms: 19.231225
+  type: 'test'
+  ...
+# Subtest: character surfaces reuse shared physical factory and do not introduce photo textures or lights
+ok 7 - character surfaces reuse shared physical factory and do not introduce photo textures or lights
+  ---
+  duration_ms: 0.728225
+  type: 'test'
+  ...
+# Subtest: C1 R1.2 physics, inputs, camera and mobile policy have not been replaced
+ok 8 - C1 R1.2 physics, inputs, camera and mobile policy have not been replaced
+  ---
+  duration_ms: 29.703438
+  type: 'test'
+  ...
+# Subtest: export-only texture conversion preserves bytes, colour space and UV sampler without mutating shared maps
+ok 9 - export-only texture conversion preserves bytes, colour space and UV sampler without mutating shared maps
+  ---
+  duration_ms: 6.784378
+  type: 'test'
+  ...
+# Subtest: failed export restores live rig transforms and leaves its contact shadow visible
+ok 10 - failed export restores live rig transforms and leaves its contact shadow visible
+  ---
+  duration_ms: 2.130706
+  type: 'test'
+  ...
+# Subtest: clip export preserves current visible pose
+ok 11 - clip export preserves current visible pose
+  ---
+  duration_ms: 21.837414
+  type: 'test'
+  ...
+# Subtest: approved design sheet is never relabelled as an archival photo
+ok 12 - approved design sheet is never relabelled as an archival photo
+  ---
+  duration_ms: 0.482101
+  type: 'test'
+  ...
+# Subtest: actual R3 rig stays within additive five-mesh and 8MB geometry budget
+ok 13 - actual R3 rig stays within additive five-mesh and 8MB geometry budget
+  ---
+  duration_ms: 0.119666
+  type: 'test'
+  ...
+# Subtest: both revised shoulder closures are real, closed and outward-facing
+ok 14 - both revised shoulder closures are real, closed and outward-facing
+  ---
+  duration_ms: 11.826592
+  type: 'test'
+  ...
+# Subtest: R3 uses minimal square eyes, wedge nose and connected angular hair
+ok 15 - R3 uses minimal square eyes, wedge nose and connected angular hair
+  ---
+  duration_ms: 0.458507
+  type: 'test'
+  ...
+# Subtest: R3 matte surfaces remove character specular and procedural micro-noise only
+ok 16 - R3 matte surfaces remove character specular and procedural micro-noise only
+  ---
+  duration_ms: 0.233755
+  type: 'test'
+  ...
+# Subtest: fringe covers both planar forehead corners without scalp clipping
+ok 17 - fringe covers both planar forehead corners without scalp clipping
+  ---
+  duration_ms: 19.082697
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 305.741249
